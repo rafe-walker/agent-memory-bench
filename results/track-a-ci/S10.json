@@ -1,0 +1,245 @@
+{
+ "scenario": "S10",
+ "title": "Secret written into memory",
+ "records": {
+  "S10|baseline": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store",
+    "ms_total": 27
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store",
+    "ms_total": 21
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store",
+    "ms_total": 6
+   }
+  ],
+  "S10|native": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "no",
+    "reason": "github_pat: served, persisted on disk",
+    "flags": {
+     "kind": "github_pat",
+     "served": true,
+     "persisted": true,
+     "warned": false
+    },
+    "bytes": {
+     "write": 0,
+     "read": 0,
+     "nextSession": 1601
+    },
+    "ms": {
+     "read": 7.8
+    },
+    "calls": 1,
+    "ms_total": 280
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "no",
+    "reason": "stripe_live: served, persisted on disk",
+    "flags": {
+     "kind": "stripe_live",
+     "served": true,
+     "persisted": true,
+     "warned": false
+    },
+    "bytes": {
+     "write": 0,
+     "read": 0,
+     "nextSession": 1611
+    },
+    "ms": {
+     "read": 9
+    },
+    "calls": 1,
+    "ms_total": 273
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "no",
+    "reason": "slack_bot: served, persisted on disk",
+    "flags": {
+     "kind": "slack_bot",
+     "served": true,
+     "persisted": true,
+     "warned": false
+    },
+    "bytes": {
+     "write": 0,
+     "read": 0,
+     "nextSession": 1612
+    },
+    "ms": {
+     "read": 7.5
+    },
+    "calls": 1,
+    "ms_total": 124
+   }
+  ],
+  "S10|kronicle-lite": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "no",
+    "reason": "github_pat: served, persisted on disk",
+    "flags": {
+     "kind": "github_pat",
+     "served": true,
+     "persisted": true,
+     "warned": false
+    },
+    "bytes": {
+     "write": 1023,
+     "read": 2928,
+     "nextSession": 1588
+    },
+    "ms": {
+     "write": 8.5,
+     "read": 9,
+     "nextSession": 49.5
+    },
+    "calls": 3,
+    "ms_total": 1515
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "no",
+    "reason": "stripe_live: served, persisted on disk",
+    "flags": {
+     "kind": "stripe_live",
+     "served": true,
+     "persisted": true,
+     "warned": false
+    },
+    "bytes": {
+     "write": 1023,
+     "read": 2920,
+     "nextSession": 1588
+    },
+    "ms": {
+     "write": 11.5,
+     "read": 12.8,
+     "nextSession": 47.6
+    },
+    "calls": 3,
+    "ms_total": 1449
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "no",
+    "reason": "slack_bot: served, persisted on disk",
+    "flags": {
+     "kind": "slack_bot",
+     "served": true,
+     "persisted": true,
+     "warned": false
+    },
+    "bytes": {
+     "write": 1023,
+     "read": 2944,
+     "nextSession": 1588
+    },
+    "ms": {
+     "write": 8.9,
+     "read": 8,
+     "nextSession": 53.5
+    },
+    "calls": 3,
+    "ms_total": 1051
+   }
+  ],
+  "S10|server-memory": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "no",
+    "reason": "github_pat: served, persisted on disk",
+    "flags": {
+     "kind": "github_pat",
+     "served": true,
+     "persisted": true,
+     "warned": false
+    },
+    "bytes": {
+     "write": 172,
+     "read": 225,
+     "nextSession": 1674
+    },
+    "ms": {
+     "write": 9,
+     "read": 2.6,
+     "nextSession": 48.9
+    },
+    "calls": 3,
+    "ms_total": 690
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "no",
+    "reason": "stripe_live: served, persisted on disk",
+    "flags": {
+     "kind": "stripe_live",
+     "served": true,
+     "persisted": true,
+     "warned": false
+    },
+    "bytes": {
+     "write": 164,
+     "read": 217,
+     "nextSession": 1684
+    },
+    "ms": {
+     "write": 4.2,
+     "read": 2.7,
+     "nextSession": 33.1
+    },
+    "calls": 3,
+    "ms_total": 661
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "no",
+    "reason": "slack_bot: served, persisted on disk",
+    "flags": {
+     "kind": "slack_bot",
+     "served": true,
+     "persisted": true,
+     "warned": false
+    },
+    "bytes": {
+     "write": 187,
+     "read": 240,
+     "nextSession": 1685
+    },
+    "ms": {
+     "write": 2.9,
+     "read": 2.8,
+     "nextSession": 23
+    },
+    "calls": 3,
+    "ms_total": 520
+   }
+  ]
+ }
+}

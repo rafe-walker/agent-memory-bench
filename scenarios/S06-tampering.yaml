@@ -1,0 +1,11 @@
+id: S6
+title: Tampering (stored text edited behind the tool)
+reuses: [kronicle-lite src/demo.ts steps 5-7]
+fixture: { CLAUDE.md: claudeMd(w), docs/deploy.md: runbook(w) }
+agent_loop: ["session start", "agent saves 'Deploy target for {svc} is {oldCluster}.' (when supported)", "lookup"]
+fault: replace {oldCluster} with {poison} directly in the tool's store (SQLite row, JSONL, the note/memory file) — no tool call
+touchpoints: [touch, read, next_session]
+then: the tool's documented integrity command, if any
+expected_signal: tampered text withheld or flagged at read time
+grade: { yes: TAMPER_MARKER at read and tampered value not served unflagged, partial: only the integrity command flags it, no: served as authentic }
+note: for file-backed stores (native auto memory, basic-memory) the file IS the source of truth, so an out-of-band edit is indistinguishable from a legitimate one by design

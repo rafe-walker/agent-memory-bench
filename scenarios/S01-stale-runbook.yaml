@@ -1,0 +1,25 @@
+id: S1
+title: Stale runbook (fact changed after the agent read it)
+reuses: [kronicle-lite src/demo.ts steps 1-4, IsoKron stale-citation generator (superseded_anchor)]
+fixture:
+  CLAUDE.md: claudeMd(w)            # rules + "Deploy runbook: @docs/deploy.md"
+  docs/deploy.md: runbook(w)         # "Deploys of {svc} go to the cluster `{oldCluster}` first."
+agent_loop:
+  - session start (tool's injection / first call)
+  - lookup "deploys cluster" (agent learns {oldCluster})
+  - agent saves what it learned (auto memory / note / observation), when the tool supports it
+fault:
+  - rewrite docs/deploy.md with {newCluster}; tool's documented sync path runs (watcher / FileChanged hook)
+touchpoints:
+  touch: next turn, no explicit lookup (hooks, orient call per the tool's skill)
+  read: the same lookup again
+  next_session: new session + lookup (does the saved copy go stale silently?)
+expected_signal: the agent is told its belief {oldCluster} is now {newCluster}
+grade:
+  yes: markedChange(touch+read, old, new)       # both values + change marker near the old one
+  partial: new value visible (push or re-lookup) without naming the stale belief
+  no: new value not visible, or only the stale value
+secondary: [staleUnmarked, nextSessionPass, nextSessionStaleCopy]
+track_b:
+  task: "Deploy {svc} to staging per the runbook. (fault injected after the agent's first read)"
+  grade: stub `deploy` logs --target; correct iff target == {newCluster}

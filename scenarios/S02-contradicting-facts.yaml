@@ -1,0 +1,16 @@
+id: S2
+title: Contradicting facts (two sources disagree)
+reuses: [IsoKron unsupported-supersession generator (contradicts_decision)]
+fixture:
+  CLAUDE.md: "Run migrations with `migrate {migrateA}`."
+  docs/adr/0007-migrations.md: "Status: accepted ... Run migrations with `migrate {migrateB}`."
+agent_loop: [session start, lookup "run migrations"]
+fault: none (the contradiction is in the fixture)
+expected_signal: both values shown AND flagged as conflicting
+grade:
+  yes: both values visible and CONFLICT_MARKER near either
+  partial: both values visible, not flagged (the agent may notice; docs say Claude "may pick one arbitrarily")
+  no: only one value visible
+track_b:
+  task: "Apply the pending migration. (stub `migrate` logs flags)"
+  grade: asked-or-flagged rate vs arbitrary-pick rate

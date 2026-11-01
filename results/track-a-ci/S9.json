@@ -1,0 +1,242 @@
+{
+ "scenario": "S9",
+ "title": "Poisoned memory (wrong fact planted)",
+ "records": {
+  "S9|baseline": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to poison",
+    "ms_total": 30
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to poison",
+    "ms_total": 23
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to poison",
+    "ms_total": 5
+   }
+  ],
+  "S9|native": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1333,
+     "nextSession": 1594
+    },
+    "ms": {
+     "read": 6.7
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 290
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1362,
+     "nextSession": 1618
+    },
+    "ms": {
+     "read": 7.6
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 284
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1339,
+     "nextSession": 1594
+    },
+    "ms": {
+     "read": 7.3
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 138
+   }
+  ],
+  "S9|kronicle-lite": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "partial",
+    "reason": "author/provenance visible, not flagged",
+    "flags": {
+     "flagged": false,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3048,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 5.7,
+     "read": 2.4,
+     "nextSession": 51.8
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1473
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "partial",
+    "reason": "author/provenance visible, not flagged",
+    "flags": {
+     "flagged": false,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3059,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 10.1,
+     "read": 2.3,
+     "nextSession": 54.8
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1514
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "partial",
+    "reason": "author/provenance visible, not flagged",
+    "flags": {
+     "flagged": false,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3056,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 5.9,
+     "read": 2.5,
+     "nextSession": 40
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1055
+   }
+  ],
+  "S9|server-memory": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1343,
+     "nextSession": 1673
+    },
+    "ms": {
+     "read": 1,
+     "nextSession": 30.1
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 681
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1373,
+     "nextSession": 1697
+    },
+    "ms": {
+     "read": 1.1,
+     "nextSession": 26.6
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 643
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1349,
+     "nextSession": 1673
+    },
+    "ms": {
+     "read": 1.1,
+     "nextSession": 22.4
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 528
+   }
+  ]
+ }
+}

@@ -1,0 +1,44 @@
+{
+ "scenario": "S13",
+ "title": "Lease expiry during a long task",
+ "records": {
+  "S13|baseline": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 84
+   }
+  ],
+  "S13|sea-lite": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "partial",
+    "reason": "lease lapsed mid-task; B took it; A learns only on its next write",
+    "flags": {
+     "lease_s": 3,
+     "task_s": 7,
+     "lost": true,
+     "holderTold": true
+    },
+    "ms_total": 9633
+   }
+  ],
+  "S13|sea-lite+cc-anchor": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "yes",
+    "reason": "claim held through 7s of work (lease 3s)",
+    "flags": {
+     "lease_s": 3,
+     "task_s": 7,
+     "lost": false
+    },
+    "ms_total": 9843
+   }
+  ]
+ }
+}

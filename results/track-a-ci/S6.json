@@ -1,0 +1,242 @@
+{
+ "scenario": "S6",
+ "title": "Tampering (stored text edited behind the tool)",
+ "records": {
+  "S6|baseline": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to tamper",
+    "ms_total": 12
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to tamper",
+    "ms_total": 6
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to tamper",
+    "ms_total": 6
+   }
+  ],
+  "S6|native": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1333,
+     "nextSession": 1564
+    },
+    "ms": {
+     "read": 7
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 274
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1362,
+     "nextSession": 1588
+    },
+    "ms": {
+     "read": 6.2
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 269
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1339,
+     "nextSession": 1564
+    },
+    "ms": {
+     "read": 8.2
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 124
+   }
+  ],
+  "S6|kronicle-lite": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 462,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 4.3,
+     "read": 3,
+     "nextSession": 44.7
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1747
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 462,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 9,
+     "read": 2.1,
+     "nextSession": 238.4
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1973
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 462,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 3.7,
+     "read": 2.5,
+     "nextSession": 38.4
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1249
+   }
+  ],
+  "S6|server-memory": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1163,
+     "nextSession": 1650
+    },
+    "ms": {
+     "read": 5,
+     "nextSession": 34.6
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 690
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1188,
+     "nextSession": 1675
+    },
+    "ms": {
+     "read": 1.1,
+     "nextSession": 41.4
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 704
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1165,
+     "nextSession": 1650
+    },
+    "ms": {
+     "read": 1.4,
+     "nextSession": 23.3
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 508
+   }
+  ]
+ }
+}

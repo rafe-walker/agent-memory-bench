@@ -1,0 +1,11 @@
+id: S13
+title: Lease expiry during a long task
+reuses: [sea-lite claim fencing; cc-anchor PostToolUse heartbeat]
+protocol:
+  - A claims the item with the tool's lease (time compressed 1:60 where the tool allows: lease 5 s, heartbeat every 1 s, task 12 s)
+  - A keeps working (one tool call per second → PostToolUse hooks fire)
+  - B tries to claim the same item
+  - if B got it: A attempts its next write with its old claim
+real_time: agent_mail TTL floor is 60 s (task 70 s); beads lease is a fixed 5 min (task 310 s); 1 repetition each
+expected_signal: no silent loss — the lease is kept alive by activity, or A is told before acting on a lost claim
+grade: { yes: B refused (claim survived), partial: B took it; A told at its next write (fence), no: B took it; A not told }

@@ -1,0 +1,99 @@
+{
+ "scenario": "S11c",
+ "title": "Cross-project leak, coordination (two repos, default store)",
+ "records": {
+  "S11c|baseline": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 428
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 416
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 192
+   }
+  ],
+  "S11c|sea-lite": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1106
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1380
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 864
+   }
+  ],
+  "S11c|sea-lite+cc-anchor": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1060
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1377
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 954
+   }
+  ]
+ }
+}

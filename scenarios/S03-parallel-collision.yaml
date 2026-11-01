@@ -1,0 +1,19 @@
+id: S3
+title: Parallel edit collision (two+ sessions, same file/path)
+reuses: [sea-lite test/fixtures/claim-worker.mjs, test/concurrent.test.ts]
+fixture: { README.md: "# fixture", "{authPath}/login.ts": "export {};", "{authPath}/session.ts": "export {};" }
+variants:
+  a: claim race — {racers} (2..8) sessions claim one item + path scope concurrently (separate processes / sessions)
+  b: edit guard — A holds {authPath}; B edits {authPath}/login.ts through the tool's guard (PreToolUse hook or pre-commit)
+  c: default identity — two sessions with the out-of-the-box config (no per-session actor) race for one item
+  d: concurrent create — max(3,{racers}) writers create items at once
+expected_signal: exactly one holder; every other session is told who holds it before editing
+grade:
+  a_c_yes: 1 winner and every loser's response names the holder or the conflict
+  a_c_partial: 1 winner but losers not told, or >1 granted with an advisory conflict
+  a_c_no: "more than one session believes it holds the item, silently"
+  b: "yes = edit denied at edit time, holder named; partial = blocked only at commit; no = edit allowed"
+  d: "yes = N unique ids, all present; no = duplicates or lost writes"
+track_b:
+  task: 3-4 agents work one 10-ticket backlog in one repo
+  grade: double-claims, duplicate edits, merge conflicts (git log)

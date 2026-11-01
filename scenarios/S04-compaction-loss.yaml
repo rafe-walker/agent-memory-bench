@@ -1,0 +1,16 @@
+id: S4
+title: Compaction loss (decision made mid-conversation must survive)
+reuses: [sextant-metrics compactAnchorSurvivalRate, golden vector anchor-card/wake-contract-pinned.json]
+fixture: { CLAUDE.md: claudeMd(w), docs/deploy.md: runbook(w) }
+decision: "Use feature flag {decisionFlag} instead of a schema migration; never edit {decisionFile}."
+agent_loop:
+  - "decision recorded with the tool's documented mechanism (auto memory line, anchor add-invariant, note, observation)"
+  - "compaction: conversation replaced by a summary (not simulated; Track A grades only what the tool re-injects / returns)"
+variants:
+  a: normal
+  b: auto memory MEMORY.md already holds 230 index lines (native only; the decision lands past the 200-line load limit)
+expected_signal: the decision verbatim in the post-compaction context
+grade: { yes: decision verbatim, partial: flag name only, no: absent }
+delivery: "push (hook re-injects) vs pull (agent must call a tool after compaction)"
+track_b:
+  task: "long task with forced /compact after the decision; grade from stub logs that the decision held (flag used, file untouched)"

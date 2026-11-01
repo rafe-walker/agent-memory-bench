@@ -1,0 +1,7 @@
+id: S8
+title: Moved section (identity must survive)
+reuses: [IsoKron anchor-stability generator (relocated)]
+variants_by_seed: { reorder: "Deploy target section moved to the end of docs/deploy.md", rename_file: "docs/deploy.md → docs/ops/deploy-runbook.md (content unchanged)" }
+agent_loop: [session start, lookup deploy target]
+expected_signal: no removal/changed alarm; the fact is still retrievable
+grade: { yes: retrievable and quiet, partial: retrievable but alarmed (removed/changed), no: fact lost }

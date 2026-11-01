@@ -1,0 +1,1126 @@
+{
+ "scenario": "S11c",
+ "title": "Cross-project leak, coordination (two repos, default store)",
+ "records": {
+  "S11c|baseline": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 462
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 447
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 438
+   },
+   {
+    "seed": 4,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 422
+   },
+   {
+    "seed": 5,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 439
+   },
+   {
+    "seed": 6,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 425
+   },
+   {
+    "seed": 7,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 435
+   },
+   {
+    "seed": 8,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 423
+   },
+   {
+    "seed": 9,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 440
+   },
+   {
+    "seed": 10,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 428
+   },
+   {
+    "seed": 11,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 451
+   },
+   {
+    "seed": 12,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 435
+   },
+   {
+    "seed": 13,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 428
+   },
+   {
+    "seed": 14,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 416
+   },
+   {
+    "seed": 15,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 450
+   },
+   {
+    "seed": 16,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 437
+   },
+   {
+    "seed": 17,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 444
+   },
+   {
+    "seed": 18,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 430
+   },
+   {
+    "seed": 19,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 454
+   },
+   {
+    "seed": 20,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 440
+   }
+  ],
+  "S11c|sea-lite": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1228
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1493
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1107
+   },
+   {
+    "seed": 4,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1104
+   },
+   {
+    "seed": 5,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1099
+   },
+   {
+    "seed": 6,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1118
+   },
+   {
+    "seed": 7,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1096
+   },
+   {
+    "seed": 8,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1060
+   },
+   {
+    "seed": 9,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 995
+   },
+   {
+    "seed": 10,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1065
+   },
+   {
+    "seed": 11,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1043
+   },
+   {
+    "seed": 12,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1041
+   },
+   {
+    "seed": 13,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1120
+   },
+   {
+    "seed": 14,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1105
+   },
+   {
+    "seed": 15,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1039
+   },
+   {
+    "seed": 16,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1096
+   },
+   {
+    "seed": 17,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1074
+   },
+   {
+    "seed": 18,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1037
+   },
+   {
+    "seed": 19,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1040
+   },
+   {
+    "seed": 20,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1023
+   }
+  ],
+  "S11c|sea-lite+cc-anchor": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1023
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1301
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1025
+   },
+   {
+    "seed": 4,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1116
+   },
+   {
+    "seed": 5,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1068
+   },
+   {
+    "seed": 6,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1000
+   },
+   {
+    "seed": 7,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1061
+   },
+   {
+    "seed": 8,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1052
+   },
+   {
+    "seed": 9,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1067
+   },
+   {
+    "seed": 10,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1119
+   },
+   {
+    "seed": 11,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1015
+   },
+   {
+    "seed": 12,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1033
+   },
+   {
+    "seed": 13,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1076
+   },
+   {
+    "seed": 14,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1124
+   },
+   {
+    "seed": 15,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1114
+   },
+   {
+    "seed": 16,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1336
+   },
+   {
+    "seed": 17,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1333
+   },
+   {
+    "seed": 18,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1022
+   },
+   {
+    "seed": 19,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1059
+   },
+   {
+    "seed": 20,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1012
+   }
+  ],
+  "S11c|beads": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 14294
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 10872
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 14616
+   },
+   {
+    "seed": 4,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 11127
+   },
+   {
+    "seed": 5,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 14871
+   },
+   {
+    "seed": 6,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 11471
+   },
+   {
+    "seed": 7,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 14798
+   },
+   {
+    "seed": 8,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 11187
+   },
+   {
+    "seed": 9,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 14399
+   },
+   {
+    "seed": 10,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 11013
+   },
+   {
+    "seed": 11,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 14554
+   },
+   {
+    "seed": 12,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 10988
+   },
+   {
+    "seed": 13,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 14422
+   },
+   {
+    "seed": 14,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 11033
+   },
+   {
+    "seed": 15,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 14605
+   },
+   {
+    "seed": 16,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 11077
+   },
+   {
+    "seed": 17,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 14452
+   },
+   {
+    "seed": 18,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 11069
+   },
+   {
+    "seed": 19,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 14774
+   },
+   {
+    "seed": 20,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 11219
+   }
+  ],
+  "S11c|agent-mail": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "falseConflict": false,
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 2297
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "falseConflict": false,
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 2225
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "falseConflict": false,
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 2393
+   },
+   {
+    "seed": 4,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "falseConflict": false,
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 2301
+   },
+   {
+    "seed": 5,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "falseConflict": false,
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 2293
+   },
+   {
+    "seed": 6,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "falseConflict": false,
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 2402
+   },
+   {
+    "seed": 7,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "falseConflict": false,
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 2311
+   },
+   {
+    "seed": 8,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "falseConflict": false,
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 2310
+   },
+   {
+    "seed": 9,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "falseConflict": false,
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 2210
+   },
+   {
+    "seed": 10,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "falseConflict": false,
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 2136
+   },
+   {
+    "seed": 11,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "falseConflict": false,
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 2248
+   },
+   {
+    "seed": 12,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "falseConflict": false,
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 2265
+   },
+   {
+    "seed": 13,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "falseConflict": false,
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 2300
+   },
+   {
+    "seed": 14,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "falseConflict": false,
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 2308
+   },
+   {
+    "seed": 15,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "falseConflict": false,
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 2298
+   },
+   {
+    "seed": 16,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "falseConflict": false,
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 2255
+   },
+   {
+    "seed": 17,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "falseConflict": false,
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 2273
+   },
+   {
+    "seed": 18,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "falseConflict": false,
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 2412
+   },
+   {
+    "seed": 19,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "falseConflict": false,
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 2273
+   },
+   {
+    "seed": 20,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "falseConflict": false,
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 2188
+   }
+  ],
+  "S11c|backlog-md": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 2213
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 2764
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 1164
+   }
+  ],
+  "S11c|task-master": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 49297
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 32550
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leakedTitle": false,
+     "bGranted": true
+    },
+    "ms_total": 23701
+   }
+  ]
+ }
+}

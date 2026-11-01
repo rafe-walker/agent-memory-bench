@@ -1,0 +1,2960 @@
+{
+ "scenario": "S6",
+ "title": "Tampering (stored text edited behind the tool)",
+ "records": {
+  "S6|baseline": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to tamper",
+    "ms_total": 11
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to tamper",
+    "ms_total": 6
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to tamper",
+    "ms_total": 10
+   },
+   {
+    "seed": 4,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to tamper",
+    "ms_total": 5
+   },
+   {
+    "seed": 5,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to tamper",
+    "ms_total": 10
+   },
+   {
+    "seed": 6,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to tamper",
+    "ms_total": 5
+   },
+   {
+    "seed": 7,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to tamper",
+    "ms_total": 11
+   },
+   {
+    "seed": 8,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to tamper",
+    "ms_total": 6
+   },
+   {
+    "seed": 9,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to tamper",
+    "ms_total": 11
+   },
+   {
+    "seed": 10,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to tamper",
+    "ms_total": 5
+   },
+   {
+    "seed": 11,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to tamper",
+    "ms_total": 12
+   },
+   {
+    "seed": 12,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to tamper",
+    "ms_total": 6
+   },
+   {
+    "seed": 13,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to tamper",
+    "ms_total": 12
+   },
+   {
+    "seed": 14,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to tamper",
+    "ms_total": 7
+   },
+   {
+    "seed": 15,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to tamper",
+    "ms_total": 12
+   },
+   {
+    "seed": 16,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to tamper",
+    "ms_total": 6
+   },
+   {
+    "seed": 17,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to tamper",
+    "ms_total": 11
+   },
+   {
+    "seed": 18,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to tamper",
+    "ms_total": 5
+   },
+   {
+    "seed": 19,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to tamper",
+    "ms_total": 10
+   },
+   {
+    "seed": 20,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to tamper",
+    "ms_total": 6
+   }
+  ],
+  "S6|native": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1333,
+     "nextSession": 1572
+    },
+    "ms": {
+     "read": 7.5
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 242
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1362,
+     "nextSession": 1596
+    },
+    "ms": {
+     "read": 7.2
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 237
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1339,
+     "nextSession": 1572
+    },
+    "ms": {
+     "read": 7.5
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 262
+   },
+   {
+    "seed": 4,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1349,
+     "nextSession": 1580
+    },
+    "ms": {
+     "read": 7.6
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 256
+   },
+   {
+    "seed": 5,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1340,
+     "nextSession": 1567
+    },
+    "ms": {
+     "read": 6.4
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 235
+   },
+   {
+    "seed": 6,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1348,
+     "nextSession": 1587
+    },
+    "ms": {
+     "read": 6.9
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 230
+   },
+   {
+    "seed": 7,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1356,
+     "nextSession": 1582
+    },
+    "ms": {
+     "read": 6.6
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 254
+   },
+   {
+    "seed": 8,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1351,
+     "nextSession": 1586
+    },
+    "ms": {
+     "read": 6.5
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 249
+   },
+   {
+    "seed": 9,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1352,
+     "nextSession": 1576
+    },
+    "ms": {
+     "read": 6.5
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 276
+   },
+   {
+    "seed": 10,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1336,
+     "nextSession": 1568
+    },
+    "ms": {
+     "read": 6.4
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 270
+   },
+   {
+    "seed": 11,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1346,
+     "nextSession": 1582
+    },
+    "ms": {
+     "read": 7.1
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 231
+   },
+   {
+    "seed": 12,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1347,
+     "nextSession": 1573
+    },
+    "ms": {
+     "read": 7.4
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 226
+   },
+   {
+    "seed": 13,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1366,
+     "nextSession": 1595
+    },
+    "ms": {
+     "read": 6.5
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 247
+   },
+   {
+    "seed": 14,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1349,
+     "nextSession": 1588
+    },
+    "ms": {
+     "read": 8
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 241
+   },
+   {
+    "seed": 15,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1353,
+     "nextSession": 1586
+    },
+    "ms": {
+     "read": 6.3
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 249
+   },
+   {
+    "seed": 16,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1352,
+     "nextSession": 1587
+    },
+    "ms": {
+     "read": 7.5
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 244
+   },
+   {
+    "seed": 17,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1357,
+     "nextSession": 1595
+    },
+    "ms": {
+     "read": 7.3
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 236
+   },
+   {
+    "seed": 18,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1331,
+     "nextSession": 1568
+    },
+    "ms": {
+     "read": 6.6
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 231
+   },
+   {
+    "seed": 19,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1349,
+     "nextSession": 1585
+    },
+    "ms": {
+     "read": 6.3
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 243
+   },
+   {
+    "seed": 20,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1375,
+     "nextSession": 1616
+    },
+    "ms": {
+     "read": 6.3
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 237
+   }
+  ],
+  "S6|kronicle-lite": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 462,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 4.5,
+     "read": 2,
+     "nextSession": 51.4
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1631
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 462,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 5.4,
+     "read": 2.3,
+     "nextSession": 275.1
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1861
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 462,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 5.5,
+     "read": 3.6,
+     "nextSession": 342.1
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 2041
+   },
+   {
+    "seed": 4,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 462,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 5.9,
+     "read": 2.5,
+     "nextSession": 49.3
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1768
+   },
+   {
+    "seed": 5,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 462,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 4.8,
+     "read": 1.8,
+     "nextSession": 46.3
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1660
+   },
+   {
+    "seed": 6,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 462,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 5.6,
+     "read": 3.6,
+     "nextSession": 34.9
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1956
+   },
+   {
+    "seed": 7,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 462,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 5.6,
+     "read": 2.5,
+     "nextSession": 43.7
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1755
+   },
+   {
+    "seed": 8,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 462,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 4.7,
+     "read": 1.8,
+     "nextSession": 284.2
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1682
+   },
+   {
+    "seed": 9,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 462,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 3.8,
+     "read": 2.1,
+     "nextSession": 46.9
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1731
+   },
+   {
+    "seed": 10,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 462,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 5.1,
+     "read": 1.9,
+     "nextSession": 271.7
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1960
+   },
+   {
+    "seed": 11,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 462,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 3.7,
+     "read": 1.7,
+     "nextSession": 44.1
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1629
+   },
+   {
+    "seed": 12,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 462,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 3.6,
+     "read": 1.7,
+     "nextSession": 33
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1934
+   },
+   {
+    "seed": 13,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 462,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 4.5,
+     "read": 1.8,
+     "nextSession": 38.1
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1648
+   },
+   {
+    "seed": 14,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 462,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 3.5,
+     "read": 6.6,
+     "nextSession": 58.1
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1936
+   },
+   {
+    "seed": 15,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 462,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 16.7,
+     "read": 6.8,
+     "nextSession": 394.8
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1940
+   },
+   {
+    "seed": 16,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 462,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 5.3,
+     "read": 2.4,
+     "nextSession": 41.8
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1927
+   },
+   {
+    "seed": 17,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 462,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 6.4,
+     "read": 7.4,
+     "nextSession": 425.7
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1933
+   },
+   {
+    "seed": 18,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 462,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 7,
+     "read": 2.7,
+     "nextSession": 360.6
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1883
+   },
+   {
+    "seed": 19,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 462,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 3.9,
+     "read": 1.7,
+     "nextSession": 36.9
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1829
+   },
+   {
+    "seed": 20,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 462,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 3.6,
+     "read": 1.8,
+     "nextSession": 46.9
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1490
+   }
+  ],
+  "S6|kronicle-lite-0.6": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 1022,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 3.8,
+     "read": 2.1,
+     "nextSession": 268.7
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1958
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 1022,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 6,
+     "read": 3.2,
+     "nextSession": 40
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1721
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 1022,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 4.2,
+     "read": 2.6,
+     "nextSession": 60.7
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1795
+   },
+   {
+    "seed": 4,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 1022,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 4.2,
+     "read": 2.6,
+     "nextSession": 269.3
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 2058
+   },
+   {
+    "seed": 5,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 1022,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 4.4,
+     "read": 2.2,
+     "nextSession": 45.4
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1701
+   },
+   {
+    "seed": 6,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 1022,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 4.3,
+     "read": 2.5,
+     "nextSession": 278.9
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1920
+   },
+   {
+    "seed": 7,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 1022,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 5.7,
+     "read": 2.3,
+     "nextSession": 47.6
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1696
+   },
+   {
+    "seed": 8,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 1022,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 4.3,
+     "read": 2.2,
+     "nextSession": 45.7
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 2048
+   },
+   {
+    "seed": 9,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 1022,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 5.4,
+     "read": 2.5,
+     "nextSession": 37.2
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1739
+   },
+   {
+    "seed": 10,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 1022,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 5.4,
+     "read": 2.2,
+     "nextSession": 42.2
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1994
+   },
+   {
+    "seed": 11,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 1022,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 5,
+     "read": 2.4,
+     "nextSession": 39.7
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1975
+   },
+   {
+    "seed": 12,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 1022,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 4.6,
+     "read": 2.3,
+     "nextSession": 39.1
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1920
+   },
+   {
+    "seed": 13,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 1022,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 3.8,
+     "read": 5.8,
+     "nextSession": 51.8
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1898
+   },
+   {
+    "seed": 14,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 1022,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 4.2,
+     "read": 2.3,
+     "nextSession": 47.4
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1940
+   },
+   {
+    "seed": 15,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 1022,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 4,
+     "read": 2.2,
+     "nextSession": 46.6
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1953
+   },
+   {
+    "seed": 16,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 1022,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 4.2,
+     "read": 3.1,
+     "nextSession": 392.9
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1904
+   },
+   {
+    "seed": 17,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 1022,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 7,
+     "read": 6,
+     "nextSession": 36.8
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1894
+   },
+   {
+    "seed": 18,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 1022,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 3.8,
+     "read": 2.2,
+     "nextSession": 36.1
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1911
+   },
+   {
+    "seed": 19,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 1022,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 4.5,
+     "read": 3.5,
+     "nextSession": 41.5
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1910
+   },
+   {
+    "seed": 20,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 1022,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 4.2,
+     "read": 2.2,
+     "nextSession": 36.9
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1545
+   }
+  ],
+  "S6|kronicle-lite-0.6-core": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 1022,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 4.4,
+     "read": 2.7,
+     "nextSession": 52.2
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1703
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 1022,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 3.7,
+     "read": 2.1,
+     "nextSession": 42.8
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 2006
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 1022,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 3.8,
+     "read": 2.7,
+     "nextSession": 36.4
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1651
+   },
+   {
+    "seed": 4,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 1022,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 4.9,
+     "read": 2.3,
+     "nextSession": 47.8
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1978
+   },
+   {
+    "seed": 5,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 1022,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 4.1,
+     "read": 2.9,
+     "nextSession": 413.4
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1906
+   },
+   {
+    "seed": 6,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 1022,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 3.8,
+     "read": 6,
+     "nextSession": 405.5
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1910
+   },
+   {
+    "seed": 7,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 1022,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 4,
+     "read": 2.2,
+     "nextSession": 39.2
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 2013
+   },
+   {
+    "seed": 8,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 1022,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 4,
+     "read": 2.2,
+     "nextSession": 403.5
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 2031
+   },
+   {
+    "seed": 9,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 1022,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 4.1,
+     "read": 2.3,
+     "nextSession": 34.8
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 2075
+   },
+   {
+    "seed": 10,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 1022,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 8.7,
+     "read": 2.4,
+     "nextSession": 389.6
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 2062
+   },
+   {
+    "seed": 11,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 1022,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 3.7,
+     "read": 2.5,
+     "nextSession": 39
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1981
+   },
+   {
+    "seed": 12,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 1022,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 4,
+     "read": 2.3,
+     "nextSession": 40.4
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1980
+   },
+   {
+    "seed": 13,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 1022,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 3.8,
+     "read": 2.1,
+     "nextSession": 59.5
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1958
+   },
+   {
+    "seed": 14,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 1022,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 20.4,
+     "read": 5.4,
+     "nextSession": 400.1
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1912
+   },
+   {
+    "seed": 15,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 1022,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 3.7,
+     "read": 2.2,
+     "nextSession": 41.7
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1850
+   },
+   {
+    "seed": 16,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 1022,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 5,
+     "read": 2.2,
+     "nextSession": 403.7
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1896
+   },
+   {
+    "seed": 17,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 1022,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 4.9,
+     "read": 2.3,
+     "nextSession": 45.5
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 2011
+   },
+   {
+    "seed": 18,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 1022,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 4.1,
+     "read": 5.3,
+     "nextSession": 41.6
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1990
+   },
+   {
+    "seed": 19,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 1022,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 4.8,
+     "read": 6.1,
+     "nextSession": 41.4
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1929
+   },
+   {
+    "seed": 20,
+    "variant": null,
+    "grade": "yes",
+    "reason": "tamper flagged/withheld at read",
+    "flags": {
+     "detected": true,
+     "servedUnflagged": false,
+     "integrityCheckFlags": true
+    },
+    "bytes": {
+     "touch": 2054,
+     "read": 1022,
+     "nextSession": 1725
+    },
+    "ms": {
+     "touch": 4.4,
+     "read": 2.3,
+     "nextSession": 36.4
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1518
+   }
+  ],
+  "S6|basic-memory": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1645,
+     "nextSession": 366
+    },
+    "ms": {
+     "read": 13925.8,
+     "nextSession": 33.8
+    },
+    "calls": 3,
+    "delivery": "none",
+    "ms_total": 40955
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1672,
+     "nextSession": 366
+    },
+    "ms": {
+     "read": 130.8,
+     "nextSession": 28.3
+    },
+    "calls": 3,
+    "delivery": "none",
+    "ms_total": 27324
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1645,
+     "nextSession": 365
+    },
+    "ms": {
+     "read": 140.2,
+     "nextSession": 31.9
+    },
+    "calls": 3,
+    "delivery": "none",
+    "ms_total": 31839
+   },
+   {
+    "seed": 4,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1652,
+     "nextSession": 365
+    },
+    "ms": {
+     "read": 359.5,
+     "nextSession": 30.5
+    },
+    "calls": 3,
+    "delivery": "none",
+    "ms_total": 32340
+   },
+   {
+    "seed": 5,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1637,
+     "nextSession": 366
+    },
+    "ms": {
+     "read": 300.5,
+     "nextSession": 92
+    },
+    "calls": 3,
+    "delivery": "none",
+    "ms_total": 31618
+   },
+   {
+    "seed": 6,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1658,
+     "nextSession": 366
+    },
+    "ms": {
+     "read": 292.3,
+     "nextSession": 68.1
+    },
+    "calls": 3,
+    "delivery": "none",
+    "ms_total": 32163
+   },
+   {
+    "seed": 7,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1650,
+     "nextSession": 366
+    },
+    "ms": {
+     "read": 274.7,
+     "nextSession": 77.7
+    },
+    "calls": 3,
+    "delivery": "none",
+    "ms_total": 33394
+   },
+   {
+    "seed": 8,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1663,
+     "nextSession": 366
+    },
+    "ms": {
+     "read": 300.2,
+     "nextSession": 76
+    },
+    "calls": 3,
+    "delivery": "none",
+    "ms_total": 34275
+   },
+   {
+    "seed": 9,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1641,
+     "nextSession": 365
+    },
+    "ms": {
+     "read": 125.1,
+     "nextSession": 28.7
+    },
+    "calls": 3,
+    "delivery": "none",
+    "ms_total": 33656
+   },
+   {
+    "seed": 10,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1638,
+     "nextSession": 367
+    },
+    "ms": {
+     "read": 354.2,
+     "nextSession": 58.6
+    },
+    "calls": 3,
+    "delivery": "none",
+    "ms_total": 33347
+   },
+   {
+    "seed": 11,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1655,
+     "nextSession": 367
+    },
+    "ms": {
+     "read": 315.2,
+     "nextSession": 92.5
+    },
+    "calls": 3,
+    "delivery": "none",
+    "ms_total": 33279
+   },
+   {
+    "seed": 12,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1637,
+     "nextSession": 367
+    },
+    "ms": {
+     "read": 168.5,
+     "nextSession": 67.6
+    },
+    "calls": 3,
+    "delivery": "none",
+    "ms_total": 35519
+   },
+   {
+    "seed": 13,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1659,
+     "nextSession": 366
+    },
+    "ms": {
+     "read": 182,
+     "nextSession": 42.9
+    },
+    "calls": 3,
+    "delivery": "none",
+    "ms_total": 35828
+   },
+   {
+    "seed": 14,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1653,
+     "nextSession": 367
+    },
+    "ms": {
+     "read": 347.1,
+     "nextSession": 63.4
+    },
+    "calls": 3,
+    "delivery": "none",
+    "ms_total": 33263
+   },
+   {
+    "seed": 15,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1656,
+     "nextSession": 367
+    },
+    "ms": {
+     "read": 290.3,
+     "nextSession": 84.2
+    },
+    "calls": 3,
+    "delivery": "none",
+    "ms_total": 33415
+   },
+   {
+    "seed": 16,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1659,
+     "nextSession": 367
+    },
+    "ms": {
+     "read": 289.2,
+     "nextSession": 37.1
+    },
+    "calls": 3,
+    "delivery": "none",
+    "ms_total": 36476
+   },
+   {
+    "seed": 17,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1661,
+     "nextSession": 367
+    },
+    "ms": {
+     "read": 261.8,
+     "nextSession": 43.6
+    },
+    "calls": 3,
+    "delivery": "none",
+    "ms_total": 36973
+   },
+   {
+    "seed": 18,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1641,
+     "nextSession": 367
+    },
+    "ms": {
+     "read": 137.8,
+     "nextSession": 27.3
+    },
+    "calls": 3,
+    "delivery": "none",
+    "ms_total": 37159
+   },
+   {
+    "seed": 19,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1651,
+     "nextSession": 367
+    },
+    "ms": {
+     "read": 387.8,
+     "nextSession": 79.3
+    },
+    "calls": 3,
+    "delivery": "none",
+    "ms_total": 33964
+   },
+   {
+    "seed": 20,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1679,
+     "nextSession": 367
+    },
+    "ms": {
+     "read": 126.4,
+     "nextSession": 28.6
+    },
+    "calls": 3,
+    "delivery": "none",
+    "ms_total": 34133
+   }
+  ],
+  "S6|server-memory": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1163,
+     "nextSession": 1650
+    },
+    "ms": {
+     "read": 1.2,
+     "nextSession": 36.6
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 720
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1188,
+     "nextSession": 1675
+    },
+    "ms": {
+     "read": 1,
+     "nextSession": 41.5
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 708
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1165,
+     "nextSession": 1650
+    },
+    "ms": {
+     "read": 1.1,
+     "nextSession": 40.7
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 678
+   },
+   {
+    "seed": 4,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1177,
+     "nextSession": 1657
+    },
+    "ms": {
+     "read": 1.2,
+     "nextSession": 30.9
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 632
+   },
+   {
+    "seed": 5,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1164,
+     "nextSession": 1642
+    },
+    "ms": {
+     "read": 1,
+     "nextSession": 32.3
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 691
+   },
+   {
+    "seed": 6,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1175,
+     "nextSession": 1666
+    },
+    "ms": {
+     "read": 1.2,
+     "nextSession": 41.2
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 685
+   },
+   {
+    "seed": 7,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1173,
+     "nextSession": 1653
+    },
+    "ms": {
+     "read": 1.9,
+     "nextSession": 32.3
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 680
+   },
+   {
+    "seed": 8,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1183,
+     "nextSession": 1666
+    },
+    "ms": {
+     "read": 2.2,
+     "nextSession": 38
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 686
+   },
+   {
+    "seed": 9,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1170,
+     "nextSession": 1646
+    },
+    "ms": {
+     "read": 1.7,
+     "nextSession": 36.8
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 653
+   },
+   {
+    "seed": 10,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1162,
+     "nextSession": 1641
+    },
+    "ms": {
+     "read": 3.8,
+     "nextSession": 39.2
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 643
+   },
+   {
+    "seed": 11,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1173,
+     "nextSession": 1656
+    },
+    "ms": {
+     "read": 0.9,
+     "nextSession": 42.2
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 644
+   },
+   {
+    "seed": 12,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1166,
+     "nextSession": 1642
+    },
+    "ms": {
+     "read": 1,
+     "nextSession": 30.6
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 613
+   },
+   {
+    "seed": 13,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1182,
+     "nextSession": 1664
+    },
+    "ms": {
+     "read": 1.4,
+     "nextSession": 36.6
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 650
+   },
+   {
+    "seed": 14,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1175,
+     "nextSession": 1659
+    },
+    "ms": {
+     "read": 1.1,
+     "nextSession": 46.6
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 649
+   },
+   {
+    "seed": 15,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1179,
+     "nextSession": 1659
+    },
+    "ms": {
+     "read": 1.1,
+     "nextSession": 43.8
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 674
+   },
+   {
+    "seed": 16,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1179,
+     "nextSession": 1662
+    },
+    "ms": {
+     "read": 3.2,
+     "nextSession": 31.6
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 641
+   },
+   {
+    "seed": 17,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1175,
+     "nextSession": 1664
+    },
+    "ms": {
+     "read": 1,
+     "nextSession": 29.4
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 605
+   },
+   {
+    "seed": 18,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1159,
+     "nextSession": 1642
+    },
+    "ms": {
+     "read": 1,
+     "nextSession": 34
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 607
+   },
+   {
+    "seed": 19,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1168,
+     "nextSession": 1655
+    },
+    "ms": {
+     "read": 1.1,
+     "nextSession": 28.6
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 640
+   },
+   {
+    "seed": 20,
+    "variant": null,
+    "grade": "no",
+    "reason": "tampered text served as authentic",
+    "flags": {
+     "detected": false,
+     "servedUnflagged": true,
+     "integrityCheckFlags": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1194,
+     "nextSession": 1683
+    },
+    "ms": {
+     "read": 1.7,
+     "nextSession": 30.1
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 610
+   }
+  ]
+ }
+}

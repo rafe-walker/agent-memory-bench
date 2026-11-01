@@ -1,0 +1,287 @@
+{
+ "scenario": "S11",
+ "title": "Cross-project leak (two repos sharing a store)",
+ "records": {
+  "S11|baseline": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leak": false,
+     "labeled": false,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 76,
+     "nextSession": 0
+    },
+    "ms": {
+     "read": 6.2
+    },
+    "calls": 1,
+    "delivery": "none",
+    "ms_total": 538
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leak": false,
+     "labeled": false,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 81,
+     "nextSession": 0
+    },
+    "ms": {
+     "read": 6.1
+    },
+    "calls": 1,
+    "delivery": "none",
+    "ms_total": 527
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leak": false,
+     "labeled": false,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 80,
+     "nextSession": 0
+    },
+    "ms": {
+     "read": 6.7
+    },
+    "calls": 1,
+    "delivery": "none",
+    "ms_total": 244
+   }
+  ],
+  "S11|native": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leak": false,
+     "labeled": false,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1333,
+     "nextSession": 1569
+    },
+    "ms": {
+     "read": 6.7
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 510
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leak": false,
+     "labeled": false,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1362,
+     "nextSession": 1592
+    },
+    "ms": {
+     "read": 7.1
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 498
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leak": false,
+     "labeled": false,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1339,
+     "nextSession": 1569
+    },
+    "ms": {
+     "read": 6.3
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 207
+   }
+  ],
+  "S11|kronicle-lite": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "partial",
+    "reason": "B's facts visible in A, labeled",
+    "flags": {
+     "leak": true,
+     "labeled": true,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 3041,
+     "read": 3126,
+     "nextSession": 1708
+    },
+    "ms": {
+     "touch": 15.7,
+     "read": 4.4,
+     "nextSession": 57.7
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 3176
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "partial",
+    "reason": "B's facts visible in A, labeled",
+    "flags": {
+     "leak": true,
+     "labeled": true,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 3041,
+     "read": 3131,
+     "nextSession": 1708
+    },
+    "ms": {
+     "touch": 20.3,
+     "read": 2.6,
+     "nextSession": 58.9
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 3151
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "partial",
+    "reason": "B's facts visible in A, labeled",
+    "flags": {
+     "leak": true,
+     "labeled": true,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 3041,
+     "read": 3125,
+     "nextSession": 1708
+    },
+    "ms": {
+     "touch": 12.6,
+     "read": 3.9,
+     "nextSession": 42.5
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 2009
+   }
+  ],
+  "S11|server-memory": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "no",
+    "reason": "B's facts served in A unlabeled",
+    "flags": {
+     "leak": true,
+     "labeled": false,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1160,
+     "nextSession": 1703
+    },
+    "ms": {
+     "read": 3.4,
+     "nextSession": 33.2
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 1089
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "no",
+    "reason": "B's facts served in A unlabeled",
+    "flags": {
+     "leak": true,
+     "labeled": false,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1184,
+     "nextSession": 1724
+    },
+    "ms": {
+     "read": 5.2,
+     "nextSession": 49.3
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 1119
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "no",
+    "reason": "B's facts served in A unlabeled",
+    "flags": {
+     "leak": true,
+     "labeled": false,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1162,
+     "nextSession": 1696
+    },
+    "ms": {
+     "read": 1.7,
+     "nextSession": 18.5
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 903
+   }
+  ]
+ }
+}

@@ -1,0 +1,7 @@
+id: S12
+title: "Retrieval at scale (1k–10k docs: latency + bytes)"
+reuses: [IsoKron evals/dogfood retrieval metrics (hit@k) — corpus rebuilt synthetic and public]
+fixture: "scaleCorpus(N, seed=42): docs/services/svc-<word><i>.md, each with 'The rotation key for {name} is {hex10}.'"
+sizes: [1000, 10000]   # CI: 300
+queries: "20 seeded needles; lookup = the tool's documented search (+ read of the top hit where that is the pattern)"
+metrics: [hit (needle value in the agent's view), latency p50/p95, bytes per query, ingest wall time, store bytes / corpus bytes]

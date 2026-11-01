@@ -1,0 +1,10 @@
+id: S7
+title: Benign-edit noise (must NOT alarm; false-positive control)
+reuses: [IsoKron benign-edits generator — same 10 templates]
+templates: [typo_fix, whitespace_trim, whitespace_double, line_ending_norm, comma_list, smart_quote, numbered_list_renumber, markdown_emphasis, missing_period, hyphenation]
+fixture: runbook(w) with a "Notes" section holding the pre-edit line of every template
+agent_loop: [session start, lookup deploy target, lookup the template's note line (agent relied on it)]
+fault: apply template {seed % 10} (post-edit line); fact lines untouched
+expected_signal: none — no retraction / change notice / "reconcile" message
+grade: { yes: no ALARM_MARKER in touch or read, no: alarm }
+pairing: read together with S1 (sensitivity). An arm with no change detection passes trivially (flag `trivial`).

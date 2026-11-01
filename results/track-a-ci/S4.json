@@ -1,0 +1,353 @@
+{
+ "scenario": "S4",
+ "title": "Compaction loss (decision made mid-conversation must survive)",
+ "records": {
+  "S4a|baseline": [
+   {
+    "seed": 1,
+    "variant": "a",
+    "grade": "n/a",
+    "reason": "arm has no way to persist a conversation decision",
+    "ms_total": 257
+   },
+   {
+    "seed": 2,
+    "variant": "a",
+    "grade": "n/a",
+    "reason": "arm has no way to persist a conversation decision",
+    "ms_total": 250
+   },
+   {
+    "seed": 3,
+    "variant": "a",
+    "grade": "n/a",
+    "reason": "arm has no way to persist a conversation decision",
+    "ms_total": 119
+   }
+  ],
+  "S4b|baseline": [
+   {
+    "seed": 1,
+    "variant": "b",
+    "grade": "n/a",
+    "reason": "variant b (MEMORY.md over 200 lines) applies to native auto memory only",
+    "ms_total": 253
+   },
+   {
+    "seed": 2,
+    "variant": "b",
+    "grade": "n/a",
+    "reason": "variant b (MEMORY.md over 200 lines) applies to native auto memory only",
+    "ms_total": 247
+   },
+   {
+    "seed": 3,
+    "variant": "b",
+    "grade": "n/a",
+    "reason": "variant b (MEMORY.md over 200 lines) applies to native auto memory only",
+    "ms_total": 115
+   }
+  ],
+  "S4a|native": [
+   {
+    "seed": 1,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "decision verbatim after compaction",
+    "flags": {},
+    "bytes": {
+     "postCompact": 1626
+    },
+    "ms": {},
+    "calls": 0,
+    "delivery": "push",
+    "ms_total": 295
+   },
+   {
+    "seed": 2,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "decision verbatim after compaction",
+    "flags": {},
+    "bytes": {
+     "postCompact": 1642
+    },
+    "ms": {},
+    "calls": 0,
+    "delivery": "push",
+    "ms_total": 286
+   },
+   {
+    "seed": 3,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "decision verbatim after compaction",
+    "flags": {},
+    "bytes": {
+     "postCompact": 1621
+    },
+    "ms": {},
+    "calls": 0,
+    "delivery": "push",
+    "ms_total": 124
+   }
+  ],
+  "S4b|native": [
+   {
+    "seed": 1,
+    "variant": "b",
+    "grade": "no",
+    "reason": "decision absent after compaction",
+    "flags": {},
+    "bytes": {
+     "postCompact": 13348
+    },
+    "ms": {},
+    "calls": 0,
+    "delivery": "push",
+    "ms_total": 274
+   },
+   {
+    "seed": 2,
+    "variant": "b",
+    "grade": "no",
+    "reason": "decision absent after compaction",
+    "flags": {},
+    "bytes": {
+     "postCompact": 13366
+    },
+    "ms": {},
+    "calls": 0,
+    "delivery": "push",
+    "ms_total": 265
+   },
+   {
+    "seed": 3,
+    "variant": "b",
+    "grade": "no",
+    "reason": "decision absent after compaction",
+    "flags": {},
+    "bytes": {
+     "postCompact": 13344
+    },
+    "ms": {},
+    "calls": 0,
+    "delivery": "push",
+    "ms_total": 108
+   }
+  ],
+  "S4a|kronicle-lite": [
+   {
+    "seed": 1,
+    "variant": "a",
+    "grade": "no",
+    "reason": "decision absent after compaction",
+    "flags": {},
+    "bytes": {
+     "postCompact": 1600
+    },
+    "ms": {
+     "postCompact": 14.4
+    },
+    "calls": 1,
+    "delivery": "pull",
+    "ms_total": 1158
+   },
+   {
+    "seed": 2,
+    "variant": "a",
+    "grade": "no",
+    "reason": "decision absent after compaction",
+    "flags": {},
+    "bytes": {
+     "postCompact": 1600
+    },
+    "ms": {
+     "postCompact": 14.1
+    },
+    "calls": 1,
+    "delivery": "pull",
+    "ms_total": 1204
+   },
+   {
+    "seed": 3,
+    "variant": "a",
+    "grade": "no",
+    "reason": "decision absent after compaction",
+    "flags": {},
+    "bytes": {
+     "postCompact": 1600
+    },
+    "ms": {
+     "postCompact": 6.9
+    },
+    "calls": 1,
+    "delivery": "pull",
+    "ms_total": 735
+   }
+  ],
+  "S4b|kronicle-lite": [
+   {
+    "seed": 1,
+    "variant": "b",
+    "grade": "n/a",
+    "reason": "variant b (MEMORY.md over 200 lines) applies to native auto memory only",
+    "ms_total": 754
+   },
+   {
+    "seed": 2,
+    "variant": "b",
+    "grade": "n/a",
+    "reason": "variant b (MEMORY.md over 200 lines) applies to native auto memory only",
+    "ms_total": 1124
+   },
+   {
+    "seed": 3,
+    "variant": "b",
+    "grade": "n/a",
+    "reason": "variant b (MEMORY.md over 200 lines) applies to native auto memory only",
+    "ms_total": 671
+   }
+  ],
+  "S4a|server-memory": [
+   {
+    "seed": 1,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "decision verbatim after compaction",
+    "flags": {},
+    "bytes": {
+     "postCompact": 1703
+    },
+    "ms": {
+     "postCompact": 1.9
+    },
+    "calls": 1,
+    "delivery": "pull",
+    "ms_total": 486
+   },
+   {
+    "seed": 2,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "decision verbatim after compaction",
+    "flags": {},
+    "bytes": {
+     "postCompact": 1719
+    },
+    "ms": {
+     "postCompact": 1.3
+    },
+    "calls": 1,
+    "delivery": "pull",
+    "ms_total": 482
+   },
+   {
+    "seed": 3,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "decision verbatim after compaction",
+    "flags": {},
+    "bytes": {
+     "postCompact": 1698
+    },
+    "ms": {
+     "postCompact": 1.2
+    },
+    "calls": 1,
+    "delivery": "pull",
+    "ms_total": 371
+   }
+  ],
+  "S4b|server-memory": [
+   {
+    "seed": 1,
+    "variant": "b",
+    "grade": "n/a",
+    "reason": "variant b (MEMORY.md over 200 lines) applies to native auto memory only",
+    "ms_total": 425
+   },
+   {
+    "seed": 2,
+    "variant": "b",
+    "grade": "n/a",
+    "reason": "variant b (MEMORY.md over 200 lines) applies to native auto memory only",
+    "ms_total": 453
+   },
+   {
+    "seed": 3,
+    "variant": "b",
+    "grade": "n/a",
+    "reason": "variant b (MEMORY.md over 200 lines) applies to native auto memory only",
+    "ms_total": 339
+   }
+  ],
+  "S4a|cc-anchor": [
+   {
+    "seed": 1,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "decision verbatim after compaction",
+    "flags": {},
+    "bytes": {
+     "postCompact": 1260
+    },
+    "ms": {},
+    "calls": 0,
+    "delivery": "push",
+    "ms_total": 724
+   },
+   {
+    "seed": 2,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "decision verbatim after compaction",
+    "flags": {},
+    "bytes": {
+     "postCompact": 1258
+    },
+    "ms": {},
+    "calls": 0,
+    "delivery": "push",
+    "ms_total": 719
+   },
+   {
+    "seed": 3,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "decision verbatim after compaction",
+    "flags": {},
+    "bytes": {
+     "postCompact": 1259
+    },
+    "ms": {},
+    "calls": 0,
+    "delivery": "push",
+    "ms_total": 342
+   }
+  ],
+  "S4b|cc-anchor": [
+   {
+    "seed": 1,
+    "variant": "b",
+    "grade": "n/a",
+    "reason": "variant b (MEMORY.md over 200 lines) applies to native auto memory only",
+    "ms_total": 211
+   },
+   {
+    "seed": 2,
+    "variant": "b",
+    "grade": "n/a",
+    "reason": "variant b (MEMORY.md over 200 lines) applies to native auto memory only",
+    "ms_total": 205
+   },
+   {
+    "seed": 3,
+    "variant": "b",
+    "grade": "n/a",
+    "reason": "variant b (MEMORY.md over 200 lines) applies to native auto memory only",
+    "ms_total": 103
+   }
+  ]
+ }
+}

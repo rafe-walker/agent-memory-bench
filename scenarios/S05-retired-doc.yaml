@@ -1,0 +1,14 @@
+id: S5
+title: Retired / deleted doc still served
+reuses: [IsoKron stale-citation generator (tombstoned_block)]
+fixture:
+  CLAUDE.md: claudeMd(w)
+  docs/deploy.md: runbook(w)
+  docs/legacy-deploy.md: "Deploys used to go through `{legacyHost}`."
+agent_loop: ["session start", "lookup 'legacy host deploys' (agent learns {legacyHost})"]
+fault: delete docs/legacy-deploy.md; tool sync runs
+expected_signal: the retirement is surfaced and the retired text is not served as live
+grade:
+  yes: not served unmarked AND removal marker near {legacyHost} / the doc
+  partial: no longer served, no notice
+  no: still served as live

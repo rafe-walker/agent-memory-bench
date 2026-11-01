@@ -1,0 +1,269 @@
+{
+ "scenario": "S8",
+ "title": "Moved section (identity must survive)",
+ "records": {
+  "S8|baseline": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "yes",
+    "reason": "reorder: identity survived quietly",
+    "flags": {
+     "moveKind": "reorder",
+     "retrievable": true,
+     "falseAlarm": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 77
+    },
+    "ms": {
+     "read": 6.4
+    },
+    "calls": 1,
+    "delivery": "none",
+    "ms_total": 250
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "yes",
+    "reason": "reorder: identity survived quietly",
+    "flags": {
+     "moveKind": "reorder",
+     "retrievable": true,
+     "falseAlarm": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 82
+    },
+    "ms": {
+     "read": 6.4
+    },
+    "calls": 1,
+    "delivery": "none",
+    "ms_total": 245
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "yes",
+    "reason": "reorder: identity survived quietly",
+    "flags": {
+     "moveKind": "reorder",
+     "retrievable": true,
+     "falseAlarm": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 81
+    },
+    "ms": {
+     "read": 6.8
+    },
+    "calls": 1,
+    "delivery": "none",
+    "ms_total": 127
+   }
+  ],
+  "S8|native": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "yes",
+    "reason": "reorder: identity survived quietly",
+    "flags": {
+     "moveKind": "reorder",
+     "retrievable": true,
+     "falseAlarm": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1334
+    },
+    "ms": {
+     "read": 6.5
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 255
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "yes",
+    "reason": "reorder: identity survived quietly",
+    "flags": {
+     "moveKind": "reorder",
+     "retrievable": true,
+     "falseAlarm": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1363
+    },
+    "ms": {
+     "read": 6.5
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 250
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "yes",
+    "reason": "reorder: identity survived quietly",
+    "flags": {
+     "moveKind": "reorder",
+     "retrievable": true,
+     "falseAlarm": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1340
+    },
+    "ms": {
+     "read": 7.4
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 128
+   }
+  ],
+  "S8|kronicle-lite": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "yes",
+    "reason": "reorder: identity survived quietly",
+    "flags": {
+     "moveKind": "reorder",
+     "retrievable": true,
+     "falseAlarm": false
+    },
+    "bytes": {
+     "touch": 1317,
+     "read": 1703
+    },
+    "ms": {
+     "touch": 255.5,
+     "read": 2.4
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1596
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "yes",
+    "reason": "reorder: identity survived quietly",
+    "flags": {
+     "moveKind": "reorder",
+     "retrievable": true,
+     "falseAlarm": false
+    },
+    "bytes": {
+     "touch": 1317,
+     "read": 1708
+    },
+    "ms": {
+     "touch": 10.2,
+     "read": 2.1
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1598
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "yes",
+    "reason": "reorder: identity survived quietly",
+    "flags": {
+     "moveKind": "reorder",
+     "retrievable": true,
+     "falseAlarm": false
+    },
+    "bytes": {
+     "touch": 1317,
+     "read": 1707
+    },
+    "ms": {
+     "touch": 7.7,
+     "read": 2.1
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 951
+   }
+  ],
+  "S8|server-memory": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "yes",
+    "reason": "reorder: identity survived quietly",
+    "flags": {
+     "moveKind": "reorder",
+     "retrievable": true,
+     "falseAlarm": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1160
+    },
+    "ms": {
+     "read": 7
+    },
+    "calls": 1,
+    "delivery": "none",
+    "ms_total": 492
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "yes",
+    "reason": "reorder: identity survived quietly",
+    "flags": {
+     "moveKind": "reorder",
+     "retrievable": true,
+     "falseAlarm": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1184
+    },
+    "ms": {
+     "read": 2.4
+    },
+    "calls": 1,
+    "delivery": "none",
+    "ms_total": 444
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "yes",
+    "reason": "reorder: identity survived quietly",
+    "flags": {
+     "moveKind": "reorder",
+     "retrievable": true,
+     "falseAlarm": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1162
+    },
+    "ms": {
+     "read": 1.8
+    },
+    "calls": 1,
+    "delivery": "none",
+    "ms_total": 362
+   }
+  ]
+ }
+}

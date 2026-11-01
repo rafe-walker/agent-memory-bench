@@ -1,0 +1,248 @@
+{
+ "scenario": "S2",
+ "title": "Contradicting facts (two sources disagree)",
+ "records": {
+  "S2|baseline": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 0,
+     "read": 196
+    },
+    "ms": {
+     "read": 7
+    },
+    "calls": 1,
+    "ms_total": 252
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 0,
+     "read": 189
+    },
+    "ms": {
+     "read": 8.1
+    },
+    "calls": 1,
+    "ms_total": 246
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 0,
+     "read": 189
+    },
+    "ms": {
+     "read": 8
+    },
+    "calls": 1,
+    "ms_total": 133
+   }
+  ],
+  "S2|native": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1328,
+     "read": 421
+    },
+    "ms": {
+     "read": 6.8
+    },
+    "calls": 2,
+    "ms_total": 259
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1346,
+     "read": 413
+    },
+    "ms": {
+     "read": 6.4
+    },
+    "calls": 2,
+    "ms_total": 250
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1324,
+     "read": 413
+    },
+    "ms": {
+     "read": 8.3
+    },
+    "calls": 2,
+    "ms_total": 116
+   }
+  ],
+  "S2|kronicle-lite": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 3134
+    },
+    "ms": {
+     "sessionStart": 412.5,
+     "read": 11.7
+    },
+    "calls": 2,
+    "ms_total": 1104
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 3129
+    },
+    "ms": {
+     "sessionStart": 53.1,
+     "read": 14.9
+    },
+    "calls": 2,
+    "ms_total": 1152
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 3128
+    },
+    "ms": {
+     "sessionStart": 38.4,
+     "read": 8.9
+    },
+    "calls": 2,
+    "ms_total": 741
+   }
+  ],
+  "S2|server-memory": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1726,
+     "read": 607
+    },
+    "ms": {
+     "sessionStart": 3,
+     "read": 5.4
+    },
+    "calls": 2,
+    "ms_total": 549
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1743,
+     "read": 600
+    },
+    "ms": {
+     "sessionStart": 6.6,
+     "read": 2.6
+    },
+    "calls": 2,
+    "ms_total": 495
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1721,
+     "read": 600
+    },
+    "ms": {
+     "sessionStart": 3.3,
+     "read": 2.6
+    },
+    "calls": 2,
+    "ms_total": 335
+   }
+  ]
+ }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "agent-memory-bench",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Open, reproducible benchmark for coding-agent memory and coordination tools. Track A: deterministic, no LLM, $0. Track B: live agents (track-b/).",
+  "type": "module",
+  "license": "Apache-2.0",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "track-a:setup": "bash track-a/setup.sh",
+    "track-a": "node track-a/run.mjs",
+    "track-a:ci": "node track-a/run.mjs --ci",
+    "track-a:report": "node track-a/report.mjs"
+  }
+}

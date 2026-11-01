@@ -1,0 +1,583 @@
+{
+ "bench": "agent-memory-bench Track A",
+ "version": "0.1.0",
+ "started_at": "2026-11-01T04:43:29.212Z",
+ "ci": false,
+ "seeds": 20,
+ "sizes": [
+  1000,
+  10000
+ ],
+ "host": {
+  "platform": "linux 6.18.44-fc-v185",
+  "node": "v22.23.4",
+  "cpus": 2,
+  "mem_gb": 8
+ },
+ "git": "59768d8",
+ "token_estimate": "ceil(bytes/4); same proxy for every arm",
+ "arms": {
+  "baseline": {
+   "id": "baseline",
+   "label": "no-memory baseline",
+   "version": "n/a",
+   "kind": [
+    "knowledge",
+    "coordination",
+    "compaction"
+   ],
+   "setupSteps": [],
+   "notes": "Agent reads files on demand (grep). No store, so S6/S9/S10 have nothing to tamper, poison or leak; graded n/a there."
+  },
+  "native": {
+   "id": "native",
+   "label": "native CLAUDE.md / AGENTS.md / auto memory (simulated per docs)",
+   "version": "Claude Code docs as of 2026-10-31",
+   "kind": [
+    "knowledge",
+    "compaction"
+   ],
+   "setupSteps": [
+    "write CLAUDE.md (optionally @import runbooks)"
+   ],
+   "notes": "Loader simulated from the published docs, not by running the claude binary. Auto memory content is written by Claude itself; the bench writes the line Claude would write (remember())."
+  },
+  "kronicle-lite": {
+   "id": "kronicle-lite",
+   "label": "kronicle-lite",
+   "version": "0.5.0 (npm)",
+   "kind": [
+    "knowledge",
+    "compaction"
+   ],
+   "setupSteps": [
+    "npm i -g kronicle-lite@0.5.0 (or npx)",
+    "claude mcp add kronicle-lite -- kronicle-lite serve",
+    "install the orient skill (plugin)",
+    "SessionStart+FileChanged hook: kronicle-lite put --from-instructions --stdin-hook (or run `kronicle-lite watch docs/`)"
+   ],
+   "notes": "MCP stdio. Data dir = default ~/.kronicle-lite under an isolated HOME.",
+   "tools_list": {
+    "tools": 10,
+    "bytes": 12441,
+    "tokens": 3111,
+    "names": [
+     "get_system_state",
+     "audit_assumptions",
+     "recall",
+     "verify",
+     "verify_chain",
+     "checkpoint_chain",
+     "anchor_status",
+     "put_document",
+     "supersede_block",
+     "tombstone_block"
+    ]
+   }
+  },
+  "kronicle-lite-0.6": {
+   "id": "kronicle-lite-0.6",
+   "label": "kronicle-lite 0.6.0 (unreleased)",
+   "version": "0.6.0 unreleased — kronicle-lite b157f54 (git archive of HEAD, 2026-11-01T04:07:18Z)",
+   "kind": [
+    "knowledge",
+    "compaction"
+   ],
+   "setupSteps": [
+    "npm i -g kronicle-lite@0.5.0 (or npx)",
+    "claude mcp add kronicle-lite -- kronicle-lite serve",
+    "install the orient skill (plugin)",
+    "SessionStart+FileChanged hook: kronicle-lite put --from-instructions --stdin-hook (or run `kronicle-lite watch docs/`)"
+   ],
+   "notes": "MCP stdio. Data dir = default ~/.kronicle-lite under an isolated HOME.",
+   "tools_list": {
+    "tools": 10,
+    "bytes": 13628,
+    "tokens": 3407,
+    "names": [
+     "get_system_state",
+     "audit_assumptions",
+     "recall",
+     "verify",
+     "verify_chain",
+     "checkpoint_chain",
+     "anchor_status",
+     "put_document",
+     "supersede_block",
+     "tombstone_block"
+    ]
+   }
+  },
+  "kronicle-lite-0.6-core": {
+   "id": "kronicle-lite-0.6-core",
+   "label": "kronicle-lite 0.6.0 --core (unreleased)",
+   "version": "0.6.0 unreleased — kronicle-lite b157f54 (git archive of HEAD, 2026-11-01T04:07:18Z)",
+   "kind": [
+    "knowledge",
+    "compaction"
+   ],
+   "setupSteps": [
+    "npm i -g kronicle-lite@0.5.0 (or npx)",
+    "claude mcp add kronicle-lite -- kronicle-lite serve --core",
+    "install the orient skill (plugin)",
+    "SessionStart+FileChanged hook: kronicle-lite put --from-instructions --stdin-hook (or run `kronicle-lite watch docs/`)"
+   ],
+   "notes": "MCP stdio. Data dir = default ~/.kronicle-lite under an isolated HOME.",
+   "tools_list": {
+    "tools": 6,
+    "bytes": 9865,
+    "tokens": 2467,
+    "names": [
+     "get_system_state",
+     "audit_assumptions",
+     "recall",
+     "verify",
+     "put_document",
+     "supersede_block"
+    ]
+   }
+  },
+  "basic-memory": {
+   "id": "basic-memory",
+   "label": "basic-memory",
+   "version": "1.0.0 (PyPI)",
+   "kind": [
+    "knowledge",
+    "compaction"
+   ],
+   "shareRuntime": true,
+   "maxScale": 1000,
+   "setupSteps": [
+    "uv tool install basic-memory",
+    "basic-memory project add <name> <dir> --default",
+    "claude mcp add basic-memory -- basic-memory mcp",
+    "(semantic search downloads bge-small-en-v1.5 on first use)"
+   ],
+   "notes": "Embedding model pre-fetched into a local cache (the sandbox proxy blocks the default HF download path); HF_HUB_OFFLINE=1.",
+   "tools_list": {
+    "tools": 12,
+    "bytes": 31006,
+    "tokens": 7752,
+    "names": [
+     "bm_context",
+     "bm_delete",
+     "bm_edit",
+     "bm_find",
+     "bm_list",
+     "bm_man",
+     "bm_move",
+     "bm_schema",
+     "bm_project",
+     "bm_search",
+     "bm_read",
+     "bm_write"
+    ]
+   }
+  },
+  "server-memory": {
+   "id": "server-memory",
+   "label": "@modelcontextprotocol/server-memory",
+   "version": "2.0.1 (npm)",
+   "kind": [
+    "knowledge",
+    "compaction"
+   ],
+   "setupSteps": [
+    "claude mcp add memory -- npx -y @modelcontextprotocol/server-memory",
+    "add the README system prompt (retrieve graph at chat start; store facts as observations)"
+   ],
+   "notes": "Default MEMORY_FILE_PATH is one memory.jsonl beside the package: every project shares it unless configured.",
+   "tools_list": {
+    "tools": 9,
+    "bytes": 10805,
+    "tokens": 2702,
+    "names": [
+     "create_entities",
+     "create_relations",
+     "add_observations",
+     "delete_entities",
+     "delete_observations",
+     "delete_relations",
+     "read_graph",
+     "search_nodes",
+     "open_nodes"
+    ]
+   }
+  },
+  "cc-anchor": {
+   "id": "cc-anchor",
+   "label": "cc-anchor (card only)",
+   "version": "0.3.0 (unreleased local checkout)",
+   "kind": [
+    "compaction"
+   ],
+   "setupSteps": [
+    "claude plugin marketplace add rafe-walker/cc-anchor",
+    "claude plugin install cc-anchor",
+    "/cc-anchor:anchor set goal \"…\" + add-invariant \"…\" as decisions are made"
+   ],
+   "notes": "Card content is written by the agent/user with the anchor command; hooks only persist and re-inject it."
+  },
+  "sea-lite": {
+   "id": "sea-lite",
+   "label": "sea-lite",
+   "version": "0.4.0 (unreleased local build; npm latest 0.3.0)",
+   "kind": [
+    "coordination"
+   ],
+   "setupSteps": [
+    "npm i -g sea-lite",
+    "claude mcp add sea-lite -- sea-lite serve",
+    "install the work-queue skill",
+    "PreToolUse hook: sea-lite scope-check --hook",
+    "(optional) sea-lite precommit --install"
+   ],
+   "claims": true,
+   "leases": true,
+   "editGuard": "hook",
+   "s13": {
+    "lease": 5,
+    "duration": 12
+   },
+   "reps": {
+    "S13": 3
+   },
+   "tools_list": {
+    "tools": 14,
+    "bytes": 60720,
+    "tokens": 15180,
+    "names": [
+     "sea_create",
+     "sea_apply",
+     "sea_update",
+     "sea_transition",
+     "sea_link",
+     "sea_claim",
+     "sea_refresh",
+     "sea_release",
+     "sea_next",
+     "sea_get",
+     "sea_list",
+     "sea_history",
+     "sea_scope_check",
+     "sea_stats"
+    ]
+   }
+  },
+  "sea-lite+cc-anchor": {
+   "id": "sea-lite+cc-anchor",
+   "label": "sea-lite + cc-anchor hooks",
+   "version": "sea-lite 0.4.0 + cc-anchor 0.3.0 (both unreleased local builds)",
+   "kind": [
+    "coordination"
+   ],
+   "setupSteps": [
+    "npm i -g sea-lite",
+    "claude mcp add sea-lite -- sea-lite serve",
+    "install the work-queue skill",
+    "claude plugin install cc-anchor",
+    "cc-anchor config set scope_guard true (heartbeat is auto once sea-lite is configured)"
+   ],
+   "claims": true,
+   "leases": true,
+   "editGuard": "hook",
+   "s13": {
+    "lease": 5,
+    "duration": 12,
+    "heartbeat": 1
+   },
+   "reps": {
+    "S13": 3
+   },
+   "heartbeat": "PostToolUse",
+   "tools_list": {
+    "tools": 14,
+    "bytes": 60720,
+    "tokens": 15180,
+    "names": [
+     "sea_create",
+     "sea_apply",
+     "sea_update",
+     "sea_transition",
+     "sea_link",
+     "sea_claim",
+     "sea_refresh",
+     "sea_release",
+     "sea_next",
+     "sea_get",
+     "sea_list",
+     "sea_history",
+     "sea_scope_check",
+     "sea_stats"
+    ]
+   }
+  },
+  "beads": {
+   "id": "beads",
+   "label": "beads (bd)",
+   "version": "1.3.2 (@beads/bd npm)",
+   "kind": [
+    "coordination"
+   ],
+   "setupSteps": [
+    "npm i -g @beads/bd (or brew/go install)",
+    "bd init",
+    "bd setup claude (hooks: bd prime)",
+    "agents use bd ready / bd update --claim / bd close"
+   ],
+   "claims": true,
+   "leases": true,
+   "editGuard": null,
+   "notes": "CLI driven (agents call bd through Bash); the separate beads-mcp Python server was not measured.",
+   "s13": {
+    "lease": 300,
+    "duration": 310,
+    "tickMs": 5000
+   },
+   "reps": {
+    "S13": 1
+   },
+   "slow": {
+    "S13": true
+   }
+  },
+  "agent-mail": {
+   "id": "agent-mail",
+   "label": "mcp_agent_mail",
+   "version": "0.3.4 (git 426d4f3)",
+   "kind": [
+    "coordination"
+   ],
+   "setupSteps": [
+    "git clone + uv sync (or the install script)",
+    "run the server (serve-http, or serve-stdio per client)",
+    "register each agent (macro_start_session)",
+    "WORKTREES_ENABLED=1 + install_precommit_guard for enforcement (the guard install is a no-op otherwise)"
+   ],
+   "claims": true,
+   "leases": true,
+   "editGuard": "pre-commit",
+   "singleServer": true,
+   "s13": {
+    "lease": 60,
+    "duration": 70
+   },
+   "reps": {
+    "S13": 1
+   },
+   "slow": {
+    "S13": true
+   },
+   "tools_list": {
+    "tools": 49,
+    "bytes": 65185,
+    "tokens": 16297,
+    "names": [
+     "health_check",
+     "ensure_project",
+     "register_agent",
+     "deregister_agent",
+     "retire_agent",
+     "sweep_stale_agents",
+     "unretire_agent",
+     "archive_project",
+     "unarchive_project",
+     "hard_delete_agent",
+     "hard_delete_project",
+     "whois",
+     "create_agent_identity",
+     "list_window_identities",
+     "rename_window",
+     "expire_window",
+     "send_message",
+     "purge_old_messages",
+     "reply_message",
+     "request_contact",
+     "respond_contact",
+     "list_contacts",
+     "set_contact_policy",
+     "fetch_inbox",
+     "fetch_topic",
+     "mark_message_read",
+     "acknowledge_message",
+     "macro_start_session",
+     "macro_prepare_thread",
+     "macro_file_reservation_cycle",
+     "macro_contact_handshake",
+     "search_messages",
+     "summarize_thread",
+     "summarize_recent",
+     "fetch_summary",
+     "install_precommit_guard",
+     "uninstall_precommit_guard",
+     "file_reservation_paths",
+     "release_file_reservations",
+     "force_release_file_reservation",
+     "renew_file_reservations",
+     "acquire_build_slot",
+     "renew_build_slot",
+     "release_build_slot",
+     "ensure_product",
+     "products_link",
+     "search_messages_product",
+     "fetch_inbox_product",
+     "summarize_thread_product"
+    ]
+   }
+  },
+  "backlog-md": {
+   "id": "backlog-md",
+   "label": "Backlog.md",
+   "version": "1.55.3 (npm)",
+   "kind": [
+    "coordination"
+   ],
+   "setupSteps": [
+    "npm i -g backlog.md",
+    "backlog init <name> --defaults",
+    "(optional) claude mcp add backlog -- backlog mcp start"
+   ],
+   "claims": false,
+   "leases": false,
+   "editGuard": null,
+   "reps": {
+    "S3a": 3,
+    "S3b": 3,
+    "S3c": 3,
+    "S11c": 3
+   },
+   "tools_list": {
+    "tools": 24,
+    "bytes": 20770,
+    "tokens": 5193,
+    "names": [
+     "get_backlog_instructions",
+     "task_create",
+     "task_list",
+     "task_search",
+     "task_edit",
+     "task_view",
+     "task_archive",
+     "task_delete",
+     "task_restore",
+     "milestone_list",
+     "milestone_add",
+     "milestone_rename",
+     "milestone_remove",
+     "milestone_archive",
+     "definition_of_done_defaults_get",
+     "definition_of_done_defaults_upsert",
+     "document_list",
+     "document_view",
+     "document_create",
+     "document_update",
+     "document_archive",
+     "document_restore",
+     "document_delete",
+     "document_search"
+    ]
+   }
+  },
+  "task-master": {
+   "id": "task-master",
+   "label": "task-master-ai",
+   "version": "0.43.1 (npm)",
+   "kind": [
+    "coordination"
+   ],
+   "setupSteps": [
+    "npm i -g task-master-ai",
+    "task-master init",
+    "configure an LLM key (for parse-prd/expand; not needed for manual add-task)",
+    "claude mcp add task-master -- task-master-mcp"
+   ],
+   "claims": false,
+   "leases": false,
+   "editGuard": null,
+   "reps": {
+    "S3a": 3,
+    "S3b": 3,
+    "S3c": 3,
+    "S11c": 3
+   },
+   "tools_list": {
+    "tools": 7,
+    "bytes": 6926,
+    "tokens": 1732,
+    "names": [
+     "get_tasks",
+     "next_task",
+     "get_task",
+     "set_task_status",
+     "update_subtask",
+     "parse_prd",
+     "expand_task"
+    ]
+   }
+  }
+ },
+ "merges": [
+  {
+   "at": "2026-11-01T06:03:23.573Z",
+   "arms": [
+    "agent-mail"
+   ],
+   "scenarios": [
+    "S3"
+   ]
+  },
+  {
+   "at": "2026-11-01T06:06:35.302Z",
+   "arms": [
+    "beads",
+    "backlog-md",
+    "task-master"
+   ],
+   "scenarios": [
+    "none"
+   ]
+  },
+  {
+   "at": "2026-11-01T06:07:07.647Z",
+   "arms": [
+    "baseline",
+    "native",
+    "kronicle-lite",
+    "kronicle-lite-0.6",
+    "kronicle-lite-0.6-core",
+    "server-memory",
+    "basic-memory"
+   ],
+   "scenarios": [
+    "S1"
+   ]
+  },
+  {
+   "at": "2026-11-01T06:17:03.928Z",
+   "arms": [
+    "baseline",
+    "native",
+    "kronicle-lite",
+    "kronicle-lite-0.6",
+    "kronicle-lite-0.6-core",
+    "server-memory",
+    "basic-memory"
+   ],
+   "scenarios": [
+    "S1"
+   ]
+  },
+  {
+   "at": "2026-11-01T06:19:53.164Z",
+   "arms": [
+    "agent-mail"
+   ],
+   "scenarios": [
+    "S3"
+   ]
+  }
+ ],
+ "wall_s_initial": 4779,
+ "finished_at": "2026-11-01T06:21:27.359Z",
+ "wall_s": 94
+}

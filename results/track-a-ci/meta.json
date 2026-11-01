@@ -1,0 +1,218 @@
+{
+ "bench": "agent-memory-bench Track A",
+ "version": "0.1.0",
+ "started_at": "2026-11-01T06:22:47.010Z",
+ "ci": true,
+ "seeds": 3,
+ "sizes": [
+  300
+ ],
+ "host": {
+  "platform": "linux 6.18.44-fc-v185",
+  "node": "v22.23.4",
+  "cpus": 2,
+  "mem_gb": 8
+ },
+ "git": "59768d8",
+ "token_estimate": "ceil(bytes/4); same proxy for every arm",
+ "arms": {
+  "baseline": {
+   "id": "baseline",
+   "label": "no-memory baseline",
+   "version": "n/a",
+   "kind": [
+    "knowledge",
+    "coordination",
+    "compaction"
+   ],
+   "setupSteps": [],
+   "notes": "Agent reads files on demand (grep). No store, so S6/S9/S10 have nothing to tamper, poison or leak; graded n/a there."
+  },
+  "native": {
+   "id": "native",
+   "label": "native CLAUDE.md / AGENTS.md / auto memory (simulated per docs)",
+   "version": "Claude Code docs as of 2026-10-31",
+   "kind": [
+    "knowledge",
+    "compaction"
+   ],
+   "setupSteps": [
+    "write CLAUDE.md (optionally @import runbooks)"
+   ],
+   "notes": "Loader simulated from the published docs, not by running the claude binary. Auto memory content is written by Claude itself; the bench writes the line Claude would write (remember())."
+  },
+  "kronicle-lite": {
+   "id": "kronicle-lite",
+   "label": "kronicle-lite",
+   "version": "0.5.0 (npm)",
+   "kind": [
+    "knowledge",
+    "compaction"
+   ],
+   "setupSteps": [
+    "npm i -g kronicle-lite@0.5.0 (or npx)",
+    "claude mcp add kronicle-lite -- kronicle-lite serve",
+    "install the orient skill (plugin)",
+    "SessionStart+FileChanged hook: kronicle-lite put --from-instructions --stdin-hook (or run `kronicle-lite watch docs/`)"
+   ],
+   "notes": "MCP stdio. Data dir = default ~/.kronicle-lite under an isolated HOME.",
+   "tools_list": {
+    "tools": 10,
+    "bytes": 12441,
+    "tokens": 3111,
+    "names": [
+     "get_system_state",
+     "audit_assumptions",
+     "recall",
+     "verify",
+     "verify_chain",
+     "checkpoint_chain",
+     "anchor_status",
+     "put_document",
+     "supersede_block",
+     "tombstone_block"
+    ]
+   }
+  },
+  "server-memory": {
+   "id": "server-memory",
+   "label": "@modelcontextprotocol/server-memory",
+   "version": "2.0.1 (npm)",
+   "kind": [
+    "knowledge",
+    "compaction"
+   ],
+   "setupSteps": [
+    "claude mcp add memory -- npx -y @modelcontextprotocol/server-memory",
+    "add the README system prompt (retrieve graph at chat start; store facts as observations)"
+   ],
+   "notes": "Default MEMORY_FILE_PATH is one memory.jsonl beside the package: every project shares it unless configured.",
+   "tools_list": {
+    "tools": 9,
+    "bytes": 10805,
+    "tokens": 2702,
+    "names": [
+     "create_entities",
+     "create_relations",
+     "add_observations",
+     "delete_entities",
+     "delete_observations",
+     "delete_relations",
+     "read_graph",
+     "search_nodes",
+     "open_nodes"
+    ]
+   }
+  },
+  "cc-anchor": {
+   "id": "cc-anchor",
+   "label": "cc-anchor (card only)",
+   "version": "0.3.0 (unreleased local checkout)",
+   "kind": [
+    "compaction"
+   ],
+   "setupSteps": [
+    "claude plugin marketplace add rafe-walker/cc-anchor",
+    "claude plugin install cc-anchor",
+    "/cc-anchor:anchor set goal \"…\" + add-invariant \"…\" as decisions are made"
+   ],
+   "notes": "Card content is written by the agent/user with the anchor command; hooks only persist and re-inject it."
+  },
+  "sea-lite": {
+   "id": "sea-lite",
+   "label": "sea-lite",
+   "version": "0.4.0 (unreleased local build; npm latest 0.3.0)",
+   "kind": [
+    "coordination"
+   ],
+   "setupSteps": [
+    "npm i -g sea-lite",
+    "claude mcp add sea-lite -- sea-lite serve",
+    "install the work-queue skill",
+    "PreToolUse hook: sea-lite scope-check --hook",
+    "(optional) sea-lite precommit --install"
+   ],
+   "claims": true,
+   "leases": true,
+   "editGuard": "hook",
+   "s13": {
+    "lease": 5,
+    "duration": 12
+   },
+   "reps": {
+    "S13": 3
+   },
+   "tools_list": {
+    "tools": 14,
+    "bytes": 60720,
+    "tokens": 15180,
+    "names": [
+     "sea_create",
+     "sea_apply",
+     "sea_update",
+     "sea_transition",
+     "sea_link",
+     "sea_claim",
+     "sea_refresh",
+     "sea_release",
+     "sea_next",
+     "sea_get",
+     "sea_list",
+     "sea_history",
+     "sea_scope_check",
+     "sea_stats"
+    ]
+   }
+  },
+  "sea-lite+cc-anchor": {
+   "id": "sea-lite+cc-anchor",
+   "label": "sea-lite + cc-anchor hooks",
+   "version": "sea-lite 0.4.0 + cc-anchor 0.3.0 (both unreleased local builds)",
+   "kind": [
+    "coordination"
+   ],
+   "setupSteps": [
+    "npm i -g sea-lite",
+    "claude mcp add sea-lite -- sea-lite serve",
+    "install the work-queue skill",
+    "claude plugin install cc-anchor",
+    "cc-anchor config set scope_guard true (heartbeat is auto once sea-lite is configured)"
+   ],
+   "claims": true,
+   "leases": true,
+   "editGuard": "hook",
+   "s13": {
+    "lease": 5,
+    "duration": 12,
+    "heartbeat": 1
+   },
+   "reps": {
+    "S13": 3
+   },
+   "heartbeat": "PostToolUse",
+   "tools_list": {
+    "tools": 14,
+    "bytes": 60720,
+    "tokens": 15180,
+    "names": [
+     "sea_create",
+     "sea_apply",
+     "sea_update",
+     "sea_transition",
+     "sea_link",
+     "sea_claim",
+     "sea_refresh",
+     "sea_release",
+     "sea_next",
+     "sea_get",
+     "sea_list",
+     "sea_history",
+     "sea_scope_check",
+     "sea_stats"
+    ]
+   }
+  }
+ },
+ "finished_at": "2026-11-01T06:24:32.762Z",
+ "wall_s": 106
+}

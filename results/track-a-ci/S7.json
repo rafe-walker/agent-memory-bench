@@ -1,0 +1,269 @@
+{
+ "scenario": "S7",
+ "title": "Benign-edit noise (must NOT alarm; false-positive control)",
+ "records": {
+  "S7|baseline": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "yes",
+    "reason": "quiet on whitespace_trim",
+    "flags": {
+     "template": "whitespace_trim",
+     "alarm": false,
+     "trivial": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 76
+    },
+    "ms": {
+     "read": 6.5
+    },
+    "calls": 1,
+    "delivery": "none",
+    "ms_total": 266
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "yes",
+    "reason": "quiet on whitespace_double",
+    "flags": {
+     "template": "whitespace_double",
+     "alarm": false,
+     "trivial": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 81
+    },
+    "ms": {
+     "read": 6
+    },
+    "calls": 1,
+    "delivery": "none",
+    "ms_total": 257
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "yes",
+    "reason": "quiet on line_ending_norm",
+    "flags": {
+     "template": "line_ending_norm",
+     "alarm": false,
+     "trivial": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 80
+    },
+    "ms": {
+     "read": 8.8
+    },
+    "calls": 1,
+    "delivery": "none",
+    "ms_total": 125
+   }
+  ],
+  "S7|native": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "no",
+    "reason": "false alarm on whitespace_trim",
+    "flags": {
+     "template": "whitespace_trim",
+     "alarm": true,
+     "trivial": true
+    },
+    "bytes": {
+     "touch": 204,
+     "read": 1330
+    },
+    "ms": {
+     "read": 6.7
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 253
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "no",
+    "reason": "false alarm on whitespace_double",
+    "flags": {
+     "template": "whitespace_double",
+     "alarm": true,
+     "trivial": true
+    },
+    "bytes": {
+     "touch": 209,
+     "read": 1361
+    },
+    "ms": {
+     "read": 6.5
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 246
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "no",
+    "reason": "false alarm on line_ending_norm",
+    "flags": {
+     "template": "line_ending_norm",
+     "alarm": true,
+     "trivial": true
+    },
+    "bytes": {
+     "touch": 193,
+     "read": 1338
+    },
+    "ms": {
+     "read": 7.2
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 110
+   }
+  ],
+  "S7|kronicle-lite": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "yes",
+    "reason": "quiet on whitespace_trim",
+    "flags": {
+     "template": "whitespace_trim",
+     "alarm": false,
+     "trivial": true
+    },
+    "bytes": {
+     "touch": 1137,
+     "read": 1703
+    },
+    "ms": {
+     "touch": 21.8,
+     "read": 2.3
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1662
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "no",
+    "reason": "false alarm on whitespace_double",
+    "flags": {
+     "template": "whitespace_double",
+     "alarm": true,
+     "trivial": true
+    },
+    "bytes": {
+     "touch": 2421,
+     "read": 1708
+    },
+    "ms": {
+     "touch": 248.8,
+     "read": 2.7
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1632
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "yes",
+    "reason": "quiet on line_ending_norm",
+    "flags": {
+     "template": "line_ending_norm",
+     "alarm": false,
+     "trivial": true
+    },
+    "bytes": {
+     "touch": 1137,
+     "read": 1707
+    },
+    "ms": {
+     "touch": 7,
+     "read": 2.9
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 930
+   }
+  ],
+  "S7|server-memory": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "yes",
+    "reason": "quiet on whitespace_trim",
+    "flags": {
+     "template": "whitespace_trim",
+     "alarm": false,
+     "trivial": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1160
+    },
+    "ms": {
+     "read": 1.2
+    },
+    "calls": 1,
+    "delivery": "none",
+    "ms_total": 415
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "yes",
+    "reason": "quiet on whitespace_double",
+    "flags": {
+     "template": "whitespace_double",
+     "alarm": false,
+     "trivial": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1184
+    },
+    "ms": {
+     "read": 1.3
+    },
+    "calls": 1,
+    "delivery": "none",
+    "ms_total": 434
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "yes",
+    "reason": "quiet on line_ending_norm",
+    "flags": {
+     "template": "line_ending_norm",
+     "alarm": false,
+     "trivial": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1162
+    },
+    "ms": {
+     "read": 1.6
+    },
+    "calls": 1,
+    "delivery": "none",
+    "ms_total": 306
+   }
+  ]
+ }
+}

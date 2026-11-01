@@ -1,0 +1,257 @@
+{
+ "scenario": "S5",
+ "title": "Retired / deleted doc still served",
+ "records": {
+  "S5|baseline": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "partial",
+    "reason": "no longer served, no notice",
+    "flags": {
+     "served": false,
+     "noticed": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 0
+    },
+    "ms": {
+     "read": 7
+    },
+    "calls": 1,
+    "delivery": "none",
+    "ms_total": 242
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "partial",
+    "reason": "no longer served, no notice",
+    "flags": {
+     "served": false,
+     "noticed": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 0
+    },
+    "ms": {
+     "read": 6.7
+    },
+    "calls": 1,
+    "delivery": "none",
+    "ms_total": 237
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "partial",
+    "reason": "no longer served, no notice",
+    "flags": {
+     "served": false,
+     "noticed": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 0
+    },
+    "ms": {
+     "read": 8.2
+    },
+    "calls": 1,
+    "delivery": "none",
+    "ms_total": 135
+   }
+  ],
+  "S5|native": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "partial",
+    "reason": "no longer served, no notice",
+    "flags": {
+     "served": false,
+     "noticed": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 0
+    },
+    "ms": {
+     "read": 6.2
+    },
+    "calls": 1,
+    "delivery": "none",
+    "ms_total": 233
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "partial",
+    "reason": "no longer served, no notice",
+    "flags": {
+     "served": false,
+     "noticed": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 0
+    },
+    "ms": {
+     "read": 6.9
+    },
+    "calls": 1,
+    "delivery": "none",
+    "ms_total": 227
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "partial",
+    "reason": "no longer served, no notice",
+    "flags": {
+     "served": false,
+     "noticed": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 0
+    },
+    "ms": {
+     "read": 6.6
+    },
+    "calls": 1,
+    "delivery": "none",
+    "ms_total": 121
+   }
+  ],
+  "S5|kronicle-lite": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "yes",
+    "reason": "retirement surfaced",
+    "flags": {
+     "served": false,
+     "noticed": true
+    },
+    "bytes": {
+     "touch": 3691,
+     "read": 7212
+    },
+    "ms": {
+     "touch": 260.1,
+     "read": 4.2
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1589
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "yes",
+    "reason": "retirement surfaced",
+    "flags": {
+     "served": false,
+     "noticed": true
+    },
+    "bytes": {
+     "touch": 3691,
+     "read": 7217
+    },
+    "ms": {
+     "touch": 22,
+     "read": 3.7
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1600
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "yes",
+    "reason": "retirement surfaced",
+    "flags": {
+     "served": false,
+     "noticed": true
+    },
+    "bytes": {
+     "touch": 3693,
+     "read": 7217
+    },
+    "ms": {
+     "touch": 14.6,
+     "read": 3.5
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 991
+   }
+  ],
+  "S5|server-memory": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "no",
+    "reason": "retired content still served as live",
+    "flags": {
+     "served": true,
+     "noticed": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 227
+    },
+    "ms": {
+     "read": 14.7
+    },
+    "calls": 1,
+    "delivery": "none",
+    "ms_total": 454
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "no",
+    "reason": "retired content still served as live",
+    "flags": {
+     "served": true,
+     "noticed": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 227
+    },
+    "ms": {
+     "read": 1.5
+    },
+    "calls": 1,
+    "delivery": "none",
+    "ms_total": 428
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "no",
+    "reason": "retired content still served as live",
+    "flags": {
+     "served": true,
+     "noticed": false
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 228
+    },
+    "ms": {
+     "read": 1.4
+    },
+    "calls": 1,
+    "delivery": "none",
+    "ms_total": 280
+   }
+  ]
+ }
+}

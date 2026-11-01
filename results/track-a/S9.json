@@ -1,0 +1,2960 @@
+{
+ "scenario": "S9",
+ "title": "Poisoned memory (wrong fact planted)",
+ "records": {
+  "S9|baseline": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to poison",
+    "ms_total": 17
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to poison",
+    "ms_total": 10
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to poison",
+    "ms_total": 11
+   },
+   {
+    "seed": 4,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to poison",
+    "ms_total": 6
+   },
+   {
+    "seed": 5,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to poison",
+    "ms_total": 11
+   },
+   {
+    "seed": 6,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to poison",
+    "ms_total": 6
+   },
+   {
+    "seed": 7,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to poison",
+    "ms_total": 11
+   },
+   {
+    "seed": 8,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to poison",
+    "ms_total": 6
+   },
+   {
+    "seed": 9,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to poison",
+    "ms_total": 10
+   },
+   {
+    "seed": 10,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to poison",
+    "ms_total": 6
+   },
+   {
+    "seed": 11,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to poison",
+    "ms_total": 10
+   },
+   {
+    "seed": 12,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to poison",
+    "ms_total": 6
+   },
+   {
+    "seed": 13,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to poison",
+    "ms_total": 11
+   },
+   {
+    "seed": 14,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to poison",
+    "ms_total": 6
+   },
+   {
+    "seed": 15,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to poison",
+    "ms_total": 11
+   },
+   {
+    "seed": 16,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to poison",
+    "ms_total": 6
+   },
+   {
+    "seed": 17,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to poison",
+    "ms_total": 11
+   },
+   {
+    "seed": 18,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to poison",
+    "ms_total": 6
+   },
+   {
+    "seed": 19,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to poison",
+    "ms_total": 12
+   },
+   {
+    "seed": 20,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no store to poison",
+    "ms_total": 6
+   }
+  ],
+  "S9|native": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1333,
+     "nextSession": 1602
+    },
+    "ms": {
+     "read": 6.5
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 268
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1362,
+     "nextSession": 1626
+    },
+    "ms": {
+     "read": 6.4
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 263
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1339,
+     "nextSession": 1602
+    },
+    "ms": {
+     "read": 6.6
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 252
+   },
+   {
+    "seed": 4,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1349,
+     "nextSession": 1610
+    },
+    "ms": {
+     "read": 6.3
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 245
+   },
+   {
+    "seed": 5,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1340,
+     "nextSession": 1597
+    },
+    "ms": {
+     "read": 6.3
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 263
+   },
+   {
+    "seed": 6,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1348,
+     "nextSession": 1617
+    },
+    "ms": {
+     "read": 6.3
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 258
+   },
+   {
+    "seed": 7,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1356,
+     "nextSession": 1612
+    },
+    "ms": {
+     "read": 6.7
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 241
+   },
+   {
+    "seed": 8,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1351,
+     "nextSession": 1616
+    },
+    "ms": {
+     "read": 6.3
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 236
+   },
+   {
+    "seed": 9,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1352,
+     "nextSession": 1606
+    },
+    "ms": {
+     "read": 6.5
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 233
+   },
+   {
+    "seed": 10,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1336,
+     "nextSession": 1598
+    },
+    "ms": {
+     "read": 6.7
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 228
+   },
+   {
+    "seed": 11,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1346,
+     "nextSession": 1612
+    },
+    "ms": {
+     "read": 6.4
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 254
+   },
+   {
+    "seed": 12,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1347,
+     "nextSession": 1603
+    },
+    "ms": {
+     "read": 6.4
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 249
+   },
+   {
+    "seed": 13,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1366,
+     "nextSession": 1625
+    },
+    "ms": {
+     "read": 6.5
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 225
+   },
+   {
+    "seed": 14,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1349,
+     "nextSession": 1618
+    },
+    "ms": {
+     "read": 6.6
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 221
+   },
+   {
+    "seed": 15,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1353,
+     "nextSession": 1616
+    },
+    "ms": {
+     "read": 6.5
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 235
+   },
+   {
+    "seed": 16,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1352,
+     "nextSession": 1617
+    },
+    "ms": {
+     "read": 6.5
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 229
+   },
+   {
+    "seed": 17,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1357,
+     "nextSession": 1625
+    },
+    "ms": {
+     "read": 7
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 242
+   },
+   {
+    "seed": 18,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1331,
+     "nextSession": 1598
+    },
+    "ms": {
+     "read": 8.5
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 236
+   },
+   {
+    "seed": 19,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1349,
+     "nextSession": 1615
+    },
+    "ms": {
+     "read": 7
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 247
+   },
+   {
+    "seed": 20,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1375,
+     "nextSession": 1646
+    },
+    "ms": {
+     "read": 6.4
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 241
+   }
+  ],
+  "S9|kronicle-lite": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "partial",
+    "reason": "author/provenance visible, not flagged",
+    "flags": {
+     "flagged": false,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3048,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 9.1,
+     "read": 2.4,
+     "nextSession": 50.2
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1571
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "partial",
+    "reason": "author/provenance visible, not flagged",
+    "flags": {
+     "flagged": false,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3059,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 10.7,
+     "read": 2.7,
+     "nextSession": 48.8
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1532
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "partial",
+    "reason": "author/provenance visible, not flagged",
+    "flags": {
+     "flagged": false,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3056,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 6.9,
+     "read": 2.3,
+     "nextSession": 54.9
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1456
+   },
+   {
+    "seed": 4,
+    "variant": null,
+    "grade": "partial",
+    "reason": "author/provenance visible, not flagged",
+    "flags": {
+     "flagged": false,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3049,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 10,
+     "read": 3.8,
+     "nextSession": 51.2
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1462
+   },
+   {
+    "seed": 5,
+    "variant": null,
+    "grade": "partial",
+    "reason": "author/provenance visible, not flagged",
+    "flags": {
+     "flagged": false,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3046,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 12.8,
+     "read": 2.3,
+     "nextSession": 54.3
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1493
+   },
+   {
+    "seed": 6,
+    "variant": null,
+    "grade": "partial",
+    "reason": "author/provenance visible, not flagged",
+    "flags": {
+     "flagged": false,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3052,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 7.9,
+     "read": 2.3,
+     "nextSession": 49.7
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1480
+   },
+   {
+    "seed": 7,
+    "variant": null,
+    "grade": "partial",
+    "reason": "author/provenance visible, not flagged",
+    "flags": {
+     "flagged": false,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3053,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 8.3,
+     "read": 2.6,
+     "nextSession": 47.1
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1613
+   },
+   {
+    "seed": 8,
+    "variant": null,
+    "grade": "partial",
+    "reason": "author/provenance visible, not flagged",
+    "flags": {
+     "flagged": false,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3050,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 8,
+     "read": 2.3,
+     "nextSession": 53.3
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1553
+   },
+   {
+    "seed": 9,
+    "variant": null,
+    "grade": "partial",
+    "reason": "author/provenance visible, not flagged",
+    "flags": {
+     "flagged": false,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3048,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 5.6,
+     "read": 2.8,
+     "nextSession": 47.8
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1536
+   },
+   {
+    "seed": 10,
+    "variant": null,
+    "grade": "partial",
+    "reason": "author/provenance visible, not flagged",
+    "flags": {
+     "flagged": false,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3048,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 8.3,
+     "read": 2.3,
+     "nextSession": 50.5
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1480
+   },
+   {
+    "seed": 11,
+    "variant": null,
+    "grade": "partial",
+    "reason": "author/provenance visible, not flagged",
+    "flags": {
+     "flagged": false,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3054,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 9.2,
+     "read": 3.3,
+     "nextSession": 54.9
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1464
+   },
+   {
+    "seed": 12,
+    "variant": null,
+    "grade": "partial",
+    "reason": "author/provenance visible, not flagged",
+    "flags": {
+     "flagged": false,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3045,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 13.5,
+     "read": 2.5,
+     "nextSession": 57.7
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1481
+   },
+   {
+    "seed": 13,
+    "variant": null,
+    "grade": "partial",
+    "reason": "author/provenance visible, not flagged",
+    "flags": {
+     "flagged": false,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3056,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 8.4,
+     "read": 2.6,
+     "nextSession": 56.4
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1468
+   },
+   {
+    "seed": 14,
+    "variant": null,
+    "grade": "partial",
+    "reason": "author/provenance visible, not flagged",
+    "flags": {
+     "flagged": false,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3042,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 8.7,
+     "read": 2.5,
+     "nextSession": 52.3
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1455
+   },
+   {
+    "seed": 15,
+    "variant": null,
+    "grade": "partial",
+    "reason": "author/provenance visible, not flagged",
+    "flags": {
+     "flagged": false,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3047,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 9.5,
+     "read": 2.6,
+     "nextSession": 46.3
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1519
+   },
+   {
+    "seed": 16,
+    "variant": null,
+    "grade": "partial",
+    "reason": "author/provenance visible, not flagged",
+    "flags": {
+     "flagged": false,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3052,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 9.8,
+     "read": 2.3,
+     "nextSession": 47.2
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1422
+   },
+   {
+    "seed": 17,
+    "variant": null,
+    "grade": "partial",
+    "reason": "author/provenance visible, not flagged",
+    "flags": {
+     "flagged": false,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3057,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 10.9,
+     "read": 4.3,
+     "nextSession": 66.4
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1463
+   },
+   {
+    "seed": 18,
+    "variant": null,
+    "grade": "partial",
+    "reason": "author/provenance visible, not flagged",
+    "flags": {
+     "flagged": false,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3052,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 9.6,
+     "read": 2.3,
+     "nextSession": 55.6
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1414
+   },
+   {
+    "seed": 19,
+    "variant": null,
+    "grade": "partial",
+    "reason": "author/provenance visible, not flagged",
+    "flags": {
+     "flagged": false,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3053,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 10.1,
+     "read": 2.4,
+     "nextSession": 71.5
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1440
+   },
+   {
+    "seed": 20,
+    "variant": null,
+    "grade": "partial",
+    "reason": "author/provenance visible, not flagged",
+    "flags": {
+     "flagged": false,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3054,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 6.5,
+     "read": 2.3,
+     "nextSession": 58
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1436
+   }
+  ],
+  "S9|kronicle-lite-0.6": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "yes",
+    "reason": "planted fact flagged as untrusted/contradicting",
+    "flags": {
+     "flagged": true,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3793,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 9.9,
+     "read": 4.8,
+     "nextSession": 59.6
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1585
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "yes",
+    "reason": "planted fact flagged as untrusted/contradicting",
+    "flags": {
+     "flagged": true,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3804,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 9.5,
+     "read": 4.8,
+     "nextSession": 70.7
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1600
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "yes",
+    "reason": "planted fact flagged as untrusted/contradicting",
+    "flags": {
+     "flagged": true,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3801,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 9.6,
+     "read": 3.5,
+     "nextSession": 83.2
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1613
+   },
+   {
+    "seed": 4,
+    "variant": null,
+    "grade": "yes",
+    "reason": "planted fact flagged as untrusted/contradicting",
+    "flags": {
+     "flagged": true,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3794,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 11.4,
+     "read": 5.6,
+     "nextSession": 60.7
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1616
+   },
+   {
+    "seed": 5,
+    "variant": null,
+    "grade": "yes",
+    "reason": "planted fact flagged as untrusted/contradicting",
+    "flags": {
+     "flagged": true,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3791,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 7.7,
+     "read": 4.2,
+     "nextSession": 78.1
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1622
+   },
+   {
+    "seed": 6,
+    "variant": null,
+    "grade": "yes",
+    "reason": "planted fact flagged as untrusted/contradicting",
+    "flags": {
+     "flagged": true,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3797,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 5.4,
+     "read": 3.4,
+     "nextSession": 75.9
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1663
+   },
+   {
+    "seed": 7,
+    "variant": null,
+    "grade": "yes",
+    "reason": "planted fact flagged as untrusted/contradicting",
+    "flags": {
+     "flagged": true,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3798,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 9.5,
+     "read": 4.6,
+     "nextSession": 61.9
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1584
+   },
+   {
+    "seed": 8,
+    "variant": null,
+    "grade": "yes",
+    "reason": "planted fact flagged as untrusted/contradicting",
+    "flags": {
+     "flagged": true,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3795,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 11.6,
+     "read": 6.5,
+     "nextSession": 48.2
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1494
+   },
+   {
+    "seed": 9,
+    "variant": null,
+    "grade": "yes",
+    "reason": "planted fact flagged as untrusted/contradicting",
+    "flags": {
+     "flagged": true,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3793,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 12.5,
+     "read": 3.8,
+     "nextSession": 70.8
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1527
+   },
+   {
+    "seed": 10,
+    "variant": null,
+    "grade": "yes",
+    "reason": "planted fact flagged as untrusted/contradicting",
+    "flags": {
+     "flagged": true,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3793,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 8.6,
+     "read": 3.4,
+     "nextSession": 50.3
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1484
+   },
+   {
+    "seed": 11,
+    "variant": null,
+    "grade": "yes",
+    "reason": "planted fact flagged as untrusted/contradicting",
+    "flags": {
+     "flagged": true,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3799,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 8.7,
+     "read": 3.6,
+     "nextSession": 67.3
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1556
+   },
+   {
+    "seed": 12,
+    "variant": null,
+    "grade": "yes",
+    "reason": "planted fact flagged as untrusted/contradicting",
+    "flags": {
+     "flagged": true,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3790,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 6.7,
+     "read": 3.4,
+     "nextSession": 57.5
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1562
+   },
+   {
+    "seed": 13,
+    "variant": null,
+    "grade": "yes",
+    "reason": "planted fact flagged as untrusted/contradicting",
+    "flags": {
+     "flagged": true,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3801,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 8.2,
+     "read": 4.9,
+     "nextSession": 53.6
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1496
+   },
+   {
+    "seed": 14,
+    "variant": null,
+    "grade": "yes",
+    "reason": "planted fact flagged as untrusted/contradicting",
+    "flags": {
+     "flagged": true,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3787,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 7.4,
+     "read": 3.7,
+     "nextSession": 59.6
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1517
+   },
+   {
+    "seed": 15,
+    "variant": null,
+    "grade": "yes",
+    "reason": "planted fact flagged as untrusted/contradicting",
+    "flags": {
+     "flagged": true,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3792,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 7.7,
+     "read": 3.7,
+     "nextSession": 52.9
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1527
+   },
+   {
+    "seed": 16,
+    "variant": null,
+    "grade": "yes",
+    "reason": "planted fact flagged as untrusted/contradicting",
+    "flags": {
+     "flagged": true,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3797,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 5.9,
+     "read": 7.2,
+     "nextSession": 52.6
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1574
+   },
+   {
+    "seed": 17,
+    "variant": null,
+    "grade": "yes",
+    "reason": "planted fact flagged as untrusted/contradicting",
+    "flags": {
+     "flagged": true,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3802,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 7,
+     "read": 3.6,
+     "nextSession": 51.1
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1471
+   },
+   {
+    "seed": 18,
+    "variant": null,
+    "grade": "yes",
+    "reason": "planted fact flagged as untrusted/contradicting",
+    "flags": {
+     "flagged": true,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3797,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 7.1,
+     "read": 3.3,
+     "nextSession": 55.6
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1439
+   },
+   {
+    "seed": 19,
+    "variant": null,
+    "grade": "yes",
+    "reason": "planted fact flagged as untrusted/contradicting",
+    "flags": {
+     "flagged": true,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3798,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 5.3,
+     "read": 3.7,
+     "nextSession": 54.2
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1492
+   },
+   {
+    "seed": 20,
+    "variant": null,
+    "grade": "yes",
+    "reason": "planted fact flagged as untrusted/contradicting",
+    "flags": {
+     "flagged": true,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3799,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 7.4,
+     "read": 7.2,
+     "nextSession": 50.7
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1531
+   }
+  ],
+  "S9|kronicle-lite-0.6-core": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "yes",
+    "reason": "planted fact flagged as untrusted/contradicting",
+    "flags": {
+     "flagged": true,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3793,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 9.1,
+     "read": 5.9,
+     "nextSession": 73.6
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1530
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "yes",
+    "reason": "planted fact flagged as untrusted/contradicting",
+    "flags": {
+     "flagged": true,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3804,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 6.5,
+     "read": 3.8,
+     "nextSession": 53.7
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1426
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "yes",
+    "reason": "planted fact flagged as untrusted/contradicting",
+    "flags": {
+     "flagged": true,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3801,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 8.3,
+     "read": 3.4,
+     "nextSession": 55.1
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1499
+   },
+   {
+    "seed": 4,
+    "variant": null,
+    "grade": "yes",
+    "reason": "planted fact flagged as untrusted/contradicting",
+    "flags": {
+     "flagged": true,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3794,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 6.8,
+     "read": 3.3,
+     "nextSession": 63.7
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1365
+   },
+   {
+    "seed": 5,
+    "variant": null,
+    "grade": "yes",
+    "reason": "planted fact flagged as untrusted/contradicting",
+    "flags": {
+     "flagged": true,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3791,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 6.8,
+     "read": 3.5,
+     "nextSession": 51.1
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1555
+   },
+   {
+    "seed": 6,
+    "variant": null,
+    "grade": "yes",
+    "reason": "planted fact flagged as untrusted/contradicting",
+    "flags": {
+     "flagged": true,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3797,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 10.4,
+     "read": 4.8,
+     "nextSession": 42.3
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1614
+   },
+   {
+    "seed": 7,
+    "variant": null,
+    "grade": "yes",
+    "reason": "planted fact flagged as untrusted/contradicting",
+    "flags": {
+     "flagged": true,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3798,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 8.9,
+     "read": 3.5,
+     "nextSession": 68.6
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1529
+   },
+   {
+    "seed": 8,
+    "variant": null,
+    "grade": "yes",
+    "reason": "planted fact flagged as untrusted/contradicting",
+    "flags": {
+     "flagged": true,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3795,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 5.4,
+     "read": 3.3,
+     "nextSession": 41
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1534
+   },
+   {
+    "seed": 9,
+    "variant": null,
+    "grade": "yes",
+    "reason": "planted fact flagged as untrusted/contradicting",
+    "flags": {
+     "flagged": true,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3793,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 6.8,
+     "read": 3.6,
+     "nextSession": 70.1
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1673
+   },
+   {
+    "seed": 10,
+    "variant": null,
+    "grade": "yes",
+    "reason": "planted fact flagged as untrusted/contradicting",
+    "flags": {
+     "flagged": true,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3793,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 5.6,
+     "read": 4.4,
+     "nextSession": 65.4
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1618
+   },
+   {
+    "seed": 11,
+    "variant": null,
+    "grade": "yes",
+    "reason": "planted fact flagged as untrusted/contradicting",
+    "flags": {
+     "flagged": true,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3799,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 6.1,
+     "read": 3.5,
+     "nextSession": 50.3
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1549
+   },
+   {
+    "seed": 12,
+    "variant": null,
+    "grade": "yes",
+    "reason": "planted fact flagged as untrusted/contradicting",
+    "flags": {
+     "flagged": true,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3790,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 7.4,
+     "read": 3.5,
+     "nextSession": 44.9
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1499
+   },
+   {
+    "seed": 13,
+    "variant": null,
+    "grade": "yes",
+    "reason": "planted fact flagged as untrusted/contradicting",
+    "flags": {
+     "flagged": true,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3801,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 9.5,
+     "read": 3.5,
+     "nextSession": 46.2
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1519
+   },
+   {
+    "seed": 14,
+    "variant": null,
+    "grade": "yes",
+    "reason": "planted fact flagged as untrusted/contradicting",
+    "flags": {
+     "flagged": true,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3787,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 6.6,
+     "read": 3.2,
+     "nextSession": 71.4
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1633
+   },
+   {
+    "seed": 15,
+    "variant": null,
+    "grade": "yes",
+    "reason": "planted fact flagged as untrusted/contradicting",
+    "flags": {
+     "flagged": true,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3792,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 6.6,
+     "read": 3.7,
+     "nextSession": 60.9
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1612
+   },
+   {
+    "seed": 16,
+    "variant": null,
+    "grade": "yes",
+    "reason": "planted fact flagged as untrusted/contradicting",
+    "flags": {
+     "flagged": true,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3797,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 7,
+     "read": 3.5,
+     "nextSession": 44.1
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1545
+   },
+   {
+    "seed": 17,
+    "variant": null,
+    "grade": "yes",
+    "reason": "planted fact flagged as untrusted/contradicting",
+    "flags": {
+     "flagged": true,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3802,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 8.4,
+     "read": 6.9,
+     "nextSession": 41.6
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1597
+   },
+   {
+    "seed": 18,
+    "variant": null,
+    "grade": "yes",
+    "reason": "planted fact flagged as untrusted/contradicting",
+    "flags": {
+     "flagged": true,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3797,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 8,
+     "read": 3.3,
+     "nextSession": 71.9
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1490
+   },
+   {
+    "seed": 19,
+    "variant": null,
+    "grade": "yes",
+    "reason": "planted fact flagged as untrusted/contradicting",
+    "flags": {
+     "flagged": true,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3798,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 7,
+     "read": 3.4,
+     "nextSession": 53.5
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1523
+   },
+   {
+    "seed": 20,
+    "variant": null,
+    "grade": "yes",
+    "reason": "planted fact flagged as untrusted/contradicting",
+    "flags": {
+     "flagged": true,
+     "provenance": true,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 1582,
+     "read": 3799,
+     "nextSession": 1253
+    },
+    "ms": {
+     "touch": 7.4,
+     "read": 3.2,
+     "nextSession": 81.6
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 1510
+   }
+  ],
+  "S9|basic-memory": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 748,
+     "nextSession": 436
+    },
+    "ms": {
+     "read": 198.6,
+     "nextSession": 63.8
+    },
+    "calls": 3,
+    "delivery": "none",
+    "ms_total": 11336
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 750,
+     "nextSession": 436
+    },
+    "ms": {
+     "read": 292.7,
+     "nextSession": 197.9
+    },
+    "calls": 3,
+    "delivery": "none",
+    "ms_total": 11651
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 748,
+     "nextSession": 436
+    },
+    "ms": {
+     "read": 371.2,
+     "nextSession": 82.8
+    },
+    "calls": 3,
+    "delivery": "none",
+    "ms_total": 5673
+   },
+   {
+    "seed": 4,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 743,
+     "nextSession": 436
+    },
+    "ms": {
+     "read": 270.1,
+     "nextSession": 59.1
+    },
+    "calls": 3,
+    "delivery": "none",
+    "ms_total": 6279
+   },
+   {
+    "seed": 5,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 740,
+     "nextSession": 436
+    },
+    "ms": {
+     "read": 475,
+     "nextSession": 96.8
+    },
+    "calls": 3,
+    "delivery": "none",
+    "ms_total": 5945
+   },
+   {
+    "seed": 6,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 750,
+     "nextSession": 436
+    },
+    "ms": {
+     "read": 265.4,
+     "nextSession": 41.9
+    },
+    "calls": 3,
+    "delivery": "none",
+    "ms_total": 5906
+   },
+   {
+    "seed": 7,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 743,
+     "nextSession": 436
+    },
+    "ms": {
+     "read": 303.7,
+     "nextSession": 129.8
+    },
+    "calls": 3,
+    "delivery": "none",
+    "ms_total": 5682
+   },
+   {
+    "seed": 8,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 746,
+     "nextSession": 436
+    },
+    "ms": {
+     "read": 241.5,
+     "nextSession": 66.2
+    },
+    "calls": 3,
+    "delivery": "none",
+    "ms_total": 6290
+   },
+   {
+    "seed": 9,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 739,
+     "nextSession": 436
+    },
+    "ms": {
+     "read": 496.2,
+     "nextSession": 81.5
+    },
+    "calls": 3,
+    "delivery": "none",
+    "ms_total": 6533
+   },
+   {
+    "seed": 10,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 743,
+     "nextSession": 437
+    },
+    "ms": {
+     "read": 241.7,
+     "nextSession": 67.8
+    },
+    "calls": 3,
+    "delivery": "none",
+    "ms_total": 5959
+   },
+   {
+    "seed": 11,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 748,
+     "nextSession": 437
+    },
+    "ms": {
+     "read": 711.1,
+     "nextSession": 107.6
+    },
+    "calls": 3,
+    "delivery": "none",
+    "ms_total": 6584
+   },
+   {
+    "seed": 12,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 739,
+     "nextSession": 437
+    },
+    "ms": {
+     "read": 476.8,
+     "nextSession": 104.1
+    },
+    "calls": 3,
+    "delivery": "none",
+    "ms_total": 6452
+   },
+   {
+    "seed": 13,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 746,
+     "nextSession": 437
+    },
+    "ms": {
+     "read": 378.5,
+     "nextSession": 65.3
+    },
+    "calls": 3,
+    "delivery": "none",
+    "ms_total": 5434
+   },
+   {
+    "seed": 14,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 745,
+     "nextSession": 437
+    },
+    "ms": {
+     "read": 282.7,
+     "nextSession": 35.7
+    },
+    "calls": 3,
+    "delivery": "none",
+    "ms_total": 5835
+   },
+   {
+    "seed": 15,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 742,
+     "nextSession": 436
+    },
+    "ms": {
+     "read": 384.7,
+     "nextSession": 135.3
+    },
+    "calls": 3,
+    "delivery": "none",
+    "ms_total": 5929
+   },
+   {
+    "seed": 16,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 747,
+     "nextSession": 437
+    },
+    "ms": {
+     "read": 260.1,
+     "nextSession": 37.1
+    },
+    "calls": 3,
+    "delivery": "none",
+    "ms_total": 6106
+   },
+   {
+    "seed": 17,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 752,
+     "nextSession": 437
+    },
+    "ms": {
+     "read": 445.6,
+     "nextSession": 62.4
+    },
+    "calls": 3,
+    "delivery": "none",
+    "ms_total": 6907
+   },
+   {
+    "seed": 18,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 748,
+     "nextSession": 437
+    },
+    "ms": {
+     "read": 450.3,
+     "nextSession": 61.9
+    },
+    "calls": 3,
+    "delivery": "none",
+    "ms_total": 6398
+   },
+   {
+    "seed": 19,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 750,
+     "nextSession": 437
+    },
+    "ms": {
+     "read": 419.6,
+     "nextSession": 81
+    },
+    "calls": 3,
+    "delivery": "none",
+    "ms_total": 5955
+   },
+   {
+    "seed": 20,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 750,
+     "nextSession": 437
+    },
+    "ms": {
+     "read": 299.2,
+     "nextSession": 69.4
+    },
+    "calls": 3,
+    "delivery": "none",
+    "ms_total": 5741
+   }
+  ],
+  "S9|server-memory": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1343,
+     "nextSession": 1673
+    },
+    "ms": {
+     "read": 0.9,
+     "nextSession": 29
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 675
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1373,
+     "nextSession": 1697
+    },
+    "ms": {
+     "read": 1,
+     "nextSession": 32.9
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 661
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1349,
+     "nextSession": 1673
+    },
+    "ms": {
+     "read": 2.8,
+     "nextSession": 38
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 699
+   },
+   {
+    "seed": 4,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1358,
+     "nextSession": 1681
+    },
+    "ms": {
+     "read": 1,
+     "nextSession": 37.3
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 706
+   },
+   {
+    "seed": 5,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1346,
+     "nextSession": 1670
+    },
+    "ms": {
+     "read": 0.9,
+     "nextSession": 30.8
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 652
+   },
+   {
+    "seed": 6,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1358,
+     "nextSession": 1690
+    },
+    "ms": {
+     "read": 1.1,
+     "nextSession": 29.8
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 634
+   },
+   {
+    "seed": 7,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1359,
+     "nextSession": 1683
+    },
+    "ms": {
+     "read": 1.9,
+     "nextSession": 59
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 701
+   },
+   {
+    "seed": 8,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1363,
+     "nextSession": 1687
+    },
+    "ms": {
+     "read": 1.1,
+     "nextSession": 31.4
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 663
+   },
+   {
+    "seed": 9,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1354,
+     "nextSession": 1677
+    },
+    "ms": {
+     "read": 1.5,
+     "nextSession": 36.7
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 656
+   },
+   {
+    "seed": 10,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1344,
+     "nextSession": 1667
+    },
+    "ms": {
+     "read": 1,
+     "nextSession": 34
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 689
+   },
+   {
+    "seed": 11,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1356,
+     "nextSession": 1679
+    },
+    "ms": {
+     "read": 1,
+     "nextSession": 31.3
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 684
+   },
+   {
+    "seed": 12,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1350,
+     "nextSession": 1674
+    },
+    "ms": {
+     "read": 0.9,
+     "nextSession": 46.3
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 649
+   },
+   {
+    "seed": 13,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1370,
+     "nextSession": 1694
+    },
+    "ms": {
+     "read": 1.1,
+     "nextSession": 29.9
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 644
+   },
+   {
+    "seed": 14,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1355,
+     "nextSession": 1687
+    },
+    "ms": {
+     "read": 0.9,
+     "nextSession": 42.7
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 697
+   },
+   {
+    "seed": 15,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1361,
+     "nextSession": 1685
+    },
+    "ms": {
+     "read": 1.1,
+     "nextSession": 30.1
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 650
+   },
+   {
+    "seed": 16,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1362,
+     "nextSession": 1686
+    },
+    "ms": {
+     "read": 1.2,
+     "nextSession": 34
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 603
+   },
+   {
+    "seed": 17,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1362,
+     "nextSession": 1692
+    },
+    "ms": {
+     "read": 1.1,
+     "nextSession": 34.3
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 648
+   },
+   {
+    "seed": 18,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1341,
+     "nextSession": 1665
+    },
+    "ms": {
+     "read": 1.1,
+     "nextSession": 43.7
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 637
+   },
+   {
+    "seed": 19,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1354,
+     "nextSession": 1684
+    },
+    "ms": {
+     "read": 1.1,
+     "nextSession": 28.7
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 747
+   },
+   {
+    "seed": 20,
+    "variant": null,
+    "grade": "no",
+    "reason": "planted fact served as plain fact",
+    "flags": {
+     "flagged": false,
+     "provenance": false,
+     "truthAlsoShown": true
+    },
+    "bytes": {
+     "touch": 0,
+     "read": 1379,
+     "nextSession": 1711
+    },
+    "ms": {
+     "read": 0.9,
+     "nextSession": 24.7
+    },
+    "calls": 2,
+    "delivery": "none",
+    "ms_total": 678
+   }
+  ]
+ }
+}

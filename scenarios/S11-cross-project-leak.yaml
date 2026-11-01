@@ -1,0 +1,11 @@
+id: S11
+title: Cross-project leak (two repos sharing a store)
+fixture:
+  repo A: CLAUDE.md, docs/deploy.md ({oldCluster})
+  repo B: CLAUDE.md ("Use uv"), docs/deploy.md ({bCluster}) — same service name
+setup: each tool's DEFAULT shared store (one data dir / default project / default memory file)
+fault: agent in B ingests, saves its fact, then edits B's CLAUDE.md
+touchpoints (repo A): [touch, read, next_session]
+expected_signal: nothing from B appears in A; A is never told to drop its own rules
+grade: { yes: isolated, partial: B's facts visible in A but labeled with B's project, no: B's facts unlabeled, or a false retraction of A's rules }
+variant S11c (coordination): B claims {authPath} in repo B; A claims {authPath} in repo A → must not conflict or show B's ticket

@@ -1,0 +1,85 @@
+# agent-memory-bench
+
+An open, reproducible benchmark for **memory and coordination tools for coding agents**: what a tool
+shows the agent after something goes wrong (a runbook changed, a doc was retired, the store was
+tampered with, two sessions grabbed the same path, the context was compacted), and what that costs in
+context bytes and latency.
+
+Two tracks share one set of scenario specs (`scenarios/*.yaml`):
+
+| | Track A (this directory: `track-a/`) | Track B (`track-b/`) |
+|---|---|---|
+| What runs | Each tool's documented best-practice loop, driven directly (MCP over stdio, CLIs, hook scripts with recorded Claude Code payloads) | A live headless agent in the fixture repo while faults are injected |
+| Graded on | Exactly what the tool puts in front of the agent | What the agent then does (stub-binary logs, git state) |
+| Judge | Fixed string/regex rules (`track-a/lib/grade.mjs`) — never an LLM | Deterministic, from logs — never an LLM |
+| Cost | $0, no API keys, ~1 h full / < 2 min CI subset | Budget-capped |
+
+Results: **[`results/track-a/REPORT.md`](results/track-a/REPORT.md)** (tables, per-scenario findings,
+where each tool wins and loses, ranked development priorities). Raw per-seed records sit next to it.
+
+## Run it
+
+```sh
+npm run track-a:setup   # pinned arms into .arms/ (npm, uv, git); needs node>=20, uv, rg, jq, curl
+npm run track-a         # full: 14 arms × 13 scenarios, 20 seeds → results/track-a/
+npm run track-a:ci      # CI subset (7 arms, 3 seeds, S12 at 300 docs) → results/track-a-ci/
+npm run track-a:report  # re-render REPORT.md from results after editing track-a/analysis.mjs
+node track-a/run.mjs --arms kronicle-lite,native --scenarios S1,S7 --seeds 5   # any slice
+```
+
+## Scenarios
+
+| id | fault | the tool should… |
+|---|---|---|
+| S1 | stale runbook: a fact changed after the agent read it | tell the agent its belief X is now Y |
+| S2 | two sources disagree (CLAUDE.md vs a newer ADR) | show both and flag the conflict |
+| S3 | parallel collision: claim race (a), edit inside another's claimed path (b), out-of-the-box identity (c), concurrent creates (d) | give exactly one holder and tell the others who holds it |
+| S4 | compaction: a decision made mid-conversation | bring it back verbatim after compaction (a); also with an over-long MEMORY.md (b) |
+| S5 | a retired/deleted doc | stop serving it and say so |
+| S6 | the store edited behind the tool | refuse or flag the tampered text |
+| S7 | benign edits (10 IsoKron templates: typo, whitespace, quotes…) | **stay quiet** (false-positive control) |
+| S8 | a section moved / file renamed | keep the fact's identity without a removal alarm |
+| S9 | a wrong fact planted by another actor | flag it as untrusted, or at least show who wrote it |
+| S10 | a secret written into memory | refuse/redact before it is stored |
+| S11 | two repos sharing one store (default config) | keep them apart (S11c: claims) |
+| S12 | 1k–10k docs | find the needle; report latency and bytes |
+| S13 | a lease expiring during a long task | keep the claim alive while the agent works, or tell it before it acts |
+
+Every scenario is seeded (mulberry32, ported from IsoKron's eval harness). Randomized cells run 20
+seeds and report Wilson and exact Clopper–Pearson 95% intervals; deterministic cells (S13, claim-less
+tools) run fewer repetitions and say so.
+
+## Arms
+
+no-memory baseline · native Claude Code conventions (CLAUDE.md / AGENTS.md / auto memory, loader simulated
+from the published docs) · kronicle-lite 0.5.0 (npm) · kronicle-lite 0.6.0 (unreleased local build, full and
+`--core`) · basic-memory 1.0.0 · @modelcontextprotocol/server-memory 2.0.1 · cc-anchor 0.3.0 (unreleased) ·
+sea-lite 0.4.0 (unreleased) alone and with cc-anchor hooks · beads 1.3.2 · mcp_agent_mail 0.3.4 ·
+Backlog.md 1.55.3 · task-master-ai 0.43.1. Not run (with reasons): claude-mem, mem0/OpenMemory, Claude Code
+agent teams — see the report.
+
+Each adapter (`track-a/arms/*.mjs`, ≤ ~150 lines) uses the tool the way its README says, and lists its
+setup steps in `meta.setupSteps`. Corrections from tool authors are welcome: an arm that is used wrongly
+is a bug in the benchmark.
+
+## Principles
+
+- **What the tool shows, not what we hope the agent does.** Track A never asks a model anything.
+- **Push vs pull is reported, not hidden.** A pull-only tool gets credit for a correct answer on re-lookup
+  (🟡), a push of the change with old → new words gets ✅; the `delivery` column says which happened.
+- **Null results and losses are published.** Native CLAUDE.md is re-read at session start and is fresh
+  there; a solo repo may not need any tool; our own tools' false alarms and leaks are in the tables.
+- **Bytes are a first-class cost.** `tools/list` size and per-touchpoint response bytes for every arm.
+
+## Layout
+
+```
+scenarios/            shared specs (YAML) — fixture, fault, touchpoints, expected signal, grading rule
+track-a/run.mjs       runner + aggregation        track-a/lib/   rng, stats (Wilson/Clopper–Pearson), MCP client, grader, report
+track-a/arms/         one adapter per tool        track-a/scenarios/  knowledge, coordination, scale drivers
+track-a/analysis.mjs  hand-written findings spliced into REPORT.md
+results/track-a/      REPORT.md, summary.json, meta.json, S*.json (per-seed records)
+track-b/              live-agent track (separate)
+```
+
+License: Apache-2.0.

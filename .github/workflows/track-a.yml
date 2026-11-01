@@ -1,0 +1,31 @@
+# Track A CI subset: deterministic, no LLM, $0, < 2 minutes of benchmark time.
+# Arms: baseline, native (simulated), kronicle-lite 0.5.0 (npm), server-memory, cc-anchor, sea-lite,
+# sea-lite + cc-anchor. 3 seeds per cell; S12 at 300 docs; S13 compressed (lease 3 s).
+name: track-a
+on: [pull_request, workflow_dispatch]
+jobs:
+  track-a:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with: { repository: rafe-walker/sea-lite, path: _deps/sea-lite }
+      - uses: actions/checkout@v4
+        with: { repository: rafe-walker/cc-anchor, path: _deps/cc-anchor }
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: sudo apt-get install -y ripgrep jq
+      - name: Install CI arms
+        env: { AMB_SEA_LITE_DIR: _deps/sea-lite }
+        run: |
+          mkdir -p .arms && cd .arms && echo '{"name":"amb-arms","private":true}' > package.json
+          npm i --no-audit --no-fund --save-exact kronicle-lite@0.5.0 @modelcontextprotocol/server-memory@2.0.1
+          cd ../_deps/sea-lite && npm ci && npm run build
+      - name: Track A (CI subset)
+        env:
+          AMB_SEA_LITE_DIR: ${{ github.workspace }}/_deps/sea-lite
+          AMB_CC_ANCHOR_DIR: ${{ github.workspace }}/_deps/cc-anchor
+        run: npm run track-a:ci
+      - uses: actions/upload-artifact@v4
+        with: { name: track-a-ci, path: results/track-a-ci }
