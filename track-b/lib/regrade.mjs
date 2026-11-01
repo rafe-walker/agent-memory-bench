@@ -8,7 +8,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
 import { RESULTS, readJsonl } from './common.mjs';
-import { midDiagnostics, t5Diagnostics, actionText } from '../scenarios/index.mjs';
+import { midDiagnostics, t5Diagnostics, t7Diagnostics, actionText } from '../scenarios/index.mjs';
 
 const PEEK = /stub-config|stub\.mjs|\/pending\/|\.injected-|actions\.jsonl|\/kl\/|docs-src/;
 function toolCalls(key, agent) {
@@ -29,6 +29,7 @@ for (const r of rows) {
   r.peeked = per.some((cs) => cs.some((c) => PEEK.test(actionText(c))));
   if (r.scenario === 'T1' || r.scenario === 'T6') Object.assign(r, midDiagnostics(r.arm, per[0]));
   if (r.scenario === 'T5') Object.assign(r, t5Diagnostics(per[0]));
+  if (r.scenario === 'T7') { delete r.handoff_target; Object.assign(r, t7Diagnostics(per[0], r.expected, r.stale_value)); }
   r.regraded = 'diagnostics-v2';
   if (JSON.stringify(r) !== before) changed++;
 }

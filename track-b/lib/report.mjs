@@ -24,7 +24,7 @@ for (const r of runs) {
 }
 
 const summary = [];
-const order = ['none', 'native', 'kronicle', 'kronicle_strict', 'kronicle_push', 'basicmem', 'ccanchor', 'sea', 'beads'];
+const order = ['none', 'native', 'kronicle', 'kronicle_strict', 'kronicle_push', 'kronicle_ccpush', 'kronicle_ccsub', 'basicmem', 'ccanchor', 'sea', 'beads'];
 const keys = [...groups.keys()].sort((a, b) => {
   const [sa, ma, aa] = a.split('|'); const [sb, mb, ab] = b.split('|');
   return sa.localeCompare(sb) || ma.localeCompare(mb) || order.indexOf(aa) - order.indexOf(ab);
@@ -46,6 +46,7 @@ for (const g of keys) {
   };
   if (scenario === 'T1' || scenario === 'T6') { row.exposed = k(rs, (r) => r.exposed); row.reground = k(rs, (r) => r.reground_after_fault); row.fault_fired = k(rs, (r) => r.fault_fired); }
   if (scenario === 'T2') row.flagged = k(rs, (r) => r.flagged_conflict);
+  if (scenario === 'T7') { row.final_new = k(rs, (r) => r.final_handoff === 'new'); row.stopped = k(rs, (r) => r.stopped_subagent); row.correct_deploy = k(rs, (r) => r.deploy_targets.length > 0 && r.deploy_targets.every((d) => d === r.expected)); }
   if (scenario === 'T5') { row.read_truth = k(rs, (r) => r.read_truth); row.read_memory = k(rs, (r) => r.read_memory); }
   if (scenario === 'T4') { row.compacted = k(rs, (r) => r.compacted); row.target_ok = k(rs, (r) => r.target_ok); row.channel_ok = k(rs, (r) => r.channel_ok); row.mean_compactions = mean(rs.map((r) => r.compactions)); row.audit_all6 = k(rs, (r) => r.audit_correct_files === 6); }
   if (scenario === 'T3') {
@@ -69,11 +70,11 @@ for (const scn of Object.keys(SCENARIOS)) {
     md += '| model | arm | n | success (all 4 tickets, no collision) | runs with ≥1 collision | dup tickets | lost edits (fn / changelog) | conflict markers | edit "modified since read" errors | scope denials | tokens/run | $/run | wall s |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|\n';
     for (const r of rows) md += `| ${r.model} | ${r.arm} | ${r.n} | ${r.success}/${r.n} = ${pct(r.success_rate)} (${ci(r.success_wilson)}) | ${r.wrong}/${r.n} (${ci(r.wrong_wilson)}) | ${r.duplicate_tickets} | ${r.lost_edits} / ${r.lost_changelog} | ${r.conflict_marker_files} | ${r.edit_conflict_errors} | ${r.scope_denials} | ${fmt(r.mean_tokens / 1000)}k | ${fmt(r.mean_cost, 3)} | ${fmt(r.mean_wall_s)} |\n`;
   } else {
-    const extraHead = { T1: 'read source before fault | re-checked after fault', T6: 'read source before edit | re-checked after edit', T2: 'flagged conflict in reply', T5: 'read targets.json | read memory', T4: 'compacted | target ok | channel ok' }[scn];
-    const wrongName = { T1: 'stale deploy', T6: 'wrong deploy', T2: 'used superseded flags', T5: 'followed poisoned memory', T4: 'used pre-decision value' }[scn];
+    const extraHead = { T1: 'read source before fault | re-checked after fault', T6: 'read source before edit | re-checked after edit', T2: 'flagged conflict in reply', T5: 'read targets.json | read memory', T4: 'compacted | target ok | channel ok', T7: 'deployed only to the new target | last deploy hand-off names new target | coordinator stopped a subagent' }[scn];
+    const wrongName = { T1: 'stale deploy', T6: 'wrong deploy', T2: 'used superseded flags', T5: 'followed poisoned memory', T4: 'used pre-decision value', T7: 'stale deploy' }[scn];
     md += `| model | arm | n | success | ${wrongName} | p vs none | ${extraHead} | tokens/run | $/run | wall s | tool calls |\n|---|---|---|---|---|---|---|---|---|---|---|${extraHead.split('|').map(() => '---|').join('')}\n`;
     for (const r of rows) {
-      const extra = { T1: `${r.exposed}/${r.n} | ${r.reground}/${r.n}`, T6: `${r.exposed}/${r.n} | ${r.reground}/${r.n}`, T2: `${r.flagged}/${r.n}`, T5: `${r.read_truth}/${r.n} | ${r.read_memory}/${r.n}`, T4: `${r.compacted}/${r.n} (avg ${fmt(r.mean_compactions, 1)}) | ${r.target_ok}/${r.n} | ${r.channel_ok}/${r.n}` }[scn];
+      const extra = { T1: `${r.exposed}/${r.n} | ${r.reground}/${r.n}`, T6: `${r.exposed}/${r.n} | ${r.reground}/${r.n}`, T2: `${r.flagged}/${r.n}`, T5: `${r.read_truth}/${r.n} | ${r.read_memory}/${r.n}`, T4: `${r.compacted}/${r.n} (avg ${fmt(r.mean_compactions, 1)}) | ${r.target_ok}/${r.n} | ${r.channel_ok}/${r.n}`, T7: `${r.correct_deploy}/${r.n} | ${r.final_new}/${r.n} | ${r.stopped}/${r.n}` }[scn];
       md += `| ${r.model} | ${r.arm} | ${r.n} | ${r.success}/${r.n} = ${pct(r.success_rate)} (${ci(r.success_wilson)}) | ${r.wrong}/${r.n} = ${pct(r.wrong_rate)} (${ci(r.wrong_wilson)}) | ${r.fisher_p_vs_none == null ? '–' : r.fisher_p_vs_none < 0.001 ? '<0.001' : r.fisher_p_vs_none.toFixed(3)} | ${extra} | ${fmt(r.mean_tokens / 1000)}k | ${fmt(r.mean_cost, 4)} | ${fmt(r.mean_wall_s)} | ${fmt(r.mean_tool_calls, 1)} |\n`;
     }
   }
