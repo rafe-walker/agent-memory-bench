@@ -1,4 +1,4 @@
-// A7: sea-lite 0.4.0 — UNRELEASED local build (/home/claude/sea-lite dist; npm latest is 0.3.0).
+// A7: sea-lite 0.5.0 (npm, released 2026-11-01), installed by setup.sh into .arms/node_modules.
 // SEA_LITE_CLI=/path/to/dist/cli.js runs another build (e.g. a branch worktree) in every sea-lite
 // arm (and S14); SEA_LITE_LABEL names it in the tables. Use a separate --out for such runs.
 // One MCP server per agent session (`serve --actor <a> --session <s>`), as each Claude Code session
@@ -9,12 +9,13 @@ import path from 'node:path';
 import { createRequire } from 'node:module';
 import { Arm, view, mcpView } from './_base.mjs';
 import { McpClient } from '../lib/mcp.mjs';
-import { sh } from '../lib/util.mjs';
+import { ARMS_DIR, sh } from '../lib/util.mjs';
 
-export const SEA_CLI = process.env.SEA_LITE_CLI ? path.resolve(process.env.SEA_LITE_CLI) : path.join(process.env.AMB_SEA_LITE_DIR || '/home/claude/sea-lite', 'dist', 'cli.js');
-export const SEA_DIR = process.env.SEA_LITE_CLI ? path.dirname(path.dirname(SEA_CLI)) : process.env.AMB_SEA_LITE_DIR || '/home/claude/sea-lite';
-export const SEA_LABEL = process.env.SEA_LITE_LABEL || '0.4.0 (unreleased local build; npm latest 0.3.0)';
-export const SEA_TOOL = `sea-lite ${process.env.SEA_LITE_LABEL || '0.4.0'}`;
+const SEA_PKG = process.env.AMB_SEA_LITE_DIR || path.join(ARMS_DIR, 'node_modules', 'sea-lite');
+export const SEA_CLI = process.env.SEA_LITE_CLI ? path.resolve(process.env.SEA_LITE_CLI) : path.join(SEA_PKG, 'dist', 'cli.js');
+export const SEA_DIR = process.env.SEA_LITE_CLI ? path.dirname(path.dirname(SEA_CLI)) : SEA_PKG;
+export const SEA_LABEL = process.env.SEA_LITE_LABEL || '0.5.0 (npm)';
+export const SEA_TOOL = `sea-lite ${process.env.SEA_LITE_LABEL || '0.5.0'}`;
 
 export default class SeaLite extends Arm {
   static meta = {
@@ -23,8 +24,8 @@ export default class SeaLite extends Arm {
     claims: true, leases: true, editGuard: 'hook',
     s13: { lease: 5, duration: 12 }, reps: { S13: 3 },
   };
-  // `serve --core` (sea-lite ≥ next): only its tools/list is measured (the scenarios need the full set).
-  static coreArgs = process.env.SEA_LITE_CLI ? ['--core'] : null;
+  // `serve --core` (sea-lite ≥ 0.5.0): only its tools/list is measured (the scenarios need the full set).
+  static coreArgs = ['--core'];
   get env() { return { ...process.env, HOME: this.ctx.home }; }
   async setup() { this.agents = new Map(); this.sessions = new Map(); }
   sessionOf(agent) { return this.ctx.identity === 'default' ? `cc-${agent}` : `s-${agent}`; }

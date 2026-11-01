@@ -132,6 +132,9 @@ export async function writeReport(outDir, meta, summary) {
   }
 
   if (summary.planning) L.push(...planningSection(summary.planning, A), '');
+  // S15 (contention, track-a/contention.mjs) is a separate scripted run; its table is written beside the results.
+  const s15 = path.join(outDir, 'S15.md');
+  if (fs.existsSync(s15)) { const t = fs.readFileSync(s15, 'utf8').split('\n'); L.push(t[0].replace(/^###/, '###'), '', ...(A.S15 ? [A.S15, ''] : []), ...t.slice(1), ''); }
 
   // Wins / losses (generated)
   L.push('## Where each tool wins and loses (generated from scores)', '');
@@ -143,6 +146,7 @@ export async function writeReport(outDir, meta, summary) {
     L.push(`- **${a}** — best or tied-best: ${wins.join(', ') || 'none'}${sole.length ? ` (alone: ${sole.join(', ')})` : ''}; scores 0: ${loses.join(', ') || 'none'}`);
   }
   L.push('');
+  if (A.changes) L.push('## Changes since the pre-release run (regressions first)', '', A.changes, '');
   if (A.priorities) L.push('## What to develop next (kronicle-lite, sea-lite, cc-anchor)', '', A.priorities, '');
   if (A.fairness) L.push('## Method, fairness notes and limitations', '', A.fairness, '');
   L.push('## Reproduce', '', '```sh', 'npm run track-a:setup   # installs pinned arms into .arms/ (npm, uv, git)', 'npm run track-a         # full run → results/track-a/', 'npm run track-a:ci      # <2 min subset → results/track-a-ci/', '```', '', 'Raw per-seed records (grades, reasons, bytes, latencies, flags) are in `results/track-a/<scenario>.json`; aggregated cells in `summary.json`; versions and tool catalogs in `meta.json`.', '');

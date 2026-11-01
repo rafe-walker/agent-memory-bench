@@ -7,14 +7,14 @@ import { BIN, TB, sh, write, copyDir } from './common.mjs';
 export const ARMS = {
   none: { label: 'no memory', version: '-' },
   native: { label: 'native CLAUDE.md (+ auto-memory MEMORY.md)', version: 'claude-code built-in' },
-  kronicle: { label: 'kronicle-lite + orient skill', version: 'kronicle-lite 0.5.0 (npm)' },
+  kronicle: { label: 'kronicle-lite + orient skill (pull only)', version: 'kronicle-lite 0.7.0 (npm)' },
   kronicle_strict: { label: 'kronicle-lite + orient skill + stricter wake contract (pulse before every world-changing command; no hook)', version: 'kronicle-lite 0.5.0 (npm), CLAUDE.md variant' },
   kronicle_push: { label: 'kronicle-lite + orient skill + PostToolUse retraction push (bench prototype)', version: 'kronicle-lite 0.5.0 + prototypes/kronicle-push-hook.mjs' },
-  kronicle_ccpush: { label: 'kronicle-lite + orient skill + cc-anchor retraction push + pulse (shipped hooks)', version: 'kronicle-lite 0.5.0 + cc-anchor push-hook (vendor/cc-anchor-push, see VERSION)' },
+  kronicle_ccpush: { label: 'kronicle-lite + orient skill + cc-anchor retraction push + pulse (all hooks at defaults)', version: 'kronicle-lite 0.7.0 (npm) + cc-anchor 0.4.0 (tag v0.4.0, vendor/cc-anchor/VERSION)' },
   kronicle_ccsub: { label: 'kronicle-lite + orient skill + cc-anchor next-cycle (per-subagent retraction cursors)', version: 'kronicle-lite 0.5.0 + cc-anchor next-cycle (vendor/cc-anchor-next, see VERSION)' },
   basicmem: { label: 'basic-memory (competitor, memory)', version: 'basic-memory 1.0.0 (PyPI)' },
-  ccanchor: { label: 'cc-anchor anchor card', version: 'cc-anchor 0.3.0 (local)' },
-  sea: { label: 'sea-lite + cc-anchor scope guard', version: 'sea-lite 0.4.0 (local, unreleased) + cc-anchor 0.3.0' },
+  ccanchor: { label: 'cc-anchor anchor card', version: 'cc-anchor 0.4.0 (tag v0.4.0)' },
+  sea: { label: 'sea-lite + cc-anchor scope guard', version: 'sea-lite 0.5.0 (npm) + cc-anchor 0.4.0 (tag v0.4.0); no wait_seconds in 0.5.0' },
   beads: { label: 'beads (competitor, coordination)', version: '@beads/bd 1.3.2 (npm)' },
 };
 
@@ -64,7 +64,7 @@ export function kronicleSetup(ctx) {
     // The real cc-anchor plugin (all hooks, defaults), not a hand-wired prototype.
     // The MCP config is passed with --mcp-config (not .mcp.json), so cc-anchor's
     // file-based detection cannot see it: name the store and CLI explicitly.
-    ctx.pluginDirs.push(ctx.arm === 'kronicle_ccsub' ? BIN.ccAnchorNext : BIN.ccAnchorPush);
+    ctx.pluginDirs.push(ctx.arm === 'kronicle_ccsub' ? BIN.ccAnchorNext : BIN.ccAnchor);
     ctx.env.CC_ANCHOR_KRONICLE = '1';
     ctx.env.CC_ANCHOR_KRONICLE_DATA_DIR = ctx.kl;
     ctx.env.CC_ANCHOR_KRONICLE_LITE_BIN = BIN.kronicle;
@@ -131,7 +131,7 @@ export function seaSetup(ctx) {
   ctx.env.CC_ANCHOR_KRONICLE = '0';
   ctx.pluginDirs.push(BIN.ccAnchor);
   write(path.join(ctx.repo, '.claude', 'cc-anchor.json'), JSON.stringify({ scope_guard: true }, null, 2));
-  copyDir(path.join(TB, 'vendor', 'sea-lite', 'skills', 'work-queue'), path.join(ctx.repo, '.claude', 'skills', 'work-queue'));
+  copyDir(path.join(BIN.seaPkg, 'skills', 'work-queue'), path.join(ctx.repo, '.claude', 'skills', 'work-queue'));
   ctx.allowed.push('mcp__sea-lite');
   // one MCP server per agent so each has its own actor + session
   ctx.perAgentMcp = (agentId) => ({

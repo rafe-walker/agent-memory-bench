@@ -19,8 +19,10 @@
 // (or both agents stopped), tickets done per agent, tickets left undone, tool calls and model turns
 // (a poll retry is 2 turns: the sleep and the retry), and the release→next-claim handoff gap.
 //
-// SEA_LITE_CLI selects the sea-lite build (needs wait_seconds for the wait mode).
-//   node track-a/contention.mjs [--reps 3] [--out results/track-a-sl-wait]
+// SEA_LITE_CLI selects the sea-lite build. The wait mode needs `sea_next {wait_seconds}`; when the build's
+// tools/list does not advertise it (sea-lite 0.5.0, the released version), only the poll mode runs and the
+// report says so.
+//   node track-a/contention.mjs [--reps 3] [--out results/track-a]
 import fs from 'node:fs';
 import path from 'node:path';
 import { McpClient } from './lib/mcp.mjs';
@@ -29,7 +31,7 @@ import { SEA_CLI, SEA_TOOL } from './arms/sea-lite.mjs';
 
 const args = Object.fromEntries(process.argv.slice(2).reduce((acc, a, i, arr) => { if (a.startsWith('--')) acc.push([a.slice(2), arr[i + 1] && !arr[i + 1].startsWith('--') ? arr[i + 1] : true]); return acc; }, []));
 const REPS = Number(args.reps ?? 3);
-const OUT = path.resolve(args.out ?? 'results/track-a-sl-wait');
+const OUT = path.resolve(args.out ?? 'results/track-a');
 const W = 2.0, T = 0.25, P = 1.0, RETRIES = 5;
 const TICKETS = [
   { id: 'T-1', file: 'src/math.js', title: 'T-1: add sum(a, b) to src/math.js' },
@@ -103,8 +105,16 @@ async function run(mode, rep) {
 }
 
 const mean = (xs) => xs.reduce((a, b) => a + b, 0) / xs.length;
+// Does this build have sea_next {wait_seconds}? (A server that ignores an unknown argument would make the
+// wait mode silently behave like one poll without the sleep, so detect it from the schema.)
+const probeHome = tmpdir('S15-probe'); gitInit(path.join(probeHome, 'repo'));
+const probe = await new McpClient(process.execPath, [SEA_CLI, 'serve'], { env: { ...process.env, HOME: probeHome }, cwd: path.join(probeHome, 'repo') }).start();
+const probeR = await probe.rpc('tools/list', {});
+const HAS_WAIT = JSON.stringify(probeR.result?.tools?.find((t) => t.name === 'sea_next') ?? {}).includes('wait_seconds');
+await probe.close(); rmrf(probeHome);
+const MODES = HAS_WAIT ? ['poll', 'wait'] : ['poll'];
 const rows = [];
-for (const mode of ['poll', 'wait']) for (let rep = 1; rep <= REPS; rep++) { const r = await run(mode, rep); rows.push(r); console.error(`[S15] ${mode} #${rep}: wall ${r.wall_s}s last-release ${r.last_release_s}s left ${r.left} A ${r.done.A.join(',')} B ${r.done.B.join(',')} gave_up A ${r.gave_up.A} B ${r.gave_up.B} calls ${r.calls} turns ${r.turns} gaps ${r.gaps_s.join('/')}`); }
+for (const mode of MODES) for (let rep = 1; rep <= REPS; rep++) { const r = await run(mode, rep); rows.push(r); console.error(`[S15] ${mode} #${rep}: wall ${r.wall_s}s last-release ${r.last_release_s}s left ${r.left} A ${r.done.A.join(',')} B ${r.done.B.join(',')} gave_up A ${r.gave_up.A} B ${r.gave_up.B} calls ${r.calls} turns ${r.turns} gaps ${r.gaps_s.join('/')}`); }
 const agg = (mode) => {
   const rs = rows.filter((r) => r.mode === mode);
   const gaps = rs.flatMap((r) => r.gaps_s);
@@ -115,7 +125,7 @@ const agg = (mode) => {
     gap_mean_s: gaps.length ? +mean(gaps).toFixed(3) : null, gap_max_s: gaps.length ? +Math.max(...gaps).toFixed(3) : null,
   };
 };
-const summary = { scenario: 'S15', title: 'Contention: wait_seconds vs sleep-and-retry (Track B T3 pattern)', tool: SEA_TOOL, cli: path.relative(process.cwd(), SEA_CLI), params: { W, T, P, RETRIES, scope: SCOPE, tickets: TICKETS.map((t) => t.id), reps: REPS }, poll: agg('poll'), wait: agg('wait'), runs: rows };
+const summary = { scenario: 'S15', title: 'Contention: wait_seconds vs sleep-and-retry (Track B T3 pattern)', tool: SEA_TOOL, cli: path.relative(process.cwd(), SEA_CLI), has_wait_seconds: HAS_WAIT, params: { W, T, P, RETRIES, scope: SCOPE, tickets: TICKETS.map((t) => t.id), reps: REPS }, poll: agg('poll'), wait: HAS_WAIT ? agg('wait') : null, runs: rows };
 fs.mkdirSync(OUT, { recursive: true });
 fs.writeFileSync(path.join(OUT, 'S15.json'), JSON.stringify(summary, null, 1));
 const md = [
@@ -123,7 +133,8 @@ const md = [
   `Two scripted agents, 4 tickets whose scopes all overlap (each names its file + CHANGELOG.md), ${REPS} repetitions per mode. Time compressed: work ${W} s per ticket, ${T} s per model turn, retry sleep ${P} s (T3's \`sleep 20\`), ${RETRIES} retries; wait mode passes \`wait_seconds: ${RETRIES * P}\` (the same patience). Deterministic scripts; wall times are real.`, '',
   '| mode | wall s (all done or stopped) | last release s | tickets left | done A / B | runs where an agent gave up | tool calls | model turns | release→next claim gap (mean / max s) |',
   '|---|---|---|---|---|---|---|---|---|',
-  ...['poll', 'wait'].map((m) => { const a = summary[m]; return `| ${m === 'poll' ? 'sleep + retry (T3 instruction)' : '`wait_seconds`'} | ${a.wall_s} | ${a.last_release_s} | ${a.left.join('/')} | ${a.done_A} / ${a.done_B} | ${a.gave_up}/${a.n} | ${a.calls} | ${a.turns} | ${a.gap_mean_s} / ${a.gap_max_s} |`; }),
+  ...MODES.map((m) => { const a = summary[m]; return `| ${m === 'poll' ? 'sleep + retry (T3 instruction)' : '`wait_seconds`'} | ${a.wall_s} | ${a.last_release_s} | ${a.left.join('/')} | ${a.done_A} / ${a.done_B} | ${a.gave_up}/${a.n} | ${a.calls} | ${a.turns} | ${a.gap_mean_s} / ${a.gap_max_s} |`; }),
+  ...(HAS_WAIT ? [] : ['| `wait_seconds` | not available in this build (no `wait_seconds` on `sea_next`) | | | | | | | |']),
   '',
 ];
 fs.writeFileSync(path.join(OUT, 'S15.md'), md.join('\n'));

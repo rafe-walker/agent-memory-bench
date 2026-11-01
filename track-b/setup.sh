@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
 # Install every Track B arm locally (nothing global). Idempotent.
-#   kronicle-lite 0.5.0, @beads/bd 1.3.2      -> npm (package.json)
-#   basic-memory 1.0.0 + its embedding model  -> .venv + vendor/fastembed_cache
-#   sea-lite 0.4.0 (unreleased), cc-anchor    -> snapshots in vendor/ from local checkouts
-# Override checkouts with SEA_LITE_SRC / CC_ANCHOR_SRC.
+#   kronicle-lite 0.7.0, sea-lite 0.5.0, @beads/bd 1.3.2  -> npm (package.json; released versions)
+#   basic-memory 1.0.0 + its embedding model              -> .venv + vendor/fastembed_cache
+#   cc-anchor v0.4.0                                      -> vendor/cc-anchor, `git archive` of the release tag
+# Override the cc-anchor clone / ref with CC_ANCHOR_SRC / CC_ANCHOR_REF. The pre-release run
+# (kronicle-lite 0.5.0, sea-lite 0.4.0 + cc-anchor 0.3.0/push-hook/next-cycle local snapshots) used
+# this file at commit cb3ba5b; its results are in results/prerelease/track-b*.
 set -euo pipefail
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"; cd "$HERE"
-SEA_LITE_SRC="${SEA_LITE_SRC:-/home/claude/sea-lite}"
 CC_ANCHOR_SRC="${CC_ANCHOR_SRC:-/home/claude/cc-anchor}"
+CC_ANCHOR_REF="${CC_ANCHOR_REF:-v0.4.0}"
 
 npm install --no-audit --no-fund
 
@@ -25,35 +27,17 @@ if [[ ! -s "$M/snapshots/$SHA/model_optimized.onnx" ]]; then
   done
 fi
 
-# Frozen snapshots of the local builds so a concurrent rebuild can't change an arm mid-run.
-if [[ ! -f vendor/sea-lite/dist/cli.js ]]; then
-  mkdir -p vendor/sea-lite
-  cp -a "$SEA_LITE_SRC"/{dist,package.json,skills,hooks} vendor/sea-lite/
-  ln -sfn "$SEA_LITE_SRC/node_modules" vendor/sea-lite/node_modules
-fi
-# cc-anchor push-hook branch (arm kronicle_ccpush): a frozen `git archive` of one commit.
-CC_ANCHOR_PUSH_SRC="${CC_ANCHOR_PUSH_SRC:-/home/claude/cc-anchor-push}"
-CC_ANCHOR_PUSH_REF="${CC_ANCHOR_PUSH_REF:-push-hook}"
-if [[ ! -f vendor/cc-anchor-push/scripts/pulse.sh && -d "$CC_ANCHOR_PUSH_SRC" ]]; then
-  mkdir -p vendor/cc-anchor-push
-  git -C "$CC_ANCHOR_PUSH_SRC" archive "$CC_ANCHOR_PUSH_REF" | tar -x -C vendor/cc-anchor-push
-  git -C "$CC_ANCHOR_PUSH_SRC" rev-parse "$CC_ANCHOR_PUSH_REF" > vendor/cc-anchor-push/VERSION
-fi
-# cc-anchor next-cycle branch (arm kronicle_ccsub, scenario T7).
-CC_ANCHOR_NEXT_REF="${CC_ANCHOR_NEXT_REF:-next-cycle}"
-if [[ ! -f vendor/cc-anchor-next/scripts/subagent-start.sh && -d "$CC_ANCHOR_PUSH_SRC" ]]; then
-  mkdir -p vendor/cc-anchor-next
-  git -C "$CC_ANCHOR_PUSH_SRC" archive "$CC_ANCHOR_NEXT_REF" | tar -x -C vendor/cc-anchor-next
-  git -C "$CC_ANCHOR_PUSH_SRC" rev-parse "$CC_ANCHOR_NEXT_REF" > vendor/cc-anchor-next/VERSION
-fi
+# cc-anchor is a Claude Code plugin (no npm package): a frozen `git archive` of the release tag.
 if [[ ! -f vendor/cc-anchor/scripts/anchor.mjs ]]; then
+  git -C "$CC_ANCHOR_SRC" fetch -q --tags origin 2>/dev/null || true
   mkdir -p vendor/cc-anchor
-  (cd "$CC_ANCHOR_SRC" && tar --exclude=.git -cf - .) | (cd vendor/cc-anchor && tar -xf -)
+  git -C "$CC_ANCHOR_SRC" archive "$CC_ANCHOR_REF" | tar -x -C vendor/cc-anchor
+  echo "$CC_ANCHOR_REF $(git -C "$CC_ANCHOR_SRC" rev-parse "$CC_ANCHOR_REF^{commit}")" > vendor/cc-anchor/VERSION
 fi
 
 echo "versions:"
 node node_modules/kronicle-lite/dist/cli.js --help | head -1
-node vendor/sea-lite/dist/cli.js --help | head -1
-node -e "console.log('cc-anchor', require('./vendor/cc-anchor/package.json').version)"
+node node_modules/sea-lite/dist/cli.js --help | head -1
+node -e "console.log('cc-anchor', require('./vendor/cc-anchor/package.json').version)"; cat vendor/cc-anchor/VERSION
 node_modules/.bin/bd --version
 .venv/bin/python -I -c "import importlib.metadata as m; print('basic-memory', m.version('basic-memory'))"

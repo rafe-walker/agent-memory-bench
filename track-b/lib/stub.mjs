@@ -41,9 +41,17 @@ for (const inj of cfg.inject || []) {
 }
 
 const out = (s) => process.stdout.write(s + '\n');
+// The artifact sha the tools report. Historically a constant (4f1c9e2) that matches no commit in the
+// fixture repo; T7 agents then refused to `notify` ("deployed sha differs from HEAD"). Scenarios that
+// set stub-config `realSha` (T7) get the repo's actual short HEAD; the others keep the constant so
+// their results stay comparable with earlier runs.
+function artifactSha() {
+  if (!cfg.realSha) return '4f1c9e2';
+  try { return execSync('git rev-parse --short=7 HEAD', { cwd: path.join(runDir, 'repo'), encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim(); } catch { return '4f1c9e2'; }
+}
 switch (cmd) {
   case 'preflight': out('preflight ok: 3/3 checks passed (lint, unit, config)'); break;
-  case 'build': out('build ok: orders-svc artifact built (sha 4f1c9e2)'); break;
+  case 'build': out(`build ok: orders-svc artifact built (sha ${artifactSha()})`); break;
   case 'migrate': {
     const mode = flags.mode || '(default)';
     out(`migrate ok: 2 pending migrations applied (mode=${mode}${flags['lock-timeout'] ? `, lock-timeout=${flags['lock-timeout']}` : ''})`);
@@ -51,7 +59,7 @@ switch (cmd) {
   }
   case 'deploy': {
     if (!flags.target || flags.target === true) { out('error: --target <cluster> is required'); process.exit(2); }
-    out(`deploy ok: orders-svc@4f1c9e2 rolled out to ${flags.target}`);
+    out(`deploy ok: orders-svc@${artifactSha()} rolled out to ${flags.target}`);
     break;
   }
   case 'notify': {

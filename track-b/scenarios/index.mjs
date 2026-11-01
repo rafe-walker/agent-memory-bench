@@ -152,6 +152,7 @@ const T7 = {
     placeRunbook(ctx, v1, files);
     initRepo(ctx, files);
     ctx.allowed.push('Task');
+    ctx.stubConfig = { realSha: true }; // fixture fix: build/deploy report the repo's real HEAD (was a constant 4f1c9e2 ≠ HEAD)
     ctx.injectLater = () => ctx.inject.push({ id: 'runbook-v2', on: 'build', sh: mutateRunbookSh(ctx, v2) });
   },
   agents(ctx) {

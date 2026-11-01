@@ -1,15 +1,15 @@
-// cc-anchor 0.3.0 (unreleased local checkout) as a compaction arm: the decision is recorded on the
+// cc-anchor 0.4.0 (release tag v0.4.0, git archive in .arms/cc-anchor) as a compaction arm: the decision is recorded on the
 // anchor card with the documented command (anchor.mjs add-invariant), PreCompact renders the card,
 // SessionStart(compact) injects it. Hook scripts run with recorded Claude Code payload shapes.
 import path from 'node:path';
 import fs from 'node:fs';
 import { Arm, view } from './_base.mjs';
 import { sh } from '../lib/util.mjs';
-import { CC_ANCHOR_DIR } from './sea-lite+cc-anchor.mjs';
+import { CC_ANCHOR_DIR, CC_ANCHOR_LABEL } from './sea-lite+cc-anchor.mjs';
 
 export default class CcAnchor extends Arm {
   static meta = {
-    id: 'cc-anchor', label: 'cc-anchor (card only)', version: '0.3.0 (unreleased local checkout)', kind: ['compaction'],
+    id: 'cc-anchor', label: 'cc-anchor (card only)', version: `${CC_ANCHOR_LABEL} (release tag)`, kind: ['compaction'],
     setupSteps: ['claude plugin marketplace add rafe-walker/cc-anchor', 'claude plugin install cc-anchor', '/cc-anchor:anchor set goal "…" + add-invariant "…" as decisions are made'],
     notes: 'Card content is written by the agent/user with the anchor command; hooks only persist and re-inject it.',
   };

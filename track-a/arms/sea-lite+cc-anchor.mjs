@@ -1,4 +1,4 @@
-// sea-lite 0.4.0 (local) + cc-anchor 0.3.0 (local, unreleased) lifecycle pack: the edit guard is
+// sea-lite 0.5.0 (npm) + cc-anchor 0.4.0 (release tag, git archive in .arms/cc-anchor) lifecycle pack: the edit guard is
 // cc-anchor's PreToolUse scope guard (scope_guard=on) and leases are kept alive by cc-anchor's
 // PostToolUse heartbeat. Hook scripts are driven with recorded Claude Code payload shapes.
 // Time is compressed 1:60 for S13: lease 5 s (default 300 s), heartbeat interval 1 s (default 60 s).
@@ -6,13 +6,15 @@ import path from 'node:path';
 import fs from 'node:fs';
 import SeaLite, { SEA_CLI, SEA_LABEL } from './sea-lite.mjs';
 import { view } from './_base.mjs';
-import { sh, shAsync, sleep } from '../lib/util.mjs';
+import { ARMS_DIR, sh, shAsync, sleep } from '../lib/util.mjs';
 
-export const CC_ANCHOR_DIR = process.env.AMB_CC_ANCHOR_DIR || '/home/claude/cc-anchor';
+export const CC_ANCHOR_DIR = process.env.AMB_CC_ANCHOR_DIR || path.join(ARMS_DIR, 'cc-anchor');
+let ccaSnap = 'cc-anchor (unknown snapshot)'; try { ccaSnap = fs.readFileSync(path.join(CC_ANCHOR_DIR, 'SNAPSHOT'), 'utf8').trim(); } catch {}
+export const CC_ANCHOR_LABEL = ccaSnap.replace(/^cc-anchor /, '');
 
 export default class SeaLiteCcAnchor extends SeaLite {
   static meta = {
-    ...SeaLite.meta, id: 'sea-lite+cc-anchor', label: 'sea-lite + cc-anchor hooks', version: `sea-lite ${SEA_LABEL} + cc-anchor 0.3.0 (unreleased local build)`,
+    ...SeaLite.meta, id: 'sea-lite+cc-anchor', label: 'sea-lite + cc-anchor hooks', version: `sea-lite ${SEA_LABEL} + cc-anchor ${CC_ANCHOR_LABEL} (release tag)`,
     setupSteps: [...SeaLite.meta.setupSteps.slice(0, 3), 'claude plugin install cc-anchor', 'cc-anchor config set scope_guard true (heartbeat is auto once sea-lite is configured)'],
     editGuard: 'hook', heartbeat: 'PostToolUse',
     s13: { lease: 5, duration: 12, heartbeat: 1 }, reps: { S13: 3 },

@@ -1,4 +1,4 @@
-// A6: kronicle-lite 0.5.0 (npm), driven as its README documents:
+// A6: kronicle-lite 0.7.0 (npm, released 2026-11-01), driven as its README documents:
 //  - files are chained with the one-shot of `kronicle-lite watch` (`put --from-instructions PATHS`),
 //    which inside Claude Code is the FileChanged hook (`put --from-instructions --stdin-hook`);
 //  - the agent orients with get_system_state at session start and before each material step
@@ -16,8 +16,8 @@ const CLI = path.join(PKG, 'dist', 'cli.js');
 
 export default class KronicleLite extends Arm {
   static meta = {
-    id: 'kronicle-lite', label: 'kronicle-lite', version: '0.5.0 (npm)', kind: ['knowledge', 'compaction'],
-    setupSteps: ['npm i -g kronicle-lite@0.5.0 (or npx)', 'claude mcp add kronicle-lite -- kronicle-lite serve', 'install the orient skill (plugin)', 'SessionStart+FileChanged hook: kronicle-lite put --from-instructions --stdin-hook (or run `kronicle-lite watch docs/`)'],
+    id: 'kronicle-lite', label: 'kronicle-lite', version: '0.7.0 (npm)', kind: ['knowledge', 'compaction'],
+    setupSteps: ['npm i -g kronicle-lite@0.7.0 (or npx)', 'claude mcp add kronicle-lite -- kronicle-lite serve', 'install the orient skill (plugin)', 'SessionStart+FileChanged hook: kronicle-lite put --from-instructions --stdin-hook (or run `kronicle-lite watch docs/`)'],
     notes: 'MCP stdio. Data dir = default ~/.kronicle-lite under an isolated HOME.',
   };
   static cli = CLI;

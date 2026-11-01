@@ -15,6 +15,8 @@ import { SCENARIOS } from '../scenarios/index.mjs';
 const args = Object.fromEntries(process.argv.slice(2).map((a) => { const [k, ...v] = a.replace(/^--/, '').split('='); return [k, v.length ? v.join('=') : true]; }));
 const PLAN = JSON.parse(fs.readFileSync(args.plan || path.join(path.dirname(new URL(import.meta.url).pathname), '..', 'plans', 'main.json'), 'utf8'));
 const CAP = Number(args.cap || process.env.TRACKB_CAP || 240);
+// Dollar cap over everything in this results dir (metered total_cost_usd), checked before each run.
+const USD_CAP = Number(args['usd-cap'] || process.env.TRACKB_USD_CAP || Infinity);
 const RUN_ROOT = args['run-root'] || process.env.TRACKB_RUN_ROOT || path.join(os.tmpdir(), 'amb-track-b');
 const CONC = Number(args.concurrency || PLAN.concurrency || 4);
 const DRY = !!args['dry-run'];
@@ -25,6 +27,7 @@ fs.mkdirSync(TRANSCRIPTS, { recursive: true });
 
 let invocations = readJsonl(LEDGER).length;
 const done = new Map(readJsonl(RUNS).map((r) => [r.key, r]));
+let spent = readJsonl(RUNS).reduce((a, r) => a + (r.usage?.cost_usd || 0), 0);
 const log = (...a) => console.log(new Date().toISOString().slice(11, 19), ...a);
 
 const BASE_TOOLS = ['Bash', 'Read', 'Edit', 'Write', 'Glob', 'Grep', 'Skill', 'TodoWrite'];
@@ -46,13 +49,19 @@ function cleanEnv(ctx, agentId) {
 }
 
 function parseStream(text) {
-  const out = { toolCalls: [], toolErrors: [], compactions: 0, result: null, resultText: '', hookEvents: 0, initTools: null, mcpServers: null, skills: null };
+  const out = { toolCalls: [], toolErrors: [], compactions: 0, result: null, resultText: '', hookEvents: 0, initTools: null, mcpServers: null, skills: null, pushes: 0, pulseDenies: 0 };
   for (const line of text.split('\n')) {
     if (!line.trim()) continue;
     let m; try { m = JSON.parse(line); } catch { continue; }
     if (m.type === 'system' && m.subtype === 'init') { out.initTools = m.tools; out.mcpServers = m.mcp_servers; out.skills = m.skills; }
     if (m.type === 'system' && m.subtype === 'compact_boundary') out.compactions++;
     if (m.type === 'system' && /^hook_/.test(m.subtype || '')) out.hookEvents++;
+    // cc-anchor retraction push (PostToolUse additionalContext) and pulse (PreToolUse deny before a world-changing command)
+    if (m.type === 'system' && m.subtype === 'hook_response') {
+      const o = String(m.output || '');
+      if (m.hook_event === 'PostToolUse' && /retraction\(s\) since your last check/.test(o)) out.pushes++;
+      if (m.hook_event === 'PreToolUse' && /"permissionDecision"\s*:\s*"deny"/.test(o) && /kronicle|retraction|changed/i.test(o)) out.pulseDenies++;
+    }
     if (m.type === 'assistant' && Array.isArray(m.message?.content)) {
       for (const c of m.message.content) if (c.type === 'tool_use') out.toolCalls.push({ name: c.name, input: c.input });
     }
@@ -136,7 +145,7 @@ async function runOne(item) {
   for (const f of ctx.postSetup) f();
   if (ctx.injectLater) ctx.injectLater();
   ctx.pluginDirs = [...new Set(ctx.pluginDirs)];
-  write(path.join(runDir, 'stub-config.json'), JSON.stringify({ inject: ctx.inject, operator: ctx.operator }, null, 2));
+  write(path.join(runDir, 'stub-config.json'), JSON.stringify({ inject: ctx.inject, operator: ctx.operator, ...(ctx.stubConfig ?? {}) }, null, 2));
   const setupMs = Date.now() - t0;
 
   const agents = scn.agents(ctx);
@@ -150,7 +159,7 @@ async function runOne(item) {
     agents: runs.map((r) => ({
       agent: r.agent, exit: r.code, subtype: r.result?.subtype ?? null, is_error: r.result?.is_error ?? null,
       model_usage: r.result?.modelUsage ? Object.keys(r.result.modelUsage) : null, tool_calls: r.toolCalls.length,
-      tool_errors: r.toolErrors.length, compactions: r.compactions, hook_events: r.hookEvents,
+      tool_errors: r.toolErrors.length, compactions: r.compactions, hook_events: r.hookEvents, pushes: r.pushes, pulse_denies: r.pulseDenies,
       mcp_servers: r.mcpServers, result_text: (r.resultText || '').slice(0, 600), stderr_tail: r.code ? r.stderr_tail : undefined,
       tool_seq: r.toolCalls.map((c) => c.name === 'Bash' ? `Bash:${String(c.input?.command || '').slice(0, 80)}` : c.name.startsWith('mcp__') ? c.name : `${c.name}:${String(c.input?.file_path || c.input?.skill || c.input?.pattern || '').split('/').slice(-2).join('/')}`),
     })),
@@ -161,7 +170,8 @@ async function runOne(item) {
   };
   appendJsonl(RUNS, rec);
   done.set(key, rec);
-  log(`${key} success=${rec.success} wrong=${rec.wrong_action} $${usage.cost_usd.toFixed(4)} ${Math.round(rec.wall_ms / 1000)}s [${invocations}/${CAP}]`);
+  spent += usage.cost_usd || 0;
+  log(`${key} success=${rec.success} wrong=${rec.wrong_action} $${usage.cost_usd.toFixed(4)} ${Math.round(rec.wall_ms / 1000)}s [${invocations}/${CAP}] spent $${spent.toFixed(2)}`);
   return rec;
 }
 
@@ -198,6 +208,7 @@ async function main() {
       if (args['setup-only']) { try { await runOne(item); } catch (e) { log(`SETUP ERROR ${key}: ${e.stack || e}`); } continue; }
       const need = SCENARIOS[item.scenario].parallel ? 2 : 1;
       if (invocations + need > CAP) { log(`budget cap reached (${invocations}/${CAP}); stopping`); stop = true; break; }
+      if (spent >= USD_CAP) { log(`dollar cap reached ($${spent.toFixed(2)} >= $${USD_CAP}); stopping`); stop = true; break; }
       try { await runOne(item); } catch (e) { log(`ERROR ${key}: ${e.stack || e}`); appendJsonl(path.join(RESULTS, 'errors.jsonl'), { key, ts: new Date().toISOString(), error: String(e.stack || e).slice(0, 2000) }); }
     }
   }

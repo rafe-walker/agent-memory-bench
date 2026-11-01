@@ -14,14 +14,15 @@ Two tracks share one set of scenario specs (`scenarios/*.yaml`):
 | Judge | Fixed string/regex rules (`track-a/lib/grade.mjs`) — never an LLM | Deterministic, from logs — never an LLM |
 | Cost | $0, no API keys, ~1 h full / < 2 min CI subset | Budget-capped |
 
-Results: **[`results/track-a/REPORT.md`](results/track-a/REPORT.md)** (tables, per-scenario findings,
+Results: **[`results/track-a/REPORT.md`](results/track-a/REPORT.md)** and **[`results/track-b/REPORT.md`](results/track-b/REPORT.md)** (tables, per-scenario findings,
 where each tool wins and loses, ranked development priorities). Raw per-seed records sit next to it.
 
 ## Run it
 
 ```sh
 npm run track-a:setup   # pinned arms into .arms/ (npm, uv, git); needs node>=20, uv, rg, jq, curl
-npm run track-a         # full: 14 arms × 13 scenarios, 20 seeds → results/track-a/
+npm run track-a         # full: 13 arms × 14 scenarios, 20 seeds → results/track-a/
+node track-a/contention.mjs --reps 3   # S15 → results/track-a/S15.{json,md} (then npm run track-a:report)
 npm run track-a:ci      # CI subset (7 arms, 3 seeds, S12 at 300 docs) → results/track-a-ci/
 npm run track-a:report  # re-render REPORT.md from results after editing track-a/analysis.mjs
 node track-a/run.mjs --arms kronicle-lite,native --scenarios S1,S7 --seeds 5   # any slice
@@ -45,6 +46,7 @@ node track-a/run.mjs --arms kronicle-lite,native --scenarios S1,S7 --seeds 5   #
 | S12 | 1k–10k docs | find the needle; report latency and bytes |
 | S13 | a lease expiring during a long task | keep the claim alive while the agent works, or tell it before it acts |
 | S14 | planning cost: author 1 epic + 20 tickets with 39 links | few calls/tokens, exact graph, no duplicates on re-run, nothing left behind by an invalid plan (measured, not graded) |
+| S15 | contention: two scripted agents, 4 tickets whose scopes all overlap (Track B T3's pattern), time-compressed (`track-a/contention.mjs`) | finish the backlog with few calls and no idle agent (measured, not graded) |
 
 Every scenario is seeded (mulberry32, ported from IsoKron's eval harness). Randomized cells run 20
 seeds and report Wilson and exact Clopper–Pearson 95% intervals; deterministic cells (S13, claim-less
@@ -53,11 +55,12 @@ tools) run fewer repetitions and say so.
 ## Arms
 
 no-memory baseline · native Claude Code conventions (CLAUDE.md / AGENTS.md / auto memory, loader simulated
-from the published docs) · kronicle-lite 0.5.0 (npm) · kronicle-lite 0.6.0 (unreleased local build, full and
-`--core`) · basic-memory 1.0.0 · @modelcontextprotocol/server-memory 2.0.1 · cc-anchor 0.3.0 (unreleased) ·
-sea-lite 0.4.0 (unreleased) alone and with cc-anchor hooks · beads 1.3.2 · mcp_agent_mail 0.3.4 ·
-Backlog.md 1.55.3 · task-master-ai 0.43.1. Not run (with reasons): claude-mem, mem0/OpenMemory, Claude Code
-agent teams — see the report.
+from the published docs) · kronicle-lite 0.7.0 (npm; full and `--core`) · basic-memory 1.0.0 ·
+@modelcontextprotocol/server-memory 2.0.1 · cc-anchor 0.4.0 (git tag `v0.4.0`) · sea-lite 0.5.0 (npm) alone and
+with cc-anchor hooks · beads 1.3.2 · mcp_agent_mail 0.3.4 · Backlog.md 1.55.3 · task-master-ai 0.43.1. Not run
+(with reasons): claude-mem, mem0/OpenMemory, Claude Code agent teams — see the report. The pre-release run
+(kronicle-lite 0.5.0 + 0.6.0, sea-lite 0.4.0, cc-anchor 0.3.0) is archived in `results/prerelease/`, and
+**[`results/RELEASE-RERUN.md`](results/RELEASE-RERUN.md)** compares it with the released versions per scenario.
 
 Each adapter (`track-a/arms/*.mjs`, ≤ ~150 lines) uses the tool the way its README says, and lists its
 setup steps in `meta.setupSteps`. Corrections from tool authors are welcome: an arm that is used wrongly

@@ -10,7 +10,8 @@ export const RESULTS = process.env.TRACKB_RESULTS || path.join(ROOT, 'results', 
 
 export const BIN = {
   kronicle: path.join(TB, 'node_modules', 'kronicle-lite', 'dist', 'cli.js'),
-  sea: path.join(TB, 'vendor', 'sea-lite', 'dist', 'cli.js'),
+  sea: path.join(TB, 'node_modules', 'sea-lite', 'dist', 'cli.js'),
+  seaPkg: path.join(TB, 'node_modules', 'sea-lite'),
   ccAnchor: path.join(TB, 'vendor', 'cc-anchor'),
   ccAnchorPush: path.join(TB, 'vendor', 'cc-anchor-push'),
   ccAnchorNext: path.join(TB, 'vendor', 'cc-anchor-next'),

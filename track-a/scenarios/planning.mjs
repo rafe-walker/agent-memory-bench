@@ -194,7 +194,7 @@ export const PATHS = [
     async dryRun(s, m) { const r = await m.mcp(s.client, 'sea_apply', seaApplyArgs(true, { dry_run: true, idempotency_key: undefined })); return { caught: r.isError, note: r.text.slice(0, 160) }; },
   },
   {
-    // Needs a sea-lite build with templates (SEA_LITE_CLI=<next>/dist/cli.js); against 0.4.0 the call is rejected.
+    // Needs sea-lite >= 0.5.0 (templates); against 0.4.0 the call is rejected.
     id: 'sea-lite/apply-template', arm: 'sea-lite', tool: SEA_TOOL, path: '`sea_apply` with `templates` (one MCP call, 20 steps written once)', surface: 'MCP', batch: true, store: seaStore,
     async run(s, m, { inject }) { const r = await m.mcp(s.client, 'sea_apply', seaTemplateArgs(inject)); if (!inject && r.isError) throw new Error(`sea_apply templates: ${r.text.slice(0, 200)}`); return { rejected: r.isError, note: r.isError ? r.text.slice(0, 160) : null }; },
     async dryRun(s, m) { const r = await m.mcp(s.client, 'sea_apply', seaTemplateArgs(true, { dry_run: true, idempotency_key: undefined })); return { caught: r.isError, note: r.text.slice(0, 160) }; },
