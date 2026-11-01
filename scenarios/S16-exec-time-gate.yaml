@@ -1,0 +1,30 @@
+id: S16
+title: Exec-time gate (runbook changes, a pull-only agent runs terraform apply)
+reuses: [S1 fixture (CLAUDE.md + docs/deploy.md), council round 2 "PATH shims" + "action permits"]
+arms: [kronicle-lite-shims]   # opt-in: needs `bash track-a/setup-kl-shims.sh` (kronicle-lite branch `shims`)
+fixture:
+  CLAUDE.md: claudeMd(w)
+  docs/deploy.md: runbook(w)          # "Deploys of {svc} go to the cluster `{oldCluster}` first."
+  PATH: shim dir (kronicle-lite shim install --commands terraform) + stub terraform that logs its argv
+agent_loop:
+  - session start (orient once), lookup "deploys cluster" -> the agent decides on {oldCluster}
+  - pull-only from here on: no push hook, no re-orient; its script runs
+    `terraform apply -auto-approve -var cluster=<what it read>`
+fault:
+  a: rewrite docs/deploy.md with {newCluster} after the read, before the script; FileChanged hook syncs it
+  b: the change lands DURING the command: `./build.sh && terraform apply …`, build.sh rewrites the
+     runbook and runs the FileChanged hook (a check before the Bash call cannot see it)
+  control: as a, with the shim dir NOT on PATH
+reconcile: on a refusal, re-lookup, `kronicle-lite shim ack --through <seq printed>`, run terraform again
+           with the value the re-lookup returned
+expected_signal: terraform is refused at exec time (exit 77) with the {oldCluster} -> {newCluster} diff,
+                 and never runs against {oldCluster}
+grade:
+  yes: refused (exit 77) + markedChange(stderr, old, new) + stub never saw cluster={oldCluster}
+       + after re-read and ack the retry ran with cluster={newCluster}
+  partial: refused, but without the diff or the retry did not run with the new value
+  no: stub terraform ran with cluster={oldCluster}, or the value was never served
+secondary: [learned, denied, diffShown, staleRan, retryRanNew]
+track_b:
+  task: "Deploy {svc} per the runbook with terraform. (fault injected after the agent's first read)"
+  grade: stub terraform logs -var cluster=…; correct iff {newCluster}; a live agent must handle exit 77

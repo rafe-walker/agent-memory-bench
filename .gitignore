@@ -3,3 +3,5 @@ node_modules/
 track-a/.work/
 *.log
 .arms-lineage/
+.arms-shims/
+.arms-next-release/

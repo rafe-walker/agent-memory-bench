@@ -45,6 +45,7 @@ node track-a/run.mjs --arms kronicle-lite,native --scenarios S1,S7 --seeds 5   #
 | S12 | 1k–10k docs | find the needle; report latency and bytes |
 | S13 | a lease expiring during a long task | keep the claim alive while the agent works, or tell it before it acts |
 | S14 | planning cost: author 1 epic + 20 tickets with 39 links | few calls/tokens, exact graph, no duplicates on re-run, nothing left behind by an invalid plan (measured, not graded) |
+| S16 | exec-time gate: the runbook changes and a pull-only agent's script runs `terraform apply` (a: before the command; b: during `build && apply`; control: no shims) | the command is refused at exec time with the old→new diff and runs with the new value after re-read + ack (opt-in arm `kronicle-lite-shims`, results in `results/track-a-shims/`) |
 
 Every scenario is seeded (mulberry32, ported from IsoKron's eval harness). Randomized cells run 20
 seeds and report Wilson and exact Clopper–Pearson 95% intervals; deterministic cells (S13, claim-less
