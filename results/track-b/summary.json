@@ -1,0 +1,505 @@
+[
+  {
+    "scenario": "T1",
+    "model": "haiku",
+    "arm": "none",
+    "n": 10,
+    "success": 0,
+    "success_rate": 0,
+    "success_wilson": [
+      0,
+      0.2775328030260577
+    ],
+    "success_exact": [
+      0,
+      0.3084971078187605
+    ],
+    "wrong": 10,
+    "wrong_rate": 1,
+    "wrong_wilson": [
+      0.7224671969739421,
+      0.9999999999999999
+    ],
+    "fisher_p_vs_none": null,
+    "mean_tokens": 175327.5,
+    "mean_input_side": 174055.8,
+    "mean_output": 1271.7,
+    "mean_cost": 0.004167112999999999,
+    "total_cost": 0.041671129999999994,
+    "mean_wall_s": 15.047000000000002,
+    "mean_tool_calls": 7.6,
+    "peeked": 0,
+    "steps_complete": 10,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "pushed": 0,
+    "pushes_mean": 0,
+    "exposed": 10,
+    "reground": 0,
+    "fault_fired": 10
+  },
+  {
+    "scenario": "T1",
+    "model": "haiku",
+    "arm": "native",
+    "n": 10,
+    "success": 0,
+    "success_rate": 0,
+    "success_wilson": [
+      0,
+      0.2775328030260577
+    ],
+    "success_exact": [
+      0,
+      0.3084971078187605
+    ],
+    "wrong": 10,
+    "wrong_rate": 1,
+    "wrong_wilson": [
+      0.7224671969739421,
+      0.9999999999999999
+    ],
+    "fisher_p_vs_none": 0.9999999999999929,
+    "mean_tokens": 153457.6,
+    "mean_input_side": 152242.2,
+    "mean_output": 1215.4,
+    "mean_cost": 0.0037390429999999996,
+    "total_cost": 0.037390429999999995,
+    "mean_wall_s": 14.189100000000002,
+    "mean_tool_calls": 6.5,
+    "peeked": 0,
+    "steps_complete": 10,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "pushed": 0,
+    "pushes_mean": 0,
+    "exposed": 0,
+    "reground": 0,
+    "fault_fired": 10
+  },
+  {
+    "scenario": "T1",
+    "model": "haiku",
+    "arm": "kronicle",
+    "n": 10,
+    "success": 8,
+    "success_rate": 0.8,
+    "success_wilson": [
+      0.4901624691221323,
+      0.9433178490622331
+    ],
+    "success_exact": [
+      0.4439045376923586,
+      0.9747892736731667
+    ],
+    "wrong": 2,
+    "wrong_rate": 0.2,
+    "wrong_wilson": [
+      0.05668215093776685,
+      0.5098375308778678
+    ],
+    "fisher_p_vs_none": 0.0007144558228149562,
+    "mean_tokens": 447625.5,
+    "mean_input_side": 443508.1,
+    "mean_output": 4117.4,
+    "mean_cost": 0.011265568,
+    "total_cost": 0.11265568000000001,
+    "mean_wall_s": 35.5877,
+    "mean_tool_calls": 14.6,
+    "peeked": 0,
+    "steps_complete": 10,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "pushed": 0,
+    "pushes_mean": 0,
+    "exposed": 10,
+    "reground": 10,
+    "fault_fired": 10
+  },
+  {
+    "scenario": "T1",
+    "model": "haiku",
+    "arm": "kronicle_ccpush",
+    "n": 10,
+    "success": 10,
+    "success_rate": 1,
+    "success_wilson": [
+      0.7224671969739421,
+      0.9999999999999999
+    ],
+    "success_exact": [
+      0.6915028921812394,
+      1
+    ],
+    "wrong": 0,
+    "wrong_rate": 0,
+    "wrong_wilson": [
+      0,
+      0.2775328030260577
+    ],
+    "fisher_p_vs_none": 0.00001082508822446909,
+    "mean_tokens": 353919.1,
+    "mean_input_side": 350704.6,
+    "mean_output": 3214.5,
+    "mean_cost": 0.009348177,
+    "total_cost": 0.09348176999999999,
+    "mean_wall_s": 32.09259999999999,
+    "mean_tool_calls": 13.1,
+    "peeked": 0,
+    "steps_complete": 10,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "pushed": 10,
+    "pushes_mean": 1,
+    "exposed": 10,
+    "reground": 10,
+    "fault_fired": 10
+  },
+  {
+    "scenario": "T3",
+    "model": "haiku",
+    "arm": "none",
+    "n": 10,
+    "success": 6,
+    "success_rate": 0.6,
+    "success_wilson": [
+      0.3126737679211953,
+      0.831819671473593
+    ],
+    "success_exact": [
+      0.262378076606945,
+      0.8784477418801726
+    ],
+    "wrong": 4,
+    "wrong_rate": 0.4,
+    "wrong_wilson": [
+      0.1681803285264069,
+      0.6873262320788047
+    ],
+    "fisher_p_vs_none": null,
+    "mean_tokens": 795609.1,
+    "mean_input_side": 782887.2,
+    "mean_output": 12721.9,
+    "mean_cost": 0.021270395,
+    "total_cost": 0.21270395,
+    "mean_wall_s": 50.9642,
+    "mean_tool_calls": 36,
+    "peeked": 3,
+    "steps_complete": 10,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "pushed": 0,
+    "pushes_mean": 0,
+    "duplicate_tickets": 1,
+    "lost_edits": 0,
+    "lost_changelog": 3,
+    "conflict_marker_files": 0,
+    "edit_conflict_errors": 4,
+    "scope_denials": 0,
+    "git_lock_errors": 0,
+    "uncommitted_files": 6,
+    "runs_with_collision": 4,
+    "both_worked": 9,
+    "mean_functions_ok": 4
+  },
+  {
+    "scenario": "T3",
+    "model": "haiku",
+    "arm": "sea",
+    "n": 10,
+    "success": 10,
+    "success_rate": 1,
+    "success_wilson": [
+      0.7224671969739421,
+      0.9999999999999999
+    ],
+    "success_exact": [
+      0.6915028921812394,
+      1
+    ],
+    "wrong": 0,
+    "wrong_rate": 0,
+    "wrong_wilson": [
+      0,
+      0.2775328030260577
+    ],
+    "fisher_p_vs_none": 0.08668730650154785,
+    "mean_tokens": 1372739.3,
+    "mean_input_side": 1361934.8,
+    "mean_output": 10804.5,
+    "mean_cost": 0.028439627000000002,
+    "total_cost": 0.28439627,
+    "mean_wall_s": 169.75140000000002,
+    "mean_tool_calls": 61.4,
+    "peeked": 1,
+    "steps_complete": 10,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "pushed": 0,
+    "pushes_mean": 0,
+    "duplicate_tickets": 0,
+    "lost_edits": 0,
+    "lost_changelog": 0,
+    "conflict_marker_files": 0,
+    "edit_conflict_errors": 0,
+    "scope_denials": 30,
+    "git_lock_errors": 0,
+    "uncommitted_files": 0,
+    "runs_with_collision": 0,
+    "both_worked": 3,
+    "mean_functions_ok": 4
+  },
+  {
+    "scenario": "T3",
+    "model": "haiku",
+    "arm": "beads",
+    "n": 10,
+    "success": 9,
+    "success_rate": 0.9,
+    "success_wilson": [
+      0.5958499704752279,
+      0.982123787103926
+    ],
+    "success_exact": [
+      0.5549838829718046,
+      0.9974714214555382
+    ],
+    "wrong": 1,
+    "wrong_rate": 0.1,
+    "wrong_wilson": [
+      0.017876212896073995,
+      0.4041500295247722
+    ],
+    "fisher_p_vs_none": 0.30340557275541935,
+    "mean_tokens": 803893.1,
+    "mean_input_side": 793124.6,
+    "mean_output": 10768.5,
+    "mean_cost": 0.020314138000000002,
+    "total_cost": 0.20314138000000004,
+    "mean_wall_s": 53.0148,
+    "mean_tool_calls": 29.9,
+    "peeked": 1,
+    "steps_complete": 10,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "pushed": 0,
+    "pushes_mean": 0,
+    "duplicate_tickets": 1,
+    "lost_edits": 0,
+    "lost_changelog": 0,
+    "conflict_marker_files": 0,
+    "edit_conflict_errors": 0,
+    "scope_denials": 0,
+    "git_lock_errors": 0,
+    "uncommitted_files": 0,
+    "runs_with_collision": 1,
+    "both_worked": 9,
+    "mean_functions_ok": 4
+  },
+  {
+    "scenario": "T6",
+    "model": "haiku",
+    "arm": "none",
+    "n": 6,
+    "success": 6,
+    "success_rate": 1,
+    "success_wilson": [
+      0.6096657083436265,
+      1
+    ],
+    "success_exact": [
+      0.5407418735600995,
+      1
+    ],
+    "wrong": 0,
+    "wrong_rate": 0,
+    "wrong_wilson": [
+      0,
+      0.39033429165637346
+    ],
+    "fisher_p_vs_none": null,
+    "mean_tokens": 174650.16666666666,
+    "mean_input_side": 173312,
+    "mean_output": 1338.1666666666667,
+    "mean_cost": 0.004170735,
+    "total_cost": 0.02502441,
+    "mean_wall_s": 14.786333333333332,
+    "mean_tool_calls": 7.666666666666667,
+    "peeked": 0,
+    "steps_complete": 6,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "pushed": 0,
+    "pushes_mean": 0,
+    "exposed": 6,
+    "reground": 0,
+    "fault_fired": 6
+  },
+  {
+    "scenario": "T6",
+    "model": "haiku",
+    "arm": "kronicle_ccpush",
+    "n": 6,
+    "success": 6,
+    "success_rate": 1,
+    "success_wilson": [
+      0.6096657083436265,
+      1
+    ],
+    "success_exact": [
+      0.5407418735600995,
+      1
+    ],
+    "wrong": 0,
+    "wrong_rate": 0,
+    "wrong_wilson": [
+      0,
+      0.39033429165637346
+    ],
+    "fisher_p_vs_none": 0.9999999999999982,
+    "mean_tokens": 323560.8333333333,
+    "mean_input_side": 320551.5,
+    "mean_output": 3009.3333333333335,
+    "mean_cost": 0.008647980000000001,
+    "total_cost": 0.051887880000000004,
+    "mean_wall_s": 30.96066666666667,
+    "mean_tool_calls": 12,
+    "peeked": 0,
+    "steps_complete": 6,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "pushed": 6,
+    "pushes_mean": 1,
+    "exposed": 6,
+    "reground": 6,
+    "fault_fired": 6
+  },
+  {
+    "scenario": "T7",
+    "model": "haiku",
+    "arm": "kronicle_ccpush",
+    "n": 6,
+    "success": 5,
+    "success_rate": 0.8333333333333334,
+    "success_wilson": [
+      0.4364971749742326,
+      0.969946630588185
+    ],
+    "success_exact": [
+      0.3587654210023248,
+      0.9957892554855106
+    ],
+    "wrong": 1,
+    "wrong_rate": 0.16666666666666666,
+    "wrong_wilson": [
+      0.030053369411815023,
+      0.5635028250257673
+    ],
+    "fisher_p_vs_none": null,
+    "mean_tokens": 146988.5,
+    "mean_input_side": 144388,
+    "mean_output": 2600.5,
+    "mean_cost": 0.01785409416666667,
+    "total_cost": 0.10712456500000002,
+    "mean_wall_s": 65.79483333333333,
+    "mean_tool_calls": 21.333333333333332,
+    "peeked": 0,
+    "steps_complete": 5,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "pushed": 6,
+    "pushes_mean": 1,
+    "complete": 5,
+    "final_new": 5,
+    "stopped": 0,
+    "correct_deploy": 5
+  }
+]
