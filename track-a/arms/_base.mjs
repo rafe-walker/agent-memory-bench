@@ -38,10 +38,10 @@ export class Arm {
   async setup() {}
   async close() {}
   // tools/list once, in a throwaway HOME (the context cost every session pays up front).
-  static async listToolsOnce() {
+  static async listToolsOnce(serveArgs) {
     if (!this.prototype.listTools) return null;
     const home = tmpdir('toolslist');
-    const ctx = { home, repo: path.join(home, 'repo'), seed: 0, actor: 'agent-a' };
+    const ctx = { home, repo: path.join(home, 'repo'), seed: 0, actor: 'agent-a', ...(serveArgs ? { serveArgs } : {}) };
     gitInit(ctx.repo);
     const a = new this(ctx);
     try { await a.setup(); return await a.listTools(); } finally { try { await a.close(); } catch {} rmrf(home); }

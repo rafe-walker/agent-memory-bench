@@ -1,0 +1,1064 @@
+{
+ "meta": {
+  "started_at": "2026-11-01T15:41:44.698Z",
+  "seeds": 20,
+  "ci": false
+ },
+ "cells": {
+  "S3a|sea-lite": {
+   "scenario": "S3a",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "sea-lite",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "exactly one winner; losers told who holds it",
+   "delivery": null,
+   "bytes": {
+    "claim": {
+     "mean": 361,
+     "max": 362,
+     "tokens_mean": 91
+    }
+   },
+   "latency_ms": {
+    "claim_race": {
+     "n": 20,
+     "p50": 1983,
+     "p95": 2943,
+     "max": 2999
+    }
+   },
+   "flags": {
+    "double_claim": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "advisory": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 33836
+  },
+  "S3b|sea-lite": {
+   "scenario": "S3b",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "sea-lite",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "blocked at edit, holder named",
+   "delivery": null,
+   "bytes": {
+    "guard": {
+     "mean": 386,
+     "max": 400,
+     "tokens_mean": 97
+    }
+   },
+   "latency_ms": {
+    "guard": {
+     "n": 20,
+     "p50": 513,
+     "p95": 994,
+     "max": 1006
+    }
+   },
+   "flags": {
+    "blocked": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 26333
+  },
+  "S3c|sea-lite": {
+   "scenario": "S3c",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "sea-lite",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "exactly one winner; losers told who holds it",
+   "delivery": null,
+   "bytes": {
+    "claim": {
+     "mean": 367,
+     "max": 368,
+     "tokens_mean": 92
+    }
+   },
+   "latency_ms": {
+    "claim_race": {
+     "n": 20,
+     "p50": 1557,
+     "p95": 2469,
+     "max": 2703
+    }
+   },
+   "flags": {
+    "double_claim": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "advisory": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 29236
+  },
+  "S3d|sea-lite": {
+   "scenario": "S3d",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "sea-lite",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "3 concurrent creates, 3 unique, all present",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {
+    "lost_or_dup": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "duplicate_ids": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 69263
+  },
+  "S3a|sea-lite+cc-anchor": {
+   "scenario": "S3a",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "sea-lite+cc-anchor",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "exactly one winner; losers told who holds it",
+   "delivery": null,
+   "bytes": {
+    "claim": {
+     "mean": 361,
+     "max": 362,
+     "tokens_mean": 91
+    }
+   },
+   "latency_ms": {
+    "claim_race": {
+     "n": 20,
+     "p50": 2429,
+     "p95": 5540,
+     "max": 6671
+    }
+   },
+   "flags": {
+    "double_claim": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "advisory": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 45254
+  },
+  "S3b|sea-lite+cc-anchor": {
+   "scenario": "S3b",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "sea-lite+cc-anchor",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "blocked at edit, holder named",
+   "delivery": null,
+   "bytes": {
+    "guard": {
+     "mean": 542,
+     "max": 550,
+     "tokens_mean": 136
+    }
+   },
+   "latency_ms": {
+    "guard": {
+     "n": 20,
+     "p50": 601,
+     "p95": 1251,
+     "max": 1275
+    }
+   },
+   "flags": {
+    "blocked": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 29123
+  },
+  "S3c|sea-lite+cc-anchor": {
+   "scenario": "S3c",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "sea-lite+cc-anchor",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "exactly one winner; losers told who holds it",
+   "delivery": null,
+   "bytes": {
+    "claim": {
+     "mean": 367,
+     "max": 368,
+     "tokens_mean": 92
+    }
+   },
+   "latency_ms": {
+    "claim_race": {
+     "n": 20,
+     "p50": 2009,
+     "p95": 3260,
+     "max": 3594
+    }
+   },
+   "flags": {
+    "double_claim": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "advisory": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 42549
+  },
+  "S3d|sea-lite+cc-anchor": {
+   "scenario": "S3d",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "sea-lite+cc-anchor",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "3 concurrent creates, 3 unique, all present",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {
+    "lost_or_dup": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "duplicate_ids": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 53092
+  },
+  "S13|sea-lite": {
+   "scenario": "S13",
+   "title": "Lease expiry during a long task",
+   "arm": "sea-lite",
+   "n": 3,
+   "yes": 0,
+   "partial": 3,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 3,
+    "p": 0,
+    "wilson": {
+     "lo": 5.551115123125783e-17,
+     "hi": 0.5614970317550454
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.7075982261787133
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 3,
+    "n": 3,
+    "p": 1,
+    "wilson": {
+     "lo": 0.4385029682449546,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.2924017738212865,
+     "hi": 1
+    }
+   },
+   "score": 0.5,
+   "verdict": "partial",
+   "reason": "lease lapsed mid-task; B took it; A learns only on its next write",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {
+    "lost": {
+     "k": 3,
+     "n": 3,
+     "p": 1,
+     "wilson": {
+      "lo": 0.4385029682449546,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.2924017738212865,
+      "hi": 1
+     }
+    },
+    "holderTold": {
+     "k": 3,
+     "n": 3,
+     "p": 1,
+     "wilson": {
+      "lo": 0.4385029682449546,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.2924017738212865,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 34042
+  },
+  "S13|sea-lite+cc-anchor": {
+   "scenario": "S13",
+   "title": "Lease expiry during a long task",
+   "arm": "sea-lite+cc-anchor",
+   "n": 3,
+   "yes": 3,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 3,
+    "n": 3,
+    "p": 1,
+    "wilson": {
+     "lo": 0.4385029682449546,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.2924017738212865,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 3,
+    "n": 3,
+    "p": 1,
+    "wilson": {
+     "lo": 0.4385029682449546,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.2924017738212865,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "claim held through 12s of work (lease 5s)",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {
+    "lost": {
+     "k": 0,
+     "n": 3,
+     "p": 0,
+     "wilson": {
+      "lo": 5.551115123125783e-17,
+      "hi": 0.5614970317550454
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.7075982261787133
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 40496
+  }
+ },
+ "planning": {
+  "title": "Planning cost (1 epic + 20 tickets, 39 links)",
+  "seeds": 3,
+  "plan": {
+   "tickets": 21,
+   "parent_edges": 20,
+   "dep_edges": 19,
+   "invalid_item": "edge \"ticket 01 depends on ticket 20\" (closes a cycle)"
+  },
+  "rows": {
+   "sea-lite/apply": {
+    "id": "sea-lite/apply",
+    "arm": "sea-lite",
+    "tool": "sea-lite next@eca4e58",
+    "path": "`sea_apply` (one MCP call)",
+    "surface": "MCP",
+    "batch": true,
+    "n": 3,
+    "errors": [],
+    "calls": [
+     1
+    ],
+    "call_errors": [
+     0
+    ],
+    "written_bytes": {
+     "mean": 5474,
+     "min": 5474,
+     "max": 5474,
+     "tokens": 1369
+    },
+    "result_bytes": {
+     "mean": 996,
+     "min": 996,
+     "max": 996,
+     "tokens": 249
+    },
+    "tokens_total": 1618,
+    "wall_ms": {
+     "mean": 110,
+     "sd": 27,
+     "min": 82,
+     "max": 136,
+     "cv": 0.246,
+     "per_seed": [
+      82,
+      111,
+      136
+     ]
+    },
+    "exact": {
+     "k": 3,
+     "n": 3,
+     "problems": [
+      ""
+     ]
+    },
+    "idempotent": {
+     "k": 3,
+     "n": 3,
+     "tickets_after": [
+      21
+     ],
+     "edges_after": [
+      39
+     ],
+     "rerun_calls": [
+      1
+     ],
+     "rerun_errors": []
+    },
+    "atomic": {
+     "k": 3,
+     "n": 3,
+     "rejected": 3,
+     "crashed": 0,
+     "tickets_left": [
+      0
+     ],
+     "edges_left": [
+      0
+     ],
+     "note": "{\"error\":\"cycle\",\"message\":\"batch would create a cycle: t01 → t20 → t19 → t18 → t17 → t16 → t15 → t14 → t13 → t12 → t11 → t10 → t09 → t08 → t07 → t06 → t05 → t0"
+    },
+    "dry_run": {
+     "k": 3,
+     "n": 3,
+     "note": "{\"error\":\"cycle\",\"message\":\"batch would create a cycle: t01 → t20 → t19 → t18 → t17 → t16 → t15 → t14 → t13 → t12 → t11 → t10 → t09 → t08 → t07 → t06 → t05 → t0"
+    }
+   },
+   "sea-lite/apply-template": {
+    "id": "sea-lite/apply-template",
+    "arm": "sea-lite",
+    "tool": "sea-lite next@eca4e58",
+    "path": "`sea_apply` with `templates` (one MCP call, 20 steps written once)",
+    "surface": "MCP",
+    "batch": true,
+    "n": 3,
+    "errors": [],
+    "calls": [
+     1
+    ],
+    "call_errors": [
+     0
+    ],
+    "written_bytes": {
+     "mean": 617,
+     "min": 617,
+     "max": 617,
+     "tokens": 155
+    },
+    "result_bytes": {
+     "mean": 996,
+     "min": 996,
+     "max": 996,
+     "tokens": 249
+    },
+    "tokens_total": 404,
+    "wall_ms": {
+     "mean": 173,
+     "sd": 89,
+     "min": 75,
+     "max": 249,
+     "cv": 0.515,
+     "per_seed": [
+      75,
+      249,
+      194
+     ]
+    },
+    "exact": {
+     "k": 3,
+     "n": 3,
+     "problems": [
+      ""
+     ]
+    },
+    "idempotent": {
+     "k": 3,
+     "n": 3,
+     "tickets_after": [
+      21
+     ],
+     "edges_after": [
+      39
+     ],
+     "rerun_calls": [
+      1
+     ],
+     "rerun_errors": []
+    },
+    "atomic": {
+     "k": 3,
+     "n": 3,
+     "rejected": 3,
+     "crashed": 0,
+     "tickets_left": [
+      0
+     ],
+     "edges_left": [
+      0
+     ],
+     "note": "{\"error\":\"cycle\",\"message\":\"batch would create a cycle: t01 → t20 → t19 → t18 → t17 → t16 → t15 → t14 → t13 → t12 → t11 → t10 → t09 → t08 → t07 → t06 → t05 → t0"
+    },
+    "dry_run": {
+     "k": 3,
+     "n": 3,
+     "note": "{\"error\":\"cycle\",\"message\":\"batch would create a cycle: t01 → t20 → t19 → t18 → t17 → t16 → t15 → t14 → t13 → t12 → t11 → t10 → t09 → t08 → t07 → t06 → t05 → t0"
+    }
+   },
+   "sea-lite/per-item": {
+    "id": "sea-lite/per-item",
+    "arm": "sea-lite",
+    "tool": "sea-lite next@eca4e58",
+    "path": "`sea_create` (claim_seconds) ×21 + `sea_link` ×39 (MCP)",
+    "surface": "MCP",
+    "batch": false,
+    "n": 3,
+    "errors": [],
+    "calls": [
+     60
+    ],
+    "call_errors": [
+     0
+    ],
+    "written_bytes": {
+     "mean": 14135,
+     "min": 14135,
+     "max": 14135,
+     "tokens": 3534
+    },
+    "result_bytes": {
+     "mean": 52791,
+     "min": 52791,
+     "max": 52791,
+     "tokens": 13198
+    },
+    "tokens_total": 16732,
+    "wall_ms": {
+     "mean": 536,
+     "sd": 211,
+     "min": 347,
+     "max": 763,
+     "cv": 0.393,
+     "per_seed": [
+      763,
+      498,
+      347
+     ]
+    },
+    "exact": {
+     "k": 3,
+     "n": 3,
+     "problems": [
+      ""
+     ]
+    },
+    "idempotent": {
+     "k": 3,
+     "n": 3,
+     "tickets_after": [
+      21
+     ],
+     "edges_after": [
+      39
+     ],
+     "rerun_calls": [
+      60
+     ],
+     "rerun_errors": []
+    },
+    "atomic": {
+     "k": 0,
+     "n": 3,
+     "rejected": 3,
+     "crashed": 0,
+     "tickets_left": [
+      21
+     ],
+     "edges_left": [
+      39
+     ],
+     "note": "{\"error\":\"cycle\",\"message\":\"adding depends_on would close a cycle: 117abadd-9d9b-4e19-aa20-22d1567aeb04 → 81a5a59a-cd87-4c42-901e-62caa1e721e1 → 0bed7d32-a39c-4"
+    },
+    "dry_run": null
+   }
+  },
+  "not_run": [
+   {
+    "tool": "task-master-ai 0.43.1",
+    "path": "`parse_prd` (plan from a PRD)",
+    "reason": "n/a — generates tasks with an LLM; Track A is LLM-free"
+   },
+   {
+    "tool": "mcp_agent_mail 0.3.4",
+    "path": "—",
+    "reason": "n/a — no tickets or dependency graph (messages + file reservations only)"
+   }
+  ],
+  "documented": [
+   {
+    "tool": "GitHub MCP server (github/github-mcp-server, main @ 2026-10-31)",
+    "path": "`issue_write` ×21 (20 with `parent_issue_number`) + `issue_dependency_write` ×19",
+    "calls": 40,
+    "atomic": "no — one issue / one edge per call",
+    "idempotent": "no key in the schemas (`issue_dependency_write` idempotentHint: false)",
+    "note": "without `parent_issue_number`: + `sub_issue_write` ×20 = 60 calls; `issue_dependency_write` is behind the `issue_dependencies` feature flag",
+    "sources": [
+     "https://github.com/github/github-mcp-server/blob/main/README.md",
+     "https://github.com/github/github-mcp-server/blob/main/pkg/github/__toolsnaps__/issue_dependency_write_ff_issue_dependencies.snap"
+    ]
+   },
+   {
+    "tool": "Linear GraphQL API (@linear/sdk schema.graphql)",
+    "path": "`issueCreate` (epic) + `issueBatchCreate` (20 children, `parentId`) + `issueRelationCreate` ×19",
+    "calls": 21,
+    "atomic": "only the 20-issue batch (\"Creates a list of issues atomically\", ≤ 50); relations one per call",
+    "idempotent": "optional client `id` (UUID v4) per issue/relation — behaviour on replay not documented",
+    "note": "GraphQL mutations, not an MCP tool catalog; the epic must exist before children can name it as `parentId`",
+    "sources": [
+     "https://github.com/linear/linear/blob/master/packages/sdk/src/schema.graphql"
+    ]
+   }
+  ],
+  "wall_ms": 29708
+ }
+}

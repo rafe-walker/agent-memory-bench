@@ -18,7 +18,7 @@ import path from 'node:path';
 import { McpClient } from '../lib/mcp.mjs';
 import { ARMS_DIR, sh, tmpdir, rmrf, gitInit } from '../lib/util.mjs';
 import { tokens } from '../lib/stats.mjs';
-import SeaLite from '../arms/sea-lite.mjs';
+import SeaLite, { SEA_TOOL } from '../arms/sea-lite.mjs';
 import Beads from '../arms/beads.mjs';
 import BacklogMd from '../arms/backlog-md.mjs';
 import TaskMaster from '../arms/task-master.mjs';
@@ -167,6 +167,20 @@ const seaApplyArgs = (inject, extra = {}) => ({
   ],
   idempotency_key: inject ? 's14-plan-invalid' : 's14-plan', ...extra,
 });
+// The same plan as one sea_apply template (sea-lite ≥ next): the epic explicitly, the 20 steps as a
+// template over "01".."20" ({value} = zero-padded step, {i} = part number), with the parent edge and the
+// chain edge written once ({prev} is skipped for the first step).
+const seaTemplateArgs = (inject, extra = {}) => ({
+  tickets: [{ ref: 'epic', title: PLAN.epic.title, body: PLAN.epic.body, kind: 'epic' }],
+  templates: [{
+    for_each: PLAN.tickets.map((_, k) => pad(k + 1)),
+    ref: 't{value}',
+    ticket: { title: 'Checkout v2 step {value}: ship part {i} of the new flow', body: 'Acceptance: part {i} merged behind the flag with its tests passing.' },
+    links: [{ from_ref: 'epic', to_ref: '{ref}', link_type: 'parent_of' }, { from_ref: '{ref}', to_ref: '{prev}', link_type: 'depends_on' }],
+  }],
+  ...(inject ? { links: [{ from_ref: 't01', to_ref: 't20', link_type: 'depends_on' }] } : {}),
+  idempotency_key: inject ? 's14-tplan-invalid' : 's14-tplan', ...extra,
+});
 const bdPlan = (inject) => ({
   nodes: ALL.map((x) => (x.ref === 'epic' ? { key: x.ref, title: x.title, type: 'epic', acceptance_criteria: x.body } : { key: x.ref, title: x.title, parent_key: 'epic', acceptance_criteria: x.body })),
   edges: [...PLAN.tickets.slice(1).map((t, k) => ({ from_key: t.ref, to_key: PLAN.tickets[k].ref })), ...(inject ? [{ from_key: 't01', to_key: 't20' }] : [])],
@@ -175,12 +189,18 @@ const heredoc = (cmd, body) => `${cmd} <<'EOF'\n${body}\nEOF`;
 
 export const PATHS = [
   {
-    id: 'sea-lite/apply', arm: 'sea-lite', tool: 'sea-lite 0.4.0', path: '`sea_apply` (one MCP call)', surface: 'MCP', batch: true, store: seaStore,
+    id: 'sea-lite/apply', arm: 'sea-lite', tool: SEA_TOOL, path: '`sea_apply` (one MCP call)', surface: 'MCP', batch: true, store: seaStore,
     async run(s, m, { inject }) { const r = await m.mcp(s.client, 'sea_apply', seaApplyArgs(inject)); return { rejected: r.isError, note: r.isError ? r.text.slice(0, 160) : null }; },
     async dryRun(s, m) { const r = await m.mcp(s.client, 'sea_apply', seaApplyArgs(true, { dry_run: true, idempotency_key: undefined })); return { caught: r.isError, note: r.text.slice(0, 160) }; },
   },
   {
-    id: 'sea-lite/per-item', arm: 'sea-lite', tool: 'sea-lite 0.4.0', path: '`sea_create` (claim_seconds) ×21 + `sea_link` ×39 (MCP)', surface: 'MCP', store: seaStore,
+    // Needs a sea-lite build with templates (SEA_LITE_CLI=<next>/dist/cli.js); against 0.4.0 the call is rejected.
+    id: 'sea-lite/apply-template', arm: 'sea-lite', tool: SEA_TOOL, path: '`sea_apply` with `templates` (one MCP call, 20 steps written once)', surface: 'MCP', batch: true, store: seaStore,
+    async run(s, m, { inject }) { const r = await m.mcp(s.client, 'sea_apply', seaTemplateArgs(inject)); if (!inject && r.isError) throw new Error(`sea_apply templates: ${r.text.slice(0, 200)}`); return { rejected: r.isError, note: r.isError ? r.text.slice(0, 160) : null }; },
+    async dryRun(s, m) { const r = await m.mcp(s.client, 'sea_apply', seaTemplateArgs(true, { dry_run: true, idempotency_key: undefined })); return { caught: r.isError, note: r.text.slice(0, 160) }; },
+  },
+  {
+    id: 'sea-lite/per-item', arm: 'sea-lite', tool: SEA_TOOL, path: '`sea_create` (claim_seconds) ×21 + `sea_link` ×39 (MCP)', surface: 'MCP', store: seaStore,
     // Same session re-sending the same calls on a re-run: a replayed sea_create returns claim_token null,
     // so links reuse the first run's tokens (s.memo) exactly as the agent's context would.
     async run(s, m, { inject }) {

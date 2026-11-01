@@ -1,0 +1,157 @@
+{
+ "bench": "agent-memory-bench Track A",
+ "version": "0.1.0",
+ "started_at": "2026-11-01T15:41:44.698Z",
+ "ci": false,
+ "seeds": 20,
+ "sizes": [
+  1000,
+  10000
+ ],
+ "host": {
+  "platform": "linux 6.18.44-fc-v185",
+  "node": "v22.23.4",
+  "cpus": 2,
+  "mem_gb": 8
+ },
+ "git": "f0597d7",
+ "token_estimate": "ceil(bytes/4); same proxy for every arm",
+ "arms": {
+  "sea-lite": {
+   "id": "sea-lite",
+   "label": "sea-lite",
+   "version": "next@eca4e58",
+   "kind": [
+    "coordination"
+   ],
+   "setupSteps": [
+    "npm i -g sea-lite",
+    "claude mcp add sea-lite -- sea-lite serve",
+    "install the work-queue skill",
+    "PreToolUse hook: sea-lite scope-check --hook",
+    "(optional) sea-lite precommit --install"
+   ],
+   "claims": true,
+   "leases": true,
+   "editGuard": "hook",
+   "s13": {
+    "lease": 5,
+    "duration": 12
+   },
+   "reps": {
+    "S13": 3
+   },
+   "tools_list": {
+    "tools": 15,
+    "bytes": 32510,
+    "tokens": 8128,
+    "names": [
+     "sea_create",
+     "sea_apply",
+     "sea_update",
+     "sea_transition",
+     "sea_finish",
+     "sea_link",
+     "sea_claim",
+     "sea_refresh",
+     "sea_release",
+     "sea_next",
+     "sea_get",
+     "sea_list",
+     "sea_history",
+     "sea_scope_check",
+     "sea_stats"
+    ]
+   },
+   "tools_list_core": {
+    "tools": 9,
+    "bytes": 11954,
+    "tokens": 2989,
+    "names": [
+     "sea_apply",
+     "sea_transition",
+     "sea_finish",
+     "sea_claim",
+     "sea_refresh",
+     "sea_release",
+     "sea_next",
+     "sea_get",
+     "sea_scope_check"
+    ],
+    "args": [
+     "--core"
+    ]
+   }
+  },
+  "sea-lite+cc-anchor": {
+   "id": "sea-lite+cc-anchor",
+   "label": "sea-lite + cc-anchor hooks",
+   "version": "sea-lite next@eca4e58 + cc-anchor 0.3.0 (unreleased local build)",
+   "kind": [
+    "coordination"
+   ],
+   "setupSteps": [
+    "npm i -g sea-lite",
+    "claude mcp add sea-lite -- sea-lite serve",
+    "install the work-queue skill",
+    "claude plugin install cc-anchor",
+    "cc-anchor config set scope_guard true (heartbeat is auto once sea-lite is configured)"
+   ],
+   "claims": true,
+   "leases": true,
+   "editGuard": "hook",
+   "s13": {
+    "lease": 5,
+    "duration": 12,
+    "heartbeat": 1
+   },
+   "reps": {
+    "S13": 3
+   },
+   "heartbeat": "PostToolUse",
+   "tools_list": {
+    "tools": 15,
+    "bytes": 32510,
+    "tokens": 8128,
+    "names": [
+     "sea_create",
+     "sea_apply",
+     "sea_update",
+     "sea_transition",
+     "sea_finish",
+     "sea_link",
+     "sea_claim",
+     "sea_refresh",
+     "sea_release",
+     "sea_next",
+     "sea_get",
+     "sea_list",
+     "sea_history",
+     "sea_scope_check",
+     "sea_stats"
+    ]
+   },
+   "tools_list_core": {
+    "tools": 9,
+    "bytes": 11954,
+    "tokens": 2989,
+    "names": [
+     "sea_apply",
+     "sea_transition",
+     "sea_finish",
+     "sea_claim",
+     "sea_refresh",
+     "sea_release",
+     "sea_next",
+     "sea_get",
+     "sea_scope_check"
+    ],
+    "args": [
+     "--core"
+    ]
+   }
+  }
+ },
+ "finished_at": "2026-11-01T15:48:59.449Z",
+ "wall_s": 435
+}

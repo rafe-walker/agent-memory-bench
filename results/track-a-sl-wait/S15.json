@@ -1,0 +1,539 @@
+{
+ "scenario": "S15",
+ "title": "Contention: wait_seconds vs sleep-and-retry (Track B T3 pattern)",
+ "tool": "sea-lite wait@987d4ea",
+ "cli": "../sea-lite-wait/dist/cli.js",
+ "params": {
+  "W": 2,
+  "T": 0.25,
+  "P": 1,
+  "RETRIES": 5,
+  "scope": [
+   "src/math.js",
+   "src/str.js",
+   "CHANGELOG.md"
+  ],
+  "tickets": [
+   "T-1",
+   "T-2",
+   "T-3",
+   "T-4"
+  ],
+  "reps": 3
+ },
+ "poll": {
+  "mode": "poll",
+  "n": 3,
+  "wall_s": 9.07,
+  "last_release_s": 8.81,
+  "left": [
+   0,
+   0,
+   0
+  ],
+  "done_A": 4,
+  "done_B": 0,
+  "gave_up": 3,
+  "calls": 15,
+  "turns": 20,
+  "gap_mean_s": 0.255,
+  "gap_max_s": 0.258
+ },
+ "wait": {
+  "mode": "wait",
+  "n": 3,
+  "wall_s": 8.78,
+  "last_release_s": 8.52,
+  "left": [
+   0,
+   0,
+   0
+  ],
+  "done_A": 2,
+  "done_B": 2,
+  "gave_up": 0,
+  "calls": 10,
+  "turns": 10,
+  "gap_mean_s": 0.154,
+  "gap_max_s": 0.162
+ },
+ "runs": [
+  {
+   "mode": "poll",
+   "rep": 1,
+   "wall_s": 9.07,
+   "last_release_s": 8.81,
+   "left": 0,
+   "done": {
+    "A": [
+     "T-1",
+     "T-2",
+     "T-3",
+     "T-4"
+    ],
+    "B": []
+   },
+   "gave_up": {
+    "A": false,
+    "B": true
+   },
+   "calls": 15,
+   "turns": 20,
+   "retries": 5,
+   "waited_s": 0,
+   "gaps_s": [
+    0.258,
+    0.256,
+    0.254
+   ],
+   "events": [
+    {
+     "t": 0.011085567999999966,
+     "agent": "A",
+     "kind": "claim",
+     "ticket": "T-1"
+    },
+    {
+     "t": 2.024566645,
+     "agent": "A",
+     "kind": "release",
+     "ticket": "T-1"
+    },
+    {
+     "t": 2.282207897,
+     "agent": "A",
+     "kind": "claim",
+     "ticket": "T-2"
+    },
+    {
+     "t": 4.296799419,
+     "agent": "A",
+     "kind": "release",
+     "ticket": "T-2"
+    },
+    {
+     "t": 4.5525615209999994,
+     "agent": "A",
+     "kind": "claim",
+     "ticket": "T-3"
+    },
+    {
+     "t": 6.5561553560000005,
+     "agent": "A",
+     "kind": "release",
+     "ticket": "T-3"
+    },
+    {
+     "t": 6.80998891,
+     "agent": "A",
+     "kind": "claim",
+     "ticket": "T-4"
+    },
+    {
+     "t": 8.813991062000001,
+     "agent": "A",
+     "kind": "release",
+     "ticket": "T-4"
+    }
+   ]
+  },
+  {
+   "mode": "poll",
+   "rep": 2,
+   "wall_s": 9.06,
+   "last_release_s": 8.8,
+   "left": 0,
+   "done": {
+    "A": [
+     "T-1",
+     "T-2",
+     "T-3",
+     "T-4"
+    ],
+    "B": []
+   },
+   "gave_up": {
+    "A": false,
+    "B": true
+   },
+   "calls": 15,
+   "turns": 20,
+   "retries": 5,
+   "waited_s": 0,
+   "gaps_s": [
+    0.255,
+    0.254,
+    0.257
+   ],
+   "events": [
+    {
+     "t": 0.012160718999999516,
+     "agent": "A",
+     "kind": "claim",
+     "ticket": "T-1"
+    },
+    {
+     "t": 2.0204160790000008,
+     "agent": "A",
+     "kind": "release",
+     "ticket": "T-1"
+    },
+    {
+     "t": 2.275425102000001,
+     "agent": "A",
+     "kind": "claim",
+     "ticket": "T-2"
+    },
+    {
+     "t": 4.280400472000001,
+     "agent": "A",
+     "kind": "release",
+     "ticket": "T-2"
+    },
+    {
+     "t": 4.534030192,
+     "agent": "A",
+     "kind": "claim",
+     "ticket": "T-3"
+    },
+    {
+     "t": 6.54002175,
+     "agent": "A",
+     "kind": "release",
+     "ticket": "T-3"
+    },
+    {
+     "t": 6.796794237999999,
+     "agent": "A",
+     "kind": "claim",
+     "ticket": "T-4"
+    },
+    {
+     "t": 8.800932206,
+     "agent": "A",
+     "kind": "release",
+     "ticket": "T-4"
+    }
+   ]
+  },
+  {
+   "mode": "poll",
+   "rep": 3,
+   "wall_s": 9.07,
+   "last_release_s": 8.81,
+   "left": 0,
+   "done": {
+    "A": [
+     "T-1",
+     "T-2",
+     "T-3",
+     "T-4"
+    ],
+    "B": []
+   },
+   "gave_up": {
+    "A": false,
+    "B": true
+   },
+   "calls": 15,
+   "turns": 20,
+   "retries": 5,
+   "waited_s": 0,
+   "gaps_s": [
+    0.253,
+    0.254,
+    0.257
+   ],
+   "events": [
+    {
+     "t": 0.01383246599999984,
+     "agent": "A",
+     "kind": "claim",
+     "ticket": "T-1"
+    },
+    {
+     "t": 2.020614544,
+     "agent": "A",
+     "kind": "release",
+     "ticket": "T-1"
+    },
+    {
+     "t": 2.273887188999997,
+     "agent": "A",
+     "kind": "claim",
+     "ticket": "T-2"
+    },
+    {
+     "t": 4.290673681,
+     "agent": "A",
+     "kind": "release",
+     "ticket": "T-2"
+    },
+    {
+     "t": 4.544238055999998,
+     "agent": "A",
+     "kind": "claim",
+     "ticket": "T-3"
+    },
+    {
+     "t": 6.546729551,
+     "agent": "A",
+     "kind": "release",
+     "ticket": "T-3"
+    },
+    {
+     "t": 6.804081516999998,
+     "agent": "A",
+     "kind": "claim",
+     "ticket": "T-4"
+    },
+    {
+     "t": 8.810499425999998,
+     "agent": "A",
+     "kind": "release",
+     "ticket": "T-4"
+    }
+   ]
+  },
+  {
+   "mode": "wait",
+   "rep": 1,
+   "wall_s": 8.78,
+   "last_release_s": 8.52,
+   "left": 0,
+   "done": {
+    "A": [
+     "T-1",
+     "T-3"
+    ],
+    "B": [
+     "T-2",
+     "T-4"
+    ]
+   },
+   "gave_up": {
+    "A": false,
+    "B": false
+   },
+   "calls": 10,
+   "turns": 10,
+   "retries": 0,
+   "waited_s": 6.3,
+   "gaps_s": [
+    0.162,
+    0.135,
+    0.16
+   ],
+   "events": [
+    {
+     "t": 0.009580485999998927,
+     "agent": "A",
+     "kind": "claim",
+     "ticket": "T-1"
+    },
+    {
+     "t": 2.0235257759999987,
+     "agent": "A",
+     "kind": "release",
+     "ticket": "T-1"
+    },
+    {
+     "t": 2.185772949000002,
+     "agent": "B",
+     "kind": "claim",
+     "ticket": "T-2"
+    },
+    {
+     "t": 4.2025104739999986,
+     "agent": "B",
+     "kind": "release",
+     "ticket": "T-2"
+    },
+    {
+     "t": 4.338002355,
+     "agent": "A",
+     "kind": "claim",
+     "ticket": "T-3"
+    },
+    {
+     "t": 6.353717718999997,
+     "agent": "A",
+     "kind": "release",
+     "ticket": "T-3"
+    },
+    {
+     "t": 6.513747397000003,
+     "agent": "B",
+     "kind": "claim",
+     "ticket": "T-4"
+    },
+    {
+     "t": 8.524518857999999,
+     "agent": "B",
+     "kind": "release",
+     "ticket": "T-4"
+    }
+   ]
+  },
+  {
+   "mode": "wait",
+   "rep": 2,
+   "wall_s": 8.78,
+   "last_release_s": 8.52,
+   "left": 0,
+   "done": {
+    "A": [
+     "T-1",
+     "T-3"
+    ],
+    "B": [
+     "T-2",
+     "T-4"
+    ]
+   },
+   "gave_up": {
+    "A": false,
+    "B": false
+   },
+   "calls": 10,
+   "turns": 10,
+   "retries": 0,
+   "waited_s": 6.3,
+   "gaps_s": [
+    0.16,
+    0.146,
+    0.157
+   ],
+   "events": [
+    {
+     "t": 0.012694901999995636,
+     "agent": "A",
+     "kind": "claim",
+     "ticket": "T-1"
+    },
+    {
+     "t": 2.020823714999999,
+     "agent": "A",
+     "kind": "release",
+     "ticket": "T-1"
+    },
+    {
+     "t": 2.1804667039999988,
+     "agent": "B",
+     "kind": "claim",
+     "ticket": "T-2"
+    },
+    {
+     "t": 4.192880731999998,
+     "agent": "B",
+     "kind": "release",
+     "ticket": "T-2"
+    },
+    {
+     "t": 4.338905937999996,
+     "agent": "A",
+     "kind": "claim",
+     "ticket": "T-3"
+    },
+    {
+     "t": 6.345222723999999,
+     "agent": "A",
+     "kind": "release",
+     "ticket": "T-3"
+    },
+    {
+     "t": 6.502687887,
+     "agent": "B",
+     "kind": "claim",
+     "ticket": "T-4"
+    },
+    {
+     "t": 8.517621775,
+     "agent": "B",
+     "kind": "release",
+     "ticket": "T-4"
+    }
+   ]
+  },
+  {
+   "mode": "wait",
+   "rep": 3,
+   "wall_s": 8.77,
+   "last_release_s": 8.51,
+   "left": 0,
+   "done": {
+    "A": [
+     "T-1",
+     "T-3"
+    ],
+    "B": [
+     "T-2",
+     "T-4"
+    ]
+   },
+   "gave_up": {
+    "A": false,
+    "B": false
+   },
+   "calls": 10,
+   "turns": 10,
+   "retries": 0,
+   "waited_s": 6.3,
+   "gaps_s": [
+    0.161,
+    0.145,
+    0.161
+   ],
+   "events": [
+    {
+     "t": 0.00966450800000166,
+     "agent": "A",
+     "kind": "claim",
+     "ticket": "T-1"
+    },
+    {
+     "t": 2.0189979539999987,
+     "agent": "A",
+     "kind": "release",
+     "ticket": "T-1"
+    },
+    {
+     "t": 2.1804040620000014,
+     "agent": "B",
+     "kind": "claim",
+     "ticket": "T-2"
+    },
+    {
+     "t": 4.193391248,
+     "agent": "B",
+     "kind": "release",
+     "ticket": "T-2"
+    },
+    {
+     "t": 4.338355815000003,
+     "agent": "A",
+     "kind": "claim",
+     "ticket": "T-3"
+    },
+    {
+     "t": 6.345997342000002,
+     "agent": "A",
+     "kind": "release",
+     "ticket": "T-3"
+    },
+    {
+     "t": 6.506525432000002,
+     "agent": "B",
+     "kind": "claim",
+     "ticket": "T-4"
+    },
+    {
+     "t": 8.510856694000001,
+     "agent": "B",
+     "kind": "release",
+     "ticket": "T-4"
+    }
+   ]
+  }
+ ]
+}

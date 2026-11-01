@@ -1,0 +1,647 @@
+{
+ "meta": {
+  "started_at": "2026-11-01T15:58:20.337Z",
+  "seeds": 20,
+  "ci": false
+ },
+ "cells": {
+  "S3a|sea-lite": {
+   "scenario": "S3a",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "sea-lite",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "exactly one winner; losers told who holds it",
+   "delivery": null,
+   "bytes": {
+    "claim": {
+     "mean": 361,
+     "max": 362,
+     "tokens_mean": 91
+    }
+   },
+   "latency_ms": {
+    "claim_race": {
+     "n": 20,
+     "p50": 4679,
+     "p95": 7011,
+     "max": 7823
+    }
+   },
+   "flags": {
+    "double_claim": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "advisory": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 82256
+  },
+  "S3b|sea-lite": {
+   "scenario": "S3b",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "sea-lite",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "blocked at edit, holder named",
+   "delivery": null,
+   "bytes": {
+    "guard": {
+     "mean": 386,
+     "max": 400,
+     "tokens_mean": 97
+    }
+   },
+   "latency_ms": {
+    "guard": {
+     "n": 20,
+     "p50": 648,
+     "p95": 1570,
+     "max": 1839
+    }
+   },
+   "flags": {
+    "blocked": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 34454
+  },
+  "S3c|sea-lite": {
+   "scenario": "S3c",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "sea-lite",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "exactly one winner; losers told who holds it",
+   "delivery": null,
+   "bytes": {
+    "claim": {
+     "mean": 367,
+     "max": 368,
+     "tokens_mean": 92
+    }
+   },
+   "latency_ms": {
+    "claim_race": {
+     "n": 20,
+     "p50": 803,
+     "p95": 1187,
+     "max": 1277
+    }
+   },
+   "flags": {
+    "double_claim": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "advisory": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 17524
+  },
+  "S3d|sea-lite": {
+   "scenario": "S3d",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "sea-lite",
+   "n": 19,
+   "yes": 19,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 1,
+   "yes_rate": {
+    "k": 19,
+    "n": 19,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8318207759473837,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.823533088192973,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 19,
+    "n": 19,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8318207759473837,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.823533088192973,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "3 concurrent creates, 3 unique, all present",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {
+    "lost_or_dup": {
+     "k": 0,
+     "n": 19,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16817922405261626
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.17646691180702695
+     }
+    },
+    "duplicate_ids": {
+     "k": 0,
+     "n": 19,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16817922405261626
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.17646691180702695
+     }
+    }
+   },
+   "error_samples": [
+    "server exited (2): ity (file:///home/claude/sea-lite/node_modules/kronicle-lite/dist/index.js:112:13)\n    at openDatabase (file:///home/claude/sea-lite/node_modules/kronicle-lite/dist/index.js:706:16)\n    at new KronicleLite (file:///home/claude/sea-lite/node_modules/kronicle-lite/dist/index.js:2225:20)\n    at new _SeaLite (file:///home/claude/sea-lite-wait/dist/cli.js:4234:23)\n    at serveCmd (file:///home/claude/sea-lite-wait/dist/cli.js:5300:17)\n    at main (file:///home/claude/sea-lite-wait/dist/cli.js:4985:14)\n    at file:///home/claude/sea-lite-wait/dist/cli.js:5641:1\n    at ModuleJob.ru"
+   ],
+   "wall_ms": 45555
+  },
+  "S3a|sea-lite+cc-anchor": {
+   "scenario": "S3a",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "sea-lite+cc-anchor",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "exactly one winner; losers told who holds it",
+   "delivery": null,
+   "bytes": {
+    "claim": {
+     "mean": 361,
+     "max": 362,
+     "tokens_mean": 91
+    }
+   },
+   "latency_ms": {
+    "claim_race": {
+     "n": 20,
+     "p50": 3314,
+     "p95": 5255,
+     "max": 5701
+    }
+   },
+   "flags": {
+    "double_claim": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "advisory": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 57527
+  },
+  "S3b|sea-lite+cc-anchor": {
+   "scenario": "S3b",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "sea-lite+cc-anchor",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "blocked at edit, holder named",
+   "delivery": null,
+   "bytes": {
+    "guard": {
+     "mean": 543,
+     "max": 551,
+     "tokens_mean": 136
+    }
+   },
+   "latency_ms": {
+    "guard": {
+     "n": 20,
+     "p50": 779,
+     "p95": 1669,
+     "max": 1717
+    }
+   },
+   "flags": {
+    "blocked": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 34718
+  },
+  "S3c|sea-lite+cc-anchor": {
+   "scenario": "S3c",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "sea-lite+cc-anchor",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "exactly one winner; losers told who holds it",
+   "delivery": null,
+   "bytes": {
+    "claim": {
+     "mean": 367,
+     "max": 368,
+     "tokens_mean": 92
+    }
+   },
+   "latency_ms": {
+    "claim_race": {
+     "n": 20,
+     "p50": 884,
+     "p95": 1425,
+     "max": 1574
+    }
+   },
+   "flags": {
+    "double_claim": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "advisory": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 20003
+  },
+  "S3d|sea-lite+cc-anchor": {
+   "scenario": "S3d",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "sea-lite+cc-anchor",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "3 concurrent creates, 3 unique, all present",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {
+    "lost_or_dup": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "duplicate_ids": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 45750
+  }
+ }
+}
