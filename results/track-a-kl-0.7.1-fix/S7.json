@@ -1,0 +1,448 @@
+{
+ "scenario": "S7",
+ "title": "Benign-edit noise (must NOT alarm; false-positive control)",
+ "records": {
+  "S7|kronicle-lite-next": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "yes",
+    "reason": "quiet on whitespace_trim",
+    "flags": {
+     "template": "whitespace_trim",
+     "alarm": false,
+     "trivial": true
+    },
+    "bytes": {
+     "touch": 80,
+     "read": 1371
+    },
+    "ms": {
+     "touch": 13.4,
+     "read": 44.6
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1668
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "yes",
+    "reason": "quiet on whitespace_double",
+    "flags": {
+     "template": "whitespace_double",
+     "alarm": false,
+     "trivial": true
+    },
+    "bytes": {
+     "touch": 1335,
+     "read": 1376
+    },
+    "ms": {
+     "touch": 185.3,
+     "read": 11.2
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1611
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "yes",
+    "reason": "quiet on line_ending_norm",
+    "flags": {
+     "template": "line_ending_norm",
+     "alarm": false,
+     "trivial": true
+    },
+    "bytes": {
+     "touch": 80,
+     "read": 1375
+    },
+    "ms": {
+     "touch": 26.3,
+     "read": 7
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1673
+   },
+   {
+    "seed": 4,
+    "variant": null,
+    "grade": "yes",
+    "reason": "quiet on comma_list",
+    "flags": {
+     "template": "comma_list",
+     "alarm": false,
+     "trivial": true
+    },
+    "bytes": {
+     "touch": 1337,
+     "read": 1372
+    },
+    "ms": {
+     "touch": 26.2,
+     "read": 8.6
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1444
+   },
+   {
+    "seed": 5,
+    "variant": null,
+    "grade": "yes",
+    "reason": "quiet on smart_quote",
+    "flags": {
+     "template": "smart_quote",
+     "alarm": false,
+     "trivial": true
+    },
+    "bytes": {
+     "touch": 1327,
+     "read": 1371
+    },
+    "ms": {
+     "touch": 24.1,
+     "read": 200.1
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1751
+   },
+   {
+    "seed": 6,
+    "variant": null,
+    "grade": "yes",
+    "reason": "quiet on numbered_list_renumber",
+    "flags": {
+     "template": "numbered_list_renumber",
+     "alarm": false,
+     "trivial": true
+    },
+    "bytes": {
+     "touch": 1339,
+     "read": 1372
+    },
+    "ms": {
+     "touch": 31.1,
+     "read": 7
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1725
+   },
+   {
+    "seed": 7,
+    "variant": null,
+    "grade": "yes",
+    "reason": "quiet on markdown_emphasis",
+    "flags": {
+     "template": "markdown_emphasis",
+     "alarm": false,
+     "trivial": true
+    },
+    "bytes": {
+     "touch": 1331,
+     "read": 1376
+    },
+    "ms": {
+     "touch": 211.5,
+     "read": 25.9
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1738
+   },
+   {
+    "seed": 8,
+    "variant": null,
+    "grade": "yes",
+    "reason": "quiet on missing_period",
+    "flags": {
+     "template": "missing_period",
+     "alarm": false,
+     "trivial": true
+    },
+    "bytes": {
+     "touch": 1337,
+     "read": 1371
+    },
+    "ms": {
+     "touch": 15.3,
+     "read": 3.4
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1640
+   },
+   {
+    "seed": 9,
+    "variant": null,
+    "grade": "yes",
+    "reason": "quiet on hyphenation",
+    "flags": {
+     "template": "hyphenation",
+     "alarm": false,
+     "trivial": true
+    },
+    "bytes": {
+     "touch": 1337,
+     "read": 1374
+    },
+    "ms": {
+     "touch": 38.6,
+     "read": 8.1
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1578
+   },
+   {
+    "seed": 10,
+    "variant": null,
+    "grade": "yes",
+    "reason": "quiet on typo_fix",
+    "flags": {
+     "template": "typo_fix",
+     "alarm": false,
+     "trivial": true
+    },
+    "bytes": {
+     "touch": 1323,
+     "read": 1371
+    },
+    "ms": {
+     "touch": 33.4,
+     "read": 4.8
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1774
+   },
+   {
+    "seed": 11,
+    "variant": null,
+    "grade": "yes",
+    "reason": "quiet on whitespace_trim",
+    "flags": {
+     "template": "whitespace_trim",
+     "alarm": false,
+     "trivial": true
+    },
+    "bytes": {
+     "touch": 80,
+     "read": 1374
+    },
+    "ms": {
+     "touch": 6.5,
+     "read": 2.8
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1650
+   },
+   {
+    "seed": 12,
+    "variant": null,
+    "grade": "yes",
+    "reason": "quiet on whitespace_double",
+    "flags": {
+     "template": "whitespace_double",
+     "alarm": false,
+     "trivial": true
+    },
+    "bytes": {
+     "touch": 1335,
+     "read": 1372
+    },
+    "ms": {
+     "touch": 191.7,
+     "read": 20.7
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1592
+   },
+   {
+    "seed": 13,
+    "variant": null,
+    "grade": "yes",
+    "reason": "quiet on line_ending_norm",
+    "flags": {
+     "template": "line_ending_norm",
+     "alarm": false,
+     "trivial": true
+    },
+    "bytes": {
+     "touch": 80,
+     "read": 1378
+    },
+    "ms": {
+     "touch": 15.6,
+     "read": 22.7
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1583
+   },
+   {
+    "seed": 14,
+    "variant": null,
+    "grade": "yes",
+    "reason": "quiet on comma_list",
+    "flags": {
+     "template": "comma_list",
+     "alarm": false,
+     "trivial": true
+    },
+    "bytes": {
+     "touch": 1337,
+     "read": 1370
+    },
+    "ms": {
+     "touch": 176.6,
+     "read": 3.6
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1531
+   },
+   {
+    "seed": 15,
+    "variant": null,
+    "grade": "yes",
+    "reason": "quiet on smart_quote",
+    "flags": {
+     "template": "smart_quote",
+     "alarm": false,
+     "trivial": true
+    },
+    "bytes": {
+     "touch": 1327,
+     "read": 1372
+    },
+    "ms": {
+     "touch": 19.6,
+     "read": 5.4
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1630
+   },
+   {
+    "seed": 16,
+    "variant": null,
+    "grade": "yes",
+    "reason": "quiet on numbered_list_renumber",
+    "flags": {
+     "template": "numbered_list_renumber",
+     "alarm": false,
+     "trivial": true
+    },
+    "bytes": {
+     "touch": 1339,
+     "read": 1373
+    },
+    "ms": {
+     "touch": 28.2,
+     "read": 3.2
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1837
+   },
+   {
+    "seed": 17,
+    "variant": null,
+    "grade": "yes",
+    "reason": "quiet on markdown_emphasis",
+    "flags": {
+     "template": "markdown_emphasis",
+     "alarm": false,
+     "trivial": true
+    },
+    "bytes": {
+     "touch": 1331,
+     "read": 1378
+    },
+    "ms": {
+     "touch": 26.9,
+     "read": 5.2
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1436
+   },
+   {
+    "seed": 18,
+    "variant": null,
+    "grade": "yes",
+    "reason": "quiet on missing_period",
+    "flags": {
+     "template": "missing_period",
+     "alarm": false,
+     "trivial": true
+    },
+    "bytes": {
+     "touch": 1337,
+     "read": 1372
+    },
+    "ms": {
+     "touch": 82.3,
+     "read": 8.3
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1647
+   },
+   {
+    "seed": 19,
+    "variant": null,
+    "grade": "yes",
+    "reason": "quiet on hyphenation",
+    "flags": {
+     "template": "hyphenation",
+     "alarm": false,
+     "trivial": true
+    },
+    "bytes": {
+     "touch": 1337,
+     "read": 1376
+    },
+    "ms": {
+     "touch": 175.6,
+     "read": 3.8
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1301
+   },
+   {
+    "seed": 20,
+    "variant": null,
+    "grade": "yes",
+    "reason": "quiet on typo_fix",
+    "flags": {
+     "template": "typo_fix",
+     "alarm": false,
+     "trivial": true
+    },
+    "bytes": {
+     "touch": 1323,
+     "read": 1376
+    },
+    "ms": {
+     "touch": 19.6,
+     "read": 3.6
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1261
+   }
+  ]
+ }
+}
