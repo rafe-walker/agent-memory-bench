@@ -29,6 +29,9 @@ if [ ! -s "$D/snapshots/$REV/model_optimized.onnx" ]; then
   done
 fi
 
+echo "== beads-mcp 1.3.2 (uv venv; MCP front-end for bd, used by S14 only)"
+[ -x beads-mcp-venv/bin/beads-mcp ] || { uv venv -q -p 3.12 beads-mcp-venv && VIRTUAL_ENV="$ARMS/beads-mcp-venv" uv pip install -q beads-mcp==1.3.2; }
+
 echo "== mcp_agent_mail (git, pinned commit)"
 AM_REV=426d4f30dca7ea41189c31a617382be616dd1aa7
 if [ ! -d mcp_agent_mail/.git ]; then git clone -q https://github.com/Dicklesworthstone/mcp_agent_mail mcp_agent_mail; fi

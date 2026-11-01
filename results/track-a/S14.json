@@ -1,0 +1,1478 @@
+{
+ "scenario": "S14",
+ "title": "Planning cost (1 epic + 20 tickets, 39 links)",
+ "plan": {
+  "tickets": 21,
+  "parent_edges": 20,
+  "dep_edges": 19,
+  "invalid_item": "edge \"ticket 01 depends on ticket 20\" (closes a cycle)"
+ },
+ "records": {
+  "sea-lite/apply": [
+   {
+    "path": "sea-lite/apply",
+    "seed": 1,
+    "cost": {
+     "calls": 1,
+     "written": 5474,
+     "result": 13763,
+     "ms": 41,
+     "errors": 0,
+     "crashed": false
+    },
+    "ok": true,
+    "graph": {
+     "exact": true,
+     "problems": [],
+     "tickets": 21,
+     "edges": 39
+    },
+    "rerun": {
+     "calls": 1,
+     "written": 5474,
+     "result": 13762,
+     "ms": 2,
+     "errors": 0,
+     "crashed": false,
+     "tickets_after": 21,
+     "edges_after": 39,
+     "duplicated": false
+    },
+    "dry": {
+     "caught": true,
+     "wrote": 0,
+     "note": "{\"error\":\"cycle\",\"message\":\"batch would create a cycle: t01 → t20 → t19 → t18 → t17 → t16 → t15 → t14 → t13 → t12 → t11 → t10 → t09 → t08 → t07 → t06 → t05 → t0",
+     "calls": 1,
+     "written": 5519,
+     "result": 439,
+     "ms": 20,
+     "errors": 1,
+     "crashed": false
+    },
+    "inject": {
+     "rejected": true,
+     "crashed": false,
+     "tickets_left": 0,
+     "edges_left": 0,
+     "atomic": true,
+     "cost": {
+      "calls": 1,
+      "written": 5541,
+      "result": 439,
+      "ms": 2,
+      "errors": 1,
+      "crashed": false
+     },
+     "note": "{\"error\":\"cycle\",\"message\":\"batch would create a cycle: t01 → t20 → t19 → t18 → t17 → t16 → t15 → t14 → t13 → t12 → t11 → t10 → t09 → t08 → t07 → t06 → t05 → t0"
+    }
+   },
+   {
+    "path": "sea-lite/apply",
+    "seed": 2,
+    "cost": {
+     "calls": 1,
+     "written": 5474,
+     "result": 13763,
+     "ms": 40,
+     "errors": 0,
+     "crashed": false
+    },
+    "ok": true,
+    "graph": {
+     "exact": true,
+     "problems": [],
+     "tickets": 21,
+     "edges": 39
+    },
+    "rerun": {
+     "calls": 1,
+     "written": 5474,
+     "result": 13762,
+     "ms": 2,
+     "errors": 0,
+     "crashed": false,
+     "tickets_after": 21,
+     "edges_after": 39,
+     "duplicated": false
+    },
+    "dry": {
+     "caught": true,
+     "wrote": 0,
+     "note": "{\"error\":\"cycle\",\"message\":\"batch would create a cycle: t01 → t20 → t19 → t18 → t17 → t16 → t15 → t14 → t13 → t12 → t11 → t10 → t09 → t08 → t07 → t06 → t05 → t0",
+     "calls": 1,
+     "written": 5519,
+     "result": 439,
+     "ms": 13,
+     "errors": 1,
+     "crashed": false
+    },
+    "inject": {
+     "rejected": true,
+     "crashed": false,
+     "tickets_left": 0,
+     "edges_left": 0,
+     "atomic": true,
+     "cost": {
+      "calls": 1,
+      "written": 5541,
+      "result": 439,
+      "ms": 2,
+      "errors": 1,
+      "crashed": false
+     },
+     "note": "{\"error\":\"cycle\",\"message\":\"batch would create a cycle: t01 → t20 → t19 → t18 → t17 → t16 → t15 → t14 → t13 → t12 → t11 → t10 → t09 → t08 → t07 → t06 → t05 → t0"
+    }
+   },
+   {
+    "path": "sea-lite/apply",
+    "seed": 3,
+    "cost": {
+     "calls": 1,
+     "written": 5474,
+     "result": 13763,
+     "ms": 39,
+     "errors": 0,
+     "crashed": false
+    },
+    "ok": true,
+    "graph": {
+     "exact": true,
+     "problems": [],
+     "tickets": 21,
+     "edges": 39
+    },
+    "rerun": {
+     "calls": 1,
+     "written": 5474,
+     "result": 13762,
+     "ms": 1,
+     "errors": 0,
+     "crashed": false,
+     "tickets_after": 21,
+     "edges_after": 39,
+     "duplicated": false
+    },
+    "dry": {
+     "caught": true,
+     "wrote": 0,
+     "note": "{\"error\":\"cycle\",\"message\":\"batch would create a cycle: t01 → t20 → t19 → t18 → t17 → t16 → t15 → t14 → t13 → t12 → t11 → t10 → t09 → t08 → t07 → t06 → t05 → t0",
+     "calls": 1,
+     "written": 5519,
+     "result": 439,
+     "ms": 14,
+     "errors": 1,
+     "crashed": false
+    },
+    "inject": {
+     "rejected": true,
+     "crashed": false,
+     "tickets_left": 0,
+     "edges_left": 0,
+     "atomic": true,
+     "cost": {
+      "calls": 1,
+      "written": 5541,
+      "result": 439,
+      "ms": 2,
+      "errors": 1,
+      "crashed": false
+     },
+     "note": "{\"error\":\"cycle\",\"message\":\"batch would create a cycle: t01 → t20 → t19 → t18 → t17 → t16 → t15 → t14 → t13 → t12 → t11 → t10 → t09 → t08 → t07 → t06 → t05 → t0"
+    }
+   }
+  ],
+  "sea-lite/per-item": [
+   {
+    "path": "sea-lite/per-item",
+    "seed": 1,
+    "cost": {
+     "calls": 60,
+     "written": 14135,
+     "result": 66597,
+     "ms": 120,
+     "errors": 0,
+     "crashed": false
+    },
+    "ok": true,
+    "graph": {
+     "exact": true,
+     "problems": [],
+     "tickets": 21,
+     "edges": 39
+    },
+    "rerun": {
+     "calls": 60,
+     "written": 14135,
+     "result": 41067,
+     "ms": 44,
+     "errors": 0,
+     "crashed": false,
+     "tickets_after": 21,
+     "edges_after": 39,
+     "duplicated": false
+    },
+    "inject": {
+     "rejected": true,
+     "crashed": false,
+     "tickets_left": 21,
+     "edges_left": 39,
+     "atomic": false,
+     "cost": {
+      "calls": 61,
+      "written": 14398,
+      "result": 68589,
+      "ms": 150,
+      "errors": 1,
+      "crashed": false
+     },
+     "note": "{\"error\":\"cycle\",\"message\":\"adding depends_on would close a cycle: 48877812-fefe-49c1-b15b-d10d9307b5ac → baa8bd54-6007-41f3-9030-d9121fc192e2 → 5343f869-eb01-4"
+    }
+   },
+   {
+    "path": "sea-lite/per-item",
+    "seed": 2,
+    "cost": {
+     "calls": 60,
+     "written": 14135,
+     "result": 66618,
+     "ms": 146,
+     "errors": 0,
+     "crashed": false
+    },
+    "ok": true,
+    "graph": {
+     "exact": true,
+     "problems": [],
+     "tickets": 21,
+     "edges": 39
+    },
+    "rerun": {
+     "calls": 60,
+     "written": 14135,
+     "result": 41088,
+     "ms": 40,
+     "errors": 0,
+     "crashed": false,
+     "tickets_after": 21,
+     "edges_after": 39,
+     "duplicated": false
+    },
+    "inject": {
+     "rejected": true,
+     "crashed": false,
+     "tickets_left": 21,
+     "edges_left": 39,
+     "atomic": false,
+     "cost": {
+      "calls": 61,
+      "written": 14398,
+      "result": 68589,
+      "ms": 170,
+      "errors": 1,
+      "crashed": false
+     },
+     "note": "{\"error\":\"cycle\",\"message\":\"adding depends_on would close a cycle: bc011f04-4bbd-4a31-9a49-2280a78b7edf → e040f873-8ce9-4683-8a9c-01987fcdb50d → 1e780cdf-faf0-4"
+    }
+   },
+   {
+    "path": "sea-lite/per-item",
+    "seed": 3,
+    "cost": {
+     "calls": 60,
+     "written": 14135,
+     "result": 66618,
+     "ms": 151,
+     "errors": 0,
+     "crashed": false
+    },
+    "ok": true,
+    "graph": {
+     "exact": true,
+     "problems": [],
+     "tickets": 21,
+     "edges": 39
+    },
+    "rerun": {
+     "calls": 60,
+     "written": 14135,
+     "result": 41088,
+     "ms": 60,
+     "errors": 0,
+     "crashed": false,
+     "tickets_after": 21,
+     "edges_after": 39,
+     "duplicated": false
+    },
+    "inject": {
+     "rejected": true,
+     "crashed": false,
+     "tickets_left": 21,
+     "edges_left": 39,
+     "atomic": false,
+     "cost": {
+      "calls": 61,
+      "written": 14398,
+      "result": 68589,
+      "ms": 146,
+      "errors": 1,
+      "crashed": false
+     },
+     "note": "{\"error\":\"cycle\",\"message\":\"adding depends_on would close a cycle: 04a7f7f4-9e1a-425e-b34d-3731c92c46d4 → 16c2deef-cd5c-4f3a-ba91-f8ebab09dcf3 → b191b0c0-7b47-4"
+    }
+   }
+  ],
+  "beads/graph": [
+   {
+    "path": "beads/graph",
+    "seed": 1,
+    "cost": {
+     "calls": 1,
+     "written": 4551,
+     "result": 525,
+     "ms": 2484,
+     "errors": 0,
+     "crashed": false
+    },
+    "ok": true,
+    "graph": {
+     "exact": true,
+     "problems": [],
+     "tickets": 21,
+     "edges": 39
+    },
+    "rerun": {
+     "calls": 1,
+     "written": 4551,
+     "result": 525,
+     "ms": 2359,
+     "errors": 0,
+     "crashed": false,
+     "tickets_after": 42,
+     "edges_after": 78,
+     "duplicated": true
+    },
+    "dry": {
+     "caught": true,
+     "wrote": 0,
+     "note": "Error: invalid graph plan: graph contains a blocking dependency cycle involving node \"t01\"\n",
+     "calls": 1,
+     "written": 4588,
+     "result": 91,
+     "ms": 167,
+     "errors": 1,
+     "crashed": false
+    },
+    "inject": {
+     "rejected": true,
+     "crashed": false,
+     "tickets_left": 0,
+     "edges_left": 0,
+     "atomic": true,
+     "cost": {
+      "calls": 1,
+      "written": 4585,
+      "result": 126,
+      "ms": 205,
+      "errors": 1,
+      "crashed": false
+     },
+     "note": "{\n  \"error\": \"invalid graph plan: graph contains a blocking dependency cycle involving node \\\"t01\\\"\",\n  \"schema_version\": 1\n}\n"
+    }
+   },
+   {
+    "path": "beads/graph",
+    "seed": 2,
+    "cost": {
+     "calls": 1,
+     "written": 4551,
+     "result": 525,
+     "ms": 2356,
+     "errors": 0,
+     "crashed": false
+    },
+    "ok": true,
+    "graph": {
+     "exact": true,
+     "problems": [],
+     "tickets": 21,
+     "edges": 39
+    },
+    "rerun": {
+     "calls": 1,
+     "written": 4551,
+     "result": 525,
+     "ms": 2264,
+     "errors": 0,
+     "crashed": false,
+     "tickets_after": 42,
+     "edges_after": 78,
+     "duplicated": true
+    },
+    "dry": {
+     "caught": true,
+     "wrote": 0,
+     "note": "Error: invalid graph plan: graph contains a blocking dependency cycle involving node \"t01\"\n",
+     "calls": 1,
+     "written": 4588,
+     "result": 91,
+     "ms": 173,
+     "errors": 1,
+     "crashed": false
+    },
+    "inject": {
+     "rejected": true,
+     "crashed": false,
+     "tickets_left": 0,
+     "edges_left": 0,
+     "atomic": true,
+     "cost": {
+      "calls": 1,
+      "written": 4585,
+      "result": 126,
+      "ms": 195,
+      "errors": 1,
+      "crashed": false
+     },
+     "note": "{\n  \"error\": \"invalid graph plan: graph contains a blocking dependency cycle involving node \\\"t01\\\"\",\n  \"schema_version\": 1\n}\n"
+    }
+   },
+   {
+    "path": "beads/graph",
+    "seed": 3,
+    "cost": {
+     "calls": 1,
+     "written": 4551,
+     "result": 525,
+     "ms": 2210,
+     "errors": 0,
+     "crashed": false
+    },
+    "ok": true,
+    "graph": {
+     "exact": true,
+     "problems": [],
+     "tickets": 21,
+     "edges": 39
+    },
+    "rerun": {
+     "calls": 1,
+     "written": 4551,
+     "result": 525,
+     "ms": 2337,
+     "errors": 0,
+     "crashed": false,
+     "tickets_after": 42,
+     "edges_after": 78,
+     "duplicated": true
+    },
+    "dry": {
+     "caught": true,
+     "wrote": 0,
+     "note": "Error: invalid graph plan: graph contains a blocking dependency cycle involving node \"t01\"\n",
+     "calls": 1,
+     "written": 4588,
+     "result": 91,
+     "ms": 156,
+     "errors": 1,
+     "crashed": false
+    },
+    "inject": {
+     "rejected": true,
+     "crashed": false,
+     "tickets_left": 0,
+     "edges_left": 0,
+     "atomic": true,
+     "cost": {
+      "calls": 1,
+      "written": 4585,
+      "result": 126,
+      "ms": 216,
+      "errors": 1,
+      "crashed": false
+     },
+     "note": "{\n  \"error\": \"invalid graph plan: graph contains a blocking dependency cycle involving node \\\"t01\\\"\",\n  \"schema_version\": 1\n}\n"
+    }
+   }
+  ],
+  "beads/cli-inline": [
+   {
+    "path": "beads/cli-inline",
+    "seed": 1,
+    "cost": {
+     "calls": 21,
+     "written": 3868,
+     "result": 240,
+     "ms": 11915,
+     "errors": 0,
+     "crashed": false
+    },
+    "ok": true,
+    "graph": {
+     "exact": true,
+     "problems": [],
+     "tickets": 21,
+     "edges": 39
+    },
+    "rerun": {
+     "calls": 21,
+     "written": 3868,
+     "result": 240,
+     "ms": 12281,
+     "errors": 0,
+     "crashed": false,
+     "tickets_after": 42,
+     "edges_after": 78,
+     "duplicated": true
+    },
+    "inject": {
+     "rejected": true,
+     "crashed": false,
+     "tickets_left": 21,
+     "edges_left": 39,
+     "atomic": false,
+     "cost": {
+      "calls": 22,
+      "written": 3901,
+      "result": 286,
+      "ms": 11752,
+      "errors": 1,
+      "crashed": false
+     },
+     "note": "Error: adding dependency would create a cycle\n"
+    }
+   },
+   {
+    "path": "beads/cli-inline",
+    "seed": 2,
+    "cost": {
+     "calls": 21,
+     "written": 3868,
+     "result": 240,
+     "ms": 12183,
+     "errors": 0,
+     "crashed": false
+    },
+    "ok": true,
+    "graph": {
+     "exact": true,
+     "problems": [],
+     "tickets": 21,
+     "edges": 39
+    },
+    "rerun": {
+     "calls": 21,
+     "written": 3868,
+     "result": 240,
+     "ms": 12447,
+     "errors": 0,
+     "crashed": false,
+     "tickets_after": 42,
+     "edges_after": 78,
+     "duplicated": true
+    },
+    "inject": {
+     "rejected": true,
+     "crashed": false,
+     "tickets_left": 21,
+     "edges_left": 39,
+     "atomic": false,
+     "cost": {
+      "calls": 22,
+      "written": 3901,
+      "result": 286,
+      "ms": 11914,
+      "errors": 1,
+      "crashed": false
+     },
+     "note": "Error: adding dependency would create a cycle\n"
+    }
+   },
+   {
+    "path": "beads/cli-inline",
+    "seed": 3,
+    "cost": {
+     "calls": 21,
+     "written": 3868,
+     "result": 240,
+     "ms": 11630,
+     "errors": 0,
+     "crashed": false
+    },
+    "ok": true,
+    "graph": {
+     "exact": true,
+     "problems": [],
+     "tickets": 21,
+     "edges": 39
+    },
+    "rerun": {
+     "calls": 21,
+     "written": 3868,
+     "result": 240,
+     "ms": 12873,
+     "errors": 0,
+     "crashed": false,
+     "tickets_after": 42,
+     "edges_after": 78,
+     "duplicated": true
+    },
+    "inject": {
+     "rejected": true,
+     "crashed": false,
+     "tickets_left": 21,
+     "edges_left": 39,
+     "atomic": false,
+     "cost": {
+      "calls": 22,
+      "written": 3901,
+      "result": 286,
+      "ms": 11856,
+      "errors": 1,
+      "crashed": false
+     },
+     "note": "Error: adding dependency would create a cycle\n"
+    }
+   }
+  ],
+  "beads/cli-edges": [
+   {
+    "path": "beads/cli-edges",
+    "seed": 1,
+    "cost": {
+     "calls": 60,
+     "written": 4568,
+     "result": 6139,
+     "ms": 24028,
+     "errors": 0,
+     "crashed": false
+    },
+    "ok": true,
+    "graph": {
+     "exact": true,
+     "problems": [],
+     "tickets": 21,
+     "edges": 39
+    },
+    "rerun": {
+     "calls": 60,
+     "written": 4568,
+     "result": 6139,
+     "ms": 26629,
+     "errors": 0,
+     "crashed": false,
+     "tickets_after": 42,
+     "edges_after": 78,
+     "duplicated": true
+    },
+    "inject": {
+     "rejected": true,
+     "crashed": false,
+     "tickets_left": 21,
+     "edges_left": 39,
+     "atomic": false,
+     "cost": {
+      "calls": 61,
+      "written": 4596,
+      "result": 6185,
+      "ms": 24926,
+      "errors": 1,
+      "crashed": false
+     },
+     "note": "Error: adding dependency would create a cycle\n"
+    }
+   },
+   {
+    "path": "beads/cli-edges",
+    "seed": 2,
+    "cost": {
+     "calls": 60,
+     "written": 4568,
+     "result": 6139,
+     "ms": 25389,
+     "errors": 0,
+     "crashed": false
+    },
+    "ok": true,
+    "graph": {
+     "exact": true,
+     "problems": [],
+     "tickets": 21,
+     "edges": 39
+    },
+    "rerun": {
+     "calls": 60,
+     "written": 4568,
+     "result": 6139,
+     "ms": 26395,
+     "errors": 0,
+     "crashed": false,
+     "tickets_after": 42,
+     "edges_after": 78,
+     "duplicated": true
+    },
+    "inject": {
+     "rejected": true,
+     "crashed": false,
+     "tickets_left": 21,
+     "edges_left": 39,
+     "atomic": false,
+     "cost": {
+      "calls": 61,
+      "written": 4596,
+      "result": 6185,
+      "ms": 24535,
+      "errors": 1,
+      "crashed": false
+     },
+     "note": "Error: adding dependency would create a cycle\n"
+    }
+   },
+   {
+    "path": "beads/cli-edges",
+    "seed": 3,
+    "cost": {
+     "calls": 60,
+     "written": 4568,
+     "result": 6139,
+     "ms": 24586,
+     "errors": 0,
+     "crashed": false
+    },
+    "ok": true,
+    "graph": {
+     "exact": true,
+     "problems": [],
+     "tickets": 21,
+     "edges": 39
+    },
+    "rerun": {
+     "calls": 60,
+     "written": 4568,
+     "result": 6139,
+     "ms": 27242,
+     "errors": 0,
+     "crashed": false,
+     "tickets_after": 42,
+     "edges_after": 78,
+     "duplicated": true
+    },
+    "inject": {
+     "rejected": true,
+     "crashed": false,
+     "tickets_left": 21,
+     "edges_left": 39,
+     "atomic": false,
+     "cost": {
+      "calls": 61,
+      "written": 4596,
+      "result": 6185,
+      "ms": 24866,
+      "errors": 1,
+      "crashed": false
+     },
+     "note": "Error: adding dependency would create a cycle\n"
+    }
+   }
+  ],
+  "beads/mcp-inline": [
+   {
+    "path": "beads/mcp-inline",
+    "seed": 1,
+    "cost": {
+     "calls": 21,
+     "written": 3848,
+     "result": 1071,
+     "ms": 10657,
+     "errors": 0,
+     "crashed": false
+    },
+    "ok": true,
+    "graph": {
+     "exact": true,
+     "problems": [],
+     "tickets": 21,
+     "edges": 39
+    },
+    "rerun": {
+     "calls": 21,
+     "written": 3848,
+     "result": 1071,
+     "ms": 10822,
+     "errors": 0,
+     "crashed": false,
+     "tickets_after": 42,
+     "edges_after": 78,
+     "duplicated": true
+    },
+    "inject": {
+     "rejected": true,
+     "crashed": false,
+     "tickets_left": 21,
+     "edges_left": 39,
+     "atomic": false,
+     "cost": {
+      "calls": 22,
+      "written": 3898,
+      "result": 1143,
+      "ms": 11113,
+      "errors": 0,
+      "crashed": false
+     },
+     "note": "Error: bd dep add failed: Error: adding dependency would create a cycle\n"
+    }
+   },
+   {
+    "path": "beads/mcp-inline",
+    "seed": 2,
+    "cost": {
+     "calls": 21,
+     "written": 3848,
+     "result": 1071,
+     "ms": 10467,
+     "errors": 0,
+     "crashed": false
+    },
+    "ok": true,
+    "graph": {
+     "exact": true,
+     "problems": [],
+     "tickets": 21,
+     "edges": 39
+    },
+    "rerun": {
+     "calls": 21,
+     "written": 3848,
+     "result": 1071,
+     "ms": 11809,
+     "errors": 0,
+     "crashed": false,
+     "tickets_after": 42,
+     "edges_after": 78,
+     "duplicated": true
+    },
+    "inject": {
+     "rejected": true,
+     "crashed": false,
+     "tickets_left": 21,
+     "edges_left": 39,
+     "atomic": false,
+     "cost": {
+      "calls": 22,
+      "written": 3898,
+      "result": 1143,
+      "ms": 11443,
+      "errors": 0,
+      "crashed": false
+     },
+     "note": "Error: bd dep add failed: Error: adding dependency would create a cycle\n"
+    }
+   },
+   {
+    "path": "beads/mcp-inline",
+    "seed": 3,
+    "cost": {
+     "calls": 21,
+     "written": 3848,
+     "result": 1071,
+     "ms": 10926,
+     "errors": 0,
+     "crashed": false
+    },
+    "ok": true,
+    "graph": {
+     "exact": true,
+     "problems": [],
+     "tickets": 21,
+     "edges": 39
+    },
+    "rerun": {
+     "calls": 21,
+     "written": 3848,
+     "result": 1071,
+     "ms": 11497,
+     "errors": 0,
+     "crashed": false,
+     "tickets_after": 42,
+     "edges_after": 78,
+     "duplicated": true
+    },
+    "inject": {
+     "rejected": true,
+     "crashed": false,
+     "tickets_left": 21,
+     "edges_left": 39,
+     "atomic": false,
+     "cost": {
+      "calls": 22,
+      "written": 3898,
+      "result": 1143,
+      "ms": 11226,
+      "errors": 0,
+      "crashed": false
+     },
+     "note": "Error: bd dep add failed: Error: adding dependency would create a cycle\n"
+    }
+   }
+  ],
+  "beads/mcp-edges": [
+   {
+    "path": "beads/mcp-edges",
+    "seed": 1,
+    "cost": {
+     "calls": 60,
+     "written": 5449,
+     "result": 3336,
+     "ms": 27845,
+     "errors": 0,
+     "crashed": false
+    },
+    "ok": true,
+    "graph": {
+     "exact": true,
+     "problems": [],
+     "tickets": 21,
+     "edges": 39
+    },
+    "rerun": {
+     "calls": 60,
+     "written": 5449,
+     "result": 3336,
+     "ms": 30522,
+     "errors": 0,
+     "crashed": false,
+     "tickets_after": 42,
+     "edges_after": 78,
+     "duplicated": true
+    },
+    "inject": {
+     "rejected": true,
+     "crashed": false,
+     "tickets_left": 21,
+     "edges_left": 39,
+     "atomic": false,
+     "cost": {
+      "calls": 61,
+      "written": 5499,
+      "result": 3408,
+      "ms": 27459,
+      "errors": 0,
+      "crashed": false
+     },
+     "note": "Error: bd dep add failed: Error: adding dependency would create a cycle\n"
+    }
+   },
+   {
+    "path": "beads/mcp-edges",
+    "seed": 2,
+    "cost": {
+     "calls": 60,
+     "written": 5449,
+     "result": 3336,
+     "ms": 25959,
+     "errors": 0,
+     "crashed": false
+    },
+    "ok": true,
+    "graph": {
+     "exact": true,
+     "problems": [],
+     "tickets": 21,
+     "edges": 39
+    },
+    "rerun": {
+     "calls": 60,
+     "written": 5449,
+     "result": 3336,
+     "ms": 28304,
+     "errors": 0,
+     "crashed": false,
+     "tickets_after": 42,
+     "edges_after": 78,
+     "duplicated": true
+    },
+    "inject": {
+     "rejected": true,
+     "crashed": false,
+     "tickets_left": 21,
+     "edges_left": 39,
+     "atomic": false,
+     "cost": {
+      "calls": 61,
+      "written": 5499,
+      "result": 3408,
+      "ms": 24791,
+      "errors": 0,
+      "crashed": false
+     },
+     "note": "Error: bd dep add failed: Error: adding dependency would create a cycle\n"
+    }
+   },
+   {
+    "path": "beads/mcp-edges",
+    "seed": 3,
+    "cost": {
+     "calls": 60,
+     "written": 5449,
+     "result": 3336,
+     "ms": 24626,
+     "errors": 0,
+     "crashed": false
+    },
+    "ok": true,
+    "graph": {
+     "exact": true,
+     "problems": [],
+     "tickets": 21,
+     "edges": 39
+    },
+    "rerun": {
+     "calls": 60,
+     "written": 5449,
+     "result": 3336,
+     "ms": 26779,
+     "errors": 0,
+     "crashed": false,
+     "tickets_after": 42,
+     "edges_after": 78,
+     "duplicated": true
+    },
+    "inject": {
+     "rejected": true,
+     "crashed": false,
+     "tickets_left": 21,
+     "edges_left": 39,
+     "atomic": false,
+     "cost": {
+      "calls": 61,
+      "written": 5499,
+      "result": 3408,
+      "ms": 24178,
+      "errors": 0,
+      "crashed": false
+     },
+     "note": "Error: bd dep add failed: Error: adding dependency would create a cycle\n"
+    }
+   }
+  ],
+  "backlog-md/mcp": [
+   {
+    "path": "backlog-md/mcp",
+    "seed": 1,
+    "cost": {
+     "calls": 21,
+     "written": 4191,
+     "result": 35348,
+     "ms": 554,
+     "errors": 0,
+     "crashed": false
+    },
+    "ok": true,
+    "graph": {
+     "exact": true,
+     "problems": [],
+     "tickets": 21,
+     "edges": 39
+    },
+    "rerun": {
+     "calls": 21,
+     "written": 4191,
+     "result": 35357,
+     "ms": 668,
+     "errors": 0,
+     "crashed": false,
+     "tickets_after": 42,
+     "edges_after": 78,
+     "duplicated": true
+    },
+    "inject": {
+     "rejected": true,
+     "crashed": false,
+     "tickets_left": 21,
+     "edges_left": 39,
+     "atomic": false,
+     "cost": {
+      "calls": 22,
+      "written": 4237,
+      "result": 35732,
+      "ms": 648,
+      "errors": 1,
+      "crashed": false
+     },
+     "note": "These dependencies would create a cycle: TASK-1.1 -> TASK-1.20 -> TASK-1.19 -> TASK-1.18 -> TASK-1.17 -> TASK-1.16 -> TASK-1.15 -> TASK-1.14 -> TASK-1.13 -> TAS"
+    }
+   },
+   {
+    "path": "backlog-md/mcp",
+    "seed": 2,
+    "cost": {
+     "calls": 21,
+     "written": 4191,
+     "result": 35348,
+     "ms": 578,
+     "errors": 0,
+     "crashed": false
+    },
+    "ok": true,
+    "graph": {
+     "exact": true,
+     "problems": [],
+     "tickets": 21,
+     "edges": 39
+    },
+    "rerun": {
+     "calls": 21,
+     "written": 4191,
+     "result": 35357,
+     "ms": 710,
+     "errors": 0,
+     "crashed": false,
+     "tickets_after": 42,
+     "edges_after": 78,
+     "duplicated": true
+    },
+    "inject": {
+     "rejected": true,
+     "crashed": false,
+     "tickets_left": 21,
+     "edges_left": 39,
+     "atomic": false,
+     "cost": {
+      "calls": 22,
+      "written": 4237,
+      "result": 35732,
+      "ms": 620,
+      "errors": 1,
+      "crashed": false
+     },
+     "note": "These dependencies would create a cycle: TASK-1.1 -> TASK-1.20 -> TASK-1.19 -> TASK-1.18 -> TASK-1.17 -> TASK-1.16 -> TASK-1.15 -> TASK-1.14 -> TASK-1.13 -> TAS"
+    }
+   },
+   {
+    "path": "backlog-md/mcp",
+    "seed": 3,
+    "cost": {
+     "calls": 21,
+     "written": 4191,
+     "result": 35348,
+     "ms": 635,
+     "errors": 0,
+     "crashed": false
+    },
+    "ok": true,
+    "graph": {
+     "exact": true,
+     "problems": [],
+     "tickets": 21,
+     "edges": 39
+    },
+    "rerun": {
+     "calls": 21,
+     "written": 4191,
+     "result": 35357,
+     "ms": 732,
+     "errors": 0,
+     "crashed": false,
+     "tickets_after": 42,
+     "edges_after": 78,
+     "duplicated": true
+    },
+    "inject": {
+     "rejected": true,
+     "crashed": false,
+     "tickets_left": 21,
+     "edges_left": 39,
+     "atomic": false,
+     "cost": {
+      "calls": 22,
+      "written": 4237,
+      "result": 35732,
+      "ms": 629,
+      "errors": 1,
+      "crashed": false
+     },
+     "note": "These dependencies would create a cycle: TASK-1.1 -> TASK-1.20 -> TASK-1.19 -> TASK-1.18 -> TASK-1.17 -> TASK-1.16 -> TASK-1.15 -> TASK-1.14 -> TASK-1.13 -> TAS"
+    }
+   }
+  ],
+  "task-master/mcp-edges": [
+   {
+    "path": "task-master/mcp-edges",
+    "seed": 1,
+    "cost": {
+     "calls": 40,
+     "written": 9431,
+     "result": 13995,
+     "ms": 182,
+     "errors": 0,
+     "crashed": false
+    },
+    "ok": true,
+    "graph": {
+     "exact": true,
+     "problems": [],
+     "tickets": 21,
+     "edges": 39
+    },
+    "rerun": {
+     "calls": 40,
+     "written": 9431,
+     "result": 13995,
+     "ms": 140,
+     "errors": 0,
+     "crashed": false,
+     "tickets_after": 42,
+     "edges_after": 78,
+     "duplicated": true
+    },
+    "inject": {
+     "rejected": true,
+     "crashed": true,
+     "tickets_left": 21,
+     "edges_left": 39,
+     "atomic": false,
+     "cost": {
+      "calls": 41,
+      "written": 9768,
+      "result": 13995,
+      "ms": 164,
+      "errors": 1,
+      "crashed": true
+     },
+     "note": "CLIENT_ERROR server exited (1): [INFO] Task Master MCP Server starting...\n[INFO] Tool mode configuration: all\n[INFO] Loading all available tools\n[INFO] Register"
+    }
+   },
+   {
+    "path": "task-master/mcp-edges",
+    "seed": 2,
+    "cost": {
+     "calls": 40,
+     "written": 9431,
+     "result": 13995,
+     "ms": 160,
+     "errors": 0,
+     "crashed": false
+    },
+    "ok": true,
+    "graph": {
+     "exact": true,
+     "problems": [],
+     "tickets": 21,
+     "edges": 39
+    },
+    "rerun": {
+     "calls": 40,
+     "written": 9431,
+     "result": 13995,
+     "ms": 134,
+     "errors": 0,
+     "crashed": false,
+     "tickets_after": 42,
+     "edges_after": 78,
+     "duplicated": true
+    },
+    "inject": {
+     "rejected": true,
+     "crashed": true,
+     "tickets_left": 21,
+     "edges_left": 39,
+     "atomic": false,
+     "cost": {
+      "calls": 41,
+      "written": 9768,
+      "result": 13995,
+      "ms": 160,
+      "errors": 1,
+      "crashed": true
+     },
+     "note": "CLIENT_ERROR server exited (1): [INFO] Task Master MCP Server starting...\n[INFO] Tool mode configuration: all\n[INFO] Loading all available tools\n[INFO] Register"
+    }
+   },
+   {
+    "path": "task-master/mcp-edges",
+    "seed": 3,
+    "cost": {
+     "calls": 40,
+     "written": 9431,
+     "result": 13995,
+     "ms": 174,
+     "errors": 0,
+     "crashed": false
+    },
+    "ok": true,
+    "graph": {
+     "exact": true,
+     "problems": [],
+     "tickets": 21,
+     "edges": 39
+    },
+    "rerun": {
+     "calls": 40,
+     "written": 9431,
+     "result": 13995,
+     "ms": 141,
+     "errors": 0,
+     "crashed": false,
+     "tickets_after": 42,
+     "edges_after": 78,
+     "duplicated": true
+    },
+    "inject": {
+     "rejected": true,
+     "crashed": true,
+     "tickets_left": 21,
+     "edges_left": 39,
+     "atomic": false,
+     "cost": {
+      "calls": 41,
+      "written": 9768,
+      "result": 13995,
+      "ms": 165,
+      "errors": 1,
+      "crashed": true
+     },
+     "note": "CLIENT_ERROR server exited (1): [INFO] Task Master MCP Server starting...\n[INFO] Tool mode configuration: all\n[INFO] Loading all available tools\n[INFO] Register"
+    }
+   }
+  ],
+  "task-master/mcp-inline": [
+   {
+    "path": "task-master/mcp-inline",
+    "seed": 1,
+    "cost": {
+     "calls": 21,
+     "written": 6572,
+     "result": 9878,
+     "ms": 72,
+     "errors": 0,
+     "crashed": false
+    },
+    "ok": true,
+    "graph": {
+     "exact": true,
+     "problems": [],
+     "tickets": 21,
+     "edges": 39
+    },
+    "rerun": {
+     "calls": 21,
+     "written": 6572,
+     "result": 9878,
+     "ms": 58,
+     "errors": 0,
+     "crashed": false,
+     "tickets_after": 42,
+     "edges_after": 78,
+     "duplicated": true
+    },
+    "inject": {
+     "rejected": true,
+     "crashed": true,
+     "tickets_left": 21,
+     "edges_left": 39,
+     "atomic": false,
+     "cost": {
+      "calls": 22,
+      "written": 6834,
+      "result": 9878,
+      "ms": 70,
+      "errors": 1,
+      "crashed": true
+     },
+     "note": "CLIENT_ERROR server exited (1): [INFO] Task Master MCP Server starting...\n[INFO] Tool mode configuration: all\n[INFO] Loading all available tools\n[INFO] Register"
+    }
+   },
+   {
+    "path": "task-master/mcp-inline",
+    "seed": 2,
+    "cost": {
+     "calls": 21,
+     "written": 6572,
+     "result": 9878,
+     "ms": 80,
+     "errors": 0,
+     "crashed": false
+    },
+    "ok": true,
+    "graph": {
+     "exact": true,
+     "problems": [],
+     "tickets": 21,
+     "edges": 39
+    },
+    "rerun": {
+     "calls": 21,
+     "written": 6572,
+     "result": 9878,
+     "ms": 71,
+     "errors": 0,
+     "crashed": false,
+     "tickets_after": 42,
+     "edges_after": 78,
+     "duplicated": true
+    },
+    "inject": {
+     "rejected": true,
+     "crashed": true,
+     "tickets_left": 21,
+     "edges_left": 39,
+     "atomic": false,
+     "cost": {
+      "calls": 22,
+      "written": 6834,
+      "result": 9878,
+      "ms": 73,
+      "errors": 1,
+      "crashed": true
+     },
+     "note": "CLIENT_ERROR server exited (1): [INFO] Task Master MCP Server starting...\n[INFO] Tool mode configuration: all\n[INFO] Loading all available tools\n[INFO] Register"
+    }
+   },
+   {
+    "path": "task-master/mcp-inline",
+    "seed": 3,
+    "cost": {
+     "calls": 21,
+     "written": 6572,
+     "result": 9878,
+     "ms": 69,
+     "errors": 0,
+     "crashed": false
+    },
+    "ok": true,
+    "graph": {
+     "exact": true,
+     "problems": [],
+     "tickets": 21,
+     "edges": 39
+    },
+    "rerun": {
+     "calls": 21,
+     "written": 6572,
+     "result": 9878,
+     "ms": 52,
+     "errors": 0,
+     "crashed": false,
+     "tickets_after": 42,
+     "edges_after": 78,
+     "duplicated": true
+    },
+    "inject": {
+     "rejected": true,
+     "crashed": true,
+     "tickets_left": 21,
+     "edges_left": 39,
+     "atomic": false,
+     "cost": {
+      "calls": 22,
+      "written": 6834,
+      "result": 9878,
+      "ms": 78,
+      "errors": 1,
+      "crashed": true
+     },
+     "note": "CLIENT_ERROR server exited (1): [INFO] Task Master MCP Server starting...\n[INFO] Tool mode configuration: all\n[INFO] Loading all available tools\n[INFO] Register"
+    }
+   }
+  ]
+ }
+}

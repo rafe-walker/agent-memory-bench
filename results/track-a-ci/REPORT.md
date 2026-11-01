@@ -1,6 +1,6 @@
 # agent-memory-bench — Track A report
 
-Generated 2026-11-01T06:24:32.762Z by `npm run track-a:ci` — deterministic, no LLM, $0. Seeds per randomized cell: **3**. Wall time 106 s on 2 CPU / 8 GB, Node v22.23.4. Bench code at commit `59768d8` plus the working tree committed with these results.
+Generated 2026-11-01T07:10:48.269Z by `npm run track-a:ci` — deterministic, no LLM, $0. Seeds per randomized cell: **3**. Wall time 106 s (+ merged re-runs: baseline,native,kronicle-lite,server-memory,cc-anchor,sea-lite,sea-lite+cc-anchor × S14) on 2 CPU / 8 GB, Node v22.23.4. Bench code at commit `7446626` plus the working tree committed with these results.
 
 **Bottom line.** On the faults where a fact *changes* (S1 stale runbook, S5 retired doc, S6 tamper), kronicle-lite is the only arm that tells the agent what changed: 20/20 seeds each, ✅ [84–100%], against 🟡 for files-on-disk (baseline, native: the fresh value is there if the agent re-reads) and ❌ for the reference memory server (it keeps serving the old value, 20/20). sea-lite is the only coordination arm that passes all four collision variants (S3a–d, 20/20 each) — beads fails out-of-the-box identity (S3c 0/20: both sessions believe they hold the issue), mcp_agent_mail is advisory (every racer is granted, conflict reported; blocked only at commit by its opt-in guard), Backlog.md and task-master have no claim primitive. With cc-anchor's heartbeat, sea-lite also keeps a lease alive through a long task (S13 3/3; alone it lapses and the holder learns only at its next write).
 
@@ -32,6 +32,7 @@ Generated 2026-11-01T06:24:32.762Z by `npm run track-a:ci` — deterministic, no
 | **S11c** Cross-project leak, coordination | · |  |  |  |  | ✅ 100% | ✅ 100% |
 | **S13** Lease expiry during a long task | · |  |  |  |  | 🟡 50% | ✅ 100% |
 | **S12** hit / p50 / bytes @300 docs | 10/10 · 8.2 ms · 132 B |  | 10/10 · 2.5 ms · 1.7 KB | 10/10 · 2.7 ms · 514 B |  |  |  |
+| **S14** plan 1 epic + 20 tickets: fewest calls · tokens (write + read) |  |  |  |  |  | 1 call · ~4810 tok · atomic |  |
 
 ## Arms run
 
@@ -357,6 +358,30 @@ Needle lookups are lexical, so every arm finds 20/20; the differences are cost. 
 | kronicle-lite | 300 | 10/10 [72%–100%] | 2.5 / 23 | 1.7 KB (435) | 1.4 s | 72.7× |
 | server-memory | 300 | 10/10 [72%–100%] | 2.7 / 6.6 | 514 B (129) | 0.2 s | 1.16× |
 
+### S14 — Planning cost (1 epic + 20 tickets, 39 links)
+
+Cost table, not graded. **Two paths author the whole plan in one call, atomically: sea-lite `sea_apply` and beads `bd create --graph`.** Both produced the exact graph (3/3), rejected the invalid plan as a whole with nothing left behind (3/3), and both dry-runs caught the cycle without writing (3/3) — so beads' CLI does the same job in one atomic call, and dry-run is not a differentiator. What differs, measured: (1) **surface** — `sea_apply` is an MCP tool; `--graph` is CLI-only (beads-mcp 1.3.2 has no batch/graph tool, so an MCP-only client is on the 21- or 60-call paths); (2) **idempotency** — re-sending the plan with the same `idempotency_key` replays (21 tickets after), while re-running `bd create --graph` duplicates it (42; pinning `id` per node would make a re-run fail instead — not measured); (3) **cost runs the other way** — `sea_apply` costs ~4.8k tokens (5.3 KB written, **13.4 KB returned**: every ticket and link id, pretty-printed) vs ~1.3k for `--graph --json` (525 B key→id map); (4) latency — 40 ms vs 2.35 s (beads commits to embedded Dolt).
+
+**Per-item paths are never atomic.** Every tool rejected the cycle-closing edge (beads, Backlog.md and sea-lite with the cycle path), but by then 21 tickets and 39 links already existed (3/3 each). task-master's MCP server **process exited** on the cyclic `add_dependency` (the CLI reports the cycle and exits; the MCP server inherits the exit), so the call returns no result and the client must restart the server. beads-mcp returns the cycle error as a non-error result. Re-running a per-item plan duplicates every ticket for every tool except sea-lite (its per-call `idempotency_key`s replay; a replayed `sea_create` returns `claim_token: null`, so the re-run reuses the first run's tokens). Cheapest per item: beads with inline `--parent/--deps` (21 calls, ~1.0k tokens, but ~12 s of CLI time); dearest: sea-lite per item (60 calls, ~20k tokens — `sea_create` returns the full ticket + claim, ~1.1 KB each — and the 21 claims stay held for `claim_seconds`). Backlog.md returns the full task view on every create (34.5 KB for the plan). Turns matter beyond bytes: each of 21–60 turns re-reads the growing context, which this table does not count.
+
+GitHub and Linear could not run offline; their rows are call counts derived from the published schemas, labelled as such. Wall-ms spread over the 3 repetitions is small (sd 2–12% of the mean).
+
+Same plan for every path: 21 tickets (1 epic + 20, one-line acceptance body each), 20 parent edges + 19 dependency edges. Invalid item for the atomicity check: edge "ticket 01 depends on ticket 20" (closes a cycle). 3 repetitions per path; counts are deterministic, wall ms is mean ± sd over the repetitions. Tokens ≈ bytes/4.
+
+| tool · path | surface | calls (= turns) | written (≈tok) | results read (≈tok) | total ≈tok | wall ms (mean ± sd) | graph exact | re-run duplicates? | atomic on invalid item | dry-run catches it |
+|---|---|---|---|---|---|---|---|---|---|---|
+| sea-lite 0.4.0 · `sea_apply` (one MCP call) | MCP | 1 | 5.3 KB (1369) | 13.4 KB (3441) | 4810 | 41 ± 4 | ✅ 3/3 | no (21 tickets after) | ✅ rejected, nothing left | ✅ 3/3 |
+| sea-lite 0.4.0 · `sea_create` (claim_seconds) ×21 + `sea_link` ×39 (MCP) | MCP | 60 | 13.8 KB (3534) | 65.1 KB (16671) | 20205 | 146 ± 5 | ✅ 3/3 | no (21 tickets after) | ❌ item rejected; 21 tickets + 39 links left | – |
+| task-master-ai 0.43.1 · `parse_prd` (plan from a PRD) | – | n/a — generates tasks with an LLM; Track A is LLM-free | | | | | | | | |
+| mcp_agent_mail 0.3.4 · — | – | n/a — no tickets or dependency graph (messages + file reservations only) | | | | | | | | |
+
+**Documented call counts — not measured** (computed from the published tool schemas; needs network and accounts, so no bytes, latency or behaviour were observed):
+
+| tool · path | calls | atomic | idempotency | note | source |
+|---|---|---|---|---|---|
+| GitHub MCP server (github/github-mcp-server, main @ 2026-10-31) · `issue_write` ×21 (20 with `parent_issue_number`) + `issue_dependency_write` ×19 | 40 (documented) | no — one issue / one edge per call | no key in the schemas (`issue_dependency_write` idempotentHint: false) | without `parent_issue_number`: + `sub_issue_write` ×20 = 60 calls; `issue_dependency_write` is behind the `issue_dependencies` feature flag | [1](https://github.com/github/github-mcp-server/blob/main/README.md) [2](https://github.com/github/github-mcp-server/blob/main/pkg/github/__toolsnaps__/issue_dependency_write_ff_issue_dependencies.snap) |
+| Linear GraphQL API (@linear/sdk schema.graphql) · `issueCreate` (epic) + `issueBatchCreate` (20 children, `parentId`) + `issueRelationCreate` ×19 | 21 (documented) | only the 20-issue batch ("Creates a list of issues atomically", ≤ 50); relations one per call | optional client `id` (UUID v4) per issue/relation — behaviour on replay not documented | GraphQL mutations, not an MCP tool catalog; the epic must exist before children can name it as `parentId` | [1](https://github.com/linear/linear/blob/master/packages/sdk/src/schema.graphql) |
+
 ## Where each tool wins and loses (generated from scores)
 
 - **baseline** — best or tied-best: S2, S7, S8, S11; scores 0: S3a, S3b, S3c
@@ -376,7 +401,7 @@ Ranked by (gap size in this run) × (how many users hit it) × (cost to fix). Ev
 3. **Benign-edit classifier (kronicle-lite).** S7: 16/20 false "reconcile before acting" retractions on typo/quote/comma/emphasis/list/hyphen edits. Port IsoKron's trivial-edit rules (normalize quotes, emphasis markers, list numbering, internal whitespace, hyphenation; token edit distance ≤ 2 with no digits/identifiers/backticked values changed) and demote those to an info line. Precision is what keeps S1's 100% worth reading.
 4. **Rename = rename, not removal (kronicle-lite).** S8: 10/10 file renames produce a *safety* "stop following it" retraction. When a FileChanged delete and create carry the same normalized content (or ≥ N matching blocks), emit `document.renamed` (the event type exists since 0.5.0) and keep block ids — the ADR-0018 anchor algorithm.
 5. **Project-scoped recall (kronicle-lite).** S11: repo B's runbook and notes come back in repo A's recall 20/20 on the default shared data dir; 0.5.0's project key only scopes instruction retractions. Key `put_document` and notes by project and filter recall to the current project by default (`all_projects` opt-in) — same as orient.
-6. **Response diet (kronicle-lite, sea-lite).** Per turn: orient ~1.1 KB with nothing to report (mostly cursor and digest), 2.4–3.6 KB with changes; recall ~1.7 KB (0.5) → 2.3 KB (0.6) for one 60-byte fact vs 134 B from grep (S12, S1). sea-lite tools/list 59 KB (~15k tokens) vs 9.6 KB for kronicle `--core`. Ship: a ≤ 300-byte "nothing changed" pulse as the default per-turn call, receipts by id (full receipt on demand), `max_chars` on by default, and a sea-lite `--core` profile (claim/next/release/refresh/scope_check/get).
+6. **Response diet (kronicle-lite, sea-lite).** Per turn: orient ~1.1 KB with nothing to report (mostly cursor and digest), 2.4–3.6 KB with changes; recall ~1.7 KB (0.5) → 2.3 KB (0.6) for one 60-byte fact vs 134 B from grep (S12, S1). sea-lite tools/list 59 KB (~15k tokens) vs 9.6 KB for kronicle `--core`. Ship: a ≤ 300-byte "nothing changed" pulse as the default per-turn call, receipts by id (full receipt on demand), `max_chars` on by default, and a sea-lite `--core` profile (claim/next/release/refresh/scope_check/get). S14: `sea_apply` returns 13.4 KB for a 21-ticket plan where a ref→id map is ~0.5 KB (beads `--graph --json` returns 525 B), and each per-item `sea_create` echoes ~1.1 KB.
 7. **Carry decisions through compaction without cc-anchor (kronicle-lite).** S4a: 0/20 — the post-compaction orient names the session-decision doc but not its text. Inline (bounded) the text of decision/session docs written since the cursor, or make kronicle + cc-anchor the documented default pair (cc-anchor: 20/20 at 1.2 KB, push, no 200-line cliff — S4b native 0/20).
 8. **Heartbeat on by default (sea-lite + cc-anchor).** S13: without it the lease lapses mid-task and A learns only at its next fenced write (3/3); with cc-anchor's PostToolUse heartbeat 3/3 survive. Default the heartbeat on wherever sea-lite is configured, and for clients without hooks renew on any `sea_*` call by the holder.
 9. **Fix the concurrent first-start crash (sea-lite via kronicle-lite).** S3d: 1/20 seeds — several `sea-lite serve` processes starting at once on a fresh data dir crash in `loadOrCreateIdentity`. Create the signing key with O_EXCL and re-read on EEXIST. Small, and it is exactly the multi-agent start-up the tool exists for.

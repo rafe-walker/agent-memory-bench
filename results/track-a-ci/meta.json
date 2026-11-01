@@ -13,7 +13,7 @@
   "cpus": 2,
   "mem_gb": 8
  },
- "git": "59768d8",
+ "git": "7446626",
  "token_estimate": "ceil(bytes/4); same proxy for every arm",
  "arms": {
   "baseline": {
@@ -213,6 +213,24 @@
    }
   }
  },
- "finished_at": "2026-11-01T06:24:32.762Z",
- "wall_s": 106
+ "merges": [
+  {
+   "at": "2026-11-01T07:10:40.836Z",
+   "arms": [
+    "baseline",
+    "native",
+    "kronicle-lite",
+    "server-memory",
+    "cc-anchor",
+    "sea-lite",
+    "sea-lite+cc-anchor"
+   ],
+   "scenarios": [
+    "S14"
+   ]
+  }
+ ],
+ "wall_s_initial": 106,
+ "finished_at": "2026-11-01T07:10:48.269Z",
+ "wall_s": 7
 }

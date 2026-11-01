@@ -11,6 +11,7 @@ import { G, gradeScore } from './lib/grade.mjs';
 import { KNOWLEDGE } from './scenarios/knowledge.mjs';
 import { COORDINATION } from './scenarios/coordination.mjs';
 import { S12 } from './scenarios/scale.mjs';
+import { S14 } from './scenarios/planning.mjs';
 import { writeReport } from './lib/report.mjs';
 
 const args = Object.fromEntries(process.argv.slice(2).reduce((acc, a, i, arr) => { if (a.startsWith('--')) acc.push([a.slice(2), arr[i + 1] && !arr[i + 1].startsWith('--') ? arr[i + 1] : true]); return acc; }, []));
@@ -129,7 +130,7 @@ console.error(`[track-a] arms: ${Object.keys(armModules).join(', ')} | seeds ${S
 const summary = { meta: { started_at: startedAt, seeds: SEEDS, ci: CI }, cells: {} };
 // --merge: re-run a slice and fold it into an existing results dir (other cells kept as they were).
 const prev = args.merge && fs.existsSync(path.join(OUT, 'summary.json')) ? JSON.parse(fs.readFileSync(path.join(OUT, 'summary.json'), 'utf8')) : null;
-if (prev) { summary.cells = prev.cells; if (prev.scale) summary.scale = prev.scale; summary.meta.merged_at = startedAt; }
+if (prev) { summary.cells = prev.cells; if (prev.scale) summary.scale = prev.scale; if (prev.planning) summary.planning = prev.planning; summary.meta.merged_at = startedAt; }
 for (const s of SCENARIOS) {
   const variants = s.variants ?? [null];
   const cellRecords = {};
@@ -172,6 +173,20 @@ if (!scenarioIds || scenarioIds.includes('S12')) {
   fs.writeFileSync(path.join(OUT, 'S12.json'), JSON.stringify(out, null, 1));
 }
 
+// S14 planning cost: deterministic call/byte counts per authoring path; 3 repetitions (wall-ms variance).
+if (!scenarioIds || scenarioIds.includes('S14')) {
+  const ids = Object.keys(armModules).filter((id) => S14.arms.includes(id));
+  if (ids.length) {
+    const t1 = performance.now();
+    const r = await S14.run(ids, { seeds: S14.seeds, log: (l) => console.error(l) });
+    const rows = { ...(summary.planning?.rows ?? {}), ...r.rows };
+    summary.planning = { title: S14.title, seeds: S14.seeds, plan: r.plan, rows, not_run: r.not_run, documented: r.documented, wall_ms: Math.round(performance.now() - t1) };
+    const prevFile = path.join(OUT, 'S14.json');
+    const prevRecs = args.merge && fs.existsSync(prevFile) ? JSON.parse(fs.readFileSync(prevFile, 'utf8')).records : {};
+    fs.writeFileSync(prevFile, JSON.stringify({ scenario: 'S14', title: S14.title, plan: r.plan, records: { ...prevRecs, ...r.records } }, null, 1));
+  }
+}
+
 if (args.merge && fs.existsSync(path.join(OUT, 'meta.json'))) { const pm = JSON.parse(fs.readFileSync(path.join(OUT, 'meta.json'), 'utf8')); meta.arms = { ...pm.arms, ...meta.arms }; meta.started_at = pm.started_at; meta.seeds = pm.seeds; meta.sizes = pm.sizes; meta.merges = [...(pm.merges ?? []), { at: startedAt, arms: Object.keys(armModules), scenarios: scenarioIds }]; meta.wall_s_initial = pm.wall_s_initial ?? pm.wall_s; }
 meta.finished_at = new Date().toISOString();
 meta.wall_s = Math.round((performance.now() - t0) / 1000);
@@ -179,3 +194,5 @@ fs.writeFileSync(path.join(OUT, 'meta.json'), JSON.stringify(meta, null, 1));
 fs.writeFileSync(path.join(OUT, 'summary.json'), JSON.stringify(summary, null, 1));
 await writeReport(OUT, meta, summary);
 console.error(`[track-a] done in ${meta.wall_s}s → ${OUT}`);
+// A leftover child (e.g. a shared basic-memory server) can keep the event loop alive after "done".
+process.exit(0);

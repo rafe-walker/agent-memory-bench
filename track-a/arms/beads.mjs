@@ -12,7 +12,7 @@ export default class Beads extends Arm {
   static meta = {
     id: 'beads', label: 'beads (bd)', version: '1.3.2 (@beads/bd npm)', kind: ['coordination'],
     setupSteps: ['npm i -g @beads/bd (or brew/go install)', 'bd init', 'bd setup claude (hooks: bd prime)', 'agents use bd ready / bd update --claim / bd close'],
-    claims: true, leases: true, editGuard: null, notes: 'CLI driven (agents call bd through Bash); the separate beads-mcp Python server was not measured.',
+    claims: true, leases: true, editGuard: null, notes: 'CLI driven (agents call bd through Bash); the separate beads-mcp 1.3.2 Python server is measured in S14 only.',
     s13: { lease: 300, duration: 310, tickMs: 5000 }, reps: { S13: 1 }, slow: { S13: true },
   };
   get env() { return { ...process.env, HOME: this.ctx.home, BD_NON_INTERACTIVE: '1', CI: '1' }; }

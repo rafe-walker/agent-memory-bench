@@ -1,0 +1,20 @@
+id: S14
+title: Planning cost (author 1 epic + 20 tickets with 39 links)
+reuses: [sea-lite sea_apply; beads bd create --graph; per-item create + link paths of every work-queue arm]
+plan:
+  tickets: 21            # 1 epic + 20 tickets, each with a one-line acceptance body
+  parent_edges: 20       # every ticket is a child of the epic
+  dependency_edges: 19   # ticket i+1 depends on ticket i
+protocol:
+  - fresh store; the model authors the plan through one path (batch call, or one call per item / per edge)
+  - meter calls (= model turns), bytes written (JSON tool args, or the Bash command incl. any heredoc file), bytes of tool results, wall ms
+  - read the store back (harness only, not metered) and compare the graph exactly
+  - re-send the same plan on the same store (idempotency)
+  - fresh store, same plan plus one invalid item (ticket 1 depends on ticket 20, closing a cycle); for batch paths first the tool's dry-run
+not_run:
+  - task-master parse_prd (needs an LLM)
+  - mcp_agent_mail (no tickets)
+  - GitHub MCP / Linear (network + accounts) — documented call counts only, from published schemas
+repetitions: 3 (counts are deterministic; wall ms reported as mean ± sd)
+tokens: ceil(bytes/4), same proxy as every other Track A cell
+expected_signal: none graded — a cost table; atomic = invalid plan rejected with nothing left behind

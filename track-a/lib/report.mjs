@@ -22,6 +22,27 @@ function cellText(c) {
   return `${GLYPH[c.verdict] ?? ''} ${pct(c.score)}`;
 }
 
+const frac = (o) => `${o.k}/${o.n}`;
+function planningSection(P, A) {
+  const L = [`### S14 — ${P.title}`, ''];
+  if (A.S14) L.push(A.S14, '');
+  L.push(`Same plan for every path: ${P.plan.tickets} tickets (1 epic + 20, one-line acceptance body each), ${P.plan.parent_edges} parent edges + ${P.plan.dep_edges} dependency edges. Invalid item for the atomicity check: ${P.plan.invalid_item}. ${P.seeds} repetitions per path; counts are deterministic, wall ms is mean ± sd over the repetitions. Tokens ≈ bytes/4.`, '');
+  L.push('| tool · path | surface | calls (= turns) | written (≈tok) | results read (≈tok) | total ≈tok | wall ms (mean ± sd) | graph exact | re-run duplicates? | atomic on invalid item | dry-run catches it |', '|---|---|---|---|---|---|---|---|---|---|---|');
+  const rows = Object.values(P.rows).sort((a, b) => a.calls[0] - b.calls[0] || a.tokens_total - b.tokens_total);
+  for (const r of rows) {
+    if (!r.calls.length) { L.push(`| ${r.tool} · ${r.path} | ${r.surface} | ⚠ ${(r.errors[0] ?? 'error').replace(/\|/g, '/').slice(0, 120)} | | | | | | | | |`); continue; }
+    const dup = r.idempotent.k === r.idempotent.n ? `no (${r.idempotent.tickets_after.join('/')} tickets after)` : `**yes** (${r.idempotent.tickets_after.join('/')} tickets after)${r.idempotent.rerun_errors.length ? ' ⚠' : ''}`;
+    const at = r.atomic.k === r.atomic.n ? `✅ rejected, nothing left` : r.atomic.rejected ? `❌ item rejected${r.atomic.crashed ? ' (server process exited)' : ''}; ${r.atomic.tickets_left.join('/')} tickets + ${r.atomic.edges_left.join('/')} links left` : `❌ invalid item accepted; ${r.atomic.tickets_left.join('/')} tickets + ${r.atomic.edges_left.join('/')} links`;
+    const kbr = (b) => (b.min === b.max ? kb(b.mean) : `${kb(b.mean)}`);
+    L.push(`| ${r.tool} · ${r.path} | ${r.surface} | ${r.calls.join('/')} | ${kbr(r.written_bytes)} (${r.written_bytes.tokens}) | ${kbr(r.result_bytes)} (${r.result_bytes.tokens}) | ${r.tokens_total} | ${r.wall_ms.mean} ± ${r.wall_ms.sd} | ${r.exact.k === r.exact.n ? '✅' : '❌'} ${frac(r.exact)}${r.exact.k < r.exact.n ? ` (${r.exact.problems.filter(Boolean).join('; ').slice(0, 80)})` : ''} | ${dup} | ${at} | ${r.dry_run ? (r.dry_run.k === r.dry_run.n ? '✅' : '❌') + ' ' + frac(r.dry_run) : '–'} |`);
+  }
+  for (const r of P.not_run ?? []) L.push(`| ${r.tool} · ${r.path} | – | ${r.reason} | | | | | | | | |`);
+  L.push('', '**Documented call counts — not measured** (computed from the published tool schemas; needs network and accounts, so no bytes, latency or behaviour were observed):', '');
+  L.push('| tool · path | calls | atomic | idempotency | note | source |', '|---|---|---|---|---|---|');
+  for (const d of P.documented ?? []) L.push(`| ${d.tool} · ${d.path} | ${d.calls} (documented) | ${d.atomic} | ${d.idempotent} | ${d.note} | ${d.sources.map((s, i) => `[${i + 1}](${s})`).join(' ')} |`);
+  return L;
+}
+
 export async function writeReport(outDir, meta, summary) {
   const A = await analysis();
   const cells = Object.values(summary.cells);
@@ -43,6 +64,10 @@ export async function writeReport(outDir, meta, summary) {
   if (summary.scale) {
     const sizes = [...new Set(Object.values(summary.scale).map((r) => r.size))];
     for (const size of sizes) L.push(`| **S12** hit / p50 / bytes @${size} docs | ${arms.map((a) => { const r = summary.scale[`${a}|${size}`]; return r ? (r.error ? '⚠' : r.skipped ? '⏭' : `${r.hits}/${r.n} · ${ms(r.latency_ms?.p50)} ms · ${kb(r.bytes_mean)}`) : ''; }).join(' | ')} |`);
+  }
+  if (summary.planning) {
+    const best = (a) => { const rs = Object.values(summary.planning.rows).filter((r) => r.arm === a && r.calls.length); if (!rs.length) return ''; const r = rs.sort((x, y) => x.calls[0] - y.calls[0] || x.tokens_total - y.tokens_total)[0]; return `${r.calls[0]} call${r.calls[0] > 1 ? 's' : ''} · ~${r.tokens_total} tok${r.atomic.k === r.atomic.n ? ' · atomic' : ''}`; };
+    L.push(`| **S14** plan 1 epic + 20 tickets: fewest calls · tokens (write + read) | ${arms.map(best).join(' | ')} |`);
   }
   L.push('');
 
@@ -103,6 +128,8 @@ export async function writeReport(outDir, meta, summary) {
     }
     L.push('');
   }
+
+  if (summary.planning) L.push(...planningSection(summary.planning, A), '');
 
   // Wins / losses (generated)
   L.push('## Where each tool wins and loses (generated from scores)', '');
