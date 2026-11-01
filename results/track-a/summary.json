@@ -1,0 +1,10735 @@
+{
+ "meta": {
+  "started_at": "2026-11-01T18:19:53.852Z",
+  "seeds": 20,
+  "ci": false
+ },
+ "cells": {
+  "S1|baseline": {
+   "scenario": "S1",
+   "title": "Stale runbook (fact changed after the agent read it)",
+   "arm": "baseline",
+   "n": 20,
+   "yes": 0,
+   "partial": 20,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 0.5,
+   "verdict": "partial",
+   "reason": "new value only on re-lookup",
+   "delivery": "none",
+   "bytes": {
+    "sessionStart": {
+     "mean": 0,
+     "max": 0,
+     "tokens_mean": 0
+    },
+    "read0": {
+     "mean": 79,
+     "max": 84,
+     "tokens_mean": 20
+    },
+    "touch": {
+     "mean": 0,
+     "max": 0,
+     "tokens_mean": 0
+    },
+    "read": {
+     "mean": 79,
+     "max": 84,
+     "tokens_mean": 20
+    },
+    "nextSession": {
+     "mean": 0,
+     "max": 0,
+     "tokens_mean": 0
+    },
+    "nextRead": {
+     "mean": 79,
+     "max": 84,
+     "tokens_mean": 20
+    },
+    "nextRead2": {
+     "mean": 35,
+     "max": 35,
+     "tokens_mean": 9
+    }
+   },
+   "latency_ms": {
+    "read0": {
+     "n": 20,
+     "p50": 8.5,
+     "p95": 16.2,
+     "max": 26.3
+    },
+    "read": {
+     "n": 20,
+     "p50": 8.7,
+     "p95": 14.9,
+     "max": 16.4
+    },
+    "nextRead": {
+     "n": 20,
+     "p50": 10.2,
+     "p95": 14.9,
+     "max": 20.2
+    },
+    "nextRead2": {
+     "n": 20,
+     "p50": 7.8,
+     "p95": 12.8,
+     "max": 15.4
+    }
+   },
+   "flags": {
+    "learned": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "pushedNew": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "staleUnmarked": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "nextSessionPass": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "nextSessionStaleCopy": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 4317
+  },
+  "S1|native": {
+   "scenario": "S1",
+   "title": "Stale runbook (fact changed after the agent read it)",
+   "arm": "native",
+   "n": 20,
+   "yes": 0,
+   "partial": 20,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 0.5,
+   "verdict": "partial",
+   "reason": "new value pushed without naming the stale belief",
+   "delivery": "push",
+   "bytes": {
+    "sessionStart": {
+     "mean": 1340,
+     "max": 1372,
+     "tokens_mean": 335
+    },
+    "read0": {
+     "mean": 1350,
+     "max": 1375,
+     "tokens_mean": 338
+    },
+    "touch": {
+     "mean": 228,
+     "max": 233,
+     "tokens_mean": 57
+    },
+    "read": {
+     "mean": 1349,
+     "max": 1365,
+     "tokens_mean": 338
+    },
+    "nextSession": {
+     "mean": 1579,
+     "max": 1609,
+     "tokens_mean": 395
+    },
+    "nextRead": {
+     "mean": 1349,
+     "max": 1365,
+     "tokens_mean": 338
+    },
+    "nextRead2": {
+     "mean": 1305,
+     "max": 1324,
+     "tokens_mean": 327
+    }
+   },
+   "latency_ms": {
+    "read0": {
+     "n": 20,
+     "p50": 8,
+     "p95": 11.2,
+     "max": 16.4
+    },
+    "read": {
+     "n": 20,
+     "p50": 7.4,
+     "p95": 12.6,
+     "max": 14.9
+    },
+    "nextRead": {
+     "n": 20,
+     "p50": 8.7,
+     "p95": 14.7,
+     "max": 16.7
+    },
+    "nextRead2": {
+     "n": 20,
+     "p50": 8.5,
+     "p95": 11.9,
+     "max": 14.4
+    }
+   },
+   "flags": {
+    "learned": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "pushedNew": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "staleUnmarked": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "nextSessionPass": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "nextSessionStaleCopy": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 3657
+  },
+  "S1|kronicle-lite": {
+   "scenario": "S1",
+   "title": "Stale runbook (fact changed after the agent read it)",
+   "arm": "kronicle-lite",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "old→new change surfaced",
+   "delivery": "push",
+   "bytes": {
+    "sessionStart": {
+     "mean": 1816,
+     "max": 1816,
+     "tokens_mean": 454
+    },
+    "read0": {
+     "mean": 1374,
+     "max": 1378,
+     "tokens_mean": 344
+    },
+    "touch": {
+     "mean": 2451,
+     "max": 2475,
+     "tokens_mean": 613
+    },
+    "read": {
+     "mean": 1373,
+     "max": 1379,
+     "tokens_mean": 344
+    },
+    "nextSession": {
+     "mean": 80,
+     "max": 80,
+     "tokens_mean": 20
+    },
+    "nextRead": {
+     "mean": 1373,
+     "max": 1379,
+     "tokens_mean": 344
+    },
+    "nextRead2": {
+     "mean": 3136,
+     "max": 3141,
+     "tokens_mean": 784
+    }
+   },
+   "latency_ms": {
+    "sessionStart": {
+     "n": 20,
+     "p50": 244,
+     "p95": 414.4,
+     "max": 531.9
+    },
+    "read0": {
+     "n": 20,
+     "p50": 31.4,
+     "p95": 295.5,
+     "max": 343.6
+    },
+    "touch": {
+     "n": 20,
+     "p50": 35.7,
+     "p95": 414.5,
+     "max": 451.3
+    },
+    "read": {
+     "n": 20,
+     "p50": 7.8,
+     "p95": 233.5,
+     "max": 277.2
+    },
+    "nextSession": {
+     "n": 20,
+     "p50": 81.6,
+     "p95": 138,
+     "max": 345.5
+    },
+    "nextRead": {
+     "n": 20,
+     "p50": 32,
+     "p95": 81.3,
+     "max": 411.1
+    },
+    "nextRead2": {
+     "n": 20,
+     "p50": 8.3,
+     "p95": 25.7,
+     "max": 48.7
+    }
+   },
+   "flags": {
+    "learned": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "pushedNew": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "staleUnmarked": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "nextSessionPass": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "nextSessionStaleCopy": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 25307
+  },
+  "S1|kronicle-lite-core": {
+   "scenario": "S1",
+   "title": "Stale runbook (fact changed after the agent read it)",
+   "arm": "kronicle-lite-core",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "old→new change surfaced",
+   "delivery": "push",
+   "bytes": {
+    "sessionStart": {
+     "mean": 1816,
+     "max": 1816,
+     "tokens_mean": 454
+    },
+    "read0": {
+     "mean": 1374,
+     "max": 1378,
+     "tokens_mean": 344
+    },
+    "touch": {
+     "mean": 2451,
+     "max": 2475,
+     "tokens_mean": 613
+    },
+    "read": {
+     "mean": 1373,
+     "max": 1379,
+     "tokens_mean": 344
+    },
+    "nextSession": {
+     "mean": 80,
+     "max": 80,
+     "tokens_mean": 20
+    },
+    "nextRead": {
+     "mean": 1373,
+     "max": 1379,
+     "tokens_mean": 344
+    },
+    "nextRead2": {
+     "mean": 3136,
+     "max": 3141,
+     "tokens_mean": 784
+    }
+   },
+   "latency_ms": {
+    "sessionStart": {
+     "n": 20,
+     "p50": 219.4,
+     "p95": 423.1,
+     "max": 478.3
+    },
+    "read0": {
+     "n": 20,
+     "p50": 21.8,
+     "p95": 58.2,
+     "max": 69.8
+    },
+    "touch": {
+     "n": 20,
+     "p50": 39.5,
+     "p95": 310.2,
+     "max": 420.5
+    },
+    "read": {
+     "n": 20,
+     "p50": 7.6,
+     "p95": 19.9,
+     "max": 294.9
+    },
+    "nextSession": {
+     "n": 20,
+     "p50": 92.3,
+     "p95": 259.1,
+     "max": 523.4
+    },
+    "nextRead": {
+     "n": 20,
+     "p50": 26.4,
+     "p95": 248.5,
+     "max": 368.5
+    },
+    "nextRead2": {
+     "n": 20,
+     "p50": 8,
+     "p95": 17.8,
+     "max": 21.4
+    }
+   },
+   "flags": {
+    "learned": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "pushedNew": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "staleUnmarked": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "nextSessionPass": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "nextSessionStaleCopy": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 26843
+  },
+  "S1|basic-memory": {
+   "scenario": "S1",
+   "title": "Stale runbook (fact changed after the agent read it)",
+   "arm": "basic-memory",
+   "n": 20,
+   "yes": 0,
+   "partial": 20,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 0.5,
+   "verdict": "partial",
+   "reason": "new value only on re-lookup (stale copy also shown unmarked)",
+   "delivery": "none",
+   "bytes": {
+    "sessionStart": {
+     "mean": 296,
+     "max": 296,
+     "tokens_mean": 74
+    },
+    "read0": {
+     "mean": 1527,
+     "max": 1577,
+     "tokens_mean": 382
+    },
+    "touch": {
+     "mean": 0,
+     "max": 0,
+     "tokens_mean": 0
+    },
+    "read": {
+     "mean": 1602,
+     "max": 1666,
+     "tokens_mean": 401
+    },
+    "nextSession": {
+     "mean": 367,
+     "max": 367,
+     "tokens_mean": 92
+    },
+    "nextRead": {
+     "mean": 1643,
+     "max": 1678,
+     "tokens_mean": 411
+    },
+    "nextRead2": {
+     "mean": 767,
+     "max": 779,
+     "tokens_mean": 192
+    }
+   },
+   "latency_ms": {
+    "sessionStart": {
+     "n": 20,
+     "p50": 67.7,
+     "p95": 169.9,
+     "max": 403.3
+    },
+    "read0": {
+     "n": 20,
+     "p50": 364.7,
+     "p95": 495.5,
+     "max": 585.4
+    },
+    "read": {
+     "n": 20,
+     "p50": 293,
+     "p95": 522.6,
+     "max": 524.4
+    },
+    "nextSession": {
+     "n": 20,
+     "p50": 62.2,
+     "p95": 112.5,
+     "max": 115.8
+    },
+    "nextRead": {
+     "n": 20,
+     "p50": 263.3,
+     "p95": 372.1,
+     "max": 513.1
+    },
+    "nextRead2": {
+     "n": 20,
+     "p50": 237.7,
+     "p95": 329.8,
+     "max": 395
+    }
+   },
+   "flags": {
+    "learned": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "pushedNew": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "staleUnmarked": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "nextSessionPass": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "nextSessionStaleCopy": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 100111
+  },
+  "S1|server-memory": {
+   "scenario": "S1",
+   "title": "Stale runbook (fact changed after the agent read it)",
+   "arm": "server-memory",
+   "n": 20,
+   "yes": 0,
+   "partial": 0,
+   "no": 20,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "score": 0,
+   "verdict": "no",
+   "reason": "stale value served unmarked",
+   "delivery": "none",
+   "bytes": {
+    "sessionStart": {
+     "mean": 1500,
+     "max": 1528,
+     "tokens_mean": 375
+    },
+    "read0": {
+     "mean": 1174,
+     "max": 1196,
+     "tokens_mean": 294
+    },
+    "touch": {
+     "mean": 0,
+     "max": 0,
+     "tokens_mean": 0
+    },
+    "read": {
+     "mean": 1174,
+     "max": 1196,
+     "tokens_mean": 294
+    },
+    "nextSession": {
+     "mean": 1657,
+     "max": 1687,
+     "tokens_mean": 415
+    },
+    "nextRead": {
+     "mean": 1174,
+     "max": 1196,
+     "tokens_mean": 294
+    },
+    "nextRead2": {
+     "mean": 198,
+     "max": 203,
+     "tokens_mean": 50
+    }
+   },
+   "latency_ms": {
+    "sessionStart": {
+     "n": 20,
+     "p50": 4.2,
+     "p95": 7.3,
+     "max": 89.7
+    },
+    "read0": {
+     "n": 20,
+     "p50": 4.7,
+     "p95": 11,
+     "max": 80.1
+    },
+    "read": {
+     "n": 20,
+     "p50": 1.2,
+     "p95": 8.8,
+     "max": 57.2
+    },
+    "nextSession": {
+     "n": 20,
+     "p50": 48.2,
+     "p95": 170.4,
+     "max": 188.9
+    },
+    "nextRead": {
+     "n": 20,
+     "p50": 5.5,
+     "p95": 9.7,
+     "max": 28.4
+    },
+    "nextRead2": {
+     "n": 20,
+     "p50": 1.3,
+     "p95": 6.4,
+     "max": 11.6
+    }
+   },
+   "flags": {
+    "learned": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "pushedNew": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "staleUnmarked": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "nextSessionPass": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "nextSessionStaleCopy": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 11452
+  },
+  "S2|baseline": {
+   "scenario": "S2",
+   "title": "Contradicting facts (two sources disagree)",
+   "arm": "baseline",
+   "n": 20,
+   "yes": 0,
+   "partial": 20,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 0.5,
+   "verdict": "partial",
+   "reason": "both values shown, not flagged",
+   "delivery": null,
+   "bytes": {
+    "sessionStart": {
+     "mean": 0,
+     "max": 0,
+     "tokens_mean": 0
+    },
+    "read": {
+     "mean": 193,
+     "max": 204,
+     "tokens_mean": 49
+    }
+   },
+   "latency_ms": {
+    "read": {
+     "n": 20,
+     "p50": 7.8,
+     "p95": 12.5,
+     "max": 13.1
+    }
+   },
+   "flags": {
+    "both": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "flagged": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 2816
+  },
+  "S2|native": {
+   "scenario": "S2",
+   "title": "Contradicting facts (two sources disagree)",
+   "arm": "native",
+   "n": 20,
+   "yes": 0,
+   "partial": 20,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 0.5,
+   "verdict": "partial",
+   "reason": "both values shown, not flagged",
+   "delivery": null,
+   "bytes": {
+    "sessionStart": {
+     "mean": 1342,
+     "max": 1374,
+     "tokens_mean": 336
+    },
+    "read": {
+     "mean": 420,
+     "max": 435,
+     "tokens_mean": 105
+    }
+   },
+   "latency_ms": {
+    "read": {
+     "n": 20,
+     "p50": 7.1,
+     "p95": 15,
+     "max": 17.8
+    }
+   },
+   "flags": {
+    "both": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "flagged": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 2745
+  },
+  "S2|kronicle-lite": {
+   "scenario": "S2",
+   "title": "Contradicting facts (two sources disagree)",
+   "arm": "kronicle-lite",
+   "n": 20,
+   "yes": 0,
+   "partial": 20,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 0.5,
+   "verdict": "partial",
+   "reason": "both values shown, not flagged",
+   "delivery": null,
+   "bytes": {
+    "sessionStart": {
+     "mean": 2205,
+     "max": 2205,
+     "tokens_mean": 552
+    },
+    "read": {
+     "mean": 2038,
+     "max": 2050,
+     "tokens_mean": 510
+    }
+   },
+   "latency_ms": {
+    "sessionStart": {
+     "n": 20,
+     "p50": 237.7,
+     "p95": 444.7,
+     "max": 542.7
+    },
+    "read": {
+     "n": 20,
+     "p50": 22.9,
+     "p95": 39,
+     "max": 39.6
+    }
+   },
+   "flags": {
+    "both": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "flagged": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 13994
+  },
+  "S2|kronicle-lite-core": {
+   "scenario": "S2",
+   "title": "Contradicting facts (two sources disagree)",
+   "arm": "kronicle-lite-core",
+   "n": 20,
+   "yes": 0,
+   "partial": 20,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 0.5,
+   "verdict": "partial",
+   "reason": "both values shown, not flagged",
+   "delivery": null,
+   "bytes": {
+    "sessionStart": {
+     "mean": 2205,
+     "max": 2205,
+     "tokens_mean": 552
+    },
+    "read": {
+     "mean": 2038,
+     "max": 2050,
+     "tokens_mean": 510
+    }
+   },
+   "latency_ms": {
+    "sessionStart": {
+     "n": 20,
+     "p50": 131.1,
+     "p95": 390.4,
+     "max": 395.8
+    },
+    "read": {
+     "n": 20,
+     "p50": 20.1,
+     "p95": 61.5,
+     "max": 168.1
+    }
+   },
+   "flags": {
+    "both": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "flagged": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 12716
+  },
+  "S2|basic-memory": {
+   "scenario": "S2",
+   "title": "Contradicting facts (two sources disagree)",
+   "arm": "basic-memory",
+   "n": 20,
+   "yes": 0,
+   "partial": 17,
+   "no": 3,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 17,
+    "n": 20,
+    "p": 0.85,
+    "wilson": {
+     "lo": 0.6395811352592431,
+     "hi": 0.9476312541037835
+    },
+    "exact": {
+     "lo": 0.6210731734544173,
+     "hi": 0.9679290628145893
+    }
+   },
+   "score": 0.425,
+   "verdict": "mixed",
+   "reason": "both values shown, not flagged",
+   "delivery": null,
+   "bytes": {
+    "sessionStart": {
+     "mean": 372,
+     "max": 372,
+     "tokens_mean": 93
+    },
+    "read": {
+     "mean": 902,
+     "max": 971,
+     "tokens_mean": 226
+    }
+   },
+   "latency_ms": {
+    "sessionStart": {
+     "n": 20,
+     "p50": 72.3,
+     "p95": 124,
+     "max": 149.9
+    },
+    "read": {
+     "n": 20,
+     "p50": 245.6,
+     "p95": 359,
+     "max": 411.1
+    }
+   },
+   "flags": {
+    "both": {
+     "k": 17,
+     "n": 20,
+     "p": 0.85,
+     "wilson": {
+      "lo": 0.6395811352592431,
+      "hi": 0.9476312541037835
+     },
+     "exact": {
+      "lo": 0.6210731734544173,
+      "hi": 0.9679290628145893
+     }
+    },
+    "flagged": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 72671
+  },
+  "S2|server-memory": {
+   "scenario": "S2",
+   "title": "Contradicting facts (two sources disagree)",
+   "arm": "server-memory",
+   "n": 20,
+   "yes": 0,
+   "partial": 20,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 0.5,
+   "verdict": "partial",
+   "reason": "both values shown, not flagged",
+   "delivery": null,
+   "bytes": {
+    "sessionStart": {
+     "mean": 1737,
+     "max": 1770,
+     "tokens_mean": 435
+    },
+    "read": {
+     "mean": 604,
+     "max": 615,
+     "tokens_mean": 151
+    }
+   },
+   "latency_ms": {
+    "sessionStart": {
+     "n": 20,
+     "p50": 5.1,
+     "p95": 153.1,
+     "max": 163.4
+    },
+    "read": {
+     "n": 20,
+     "p50": 3.2,
+     "p95": 7.6,
+     "max": 12.3
+    }
+   },
+   "flags": {
+    "both": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "flagged": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 7023
+  },
+  "S4a|baseline": {
+   "scenario": "S4a",
+   "title": "Compaction loss (decision made mid-conversation must survive)",
+   "arm": "baseline",
+   "n": 0,
+   "yes": 0,
+   "partial": 0,
+   "no": 0,
+   "na": 20,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "wilson": {
+     "lo": null,
+     "hi": null
+    },
+    "exact": {
+     "lo": null,
+     "hi": null
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "wilson": {
+     "lo": null,
+     "hi": null
+    },
+    "exact": {
+     "lo": null,
+     "hi": null
+    }
+   },
+   "score": null,
+   "verdict": "n/a",
+   "reason": "arm has no way to persist a conversation decision",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {},
+   "error_samples": [],
+   "wall_ms": 2772
+  },
+  "S4b|baseline": {
+   "scenario": "S4b",
+   "title": "Compaction loss (decision made mid-conversation must survive)",
+   "arm": "baseline",
+   "n": 0,
+   "yes": 0,
+   "partial": 0,
+   "no": 0,
+   "na": 20,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "wilson": {
+     "lo": null,
+     "hi": null
+    },
+    "exact": {
+     "lo": null,
+     "hi": null
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "wilson": {
+     "lo": null,
+     "hi": null
+    },
+    "exact": {
+     "lo": null,
+     "hi": null
+    }
+   },
+   "score": null,
+   "verdict": "n/a",
+   "reason": "variant b (MEMORY.md over 200 lines) applies to native auto memory only",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {},
+   "error_samples": [],
+   "wall_ms": 2756
+  },
+  "S4a|native": {
+   "scenario": "S4a",
+   "title": "Compaction loss (decision made mid-conversation must survive)",
+   "arm": "native",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "decision verbatim after compaction",
+   "delivery": "push",
+   "bytes": {
+    "postCompact": {
+     "mean": 1644,
+     "max": 1677,
+     "tokens_mean": 411
+    }
+   },
+   "latency_ms": {},
+   "flags": {},
+   "error_samples": [],
+   "wall_ms": 2910
+  },
+  "S4b|native": {
+   "scenario": "S4b",
+   "title": "Compaction loss (decision made mid-conversation must survive)",
+   "arm": "native",
+   "n": 20,
+   "yes": 0,
+   "partial": 0,
+   "no": 20,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "score": 0,
+   "verdict": "no",
+   "reason": "decision absent after compaction",
+   "delivery": "push",
+   "bytes": {
+    "postCompact": {
+     "mean": 13277,
+     "max": 13600,
+     "tokens_mean": 3320
+    }
+   },
+   "latency_ms": {},
+   "flags": {},
+   "error_samples": [],
+   "wall_ms": 3054
+  },
+  "S4a|kronicle-lite": {
+   "scenario": "S4a",
+   "title": "Compaction loss (decision made mid-conversation must survive)",
+   "arm": "kronicle-lite",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "decision verbatim after compaction",
+   "delivery": "pull",
+   "bytes": {
+    "postCompact": {
+     "mean": 1233,
+     "max": 1234,
+     "tokens_mean": 309
+    }
+   },
+   "latency_ms": {
+    "postCompact": {
+     "n": 20,
+     "p50": 20.1,
+     "p95": 37.9,
+     "max": 39.4
+    }
+   },
+   "flags": {},
+   "error_samples": [],
+   "wall_ms": 14084
+  },
+  "S4b|kronicle-lite": {
+   "scenario": "S4b",
+   "title": "Compaction loss (decision made mid-conversation must survive)",
+   "arm": "kronicle-lite",
+   "n": 0,
+   "yes": 0,
+   "partial": 0,
+   "no": 0,
+   "na": 20,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "wilson": {
+     "lo": null,
+     "hi": null
+    },
+    "exact": {
+     "lo": null,
+     "hi": null
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "wilson": {
+     "lo": null,
+     "hi": null
+    },
+    "exact": {
+     "lo": null,
+     "hi": null
+    }
+   },
+   "score": null,
+   "verdict": "n/a",
+   "reason": "variant b (MEMORY.md over 200 lines) applies to native auto memory only",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {},
+   "error_samples": [],
+   "wall_ms": 12701
+  },
+  "S4a|kronicle-lite-core": {
+   "scenario": "S4a",
+   "title": "Compaction loss (decision made mid-conversation must survive)",
+   "arm": "kronicle-lite-core",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "decision verbatim after compaction",
+   "delivery": "pull",
+   "bytes": {
+    "postCompact": {
+     "mean": 1233,
+     "max": 1234,
+     "tokens_mean": 309
+    }
+   },
+   "latency_ms": {
+    "postCompact": {
+     "n": 20,
+     "p50": 16,
+     "p95": 26.3,
+     "max": 36.3
+    }
+   },
+   "flags": {},
+   "error_samples": [],
+   "wall_ms": 13386
+  },
+  "S4b|kronicle-lite-core": {
+   "scenario": "S4b",
+   "title": "Compaction loss (decision made mid-conversation must survive)",
+   "arm": "kronicle-lite-core",
+   "n": 0,
+   "yes": 0,
+   "partial": 0,
+   "no": 0,
+   "na": 20,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "wilson": {
+     "lo": null,
+     "hi": null
+    },
+    "exact": {
+     "lo": null,
+     "hi": null
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "wilson": {
+     "lo": null,
+     "hi": null
+    },
+    "exact": {
+     "lo": null,
+     "hi": null
+    }
+   },
+   "score": null,
+   "verdict": "n/a",
+   "reason": "variant b (MEMORY.md over 200 lines) applies to native auto memory only",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {},
+   "error_samples": [],
+   "wall_ms": 12452
+  },
+  "S4a|basic-memory": {
+   "scenario": "S4a",
+   "title": "Compaction loss (decision made mid-conversation must survive)",
+   "arm": "basic-memory",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "decision verbatim after compaction",
+   "delivery": "pull",
+   "bytes": {
+    "postCompact": {
+     "mean": 559,
+     "max": 561,
+     "tokens_mean": 140
+    }
+   },
+   "latency_ms": {
+    "postCompact": {
+     "n": 20,
+     "p50": 227.1,
+     "p95": 372.1,
+     "max": 548.8
+    }
+   },
+   "flags": {},
+   "error_samples": [],
+   "wall_ms": 73369
+  },
+  "S4b|basic-memory": {
+   "scenario": "S4b",
+   "title": "Compaction loss (decision made mid-conversation must survive)",
+   "arm": "basic-memory",
+   "n": 0,
+   "yes": 0,
+   "partial": 0,
+   "no": 0,
+   "na": 20,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "wilson": {
+     "lo": null,
+     "hi": null
+    },
+    "exact": {
+     "lo": null,
+     "hi": null
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "wilson": {
+     "lo": null,
+     "hi": null
+    },
+    "exact": {
+     "lo": null,
+     "hi": null
+    }
+   },
+   "score": null,
+   "verdict": "n/a",
+   "reason": "variant b (MEMORY.md over 200 lines) applies to native auto memory only",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {},
+   "error_samples": [],
+   "wall_ms": 66127
+  },
+  "S4a|server-memory": {
+   "scenario": "S4a",
+   "title": "Compaction loss (decision made mid-conversation must survive)",
+   "arm": "server-memory",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "decision verbatim after compaction",
+   "delivery": "pull",
+   "bytes": {
+    "postCompact": {
+     "mean": 1711,
+     "max": 1740,
+     "tokens_mean": 428
+    }
+   },
+   "latency_ms": {
+    "postCompact": {
+     "n": 20,
+     "p50": 1.4,
+     "p95": 4.1,
+     "max": 4.8
+    }
+   },
+   "flags": {},
+   "error_samples": [],
+   "wall_ms": 4789
+  },
+  "S4b|server-memory": {
+   "scenario": "S4b",
+   "title": "Compaction loss (decision made mid-conversation must survive)",
+   "arm": "server-memory",
+   "n": 0,
+   "yes": 0,
+   "partial": 0,
+   "no": 0,
+   "na": 20,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "wilson": {
+     "lo": null,
+     "hi": null
+    },
+    "exact": {
+     "lo": null,
+     "hi": null
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "wilson": {
+     "lo": null,
+     "hi": null
+    },
+    "exact": {
+     "lo": null,
+     "hi": null
+    }
+   },
+   "score": null,
+   "verdict": "n/a",
+   "reason": "variant b (MEMORY.md over 200 lines) applies to native auto memory only",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {},
+   "error_samples": [],
+   "wall_ms": 4626
+  },
+  "S4a|cc-anchor": {
+   "scenario": "S4a",
+   "title": "Compaction loss (decision made mid-conversation must survive)",
+   "arm": "cc-anchor",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "decision verbatim after compaction",
+   "delivery": "push",
+   "bytes": {
+    "postCompact": {
+     "mean": 1259,
+     "max": 1260,
+     "tokens_mean": 315
+    }
+   },
+   "latency_ms": {},
+   "flags": {},
+   "error_samples": [],
+   "wall_ms": 9190
+  },
+  "S4b|cc-anchor": {
+   "scenario": "S4b",
+   "title": "Compaction loss (decision made mid-conversation must survive)",
+   "arm": "cc-anchor",
+   "n": 0,
+   "yes": 0,
+   "partial": 0,
+   "no": 0,
+   "na": 20,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "wilson": {
+     "lo": null,
+     "hi": null
+    },
+    "exact": {
+     "lo": null,
+     "hi": null
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "wilson": {
+     "lo": null,
+     "hi": null
+    },
+    "exact": {
+     "lo": null,
+     "hi": null
+    }
+   },
+   "score": null,
+   "verdict": "n/a",
+   "reason": "variant b (MEMORY.md over 200 lines) applies to native auto memory only",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {},
+   "error_samples": [],
+   "wall_ms": 2383
+  },
+  "S5|baseline": {
+   "scenario": "S5",
+   "title": "Retired / deleted doc still served",
+   "arm": "baseline",
+   "n": 20,
+   "yes": 0,
+   "partial": 20,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 0.5,
+   "verdict": "partial",
+   "reason": "no longer served, no notice",
+   "delivery": "none",
+   "bytes": {
+    "touch": {
+     "mean": 0,
+     "max": 0,
+     "tokens_mean": 0
+    },
+    "read": {
+     "mean": 0,
+     "max": 0,
+     "tokens_mean": 0
+    }
+   },
+   "latency_ms": {
+    "read": {
+     "n": 20,
+     "p50": 6.9,
+     "p95": 8.1,
+     "max": 9
+    }
+   },
+   "flags": {
+    "served": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "noticed": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 2612
+  },
+  "S5|native": {
+   "scenario": "S5",
+   "title": "Retired / deleted doc still served",
+   "arm": "native",
+   "n": 20,
+   "yes": 0,
+   "partial": 20,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 0.5,
+   "verdict": "partial",
+   "reason": "no longer served, no notice",
+   "delivery": "none",
+   "bytes": {
+    "touch": {
+     "mean": 0,
+     "max": 0,
+     "tokens_mean": 0
+    },
+    "read": {
+     "mean": 0,
+     "max": 0,
+     "tokens_mean": 0
+    }
+   },
+   "latency_ms": {
+    "read": {
+     "n": 20,
+     "p50": 7.9,
+     "p95": 9.3,
+     "max": 9.3
+    }
+   },
+   "flags": {
+    "served": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "noticed": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 3225
+  },
+  "S5|kronicle-lite": {
+   "scenario": "S5",
+   "title": "Retired / deleted doc still served",
+   "arm": "kronicle-lite",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "retirement surfaced",
+   "delivery": "push",
+   "bytes": {
+    "touch": {
+     "mean": 3096,
+     "max": 3097,
+     "tokens_mean": 774
+    },
+    "read": {
+     "mean": 3889,
+     "max": 3900,
+     "tokens_mean": 973
+    }
+   },
+   "latency_ms": {
+    "touch": {
+     "n": 20,
+     "p50": 28.4,
+     "p95": 221.9,
+     "max": 233.1
+    },
+    "read": {
+     "n": 20,
+     "p50": 7.9,
+     "p95": 204.8,
+     "max": 221.7
+    }
+   },
+   "flags": {
+    "served": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "noticed": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 14211
+  },
+  "S5|kronicle-lite-core": {
+   "scenario": "S5",
+   "title": "Retired / deleted doc still served",
+   "arm": "kronicle-lite-core",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "retirement surfaced",
+   "delivery": "push",
+   "bytes": {
+    "touch": {
+     "mean": 3096,
+     "max": 3097,
+     "tokens_mean": 774
+    },
+    "read": {
+     "mean": 3889,
+     "max": 3900,
+     "tokens_mean": 973
+    }
+   },
+   "latency_ms": {
+    "touch": {
+     "n": 20,
+     "p50": 29.4,
+     "p95": 201.1,
+     "max": 236.2
+    },
+    "read": {
+     "n": 20,
+     "p50": 16.1,
+     "p95": 245.1,
+     "max": 542.6
+    }
+   },
+   "flags": {
+    "served": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "noticed": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 17493
+  },
+  "S5|basic-memory": {
+   "scenario": "S5",
+   "title": "Retired / deleted doc still served",
+   "arm": "basic-memory",
+   "n": 20,
+   "yes": 0,
+   "partial": 20,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 0.5,
+   "verdict": "partial",
+   "reason": "no longer served, no notice",
+   "delivery": "none",
+   "bytes": {
+    "touch": {
+     "mean": 0,
+     "max": 0,
+     "tokens_mean": 0
+    },
+    "read": {
+     "mean": 1553,
+     "max": 1581,
+     "tokens_mean": 389
+    }
+   },
+   "latency_ms": {
+    "read": {
+     "n": 20,
+     "p50": 224.9,
+     "p95": 563.1,
+     "max": 664.7
+    }
+   },
+   "flags": {
+    "served": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "noticed": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 99208
+  },
+  "S5|server-memory": {
+   "scenario": "S5",
+   "title": "Retired / deleted doc still served",
+   "arm": "server-memory",
+   "n": 20,
+   "yes": 0,
+   "partial": 0,
+   "no": 20,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "score": 0,
+   "verdict": "no",
+   "reason": "retired content still served as live",
+   "delivery": "none",
+   "bytes": {
+    "touch": {
+     "mean": 0,
+     "max": 0,
+     "tokens_mean": 0
+    },
+    "read": {
+     "mean": 228,
+     "max": 228,
+     "tokens_mean": 57
+    }
+   },
+   "latency_ms": {
+    "read": {
+     "n": 20,
+     "p50": 1.4,
+     "p95": 5.3,
+     "max": 6
+    }
+   },
+   "flags": {
+    "served": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "noticed": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 9616
+  },
+  "S6|baseline": {
+   "scenario": "S6",
+   "title": "Tampering (stored text edited behind the tool)",
+   "arm": "baseline",
+   "n": 0,
+   "yes": 0,
+   "partial": 0,
+   "no": 0,
+   "na": 20,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "wilson": {
+     "lo": null,
+     "hi": null
+    },
+    "exact": {
+     "lo": null,
+     "hi": null
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "wilson": {
+     "lo": null,
+     "hi": null
+    },
+    "exact": {
+     "lo": null,
+     "hi": null
+    }
+   },
+   "score": null,
+   "verdict": "n/a",
+   "reason": "no store to tamper",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {},
+   "error_samples": [],
+   "wall_ms": 811
+  },
+  "S6|native": {
+   "scenario": "S6",
+   "title": "Tampering (stored text edited behind the tool)",
+   "arm": "native",
+   "n": 20,
+   "yes": 0,
+   "partial": 0,
+   "no": 20,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "score": 0,
+   "verdict": "no",
+   "reason": "tampered text served as authentic",
+   "delivery": "none",
+   "bytes": {
+    "touch": {
+     "mean": 0,
+     "max": 0,
+     "tokens_mean": 0
+    },
+    "read": {
+     "mean": 1350,
+     "max": 1375,
+     "tokens_mean": 338
+    },
+    "nextSession": {
+     "mean": 1583,
+     "max": 1616,
+     "tokens_mean": 396
+    }
+   },
+   "latency_ms": {
+    "read": {
+     "n": 20,
+     "p50": 8,
+     "p95": 13.1,
+     "max": 21.4
+    }
+   },
+   "flags": {
+    "detected": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "servedUnflagged": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "integrityCheckFlags": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 5131
+  },
+  "S6|kronicle-lite": {
+   "scenario": "S6",
+   "title": "Tampering (stored text edited behind the tool)",
+   "arm": "kronicle-lite",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "tamper flagged/withheld at read",
+   "delivery": "push",
+   "bytes": {
+    "touch": {
+     "mean": 1529,
+     "max": 1529,
+     "tokens_mean": 383
+    },
+    "read": {
+     "mean": 914,
+     "max": 914,
+     "tokens_mean": 229
+    },
+    "nextSession": {
+     "mean": 1200,
+     "max": 1200,
+     "tokens_mean": 300
+    }
+   },
+   "latency_ms": {
+    "touch": {
+     "n": 20,
+     "p50": 14.8,
+     "p95": 32,
+     "max": 33.2
+    },
+    "read": {
+     "n": 20,
+     "p50": 6.1,
+     "p95": 11.9,
+     "max": 12
+    },
+    "nextSession": {
+     "n": 20,
+     "p50": 102.4,
+     "p95": 339.2,
+     "max": 434.7
+    }
+   },
+   "flags": {
+    "detected": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "servedUnflagged": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "integrityCheckFlags": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 34116
+  },
+  "S6|kronicle-lite-core": {
+   "scenario": "S6",
+   "title": "Tampering (stored text edited behind the tool)",
+   "arm": "kronicle-lite-core",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "tamper flagged/withheld at read",
+   "delivery": "push",
+   "bytes": {
+    "touch": {
+     "mean": 1529,
+     "max": 1529,
+     "tokens_mean": 383
+    },
+    "read": {
+     "mean": 914,
+     "max": 914,
+     "tokens_mean": 229
+    },
+    "nextSession": {
+     "mean": 1200,
+     "max": 1200,
+     "tokens_mean": 300
+    }
+   },
+   "latency_ms": {
+    "touch": {
+     "n": 20,
+     "p50": 15.1,
+     "p95": 63.4,
+     "max": 87.4
+    },
+    "read": {
+     "n": 20,
+     "p50": 8.3,
+     "p95": 18.7,
+     "max": 24.2
+    },
+    "nextSession": {
+     "n": 20,
+     "p50": 123.1,
+     "p95": 569.8,
+     "max": 612.1
+    }
+   },
+   "flags": {
+    "detected": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "servedUnflagged": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "integrityCheckFlags": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 40901
+  },
+  "S6|basic-memory": {
+   "scenario": "S6",
+   "title": "Tampering (stored text edited behind the tool)",
+   "arm": "basic-memory",
+   "n": 20,
+   "yes": 0,
+   "partial": 0,
+   "no": 20,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "score": 0,
+   "verdict": "no",
+   "reason": "tampered text served as authentic",
+   "delivery": "none",
+   "bytes": {
+    "touch": {
+     "mean": 0,
+     "max": 0,
+     "tokens_mean": 0
+    },
+    "read": {
+     "mean": 1653,
+     "max": 1679,
+     "tokens_mean": 414
+    },
+    "nextSession": {
+     "mean": 366,
+     "max": 367,
+     "tokens_mean": 92
+    }
+   },
+   "latency_ms": {
+    "read": {
+     "n": 20,
+     "p50": 334.8,
+     "p95": 637.2,
+     "max": 652.5
+    },
+    "nextSession": {
+     "n": 20,
+     "p50": 51.2,
+     "p95": 110,
+     "max": 165.3
+    }
+   },
+   "flags": {
+    "detected": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "servedUnflagged": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "integrityCheckFlags": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 498060
+  },
+  "S6|server-memory": {
+   "scenario": "S6",
+   "title": "Tampering (stored text edited behind the tool)",
+   "arm": "server-memory",
+   "n": 20,
+   "yes": 0,
+   "partial": 0,
+   "no": 20,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "score": 0,
+   "verdict": "no",
+   "reason": "tampered text served as authentic",
+   "delivery": "none",
+   "bytes": {
+    "touch": {
+     "mean": 0,
+     "max": 0,
+     "tokens_mean": 0
+    },
+    "read": {
+     "mean": 1174,
+     "max": 1194,
+     "tokens_mean": 294
+    },
+    "nextSession": {
+     "mean": 1657,
+     "max": 1683,
+     "tokens_mean": 415
+    }
+   },
+   "latency_ms": {
+    "read": {
+     "n": 20,
+     "p50": 1.2,
+     "p95": 5,
+     "max": 5.5
+    },
+    "nextSession": {
+     "n": 20,
+     "p50": 34.8,
+     "p95": 52,
+     "max": 79.2
+    }
+   },
+   "flags": {
+    "detected": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "servedUnflagged": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "integrityCheckFlags": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 7263
+  },
+  "S7|baseline": {
+   "scenario": "S7",
+   "title": "Benign-edit noise (must NOT alarm; false-positive control)",
+   "arm": "baseline",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "quiet on whitespace_trim",
+   "delivery": "none",
+   "bytes": {
+    "touch": {
+     "mean": 0,
+     "max": 0,
+     "tokens_mean": 0
+    },
+    "read": {
+     "mean": 79,
+     "max": 84,
+     "tokens_mean": 20
+    }
+   },
+   "latency_ms": {
+    "read": {
+     "n": 20,
+     "p50": 6.9,
+     "p95": 8.2,
+     "max": 8.4
+    }
+   },
+   "flags": {
+    "alarm": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "trivial": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 2714
+  },
+  "S7|native": {
+   "scenario": "S7",
+   "title": "Benign-edit noise (must NOT alarm; false-positive control)",
+   "arm": "native",
+   "n": 20,
+   "yes": 0,
+   "partial": 0,
+   "no": 20,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "score": 0,
+   "verdict": "no",
+   "reason": "false alarm on whitespace_trim",
+   "delivery": "push",
+   "bytes": {
+    "touch": {
+     "mean": 212,
+     "max": 246,
+     "tokens_mean": 53
+    },
+    "read": {
+     "mean": 1349,
+     "max": 1375,
+     "tokens_mean": 338
+    }
+   },
+   "latency_ms": {
+    "read": {
+     "n": 20,
+     "p50": 7,
+     "p95": 8.6,
+     "max": 8.7
+    }
+   },
+   "flags": {
+    "alarm": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "trivial": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 2815
+  },
+  "S7|kronicle-lite": {
+   "scenario": "S7",
+   "title": "Benign-edit noise (must NOT alarm; false-positive control)",
+   "arm": "kronicle-lite",
+   "n": 20,
+   "yes": 10,
+   "partial": 0,
+   "no": 10,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 10,
+    "n": 20,
+    "p": 0.5,
+    "wilson": {
+     "lo": 0.2992980081982123,
+     "hi": 0.7007019918017877
+    },
+    "exact": {
+     "lo": 0.2719578495603854,
+     "hi": 0.7280421504396144
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 10,
+    "n": 20,
+    "p": 0.5,
+    "wilson": {
+     "lo": 0.2992980081982123,
+     "hi": 0.7007019918017877
+    },
+    "exact": {
+     "lo": 0.2719578495603854,
+     "hi": 0.7280421504396144
+    }
+   },
+   "score": 0.5,
+   "verdict": "mixed",
+   "reason": "quiet on whitespace_trim",
+   "delivery": "push",
+   "bytes": {
+    "touch": {
+     "mean": 1440,
+     "max": 2079,
+     "tokens_mean": 360
+    },
+    "read": {
+     "mean": 1374,
+     "max": 1378,
+     "tokens_mean": 344
+    }
+   },
+   "latency_ms": {
+    "touch": {
+     "n": 20,
+     "p50": 28.5,
+     "p95": 79.6,
+     "max": 255.9
+    },
+    "read": {
+     "n": 20,
+     "p50": 5.1,
+     "p95": 241.1,
+     "max": 379.5
+    }
+   },
+   "flags": {
+    "alarm": {
+     "k": 10,
+     "n": 20,
+     "p": 0.5,
+     "wilson": {
+      "lo": 0.2992980081982123,
+      "hi": 0.7007019918017877
+     },
+     "exact": {
+      "lo": 0.2719578495603854,
+      "hi": 0.7280421504396144
+     }
+    },
+    "trivial": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 21438
+  },
+  "S7|kronicle-lite-core": {
+   "scenario": "S7",
+   "title": "Benign-edit noise (must NOT alarm; false-positive control)",
+   "arm": "kronicle-lite-core",
+   "n": 20,
+   "yes": 10,
+   "partial": 0,
+   "no": 10,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 10,
+    "n": 20,
+    "p": 0.5,
+    "wilson": {
+     "lo": 0.2992980081982123,
+     "hi": 0.7007019918017877
+    },
+    "exact": {
+     "lo": 0.2719578495603854,
+     "hi": 0.7280421504396144
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 10,
+    "n": 20,
+    "p": 0.5,
+    "wilson": {
+     "lo": 0.2992980081982123,
+     "hi": 0.7007019918017877
+    },
+    "exact": {
+     "lo": 0.2719578495603854,
+     "hi": 0.7280421504396144
+    }
+   },
+   "score": 0.5,
+   "verdict": "mixed",
+   "reason": "quiet on whitespace_trim",
+   "delivery": "push",
+   "bytes": {
+    "touch": {
+     "mean": 1440,
+     "max": 2079,
+     "tokens_mean": 360
+    },
+    "read": {
+     "mean": 1374,
+     "max": 1378,
+     "tokens_mean": 344
+    }
+   },
+   "latency_ms": {
+    "touch": {
+     "n": 20,
+     "p50": 27.7,
+     "p95": 303.8,
+     "max": 544.2
+    },
+    "read": {
+     "n": 20,
+     "p50": 6.1,
+     "p95": 20.1,
+     "max": 22.9
+    }
+   },
+   "flags": {
+    "alarm": {
+     "k": 10,
+     "n": 20,
+     "p": 0.5,
+     "wilson": {
+      "lo": 0.2992980081982123,
+      "hi": 0.7007019918017877
+     },
+     "exact": {
+      "lo": 0.2719578495603854,
+      "hi": 0.7280421504396144
+     }
+    },
+    "trivial": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 22613
+  },
+  "S7|basic-memory": {
+   "scenario": "S7",
+   "title": "Benign-edit noise (must NOT alarm; false-positive control)",
+   "arm": "basic-memory",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "quiet on whitespace_trim",
+   "delivery": "none",
+   "bytes": {
+    "touch": {
+     "mean": 0,
+     "max": 0,
+     "tokens_mean": 0
+    },
+    "read": {
+     "mean": 1549,
+     "max": 1577,
+     "tokens_mean": 388
+    }
+   },
+   "latency_ms": {
+    "read": {
+     "n": 20,
+     "p50": 325.5,
+     "p95": 582.9,
+     "max": 585.5
+    }
+   },
+   "flags": {
+    "alarm": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "trivial": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 86579
+  },
+  "S7|server-memory": {
+   "scenario": "S7",
+   "title": "Benign-edit noise (must NOT alarm; false-positive control)",
+   "arm": "server-memory",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "quiet on whitespace_trim",
+   "delivery": "none",
+   "bytes": {
+    "touch": {
+     "mean": 0,
+     "max": 0,
+     "tokens_mean": 0
+    },
+    "read": {
+     "mean": 1174,
+     "max": 1196,
+     "tokens_mean": 294
+    }
+   },
+   "latency_ms": {
+    "read": {
+     "n": 20,
+     "p50": 1.8,
+     "p95": 5.6,
+     "max": 6.2
+    }
+   },
+   "flags": {
+    "alarm": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "trivial": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 6119
+  },
+  "S8|baseline": {
+   "scenario": "S8",
+   "title": "Moved section (identity must survive)",
+   "arm": "baseline",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "reorder: identity survived quietly",
+   "delivery": "none",
+   "bytes": {
+    "touch": {
+     "mean": 0,
+     "max": 0,
+     "tokens_mean": 0
+    },
+    "read": {
+     "mean": 86,
+     "max": 96,
+     "tokens_mean": 22
+    }
+   },
+   "latency_ms": {
+    "read": {
+     "n": 20,
+     "p50": 8.3,
+     "p95": 18.3,
+     "max": 19.4
+    }
+   },
+   "flags": {
+    "retrievable": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "falseAlarm": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 2944
+  },
+  "S8|native": {
+   "scenario": "S8",
+   "title": "Moved section (identity must survive)",
+   "arm": "native",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "reorder: identity survived quietly",
+   "delivery": "none",
+   "bytes": {
+    "touch": {
+     "mean": 0,
+     "max": 0,
+     "tokens_mean": 0
+    },
+    "read": {
+     "mean": 1362,
+     "max": 1399,
+     "tokens_mean": 341
+    }
+   },
+   "latency_ms": {
+    "read": {
+     "n": 20,
+     "p50": 8.5,
+     "p95": 11.6,
+     "max": 20.1
+    }
+   },
+   "flags": {
+    "retrievable": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "falseAlarm": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 2978
+  },
+  "S8|kronicle-lite": {
+   "scenario": "S8",
+   "title": "Moved section (identity must survive)",
+   "arm": "kronicle-lite",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "reorder: identity survived quietly",
+   "delivery": "push",
+   "bytes": {
+    "touch": {
+     "mean": 1042,
+     "max": 1175,
+     "tokens_mean": 261
+    },
+    "read": {
+     "mean": 1386,
+     "max": 1402,
+     "tokens_mean": 347
+    }
+   },
+   "latency_ms": {
+    "touch": {
+     "n": 20,
+     "p50": 19.3,
+     "p95": 329.9,
+     "max": 361.1
+    },
+    "read": {
+     "n": 20,
+     "p50": 6.8,
+     "p95": 12.7,
+     "max": 391.1
+    }
+   },
+   "flags": {
+    "retrievable": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "falseAlarm": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 19033
+  },
+  "S8|kronicle-lite-core": {
+   "scenario": "S8",
+   "title": "Moved section (identity must survive)",
+   "arm": "kronicle-lite-core",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "reorder: identity survived quietly",
+   "delivery": "push",
+   "bytes": {
+    "touch": {
+     "mean": 1042,
+     "max": 1175,
+     "tokens_mean": 261
+    },
+    "read": {
+     "mean": 1386,
+     "max": 1402,
+     "tokens_mean": 347
+    }
+   },
+   "latency_ms": {
+    "touch": {
+     "n": 20,
+     "p50": 25.1,
+     "p95": 498.5,
+     "max": 504.1
+    },
+    "read": {
+     "n": 20,
+     "p50": 6.3,
+     "p95": 25.8,
+     "max": 413.1
+    }
+   },
+   "flags": {
+    "retrievable": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "falseAlarm": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 22584
+  },
+  "S8|basic-memory": {
+   "scenario": "S8",
+   "title": "Moved section (identity must survive)",
+   "arm": "basic-memory",
+   "n": 20,
+   "yes": 18,
+   "partial": 0,
+   "no": 2,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 18,
+    "n": 20,
+    "p": 0.9,
+    "wilson": {
+     "lo": 0.6989663547715128,
+     "hi": 0.9721335187862319
+    },
+    "exact": {
+     "lo": 0.6830172859807138,
+     "hi": 0.9876514728297248
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 18,
+    "n": 20,
+    "p": 0.9,
+    "wilson": {
+     "lo": 0.6989663547715128,
+     "hi": 0.9721335187862319
+    },
+    "exact": {
+     "lo": 0.6830172859807138,
+     "hi": 0.9876514728297248
+    }
+   },
+   "score": 0.9,
+   "verdict": "mixed",
+   "reason": "reorder: identity survived quietly",
+   "delivery": "none",
+   "bytes": {
+    "touch": {
+     "mean": 0,
+     "max": 0,
+     "tokens_mean": 0
+    },
+    "read": {
+     "mean": 1403,
+     "max": 1587,
+     "tokens_mean": 351
+    }
+   },
+   "latency_ms": {
+    "read": {
+     "n": 20,
+     "p50": 299.7,
+     "p95": 460.9,
+     "max": 493
+    }
+   },
+   "flags": {
+    "retrievable": {
+     "k": 18,
+     "n": 20,
+     "p": 0.9,
+     "wilson": {
+      "lo": 0.6989663547715128,
+      "hi": 0.9721335187862319
+     },
+     "exact": {
+      "lo": 0.6830172859807138,
+      "hi": 0.9876514728297248
+     }
+    },
+    "falseAlarm": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 80433
+  },
+  "S8|server-memory": {
+   "scenario": "S8",
+   "title": "Moved section (identity must survive)",
+   "arm": "server-memory",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "reorder: identity survived quietly",
+   "delivery": "none",
+   "bytes": {
+    "touch": {
+     "mean": 0,
+     "max": 0,
+     "tokens_mean": 0
+    },
+    "read": {
+     "mean": 1174,
+     "max": 1196,
+     "tokens_mean": 294
+    }
+   },
+   "latency_ms": {
+    "read": {
+     "n": 20,
+     "p50": 1.6,
+     "p95": 4.4,
+     "max": 8.4
+    }
+   },
+   "flags": {
+    "retrievable": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "falseAlarm": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 6822
+  },
+  "S9|baseline": {
+   "scenario": "S9",
+   "title": "Poisoned memory (wrong fact planted)",
+   "arm": "baseline",
+   "n": 0,
+   "yes": 0,
+   "partial": 0,
+   "no": 0,
+   "na": 20,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "wilson": {
+     "lo": null,
+     "hi": null
+    },
+    "exact": {
+     "lo": null,
+     "hi": null
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "wilson": {
+     "lo": null,
+     "hi": null
+    },
+    "exact": {
+     "lo": null,
+     "hi": null
+    }
+   },
+   "score": null,
+   "verdict": "n/a",
+   "reason": "no store to poison",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {},
+   "error_samples": [],
+   "wall_ms": 210
+  },
+  "S9|native": {
+   "scenario": "S9",
+   "title": "Poisoned memory (wrong fact planted)",
+   "arm": "native",
+   "n": 20,
+   "yes": 0,
+   "partial": 0,
+   "no": 20,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "score": 0,
+   "verdict": "no",
+   "reason": "planted fact served as plain fact",
+   "delivery": "none",
+   "bytes": {
+    "touch": {
+     "mean": 0,
+     "max": 0,
+     "tokens_mean": 0
+    },
+    "read": {
+     "mean": 1350,
+     "max": 1375,
+     "tokens_mean": 338
+    },
+    "nextSession": {
+     "mean": 1613,
+     "max": 1646,
+     "tokens_mean": 404
+    }
+   },
+   "latency_ms": {
+    "read": {
+     "n": 20,
+     "p50": 8.5,
+     "p95": 11.5,
+     "max": 14.7
+    }
+   },
+   "flags": {
+    "flagged": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "provenance": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "truthAlsoShown": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 2956
+  },
+  "S9|kronicle-lite": {
+   "scenario": "S9",
+   "title": "Poisoned memory (wrong fact planted)",
+   "arm": "kronicle-lite",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "planted fact flagged as untrusted/contradicting",
+   "delivery": "push",
+   "bytes": {
+    "touch": {
+     "mean": 1057,
+     "max": 1057,
+     "tokens_mean": 265
+    },
+    "read": {
+     "mean": 1994,
+     "max": 2002,
+     "tokens_mean": 499
+    },
+    "nextSession": {
+     "mean": 80,
+     "max": 80,
+     "tokens_mean": 20
+    }
+   },
+   "latency_ms": {
+    "touch": {
+     "n": 20,
+     "p50": 22.2,
+     "p95": 43.5,
+     "max": 64.5
+    },
+    "read": {
+     "n": 20,
+     "p50": 8,
+     "p95": 18.2,
+     "max": 20.9
+    },
+    "nextSession": {
+     "n": 20,
+     "p50": 97.4,
+     "p95": 336.8,
+     "max": 466
+    }
+   },
+   "flags": {
+    "flagged": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "provenance": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "truthAlsoShown": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 27364
+  },
+  "S9|kronicle-lite-core": {
+   "scenario": "S9",
+   "title": "Poisoned memory (wrong fact planted)",
+   "arm": "kronicle-lite-core",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "planted fact flagged as untrusted/contradicting",
+   "delivery": "push",
+   "bytes": {
+    "touch": {
+     "mean": 1057,
+     "max": 1057,
+     "tokens_mean": 265
+    },
+    "read": {
+     "mean": 1994,
+     "max": 2002,
+     "tokens_mean": 499
+    },
+    "nextSession": {
+     "mean": 80,
+     "max": 80,
+     "tokens_mean": 20
+    }
+   },
+   "latency_ms": {
+    "touch": {
+     "n": 20,
+     "p50": 15.1,
+     "p95": 56.3,
+     "max": 77.4
+    },
+    "read": {
+     "n": 20,
+     "p50": 8.6,
+     "p95": 25.6,
+     "max": 41.8
+    },
+    "nextSession": {
+     "n": 20,
+     "p50": 114.8,
+     "p95": 148.2,
+     "max": 168.5
+    }
+   },
+   "flags": {
+    "flagged": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "provenance": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "truthAlsoShown": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 26754
+  },
+  "S9|basic-memory": {
+   "scenario": "S9",
+   "title": "Poisoned memory (wrong fact planted)",
+   "arm": "basic-memory",
+   "n": 20,
+   "yes": 0,
+   "partial": 0,
+   "no": 20,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "score": 0,
+   "verdict": "no",
+   "reason": "planted fact served as plain fact",
+   "delivery": "none",
+   "bytes": {
+    "touch": {
+     "mean": 0,
+     "max": 0,
+     "tokens_mean": 0
+    },
+    "read": {
+     "mean": 749,
+     "max": 817,
+     "tokens_mean": 188
+    },
+    "nextSession": {
+     "mean": 436,
+     "max": 437,
+     "tokens_mean": 109
+    }
+   },
+   "latency_ms": {
+    "read": {
+     "n": 20,
+     "p50": 471.2,
+     "p95": 1080.8,
+     "max": 1269.9
+    },
+    "nextSession": {
+     "n": 20,
+     "p50": 85.6,
+     "p95": 296.4,
+     "max": 296.6
+    }
+   },
+   "flags": {
+    "flagged": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "provenance": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "truthAlsoShown": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 93311
+  },
+  "S9|server-memory": {
+   "scenario": "S9",
+   "title": "Poisoned memory (wrong fact planted)",
+   "arm": "server-memory",
+   "n": 20,
+   "yes": 0,
+   "partial": 0,
+   "no": 20,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "score": 0,
+   "verdict": "no",
+   "reason": "planted fact served as plain fact",
+   "delivery": "none",
+   "bytes": {
+    "touch": {
+     "mean": 0,
+     "max": 0,
+     "tokens_mean": 0
+    },
+    "read": {
+     "mean": 1357,
+     "max": 1379,
+     "tokens_mean": 340
+    },
+    "nextSession": {
+     "mean": 1683,
+     "max": 1711,
+     "tokens_mean": 421
+    }
+   },
+   "latency_ms": {
+    "read": {
+     "n": 20,
+     "p50": 1.4,
+     "p95": 4.4,
+     "max": 6.4
+    },
+    "nextSession": {
+     "n": 20,
+     "p50": 41.3,
+     "p95": 94.2,
+     "max": 137.4
+    }
+   },
+   "flags": {
+    "flagged": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "provenance": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "truthAlsoShown": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 14358
+  },
+  "S10|baseline": {
+   "scenario": "S10",
+   "title": "Secret written into memory",
+   "arm": "baseline",
+   "n": 0,
+   "yes": 0,
+   "partial": 0,
+   "no": 0,
+   "na": 20,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "wilson": {
+     "lo": null,
+     "hi": null
+    },
+    "exact": {
+     "lo": null,
+     "hi": null
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "wilson": {
+     "lo": null,
+     "hi": null
+    },
+    "exact": {
+     "lo": null,
+     "hi": null
+    }
+   },
+   "score": null,
+   "verdict": "n/a",
+   "reason": "no store",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {},
+   "error_samples": [],
+   "wall_ms": 884
+  },
+  "S10|native": {
+   "scenario": "S10",
+   "title": "Secret written into memory",
+   "arm": "native",
+   "n": 20,
+   "yes": 0,
+   "partial": 0,
+   "no": 20,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "score": 0,
+   "verdict": "no",
+   "reason": "github_pat: served, persisted on disk",
+   "delivery": null,
+   "bytes": {
+    "write": {
+     "mean": 0,
+     "max": 0,
+     "tokens_mean": 0
+    },
+    "read": {
+     "mean": 0,
+     "max": 0,
+     "tokens_mean": 0
+    },
+    "nextSession": {
+     "mean": 1656,
+     "max": 1768,
+     "tokens_mean": 414
+    }
+   },
+   "latency_ms": {
+    "read": {
+     "n": 20,
+     "p50": 8.4,
+     "p95": 12.8,
+     "max": 14.9
+    }
+   },
+   "flags": {
+    "served": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "persisted": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "warned": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 4035
+  },
+  "S10|kronicle-lite": {
+   "scenario": "S10",
+   "title": "Secret written into memory",
+   "arm": "kronicle-lite",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "github_pat: not served, not on disk, warned",
+   "delivery": null,
+   "bytes": {
+    "write": {
+     "mean": 451,
+     "max": 459,
+     "tokens_mean": 113
+    },
+    "read": {
+     "mean": 1334,
+     "max": 1335,
+     "tokens_mean": 334
+    },
+    "nextSession": {
+     "mean": 80,
+     "max": 80,
+     "tokens_mean": 20
+    }
+   },
+   "latency_ms": {
+    "write": {
+     "n": 20,
+     "p50": 13.6,
+     "p95": 27,
+     "max": 30.9
+    },
+    "read": {
+     "n": 20,
+     "p50": 33,
+     "p95": 47.4,
+     "max": 55.4
+    },
+    "nextSession": {
+     "n": 20,
+     "p50": 96.3,
+     "p95": 188.8,
+     "max": 200.9
+    }
+   },
+   "flags": {
+    "served": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "persisted": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "warned": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 24038
+  },
+  "S10|kronicle-lite-core": {
+   "scenario": "S10",
+   "title": "Secret written into memory",
+   "arm": "kronicle-lite-core",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "github_pat: not served, not on disk, warned",
+   "delivery": null,
+   "bytes": {
+    "write": {
+     "mean": 451,
+     "max": 459,
+     "tokens_mean": 113
+    },
+    "read": {
+     "mean": 1334,
+     "max": 1335,
+     "tokens_mean": 334
+    },
+    "nextSession": {
+     "mean": 80,
+     "max": 80,
+     "tokens_mean": 20
+    }
+   },
+   "latency_ms": {
+    "write": {
+     "n": 20,
+     "p50": 10.2,
+     "p95": 33.3,
+     "max": 50.3
+    },
+    "read": {
+     "n": 20,
+     "p50": 31.3,
+     "p95": 93.7,
+     "max": 125.2
+    },
+    "nextSession": {
+     "n": 20,
+     "p50": 95.8,
+     "p95": 208.4,
+     "max": 279.7
+    }
+   },
+   "flags": {
+    "served": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "persisted": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "warned": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 25625
+  },
+  "S10|basic-memory": {
+   "scenario": "S10",
+   "title": "Secret written into memory",
+   "arm": "basic-memory",
+   "n": 20,
+   "yes": 0,
+   "partial": 0,
+   "no": 20,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "score": 0,
+   "verdict": "no",
+   "reason": "github_pat: served, persisted on disk",
+   "delivery": null,
+   "bytes": {
+    "write": {
+     "mean": 612,
+     "max": 674,
+     "tokens_mean": 153
+    },
+    "read": {
+     "mean": 794,
+     "max": 991,
+     "tokens_mean": 199
+    },
+    "nextSession": {
+     "mean": 368,
+     "max": 368,
+     "tokens_mean": 92
+    }
+   },
+   "latency_ms": {
+    "write": {
+     "n": 20,
+     "p50": 516.5,
+     "p95": 1082.9,
+     "max": 1264.6
+    },
+    "read": {
+     "n": 20,
+     "p50": 498.5,
+     "p95": 851.5,
+     "max": 917.5
+    },
+    "nextSession": {
+     "n": 20,
+     "p50": 110.5,
+     "p95": 240.9,
+     "max": 347.1
+    }
+   },
+   "flags": {
+    "served": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "persisted": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "warned": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 94029
+  },
+  "S10|server-memory": {
+   "scenario": "S10",
+   "title": "Secret written into memory",
+   "arm": "server-memory",
+   "n": 20,
+   "yes": 0,
+   "partial": 0,
+   "no": 20,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "score": 0,
+   "verdict": "no",
+   "reason": "github_pat: served, persisted on disk",
+   "delivery": null,
+   "bytes": {
+    "write": {
+     "mean": 209,
+     "max": 326,
+     "tokens_mean": 53
+    },
+    "read": {
+     "mean": 262,
+     "max": 379,
+     "tokens_mean": 66
+    },
+    "nextSession": {
+     "mean": 1720,
+     "max": 1836,
+     "tokens_mean": 430
+    }
+   },
+   "latency_ms": {
+    "write": {
+     "n": 20,
+     "p50": 3.7,
+     "p95": 8.1,
+     "max": 18.3
+    },
+    "read": {
+     "n": 20,
+     "p50": 2.8,
+     "p95": 8.9,
+     "max": 12.5
+    },
+    "nextSession": {
+     "n": 20,
+     "p50": 51.2,
+     "p95": 228.3,
+     "max": 250.5
+    }
+   },
+   "flags": {
+    "served": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "persisted": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "warned": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 11831
+  },
+  "S11|baseline": {
+   "scenario": "S11",
+   "title": "Cross-project leak (two repos sharing a store)",
+   "arm": "baseline",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "isolated",
+   "delivery": "none",
+   "bytes": {
+    "touch": {
+     "mean": 0,
+     "max": 0,
+     "tokens_mean": 0
+    },
+    "read": {
+     "mean": 79,
+     "max": 84,
+     "tokens_mean": 20
+    },
+    "nextSession": {
+     "mean": 0,
+     "max": 0,
+     "tokens_mean": 0
+    }
+   },
+   "latency_ms": {
+    "read": {
+     "n": 20,
+     "p50": 7.9,
+     "p95": 10.5,
+     "max": 13.2
+    }
+   },
+   "flags": {
+    "leak": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "labeled": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "falseRetraction": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 7002
+  },
+  "S11|native": {
+   "scenario": "S11",
+   "title": "Cross-project leak (two repos sharing a store)",
+   "arm": "native",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "isolated",
+   "delivery": "none",
+   "bytes": {
+    "touch": {
+     "mean": 0,
+     "max": 0,
+     "tokens_mean": 0
+    },
+    "read": {
+     "mean": 1350,
+     "max": 1375,
+     "tokens_mean": 338
+    },
+    "nextSession": {
+     "mean": 1591,
+     "max": 1626,
+     "tokens_mean": 398
+    }
+   },
+   "latency_ms": {
+    "read": {
+     "n": 20,
+     "p50": 8.7,
+     "p95": 15.3,
+     "max": 16.5
+    }
+   },
+   "flags": {
+    "leak": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "labeled": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "falseRetraction": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 7124
+  },
+  "S11|kronicle-lite": {
+   "scenario": "S11",
+   "title": "Cross-project leak (two repos sharing a store)",
+   "arm": "kronicle-lite",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "isolated",
+   "delivery": "push",
+   "bytes": {
+    "touch": {
+     "mean": 1488,
+     "max": 1493,
+     "tokens_mean": 372
+    },
+    "read": {
+     "mean": 1373,
+     "max": 1378,
+     "tokens_mean": 344
+    },
+    "nextSession": {
+     "mean": 80,
+     "max": 80,
+     "tokens_mean": 20
+    }
+   },
+   "latency_ms": {
+    "touch": {
+     "n": 20,
+     "p50": 27.4,
+     "p95": 302.2,
+     "max": 430.9
+    },
+    "read": {
+     "n": 20,
+     "p50": 4.8,
+     "p95": 15.4,
+     "max": 16.6
+    },
+    "nextSession": {
+     "n": 20,
+     "p50": 99.1,
+     "p95": 219.6,
+     "max": 236.6
+    }
+   },
+   "flags": {
+    "leak": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "labeled": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "falseRetraction": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 40795
+  },
+  "S11|kronicle-lite-core": {
+   "scenario": "S11",
+   "title": "Cross-project leak (two repos sharing a store)",
+   "arm": "kronicle-lite-core",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "isolated",
+   "delivery": "push",
+   "bytes": {
+    "touch": {
+     "mean": 1488,
+     "max": 1493,
+     "tokens_mean": 372
+    },
+    "read": {
+     "mean": 1373,
+     "max": 1378,
+     "tokens_mean": 344
+    },
+    "nextSession": {
+     "mean": 80,
+     "max": 80,
+     "tokens_mean": 20
+    }
+   },
+   "latency_ms": {
+    "touch": {
+     "n": 20,
+     "p50": 37.1,
+     "p95": 98.6,
+     "max": 120.6
+    },
+    "read": {
+     "n": 20,
+     "p50": 7.3,
+     "p95": 18.5,
+     "max": 23.3
+    },
+    "nextSession": {
+     "n": 20,
+     "p50": 98.2,
+     "p95": 215.1,
+     "max": 236.2
+    }
+   },
+   "flags": {
+    "leak": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "labeled": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "falseRetraction": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 37915
+  },
+  "S11|basic-memory": {
+   "scenario": "S11",
+   "title": "Cross-project leak (two repos sharing a store)",
+   "arm": "basic-memory",
+   "n": 20,
+   "yes": 0,
+   "partial": 20,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 0.5,
+   "verdict": "partial",
+   "reason": "B's facts visible in A, labeled",
+   "delivery": "none",
+   "bytes": {
+    "touch": {
+     "mean": 0,
+     "max": 0,
+     "tokens_mean": 0
+    },
+    "read": {
+     "mean": 387,
+     "max": 403,
+     "tokens_mean": 97
+    },
+    "nextSession": {
+     "mean": 251,
+     "max": 251,
+     "tokens_mean": 63
+    }
+   },
+   "latency_ms": {
+    "read": {
+     "n": 20,
+     "p50": 214.1,
+     "p95": 396.7,
+     "max": 506.6
+    },
+    "nextSession": {
+     "n": 20,
+     "p50": 36,
+     "p95": 80.4,
+     "max": 85.2
+    }
+   },
+   "flags": {
+    "leak": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "labeled": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "falseRetraction": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 804520
+  },
+  "S11|server-memory": {
+   "scenario": "S11",
+   "title": "Cross-project leak (two repos sharing a store)",
+   "arm": "server-memory",
+   "n": 20,
+   "yes": 0,
+   "partial": 0,
+   "no": 20,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "score": 0,
+   "verdict": "no",
+   "reason": "B's facts served in A unlabeled",
+   "delivery": "none",
+   "bytes": {
+    "touch": {
+     "mean": 0,
+     "max": 0,
+     "tokens_mean": 0
+    },
+    "read": {
+     "mean": 1174,
+     "max": 1196,
+     "tokens_mean": 294
+    },
+    "nextSession": {
+     "mean": 1713,
+     "max": 1745,
+     "tokens_mean": 429
+    }
+   },
+   "latency_ms": {
+    "read": {
+     "n": 20,
+     "p50": 4.9,
+     "p95": 14.5,
+     "max": 15
+    },
+    "nextSession": {
+     "n": 20,
+     "p50": 47.9,
+     "p95": 130.6,
+     "max": 274.2
+    }
+   },
+   "flags": {
+    "leak": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "labeled": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "falseRetraction": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 25355
+  },
+  "S3a|baseline": {
+   "scenario": "S3a",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "baseline",
+   "n": 20,
+   "yes": 0,
+   "partial": 0,
+   "no": 20,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "score": 0,
+   "verdict": "no",
+   "reason": "no coordination mechanism: both sessions proceed",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {},
+   "error_samples": [],
+   "wall_ms": 3790
+  },
+  "S3b|baseline": {
+   "scenario": "S3b",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "baseline",
+   "n": 20,
+   "yes": 0,
+   "partial": 0,
+   "no": 20,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "score": 0,
+   "verdict": "no",
+   "reason": "no coordination mechanism: both sessions proceed",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {},
+   "error_samples": [],
+   "wall_ms": 4023
+  },
+  "S3c|baseline": {
+   "scenario": "S3c",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "baseline",
+   "n": 20,
+   "yes": 0,
+   "partial": 0,
+   "no": 20,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "score": 0,
+   "verdict": "no",
+   "reason": "no coordination mechanism: both sessions proceed",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {},
+   "error_samples": [],
+   "wall_ms": 4178
+  },
+  "S3d|baseline": {
+   "scenario": "S3d",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "baseline",
+   "n": 0,
+   "yes": 0,
+   "partial": 0,
+   "no": 0,
+   "na": 20,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "wilson": {
+     "lo": null,
+     "hi": null
+    },
+    "exact": {
+     "lo": null,
+     "hi": null
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "wilson": {
+     "lo": null,
+     "hi": null
+    },
+    "exact": {
+     "lo": null,
+     "hi": null
+    }
+   },
+   "score": null,
+   "verdict": "n/a",
+   "reason": "no shared store",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {},
+   "error_samples": [],
+   "wall_ms": 4572
+  },
+  "S3a|sea-lite": {
+   "scenario": "S3a",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "sea-lite",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "exactly one winner; losers told who holds it",
+   "delivery": null,
+   "bytes": {
+    "claim": {
+     "mean": 361,
+     "max": 362,
+     "tokens_mean": 91
+    }
+   },
+   "latency_ms": {
+    "claim_race": {
+     "n": 20,
+     "p50": 3460,
+     "p95": 34731,
+     "max": 35479
+    }
+   },
+   "flags": {
+    "double_claim": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "advisory": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 84911
+  },
+  "S3b|sea-lite": {
+   "scenario": "S3b",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "sea-lite",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "blocked at edit, holder named",
+   "delivery": null,
+   "bytes": {
+    "guard": {
+     "mean": 386,
+     "max": 400,
+     "tokens_mean": 97
+    }
+   },
+   "latency_ms": {
+    "guard": {
+     "n": 20,
+     "p50": 442,
+     "p95": 649,
+     "max": 867
+    }
+   },
+   "flags": {
+    "blocked": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 23482
+  },
+  "S3c|sea-lite": {
+   "scenario": "S3c",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "sea-lite",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "exactly one winner; losers told who holds it",
+   "delivery": null,
+   "bytes": {
+    "claim": {
+     "mean": 367,
+     "max": 368,
+     "tokens_mean": 92
+    }
+   },
+   "latency_ms": {
+    "claim_race": {
+     "n": 20,
+     "p50": 1386,
+     "p95": 2013,
+     "max": 2126
+    }
+   },
+   "flags": {
+    "double_claim": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "advisory": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 29279
+  },
+  "S3d|sea-lite": {
+   "scenario": "S3d",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "sea-lite",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "3 concurrent creates, 3 unique, all present",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {
+    "lost_or_dup": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "duplicate_ids": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 50151
+  },
+  "S3a|sea-lite+cc-anchor": {
+   "scenario": "S3a",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "sea-lite+cc-anchor",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "exactly one winner; losers told who holds it",
+   "delivery": null,
+   "bytes": {
+    "claim": {
+     "mean": 361,
+     "max": 362,
+     "tokens_mean": 91
+    }
+   },
+   "latency_ms": {
+    "claim_race": {
+     "n": 20,
+     "p50": 2885,
+     "p95": 4596,
+     "max": 5269
+    }
+   },
+   "flags": {
+    "double_claim": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "advisory": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 53287
+  },
+  "S3b|sea-lite+cc-anchor": {
+   "scenario": "S3b",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "sea-lite+cc-anchor",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "blocked at edit, holder named",
+   "delivery": null,
+   "bytes": {
+    "guard": {
+     "mean": 544,
+     "max": 552,
+     "tokens_mean": 136
+    }
+   },
+   "latency_ms": {
+    "guard": {
+     "n": 20,
+     "p50": 608,
+     "p95": 1022,
+     "max": 1081
+    }
+   },
+   "flags": {
+    "blocked": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 28799
+  },
+  "S3c|sea-lite+cc-anchor": {
+   "scenario": "S3c",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "sea-lite+cc-anchor",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "exactly one winner; losers told who holds it",
+   "delivery": null,
+   "bytes": {
+    "claim": {
+     "mean": 367,
+     "max": 368,
+     "tokens_mean": 92
+    }
+   },
+   "latency_ms": {
+    "claim_race": {
+     "n": 20,
+     "p50": 1229,
+     "p95": 1810,
+     "max": 1899
+    }
+   },
+   "flags": {
+    "double_claim": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "advisory": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 26169
+  },
+  "S3d|sea-lite+cc-anchor": {
+   "scenario": "S3d",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "sea-lite+cc-anchor",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "3 concurrent creates, 3 unique, all present",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {
+    "lost_or_dup": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "duplicate_ids": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 31390
+  },
+  "S3a|beads": {
+   "scenario": "S3a",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "beads",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "exactly one winner; losers told who holds it",
+   "delivery": null,
+   "bytes": {
+    "claim": {
+     "mean": 256,
+     "max": 307,
+     "tokens_mean": 64
+    }
+   },
+   "latency_ms": {
+    "claim_race": {
+     "n": 20,
+     "p50": 7300,
+     "p95": 9740,
+     "max": 9893
+    }
+   },
+   "flags": {
+    "double_claim": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "advisory": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 152446
+  },
+  "S3b|beads": {
+   "scenario": "S3b",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "beads",
+   "n": 20,
+   "yes": 0,
+   "partial": 0,
+   "no": 20,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "score": 0,
+   "verdict": "no",
+   "reason": "claims are per issue; no path scope or edit guard",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {},
+   "error_samples": [],
+   "wall_ms": 117191
+  },
+  "S3c|beads": {
+   "scenario": "S3c",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "beads",
+   "n": 20,
+   "yes": 0,
+   "partial": 0,
+   "no": 20,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "score": 0,
+   "verdict": "no",
+   "reason": "2/2 sessions all believe they hold it",
+   "delivery": null,
+   "bytes": {
+    "claim": {
+     "mean": 405,
+     "max": 407,
+     "tokens_mean": 102
+    }
+   },
+   "latency_ms": {
+    "claim_race": {
+     "n": 20,
+     "p50": 5416,
+     "p95": 6809,
+     "max": 7394
+    }
+   },
+   "flags": {
+    "double_claim": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "advisory": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 111068
+  },
+  "S3d|beads": {
+   "scenario": "S3d",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "beads",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "3 concurrent creates, 3 unique, all present",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {
+    "lost_or_dup": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "duplicate_ids": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 134565
+  },
+  "S3a|agent-mail": {
+   "scenario": "S3a",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "agent-mail",
+   "n": 20,
+   "yes": 0,
+   "partial": 20,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 0.5,
+   "verdict": "partial",
+   "reason": "8/8 granted; conflict reported (advisory)",
+   "delivery": null,
+   "bytes": {
+    "claim": {
+     "mean": 662,
+     "max": 850,
+     "tokens_mean": 166
+    }
+   },
+   "latency_ms": {
+    "claim_race": {
+     "n": 20,
+     "p50": 794,
+     "p95": 1121,
+     "max": 1165
+    }
+   },
+   "flags": {
+    "double_claim": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "advisory": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 40870
+  },
+  "S3b|agent-mail": {
+   "scenario": "S3b",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "agent-mail",
+   "n": 20,
+   "yes": 0,
+   "partial": 20,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 0.5,
+   "verdict": "partial",
+   "reason": "blocked at commit, holder named",
+   "delivery": null,
+   "bytes": {
+    "guard": {
+     "mean": 180,
+     "max": 194,
+     "tokens_mean": 45
+    }
+   },
+   "latency_ms": {
+    "guard": {
+     "n": 20,
+     "p50": 203,
+     "p95": 273,
+     "max": 329
+    }
+   },
+   "flags": {
+    "blocked": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 37777
+  },
+  "S3c|agent-mail": {
+   "scenario": "S3c",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "agent-mail",
+   "n": 20,
+   "yes": 0,
+   "partial": 20,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 0.5,
+   "verdict": "partial",
+   "reason": "2/2 granted; conflict reported (advisory)",
+   "delivery": null,
+   "bytes": {
+    "claim": {
+     "mean": 475,
+     "max": 484,
+     "tokens_mean": 119
+    }
+   },
+   "latency_ms": {
+    "claim_race": {
+     "n": 20,
+     "p50": 311,
+     "p95": 454,
+     "max": 573
+    }
+   },
+   "flags": {
+    "double_claim": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "advisory": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 31873
+  },
+  "S3d|agent-mail": {
+   "scenario": "S3d",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "agent-mail",
+   "n": 0,
+   "yes": 0,
+   "partial": 0,
+   "no": 0,
+   "na": 20,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "wilson": {
+     "lo": null,
+     "hi": null
+    },
+    "exact": {
+     "lo": null,
+     "hi": null
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "wilson": {
+     "lo": null,
+     "hi": null
+    },
+    "exact": {
+     "lo": null,
+     "hi": null
+    }
+   },
+   "score": null,
+   "verdict": "n/a",
+   "reason": "no item store",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {},
+   "error_samples": [],
+   "wall_ms": 20627
+  },
+  "S3a|backlog-md": {
+   "scenario": "S3a",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "backlog-md",
+   "n": 3,
+   "yes": 0,
+   "partial": 0,
+   "no": 3,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 3,
+    "p": 0,
+    "wilson": {
+     "lo": 5.551115123125783e-17,
+     "hi": 0.5614970317550454
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.7075982261787133
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 3,
+    "p": 0,
+    "wilson": {
+     "lo": 5.551115123125783e-17,
+     "hi": 0.5614970317550454
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.7075982261787133
+    }
+   },
+   "score": 0,
+   "verdict": "no",
+   "reason": "no claim primitive: 3/3 status edits accepted, 0 failed without naming a holder",
+   "delivery": null,
+   "bytes": {
+    "claim": {
+     "mean": 33,
+     "max": 59,
+     "tokens_mean": 9
+    }
+   },
+   "latency_ms": {
+    "claim_race": {
+     "n": 3,
+     "p50": 847,
+     "p95": 1329,
+     "max": 1329
+    }
+   },
+   "flags": {
+    "double_claim": {
+     "k": 3,
+     "n": 3,
+     "p": 1,
+     "wilson": {
+      "lo": 0.4385029682449546,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.2924017738212865,
+      "hi": 1
+     }
+    },
+    "advisory": {
+     "k": 0,
+     "n": 3,
+     "p": 0,
+     "wilson": {
+      "lo": 5.551115123125783e-17,
+      "hi": 0.5614970317550454
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.7075982261787133
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 2795
+  },
+  "S3b|backlog-md": {
+   "scenario": "S3b",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "backlog-md",
+   "n": 3,
+   "yes": 0,
+   "partial": 0,
+   "no": 3,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 3,
+    "p": 0,
+    "wilson": {
+     "lo": 5.551115123125783e-17,
+     "hi": 0.5614970317550454
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.7075982261787133
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 3,
+    "p": 0,
+    "wilson": {
+     "lo": 5.551115123125783e-17,
+     "hi": 0.5614970317550454
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.7075982261787133
+    }
+   },
+   "score": 0,
+   "verdict": "no",
+   "reason": "no edit/commit guard: the overlapping edit goes through",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {},
+   "error_samples": [],
+   "wall_ms": 2525
+  },
+  "S3c|backlog-md": {
+   "scenario": "S3c",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "backlog-md",
+   "n": 3,
+   "yes": 0,
+   "partial": 0,
+   "no": 3,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 3,
+    "p": 0,
+    "wilson": {
+     "lo": 5.551115123125783e-17,
+     "hi": 0.5614970317550454
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.7075982261787133
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 3,
+    "p": 0,
+    "wilson": {
+     "lo": 5.551115123125783e-17,
+     "hi": 0.5614970317550454
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.7075982261787133
+    }
+   },
+   "score": 0,
+   "verdict": "no",
+   "reason": "no claim primitive: 2/2 status edits accepted, 0 failed without naming a holder",
+   "delivery": null,
+   "bytes": {
+    "claim": {
+     "mean": 20,
+     "max": 20,
+     "tokens_mean": 5
+    }
+   },
+   "latency_ms": {
+    "claim_race": {
+     "n": 3,
+     "p50": 461,
+     "p95": 1252,
+     "max": 1252
+    }
+   },
+   "flags": {
+    "double_claim": {
+     "k": 3,
+     "n": 3,
+     "p": 1,
+     "wilson": {
+      "lo": 0.4385029682449546,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.2924017738212865,
+      "hi": 1
+     }
+    },
+    "advisory": {
+     "k": 0,
+     "n": 3,
+     "p": 0,
+     "wilson": {
+      "lo": 5.551115123125783e-17,
+      "hi": 0.5614970317550454
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.7075982261787133
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 2909
+  },
+  "S3d|backlog-md": {
+   "scenario": "S3d",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "backlog-md",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "3 concurrent creates, 3 unique, all present",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {
+    "lost_or_dup": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "duplicate_ids": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 21648
+  },
+  "S3a|task-master": {
+   "scenario": "S3a",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "task-master",
+   "n": 3,
+   "yes": 0,
+   "partial": 0,
+   "no": 3,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 3,
+    "p": 0,
+    "wilson": {
+     "lo": 5.551115123125783e-17,
+     "hi": 0.5614970317550454
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.7075982261787133
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 3,
+    "p": 0,
+    "wilson": {
+     "lo": 5.551115123125783e-17,
+     "hi": 0.5614970317550454
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.7075982261787133
+    }
+   },
+   "score": 0,
+   "verdict": "no",
+   "reason": "no claim primitive: 3/3 status edits accepted, 0 failed without naming a holder",
+   "delivery": null,
+   "bytes": {
+    "claim": {
+     "mean": 490,
+     "max": 490,
+     "tokens_mean": 123
+    }
+   },
+   "latency_ms": {
+    "claim_race": {
+     "n": 3,
+     "p50": 71017,
+     "p95": 82013,
+     "max": 82013
+    }
+   },
+   "flags": {
+    "double_claim": {
+     "k": 3,
+     "n": 3,
+     "p": 1,
+     "wilson": {
+      "lo": 0.4385029682449546,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.2924017738212865,
+      "hi": 1
+     }
+    },
+    "advisory": {
+     "k": 0,
+     "n": 3,
+     "p": 0,
+     "wilson": {
+      "lo": 5.551115123125783e-17,
+      "hi": 0.5614970317550454
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.7075982261787133
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 112204
+  },
+  "S3b|task-master": {
+   "scenario": "S3b",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "task-master",
+   "n": 3,
+   "yes": 0,
+   "partial": 0,
+   "no": 3,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 3,
+    "p": 0,
+    "wilson": {
+     "lo": 5.551115123125783e-17,
+     "hi": 0.5614970317550454
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.7075982261787133
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 3,
+    "p": 0,
+    "wilson": {
+     "lo": 5.551115123125783e-17,
+     "hi": 0.5614970317550454
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.7075982261787133
+    }
+   },
+   "score": 0,
+   "verdict": "no",
+   "reason": "no edit/commit guard: the overlapping edit goes through",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {},
+   "error_samples": [],
+   "wall_ms": 36440
+  },
+  "S3c|task-master": {
+   "scenario": "S3c",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "task-master",
+   "n": 3,
+   "yes": 0,
+   "partial": 0,
+   "no": 3,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 3,
+    "p": 0,
+    "wilson": {
+     "lo": 5.551115123125783e-17,
+     "hi": 0.5614970317550454
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.7075982261787133
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 3,
+    "p": 0,
+    "wilson": {
+     "lo": 5.551115123125783e-17,
+     "hi": 0.5614970317550454
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.7075982261787133
+    }
+   },
+   "score": 0,
+   "verdict": "no",
+   "reason": "no claim primitive: 2/2 status edits accepted, 0 failed without naming a holder",
+   "delivery": null,
+   "bytes": {
+    "claim": {
+     "mean": 490,
+     "max": 490,
+     "tokens_mean": 123
+    }
+   },
+   "latency_ms": {
+    "claim_race": {
+     "n": 3,
+     "p50": 10425,
+     "p95": 19622,
+     "max": 19622
+    }
+   },
+   "flags": {
+    "double_claim": {
+     "k": 3,
+     "n": 3,
+     "p": 1,
+     "wilson": {
+      "lo": 0.4385029682449546,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.2924017738212865,
+      "hi": 1
+     }
+    },
+    "advisory": {
+     "k": 0,
+     "n": 3,
+     "p": 0,
+     "wilson": {
+      "lo": 5.551115123125783e-17,
+      "hi": 0.5614970317550454
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.7075982261787133
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 45000
+  },
+  "S3d|task-master": {
+   "scenario": "S3d",
+   "title": "Parallel edit collision (two+ sessions, same file/path)",
+   "arm": "task-master",
+   "n": 20,
+   "yes": 16,
+   "partial": 0,
+   "no": 4,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 16,
+    "n": 20,
+    "p": 0.8,
+    "wilson": {
+     "lo": 0.5839825677481064,
+     "hi": 0.919342337420202
+    },
+    "exact": {
+     "lo": 0.5633859970030055,
+     "hi": 0.9426660029500651
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 16,
+    "n": 20,
+    "p": 0.8,
+    "wilson": {
+     "lo": 0.5839825677481064,
+     "hi": 0.919342337420202
+    },
+    "exact": {
+     "lo": 0.5633859970030055,
+     "hi": 0.9426660029500651
+    }
+   },
+   "score": 0.8,
+   "verdict": "mixed",
+   "reason": "3 concurrent creates, 3 unique, all present",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {
+    "lost_or_dup": {
+     "k": 4,
+     "n": 20,
+     "p": 0.2,
+     "wilson": {
+      "lo": 0.08065766257979806,
+      "hi": 0.41601743225189364
+     },
+     "exact": {
+      "lo": 0.057333997049934915,
+      "hi": 0.4366140029969944
+     }
+    },
+    "duplicate_ids": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 485213
+  },
+  "S11c|baseline": {
+   "scenario": "S11c",
+   "title": "Cross-project leak, coordination (two repos, default store)",
+   "arm": "baseline",
+   "n": 0,
+   "yes": 0,
+   "partial": 0,
+   "no": 0,
+   "na": 20,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "wilson": {
+     "lo": null,
+     "hi": null
+    },
+    "exact": {
+     "lo": null,
+     "hi": null
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "wilson": {
+     "lo": null,
+     "hi": null
+    },
+    "exact": {
+     "lo": null,
+     "hi": null
+    }
+   },
+   "score": null,
+   "verdict": "n/a",
+   "reason": "no claims",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {},
+   "error_samples": [],
+   "wall_ms": 5468
+  },
+  "S11c|sea-lite": {
+   "scenario": "S11c",
+   "title": "Cross-project leak, coordination (two repos, default store)",
+   "arm": "sea-lite",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "isolated",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {
+    "leakedTitle": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "bGranted": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 18141
+  },
+  "S11c|sea-lite+cc-anchor": {
+   "scenario": "S11c",
+   "title": "Cross-project leak, coordination (two repos, default store)",
+   "arm": "sea-lite+cc-anchor",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "isolated",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {
+    "leakedTitle": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "bGranted": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 18517
+  },
+  "S11c|beads": {
+   "scenario": "S11c",
+   "title": "Cross-project leak, coordination (two repos, default store)",
+   "arm": "beads",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "isolated",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {
+    "leakedTitle": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "bGranted": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 163966
+  },
+  "S11c|agent-mail": {
+   "scenario": "S11c",
+   "title": "Cross-project leak, coordination (two repos, default store)",
+   "arm": "agent-mail",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "isolated",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {
+    "falseConflict": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "leakedTitle": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "bGranted": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 34233
+  },
+  "S11c|backlog-md": {
+   "scenario": "S11c",
+   "title": "Cross-project leak, coordination (two repos, default store)",
+   "arm": "backlog-md",
+   "n": 3,
+   "yes": 3,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 3,
+    "n": 3,
+    "p": 1,
+    "wilson": {
+     "lo": 0.4385029682449546,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.2924017738212865,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 3,
+    "n": 3,
+    "p": 1,
+    "wilson": {
+     "lo": 0.4385029682449546,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.2924017738212865,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "isolated",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {
+    "leakedTitle": {
+     "k": 0,
+     "n": 3,
+     "p": 0,
+     "wilson": {
+      "lo": 5.551115123125783e-17,
+      "hi": 0.5614970317550454
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.7075982261787133
+     }
+    },
+    "bGranted": {
+     "k": 3,
+     "n": 3,
+     "p": 1,
+     "wilson": {
+      "lo": 0.4385029682449546,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.2924017738212865,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 4684
+  },
+  "S11c|task-master": {
+   "scenario": "S11c",
+   "title": "Cross-project leak, coordination (two repos, default store)",
+   "arm": "task-master",
+   "n": 3,
+   "yes": 3,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 3,
+    "n": 3,
+    "p": 1,
+    "wilson": {
+     "lo": 0.4385029682449546,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.2924017738212865,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 3,
+    "n": 3,
+    "p": 1,
+    "wilson": {
+     "lo": 0.4385029682449546,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.2924017738212865,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "isolated",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {
+    "leakedTitle": {
+     "k": 0,
+     "n": 3,
+     "p": 0,
+     "wilson": {
+      "lo": 5.551115123125783e-17,
+      "hi": 0.5614970317550454
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.7075982261787133
+     }
+    },
+    "bGranted": {
+     "k": 3,
+     "n": 3,
+     "p": 1,
+     "wilson": {
+      "lo": 0.4385029682449546,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.2924017738212865,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 88395
+  },
+  "S13|baseline": {
+   "scenario": "S13",
+   "title": "Lease expiry during a long task",
+   "arm": "baseline",
+   "n": 0,
+   "yes": 0,
+   "partial": 0,
+   "no": 0,
+   "na": 20,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "wilson": {
+     "lo": null,
+     "hi": null
+    },
+    "exact": {
+     "lo": null,
+     "hi": null
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "wilson": {
+     "lo": null,
+     "hi": null
+    },
+    "exact": {
+     "lo": null,
+     "hi": null
+    }
+   },
+   "score": null,
+   "verdict": "n/a",
+   "reason": "no claims",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {},
+   "error_samples": [],
+   "wall_ms": 3259
+  },
+  "S13|sea-lite": {
+   "scenario": "S13",
+   "title": "Lease expiry during a long task",
+   "arm": "sea-lite",
+   "n": 3,
+   "yes": 0,
+   "partial": 3,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 3,
+    "p": 0,
+    "wilson": {
+     "lo": 5.551115123125783e-17,
+     "hi": 0.5614970317550454
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.7075982261787133
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 3,
+    "n": 3,
+    "p": 1,
+    "wilson": {
+     "lo": 0.4385029682449546,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.2924017738212865,
+     "hi": 1
+    }
+   },
+   "score": 0.5,
+   "verdict": "partial",
+   "reason": "lease lapsed mid-task; B took it; A learns only on its next write",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {
+    "lost": {
+     "k": 3,
+     "n": 3,
+     "p": 1,
+     "wilson": {
+      "lo": 0.4385029682449546,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.2924017738212865,
+      "hi": 1
+     }
+    },
+    "holderTold": {
+     "k": 3,
+     "n": 3,
+     "p": 1,
+     "wilson": {
+      "lo": 0.4385029682449546,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.2924017738212865,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 30589
+  },
+  "S13|sea-lite+cc-anchor": {
+   "scenario": "S13",
+   "title": "Lease expiry during a long task",
+   "arm": "sea-lite+cc-anchor",
+   "n": 3,
+   "yes": 3,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 3,
+    "n": 3,
+    "p": 1,
+    "wilson": {
+     "lo": 0.4385029682449546,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.2924017738212865,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 3,
+    "n": 3,
+    "p": 1,
+    "wilson": {
+     "lo": 0.4385029682449546,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.2924017738212865,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "claim held through 12s of work (lease 5s)",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {
+    "lost": {
+     "k": 0,
+     "n": 3,
+     "p": 0,
+     "wilson": {
+      "lo": 5.551115123125783e-17,
+      "hi": 0.5614970317550454
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.7075982261787133
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 31613
+  },
+  "S13|beads": {
+   "scenario": "S13",
+   "title": "Lease expiry during a long task",
+   "arm": "beads",
+   "n": 1,
+   "yes": 1,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 1,
+    "n": 1,
+    "p": 1,
+    "wilson": {
+     "lo": 0.20654931437723745,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.025000000000000015,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 1,
+    "n": 1,
+    "p": 1,
+    "wilson": {
+     "lo": 0.20654931437723745,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.025000000000000015,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "claim held through 310s of work (lease 300s)",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {
+    "lost": {
+     "k": 0,
+     "n": 1,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.7934506856227626
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.9749999999999999
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 318494
+  },
+  "S13|agent-mail": {
+   "scenario": "S13",
+   "title": "Lease expiry during a long task",
+   "arm": "agent-mail",
+   "n": 1,
+   "yes": 0,
+   "partial": 1,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 1,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.7934506856227626
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.9749999999999999
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 1,
+    "n": 1,
+    "p": 1,
+    "wilson": {
+     "lo": 0.20654931437723745,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.025000000000000015,
+     "hi": 1
+    }
+   },
+   "score": 0.5,
+   "verdict": "partial",
+   "reason": "lease lapsed mid-task; B took it; A learns only on its next write",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {
+    "lost": {
+     "k": 1,
+     "n": 1,
+     "p": 1,
+     "wilson": {
+      "lo": 0.20654931437723745,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.025000000000000015,
+      "hi": 1
+     }
+    },
+    "holderTold": {
+     "k": 1,
+     "n": 1,
+     "p": 1,
+     "wilson": {
+      "lo": 0.20654931437723745,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.025000000000000015,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 74022
+  },
+  "S13|backlog-md": {
+   "scenario": "S13",
+   "title": "Lease expiry during a long task",
+   "arm": "backlog-md",
+   "n": 0,
+   "yes": 0,
+   "partial": 0,
+   "no": 0,
+   "na": 20,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "wilson": {
+     "lo": null,
+     "hi": null
+    },
+    "exact": {
+     "lo": null,
+     "hi": null
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "wilson": {
+     "lo": null,
+     "hi": null
+    },
+    "exact": {
+     "lo": null,
+     "hi": null
+    }
+   },
+   "score": null,
+   "verdict": "n/a",
+   "reason": "no claims",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {},
+   "error_samples": [],
+   "wall_ms": 7504
+  },
+  "S13|task-master": {
+   "scenario": "S13",
+   "title": "Lease expiry during a long task",
+   "arm": "task-master",
+   "n": 0,
+   "yes": 0,
+   "partial": 0,
+   "no": 0,
+   "na": 20,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "wilson": {
+     "lo": null,
+     "hi": null
+    },
+    "exact": {
+     "lo": null,
+     "hi": null
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "wilson": {
+     "lo": null,
+     "hi": null
+    },
+    "exact": {
+     "lo": null,
+     "hi": null
+    }
+   },
+   "score": null,
+   "verdict": "n/a",
+   "reason": "no claims",
+   "delivery": null,
+   "bytes": {},
+   "latency_ms": {},
+   "flags": {},
+   "error_samples": [],
+   "wall_ms": 82161
+  }
+ },
+ "scale": {
+  "baseline|1000": {
+   "arm": "baseline",
+   "size": 1000,
+   "n": 20,
+   "hits": 20,
+   "hit_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "latency_ms": {
+    "n": 20,
+    "p50": 12.407428999431431,
+    "p95": 16.498753000050783,
+    "max": 21.550558999180794
+   },
+   "bytes_mean": 134,
+   "tokens_mean": 34,
+   "bytes_max": 135,
+   "ingest_ms": 0.07238900009542704,
+   "corpus_bytes": 364786,
+   "store_bytes": null,
+   "store_over_corpus": null,
+   "wall_ms": 462
+  },
+  "baseline|10000": {
+   "arm": "baseline",
+   "size": 10000,
+   "n": 20,
+   "hits": 20,
+   "hit_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "latency_ms": {
+    "n": 20,
+    "p50": 38.0883339997381,
+    "p95": 42.1717220004648,
+    "max": 52.417874000035226
+   },
+   "bytes_mean": 138,
+   "tokens_mean": 35,
+   "bytes_max": 143,
+   "ingest_ms": 0.5576839996501803,
+   "corpus_bytes": 3664947,
+   "store_bytes": null,
+   "store_over_corpus": null,
+   "wall_ms": 1985
+  },
+  "kronicle-lite|1000": {
+   "arm": "kronicle-lite",
+   "size": 1000,
+   "n": 20,
+   "hits": 20,
+   "hit_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "latency_ms": {
+    "n": 20,
+    "p50": 3.007612000219524,
+    "p95": 4.079107000492513,
+    "max": 22.851382999680936
+   },
+   "bytes_mean": 1315,
+   "tokens_mean": 329,
+   "bytes_max": 1316,
+   "ingest_ms": 3784.590251999907,
+   "corpus_bytes": 364786,
+   "store_bytes": 16155992,
+   "store_over_corpus": 44.29,
+   "wall_ms": 3932
+  },
+  "kronicle-lite|10000": {
+   "arm": "kronicle-lite",
+   "size": 10000,
+   "n": 20,
+   "hits": 20,
+   "hit_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "latency_ms": {
+    "n": 20,
+    "p50": 6.446742000058293,
+    "p95": 27.836157999932766,
+    "max": 38.976760999299586
+   },
+   "bytes_mean": 1321,
+   "tokens_mean": 331,
+   "bytes_max": 1327,
+   "ingest_ms": 37500.09808699973,
+   "corpus_bytes": 3664947,
+   "store_bytes": 122805152,
+   "store_over_corpus": 33.51,
+   "wall_ms": 40309
+  },
+  "kronicle-lite-core|1000": {
+   "arm": "kronicle-lite-core",
+   "size": 1000,
+   "n": 20,
+   "hits": 20,
+   "hit_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "latency_ms": {
+    "n": 20,
+    "p50": 3.0319440001621842,
+    "p95": 5.182912999764085,
+    "max": 23.38713299948722
+   },
+   "bytes_mean": 1315,
+   "tokens_mean": 329,
+   "bytes_max": 1316,
+   "ingest_ms": 3733.446401000023,
+   "corpus_bytes": 364786,
+   "store_bytes": 16196904,
+   "store_over_corpus": 44.4,
+   "wall_ms": 3938
+  },
+  "kronicle-lite-core|10000": {
+   "arm": "kronicle-lite-core",
+   "size": 10000,
+   "n": 20,
+   "hits": 20,
+   "hit_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "latency_ms": {
+    "n": 20,
+    "p50": 8.579495999962091,
+    "p95": 12.002259000204504,
+    "max": 48.982028000056744
+   },
+   "bytes_mean": 1321,
+   "tokens_mean": 331,
+   "bytes_max": 1327,
+   "ingest_ms": 38004.518473000266,
+   "corpus_bytes": 3664947,
+   "store_bytes": 123714712,
+   "store_over_corpus": 33.76,
+   "wall_ms": 41056
+  },
+  "basic-memory|1000": {
+   "arm": "basic-memory",
+   "size": 1000,
+   "n": 20,
+   "hits": 20,
+   "hit_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "latency_ms": {
+    "n": 20,
+    "p50": 354.08694399986416,
+    "p95": 422.4691869998351,
+    "max": 632.8462660005316
+   },
+   "bytes_mean": 3327,
+   "tokens_mean": 832,
+   "bytes_max": 3352,
+   "ingest_ms": 261466.45440999977,
+   "corpus_bytes": 364786,
+   "store_bytes": 17587051,
+   "store_over_corpus": 48.21,
+   "wall_ms": 268919
+  },
+  "basic-memory|10000": {
+   "arm": "basic-memory",
+   "size": 10000,
+   "skipped": "not run above 1000 docs by default (ingest ~0.23 s/doc here; use --force-scale)"
+  },
+  "server-memory|1000": {
+   "arm": "server-memory",
+   "size": 1000,
+   "n": 20,
+   "hits": 20,
+   "hit_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "latency_ms": {
+    "n": 20,
+    "p50": 3.771002000197768,
+    "p95": 16.778185999952257,
+    "max": 17.339542999863625
+   },
+   "bytes_mean": 516,
+   "tokens_mean": 129,
+   "bytes_max": 536,
+   "ingest_ms": 252.57879799976945,
+   "corpus_bytes": 364786,
+   "store_bytes": 424786,
+   "store_over_corpus": 1.16,
+   "wall_ms": 454
+  },
+  "server-memory|10000": {
+   "arm": "server-memory",
+   "size": 10000,
+   "n": 20,
+   "hits": 20,
+   "hit_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "latency_ms": {
+    "n": 20,
+    "p50": 37.892965000122786,
+    "p95": 67.91994199994951,
+    "max": 68.81346300058067
+   },
+   "bytes_mean": 1402,
+   "tokens_mean": 351,
+   "bytes_max": 18256,
+   "ingest_ms": 1842.3716439995915,
+   "corpus_bytes": 3664947,
+   "store_bytes": 4264947,
+   "store_over_corpus": 1.16,
+   "wall_ms": 4372
+  }
+ },
+ "planning": {
+  "title": "Planning cost (1 epic + 20 tickets, 39 links)",
+  "seeds": 3,
+  "plan": {
+   "tickets": 21,
+   "parent_edges": 20,
+   "dep_edges": 19,
+   "invalid_item": "edge \"ticket 01 depends on ticket 20\" (closes a cycle)"
+  },
+  "rows": {
+   "sea-lite/apply": {
+    "id": "sea-lite/apply",
+    "arm": "sea-lite",
+    "tool": "sea-lite 0.5.0",
+    "path": "`sea_apply` (one MCP call)",
+    "surface": "MCP",
+    "batch": true,
+    "n": 3,
+    "errors": [],
+    "calls": [
+     1
+    ],
+    "call_errors": [
+     0
+    ],
+    "written_bytes": {
+     "mean": 5474,
+     "min": 5474,
+     "max": 5474,
+     "tokens": 1369
+    },
+    "result_bytes": {
+     "mean": 996,
+     "min": 996,
+     "max": 996,
+     "tokens": 249
+    },
+    "tokens_total": 1618,
+    "wall_ms": {
+     "mean": 52,
+     "sd": 14,
+     "min": 39,
+     "max": 67,
+     "cv": 0.275,
+     "per_seed": [
+      39,
+      49,
+      67
+     ]
+    },
+    "exact": {
+     "k": 3,
+     "n": 3,
+     "problems": [
+      ""
+     ]
+    },
+    "idempotent": {
+     "k": 3,
+     "n": 3,
+     "tickets_after": [
+      21
+     ],
+     "edges_after": [
+      39
+     ],
+     "rerun_calls": [
+      1
+     ],
+     "rerun_errors": []
+    },
+    "atomic": {
+     "k": 3,
+     "n": 3,
+     "rejected": 3,
+     "crashed": 0,
+     "tickets_left": [
+      0
+     ],
+     "edges_left": [
+      0
+     ],
+     "note": "{\"error\":\"cycle\",\"message\":\"batch would create a cycle: t01 → t20 → t19 → t18 → t17 → t16 → t15 → t14 → t13 → t12 → t11 → t10 → t09 → t08 → t07 → t06 → t05 → t0"
+    },
+    "dry_run": {
+     "k": 3,
+     "n": 3,
+     "note": "{\"error\":\"cycle\",\"message\":\"batch would create a cycle: t01 → t20 → t19 → t18 → t17 → t16 → t15 → t14 → t13 → t12 → t11 → t10 → t09 → t08 → t07 → t06 → t05 → t0"
+    }
+   },
+   "sea-lite/apply-template": {
+    "id": "sea-lite/apply-template",
+    "arm": "sea-lite",
+    "tool": "sea-lite 0.5.0",
+    "path": "`sea_apply` with `templates` (one MCP call, 20 steps written once)",
+    "surface": "MCP",
+    "batch": true,
+    "n": 3,
+    "errors": [],
+    "calls": [
+     1
+    ],
+    "call_errors": [
+     0
+    ],
+    "written_bytes": {
+     "mean": 617,
+     "min": 617,
+     "max": 617,
+     "tokens": 155
+    },
+    "result_bytes": {
+     "mean": 996,
+     "min": 996,
+     "max": 996,
+     "tokens": 249
+    },
+    "tokens_total": 404,
+    "wall_ms": {
+     "mean": 58,
+     "sd": 2,
+     "min": 57,
+     "max": 60,
+     "cv": 0.026,
+     "per_seed": [
+      57,
+      60,
+      58
+     ]
+    },
+    "exact": {
+     "k": 3,
+     "n": 3,
+     "problems": [
+      ""
+     ]
+    },
+    "idempotent": {
+     "k": 3,
+     "n": 3,
+     "tickets_after": [
+      21
+     ],
+     "edges_after": [
+      39
+     ],
+     "rerun_calls": [
+      1
+     ],
+     "rerun_errors": []
+    },
+    "atomic": {
+     "k": 3,
+     "n": 3,
+     "rejected": 3,
+     "crashed": 0,
+     "tickets_left": [
+      0
+     ],
+     "edges_left": [
+      0
+     ],
+     "note": "{\"error\":\"cycle\",\"message\":\"batch would create a cycle: t01 → t20 → t19 → t18 → t17 → t16 → t15 → t14 → t13 → t12 → t11 → t10 → t09 → t08 → t07 → t06 → t05 → t0"
+    },
+    "dry_run": {
+     "k": 3,
+     "n": 3,
+     "note": "{\"error\":\"cycle\",\"message\":\"batch would create a cycle: t01 → t20 → t19 → t18 → t17 → t16 → t15 → t14 → t13 → t12 → t11 → t10 → t09 → t08 → t07 → t06 → t05 → t0"
+    }
+   },
+   "sea-lite/per-item": {
+    "id": "sea-lite/per-item",
+    "arm": "sea-lite",
+    "tool": "sea-lite 0.5.0",
+    "path": "`sea_create` (claim_seconds) ×21 + `sea_link` ×39 (MCP)",
+    "surface": "MCP",
+    "batch": false,
+    "n": 3,
+    "errors": [],
+    "calls": [
+     60
+    ],
+    "call_errors": [
+     0
+    ],
+    "written_bytes": {
+     "mean": 14135,
+     "min": 14135,
+     "max": 14135,
+     "tokens": 3534
+    },
+    "result_bytes": {
+     "mean": 52833,
+     "min": 52833,
+     "max": 52833,
+     "tokens": 13209
+    },
+    "tokens_total": 16743,
+    "wall_ms": {
+     "mean": 168,
+     "sd": 22,
+     "min": 155,
+     "max": 194,
+     "cv": 0.132,
+     "per_seed": [
+      194,
+      156,
+      155
+     ]
+    },
+    "exact": {
+     "k": 3,
+     "n": 3,
+     "problems": [
+      ""
+     ]
+    },
+    "idempotent": {
+     "k": 3,
+     "n": 3,
+     "tickets_after": [
+      21
+     ],
+     "edges_after": [
+      39
+     ],
+     "rerun_calls": [
+      60
+     ],
+     "rerun_errors": []
+    },
+    "atomic": {
+     "k": 0,
+     "n": 3,
+     "rejected": 3,
+     "crashed": 0,
+     "tickets_left": [
+      21
+     ],
+     "edges_left": [
+      39
+     ],
+     "note": "{\"error\":\"cycle\",\"message\":\"adding depends_on would close a cycle: f6e2a57a-7863-48d8-a31d-5a106b3c3a73 → 21990717-a99a-4e6d-88b0-1e953edb961b → 75db2966-82d4-4"
+    },
+    "dry_run": null
+   },
+   "beads/graph": {
+    "id": "beads/graph",
+    "arm": "beads",
+    "tool": "beads 1.3.2",
+    "path": "`bd create --graph` (one Bash call, plan JSON in a heredoc)",
+    "surface": "CLI",
+    "batch": true,
+    "n": 3,
+    "errors": [],
+    "calls": [
+     1
+    ],
+    "call_errors": [
+     0
+    ],
+    "written_bytes": {
+     "mean": 4551,
+     "min": 4551,
+     "max": 4551,
+     "tokens": 1138
+    },
+    "result_bytes": {
+     "mean": 525,
+     "min": 525,
+     "max": 525,
+     "tokens": 132
+    },
+    "tokens_total": 1270,
+    "wall_ms": {
+     "mean": 2551,
+     "sd": 42,
+     "min": 2508,
+     "max": 2592,
+     "cv": 0.016,
+     "per_seed": [
+      2508,
+      2592,
+      2552
+     ]
+    },
+    "exact": {
+     "k": 3,
+     "n": 3,
+     "problems": [
+      ""
+     ]
+    },
+    "idempotent": {
+     "k": 0,
+     "n": 3,
+     "tickets_after": [
+      42
+     ],
+     "edges_after": [
+      78
+     ],
+     "rerun_calls": [
+      1
+     ],
+     "rerun_errors": []
+    },
+    "atomic": {
+     "k": 3,
+     "n": 3,
+     "rejected": 3,
+     "crashed": 0,
+     "tickets_left": [
+      0
+     ],
+     "edges_left": [
+      0
+     ],
+     "note": "{\n  \"error\": \"invalid graph plan: graph contains a blocking dependency cycle involving node \\\"t01\\\"\",\n  \"schema_version\": 1\n}\n"
+    },
+    "dry_run": {
+     "k": 3,
+     "n": 3,
+     "note": "Error: invalid graph plan: graph contains a blocking dependency cycle involving node \"t01\"\n"
+    }
+   },
+   "beads/cli-inline": {
+    "id": "beads/cli-inline",
+    "arm": "beads",
+    "tool": "beads 1.3.2",
+    "path": "`bd create --parent --deps` ×21 (Bash)",
+    "surface": "CLI",
+    "batch": false,
+    "n": 3,
+    "errors": [],
+    "calls": [
+     21
+    ],
+    "call_errors": [
+     0
+    ],
+    "written_bytes": {
+     "mean": 3868,
+     "min": 3868,
+     "max": 3868,
+     "tokens": 967
+    },
+    "result_bytes": {
+     "mean": 240,
+     "min": 240,
+     "max": 240,
+     "tokens": 60
+    },
+    "tokens_total": 1027,
+    "wall_ms": {
+     "mean": 13868,
+     "sd": 304,
+     "min": 13688,
+     "max": 14219,
+     "cv": 0.022,
+     "per_seed": [
+      14219,
+      13688,
+      13697
+     ]
+    },
+    "exact": {
+     "k": 3,
+     "n": 3,
+     "problems": [
+      ""
+     ]
+    },
+    "idempotent": {
+     "k": 0,
+     "n": 3,
+     "tickets_after": [
+      42
+     ],
+     "edges_after": [
+      78
+     ],
+     "rerun_calls": [
+      21
+     ],
+     "rerun_errors": []
+    },
+    "atomic": {
+     "k": 0,
+     "n": 3,
+     "rejected": 3,
+     "crashed": 0,
+     "tickets_left": [
+      21
+     ],
+     "edges_left": [
+      39
+     ],
+     "note": "Error: adding dependency would create a cycle\n"
+    },
+    "dry_run": null
+   },
+   "beads/cli-edges": {
+    "id": "beads/cli-edges",
+    "arm": "beads",
+    "tool": "beads 1.3.2",
+    "path": "`bd create` ×21 + `bd dep add` ×39 (Bash)",
+    "surface": "CLI",
+    "batch": false,
+    "n": 3,
+    "errors": [],
+    "calls": [
+     60
+    ],
+    "call_errors": [
+     0
+    ],
+    "written_bytes": {
+     "mean": 4568,
+     "min": 4568,
+     "max": 4568,
+     "tokens": 1142
+    },
+    "result_bytes": {
+     "mean": 6139,
+     "min": 6139,
+     "max": 6139,
+     "tokens": 1535
+    },
+    "tokens_total": 2677,
+    "wall_ms": {
+     "mean": 26392,
+     "sd": 376,
+     "min": 25958,
+     "max": 26630,
+     "cv": 0.014,
+     "per_seed": [
+      26587,
+      26630,
+      25958
+     ]
+    },
+    "exact": {
+     "k": 3,
+     "n": 3,
+     "problems": [
+      ""
+     ]
+    },
+    "idempotent": {
+     "k": 0,
+     "n": 3,
+     "tickets_after": [
+      42
+     ],
+     "edges_after": [
+      78
+     ],
+     "rerun_calls": [
+      60
+     ],
+     "rerun_errors": []
+    },
+    "atomic": {
+     "k": 0,
+     "n": 3,
+     "rejected": 3,
+     "crashed": 0,
+     "tickets_left": [
+      21
+     ],
+     "edges_left": [
+      39
+     ],
+     "note": "Error: adding dependency would create a cycle\n"
+    },
+    "dry_run": null
+   },
+   "beads/mcp-inline": {
+    "id": "beads/mcp-inline",
+    "arm": "beads",
+    "tool": "beads-mcp 1.3.2",
+    "path": "`create` with `deps` ×21 (MCP)",
+    "surface": "MCP",
+    "batch": false,
+    "n": 3,
+    "errors": [],
+    "calls": [
+     21
+    ],
+    "call_errors": [
+     0
+    ],
+    "written_bytes": {
+     "mean": 3848,
+     "min": 3848,
+     "max": 3848,
+     "tokens": 962
+    },
+    "result_bytes": {
+     "mean": 1071,
+     "min": 1071,
+     "max": 1071,
+     "tokens": 268
+    },
+    "tokens_total": 1230,
+    "wall_ms": {
+     "mean": 11860,
+     "sd": 291,
+     "min": 11640,
+     "max": 12190,
+     "cv": 0.025,
+     "per_seed": [
+      11750,
+      11640,
+      12190
+     ]
+    },
+    "exact": {
+     "k": 3,
+     "n": 3,
+     "problems": [
+      ""
+     ]
+    },
+    "idempotent": {
+     "k": 0,
+     "n": 3,
+     "tickets_after": [
+      42
+     ],
+     "edges_after": [
+      78
+     ],
+     "rerun_calls": [
+      21
+     ],
+     "rerun_errors": []
+    },
+    "atomic": {
+     "k": 0,
+     "n": 3,
+     "rejected": 3,
+     "crashed": 0,
+     "tickets_left": [
+      21
+     ],
+     "edges_left": [
+      39
+     ],
+     "note": "Error: bd dep add failed: Error: adding dependency would create a cycle\n"
+    },
+    "dry_run": null
+   },
+   "beads/mcp-edges": {
+    "id": "beads/mcp-edges",
+    "arm": "beads",
+    "tool": "beads-mcp 1.3.2",
+    "path": "`create` ×21 + `dep` ×39 (MCP)",
+    "surface": "MCP",
+    "batch": false,
+    "n": 3,
+    "errors": [],
+    "calls": [
+     60
+    ],
+    "call_errors": [
+     0
+    ],
+    "written_bytes": {
+     "mean": 5449,
+     "min": 5449,
+     "max": 5449,
+     "tokens": 1363
+    },
+    "result_bytes": {
+     "mean": 3336,
+     "min": 3336,
+     "max": 3336,
+     "tokens": 834
+    },
+    "tokens_total": 2197,
+    "wall_ms": {
+     "mean": 27081,
+     "sd": 750,
+     "min": 26301,
+     "max": 27797,
+     "cv": 0.028,
+     "per_seed": [
+      27146,
+      26301,
+      27797
+     ]
+    },
+    "exact": {
+     "k": 3,
+     "n": 3,
+     "problems": [
+      ""
+     ]
+    },
+    "idempotent": {
+     "k": 0,
+     "n": 3,
+     "tickets_after": [
+      42
+     ],
+     "edges_after": [
+      78
+     ],
+     "rerun_calls": [
+      60
+     ],
+     "rerun_errors": []
+    },
+    "atomic": {
+     "k": 0,
+     "n": 3,
+     "rejected": 3,
+     "crashed": 0,
+     "tickets_left": [
+      21
+     ],
+     "edges_left": [
+      39
+     ],
+     "note": "Error: bd dep add failed: Error: adding dependency would create a cycle\n"
+    },
+    "dry_run": null
+   },
+   "backlog-md/mcp": {
+    "id": "backlog-md/mcp",
+    "arm": "backlog-md",
+    "tool": "Backlog.md 1.55.3",
+    "path": "`task_create` with `parentTaskId` + `dependencies` ×21 (MCP)",
+    "surface": "MCP",
+    "batch": false,
+    "n": 3,
+    "errors": [],
+    "calls": [
+     21
+    ],
+    "call_errors": [
+     0
+    ],
+    "written_bytes": {
+     "mean": 4191,
+     "min": 4191,
+     "max": 4191,
+     "tokens": 1048
+    },
+    "result_bytes": {
+     "mean": 34004,
+     "min": 34004,
+     "max": 34004,
+     "tokens": 8501
+    },
+    "tokens_total": 9549,
+    "wall_ms": {
+     "mean": 606,
+     "sd": 11,
+     "min": 594,
+     "max": 615,
+     "cv": 0.018,
+     "per_seed": [
+      610,
+      615,
+      594
+     ]
+    },
+    "exact": {
+     "k": 3,
+     "n": 3,
+     "problems": [
+      ""
+     ]
+    },
+    "idempotent": {
+     "k": 0,
+     "n": 3,
+     "tickets_after": [
+      42
+     ],
+     "edges_after": [
+      78
+     ],
+     "rerun_calls": [
+      21
+     ],
+     "rerun_errors": []
+    },
+    "atomic": {
+     "k": 0,
+     "n": 3,
+     "rejected": 3,
+     "crashed": 0,
+     "tickets_left": [
+      21
+     ],
+     "edges_left": [
+      39
+     ],
+     "note": "These dependencies would create a cycle: TASK-1.1 -> TASK-1.20 -> TASK-1.19 -> TASK-1.18 -> TASK-1.17 -> TASK-1.16 -> TASK-1.15 -> TASK-1.14 -> TASK-1.13 -> TAS"
+    },
+    "dry_run": null
+   },
+   "task-master/mcp-edges": {
+    "id": "task-master/mcp-edges",
+    "arm": "task-master",
+    "tool": "task-master-ai 0.43.1",
+    "path": "`add_task` + `add_subtask` ×20 + `add_dependency` ×19 (MCP, no LLM)",
+    "surface": "MCP",
+    "batch": false,
+    "n": 3,
+    "errors": [],
+    "calls": [
+     40
+    ],
+    "call_errors": [
+     0
+    ],
+    "written_bytes": {
+     "mean": 6871,
+     "min": 6871,
+     "max": 6871,
+     "tokens": 1718
+    },
+    "result_bytes": {
+     "mean": 13995,
+     "min": 13995,
+     "max": 13995,
+     "tokens": 3499
+    },
+    "tokens_total": 5217,
+    "wall_ms": {
+     "mean": 167,
+     "sd": 15,
+     "min": 155,
+     "max": 184,
+     "cv": 0.092,
+     "per_seed": [
+      184,
+      155,
+      161
+     ]
+    },
+    "exact": {
+     "k": 3,
+     "n": 3,
+     "problems": [
+      ""
+     ]
+    },
+    "idempotent": {
+     "k": 0,
+     "n": 3,
+     "tickets_after": [
+      42
+     ],
+     "edges_after": [
+      78
+     ],
+     "rerun_calls": [
+      40
+     ],
+     "rerun_errors": []
+    },
+    "atomic": {
+     "k": 0,
+     "n": 3,
+     "rejected": 3,
+     "crashed": 3,
+     "tickets_left": [
+      21
+     ],
+     "edges_left": [
+      39
+     ],
+     "note": "CLIENT_ERROR server exited (1): [INFO] Task Master MCP Server starting...\n[INFO] Tool mode configuration: all\n[INFO] Loading all available tools\n[INFO] Register"
+    },
+    "dry_run": null
+   },
+   "task-master/mcp-inline": {
+    "id": "task-master/mcp-inline",
+    "arm": "task-master",
+    "tool": "task-master-ai 0.43.1",
+    "path": "`add_task` + `add_subtask` with `dependencies` ×20 (MCP, no LLM)",
+    "surface": "MCP",
+    "batch": false,
+    "n": 3,
+    "errors": [],
+    "calls": [
+     21
+    ],
+    "call_errors": [
+     0
+    ],
+    "written_bytes": {
+     "mean": 5228,
+     "min": 5228,
+     "max": 5228,
+     "tokens": 1307
+    },
+    "result_bytes": {
+     "mean": 9878,
+     "min": 9878,
+     "max": 9878,
+     "tokens": 2470
+    },
+    "tokens_total": 3777,
+    "wall_ms": {
+     "mean": 70,
+     "sd": 2,
+     "min": 68,
+     "max": 72,
+     "cv": 0.029,
+     "per_seed": [
+      72,
+      70,
+      68
+     ]
+    },
+    "exact": {
+     "k": 3,
+     "n": 3,
+     "problems": [
+      ""
+     ]
+    },
+    "idempotent": {
+     "k": 0,
+     "n": 3,
+     "tickets_after": [
+      42
+     ],
+     "edges_after": [
+      78
+     ],
+     "rerun_calls": [
+      21
+     ],
+     "rerun_errors": []
+    },
+    "atomic": {
+     "k": 0,
+     "n": 3,
+     "rejected": 3,
+     "crashed": 3,
+     "tickets_left": [
+      21
+     ],
+     "edges_left": [
+      39
+     ],
+     "note": "CLIENT_ERROR server exited (1): [INFO] Task Master MCP Server starting...\n[INFO] Tool mode configuration: all\n[INFO] Loading all available tools\n[INFO] Register"
+    },
+    "dry_run": null
+   }
+  },
+  "not_run": [
+   {
+    "tool": "task-master-ai 0.43.1",
+    "path": "`parse_prd` (plan from a PRD)",
+    "reason": "n/a — generates tasks with an LLM; Track A is LLM-free"
+   },
+   {
+    "tool": "mcp_agent_mail 0.3.4",
+    "path": "—",
+    "reason": "n/a — no tickets or dependency graph (messages + file reservations only)"
+   }
+  ],
+  "documented": [
+   {
+    "tool": "GitHub MCP server (github/github-mcp-server, main @ 2026-10-31)",
+    "path": "`issue_write` ×21 (20 with `parent_issue_number`) + `issue_dependency_write` ×19",
+    "calls": 40,
+    "atomic": "no — one issue / one edge per call",
+    "idempotent": "no key in the schemas (`issue_dependency_write` idempotentHint: false)",
+    "note": "without `parent_issue_number`: + `sub_issue_write` ×20 = 60 calls; `issue_dependency_write` is behind the `issue_dependencies` feature flag",
+    "sources": [
+     "https://github.com/github/github-mcp-server/blob/main/README.md",
+     "https://github.com/github/github-mcp-server/blob/main/pkg/github/__toolsnaps__/issue_dependency_write_ff_issue_dependencies.snap"
+    ]
+   },
+   {
+    "tool": "Linear GraphQL API (@linear/sdk schema.graphql)",
+    "path": "`issueCreate` (epic) + `issueBatchCreate` (20 children, `parentId`) + `issueRelationCreate` ×19",
+    "calls": 21,
+    "atomic": "only the 20-issue batch (\"Creates a list of issues atomically\", ≤ 50); relations one per call",
+    "idempotent": "optional client `id` (UUID v4) per issue/relation — behaviour on replay not documented",
+    "note": "GraphQL mutations, not an MCP tool catalog; the epic must exist before children can name it as `parentId`",
+    "sources": [
+     "https://github.com/linear/linear/blob/master/packages/sdk/src/schema.graphql"
+    ]
+   }
+  ],
+  "wall_ms": 1011455
+ }
+}

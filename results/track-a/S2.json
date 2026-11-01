@@ -1,0 +1,2378 @@
+{
+ "scenario": "S2",
+ "title": "Contradicting facts (two sources disagree)",
+ "records": {
+  "S2|baseline": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 0,
+     "read": 196
+    },
+    "ms": {
+     "read": 11.5
+    },
+    "calls": 1,
+    "ms_total": 267
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 0,
+     "read": 189
+    },
+    "ms": {
+     "read": 9.6
+    },
+    "calls": 1,
+    "ms_total": 253
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 0,
+     "read": 189
+    },
+    "ms": {
+     "read": 7.7
+    },
+    "calls": 1,
+    "ms_total": 276
+   },
+   {
+    "seed": 4,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 0,
+     "read": 195
+    },
+    "ms": {
+     "read": 13.1
+    },
+    "calls": 1,
+    "ms_total": 268
+   },
+   {
+    "seed": 5,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 0,
+     "read": 190
+    },
+    "ms": {
+     "read": 7.7
+    },
+    "calls": 1,
+    "ms_total": 296
+   },
+   {
+    "seed": 6,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 0,
+     "read": 197
+    },
+    "ms": {
+     "read": 7.6
+    },
+    "calls": 1,
+    "ms_total": 291
+   },
+   {
+    "seed": 7,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 0,
+     "read": 190
+    },
+    "ms": {
+     "read": 9.4
+    },
+    "calls": 1,
+    "ms_total": 284
+   },
+   {
+    "seed": 8,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 0,
+     "read": 189
+    },
+    "ms": {
+     "read": 11.1
+    },
+    "calls": 1,
+    "ms_total": 274
+   },
+   {
+    "seed": 9,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 0,
+     "read": 189
+    },
+    "ms": {
+     "read": 7.4
+    },
+    "calls": 1,
+    "ms_total": 284
+   },
+   {
+    "seed": 10,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 0,
+     "read": 189
+    },
+    "ms": {
+     "read": 12.5
+    },
+    "calls": 1,
+    "ms_total": 275
+   },
+   {
+    "seed": 11,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 0,
+     "read": 189
+    },
+    "ms": {
+     "read": 9.3
+    },
+    "calls": 1,
+    "ms_total": 276
+   },
+   {
+    "seed": 12,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 0,
+     "read": 196
+    },
+    "ms": {
+     "read": 7.8
+    },
+    "calls": 1,
+    "ms_total": 269
+   },
+   {
+    "seed": 13,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 0,
+     "read": 190
+    },
+    "ms": {
+     "read": 10.7
+    },
+    "calls": 1,
+    "ms_total": 261
+   },
+   {
+    "seed": 14,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 0,
+     "read": 198
+    },
+    "ms": {
+     "read": 8.2
+    },
+    "calls": 1,
+    "ms_total": 255
+   },
+   {
+    "seed": 15,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 0,
+     "read": 189
+    },
+    "ms": {
+     "read": 6.8
+    },
+    "calls": 1,
+    "ms_total": 232
+   },
+   {
+    "seed": 16,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 0,
+     "read": 198
+    },
+    "ms": {
+     "read": 6
+    },
+    "calls": 1,
+    "ms_total": 227
+   },
+   {
+    "seed": 17,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 0,
+     "read": 195
+    },
+    "ms": {
+     "read": 10.3
+    },
+    "calls": 1,
+    "ms_total": 235
+   },
+   {
+    "seed": 18,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 0,
+     "read": 196
+    },
+    "ms": {
+     "read": 6.3
+    },
+    "calls": 1,
+    "ms_total": 229
+   },
+   {
+    "seed": 19,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 0,
+     "read": 196
+    },
+    "ms": {
+     "read": 6.7
+    },
+    "calls": 1,
+    "ms_total": 268
+   },
+   {
+    "seed": 20,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 0,
+     "read": 204
+    },
+    "ms": {
+     "read": 6.2
+    },
+    "calls": 1,
+    "ms_total": 263
+   }
+  ],
+  "S2|native": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1332,
+     "read": 421
+    },
+    "ms": {
+     "read": 7.8
+    },
+    "calls": 2,
+    "ms_total": 227
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1350,
+     "read": 413
+    },
+    "ms": {
+     "read": 7.9
+    },
+    "calls": 2,
+    "ms_total": 221
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1328,
+     "read": 413
+    },
+    "ms": {
+     "read": 8.1
+    },
+    "calls": 2,
+    "ms_total": 261
+   },
+   {
+    "seed": 4,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1340,
+     "read": 426
+    },
+    "ms": {
+     "read": 8.2
+    },
+    "calls": 2,
+    "ms_total": 255
+   },
+   {
+    "seed": 5,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1330,
+     "read": 415
+    },
+    "ms": {
+     "read": 7.3
+    },
+    "calls": 2,
+    "ms_total": 241
+   },
+   {
+    "seed": 6,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1345,
+     "read": 421
+    },
+    "ms": {
+     "read": 6.8
+    },
+    "calls": 2,
+    "ms_total": 236
+   },
+   {
+    "seed": 7,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1343,
+     "read": 415
+    },
+    "ms": {
+     "read": 11.4
+    },
+    "calls": 2,
+    "ms_total": 269
+   },
+   {
+    "seed": 8,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1344,
+     "read": 413
+    },
+    "ms": {
+     "read": 7.5
+    },
+    "calls": 2,
+    "ms_total": 263
+   },
+   {
+    "seed": 9,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1340,
+     "read": 414
+    },
+    "ms": {
+     "read": 6.9
+    },
+    "calls": 2,
+    "ms_total": 275
+   },
+   {
+    "seed": 10,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1327,
+     "read": 414
+    },
+    "ms": {
+     "read": 5.8
+    },
+    "calls": 2,
+    "ms_total": 270
+   },
+   {
+    "seed": 11,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1337,
+     "read": 414
+    },
+    "ms": {
+     "read": 7.1
+    },
+    "calls": 2,
+    "ms_total": 247
+   },
+   {
+    "seed": 12,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1336,
+     "read": 427
+    },
+    "ms": {
+     "read": 7
+    },
+    "calls": 2,
+    "ms_total": 242
+   },
+   {
+    "seed": 13,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1352,
+     "read": 415
+    },
+    "ms": {
+     "read": 6.4
+    },
+    "calls": 2,
+    "ms_total": 258
+   },
+   {
+    "seed": 14,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1351,
+     "read": 423
+    },
+    "ms": {
+     "read": 6.7
+    },
+    "calls": 2,
+    "ms_total": 253
+   },
+   {
+    "seed": 15,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1345,
+     "read": 413
+    },
+    "ms": {
+     "read": 6.5
+    },
+    "calls": 2,
+    "ms_total": 252
+   },
+   {
+    "seed": 16,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1343,
+     "read": 431
+    },
+    "ms": {
+     "read": 8.1
+    },
+    "calls": 2,
+    "ms_total": 246
+   },
+   {
+    "seed": 17,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1351,
+     "read": 419
+    },
+    "ms": {
+     "read": 6.6
+    },
+    "calls": 2,
+    "ms_total": 265
+   },
+   {
+    "seed": 18,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1324,
+     "read": 427
+    },
+    "ms": {
+     "read": 6
+    },
+    "calls": 2,
+    "ms_total": 259
+   },
+   {
+    "seed": 19,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1343,
+     "read": 421
+    },
+    "ms": {
+     "read": 15
+    },
+    "calls": 2,
+    "ms_total": 289
+   },
+   {
+    "seed": 20,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1374,
+     "read": 435
+    },
+    "ms": {
+     "read": 17.8
+    },
+    "calls": 2,
+    "ms_total": 281
+   }
+  ],
+  "S2|kronicle-lite": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 2040
+    },
+    "ms": {
+     "sessionStart": 99.4,
+     "read": 32.2
+    },
+    "calls": 2,
+    "ms_total": 1396
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 2035
+    },
+    "ms": {
+     "sessionStart": 391.1,
+     "read": 29.3
+    },
+    "calls": 2,
+    "ms_total": 1290
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 2034
+    },
+    "ms": {
+     "sessionStart": 379.3,
+     "read": 11.9
+    },
+    "calls": 2,
+    "ms_total": 1202
+   },
+   {
+    "seed": 4,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 2039
+    },
+    "ms": {
+     "sessionStart": 86.7,
+     "read": 24.1
+    },
+    "calls": 2,
+    "ms_total": 1197
+   },
+   {
+    "seed": 5,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 2034
+    },
+    "ms": {
+     "sessionStart": 80.8,
+     "read": 26.7
+    },
+    "calls": 2,
+    "ms_total": 1389
+   },
+   {
+    "seed": 6,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 2040
+    },
+    "ms": {
+     "sessionStart": 404.5,
+     "read": 23.1
+    },
+    "calls": 2,
+    "ms_total": 1206
+   },
+   {
+    "seed": 7,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 2035
+    },
+    "ms": {
+     "sessionStart": 93.2,
+     "read": 12.3
+    },
+    "calls": 2,
+    "ms_total": 1419
+   },
+   {
+    "seed": 8,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 2035
+    },
+    "ms": {
+     "sessionStart": 444.7,
+     "read": 28.4
+    },
+    "calls": 2,
+    "ms_total": 1264
+   },
+   {
+    "seed": 9,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 2034
+    },
+    "ms": {
+     "sessionStart": 386.2,
+     "read": 39.6
+    },
+    "calls": 2,
+    "ms_total": 1345
+   },
+   {
+    "seed": 10,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 2033
+    },
+    "ms": {
+     "sessionStart": 237.7,
+     "read": 30.2
+    },
+    "calls": 2,
+    "ms_total": 1511
+   },
+   {
+    "seed": 11,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 2035
+    },
+    "ms": {
+     "sessionStart": 542.7,
+     "read": 39
+    },
+    "calls": 2,
+    "ms_total": 1653
+   },
+   {
+    "seed": 12,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 2039
+    },
+    "ms": {
+     "sessionStart": 163.8,
+     "read": 20.9
+    },
+    "calls": 2,
+    "ms_total": 1628
+   },
+   {
+    "seed": 13,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 2035
+    },
+    "ms": {
+     "sessionStart": 206.1,
+     "read": 22.9
+    },
+    "calls": 2,
+    "ms_total": 1858
+   },
+   {
+    "seed": 14,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 2041
+    },
+    "ms": {
+     "sessionStart": 426.1,
+     "read": 16.8
+    },
+    "calls": 2,
+    "ms_total": 1519
+   },
+   {
+    "seed": 15,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 2034
+    },
+    "ms": {
+     "sessionStart": 426.1,
+     "read": 13.1
+    },
+    "calls": 2,
+    "ms_total": 1453
+   },
+   {
+    "seed": 16,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 2043
+    },
+    "ms": {
+     "sessionStart": 210.8,
+     "read": 34.4
+    },
+    "calls": 2,
+    "ms_total": 1483
+   },
+   {
+    "seed": 17,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 2039
+    },
+    "ms": {
+     "sessionStart": 282.2,
+     "read": 11.8
+    },
+    "calls": 2,
+    "ms_total": 1372
+   },
+   {
+    "seed": 18,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 2041
+    },
+    "ms": {
+     "sessionStart": 46,
+     "read": 11.4
+    },
+    "calls": 2,
+    "ms_total": 1202
+   },
+   {
+    "seed": 19,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 2039
+    },
+    "ms": {
+     "sessionStart": 304.2,
+     "read": 19.5
+    },
+    "calls": 2,
+    "ms_total": 916
+   },
+   {
+    "seed": 20,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 2050
+    },
+    "ms": {
+     "sessionStart": 48.6,
+     "read": 12.6
+    },
+    "calls": 2,
+    "ms_total": 915
+   }
+  ],
+  "S2|kronicle-lite-core": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 2040
+    },
+    "ms": {
+     "sessionStart": 352.1,
+     "read": 20
+    },
+    "calls": 2,
+    "ms_total": 995
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 2035
+    },
+    "ms": {
+     "sessionStart": 131.1,
+     "read": 168.1
+    },
+    "calls": 2,
+    "ms_total": 1255
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 2034
+    },
+    "ms": {
+     "sessionStart": 390.4,
+     "read": 32
+    },
+    "calls": 2,
+    "ms_total": 1388
+   },
+   {
+    "seed": 4,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 2039
+    },
+    "ms": {
+     "sessionStart": 101,
+     "read": 26.5
+    },
+    "calls": 2,
+    "ms_total": 1213
+   },
+   {
+    "seed": 5,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 2034
+    },
+    "ms": {
+     "sessionStart": 369.2,
+     "read": 20.1
+    },
+    "calls": 2,
+    "ms_total": 1218
+   },
+   {
+    "seed": 6,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 2040
+    },
+    "ms": {
+     "sessionStart": 66.9,
+     "read": 19.9
+    },
+    "calls": 2,
+    "ms_total": 1217
+   },
+   {
+    "seed": 7,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 2035
+    },
+    "ms": {
+     "sessionStart": 67.8,
+     "read": 19.9
+    },
+    "calls": 2,
+    "ms_total": 1336
+   },
+   {
+    "seed": 8,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 2035
+    },
+    "ms": {
+     "sessionStart": 372.8,
+     "read": 30.1
+    },
+    "calls": 2,
+    "ms_total": 1213
+   },
+   {
+    "seed": 9,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 2034
+    },
+    "ms": {
+     "sessionStart": 344.4,
+     "read": 43.4
+    },
+    "calls": 2,
+    "ms_total": 1141
+   },
+   {
+    "seed": 10,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 2033
+    },
+    "ms": {
+     "sessionStart": 97.8,
+     "read": 30.1
+    },
+    "calls": 2,
+    "ms_total": 1079
+   },
+   {
+    "seed": 11,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 2035
+    },
+    "ms": {
+     "sessionStart": 70.8,
+     "read": 13.4
+    },
+    "calls": 2,
+    "ms_total": 1389
+   },
+   {
+    "seed": 12,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 2039
+    },
+    "ms": {
+     "sessionStart": 348,
+     "read": 30.3
+    },
+    "calls": 2,
+    "ms_total": 1268
+   },
+   {
+    "seed": 13,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 2035
+    },
+    "ms": {
+     "sessionStart": 395.8,
+     "read": 37.3
+    },
+    "calls": 2,
+    "ms_total": 1175
+   },
+   {
+    "seed": 14,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 2041
+    },
+    "ms": {
+     "sessionStart": 88.7,
+     "read": 25.6
+    },
+    "calls": 2,
+    "ms_total": 1203
+   },
+   {
+    "seed": 15,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 2034
+    },
+    "ms": {
+     "sessionStart": 384.1,
+     "read": 13.3
+    },
+    "calls": 2,
+    "ms_total": 1308
+   },
+   {
+    "seed": 16,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 2043
+    },
+    "ms": {
+     "sessionStart": 101.5,
+     "read": 18.8
+    },
+    "calls": 2,
+    "ms_total": 1359
+   },
+   {
+    "seed": 17,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 2039
+    },
+    "ms": {
+     "sessionStart": 91.7,
+     "read": 61.5
+    },
+    "calls": 2,
+    "ms_total": 1360
+   },
+   {
+    "seed": 18,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 2041
+    },
+    "ms": {
+     "sessionStart": 352.2,
+     "read": 16.6
+    },
+    "calls": 2,
+    "ms_total": 1111
+   },
+   {
+    "seed": 19,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 2039
+    },
+    "ms": {
+     "sessionStart": 390.2,
+     "read": 13.6
+    },
+    "calls": 2,
+    "ms_total": 1312
+   },
+   {
+    "seed": 20,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 2205,
+     "read": 2050
+    },
+    "ms": {
+     "sessionStart": 84.7,
+     "read": 13.6
+    },
+    "calls": 2,
+    "ms_total": 1195
+   }
+  ],
+  "S2|basic-memory": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 371,
+     "read": 958
+    },
+    "ms": {
+     "sessionStart": 96.1,
+     "read": 411.1
+    },
+    "calls": 3,
+    "ms_total": 16582
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 371,
+     "read": 952
+    },
+    "ms": {
+     "sessionStart": 65.8,
+     "read": 256.9
+    },
+    "calls": 3,
+    "ms_total": 18487
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 371,
+     "read": 952
+    },
+    "ms": {
+     "sessionStart": 99,
+     "read": 359
+    },
+    "calls": 3,
+    "ms_total": 5993
+   },
+   {
+    "seed": 4,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 371,
+     "read": 720
+    },
+    "ms": {
+     "sessionStart": 33.9,
+     "read": 121.8
+    },
+    "calls": 3,
+    "ms_total": 5295
+   },
+   {
+    "seed": 5,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 371,
+     "read": 953
+    },
+    "ms": {
+     "sessionStart": 52.6,
+     "read": 199.5
+    },
+    "calls": 3,
+    "ms_total": 6252
+   },
+   {
+    "seed": 6,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 371,
+     "read": 956
+    },
+    "ms": {
+     "sessionStart": 149.9,
+     "read": 277.2
+    },
+    "calls": 3,
+    "ms_total": 6380
+   },
+   {
+    "seed": 7,
+    "variant": null,
+    "grade": "no",
+    "reason": "only ADR value shown",
+    "flags": {
+     "both": false,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 371,
+     "read": 617
+    },
+    "ms": {
+     "sessionStart": 72.3,
+     "read": 213.3
+    },
+    "calls": 3,
+    "ms_total": 5656
+   },
+   {
+    "seed": 8,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 371,
+     "read": 952
+    },
+    "ms": {
+     "sessionStart": 109.8,
+     "read": 245.6
+    },
+    "calls": 3,
+    "ms_total": 5839
+   },
+   {
+    "seed": 9,
+    "variant": null,
+    "grade": "no",
+    "reason": "only ADR value shown",
+    "flags": {
+     "both": false,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 371,
+     "read": 753
+    },
+    "ms": {
+     "sessionStart": 87.5,
+     "read": 318.7
+    },
+    "calls": 3,
+    "ms_total": 6207
+   },
+   {
+    "seed": 10,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 372,
+     "read": 954
+    },
+    "ms": {
+     "sessionStart": 94.9,
+     "read": 155.8
+    },
+    "calls": 3,
+    "ms_total": 6486
+   },
+   {
+    "seed": 11,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 372,
+     "read": 955
+    },
+    "ms": {
+     "sessionStart": 90.2,
+     "read": 246.7
+    },
+    "calls": 3,
+    "ms_total": 6020
+   },
+   {
+    "seed": 12,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 372,
+     "read": 966
+    },
+    "ms": {
+     "sessionStart": 58.3,
+     "read": 198
+    },
+    "calls": 3,
+    "ms_total": 5450
+   },
+   {
+    "seed": 13,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 372,
+     "read": 955
+    },
+    "ms": {
+     "sessionStart": 50.7,
+     "read": 199.2
+    },
+    "calls": 3,
+    "ms_total": 6412
+   },
+   {
+    "seed": 14,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 372,
+     "read": 960
+    },
+    "ms": {
+     "sessionStart": 48.4,
+     "read": 354.8
+    },
+    "calls": 3,
+    "ms_total": 6408
+   },
+   {
+    "seed": 15,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 372,
+     "read": 953
+    },
+    "ms": {
+     "sessionStart": 87.3,
+     "read": 279.2
+    },
+    "calls": 3,
+    "ms_total": 6002
+   },
+   {
+    "seed": 16,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 372,
+     "read": 971
+    },
+    "ms": {
+     "sessionStart": 124,
+     "read": 129.9
+    },
+    "calls": 3,
+    "ms_total": 5871
+   },
+   {
+    "seed": 17,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 372,
+     "read": 958
+    },
+    "ms": {
+     "sessionStart": 43.2,
+     "read": 250.5
+    },
+    "calls": 3,
+    "ms_total": 6311
+   },
+   {
+    "seed": 18,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 372,
+     "read": 968
+    },
+    "ms": {
+     "sessionStart": 54.4,
+     "read": 112.9
+    },
+    "calls": 3,
+    "ms_total": 6083
+   },
+   {
+    "seed": 19,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 372,
+     "read": 960
+    },
+    "ms": {
+     "sessionStart": 50.3,
+     "read": 191.1
+    },
+    "calls": 3,
+    "ms_total": 5672
+   },
+   {
+    "seed": 20,
+    "variant": null,
+    "grade": "no",
+    "reason": "only ADR value shown",
+    "flags": {
+     "both": false,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 372,
+     "read": 625
+    },
+    "ms": {
+     "sessionStart": 83.2,
+     "read": 281.2
+    },
+    "calls": 3,
+    "ms_total": 5953
+   }
+  ],
+  "S2|server-memory": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1726,
+     "read": 607
+    },
+    "ms": {
+     "sessionStart": 163.4,
+     "read": 3.2
+    },
+    "calls": 2,
+    "ms_total": 616
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1743,
+     "read": 600
+    },
+    "ms": {
+     "sessionStart": 2.7,
+     "read": 7.5
+    },
+    "calls": 2,
+    "ms_total": 644
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1721,
+     "read": 600
+    },
+    "ms": {
+     "sessionStart": 3.3,
+     "read": 3.1
+    },
+    "calls": 2,
+    "ms_total": 423
+   },
+   {
+    "seed": 4,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1740,
+     "read": 606
+    },
+    "ms": {
+     "sessionStart": 7.9,
+     "read": 4.1
+    },
+    "calls": 2,
+    "ms_total": 817
+   },
+   {
+    "seed": 5,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1726,
+     "read": 601
+    },
+    "ms": {
+     "sessionStart": 24.9,
+     "read": 5.5
+    },
+    "calls": 2,
+    "ms_total": 462
+   },
+   {
+    "seed": 6,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1740,
+     "read": 608
+    },
+    "ms": {
+     "sessionStart": 6.1,
+     "read": 2.5
+    },
+    "calls": 2,
+    "ms_total": 715
+   },
+   {
+    "seed": 7,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1737,
+     "read": 601
+    },
+    "ms": {
+     "sessionStart": 6.8,
+     "read": 2.7
+    },
+    "calls": 2,
+    "ms_total": 724
+   },
+   {
+    "seed": 8,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1737,
+     "read": 600
+    },
+    "ms": {
+     "sessionStart": 5.5,
+     "read": 2.8
+    },
+    "calls": 2,
+    "ms_total": 805
+   },
+   {
+    "seed": 9,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1734,
+     "read": 600
+    },
+    "ms": {
+     "sessionStart": 4.1,
+     "read": 5.3
+    },
+    "calls": 2,
+    "ms_total": 793
+   },
+   {
+    "seed": 10,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1721,
+     "read": 600
+    },
+    "ms": {
+     "sessionStart": 153.1,
+     "read": 2.8
+    },
+    "calls": 2,
+    "ms_total": 662
+   },
+   {
+    "seed": 11,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1729,
+     "read": 600
+    },
+    "ms": {
+     "sessionStart": 2.4,
+     "read": 4.5
+    },
+    "calls": 2,
+    "ms_total": 604
+   },
+   {
+    "seed": 12,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1738,
+     "read": 607
+    },
+    "ms": {
+     "sessionStart": 4.9,
+     "read": 3.5
+    },
+    "calls": 2,
+    "ms_total": 711
+   },
+   {
+    "seed": 13,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1746,
+     "read": 601
+    },
+    "ms": {
+     "sessionStart": 2.7,
+     "read": 2.2
+    },
+    "calls": 2,
+    "ms_total": 629
+   },
+   {
+    "seed": 14,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1745,
+     "read": 609
+    },
+    "ms": {
+     "sessionStart": 5.5,
+     "read": 2.9
+    },
+    "calls": 2,
+    "ms_total": 671
+   },
+   {
+    "seed": 15,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1738,
+     "read": 600
+    },
+    "ms": {
+     "sessionStart": 5.7,
+     "read": 7.6
+    },
+    "calls": 2,
+    "ms_total": 733
+   },
+   {
+    "seed": 16,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1745,
+     "read": 609
+    },
+    "ms": {
+     "sessionStart": 4.8,
+     "read": 2.4
+    },
+    "calls": 2,
+    "ms_total": 569
+   },
+   {
+    "seed": 17,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1742,
+     "read": 606
+    },
+    "ms": {
+     "sessionStart": 2.3,
+     "read": 4.2
+    },
+    "calls": 2,
+    "ms_total": 535
+   },
+   {
+    "seed": 18,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1722,
+     "read": 607
+    },
+    "ms": {
+     "sessionStart": 5.1,
+     "read": 4.6
+    },
+    "calls": 2,
+    "ms_total": 759
+   },
+   {
+    "seed": 19,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1737,
+     "read": 607
+    },
+    "ms": {
+     "sessionStart": 54.2,
+     "read": 12.3
+    },
+    "calls": 2,
+    "ms_total": 808
+   },
+   {
+    "seed": 20,
+    "variant": null,
+    "grade": "partial",
+    "reason": "both values shown, not flagged",
+    "flags": {
+     "both": true,
+     "flagged": false
+    },
+    "bytes": {
+     "sessionStart": 1770,
+     "read": 615
+    },
+    "ms": {
+     "sessionStart": 2.6,
+     "read": 2.7
+    },
+    "calls": 2,
+    "ms_total": 434
+   }
+  ]
+ }
+}

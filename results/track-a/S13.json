@@ -1,0 +1,540 @@
+{
+ "scenario": "S13",
+ "title": "Lease expiry during a long task",
+ "records": {
+  "S13|baseline": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 298
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 283
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 270
+   },
+   {
+    "seed": 4,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 247
+   },
+   {
+    "seed": 5,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 275
+   },
+   {
+    "seed": 6,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 260
+   },
+   {
+    "seed": 7,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 384
+   },
+   {
+    "seed": 8,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 351
+   },
+   {
+    "seed": 9,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 342
+   },
+   {
+    "seed": 10,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 318
+   },
+   {
+    "seed": 11,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 279
+   },
+   {
+    "seed": 12,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 271
+   },
+   {
+    "seed": 13,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 256
+   },
+   {
+    "seed": 14,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 250
+   },
+   {
+    "seed": 15,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 243
+   },
+   {
+    "seed": 16,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 235
+   },
+   {
+    "seed": 17,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 280
+   },
+   {
+    "seed": 18,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 270
+   },
+   {
+    "seed": 19,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 295
+   },
+   {
+    "seed": 20,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 282
+   }
+  ],
+  "S13|sea-lite": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "partial",
+    "reason": "lease lapsed mid-task; B took it; A learns only on its next write",
+    "flags": {
+     "lease_s": 5,
+     "task_s": 12,
+     "lost": true,
+     "holderTold": true
+    },
+    "ms_total": 15325
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "partial",
+    "reason": "lease lapsed mid-task; B took it; A learns only on its next write",
+    "flags": {
+     "lease_s": 5,
+     "task_s": 12,
+     "lost": true,
+     "holderTold": true
+    },
+    "ms_total": 15726
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "partial",
+    "reason": "lease lapsed mid-task; B took it; A learns only on its next write",
+    "flags": {
+     "lease_s": 5,
+     "task_s": 12,
+     "lost": true,
+     "holderTold": true
+    },
+    "ms_total": 15204
+   }
+  ],
+  "S13|sea-lite+cc-anchor": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "yes",
+    "reason": "claim held through 12s of work (lease 5s)",
+    "flags": {
+     "lease_s": 5,
+     "task_s": 12,
+     "lost": false
+    },
+    "ms_total": 16807
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "yes",
+    "reason": "claim held through 12s of work (lease 5s)",
+    "flags": {
+     "lease_s": 5,
+     "task_s": 12,
+     "lost": false
+    },
+    "ms_total": 16170
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "yes",
+    "reason": "claim held through 12s of work (lease 5s)",
+    "flags": {
+     "lease_s": 5,
+     "task_s": 12,
+     "lost": false
+    },
+    "ms_total": 15368
+   }
+  ],
+  "S13|beads": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "yes",
+    "reason": "claim held through 310s of work (lease 300s)",
+    "flags": {
+     "lease_s": 300,
+     "task_s": 310,
+     "lost": false
+    },
+    "ms_total": 318448
+   }
+  ],
+  "S13|agent-mail": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "partial",
+    "reason": "lease lapsed mid-task; B took it; A learns only on its next write",
+    "flags": {
+     "lease_s": 60,
+     "task_s": 70,
+     "lost": true,
+     "holderTold": true
+    },
+    "ms_total": 73990
+   }
+  ],
+  "S13|backlog-md": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 857
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 477
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 749
+   },
+   {
+    "seed": 4,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 486
+   },
+   {
+    "seed": 5,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 747
+   },
+   {
+    "seed": 6,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 471
+   },
+   {
+    "seed": 7,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 728
+   },
+   {
+    "seed": 8,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 487
+   },
+   {
+    "seed": 9,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 726
+   },
+   {
+    "seed": 10,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 473
+   },
+   {
+    "seed": 11,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 744
+   },
+   {
+    "seed": 12,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 475
+   },
+   {
+    "seed": 13,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 673
+   },
+   {
+    "seed": 14,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 428
+   },
+   {
+    "seed": 15,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 730
+   },
+   {
+    "seed": 16,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 485
+   },
+   {
+    "seed": 17,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 730
+   },
+   {
+    "seed": 18,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 478
+   },
+   {
+    "seed": 19,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 686
+   },
+   {
+    "seed": 20,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 440
+   }
+  ],
+  "S13|task-master": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 8746
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 4145
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 8251
+   },
+   {
+    "seed": 4,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 4327
+   },
+   {
+    "seed": 5,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 8181
+   },
+   {
+    "seed": 6,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 4158
+   },
+   {
+    "seed": 7,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 8418
+   },
+   {
+    "seed": 8,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 4365
+   },
+   {
+    "seed": 9,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 8183
+   },
+   {
+    "seed": 10,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 4195
+   },
+   {
+    "seed": 11,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 7876
+   },
+   {
+    "seed": 12,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 4019
+   },
+   {
+    "seed": 13,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 7832
+   },
+   {
+    "seed": 14,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 4059
+   },
+   {
+    "seed": 15,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 8165
+   },
+   {
+    "seed": 16,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 4171
+   },
+   {
+    "seed": 17,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 8442
+   },
+   {
+    "seed": 18,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 4390
+   },
+   {
+    "seed": 19,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 7922
+   },
+   {
+    "seed": 20,
+    "variant": null,
+    "grade": "n/a",
+    "reason": "no claims",
+    "ms_total": 4074
+   }
+  ]
+ }
+}

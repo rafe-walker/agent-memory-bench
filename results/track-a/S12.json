@@ -1,0 +1,304 @@
+{
+ "baseline|1000": {
+  "arm": "baseline",
+  "size": 1000,
+  "n": 20,
+  "hits": 20,
+  "hit_rate": {
+   "k": 20,
+   "n": 20,
+   "p": 1,
+   "wilson": {
+    "lo": 0.8388748419471806,
+    "hi": 1
+   },
+   "exact": {
+    "lo": 0.8315665290168521,
+    "hi": 1
+   }
+  },
+  "latency_ms": {
+   "n": 20,
+   "p50": 12.407428999431431,
+   "p95": 16.498753000050783,
+   "max": 21.550558999180794
+  },
+  "bytes_mean": 134,
+  "tokens_mean": 34,
+  "bytes_max": 135,
+  "ingest_ms": 0.07238900009542704,
+  "corpus_bytes": 364786,
+  "store_bytes": null,
+  "store_over_corpus": null,
+  "wall_ms": 462
+ },
+ "baseline|10000": {
+  "arm": "baseline",
+  "size": 10000,
+  "n": 20,
+  "hits": 20,
+  "hit_rate": {
+   "k": 20,
+   "n": 20,
+   "p": 1,
+   "wilson": {
+    "lo": 0.8388748419471806,
+    "hi": 1
+   },
+   "exact": {
+    "lo": 0.8315665290168521,
+    "hi": 1
+   }
+  },
+  "latency_ms": {
+   "n": 20,
+   "p50": 38.0883339997381,
+   "p95": 42.1717220004648,
+   "max": 52.417874000035226
+  },
+  "bytes_mean": 138,
+  "tokens_mean": 35,
+  "bytes_max": 143,
+  "ingest_ms": 0.5576839996501803,
+  "corpus_bytes": 3664947,
+  "store_bytes": null,
+  "store_over_corpus": null,
+  "wall_ms": 1985
+ },
+ "kronicle-lite|1000": {
+  "arm": "kronicle-lite",
+  "size": 1000,
+  "n": 20,
+  "hits": 20,
+  "hit_rate": {
+   "k": 20,
+   "n": 20,
+   "p": 1,
+   "wilson": {
+    "lo": 0.8388748419471806,
+    "hi": 1
+   },
+   "exact": {
+    "lo": 0.8315665290168521,
+    "hi": 1
+   }
+  },
+  "latency_ms": {
+   "n": 20,
+   "p50": 3.007612000219524,
+   "p95": 4.079107000492513,
+   "max": 22.851382999680936
+  },
+  "bytes_mean": 1315,
+  "tokens_mean": 329,
+  "bytes_max": 1316,
+  "ingest_ms": 3784.590251999907,
+  "corpus_bytes": 364786,
+  "store_bytes": 16155992,
+  "store_over_corpus": 44.29,
+  "wall_ms": 3932
+ },
+ "kronicle-lite|10000": {
+  "arm": "kronicle-lite",
+  "size": 10000,
+  "n": 20,
+  "hits": 20,
+  "hit_rate": {
+   "k": 20,
+   "n": 20,
+   "p": 1,
+   "wilson": {
+    "lo": 0.8388748419471806,
+    "hi": 1
+   },
+   "exact": {
+    "lo": 0.8315665290168521,
+    "hi": 1
+   }
+  },
+  "latency_ms": {
+   "n": 20,
+   "p50": 6.446742000058293,
+   "p95": 27.836157999932766,
+   "max": 38.976760999299586
+  },
+  "bytes_mean": 1321,
+  "tokens_mean": 331,
+  "bytes_max": 1327,
+  "ingest_ms": 37500.09808699973,
+  "corpus_bytes": 3664947,
+  "store_bytes": 122805152,
+  "store_over_corpus": 33.51,
+  "wall_ms": 40309
+ },
+ "kronicle-lite-core|1000": {
+  "arm": "kronicle-lite-core",
+  "size": 1000,
+  "n": 20,
+  "hits": 20,
+  "hit_rate": {
+   "k": 20,
+   "n": 20,
+   "p": 1,
+   "wilson": {
+    "lo": 0.8388748419471806,
+    "hi": 1
+   },
+   "exact": {
+    "lo": 0.8315665290168521,
+    "hi": 1
+   }
+  },
+  "latency_ms": {
+   "n": 20,
+   "p50": 3.0319440001621842,
+   "p95": 5.182912999764085,
+   "max": 23.38713299948722
+  },
+  "bytes_mean": 1315,
+  "tokens_mean": 329,
+  "bytes_max": 1316,
+  "ingest_ms": 3733.446401000023,
+  "corpus_bytes": 364786,
+  "store_bytes": 16196904,
+  "store_over_corpus": 44.4,
+  "wall_ms": 3938
+ },
+ "kronicle-lite-core|10000": {
+  "arm": "kronicle-lite-core",
+  "size": 10000,
+  "n": 20,
+  "hits": 20,
+  "hit_rate": {
+   "k": 20,
+   "n": 20,
+   "p": 1,
+   "wilson": {
+    "lo": 0.8388748419471806,
+    "hi": 1
+   },
+   "exact": {
+    "lo": 0.8315665290168521,
+    "hi": 1
+   }
+  },
+  "latency_ms": {
+   "n": 20,
+   "p50": 8.579495999962091,
+   "p95": 12.002259000204504,
+   "max": 48.982028000056744
+  },
+  "bytes_mean": 1321,
+  "tokens_mean": 331,
+  "bytes_max": 1327,
+  "ingest_ms": 38004.518473000266,
+  "corpus_bytes": 3664947,
+  "store_bytes": 123714712,
+  "store_over_corpus": 33.76,
+  "wall_ms": 41056
+ },
+ "basic-memory|1000": {
+  "arm": "basic-memory",
+  "size": 1000,
+  "n": 20,
+  "hits": 20,
+  "hit_rate": {
+   "k": 20,
+   "n": 20,
+   "p": 1,
+   "wilson": {
+    "lo": 0.8388748419471806,
+    "hi": 1
+   },
+   "exact": {
+    "lo": 0.8315665290168521,
+    "hi": 1
+   }
+  },
+  "latency_ms": {
+   "n": 20,
+   "p50": 354.08694399986416,
+   "p95": 422.4691869998351,
+   "max": 632.8462660005316
+  },
+  "bytes_mean": 3327,
+  "tokens_mean": 832,
+  "bytes_max": 3352,
+  "ingest_ms": 261466.45440999977,
+  "corpus_bytes": 364786,
+  "store_bytes": 17587051,
+  "store_over_corpus": 48.21,
+  "wall_ms": 268919
+ },
+ "basic-memory|10000": {
+  "arm": "basic-memory",
+  "size": 10000,
+  "skipped": "not run above 1000 docs by default (ingest ~0.23 s/doc here; use --force-scale)"
+ },
+ "server-memory|1000": {
+  "arm": "server-memory",
+  "size": 1000,
+  "n": 20,
+  "hits": 20,
+  "hit_rate": {
+   "k": 20,
+   "n": 20,
+   "p": 1,
+   "wilson": {
+    "lo": 0.8388748419471806,
+    "hi": 1
+   },
+   "exact": {
+    "lo": 0.8315665290168521,
+    "hi": 1
+   }
+  },
+  "latency_ms": {
+   "n": 20,
+   "p50": 3.771002000197768,
+   "p95": 16.778185999952257,
+   "max": 17.339542999863625
+  },
+  "bytes_mean": 516,
+  "tokens_mean": 129,
+  "bytes_max": 536,
+  "ingest_ms": 252.57879799976945,
+  "corpus_bytes": 364786,
+  "store_bytes": 424786,
+  "store_over_corpus": 1.16,
+  "wall_ms": 454
+ },
+ "server-memory|10000": {
+  "arm": "server-memory",
+  "size": 10000,
+  "n": 20,
+  "hits": 20,
+  "hit_rate": {
+   "k": 20,
+   "n": 20,
+   "p": 1,
+   "wilson": {
+    "lo": 0.8388748419471806,
+    "hi": 1
+   },
+   "exact": {
+    "lo": 0.8315665290168521,
+    "hi": 1
+   }
+  },
+  "latency_ms": {
+   "n": 20,
+   "p50": 37.892965000122786,
+   "p95": 67.91994199994951,
+   "max": 68.81346300058067
+  },
+  "bytes_mean": 1402,
+  "tokens_mean": 351,
+  "bytes_max": 18256,
+  "ingest_ms": 1842.3716439995915,
+  "corpus_bytes": 3664947,
+  "store_bytes": 4264947,
+  "store_over_corpus": 1.16,
+  "wall_ms": 4372
+ }
+}
