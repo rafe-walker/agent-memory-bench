@@ -8,6 +8,10 @@ import { G, hitsWith, has, clean, near, markedChange, staleUnmarked, alarm, CONF
 import { writeFiles, dirContains, gitInit, gitCommitAll } from '../lib/util.mjs';
 
 const T = (...vs) => vs.filter(Boolean).map((v) => v.text ?? '').join('\n\n');
+// Derived-note noise (kronicle-lite 0.8.0 candidate): `derived` retractions and derived Pending items
+// in a view. Measurement only, never graded. Other tools print neither marker (0 for them).
+const derivedCount = (v) => ((v?.text ?? '').match(/\bderived note \(/g) ?? []).length;
+const derivedPendingCount = (v) => ((v?.text ?? '').match(/\bnote [^\n]*? derived from /g) ?? []).length;
 const QDEPLOY = (w) => ({ text: 'deploys cluster', grep: 'cluster', keyword: 'cluster' });
 const can = (arm, m) => typeof arm[m] === 'function';
 const NOTE_QUERY = {
@@ -60,7 +64,8 @@ export const S1 = {
     const nv = T(vn, rn, rn2);
     const next = has(nv, w.newCluster) && !staleUnmarked(nv, w.oldCluster);
     return rec(grade, reason, { sessionStart: v0, read0: r0, touch: vt, read: vr, nextSession: vn, nextRead: rn, nextRead2: rn2 },
-      { learned, pushedNew: has(vt, w.newCluster), staleUnmarked: staleUnmarked(both, w.oldCluster), nextSessionPass: next, nextSessionStaleCopy: staleUnmarked(nv, w.oldCluster) });
+      { learned, pushedNew: has(vt, w.newCluster), staleUnmarked: staleUnmarked(both, w.oldCluster), nextSessionPass: next, nextSessionStaleCopy: staleUnmarked(nv, w.oldCluster),
+        derivedRetractions: derivedCount(vt), derivedPending: derivedPendingCount(vt) });
   },
 };
 
@@ -147,6 +152,10 @@ export const S6 = {
 
 export const S7 = {
   id: 'S7', title: 'Benign-edit noise (must NOT alarm; false-positive control)', kinds: ['knowledge'],
+  // variant `note` (diagnostic, kl-next-release): after the two reads the agent saves a note about the
+  // deploy target (as in S1), so a tool that infers lineage from reads can mark it derived from the
+  // edited block. The default cell (no variant) is unchanged.
+  variants: [null, 'note'],
   async run(arm, ctx) {
     const w = makeWorld(ctx.seed), q = QDEPLOY(w);
     const paths = baseRepo(ctx, w);
@@ -155,11 +164,16 @@ export const S7 = {
     await arm.read(q);
     const [nq, ng] = NOTE_QUERY[w.benign];
     await arm.read({ text: nq, grep: ng, keyword: ng });
+    if (ctx.variant === 'note') {
+      if (!can(arm, 'remember')) return { grade: G.NA, reason: 'variant note: the arm has no way to save a note' };
+      await arm.remember(`Deploy target for ${w.svc} is ${w.oldCluster}.`, { slug: 'deploy-target' });
+    }
     fs.writeFileSync(path.join(ctx.repo, 'docs/deploy.md'), runbook(w, { benignApplied: w.benign }));
     await arm.sync([{ path: 'docs/deploy.md', kind: 'modify' }], { expect: Object.assign((t) => true, { query: nq }) });
     const vt = await arm.touch(), vr = await arm.read(q);
     const fired = alarm(vt) || alarm(vr);
-    return rec(fired ? G.NO : G.YES, fired ? `false alarm on ${w.benign}` : `quiet on ${w.benign}`, { touch: vt, read: vr }, { template: w.benign, alarm: fired, trivial: !arm.meta.changeSignal });
+    return rec(fired ? G.NO : G.YES, fired ? `false alarm on ${w.benign}` : `quiet on ${w.benign}`, { touch: vt, read: vr },
+      { template: w.benign, alarm: fired, trivial: !arm.meta.changeSignal, derivedRetractions: derivedCount(vt), derivedPending: derivedPendingCount(vt) });
   },
 };
 

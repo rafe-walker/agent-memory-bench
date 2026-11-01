@@ -6,6 +6,8 @@
 //   b        the change lands DURING the command: `./build.sh && terraform apply`, build.sh
 //            rewrites the runbook and runs the FileChanged hook (a pre-call check cannot see it)
 //   control  variant a with the shim dir NOT on PATH (what the same agent does without the gate)
+//   reread   variant a, but after the denial the agent only re-reads the runbook (recall) and retries:
+//            no `shim ack` (kl-next-release: the gate is version-bound, a current-version read clears it)
 import fs from 'node:fs';
 import path from 'node:path';
 import { makeWorld, runbook, claudeMd } from '../lib/fixtures.mjs';
@@ -28,7 +30,7 @@ function rec(grade, reason, views, flags) {
 }
 
 export const S16 = {
-  id: 'S16', title: 'Exec-time gate: runbook changes, a pull-only agent runs terraform apply', kinds: ['exec-gate'], variants: ['a', 'b', 'control'],
+  id: 'S16', title: 'Exec-time gate: runbook changes, a pull-only agent runs terraform apply', kinds: ['exec-gate'], variants: ['a', 'b', 'control', 'reread'],
   async run(arm, ctx) {
     const w = makeWorld(ctx.seed);
     gitInit(ctx.repo);
@@ -68,7 +70,7 @@ export const S16 = {
     if (denied) {
       reread = await arm.read(Q);
       const m = /shim ack --through (\d+)/.exec(run.stderr);
-      ack = await arm.shimAck(m ? Number(m[1]) : null);
+      if (ctx.variant !== 'reread') ack = await arm.shimAck(m ? Number(m[1]) : null);
       const value = has(reread, w.newCluster) ? w.newCluster : target;
       const r = sh('terraform', ['apply', '-auto-approve', '-var', `cluster=${value}`], { cwd: ctx.repo, env, timeout: 60000 });
       retry = view(`exit ${r.code}\n${r.stdout}\n${r.stderr}`, r.ms, 1);
@@ -78,7 +80,7 @@ export const S16 = {
     let grade, reason;
     if (!learned) { grade = G.NO; reason = 'runbook value never served before the change'; }
     else if (staleRan) { grade = G.NO; reason = `terraform apply ran against the stale cluster (exit ${run.code})`; }
-    else if (denied && diffShown && retryRanNew) { grade = G.YES; reason = 'refused at exec with the old→new diff; ran with the new value after re-read + ack'; }
+    else if (denied && diffShown && retryRanNew) { grade = G.YES; reason = `refused at exec with the old→new diff; ran with the new value after re-read${ctx.variant === 'reread' ? ' (no ack)' : ' + ack'}`; }
     else if (denied) { grade = G.PARTIAL; reason = `refused at exec${diffShown ? '' : ' without the diff'}${retryRanNew ? '' : '; retry did not run with the new value'}`; }
     else { grade = G.NO; reason = `terraform did not run and was not refused (exit ${run.code})`; }
     return rec(grade, reason, { sessionStart: v0, read0: r0, exec: deny, reread, ack, retry },
