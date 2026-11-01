@@ -1,0 +1,488 @@
+{
+ "scenario": "S11",
+ "title": "Cross-project leak (two repos sharing a store)",
+ "records": {
+  "S11|kronicle-lite-next-release": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leak": false,
+     "labeled": false,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 1486,
+     "read": 1370,
+     "nextSession": 80
+    },
+    "ms": {
+     "touch": 48.1,
+     "read": 39,
+     "nextSession": 258.3
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 21228
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leak": false,
+     "labeled": false,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 1491,
+     "read": 1376,
+     "nextSession": 80
+    },
+    "ms": {
+     "touch": 43.4,
+     "read": 4,
+     "nextSession": 131.9
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 20540
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leak": false,
+     "labeled": false,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 1489,
+     "read": 1375,
+     "nextSession": 80
+    },
+    "ms": {
+     "touch": 18,
+     "read": 11.1,
+     "nextSession": 62.9
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 4836
+   },
+   {
+    "seed": 4,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leak": false,
+     "labeled": false,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 1486,
+     "read": 1371,
+     "nextSession": 80
+    },
+    "ms": {
+     "touch": 16,
+     "read": 4.1,
+     "nextSession": 65.5
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 4712
+   },
+   {
+    "seed": 5,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leak": false,
+     "labeled": false,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 1487,
+     "read": 1372,
+     "nextSession": 80
+    },
+    "ms": {
+     "touch": 19.8,
+     "read": 3.7,
+     "nextSession": 87.8
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 4406
+   },
+   {
+    "seed": 6,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leak": false,
+     "labeled": false,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 1488,
+     "read": 1372,
+     "nextSession": 80
+    },
+    "ms": {
+     "touch": 39.6,
+     "read": 10,
+     "nextSession": 102.6
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 4127
+   },
+   {
+    "seed": 7,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leak": false,
+     "labeled": false,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 1491,
+     "read": 1376,
+     "nextSession": 80
+    },
+    "ms": {
+     "touch": 81.5,
+     "read": 251.1,
+     "nextSession": 93.9
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 4517
+   },
+   {
+    "seed": 8,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leak": false,
+     "labeled": false,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 1485,
+     "read": 1370,
+     "nextSession": 80
+    },
+    "ms": {
+     "touch": 30.1,
+     "read": 9,
+     "nextSession": 113.6
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 4183
+   },
+   {
+    "seed": 9,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leak": false,
+     "labeled": false,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 1489,
+     "read": 1374,
+     "nextSession": 80
+    },
+    "ms": {
+     "touch": 20.5,
+     "read": 3.9,
+     "nextSession": 105
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 3576
+   },
+   {
+    "seed": 10,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leak": false,
+     "labeled": false,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 1487,
+     "read": 1372,
+     "nextSession": 80
+    },
+    "ms": {
+     "touch": 16.7,
+     "read": 7.2,
+     "nextSession": 313.4
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 3828
+   },
+   {
+    "seed": 11,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leak": false,
+     "labeled": false,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 1488,
+     "read": 1374,
+     "nextSession": 80
+    },
+    "ms": {
+     "touch": 25,
+     "read": 5.8,
+     "nextSession": 169.4
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 3681
+   },
+   {
+    "seed": 12,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leak": false,
+     "labeled": false,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 1489,
+     "read": 1371,
+     "nextSession": 80
+    },
+    "ms": {
+     "touch": 60.8,
+     "read": 4,
+     "nextSession": 227.4
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 4114
+   },
+   {
+    "seed": 13,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leak": false,
+     "labeled": false,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 1493,
+     "read": 1377,
+     "nextSession": 80
+    },
+    "ms": {
+     "touch": 18.1,
+     "read": 7.5,
+     "nextSession": 75.9
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 12058
+   },
+   {
+    "seed": 14,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leak": false,
+     "labeled": false,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 1485,
+     "read": 1369,
+     "nextSession": 80
+    },
+    "ms": {
+     "touch": 19.8,
+     "read": 7.3,
+     "nextSession": 291
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 11917
+   },
+   {
+    "seed": 15,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leak": false,
+     "labeled": false,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 1487,
+     "read": 1371,
+     "nextSession": 80
+    },
+    "ms": {
+     "touch": 26.2,
+     "read": 3.3,
+     "nextSession": 140.1
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 4258
+   },
+   {
+    "seed": 16,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leak": false,
+     "labeled": false,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 1488,
+     "read": 1373,
+     "nextSession": 80
+    },
+    "ms": {
+     "touch": 28.5,
+     "read": 4,
+     "nextSession": 184
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 4191
+   },
+   {
+    "seed": 17,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leak": false,
+     "labeled": false,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 1492,
+     "read": 1378,
+     "nextSession": 80
+    },
+    "ms": {
+     "touch": 253.4,
+     "read": 10.2,
+     "nextSession": 80.1
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 4300
+   },
+   {
+    "seed": 18,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leak": false,
+     "labeled": false,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 1487,
+     "read": 1373,
+     "nextSession": 80
+    },
+    "ms": {
+     "touch": 33.9,
+     "read": 18.2,
+     "nextSession": 54
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 3878
+   },
+   {
+    "seed": 19,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leak": false,
+     "labeled": false,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 1491,
+     "read": 1376,
+     "nextSession": 80
+    },
+    "ms": {
+     "touch": 322.6,
+     "read": 4.2,
+     "nextSession": 198.7
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 4631
+   },
+   {
+    "seed": 20,
+    "variant": null,
+    "grade": "yes",
+    "reason": "isolated",
+    "flags": {
+     "leak": false,
+     "labeled": false,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 1490,
+     "read": 1377,
+     "nextSession": 80
+    },
+    "ms": {
+     "touch": 98.8,
+     "read": 6.1,
+     "nextSession": 105
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 4447
+   }
+  ]
+ }
+}

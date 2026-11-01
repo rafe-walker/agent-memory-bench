@@ -1,0 +1,685 @@
+{
+ "meta": {
+  "started_at": "2026-11-01T19:00:33.482Z",
+  "seeds": 20,
+  "ci": false
+ },
+ "cells": {
+  "S16a|kronicle-lite-shims": {
+   "scenario": "S16a",
+   "title": "Exec-time gate: runbook changes, a pull-only agent runs terraform apply",
+   "arm": "kronicle-lite-shims",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+   "delivery": "exec-gate",
+   "bytes": {
+    "sessionStart": {
+     "mean": 1816,
+     "max": 1816,
+     "tokens_mean": 454
+    },
+    "read0": {
+     "mean": 1374,
+     "max": 1378,
+     "tokens_mean": 344
+    },
+    "exec": {
+     "mean": 770,
+     "max": 788,
+     "tokens_mean": 193
+    },
+    "reread": {
+     "mean": 1374,
+     "max": 1379,
+     "tokens_mean": 344
+    },
+    "ack": {
+     "mean": 434,
+     "max": 447,
+     "tokens_mean": 109
+    },
+    "retry": {
+     "mean": 72,
+     "max": 77,
+     "tokens_mean": 18
+    }
+   },
+   "latency_ms": {
+    "sessionStart": {
+     "n": 20,
+     "p50": 428.7,
+     "p95": 553.3,
+     "max": 12177.5
+    },
+    "read0": {
+     "n": 20,
+     "p50": 24.1,
+     "p95": 404.6,
+     "max": 423.1
+    },
+    "exec": {
+     "n": 20,
+     "p50": 237.7,
+     "p95": 290.4,
+     "max": 781.8
+    },
+    "reread": {
+     "n": 20,
+     "p50": 450.6,
+     "p95": 546.6,
+     "max": 568
+    },
+    "ack": {
+     "n": 20,
+     "p50": 205.7,
+     "p95": 295.5,
+     "max": 11646.9
+    },
+    "retry": {
+     "n": 20,
+     "p50": 205.6,
+     "p95": 237.1,
+     "max": 514.1
+    }
+   },
+   "flags": {
+    "learned": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "denied": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "diffShown": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "staleRan": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "retryRanNew": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 41263
+  },
+  "S16b|kronicle-lite-shims": {
+   "scenario": "S16b",
+   "title": "Exec-time gate: runbook changes, a pull-only agent runs terraform apply",
+   "arm": "kronicle-lite-shims",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+   "delivery": "exec-gate",
+   "bytes": {
+    "sessionStart": {
+     "mean": 1816,
+     "max": 1816,
+     "tokens_mean": 454
+    },
+    "read0": {
+     "mean": 1374,
+     "max": 1378,
+     "tokens_mean": 344
+    },
+    "exec": {
+     "mean": 776,
+     "max": 794,
+     "tokens_mean": 194
+    },
+    "reread": {
+     "mean": 1374,
+     "max": 1379,
+     "tokens_mean": 344
+    },
+    "ack": {
+     "mean": 434,
+     "max": 447,
+     "tokens_mean": 109
+    },
+    "retry": {
+     "mean": 72,
+     "max": 77,
+     "tokens_mean": 18
+    }
+   },
+   "latency_ms": {
+    "sessionStart": {
+     "n": 20,
+     "p50": 479.8,
+     "p95": 631.5,
+     "max": 4803
+    },
+    "read0": {
+     "n": 20,
+     "p50": 32.1,
+     "p95": 416.5,
+     "max": 464.3
+    },
+    "exec": {
+     "n": 20,
+     "p50": 575.3,
+     "p95": 882.8,
+     "max": 1029.6
+    },
+    "reread": {
+     "n": 20,
+     "p50": 562,
+     "p95": 748.5,
+     "max": 752.9
+    },
+    "ack": {
+     "n": 20,
+     "p50": 240.2,
+     "p95": 441.3,
+     "max": 568.7
+    },
+    "retry": {
+     "n": 20,
+     "p50": 220.4,
+     "p95": 449.6,
+     "max": 4229.6
+    }
+   },
+   "flags": {
+    "learned": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "denied": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "diffShown": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "staleRan": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "retryRanNew": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 40336
+  },
+  "S16control|kronicle-lite-shims": {
+   "scenario": "S16control",
+   "title": "Exec-time gate: runbook changes, a pull-only agent runs terraform apply",
+   "arm": "kronicle-lite-shims",
+   "n": 20,
+   "yes": 0,
+   "partial": 0,
+   "no": 20,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "score": 0,
+   "verdict": "no",
+   "reason": "terraform apply ran against the stale cluster (exit 0)",
+   "delivery": "exec-gate",
+   "bytes": {
+    "sessionStart": {
+     "mean": 1816,
+     "max": 1816,
+     "tokens_mean": 454
+    },
+    "read0": {
+     "mean": 1374,
+     "max": 1378,
+     "tokens_mean": 344
+    },
+    "exec": {
+     "mean": 72,
+     "max": 77,
+     "tokens_mean": 18
+    }
+   },
+   "latency_ms": {
+    "sessionStart": {
+     "n": 20,
+     "p50": 434.9,
+     "p95": 588,
+     "max": 793.7
+    },
+    "read0": {
+     "n": 20,
+     "p50": 22.1,
+     "p95": 56.7,
+     "max": 95.6
+    },
+    "exec": {
+     "n": 20,
+     "p50": 4.2,
+     "p95": 7.2,
+     "max": 21.5
+    }
+   },
+   "flags": {
+    "learned": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "denied": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "diffShown": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "staleRan": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "retryRanNew": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 19772
+  },
+  "S16reread|kronicle-lite-shims": {
+   "scenario": "S16reread",
+   "title": "Exec-time gate: runbook changes, a pull-only agent runs terraform apply",
+   "arm": "kronicle-lite-shims",
+   "n": 20,
+   "yes": 0,
+   "partial": 19,
+   "no": 1,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 19,
+    "n": 20,
+    "p": 0.95,
+    "wilson": {
+     "lo": 0.763868806553258,
+     "hi": 0.9911185511992047
+    },
+    "exact": {
+     "lo": 0.7512672372278391,
+     "hi": 0.9987349105020522
+    }
+   },
+   "score": 0.475,
+   "verdict": "mixed",
+   "reason": "refused at exec; retry did not run with the new value",
+   "delivery": "exec-gate",
+   "bytes": {
+    "sessionStart": {
+     "mean": 1816,
+     "max": 1816,
+     "tokens_mean": 454
+    },
+    "read0": {
+     "mean": 1374,
+     "max": 1378,
+     "tokens_mean": 344
+    },
+    "exec": {
+     "mean": 745,
+     "max": 788,
+     "tokens_mean": 187
+    },
+    "reread": {
+     "mean": 1374,
+     "max": 1379,
+     "tokens_mean": 344
+    },
+    "retry": {
+     "mean": 770,
+     "max": 785,
+     "tokens_mean": 193
+    }
+   },
+   "latency_ms": {
+    "sessionStart": {
+     "n": 20,
+     "p50": 492.2,
+     "p95": 1019,
+     "max": 1225.7
+    },
+    "read0": {
+     "n": 20,
+     "p50": 47.3,
+     "p95": 346.3,
+     "max": 523.9
+    },
+    "exec": {
+     "n": 20,
+     "p50": 283.2,
+     "p95": 1126,
+     "max": 10051.7
+    },
+    "reread": {
+     "n": 19,
+     "p50": 25.1,
+     "p95": 742.6,
+     "max": 742.6
+    },
+    "retry": {
+     "n": 19,
+     "p50": 306.7,
+     "p95": 704.9,
+     "max": 704.9
+    }
+   },
+   "flags": {
+    "learned": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "denied": {
+     "k": 19,
+     "n": 20,
+     "p": 0.95,
+     "wilson": {
+      "lo": 0.763868806553258,
+      "hi": 0.9911185511992047
+     },
+     "exact": {
+      "lo": 0.7512672372278391,
+      "hi": 0.9987349105020522
+     }
+    },
+    "diffShown": {
+     "k": 19,
+     "n": 20,
+     "p": 0.95,
+     "wilson": {
+      "lo": 0.763868806553258,
+      "hi": 0.9911185511992047
+     },
+     "exact": {
+      "lo": 0.7512672372278391,
+      "hi": 0.9987349105020522
+     }
+    },
+    "staleRan": {
+     "k": 1,
+     "n": 20,
+     "p": 0.05,
+     "wilson": {
+      "lo": 0.008881448800795402,
+      "hi": 0.23613119344674205
+     },
+     "exact": {
+      "lo": 0.001265089497947877,
+      "hi": 0.248732762772161
+     }
+    },
+    "retryRanNew": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 73427
+  }
+ }
+}

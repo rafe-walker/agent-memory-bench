@@ -1,0 +1,970 @@
+{
+ "scenario": "S7",
+ "title": "Benign-edit noise (must NOT alarm; false-positive control)",
+ "records": {
+  "S7|kronicle-lite-lineage": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "yes",
+    "reason": "quiet on whitespace_trim",
+    "flags": {
+     "template": "whitespace_trim",
+     "alarm": false,
+     "trivial": true,
+     "derivedRetractions": 0,
+     "derivedPending": 0
+    },
+    "bytes": {
+     "touch": 80,
+     "read": 1371
+    },
+    "ms": {
+     "touch": 217.5,
+     "read": 4.2
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2437
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "yes",
+    "reason": "quiet on whitespace_double",
+    "flags": {
+     "template": "whitespace_double",
+     "alarm": false,
+     "trivial": true,
+     "derivedRetractions": 0,
+     "derivedPending": 0
+    },
+    "bytes": {
+     "touch": 1373,
+     "read": 1376
+    },
+    "ms": {
+     "touch": 113.8,
+     "read": 4.9
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2529
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "yes",
+    "reason": "quiet on line_ending_norm",
+    "flags": {
+     "template": "line_ending_norm",
+     "alarm": false,
+     "trivial": true,
+     "derivedRetractions": 0,
+     "derivedPending": 0
+    },
+    "bytes": {
+     "touch": 80,
+     "read": 1375
+    },
+    "ms": {
+     "touch": 7.2,
+     "read": 3.3
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1813
+   },
+   {
+    "seed": 4,
+    "variant": null,
+    "grade": "no",
+    "reason": "false alarm on comma_list",
+    "flags": {
+     "template": "comma_list",
+     "alarm": true,
+     "trivial": true,
+     "derivedRetractions": 0,
+     "derivedPending": 0
+    },
+    "bytes": {
+     "touch": 2416,
+     "read": 1372
+    },
+    "ms": {
+     "touch": 38.3,
+     "read": 7.7
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2312
+   },
+   {
+    "seed": 5,
+    "variant": null,
+    "grade": "no",
+    "reason": "false alarm on smart_quote",
+    "flags": {
+     "template": "smart_quote",
+     "alarm": true,
+     "trivial": true,
+     "derivedRetractions": 0,
+     "derivedPending": 0
+    },
+    "bytes": {
+     "touch": 2338,
+     "read": 1371
+    },
+    "ms": {
+     "touch": 254,
+     "read": 7.2
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2508
+   },
+   {
+    "seed": 6,
+    "variant": null,
+    "grade": "yes",
+    "reason": "quiet on numbered_list_renumber",
+    "flags": {
+     "template": "numbered_list_renumber",
+     "alarm": false,
+     "trivial": true,
+     "derivedRetractions": 0,
+     "derivedPending": 0
+    },
+    "bytes": {
+     "touch": 1365,
+     "read": 1372
+    },
+    "ms": {
+     "touch": 44.8,
+     "read": 4.1
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1905
+   },
+   {
+    "seed": 7,
+    "variant": null,
+    "grade": "yes",
+    "reason": "quiet on markdown_emphasis",
+    "flags": {
+     "template": "markdown_emphasis",
+     "alarm": false,
+     "trivial": true,
+     "derivedRetractions": 0,
+     "derivedPending": 0
+    },
+    "bytes": {
+     "touch": 1365,
+     "read": 1376
+    },
+    "ms": {
+     "touch": 294.2,
+     "read": 8.7
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2221
+   },
+   {
+    "seed": 8,
+    "variant": null,
+    "grade": "no",
+    "reason": "false alarm on missing_period",
+    "flags": {
+     "template": "missing_period",
+     "alarm": true,
+     "trivial": true,
+     "derivedRetractions": 0,
+     "derivedPending": 0
+    },
+    "bytes": {
+     "touch": 2331,
+     "read": 1371
+    },
+    "ms": {
+     "touch": 102.1,
+     "read": 9.2
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2203
+   },
+   {
+    "seed": 9,
+    "variant": null,
+    "grade": "no",
+    "reason": "false alarm on hyphenation",
+    "flags": {
+     "template": "hyphenation",
+     "alarm": true,
+     "trivial": true,
+     "derivedRetractions": 0,
+     "derivedPending": 0
+    },
+    "bytes": {
+     "touch": 2348,
+     "read": 1374
+    },
+    "ms": {
+     "touch": 35.5,
+     "read": 3.3
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2340
+   },
+   {
+    "seed": 10,
+    "variant": null,
+    "grade": "no",
+    "reason": "false alarm on typo_fix",
+    "flags": {
+     "template": "typo_fix",
+     "alarm": true,
+     "trivial": true,
+     "derivedRetractions": 0,
+     "derivedPending": 0
+    },
+    "bytes": {
+     "touch": 2388,
+     "read": 1371
+    },
+    "ms": {
+     "touch": 40,
+     "read": 227.5
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2232
+   },
+   {
+    "seed": 11,
+    "variant": null,
+    "grade": "yes",
+    "reason": "quiet on whitespace_trim",
+    "flags": {
+     "template": "whitespace_trim",
+     "alarm": false,
+     "trivial": true,
+     "derivedRetractions": 0,
+     "derivedPending": 0
+    },
+    "bytes": {
+     "touch": 80,
+     "read": 1374
+    },
+    "ms": {
+     "touch": 10.6,
+     "read": 4.1
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1812
+   },
+   {
+    "seed": 12,
+    "variant": null,
+    "grade": "yes",
+    "reason": "quiet on whitespace_double",
+    "flags": {
+     "template": "whitespace_double",
+     "alarm": false,
+     "trivial": true,
+     "derivedRetractions": 0,
+     "derivedPending": 0
+    },
+    "bytes": {
+     "touch": 1373,
+     "read": 1372
+    },
+    "ms": {
+     "touch": 68.6,
+     "read": 7.8
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2057
+   },
+   {
+    "seed": 13,
+    "variant": null,
+    "grade": "yes",
+    "reason": "quiet on line_ending_norm",
+    "flags": {
+     "template": "line_ending_norm",
+     "alarm": false,
+     "trivial": true,
+     "derivedRetractions": 0,
+     "derivedPending": 0
+    },
+    "bytes": {
+     "touch": 80,
+     "read": 1378
+    },
+    "ms": {
+     "touch": 6.4,
+     "read": 2.9
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1762
+   },
+   {
+    "seed": 14,
+    "variant": null,
+    "grade": "no",
+    "reason": "false alarm on comma_list",
+    "flags": {
+     "template": "comma_list",
+     "alarm": true,
+     "trivial": true,
+     "derivedRetractions": 0,
+     "derivedPending": 0
+    },
+    "bytes": {
+     "touch": 2414,
+     "read": 1370
+    },
+    "ms": {
+     "touch": 48,
+     "read": 3.7
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2095
+   },
+   {
+    "seed": 15,
+    "variant": null,
+    "grade": "no",
+    "reason": "false alarm on smart_quote",
+    "flags": {
+     "template": "smart_quote",
+     "alarm": true,
+     "trivial": true,
+     "derivedRetractions": 0,
+     "derivedPending": 0
+    },
+    "bytes": {
+     "touch": 2338,
+     "read": 1372
+    },
+    "ms": {
+     "touch": 24.6,
+     "read": 277
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2350
+   },
+   {
+    "seed": 16,
+    "variant": null,
+    "grade": "yes",
+    "reason": "quiet on numbered_list_renumber",
+    "flags": {
+     "template": "numbered_list_renumber",
+     "alarm": false,
+     "trivial": true,
+     "derivedRetractions": 0,
+     "derivedPending": 0
+    },
+    "bytes": {
+     "touch": 1365,
+     "read": 1373
+    },
+    "ms": {
+     "touch": 96.2,
+     "read": 5.3
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1978
+   },
+   {
+    "seed": 17,
+    "variant": null,
+    "grade": "yes",
+    "reason": "quiet on markdown_emphasis",
+    "flags": {
+     "template": "markdown_emphasis",
+     "alarm": false,
+     "trivial": true,
+     "derivedRetractions": 0,
+     "derivedPending": 0
+    },
+    "bytes": {
+     "touch": 1365,
+     "read": 1378
+    },
+    "ms": {
+     "touch": 19.6,
+     "read": 222.6
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2160
+   },
+   {
+    "seed": 18,
+    "variant": null,
+    "grade": "no",
+    "reason": "false alarm on missing_period",
+    "flags": {
+     "template": "missing_period",
+     "alarm": true,
+     "trivial": true,
+     "derivedRetractions": 0,
+     "derivedPending": 0
+    },
+    "bytes": {
+     "touch": 2331,
+     "read": 1372
+    },
+    "ms": {
+     "touch": 38.5,
+     "read": 8.5
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2056
+   },
+   {
+    "seed": 19,
+    "variant": null,
+    "grade": "no",
+    "reason": "false alarm on hyphenation",
+    "flags": {
+     "template": "hyphenation",
+     "alarm": true,
+     "trivial": true,
+     "derivedRetractions": 0,
+     "derivedPending": 0
+    },
+    "bytes": {
+     "touch": 2346,
+     "read": 1376
+    },
+    "ms": {
+     "touch": 49.3,
+     "read": 6.6
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1874
+   },
+   {
+    "seed": 20,
+    "variant": null,
+    "grade": "no",
+    "reason": "false alarm on typo_fix",
+    "flags": {
+     "template": "typo_fix",
+     "alarm": true,
+     "trivial": true,
+     "derivedRetractions": 0,
+     "derivedPending": 0
+    },
+    "bytes": {
+     "touch": 2392,
+     "read": 1376
+    },
+    "ms": {
+     "touch": 63.4,
+     "read": 6.2
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2048
+   }
+  ],
+  "S7note|kronicle-lite-lineage": [
+   {
+    "seed": 1,
+    "variant": "note",
+    "grade": "yes",
+    "reason": "quiet on whitespace_trim",
+    "flags": {
+     "template": "whitespace_trim",
+     "alarm": false,
+     "trivial": true,
+     "derivedRetractions": 0,
+     "derivedPending": 0
+    },
+    "bytes": {
+     "touch": 1163,
+     "read": 1371
+    },
+    "ms": {
+     "touch": 21.4,
+     "read": 6.3
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2365
+   },
+   {
+    "seed": 2,
+    "variant": "note",
+    "grade": "yes",
+    "reason": "quiet on whitespace_double",
+    "flags": {
+     "template": "whitespace_double",
+     "alarm": false,
+     "trivial": true,
+     "derivedRetractions": 0,
+     "derivedPending": 0
+    },
+    "bytes": {
+     "touch": 1610,
+     "read": 1375
+    },
+    "ms": {
+     "touch": 22.6,
+     "read": 16.8
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1843
+   },
+   {
+    "seed": 3,
+    "variant": "note",
+    "grade": "yes",
+    "reason": "quiet on line_ending_norm",
+    "flags": {
+     "template": "line_ending_norm",
+     "alarm": false,
+     "trivial": true,
+     "derivedRetractions": 0,
+     "derivedPending": 0
+    },
+    "bytes": {
+     "touch": 1167,
+     "read": 1375
+    },
+    "ms": {
+     "touch": 21.1,
+     "read": 14.4
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2264
+   },
+   {
+    "seed": 4,
+    "variant": "note",
+    "grade": "no",
+    "reason": "false alarm on comma_list",
+    "flags": {
+     "template": "comma_list",
+     "alarm": true,
+     "trivial": true,
+     "derivedRetractions": 1,
+     "derivedPending": 1
+    },
+    "bytes": {
+     "touch": 3090,
+     "read": 1371
+    },
+    "ms": {
+     "touch": 27.1,
+     "read": 3.1
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1991
+   },
+   {
+    "seed": 5,
+    "variant": "note",
+    "grade": "no",
+    "reason": "false alarm on smart_quote",
+    "flags": {
+     "template": "smart_quote",
+     "alarm": true,
+     "trivial": true,
+     "derivedRetractions": 1,
+     "derivedPending": 1
+    },
+    "bytes": {
+     "touch": 2965,
+     "read": 1372
+    },
+    "ms": {
+     "touch": 283.4,
+     "read": 3.4
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2041
+   },
+   {
+    "seed": 6,
+    "variant": "note",
+    "grade": "yes",
+    "reason": "quiet on numbered_list_renumber",
+    "flags": {
+     "template": "numbered_list_renumber",
+     "alarm": false,
+     "trivial": true,
+     "derivedRetractions": 0,
+     "derivedPending": 0
+    },
+    "bytes": {
+     "touch": 1600,
+     "read": 1372
+    },
+    "ms": {
+     "touch": 73.4,
+     "read": 3.9
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2069
+   },
+   {
+    "seed": 7,
+    "variant": "note",
+    "grade": "yes",
+    "reason": "quiet on markdown_emphasis",
+    "flags": {
+     "template": "markdown_emphasis",
+     "alarm": false,
+     "trivial": true,
+     "derivedRetractions": 0,
+     "derivedPending": 0
+    },
+    "bytes": {
+     "touch": 1603,
+     "read": 1376
+    },
+    "ms": {
+     "touch": 15.1,
+     "read": 3.2
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1957
+   },
+   {
+    "seed": 8,
+    "variant": "note",
+    "grade": "no",
+    "reason": "false alarm on missing_period",
+    "flags": {
+     "template": "missing_period",
+     "alarm": true,
+     "trivial": true,
+     "derivedRetractions": 1,
+     "derivedPending": 1
+    },
+    "bytes": {
+     "touch": 2949,
+     "read": 1371
+    },
+    "ms": {
+     "touch": 396.7,
+     "read": 9
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 3061
+   },
+   {
+    "seed": 9,
+    "variant": "note",
+    "grade": "no",
+    "reason": "false alarm on hyphenation",
+    "flags": {
+     "template": "hyphenation",
+     "alarm": true,
+     "trivial": true,
+     "derivedRetractions": 1,
+     "derivedPending": 1
+    },
+    "bytes": {
+     "touch": 2986,
+     "read": 1374
+    },
+    "ms": {
+     "touch": 538.2,
+     "read": 9
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2212
+   },
+   {
+    "seed": 10,
+    "variant": "note",
+    "grade": "no",
+    "reason": "false alarm on typo_fix",
+    "flags": {
+     "template": "typo_fix",
+     "alarm": true,
+     "trivial": true,
+     "derivedRetractions": 1,
+     "derivedPending": 1
+    },
+    "bytes": {
+     "touch": 3031,
+     "read": 1372
+    },
+    "ms": {
+     "touch": 344.8,
+     "read": 13.2
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2021
+   },
+   {
+    "seed": 11,
+    "variant": "note",
+    "grade": "yes",
+    "reason": "quiet on whitespace_trim",
+    "flags": {
+     "template": "whitespace_trim",
+     "alarm": false,
+     "trivial": true,
+     "derivedRetractions": 0,
+     "derivedPending": 0
+    },
+    "bytes": {
+     "touch": 1166,
+     "read": 1374
+    },
+    "ms": {
+     "touch": 17.8,
+     "read": 411.5
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1850
+   },
+   {
+    "seed": 12,
+    "variant": "note",
+    "grade": "yes",
+    "reason": "quiet on whitespace_double",
+    "flags": {
+     "template": "whitespace_double",
+     "alarm": false,
+     "trivial": true,
+     "derivedRetractions": 0,
+     "derivedPending": 0
+    },
+    "bytes": {
+     "touch": 1609,
+     "read": 1372
+    },
+    "ms": {
+     "touch": 32,
+     "read": 3.2
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1392
+   },
+   {
+    "seed": 13,
+    "variant": "note",
+    "grade": "yes",
+    "reason": "quiet on line_ending_norm",
+    "flags": {
+     "template": "line_ending_norm",
+     "alarm": false,
+     "trivial": true,
+     "derivedRetractions": 0,
+     "derivedPending": 0
+    },
+    "bytes": {
+     "touch": 1171,
+     "read": 1378
+    },
+    "ms": {
+     "touch": 12.1,
+     "read": 3.2
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1976
+   },
+   {
+    "seed": 14,
+    "variant": "note",
+    "grade": "no",
+    "reason": "false alarm on comma_list",
+    "flags": {
+     "template": "comma_list",
+     "alarm": true,
+     "trivial": true,
+     "derivedRetractions": 1,
+     "derivedPending": 1
+    },
+    "bytes": {
+     "touch": 3086,
+     "read": 1369
+    },
+    "ms": {
+     "touch": 359.6,
+     "read": 7.3
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2618
+   },
+   {
+    "seed": 15,
+    "variant": "note",
+    "grade": "no",
+    "reason": "false alarm on smart_quote",
+    "flags": {
+     "template": "smart_quote",
+     "alarm": true,
+     "trivial": true,
+     "derivedRetractions": 1,
+     "derivedPending": 1
+    },
+    "bytes": {
+     "touch": 2965,
+     "read": 1371
+    },
+    "ms": {
+     "touch": 37.5,
+     "read": 7.6
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1590
+   },
+   {
+    "seed": 16,
+    "variant": "note",
+    "grade": "yes",
+    "reason": "quiet on numbered_list_renumber",
+    "flags": {
+     "template": "numbered_list_renumber",
+     "alarm": false,
+     "trivial": true,
+     "derivedRetractions": 0,
+     "derivedPending": 0
+    },
+    "bytes": {
+     "touch": 1600,
+     "read": 1372
+    },
+    "ms": {
+     "touch": 20.3,
+     "read": 3.2
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1851
+   },
+   {
+    "seed": 17,
+    "variant": "note",
+    "grade": "yes",
+    "reason": "quiet on markdown_emphasis",
+    "flags": {
+     "template": "markdown_emphasis",
+     "alarm": false,
+     "trivial": true,
+     "derivedRetractions": 0,
+     "derivedPending": 0
+    },
+    "bytes": {
+     "touch": 1604,
+     "read": 1377
+    },
+    "ms": {
+     "touch": 95.5,
+     "read": 7.5
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1804
+   },
+   {
+    "seed": 18,
+    "variant": "note",
+    "grade": "no",
+    "reason": "false alarm on missing_period",
+    "flags": {
+     "template": "missing_period",
+     "alarm": true,
+     "trivial": true,
+     "derivedRetractions": 1,
+     "derivedPending": 1
+    },
+    "bytes": {
+     "touch": 2953,
+     "read": 1373
+    },
+    "ms": {
+     "touch": 34.2,
+     "read": 10.2
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2308
+   },
+   {
+    "seed": 19,
+    "variant": "note",
+    "grade": "no",
+    "reason": "false alarm on hyphenation",
+    "flags": {
+     "template": "hyphenation",
+     "alarm": true,
+     "trivial": true,
+     "derivedRetractions": 1,
+     "derivedPending": 1
+    },
+    "bytes": {
+     "touch": 2988,
+     "read": 1375
+    },
+    "ms": {
+     "touch": 134.4,
+     "read": 3.3
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2266
+   },
+   {
+    "seed": 20,
+    "variant": "note",
+    "grade": "no",
+    "reason": "false alarm on typo_fix",
+    "flags": {
+     "template": "typo_fix",
+     "alarm": true,
+     "trivial": true,
+     "derivedRetractions": 1,
+     "derivedPending": 1
+    },
+    "bytes": {
+     "touch": 3041,
+     "read": 1377
+    },
+    "ms": {
+     "touch": 26.2,
+     "read": 6.6
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1147
+   }
+  ]
+ }
+}

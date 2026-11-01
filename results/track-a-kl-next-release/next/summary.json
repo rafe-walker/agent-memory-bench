@@ -1,0 +1,1385 @@
+{
+ "meta": {
+  "started_at": "2026-11-01T18:53:26.315Z",
+  "seeds": 20,
+  "ci": false
+ },
+ "cells": {
+  "S1|kronicle-lite-next-release": {
+   "scenario": "S1",
+   "title": "Stale runbook (fact changed after the agent read it)",
+   "arm": "kronicle-lite-next-release",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "old→new change surfaced",
+   "delivery": "push",
+   "bytes": {
+    "sessionStart": {
+     "mean": 1816,
+     "max": 1816,
+     "tokens_mean": 454
+    },
+    "read0": {
+     "mean": 1374,
+     "max": 1378,
+     "tokens_mean": 344
+    },
+    "touch": {
+     "mean": 3238,
+     "max": 3273,
+     "tokens_mean": 810
+    },
+    "read": {
+     "mean": 1373,
+     "max": 1379,
+     "tokens_mean": 344
+    },
+    "nextSession": {
+     "mean": 80,
+     "max": 80,
+     "tokens_mean": 20
+    },
+    "nextRead": {
+     "mean": 1373,
+     "max": 1379,
+     "tokens_mean": 344
+    },
+    "nextRead2": {
+     "mean": 4280,
+     "max": 4298,
+     "tokens_mean": 1070
+    }
+   },
+   "latency_ms": {
+    "sessionStart": {
+     "n": 20,
+     "p50": 333.7,
+     "p95": 527.6,
+     "max": 640.5
+    },
+    "read0": {
+     "n": 20,
+     "p50": 19.2,
+     "p95": 38.7,
+     "max": 44.5
+    },
+    "touch": {
+     "n": 20,
+     "p50": 32.8,
+     "p95": 213,
+     "max": 234.9
+    },
+    "read": {
+     "n": 20,
+     "p50": 4.7,
+     "p95": 16.1,
+     "max": 218
+    },
+    "nextSession": {
+     "n": 20,
+     "p50": 57.6,
+     "p95": 113.7,
+     "max": 289.8
+    },
+    "nextRead": {
+     "n": 20,
+     "p50": 15.9,
+     "p95": 38.6,
+     "max": 53.6
+    },
+    "nextRead2": {
+     "n": 20,
+     "p50": 6.5,
+     "p95": 21.2,
+     "max": 226.4
+    }
+   },
+   "flags": {
+    "learned": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "pushedNew": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "staleUnmarked": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "nextSessionPass": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "nextSessionStaleCopy": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 23558
+  },
+  "S5|kronicle-lite-next-release": {
+   "scenario": "S5",
+   "title": "Retired / deleted doc still served",
+   "arm": "kronicle-lite-next-release",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "retirement surfaced",
+   "delivery": "push",
+   "bytes": {
+    "touch": {
+     "mean": 3599,
+     "max": 3600,
+     "tokens_mean": 900
+    },
+    "read": {
+     "mean": 3889,
+     "max": 3900,
+     "tokens_mean": 973
+    }
+   },
+   "latency_ms": {
+    "touch": {
+     "n": 20,
+     "p50": 54.8,
+     "p95": 238.3,
+     "max": 494.3
+    },
+    "read": {
+     "n": 20,
+     "p50": 10.9,
+     "p95": 481,
+     "max": 483.7
+    }
+   },
+   "flags": {
+    "served": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "noticed": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 28677
+  },
+  "S7|kronicle-lite-next-release": {
+   "scenario": "S7",
+   "title": "Benign-edit noise (must NOT alarm; false-positive control)",
+   "arm": "kronicle-lite-next-release",
+   "n": 20,
+   "yes": 10,
+   "partial": 0,
+   "no": 10,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 10,
+    "n": 20,
+    "p": 0.5,
+    "wilson": {
+     "lo": 0.2992980081982123,
+     "hi": 0.7007019918017877
+    },
+    "exact": {
+     "lo": 0.2719578495603854,
+     "hi": 0.7280421504396144
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 10,
+    "n": 20,
+    "p": 0.5,
+    "wilson": {
+     "lo": 0.2992980081982123,
+     "hi": 0.7007019918017877
+    },
+    "exact": {
+     "lo": 0.2719578495603854,
+     "hi": 0.7280421504396144
+    }
+   },
+   "score": 0.5,
+   "verdict": "mixed",
+   "reason": "quiet on whitespace_trim",
+   "delivery": "push",
+   "bytes": {
+    "touch": {
+     "mean": 1609,
+     "max": 2416,
+     "tokens_mean": 403
+    },
+    "read": {
+     "mean": 1374,
+     "max": 1378,
+     "tokens_mean": 344
+    }
+   },
+   "latency_ms": {
+    "touch": {
+     "n": 20,
+     "p50": 42.2,
+     "p95": 313.7,
+     "max": 792.3
+    },
+    "read": {
+     "n": 20,
+     "p50": 6.3,
+     "p95": 19.9,
+     "max": 14195.3
+    }
+   },
+   "flags": {
+    "alarm": {
+     "k": 10,
+     "n": 20,
+     "p": 0.5,
+     "wilson": {
+      "lo": 0.2992980081982123,
+      "hi": 0.7007019918017877
+     },
+     "exact": {
+      "lo": 0.2719578495603854,
+      "hi": 0.7280421504396144
+     }
+    },
+    "trivial": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 62769
+  },
+  "S7note|kronicle-lite-next-release": {
+   "scenario": "S7note",
+   "title": "Benign-edit noise (must NOT alarm; false-positive control)",
+   "arm": "kronicle-lite-next-release",
+   "n": 20,
+   "yes": 10,
+   "partial": 0,
+   "no": 10,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 10,
+    "n": 20,
+    "p": 0.5,
+    "wilson": {
+     "lo": 0.2992980081982123,
+     "hi": 0.7007019918017877
+    },
+    "exact": {
+     "lo": 0.2719578495603854,
+     "hi": 0.7280421504396144
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 10,
+    "n": 20,
+    "p": 0.5,
+    "wilson": {
+     "lo": 0.2992980081982123,
+     "hi": 0.7007019918017877
+    },
+    "exact": {
+     "lo": 0.2719578495603854,
+     "hi": 0.7280421504396144
+    }
+   },
+   "score": 0.5,
+   "verdict": "mixed",
+   "reason": "quiet on whitespace_trim",
+   "delivery": "push",
+   "bytes": {
+    "touch": {
+     "mean": 2217,
+     "max": 3090,
+     "tokens_mean": 555
+    },
+    "read": {
+     "mean": 1373,
+     "max": 1378,
+     "tokens_mean": 344
+    }
+   },
+   "latency_ms": {
+    "touch": {
+     "n": 20,
+     "p50": 37.4,
+     "p95": 317,
+     "max": 654.8
+    },
+    "read": {
+     "n": 20,
+     "p50": 3.9,
+     "p95": 226.8,
+     "max": 434.6
+    }
+   },
+   "flags": {
+    "alarm": {
+     "k": 10,
+     "n": 20,
+     "p": 0.5,
+     "wilson": {
+      "lo": 0.2992980081982123,
+      "hi": 0.7007019918017877
+     },
+     "exact": {
+      "lo": 0.2719578495603854,
+      "hi": 0.7280421504396144
+     }
+    },
+    "trivial": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 56415
+  },
+  "S8|kronicle-lite-next-release": {
+   "scenario": "S8",
+   "title": "Moved section (identity must survive)",
+   "arm": "kronicle-lite-next-release",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "reorder: identity survived quietly",
+   "delivery": "push",
+   "bytes": {
+    "touch": {
+     "mean": 1042,
+     "max": 1175,
+     "tokens_mean": 261
+    },
+    "read": {
+     "mean": 1386,
+     "max": 1402,
+     "tokens_mean": 347
+    }
+   },
+   "latency_ms": {
+    "touch": {
+     "n": 20,
+     "p50": 18.5,
+     "p95": 528.6,
+     "max": 788.5
+    },
+    "read": {
+     "n": 20,
+     "p50": 3.5,
+     "p95": 9.7,
+     "max": 14.8
+    }
+   },
+   "flags": {
+    "retrievable": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "falseAlarm": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 23895
+  },
+  "S11|kronicle-lite-next-release": {
+   "scenario": "S11",
+   "title": "Cross-project leak (two repos sharing a store)",
+   "arm": "kronicle-lite-next-release",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "isolated",
+   "delivery": "push",
+   "bytes": {
+    "touch": {
+     "mean": 1488,
+     "max": 1493,
+     "tokens_mean": 372
+    },
+    "read": {
+     "mean": 1373,
+     "max": 1378,
+     "tokens_mean": 344
+    },
+    "nextSession": {
+     "mean": 80,
+     "max": 80,
+     "tokens_mean": 20
+    }
+   },
+   "latency_ms": {
+    "touch": {
+     "n": 20,
+     "p50": 28.5,
+     "p95": 253.4,
+     "max": 322.6
+    },
+    "read": {
+     "n": 20,
+     "p50": 6.1,
+     "p95": 39,
+     "max": 251.1
+    },
+    "nextSession": {
+     "n": 20,
+     "p50": 105,
+     "p95": 291,
+     "max": 313.4
+    }
+   },
+   "flags": {
+    "leak": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "labeled": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "falseRetraction": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 67796
+  },
+  "S16a|kronicle-lite-next-release": {
+   "scenario": "S16a",
+   "title": "Exec-time gate: runbook changes, a pull-only agent runs terraform apply",
+   "arm": "kronicle-lite-next-release",
+   "n": 20,
+   "yes": 19,
+   "partial": 0,
+   "no": 1,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 19,
+    "n": 20,
+    "p": 0.95,
+    "wilson": {
+     "lo": 0.763868806553258,
+     "hi": 0.9911185511992047
+    },
+    "exact": {
+     "lo": 0.7512672372278391,
+     "hi": 0.9987349105020522
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 19,
+    "n": 20,
+    "p": 0.95,
+    "wilson": {
+     "lo": 0.763868806553258,
+     "hi": 0.9911185511992047
+    },
+    "exact": {
+     "lo": 0.7512672372278391,
+     "hi": 0.9987349105020522
+    }
+   },
+   "score": 0.95,
+   "verdict": "mixed",
+   "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+   "delivery": "exec-gate",
+   "bytes": {
+    "sessionStart": {
+     "mean": 1816,
+     "max": 1816,
+     "tokens_mean": 454
+    },
+    "read0": {
+     "mean": 1374,
+     "max": 1378,
+     "tokens_mean": 344
+    },
+    "exec": {
+     "mean": 884,
+     "max": 923,
+     "tokens_mean": 221
+    },
+    "reread": {
+     "mean": 1374,
+     "max": 1379,
+     "tokens_mean": 344
+    },
+    "ack": {
+     "mean": 434,
+     "max": 441,
+     "tokens_mean": 109
+    },
+    "retry": {
+     "mean": 72,
+     "max": 77,
+     "tokens_mean": 18
+    }
+   },
+   "latency_ms": {
+    "sessionStart": {
+     "n": 20,
+     "p50": 488.5,
+     "p95": 1017.8,
+     "max": 1213.7
+    },
+    "read0": {
+     "n": 20,
+     "p50": 42,
+     "p95": 273.1,
+     "max": 495.5
+    },
+    "exec": {
+     "n": 20,
+     "p50": 316.8,
+     "p95": 754.3,
+     "max": 10035.1
+    },
+    "reread": {
+     "n": 19,
+     "p50": 504.2,
+     "p95": 1093.9,
+     "max": 1093.9
+    },
+    "ack": {
+     "n": 19,
+     "p50": 282.3,
+     "p95": 991.4,
+     "max": 991.4
+    },
+    "retry": {
+     "n": 19,
+     "p50": 226.2,
+     "p95": 425.2,
+     "max": 425.2
+    }
+   },
+   "flags": {
+    "learned": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "denied": {
+     "k": 19,
+     "n": 20,
+     "p": 0.95,
+     "wilson": {
+      "lo": 0.763868806553258,
+      "hi": 0.9911185511992047
+     },
+     "exact": {
+      "lo": 0.7512672372278391,
+      "hi": 0.9987349105020522
+     }
+    },
+    "diffShown": {
+     "k": 19,
+     "n": 20,
+     "p": 0.95,
+     "wilson": {
+      "lo": 0.763868806553258,
+      "hi": 0.9911185511992047
+     },
+     "exact": {
+      "lo": 0.7512672372278391,
+      "hi": 0.9987349105020522
+     }
+    },
+    "staleRan": {
+     "k": 1,
+     "n": 20,
+     "p": 0.05,
+     "wilson": {
+      "lo": 0.008881448800795402,
+      "hi": 0.23613119344674205
+     },
+     "exact": {
+      "lo": 0.001265089497947877,
+      "hi": 0.248732762772161
+     }
+    },
+    "retryRanNew": {
+     "k": 19,
+     "n": 20,
+     "p": 0.95,
+     "wilson": {
+      "lo": 0.763868806553258,
+      "hi": 0.9911185511992047
+     },
+     "exact": {
+      "lo": 0.7512672372278391,
+      "hi": 0.9987349105020522
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 58671
+  },
+  "S16b|kronicle-lite-next-release": {
+   "scenario": "S16b",
+   "title": "Exec-time gate: runbook changes, a pull-only agent runs terraform apply",
+   "arm": "kronicle-lite-next-release",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+   "delivery": "exec-gate",
+   "bytes": {
+    "sessionStart": {
+     "mean": 1816,
+     "max": 1816,
+     "tokens_mean": 454
+    },
+    "read0": {
+     "mean": 1374,
+     "max": 1378,
+     "tokens_mean": 344
+    },
+    "exec": {
+     "mean": 922,
+     "max": 940,
+     "tokens_mean": 231
+    },
+    "reread": {
+     "mean": 1374,
+     "max": 1379,
+     "tokens_mean": 344
+    },
+    "ack": {
+     "mean": 434,
+     "max": 447,
+     "tokens_mean": 109
+    },
+    "retry": {
+     "mean": 72,
+     "max": 77,
+     "tokens_mean": 18
+    }
+   },
+   "latency_ms": {
+    "sessionStart": {
+     "n": 20,
+     "p50": 502.2,
+     "p95": 744.2,
+     "max": 778.7
+    },
+    "read0": {
+     "n": 20,
+     "p50": 25.1,
+     "p95": 433.7,
+     "max": 515.1
+    },
+    "exec": {
+     "n": 20,
+     "p50": 661.6,
+     "p95": 1439.3,
+     "max": 1557.3
+    },
+    "reread": {
+     "n": 20,
+     "p50": 460.9,
+     "p95": 790.6,
+     "max": 1065.8
+    },
+    "ack": {
+     "n": 20,
+     "p50": 265.4,
+     "p95": 606.4,
+     "max": 954.4
+    },
+    "retry": {
+     "n": 20,
+     "p50": 232,
+     "p95": 430.9,
+     "max": 593.3
+    }
+   },
+   "flags": {
+    "learned": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "denied": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "diffShown": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "staleRan": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "retryRanNew": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 41033
+  },
+  "S16control|kronicle-lite-next-release": {
+   "scenario": "S16control",
+   "title": "Exec-time gate: runbook changes, a pull-only agent runs terraform apply",
+   "arm": "kronicle-lite-next-release",
+   "n": 20,
+   "yes": 0,
+   "partial": 0,
+   "no": 20,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 0,
+    "n": 20,
+    "p": 0,
+    "wilson": {
+     "lo": 0,
+     "hi": 0.16112515805281938
+    },
+    "exact": {
+     "lo": 0,
+     "hi": 0.16843347098314781
+    }
+   },
+   "score": 0,
+   "verdict": "no",
+   "reason": "terraform apply ran against the stale cluster (exit 0)",
+   "delivery": "exec-gate",
+   "bytes": {
+    "sessionStart": {
+     "mean": 1816,
+     "max": 1816,
+     "tokens_mean": 454
+    },
+    "read0": {
+     "mean": 1374,
+     "max": 1378,
+     "tokens_mean": 344
+    },
+    "exec": {
+     "mean": 72,
+     "max": 77,
+     "tokens_mean": 18
+    }
+   },
+   "latency_ms": {
+    "sessionStart": {
+     "n": 20,
+     "p50": 435.1,
+     "p95": 992.6,
+     "max": 5075.1
+    },
+    "read0": {
+     "n": 20,
+     "p50": 28.6,
+     "p95": 83,
+     "max": 128.4
+    },
+    "exec": {
+     "n": 20,
+     "p50": 5.4,
+     "p95": 14.6,
+     "max": 53.5
+    }
+   },
+   "flags": {
+    "learned": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "denied": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "diffShown": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "staleRan": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "retryRanNew": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 26304
+  },
+  "S16reread|kronicle-lite-next-release": {
+   "scenario": "S16reread",
+   "title": "Exec-time gate: runbook changes, a pull-only agent runs terraform apply",
+   "arm": "kronicle-lite-next-release",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "refused at exec with the old→new diff; ran with the new value after re-read (no ack)",
+   "delivery": "exec-gate",
+   "bytes": {
+    "sessionStart": {
+     "mean": 1816,
+     "max": 1816,
+     "tokens_mean": 454
+    },
+    "read0": {
+     "mean": 1374,
+     "max": 1378,
+     "tokens_mean": 344
+    },
+    "exec": {
+     "mean": 916,
+     "max": 934,
+     "tokens_mean": 229
+    },
+    "reread": {
+     "mean": 1374,
+     "max": 1379,
+     "tokens_mean": 344
+    },
+    "retry": {
+     "mean": 244,
+     "max": 255,
+     "tokens_mean": 61
+    }
+   },
+   "latency_ms": {
+    "sessionStart": {
+     "n": 20,
+     "p50": 363.6,
+     "p95": 683.4,
+     "max": 807.9
+    },
+    "read0": {
+     "n": 20,
+     "p50": 38.5,
+     "p95": 265.8,
+     "max": 351.1
+    },
+    "exec": {
+     "n": 20,
+     "p50": 251.2,
+     "p95": 662.8,
+     "max": 673.8
+    },
+    "reread": {
+     "n": 20,
+     "p50": 458.1,
+     "p95": 746.3,
+     "max": 797
+    },
+    "retry": {
+     "n": 20,
+     "p50": 259.2,
+     "p95": 380.3,
+     "max": 3014.6
+    }
+   },
+   "flags": {
+    "learned": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "denied": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "diffShown": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "staleRan": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "retryRanNew": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 37463
+  }
+ }
+}

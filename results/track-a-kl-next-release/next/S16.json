@@ -1,0 +1,2488 @@
+{
+ "scenario": "S16",
+ "title": "Exec-time gate: runbook changes, a pull-only agent runs terraform apply",
+ "records": {
+  "S16a|kronicle-lite-next-release": [
+   {
+    "seed": 1,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1371,
+     "exec": 903,
+     "reread": 1373,
+     "ack": 425,
+     "retry": 70
+    },
+    "ms": {
+     "sessionStart": 1017.8,
+     "read0": 495.5,
+     "exec": 345.5,
+     "reread": 78,
+     "ack": 548.2,
+     "retry": 378.9
+    },
+    "calls": 6,
+    "delivery": "exec-gate",
+    "ms_total": 5205
+   },
+   {
+    "seed": 2,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1376,
+     "exec": 922,
+     "reread": 1375,
+     "ack": 439,
+     "retry": 72
+    },
+    "ms": {
+     "sessionStart": 668.3,
+     "read0": 30.8,
+     "exec": 448.8,
+     "reread": 5.5,
+     "ack": 282.3,
+     "retry": 206.9
+    },
+    "calls": 6,
+    "delivery": "exec-gate",
+    "ms_total": 3497
+   },
+   {
+    "seed": 3,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1375,
+     "exec": 923,
+     "reread": 1377,
+     "ack": 441,
+     "retry": 74
+    },
+    "ms": {
+     "sessionStart": 88.2,
+     "read0": 21.1,
+     "exec": 404.2,
+     "reread": 817.2,
+     "ack": 412.3,
+     "retry": 210.4
+    },
+    "calls": 6,
+    "delivery": "exec-gate",
+    "ms_total": 4085
+   },
+   {
+    "seed": 4,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1372,
+     "exec": 908,
+     "reread": 1374,
+     "ack": 429,
+     "retry": 71
+    },
+    "ms": {
+     "sessionStart": 627.2,
+     "read0": 116.4,
+     "exec": 195,
+     "reread": 472,
+     "ack": 360.7,
+     "retry": 300.3
+    },
+    "calls": 6,
+    "delivery": "exec-gate",
+    "ms_total": 4375
+   },
+   {
+    "seed": 5,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1372,
+     "exec": 922,
+     "reread": 1378,
+     "ack": 441,
+     "retry": 77
+    },
+    "ms": {
+     "sessionStart": 663.2,
+     "read0": 104,
+     "exec": 424,
+     "reread": 1005,
+     "ack": 396.8,
+     "retry": 402.5
+    },
+    "calls": 6,
+    "delivery": "exec-gate",
+    "ms_total": 4993
+   },
+   {
+    "seed": 6,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1373,
+     "exec": 913,
+     "reread": 1372,
+     "ack": 431,
+     "retry": 71
+    },
+    "ms": {
+     "sessionStart": 806.1,
+     "read0": 128.3,
+     "exec": 197.9,
+     "reread": 712.1,
+     "ack": 526.3,
+     "retry": 397.1
+    },
+    "calls": 6,
+    "delivery": "exec-gate",
+    "ms_total": 5391
+   },
+   {
+    "seed": 7,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1377,
+     "exec": 917,
+     "reread": 1371,
+     "ack": 433,
+     "retry": 68
+    },
+    "ms": {
+     "sessionStart": 925.1,
+     "read0": 112.5,
+     "exec": 469.6,
+     "reread": 632,
+     "ack": 317,
+     "retry": 425.2
+    },
+    "calls": 6,
+    "delivery": "exec-gate",
+    "ms_total": 5003
+   },
+   {
+    "seed": 8,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1371,
+     "exec": 913,
+     "reread": 1378,
+     "ack": 435,
+     "retry": 75
+    },
+    "ms": {
+     "sessionStart": 744.5,
+     "read0": 273.1,
+     "exec": 341.8,
+     "reread": 583.5,
+     "ack": 256.9,
+     "retry": 226.2
+    },
+    "calls": 6,
+    "delivery": "exec-gate",
+    "ms_total": 4948
+   },
+   {
+    "seed": 9,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1375,
+     "exec": 919,
+     "reread": 1375,
+     "ack": 437,
+     "retry": 72
+    },
+    "ms": {
+     "sessionStart": 488.5,
+     "read0": 23.6,
+     "exec": 219.7,
+     "reread": 501.5,
+     "ack": 331,
+     "retry": 375
+    },
+    "calls": 6,
+    "delivery": "exec-gate",
+    "ms_total": 3940
+   },
+   {
+    "seed": 10,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1372,
+     "exec": 914,
+     "reread": 1374,
+     "ack": 433,
+     "retry": 73
+    },
+    "ms": {
+     "sessionStart": 709.8,
+     "read0": 28.7,
+     "exec": 278.7,
+     "reread": 572.5,
+     "ack": 257.2,
+     "retry": 213.2
+    },
+    "calls": 6,
+    "delivery": "exec-gate",
+    "ms_total": 3403
+   },
+   {
+    "seed": 11,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1374,
+     "exec": 914,
+     "reread": 1373,
+     "ack": 433,
+     "retry": 71
+    },
+    "ms": {
+     "sessionStart": 472.3,
+     "read0": 23,
+     "exec": 316.8,
+     "reread": 434.9,
+     "ack": 238.6,
+     "retry": 231.8
+    },
+    "calls": 6,
+    "delivery": "exec-gate",
+    "ms_total": 3181
+   },
+   {
+    "seed": 12,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1372,
+     "exec": 915,
+     "reread": 1370,
+     "ack": 431,
+     "retry": 71
+    },
+    "ms": {
+     "sessionStart": 514.5,
+     "read0": 79.8,
+     "exec": 316.2,
+     "reread": 3.6,
+     "ack": 280.5,
+     "retry": 178.8
+    },
+    "calls": 6,
+    "delivery": "exec-gate",
+    "ms_total": 2699
+   },
+   {
+    "seed": 13,
+    "variant": "a",
+    "grade": "no",
+    "reason": "terraform apply ran against the stale cluster (exit 0)",
+    "flags": {
+     "learned": true,
+     "denied": false,
+     "diffShown": false,
+     "staleRan": true,
+     "retryRanNew": false,
+     "exitCode": 0
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1378,
+     "exec": 286
+    },
+    "ms": {
+     "sessionStart": 105.5,
+     "read0": 42,
+     "exec": 10035.1
+    },
+    "calls": 3,
+    "delivery": "exec-gate",
+    "ms_total": 12737
+   },
+   {
+    "seed": 14,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1370,
+     "exec": 904,
+     "reread": 1372,
+     "ack": 425,
+     "retry": 71
+    },
+    "ms": {
+     "sessionStart": 146.2,
+     "read0": 130,
+     "exec": 754.3,
+     "reread": 1093.9,
+     "ack": 991.4,
+     "retry": 220.6
+    },
+    "calls": 6,
+    "delivery": "exec-gate",
+    "ms_total": 20329
+   },
+   {
+    "seed": 15,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1372,
+     "exec": 908,
+     "reread": 1371,
+     "ack": 427,
+     "retry": 70
+    },
+    "ms": {
+     "sessionStart": 1213.7,
+     "read0": 18.7,
+     "exec": 330.2,
+     "reread": 196.2,
+     "ack": 486,
+     "retry": 271.7
+    },
+    "calls": 6,
+    "delivery": "exec-gate",
+    "ms_total": 6498
+   },
+   {
+    "seed": 16,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1373,
+     "exec": 915,
+     "reread": 1373,
+     "ack": 433,
+     "retry": 72
+    },
+    "ms": {
+     "sessionStart": 149.5,
+     "read0": 45.8,
+     "exec": 236.5,
+     "reread": 3.8,
+     "ack": 202.7,
+     "retry": 200.3
+    },
+    "calls": 6,
+    "delivery": "exec-gate",
+    "ms_total": 2968
+   },
+   {
+    "seed": 17,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1376,
+     "exec": 922,
+     "reread": 1372,
+     "ack": 437,
+     "retry": 69
+    },
+    "ms": {
+     "sessionStart": 101.3,
+     "read0": 49.2,
+     "exec": 405.5,
+     "reread": 557.2,
+     "ack": 249.3,
+     "retry": 168.9
+    },
+    "calls": 6,
+    "delivery": "exec-gate",
+    "ms_total": 4015
+   },
+   {
+    "seed": 18,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1373,
+     "exec": 921,
+     "reread": 1379,
+     "ack": 441,
+     "retry": 76
+    },
+    "ms": {
+     "sessionStart": 421.4,
+     "read0": 17.2,
+     "exec": 215,
+     "reread": 563.5,
+     "ack": 243.1,
+     "retry": 227.9
+    },
+    "calls": 6,
+    "delivery": "exec-gate",
+    "ms_total": 3484
+   },
+   {
+    "seed": 19,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1374,
+     "exec": 920,
+     "reread": 1371,
+     "ack": 435,
+     "retry": 70
+    },
+    "ms": {
+     "sessionStart": 477.1,
+     "read0": 24.1,
+     "exec": 256.3,
+     "reread": 504.2,
+     "ack": 228.9,
+     "retry": 211.2
+    },
+    "calls": 6,
+    "delivery": "exec-gate",
+    "ms_total": 3139
+   },
+   {
+    "seed": 20,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1375,
+     "exec": 913,
+     "reread": 1372,
+     "ack": 431,
+     "retry": 67
+    },
+    "ms": {
+     "sessionStart": 442.2,
+     "read0": 19.1,
+     "exec": 210.2,
+     "reread": 4.2,
+     "ack": 210.5,
+     "retry": 215.7
+    },
+    "calls": 6,
+    "delivery": "exec-gate",
+    "ms_total": 2459
+   }
+  ],
+  "S16b|kronicle-lite-next-release": [
+   {
+    "seed": 1,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1371,
+     "exec": 909,
+     "reread": 1373,
+     "ack": 425,
+     "retry": 70
+    },
+    "ms": {
+     "sessionStart": 466.3,
+     "read0": 433.7,
+     "exec": 585.3,
+     "reread": 22.1,
+     "ack": 282.7,
+     "retry": 327.1
+    },
+    "calls": 6,
+    "delivery": "exec-gate",
+    "ms_total": 3844
+   },
+   {
+    "seed": 2,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1376,
+     "exec": 928,
+     "reread": 1375,
+     "ack": 439,
+     "retry": 72
+    },
+    "ms": {
+     "sessionStart": 473.4,
+     "read0": 21.1,
+     "exec": 440.6,
+     "reread": 6.2,
+     "ack": 225.2,
+     "retry": 200.9
+    },
+    "calls": 6,
+    "delivery": "exec-gate",
+    "ms_total": 2608
+   },
+   {
+    "seed": 3,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1375,
+     "exec": 929,
+     "reread": 1377,
+     "ack": 441,
+     "retry": 74
+    },
+    "ms": {
+     "sessionStart": 83.2,
+     "read0": 19.5,
+     "exec": 737.7,
+     "reread": 462.7,
+     "ack": 204.9,
+     "retry": 211.4
+    },
+    "calls": 6,
+    "delivery": "exec-gate",
+    "ms_total": 3063
+   },
+   {
+    "seed": 4,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1372,
+     "exec": 914,
+     "reread": 1374,
+     "ack": 429,
+     "retry": 71
+    },
+    "ms": {
+     "sessionStart": 420.4,
+     "read0": 45.5,
+     "exec": 438.1,
+     "reread": 491.3,
+     "ack": 231.3,
+     "retry": 275.4
+    },
+    "calls": 6,
+    "delivery": "exec-gate",
+    "ms_total": 3140
+   },
+   {
+    "seed": 5,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1372,
+     "exec": 928,
+     "reread": 1378,
+     "ack": 441,
+     "retry": 77
+    },
+    "ms": {
+     "sessionStart": 508.3,
+     "read0": 44.8,
+     "exec": 1439.3,
+     "reread": 430.9,
+     "ack": 190.2,
+     "retry": 190.6
+    },
+    "calls": 6,
+    "delivery": "exec-gate",
+    "ms_total": 3763
+   },
+   {
+    "seed": 6,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1373,
+     "exec": 919,
+     "reread": 1372,
+     "ack": 431,
+     "retry": 71
+    },
+    "ms": {
+     "sessionStart": 382.6,
+     "read0": 25.1,
+     "exec": 661.6,
+     "reread": 790.6,
+     "ack": 480.3,
+     "retry": 291.8
+    },
+    "calls": 6,
+    "delivery": "exec-gate",
+    "ms_total": 4531
+   },
+   {
+    "seed": 7,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1377,
+     "exec": 923,
+     "reread": 1371,
+     "ack": 433,
+     "retry": 68
+    },
+    "ms": {
+     "sessionStart": 778.7,
+     "read0": 55.4,
+     "exec": 711.7,
+     "reread": 505.7,
+     "ack": 317.6,
+     "retry": 263.9
+    },
+    "calls": 6,
+    "delivery": "exec-gate",
+    "ms_total": 4102
+   },
+   {
+    "seed": 8,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1371,
+     "exec": 919,
+     "reread": 1378,
+     "ack": 435,
+     "retry": 75
+    },
+    "ms": {
+     "sessionStart": 588.2,
+     "read0": 116.5,
+     "exec": 1557.3,
+     "reread": 1065.8,
+     "ack": 301,
+     "retry": 206.2
+    },
+    "calls": 6,
+    "delivery": "exec-gate",
+    "ms_total": 5064
+   },
+   {
+    "seed": 9,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1375,
+     "exec": 925,
+     "reread": 1375,
+     "ack": 437,
+     "retry": 72
+    },
+    "ms": {
+     "sessionStart": 509.4,
+     "read0": 12.9,
+     "exec": 376.6,
+     "reread": 16,
+     "ack": 954.4,
+     "retry": 430.9
+    },
+    "calls": 6,
+    "delivery": "exec-gate",
+    "ms_total": 4947
+   },
+   {
+    "seed": 10,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1372,
+     "exec": 920,
+     "reread": 1374,
+     "ack": 433,
+     "retry": 73
+    },
+    "ms": {
+     "sessionStart": 565.1,
+     "read0": 62.1,
+     "exec": 677.2,
+     "reread": 6.6,
+     "ack": 306.1,
+     "retry": 201.5
+    },
+    "calls": 6,
+    "delivery": "exec-gate",
+    "ms_total": 4137
+   },
+   {
+    "seed": 11,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1374,
+     "exec": 920,
+     "reread": 1373,
+     "ack": 433,
+     "retry": 71
+    },
+    "ms": {
+     "sessionStart": 744.2,
+     "read0": 515.1,
+     "exec": 632,
+     "reread": 163.2,
+     "ack": 606.4,
+     "retry": 593.3
+    },
+    "calls": 6,
+    "delivery": "exec-gate",
+    "ms_total": 4654
+   },
+   {
+    "seed": 12,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1372,
+     "exec": 921,
+     "reread": 1370,
+     "ack": 431,
+     "retry": 71
+    },
+    "ms": {
+     "sessionStart": 140.1,
+     "read0": 16.9,
+     "exec": 1076.9,
+     "reread": 3.6,
+     "ack": 215.4,
+     "retry": 232
+    },
+    "calls": 6,
+    "delivery": "exec-gate",
+    "ms_total": 3687
+   },
+   {
+    "seed": 13,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1378,
+     "exec": 940,
+     "reread": 1375,
+     "ack": 447,
+     "retry": 74
+    },
+    "ms": {
+     "sessionStart": 460.1,
+     "read0": 18.3,
+     "exec": 957.8,
+     "reread": 460.9,
+     "ack": 191.4,
+     "retry": 173.5
+    },
+    "calls": 6,
+    "delivery": "exec-gate",
+    "ms_total": 4805
+   },
+   {
+    "seed": 14,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1370,
+     "exec": 910,
+     "reread": 1372,
+     "ack": 425,
+     "retry": 71
+    },
+    "ms": {
+     "sessionStart": 366.9,
+     "read0": 19.1,
+     "exec": 978.4,
+     "reread": 628.2,
+     "ack": 296.7,
+     "retry": 243.4
+    },
+    "calls": 6,
+    "delivery": "exec-gate",
+    "ms_total": 4394
+   },
+   {
+    "seed": 15,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1372,
+     "exec": 914,
+     "reread": 1371,
+     "ack": 427,
+     "retry": 70
+    },
+    "ms": {
+     "sessionStart": 543.9,
+     "read0": 37.3,
+     "exec": 491.4,
+     "reread": 452.6,
+     "ack": 265.4,
+     "retry": 279.5
+    },
+    "calls": 6,
+    "delivery": "exec-gate",
+    "ms_total": 3693
+   },
+   {
+    "seed": 16,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1373,
+     "exec": 921,
+     "reread": 1373,
+     "ack": 433,
+     "retry": 72
+    },
+    "ms": {
+     "sessionStart": 550.9,
+     "read0": 162.9,
+     "exec": 686.3,
+     "reread": 598.7,
+     "ack": 296.2,
+     "retry": 221.2
+    },
+    "calls": 6,
+    "delivery": "exec-gate",
+    "ms_total": 3493
+   },
+   {
+    "seed": 17,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1376,
+     "exec": 928,
+     "reread": 1372,
+     "ack": 437,
+     "retry": 69
+    },
+    "ms": {
+     "sessionStart": 527,
+     "read0": 20.7,
+     "exec": 459.8,
+     "reread": 489.7,
+     "ack": 262.1,
+     "retry": 252.2
+    },
+    "calls": 6,
+    "delivery": "exec-gate",
+    "ms_total": 3353
+   },
+   {
+    "seed": 18,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1373,
+     "exec": 927,
+     "reread": 1379,
+     "ack": 441,
+     "retry": 76
+    },
+    "ms": {
+     "sessionStart": 516.7,
+     "read0": 52.9,
+     "exec": 670.3,
+     "reread": 537,
+     "ack": 207.4,
+     "retry": 194.5
+    },
+    "calls": 6,
+    "delivery": "exec-gate",
+    "ms_total": 3146
+   },
+   {
+    "seed": 19,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1374,
+     "exec": 926,
+     "reread": 1371,
+     "ack": 435,
+     "retry": 70
+    },
+    "ms": {
+     "sessionStart": 404.1,
+     "read0": 22.2,
+     "exec": 469.2,
+     "reread": 653.9,
+     "ack": 292.6,
+     "retry": 204.1
+    },
+    "calls": 6,
+    "delivery": "exec-gate",
+    "ms_total": 3276
+   },
+   {
+    "seed": 20,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read + ack",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1375,
+     "exec": 919,
+     "reread": 1372,
+     "ack": 431,
+     "retry": 67
+    },
+    "ms": {
+     "sessionStart": 502.2,
+     "read0": 24.4,
+     "exec": 414.1,
+     "reread": 6,
+     "ack": 229.7,
+     "retry": 262.7
+    },
+    "calls": 6,
+    "delivery": "exec-gate",
+    "ms_total": 2579
+   }
+  ],
+  "S16control|kronicle-lite-next-release": [
+   {
+    "seed": 1,
+    "variant": "control",
+    "grade": "no",
+    "reason": "terraform apply ran against the stale cluster (exit 0)",
+    "flags": {
+     "learned": true,
+     "denied": false,
+     "diffShown": false,
+     "staleRan": true,
+     "retryRanNew": false,
+     "exitCode": 0
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1371,
+     "exec": 68
+    },
+    "ms": {
+     "sessionStart": 609.6,
+     "read0": 56,
+     "exec": 6.7
+    },
+    "calls": 3,
+    "delivery": "exec-gate",
+    "ms_total": 1891
+   },
+   {
+    "seed": 2,
+    "variant": "control",
+    "grade": "no",
+    "reason": "terraform apply ran against the stale cluster (exit 0)",
+    "flags": {
+     "learned": true,
+     "denied": false,
+     "diffShown": false,
+     "staleRan": true,
+     "retryRanNew": false,
+     "exitCode": 0
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1376,
+     "exec": 73
+    },
+    "ms": {
+     "sessionStart": 435.1,
+     "read0": 128.4,
+     "exec": 12.1
+    },
+    "calls": 3,
+    "delivery": "exec-gate",
+    "ms_total": 2394
+   },
+   {
+    "seed": 3,
+    "variant": "control",
+    "grade": "no",
+    "reason": "terraform apply ran against the stale cluster (exit 0)",
+    "flags": {
+     "learned": true,
+     "denied": false,
+     "diffShown": false,
+     "staleRan": true,
+     "retryRanNew": false,
+     "exitCode": 0
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1375,
+     "exec": 72
+    },
+    "ms": {
+     "sessionStart": 538,
+     "read0": 14.3,
+     "exec": 4.9
+    },
+    "calls": 3,
+    "delivery": "exec-gate",
+    "ms_total": 1909
+   },
+   {
+    "seed": 4,
+    "variant": "control",
+    "grade": "no",
+    "reason": "terraform apply ran against the stale cluster (exit 0)",
+    "flags": {
+     "learned": true,
+     "denied": false,
+     "diffShown": false,
+     "staleRan": true,
+     "retryRanNew": false,
+     "exitCode": 0
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1372,
+     "exec": 69
+    },
+    "ms": {
+     "sessionStart": 209.2,
+     "read0": 35.8,
+     "exec": 3.9
+    },
+    "calls": 3,
+    "delivery": "exec-gate",
+    "ms_total": 1767
+   },
+   {
+    "seed": 5,
+    "variant": "control",
+    "grade": "no",
+    "reason": "terraform apply ran against the stale cluster (exit 0)",
+    "flags": {
+     "learned": true,
+     "denied": false,
+     "diffShown": false,
+     "staleRan": true,
+     "retryRanNew": false,
+     "exitCode": 0
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1372,
+     "exec": 71
+    },
+    "ms": {
+     "sessionStart": 553.6,
+     "read0": 27.5,
+     "exec": 5.8
+    },
+    "calls": 3,
+    "delivery": "exec-gate",
+    "ms_total": 1737
+   },
+   {
+    "seed": 6,
+    "variant": "control",
+    "grade": "no",
+    "reason": "terraform apply ran against the stale cluster (exit 0)",
+    "flags": {
+     "learned": true,
+     "denied": false,
+     "diffShown": false,
+     "staleRan": true,
+     "retryRanNew": false,
+     "exitCode": 0
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1373,
+     "exec": 72
+    },
+    "ms": {
+     "sessionStart": 341.6,
+     "read0": 39.9,
+     "exec": 7.1
+    },
+    "calls": 3,
+    "delivery": "exec-gate",
+    "ms_total": 2092
+   },
+   {
+    "seed": 7,
+    "variant": "control",
+    "grade": "no",
+    "reason": "terraform apply ran against the stale cluster (exit 0)",
+    "flags": {
+     "learned": true,
+     "denied": false,
+     "diffShown": false,
+     "staleRan": true,
+     "retryRanNew": false,
+     "exitCode": 0
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1377,
+     "exec": 74
+    },
+    "ms": {
+     "sessionStart": 546.8,
+     "read0": 32.1,
+     "exec": 3.8
+    },
+    "calls": 3,
+    "delivery": "exec-gate",
+    "ms_total": 6994
+   },
+   {
+    "seed": 8,
+    "variant": "control",
+    "grade": "no",
+    "reason": "terraform apply ran against the stale cluster (exit 0)",
+    "flags": {
+     "learned": true,
+     "denied": false,
+     "diffShown": false,
+     "staleRan": true,
+     "retryRanNew": false,
+     "exitCode": 0
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1371,
+     "exec": 68
+    },
+    "ms": {
+     "sessionStart": 5075.1,
+     "read0": 83,
+     "exec": 53.5
+    },
+    "calls": 3,
+    "delivery": "exec-gate",
+    "ms_total": 7464
+   },
+   {
+    "seed": 9,
+    "variant": "control",
+    "grade": "no",
+    "reason": "terraform apply ran against the stale cluster (exit 0)",
+    "flags": {
+     "learned": true,
+     "denied": false,
+     "diffShown": false,
+     "staleRan": true,
+     "retryRanNew": false,
+     "exitCode": 0
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1375,
+     "exec": 72
+    },
+    "ms": {
+     "sessionStart": 992.6,
+     "read0": 35.5,
+     "exec": 4.9
+    },
+    "calls": 3,
+    "delivery": "exec-gate",
+    "ms_total": 3705
+   },
+   {
+    "seed": 10,
+    "variant": "control",
+    "grade": "no",
+    "reason": "terraform apply ran against the stale cluster (exit 0)",
+    "flags": {
+     "learned": true,
+     "denied": false,
+     "diffShown": false,
+     "staleRan": true,
+     "retryRanNew": false,
+     "exitCode": 0
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1372,
+     "exec": 71
+    },
+    "ms": {
+     "sessionStart": 344.2,
+     "read0": 28.6,
+     "exec": 14.6
+    },
+    "calls": 3,
+    "delivery": "exec-gate",
+    "ms_total": 2782
+   },
+   {
+    "seed": 11,
+    "variant": "control",
+    "grade": "no",
+    "reason": "terraform apply ran against the stale cluster (exit 0)",
+    "flags": {
+     "learned": true,
+     "denied": false,
+     "diffShown": false,
+     "staleRan": true,
+     "retryRanNew": false,
+     "exitCode": 0
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1374,
+     "exec": 71
+    },
+    "ms": {
+     "sessionStart": 487.8,
+     "read0": 15.7,
+     "exec": 4
+    },
+    "calls": 3,
+    "delivery": "exec-gate",
+    "ms_total": 1944
+   },
+   {
+    "seed": 12,
+    "variant": "control",
+    "grade": "no",
+    "reason": "terraform apply ran against the stale cluster (exit 0)",
+    "flags": {
+     "learned": true,
+     "denied": false,
+     "diffShown": false,
+     "staleRan": true,
+     "retryRanNew": false,
+     "exitCode": 0
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1372,
+     "exec": 74
+    },
+    "ms": {
+     "sessionStart": 199.6,
+     "read0": 22.7,
+     "exec": 6.6
+    },
+    "calls": 3,
+    "delivery": "exec-gate",
+    "ms_total": 1788
+   },
+   {
+    "seed": 13,
+    "variant": "control",
+    "grade": "no",
+    "reason": "terraform apply ran against the stale cluster (exit 0)",
+    "flags": {
+     "learned": true,
+     "denied": false,
+     "diffShown": false,
+     "staleRan": true,
+     "retryRanNew": false,
+     "exitCode": 0
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1378,
+     "exec": 77
+    },
+    "ms": {
+     "sessionStart": 530.8,
+     "read0": 20.5,
+     "exec": 5.4
+    },
+    "calls": 3,
+    "delivery": "exec-gate",
+    "ms_total": 1931
+   },
+   {
+    "seed": 14,
+    "variant": "control",
+    "grade": "no",
+    "reason": "terraform apply ran against the stale cluster (exit 0)",
+    "flags": {
+     "learned": true,
+     "denied": false,
+     "diffShown": false,
+     "staleRan": true,
+     "retryRanNew": false,
+     "exitCode": 0
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1370,
+     "exec": 69
+    },
+    "ms": {
+     "sessionStart": 311.1,
+     "read0": 33.1,
+     "exec": 6.2
+    },
+    "calls": 3,
+    "delivery": "exec-gate",
+    "ms_total": 2165
+   },
+   {
+    "seed": 15,
+    "variant": "control",
+    "grade": "no",
+    "reason": "terraform apply ran against the stale cluster (exit 0)",
+    "flags": {
+     "learned": true,
+     "denied": false,
+     "diffShown": false,
+     "staleRan": true,
+     "retryRanNew": false,
+     "exitCode": 0
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1372,
+     "exec": 71
+    },
+    "ms": {
+     "sessionStart": 152.8,
+     "read0": 22.1,
+     "exec": 13.3
+    },
+    "calls": 3,
+    "delivery": "exec-gate",
+    "ms_total": 1720
+   },
+   {
+    "seed": 16,
+    "variant": "control",
+    "grade": "no",
+    "reason": "terraform apply ran against the stale cluster (exit 0)",
+    "flags": {
+     "learned": true,
+     "denied": false,
+     "diffShown": false,
+     "staleRan": true,
+     "retryRanNew": false,
+     "exitCode": 0
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1373,
+     "exec": 72
+    },
+    "ms": {
+     "sessionStart": 465.7,
+     "read0": 31.1,
+     "exec": 4.4
+    },
+    "calls": 3,
+    "delivery": "exec-gate",
+    "ms_total": 1910
+   },
+   {
+    "seed": 17,
+    "variant": "control",
+    "grade": "no",
+    "reason": "terraform apply ran against the stale cluster (exit 0)",
+    "flags": {
+     "learned": true,
+     "denied": false,
+     "diffShown": false,
+     "staleRan": true,
+     "retryRanNew": false,
+     "exitCode": 0
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1376,
+     "exec": 75
+    },
+    "ms": {
+     "sessionStart": 221,
+     "read0": 21.2,
+     "exec": 3.4
+    },
+    "calls": 3,
+    "delivery": "exec-gate",
+    "ms_total": 1449
+   },
+   {
+    "seed": 18,
+    "variant": "control",
+    "grade": "no",
+    "reason": "terraform apply ran against the stale cluster (exit 0)",
+    "flags": {
+     "learned": true,
+     "denied": false,
+     "diffShown": false,
+     "staleRan": true,
+     "retryRanNew": false,
+     "exitCode": 0
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1373,
+     "exec": 70
+    },
+    "ms": {
+     "sessionStart": 609.9,
+     "read0": 26.9,
+     "exec": 6.1
+    },
+    "calls": 3,
+    "delivery": "exec-gate",
+    "ms_total": 1922
+   },
+   {
+    "seed": 19,
+    "variant": "control",
+    "grade": "no",
+    "reason": "terraform apply ran against the stale cluster (exit 0)",
+    "flags": {
+     "learned": true,
+     "denied": false,
+     "diffShown": false,
+     "staleRan": true,
+     "retryRanNew": false,
+     "exitCode": 0
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1374,
+     "exec": 75
+    },
+    "ms": {
+     "sessionStart": 399.5,
+     "read0": 38.4,
+     "exec": 3.8
+    },
+    "calls": 3,
+    "delivery": "exec-gate",
+    "ms_total": 1938
+   },
+   {
+    "seed": 20,
+    "variant": "control",
+    "grade": "no",
+    "reason": "terraform apply ran against the stale cluster (exit 0)",
+    "flags": {
+     "learned": true,
+     "denied": false,
+     "diffShown": false,
+     "staleRan": true,
+     "retryRanNew": false,
+     "exitCode": 0
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1375,
+     "exec": 72
+    },
+    "ms": {
+     "sessionStart": 45.8,
+     "read0": 15.4,
+     "exec": 4.2
+    },
+    "calls": 3,
+    "delivery": "exec-gate",
+    "ms_total": 965
+   }
+  ],
+  "S16reread|kronicle-lite-next-release": [
+   {
+    "seed": 1,
+    "variant": "reread",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read (no ack)",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1371,
+     "exec": 903,
+     "reread": 1373,
+     "retry": 241
+    },
+    "ms": {
+     "sessionStart": 590.1,
+     "read0": 17.7,
+     "exec": 196.8,
+     "reread": 6.1,
+     "retry": 215.4
+    },
+    "calls": 5,
+    "delivery": "exec-gate",
+    "ms_total": 2338
+   },
+   {
+    "seed": 2,
+    "variant": "reread",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read (no ack)",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1376,
+     "exec": 922,
+     "reread": 1375,
+     "retry": 245
+    },
+    "ms": {
+     "sessionStart": 433.4,
+     "read0": 223.8,
+     "exec": 240.7,
+     "reread": 66.6,
+     "retry": 338.5
+    },
+    "calls": 5,
+    "delivery": "exec-gate",
+    "ms_total": 3187
+   },
+   {
+    "seed": 3,
+    "variant": "reread",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read (no ack)",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1375,
+     "exec": 923,
+     "reread": 1377,
+     "retry": 249
+    },
+    "ms": {
+     "sessionStart": 571.3,
+     "read0": 20.7,
+     "exec": 212.8,
+     "reread": 4.6,
+     "retry": 191.4
+    },
+    "calls": 5,
+    "delivery": "exec-gate",
+    "ms_total": 2592
+   },
+   {
+    "seed": 4,
+    "variant": "reread",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read (no ack)",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1372,
+     "exec": 908,
+     "reread": 1374,
+     "retry": 243
+    },
+    "ms": {
+     "sessionStart": 545.1,
+     "read0": 196,
+     "exec": 221.4,
+     "reread": 18.5,
+     "retry": 302.1
+    },
+    "calls": 5,
+    "delivery": "exec-gate",
+    "ms_total": 2874
+   },
+   {
+    "seed": 5,
+    "variant": "reread",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read (no ack)",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1372,
+     "exec": 922,
+     "reread": 1378,
+     "retry": 255
+    },
+    "ms": {
+     "sessionStart": 455.5,
+     "read0": 15.6,
+     "exec": 340.7,
+     "reread": 9.3,
+     "retry": 259.2
+    },
+    "calls": 5,
+    "delivery": "exec-gate",
+    "ms_total": 2638
+   },
+   {
+    "seed": 6,
+    "variant": "reread",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read (no ack)",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1373,
+     "exec": 913,
+     "reread": 1372,
+     "retry": 243
+    },
+    "ms": {
+     "sessionStart": 683.4,
+     "read0": 265.8,
+     "exec": 424.1,
+     "reread": 24,
+     "retry": 319.2
+    },
+    "calls": 5,
+    "delivery": "exec-gate",
+    "ms_total": 3419
+   },
+   {
+    "seed": 7,
+    "variant": "reread",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read (no ack)",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1377,
+     "exec": 917,
+     "reread": 1371,
+     "retry": 237
+    },
+    "ms": {
+     "sessionStart": 807.9,
+     "read0": 15.9,
+     "exec": 261,
+     "reread": 15.3,
+     "retry": 330.9
+    },
+    "calls": 5,
+    "delivery": "exec-gate",
+    "ms_total": 2725
+   },
+   {
+    "seed": 8,
+    "variant": "reread",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read (no ack)",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1371,
+     "exec": 913,
+     "reread": 1378,
+     "retry": 251
+    },
+    "ms": {
+     "sessionStart": 503.5,
+     "read0": 351.1,
+     "exec": 662.8,
+     "reread": 86.8,
+     "retry": 3014.6
+    },
+    "calls": 5,
+    "delivery": "exec-gate",
+    "ms_total": 6452
+   },
+   {
+    "seed": 9,
+    "variant": "reread",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read (no ack)",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1375,
+     "exec": 919,
+     "reread": 1375,
+     "retry": 245
+    },
+    "ms": {
+     "sessionStart": 199.7,
+     "read0": 38.5,
+     "exec": 283.8,
+     "reread": 746.3,
+     "retry": 266.2
+    },
+    "calls": 5,
+    "delivery": "exec-gate",
+    "ms_total": 6355
+   },
+   {
+    "seed": 10,
+    "variant": "reread",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read (no ack)",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1372,
+     "exec": 914,
+     "reread": 1374,
+     "retry": 247
+    },
+    "ms": {
+     "sessionStart": 267,
+     "read0": 73.5,
+     "exec": 375.2,
+     "reread": 576.1,
+     "retry": 377.8
+    },
+    "calls": 5,
+    "delivery": "exec-gate",
+    "ms_total": 4122
+   },
+   {
+    "seed": 11,
+    "variant": "reread",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read (no ack)",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1374,
+     "exec": 914,
+     "reread": 1373,
+     "retry": 243
+    },
+    "ms": {
+     "sessionStart": 378.6,
+     "read0": 162.2,
+     "exec": 512.8,
+     "reread": 691.5,
+     "retry": 237.2
+    },
+    "calls": 5,
+    "delivery": "exec-gate",
+    "ms_total": 4061
+   },
+   {
+    "seed": 12,
+    "variant": "reread",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read (no ack)",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1372,
+     "exec": 915,
+     "reread": 1370,
+     "retry": 243
+    },
+    "ms": {
+     "sessionStart": 241.3,
+     "read0": 29.2,
+     "exec": 343.1,
+     "reread": 797,
+     "retry": 360.4
+    },
+    "calls": 5,
+    "delivery": "exec-gate",
+    "ms_total": 4245
+   },
+   {
+    "seed": 13,
+    "variant": "reread",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read (no ack)",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1378,
+     "exec": 934,
+     "reread": 1375,
+     "retry": 249
+    },
+    "ms": {
+     "sessionStart": 363.6,
+     "read0": 68.9,
+     "exec": 673.8,
+     "reread": 644.2,
+     "retry": 291.9
+    },
+    "calls": 5,
+    "delivery": "exec-gate",
+    "ms_total": 4253
+   },
+   {
+    "seed": 14,
+    "variant": "reread",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read (no ack)",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1370,
+     "exec": 904,
+     "reread": 1372,
+     "retry": 243
+    },
+    "ms": {
+     "sessionStart": 299.5,
+     "read0": 109.9,
+     "exec": 523.7,
+     "reread": 739.5,
+     "retry": 380.3
+    },
+    "calls": 5,
+    "delivery": "exec-gate",
+    "ms_total": 4541
+   },
+   {
+    "seed": 15,
+    "variant": "reread",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read (no ack)",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1372,
+     "exec": 908,
+     "reread": 1371,
+     "retry": 241
+    },
+    "ms": {
+     "sessionStart": 400.1,
+     "read0": 152.4,
+     "exec": 232.3,
+     "reread": 483.5,
+     "retry": 197.1
+    },
+    "calls": 5,
+    "delivery": "exec-gate",
+    "ms_total": 3877
+   },
+   {
+    "seed": 16,
+    "variant": "reread",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read (no ack)",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1373,
+     "exec": 915,
+     "reread": 1373,
+     "retry": 245
+    },
+    "ms": {
+     "sessionStart": 199.9,
+     "read0": 31.2,
+     "exec": 205.7,
+     "reread": 459.1,
+     "retry": 225.2
+    },
+    "calls": 5,
+    "delivery": "exec-gate",
+    "ms_total": 2574
+   },
+   {
+    "seed": 17,
+    "variant": "reread",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read (no ack)",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1376,
+     "exec": 922,
+     "reread": 1372,
+     "retry": 239
+    },
+    "ms": {
+     "sessionStart": 226.6,
+     "read0": 21.6,
+     "exec": 223,
+     "reread": 458.1,
+     "retry": 184.4
+    },
+    "calls": 5,
+    "delivery": "exec-gate",
+    "ms_total": 2269
+   },
+   {
+    "seed": 18,
+    "variant": "reread",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read (no ack)",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1373,
+     "exec": 921,
+     "reread": 1379,
+     "retry": 253
+    },
+    "ms": {
+     "sessionStart": 185.6,
+     "read0": 28.5,
+     "exec": 202.8,
+     "reread": 507.9,
+     "retry": 224.2
+    },
+    "calls": 5,
+    "delivery": "exec-gate",
+    "ms_total": 2362
+   },
+   {
+    "seed": 19,
+    "variant": "reread",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read (no ack)",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1374,
+     "exec": 920,
+     "reread": 1371,
+     "retry": 241
+    },
+    "ms": {
+     "sessionStart": 225.6,
+     "read0": 27.7,
+     "exec": 251.2,
+     "reread": 541.9,
+     "retry": 252.3
+    },
+    "calls": 5,
+    "delivery": "exec-gate",
+    "ms_total": 2637
+   },
+   {
+    "seed": 20,
+    "variant": "reread",
+    "grade": "yes",
+    "reason": "refused at exec with the old→new diff; ran with the new value after re-read (no ack)",
+    "flags": {
+     "learned": true,
+     "denied": true,
+     "diffShown": true,
+     "staleRan": false,
+     "retryRanNew": true,
+     "exitCode": 77
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1375,
+     "exec": 913,
+     "reread": 1372,
+     "retry": 235
+    },
+    "ms": {
+     "sessionStart": 255.7,
+     "read0": 53,
+     "exec": 232.1,
+     "reread": 7.3,
+     "retry": 208.5
+    },
+    "calls": 5,
+    "delivery": "exec-gate",
+    "ms_total": 2081
+   }
+  ]
+ }
+}
