@@ -53,7 +53,7 @@ if [[ $what == corrupt || $what == all ]]; then
     cp "$W/orig.db" "$D/kronicle-lite.db"; rm -f "$D"/kronicle-lite.db-wal "$D"/kronicle-lite.db-shm
     printf '\xff\xfe\xfd\xfc\xfb\xfa\xf9\xf8' | dd of="$D/kronicle-lite.db" bs=1 seek="$off" conv=notrunc status=none
     timeout 20 node "$KLBIN" orient --data-dir "$D" --cwd "$W" --actor a --json >"$W/o" 2>"$W/e"; oe=$?
-    echo "[corrupt@$off] orient exit=$oe integrity.ok=$(jq -r '.integrity.ok // "n/a"' "$W/o" 2>/dev/null) err=$(head -c 120 "$W/e"|tr '\n' ' ')"
+    echo "[corrupt@$off] orient exit=$oe integrity.ok=$(jq -r '.integrity.ok | tostring' "$W/o" 2>/dev/null) err=$(head -c 120 "$W/e"|tr '\n' ' ')"
     check "$D" "corrupt@$off"
   done
   cp "$W/orig.db" "$D/kronicle-lite.db"; truncate -s $((sz/2)) "$D/kronicle-lite.db"; rm -f "$D"/kronicle-lite.db-wal "$D"/kronicle-lite.db-shm

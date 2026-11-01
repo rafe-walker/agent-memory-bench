@@ -60,5 +60,16 @@ if run samesec; then setup; warm
   # holder (sess-A) edits the file in the same second our call starts; our call does nothing
   (cd "$P" && echo holder >> src/auth/login.ts); out=$(call "true")
   if [[ "$out" == *"bash guard"* ]]; then echo "FAIL same-second: false alarm for a no-op Bash call (holder's own edit in the same second) bash=${BASH_VERSION}"; fail=$((fail+1)); else echo "ok   same-second: no false alarm (bash ${BASH_VERSION})"; pass=$((pass+1)); fi; done_; fi
+if run space; then CLAIM="src/my dir" setup; mkdir -p "$P/src/my dir"; echo a > "$P/src/my dir/f.ts"; warm
+  out=$(call "echo z >> 'src/my dir/f.ts'"); expect_warn "claimed dir with a space" "$out" "f.ts"; done_; fi
+if run dash; then CLAIM="-rf" setup; mkdir -p "$P/-rf"; echo a > "$P/-rf/f.ts"; warm
+  out=$(call "echo z >> ./-rf/f.ts"); expect_warn "claimed dir named -rf" "$out" "f.ts"; done_; fi
+if run newline; then setup; warm
+  out=$(call "printf x > \"src/auth/a\$(printf '\\nb').ts\""); expect_warn "new file with a newline in its name" "$out" "src/auth"; done_; fi
+if run hardlink; then setup; ln "$P/src/auth/login.ts" "$P/alias.ts"; warm
+  out=$(call "echo z >> alias.ts"); expect_warn "edit through a hard link outside the claim" "$out" login.ts; done_; fi
+if run bigrepo; then CLAIM=. setup; mkdir -p "$P/big"; for d in $(seq 1 50); do mkdir -p "$P/big/d$d"; for f in $(seq 1 1000); do : > "$P/big/d$d/f$f"; done; done; warm
+  t0=$(date +%s%N); out=$(call "echo z >> big/d50/f1000"); t=$(( ($(date +%s%N)-t0)/1000000 ))
+  if [[ "$out" == *"bash guard"* ]] && (( t < 5000 )); then echo "ok   claim '.' over 50k files: warned in ${t} ms"; pass=$((pass+1)); else echo "FAIL claim '.' over 50k files: ${t} ms, warned=$([[ $out == *guard* ]] && echo y || echo n)"; fail=$((fail+1)); fi; done_; fi
 echo; echo "bash-guard: pass=$pass fail=$fail"
 exit $(( fail > 0 ))

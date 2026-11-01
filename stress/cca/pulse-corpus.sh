@@ -63,6 +63,46 @@ Q	ls deployments/	no word boundary
 Q	git log --grep=release	read-only git
 Q	# git push\nls	comment
 Q	npm run predeploy-check	predeploy
+W	git -C "$dir" push	quoted -C arg
+W	git -c "user.name=a b" push	quoted -c arg with space
+W	git --git-dir=.git --work-tree=. push	long options with =
+W	ls;git push	no space after ;
+W	echo $(git push)	command substitution
+W	echo `git push`	backticks
+W	\\git push	backslash-escaped command
+W	/usr/bin/git push	absolute path
+W	g''it push	empty quotes inside word
+W	"git" "push"	both quoted
+W	$'git' push	ANSI-C quoted
+W	git \\\npush	line continuation
+W	terraform -chdir=infra \\\n  apply -auto-approve	multi-line terraform
+W	kubectl -n prod \\\n  apply -f k8s/	multi-line kubectl
+W	sudo -u deploy git push	sudo -u
+W	nohup bash -c 'git push' &	nohup + bash -c
+W	bash -lc "git push"	bash -lc
+W	find . -maxdepth 0 -exec git push \\;	find -exec
+W	parallel git push ::: origin backup	gnu parallel
+W	git subtree push --prefix=dist origin gh-pages	git subtree push
+W	kubectl --kubeconfig=x -n y apply -k .	two options before verb
+W	if true; then git push; fi	if/then
+W	for r in a b; do git push $r; done	for loop
+W	while read r; do git push "$r"; done < remotes	while loop
+W	case x in x) git push;; esac	case
+W	f(){ git push; }; f	function def + call
+W	git push 2>&1 | tee push.log	pipe to tee
+W	>push.log git push	leading redirect
+W	2>/dev/null git push	leading fd redirect
+W	! git push	negation
+W	time -p git push	time -p
+W	command -p git push	command -p
+W	perl -e 'system("git push")'	perl -e
+W	ruby -e 'system("git push")'	ruby -e
+W	python3 - <<'PY'\nimport subprocess; subprocess.run(["git","push"])\nPY	python here-doc
+W	exec 3>&1; git push	exec redirect then push
+W	coproc git push	coproc
+Q	git commit -m "git push later"	quoted text 2
+Q	echo "kubectl apply -f x"	echo quoted
+Q	grep -n 'terraform apply' README.md	grep quoted
 CASES
 echo; echo "missed world-changing: $miss/$nW   false alarms: $fa/$nQ"
 exit $(( miss > 0 ))
