@@ -1,6 +1,6 @@
 {
  "meta": {
-  "started_at": "2026-11-01T15:54:38.053Z",
+  "started_at": "2026-11-01T16:20:26.974Z",
   "seeds": 20,
   "ci": false
  },
@@ -85,45 +85,45 @@
    "latency_ms": {
     "sessionStart": {
      "n": 20,
-     "p50": 306.1,
-     "p95": 379.2,
-     "max": 464.1
+     "p50": 403.6,
+     "p95": 536.8,
+     "max": 552.4
     },
     "read0": {
      "n": 20,
-     "p50": 18.7,
-     "p95": 38.7,
-     "max": 45.9
+     "p50": 40.2,
+     "p95": 91.9,
+     "max": 208.6
     },
     "touch": {
      "n": 20,
-     "p50": 27.8,
-     "p95": 222.1,
-     "max": 243.6
+     "p50": 40.1,
+     "p95": 246.9,
+     "max": 299.1
     },
     "read": {
      "n": 20,
-     "p50": 5.8,
-     "p95": 190.2,
-     "max": 202
+     "p50": 7.4,
+     "p95": 76.5,
+     "max": 311.5
     },
     "nextSession": {
      "n": 20,
-     "p50": 57.5,
-     "p95": 95.8,
-     "max": 128.5
+     "p50": 112.9,
+     "p95": 285.2,
+     "max": 378.5
     },
     "nextRead": {
      "n": 20,
-     "p50": 15.1,
-     "p95": 35.5,
-     "max": 96.1
+     "p50": 31.6,
+     "p95": 67.9,
+     "max": 102.6
     },
     "nextRead2": {
      "n": 20,
-     "p50": 5,
-     "p95": 16.8,
-     "max": 24
+     "p50": 11.8,
+     "p95": 35.1,
+     "max": 112.3
     }
    },
    "flags": {
@@ -194,7 +194,7 @@
     }
    },
    "error_samples": [],
-   "wall_ms": 21687
+   "wall_ms": 33887
   },
   "S5|kronicle-lite-next": {
    "scenario": "S5",
@@ -251,15 +251,15 @@
    "latency_ms": {
     "touch": {
      "n": 20,
-     "p50": 32.9,
-     "p95": 201.7,
-     "max": 256
+     "p50": 37.2,
+     "p95": 350.1,
+     "max": 429.9
     },
     "read": {
      "n": 20,
-     "p50": 15.2,
-     "p95": 217.1,
-     "max": 323.6
+     "p50": 15.5,
+     "p95": 274.3,
+     "max": 325.1
     }
    },
    "flags": {
@@ -291,11 +291,108 @@
     }
    },
    "error_samples": [],
-   "wall_ms": 18763
+   "wall_ms": 24501
   },
   "S7|kronicle-lite-next": {
    "scenario": "S7",
    "title": "Benign-edit noise (must NOT alarm; false-positive control)",
+   "arm": "kronicle-lite-next",
+   "n": 20,
+   "yes": 10,
+   "partial": 0,
+   "no": 10,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 10,
+    "n": 20,
+    "p": 0.5,
+    "wilson": {
+     "lo": 0.2992980081982123,
+     "hi": 0.7007019918017877
+    },
+    "exact": {
+     "lo": 0.2719578495603854,
+     "hi": 0.7280421504396144
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 10,
+    "n": 20,
+    "p": 0.5,
+    "wilson": {
+     "lo": 0.2992980081982123,
+     "hi": 0.7007019918017877
+    },
+    "exact": {
+     "lo": 0.2719578495603854,
+     "hi": 0.7280421504396144
+    }
+   },
+   "score": 0.5,
+   "verdict": "mixed",
+   "reason": "quiet on whitespace_trim",
+   "delivery": "push",
+   "bytes": {
+    "touch": {
+     "mean": 1440,
+     "max": 2079,
+     "tokens_mean": 360
+    },
+    "read": {
+     "mean": 1374,
+     "max": 1378,
+     "tokens_mean": 344
+    }
+   },
+   "latency_ms": {
+    "touch": {
+     "n": 20,
+     "p50": 30.1,
+     "p95": 502.7,
+     "max": 649.1
+    },
+    "read": {
+     "n": 20,
+     "p50": 7.7,
+     "p95": 288,
+     "max": 299.6
+    }
+   },
+   "flags": {
+    "alarm": {
+     "k": 10,
+     "n": 20,
+     "p": 0.5,
+     "wilson": {
+      "lo": 0.2992980081982123,
+      "hi": 0.7007019918017877
+     },
+     "exact": {
+      "lo": 0.2719578495603854,
+      "hi": 0.7280421504396144
+     }
+    },
+    "trivial": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 25266
+  },
+  "S8|kronicle-lite-next": {
+   "scenario": "S8",
+   "title": "Moved section (identity must survive)",
    "arm": "kronicle-lite-next",
    "n": 20,
    "yes": 20,
@@ -331,49 +428,36 @@
    },
    "score": 1,
    "verdict": "yes",
-   "reason": "quiet on whitespace_trim",
+   "reason": "reorder: identity survived quietly",
    "delivery": "push",
    "bytes": {
     "touch": {
-     "mean": 1083,
-     "max": 1339,
-     "tokens_mean": 271
+     "mean": 1042,
+     "max": 1175,
+     "tokens_mean": 261
     },
     "read": {
-     "mean": 1374,
-     "max": 1378,
-     "tokens_mean": 344
+     "mean": 1386,
+     "max": 1402,
+     "tokens_mean": 347
     }
    },
    "latency_ms": {
     "touch": {
      "n": 20,
-     "p50": 26.9,
-     "p95": 191.7,
-     "max": 211.5
+     "p50": 19.1,
+     "p95": 510.5,
+     "max": 724.2
     },
     "read": {
      "n": 20,
-     "p50": 7,
-     "p95": 44.6,
-     "max": 200.1
+     "p50": 7.8,
+     "p95": 16.2,
+     "max": 78.4
     }
    },
    "flags": {
-    "alarm": {
-     "k": 0,
-     "n": 20,
-     "p": 0,
-     "wilson": {
-      "lo": 0,
-      "hi": 0.16112515805281938
-     },
-     "exact": {
-      "lo": 0,
-      "hi": 0.16843347098314781
-     }
-    },
-    "trivial": {
+    "retrievable": {
      "k": 20,
      "n": 20,
      "p": 1,
@@ -385,10 +469,23 @@
       "lo": 0.8315665290168521,
       "hi": 1
      }
+    },
+    "falseAlarm": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
     }
    },
    "error_samples": [],
-   "wall_ms": 16710
+   "wall_ms": 27216
   }
  }
 }

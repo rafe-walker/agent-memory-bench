@@ -1,0 +1,448 @@
+{
+ "scenario": "S8",
+ "title": "Moved section (identity must survive)",
+ "records": {
+  "S8|kronicle-lite-next": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "yes",
+    "reason": "reorder: identity survived quietly",
+    "flags": {
+     "moveKind": "reorder",
+     "retrievable": true,
+     "falseAlarm": false
+    },
+    "bytes": {
+     "touch": 908,
+     "read": 1371
+    },
+    "ms": {
+     "touch": 19.1,
+     "read": 3.2
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 3361
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "yes",
+    "reason": "reorder: identity survived quietly",
+    "flags": {
+     "moveKind": "reorder",
+     "retrievable": true,
+     "falseAlarm": false
+    },
+    "bytes": {
+     "touch": 908,
+     "read": 1376
+    },
+    "ms": {
+     "touch": 14,
+     "read": 3.4
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2540
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "yes",
+    "reason": "reorder: identity survived quietly",
+    "flags": {
+     "moveKind": "reorder",
+     "retrievable": true,
+     "falseAlarm": false
+    },
+    "bytes": {
+     "touch": 908,
+     "read": 1375
+    },
+    "ms": {
+     "touch": 17.3,
+     "read": 9.1
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2725
+   },
+   {
+    "seed": 4,
+    "variant": null,
+    "grade": "yes",
+    "reason": "reorder: identity survived quietly",
+    "flags": {
+     "moveKind": "reorder",
+     "retrievable": true,
+     "falseAlarm": false
+    },
+    "bytes": {
+     "touch": 908,
+     "read": 1372
+    },
+    "ms": {
+     "touch": 61.9,
+     "read": 10.5
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2268
+   },
+   {
+    "seed": 5,
+    "variant": null,
+    "grade": "yes",
+    "reason": "rename_file: identity survived quietly",
+    "flags": {
+     "moveKind": "rename_file",
+     "retrievable": true,
+     "falseAlarm": false
+    },
+    "bytes": {
+     "touch": 1175,
+     "read": 1396
+    },
+    "ms": {
+     "touch": 16.1,
+     "read": 3.4
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2458
+   },
+   {
+    "seed": 6,
+    "variant": null,
+    "grade": "yes",
+    "reason": "reorder: identity survived quietly",
+    "flags": {
+     "moveKind": "reorder",
+     "retrievable": true,
+     "falseAlarm": false
+    },
+    "bytes": {
+     "touch": 908,
+     "read": 1373
+    },
+    "ms": {
+     "touch": 21.4,
+     "read": 5.1
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 3203
+   },
+   {
+    "seed": 7,
+    "variant": null,
+    "grade": "yes",
+    "reason": "reorder: identity survived quietly",
+    "flags": {
+     "moveKind": "reorder",
+     "retrievable": true,
+     "falseAlarm": false
+    },
+    "bytes": {
+     "touch": 908,
+     "read": 1377
+    },
+    "ms": {
+     "touch": 724.2,
+     "read": 4.5
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 3135
+   },
+   {
+    "seed": 8,
+    "variant": null,
+    "grade": "yes",
+    "reason": "rename_file: identity survived quietly",
+    "flags": {
+     "moveKind": "rename_file",
+     "retrievable": true,
+     "falseAlarm": false
+    },
+    "bytes": {
+     "touch": 1175,
+     "read": 1395
+    },
+    "ms": {
+     "touch": 12.5,
+     "read": 78.4
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2298
+   },
+   {
+    "seed": 9,
+    "variant": null,
+    "grade": "yes",
+    "reason": "rename_file: identity survived quietly",
+    "flags": {
+     "moveKind": "rename_file",
+     "retrievable": true,
+     "falseAlarm": false
+    },
+    "bytes": {
+     "touch": 1175,
+     "read": 1399
+    },
+    "ms": {
+     "touch": 20.8,
+     "read": 9.2
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2674
+   },
+   {
+    "seed": 10,
+    "variant": null,
+    "grade": "yes",
+    "reason": "rename_file: identity survived quietly",
+    "flags": {
+     "moveKind": "rename_file",
+     "retrievable": true,
+     "falseAlarm": false
+    },
+    "bytes": {
+     "touch": 1175,
+     "read": 1396
+    },
+    "ms": {
+     "touch": 66.9,
+     "read": 9.8
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 3405
+   },
+   {
+    "seed": 11,
+    "variant": null,
+    "grade": "yes",
+    "reason": "reorder: identity survived quietly",
+    "flags": {
+     "moveKind": "reorder",
+     "retrievable": true,
+     "falseAlarm": false
+    },
+    "bytes": {
+     "touch": 908,
+     "read": 1374
+    },
+    "ms": {
+     "touch": 10,
+     "read": 3.4
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2440
+   },
+   {
+    "seed": 12,
+    "variant": null,
+    "grade": "yes",
+    "reason": "rename_file: identity survived quietly",
+    "flags": {
+     "moveKind": "rename_file",
+     "retrievable": true,
+     "falseAlarm": false
+    },
+    "bytes": {
+     "touch": 1175,
+     "read": 1396
+    },
+    "ms": {
+     "touch": 31.3,
+     "read": 11.9
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2961
+   },
+   {
+    "seed": 13,
+    "variant": null,
+    "grade": "yes",
+    "reason": "rename_file: identity survived quietly",
+    "flags": {
+     "moveKind": "rename_file",
+     "retrievable": true,
+     "falseAlarm": false
+    },
+    "bytes": {
+     "touch": 1175,
+     "read": 1402
+    },
+    "ms": {
+     "touch": 16.4,
+     "read": 14
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1911
+   },
+   {
+    "seed": 14,
+    "variant": null,
+    "grade": "yes",
+    "reason": "rename_file: identity survived quietly",
+    "flags": {
+     "moveKind": "rename_file",
+     "retrievable": true,
+     "falseAlarm": false
+    },
+    "bytes": {
+     "touch": 1175,
+     "read": 1394
+    },
+    "ms": {
+     "touch": 34.7,
+     "read": 16.2
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2263
+   },
+   {
+    "seed": 15,
+    "variant": null,
+    "grade": "yes",
+    "reason": "rename_file: identity survived quietly",
+    "flags": {
+     "moveKind": "rename_file",
+     "retrievable": true,
+     "falseAlarm": false
+    },
+    "bytes": {
+     "touch": 1175,
+     "read": 1396
+    },
+    "ms": {
+     "touch": 64.3,
+     "read": 10.2
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2105
+   },
+   {
+    "seed": 16,
+    "variant": null,
+    "grade": "yes",
+    "reason": "reorder: identity survived quietly",
+    "flags": {
+     "moveKind": "reorder",
+     "retrievable": true,
+     "falseAlarm": false
+    },
+    "bytes": {
+     "touch": 908,
+     "read": 1373
+    },
+    "ms": {
+     "touch": 510.5,
+     "read": 5.7
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1942
+   },
+   {
+    "seed": 17,
+    "variant": null,
+    "grade": "yes",
+    "reason": "reorder: identity survived quietly",
+    "flags": {
+     "moveKind": "reorder",
+     "retrievable": true,
+     "falseAlarm": false
+    },
+    "bytes": {
+     "touch": 908,
+     "read": 1376
+    },
+    "ms": {
+     "touch": 15.5,
+     "read": 8.1
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2091
+   },
+   {
+    "seed": 18,
+    "variant": null,
+    "grade": "yes",
+    "reason": "reorder: identity survived quietly",
+    "flags": {
+     "moveKind": "reorder",
+     "retrievable": true,
+     "falseAlarm": false
+    },
+    "bytes": {
+     "touch": 908,
+     "read": 1373
+    },
+    "ms": {
+     "touch": 20,
+     "read": 7.8
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2613
+   },
+   {
+    "seed": 19,
+    "variant": null,
+    "grade": "yes",
+    "reason": "rename_file: identity survived quietly",
+    "flags": {
+     "moveKind": "rename_file",
+     "retrievable": true,
+     "falseAlarm": false
+    },
+    "bytes": {
+     "touch": 1175,
+     "read": 1398
+    },
+    "ms": {
+     "touch": 18,
+     "read": 3.8
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2472
+   },
+   {
+    "seed": 20,
+    "variant": null,
+    "grade": "yes",
+    "reason": "rename_file: identity survived quietly",
+    "flags": {
+     "moveKind": "rename_file",
+     "retrievable": true,
+     "falseAlarm": false
+    },
+    "bytes": {
+     "touch": 1175,
+     "read": 1399
+    },
+    "ms": {
+     "touch": 17.8,
+     "read": 2.9
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2195
+   }
+  ]
+ }
+}

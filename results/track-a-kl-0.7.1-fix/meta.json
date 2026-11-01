@@ -1,7 +1,7 @@
 {
  "bench": "agent-memory-bench Track A",
  "version": "0.1.0",
- "started_at": "2026-11-01T15:54:38.053Z",
+ "started_at": "2026-11-01T16:20:26.974Z",
  "ci": false,
  "seeds": 20,
  "sizes": [
@@ -14,13 +14,13 @@
   "cpus": 2,
   "mem_gb": 8
  },
- "git": "726d713",
+ "git": "b5dd0aa",
  "token_estimate": "ceil(bytes/4); same proxy for every arm",
  "arms": {
   "kronicle-lite-next": {
    "id": "kronicle-lite-next",
    "label": "kronicle-lite next (unreleased, on 0.6.0)",
-   "version": "next unreleased — kronicle-lite cosmetic-fix@ecde026 (git archive, 2026-11-01T15:54:22Z)",
+   "version": "next unreleased — kronicle-lite cosmetic-fix@230cc7d (git archive, 2026-11-01T16:20:09Z)",
    "kind": [
     "knowledge",
     "compaction"
@@ -34,8 +34,8 @@
    "notes": "MCP stdio. Data dir = default ~/.kronicle-lite under an isolated HOME.",
    "tools_list": {
     "tools": 10,
-    "bytes": 14230,
-    "tokens": 3558,
+    "bytes": 14418,
+    "tokens": 3605,
     "names": [
      "get_system_state",
      "audit_assumptions",
@@ -51,6 +51,6 @@
    }
   }
  },
- "finished_at": "2026-11-01T15:55:35.711Z",
- "wall_s": 58
+ "finished_at": "2026-11-01T16:22:18.198Z",
+ "wall_s": 111
 }

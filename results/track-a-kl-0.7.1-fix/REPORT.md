@@ -1,6 +1,6 @@
 # agent-memory-bench — Track A report
 
-Generated 2026-11-01T15:55:35.711Z by `npm run track-a` — deterministic, no LLM, $0. Seeds per randomized cell: **20**. Wall time 58 s on 2 CPU / 8 GB, Node v22.23.4. Bench code at commit `726d713` plus the working tree committed with these results.
+Generated 2026-11-01T16:22:18.198Z by `npm run track-a` — deterministic, no LLM, $0. Seeds per randomized cell: **20**. Wall time 111 s on 2 CPU / 8 GB, Node v22.23.4. Bench code at commit `b5dd0aa` plus the working tree committed with these results.
 
 **Bottom line.** On the faults where a fact *changes* (S1 stale runbook, S5 retired doc, S6 tamper), kronicle-lite is the only arm that tells the agent what changed: 20/20 seeds each, ✅ [84–100%], against 🟡 for files-on-disk (baseline, native: the fresh value is there if the agent re-reads) and ❌ for the reference memory server (it keeps serving the old value, 20/20). sea-lite is the only coordination arm that passes all four collision variants (S3a–d, 20/20 each) — beads fails out-of-the-box identity (S3c 0/20: both sessions believe they hold the issue), mcp_agent_mail is advisory (every racer is granted, conflict reported; blocked only at commit by its opt-in guard), Backlog.md and task-master have no claim primitive. With cc-anchor's heartbeat, sea-lite also keeps a lease alive through a long task (S13 3/3; alone it lapses and the holder learns only at its next write).
 
@@ -16,13 +16,14 @@ Generated 2026-11-01T15:55:35.711Z by `npm run track-a` — deterministic, no LL
 |---|---|
 | **S1** Stale runbook | ✅ 100% |
 | **S5** Retired / deleted doc still served | ✅ 100% |
-| **S7** Benign-edit noise | ✅ 100% |
+| **S7** Benign-edit noise | ◐ 50% |
+| **S8** Moved section | ✅ 100% |
 
 ## Arms run
 
 | arm | version | kinds | setup steps | tools/list | notes |
 |---|---|---|---|---|---|
-| kronicle-lite next (unreleased, on 0.6.0) | next unreleased — kronicle-lite cosmetic-fix@ecde026 (git archive, 2026-11-01T15:54:22Z) | knowledge, compaction | 4 | 10 tools, 13.9 KB (~3558 tok) | MCP stdio. Data dir = default ~/.kronicle-lite under an isolated HOME. |
+| kronicle-lite next (unreleased, on 0.6.0) | next unreleased — kronicle-lite cosmetic-fix@230cc7d (git archive, 2026-11-01T16:20:09Z) | knowledge, compaction | 4 | 10 tools, 14.1 KB (~3605 tok) | MCP stdio. Data dir = default ~/.kronicle-lite under an isolated HOME. |
 
 ### Arms not run
 
@@ -42,13 +43,13 @@ Bytes the agent sees, averaged over every scenario cell the arm ran (tokens ≈ 
 
 | arm | tools/list | session start | mid-session touch | lookup (read) | post-compaction |
 |---|---|---|---|---|---|
-| kronicle-lite-next | 13.9 KB | 1.8 KB | 2.2 KB | 2.2 KB | – |
+| kronicle-lite-next | 14.1 KB | 1.8 KB | 2.0 KB | 2.0 KB | – |
 
 ### Latency (ms, p50 / p95 over all calls of that kind)
 
 | arm | touch | read | claim race (S3a, all N) | edit guard (S3b) |
 |---|---|---|---|---|
-| kronicle-lite-next | 28 / 222 | 7.0 / 217 | – | – |
+| kronicle-lite-next | 37 / 511 | 7.8 / 288 | – | – |
 
 ## Per-scenario results
 
@@ -86,11 +87,25 @@ False-positive control (template = seed mod 10, 2 seeds each). kronicle-lite sta
 
 | arm | y / p / n (n/a) | score | yes-rate [95% CI] | delivery | bytes touch / read | majority reason |
 |---|---|---|---|---|---|---|
-| kronicle-lite-next | 20 / 0 / 0 | 100% | 100% [84%–100%] | push | 1.1 KB / 1.3 KB | quiet on whitespace_trim |
+| kronicle-lite-next | 10 / 0 / 10 | 50% | 50% [30%–70%] | push | 1.4 KB / 1.3 KB | quiet on whitespace_trim |
+
+### S8 — Moved section (identity must survive)
+
+Reordering sections inside a file is quiet everywhere. Renaming the file is not, for kronicle-lite: the old path's blocks are tombstoned with a **safety** retraction ("REMOVED … stop following it") and the same text reappears under a new slug (10/10 rename seeds → 🟡). basic-memory lost the fact on 4/10 renames in the full run — its watcher had not re-indexed the moved file within 20 s with a shared server under load; the same seeds pass in isolation, so treat that as a latency observation, not a design flaw.
+
+| arm | y / p / n (n/a) | score | yes-rate [95% CI] | delivery | bytes touch / read | majority reason |
+|---|---|---|---|---|---|---|
+| kronicle-lite-next | 20 / 0 / 0 | 100% | 100% [84%–100%] | push | 1.0 KB / 1.4 KB | reorder: identity survived quietly |
+
+<details><summary>secondary flags</summary>
+
+- **kronicle-lite-next**: falseAlarm 0% (0/20)
+
+</details>
 
 ## Where each tool wins and loses (generated from scores)
 
-- **kronicle-lite-next** — best or tied-best: S1, S5, S7 (alone: S1, S5, S7); scores 0: none
+- **kronicle-lite-next** — best or tied-best: S1, S5, S7, S8 (alone: S1, S5, S7, S8); scores 0: none
 
 ## What to develop next (kronicle-lite, sea-lite, cc-anchor)
 

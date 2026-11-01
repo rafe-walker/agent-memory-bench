@@ -17,12 +17,12 @@
      "read": 3887
     },
     "ms": {
-     "touch": 56,
-     "read": 8.9
+     "touch": 30.8,
+     "read": 5.7
     },
     "calls": 2,
     "delivery": "push",
-    "ms_total": 2357
+    "ms_total": 1725
    },
    {
     "seed": 2,
@@ -38,12 +38,12 @@
      "read": 3892
     },
     "ms": {
-     "touch": 256,
-     "read": 15.5
+     "touch": 15.3,
+     "read": 176.8
     },
     "calls": 2,
     "delivery": "push",
-    "ms_total": 2299
+    "ms_total": 1678
    },
    {
     "seed": 3,
@@ -59,12 +59,12 @@
      "read": 3892
     },
     "ms": {
-     "touch": 18.3,
-     "read": 10.4
+     "touch": 15.7,
+     "read": 14.7
     },
     "calls": 2,
     "delivery": "push",
-    "ms_total": 1747
+    "ms_total": 1728
    },
    {
     "seed": 4,
@@ -80,12 +80,12 @@
      "read": 3889
     },
     "ms": {
-     "touch": 42.6,
-     "read": 21.7
+     "touch": 39.7,
+     "read": 5.8
     },
     "calls": 2,
     "delivery": "push",
-    "ms_total": 1933
+    "ms_total": 2007
    },
    {
     "seed": 5,
@@ -101,12 +101,12 @@
      "read": 3884
     },
     "ms": {
-     "touch": 201.7,
-     "read": 26
+     "touch": 24.2,
+     "read": 274.3
     },
     "calls": 2,
     "delivery": "push",
-    "ms_total": 1791
+    "ms_total": 1854
    },
    {
     "seed": 6,
@@ -122,12 +122,12 @@
      "read": 3884
     },
     "ms": {
-     "touch": 14.8,
-     "read": 4.9
+     "touch": 37.2,
+     "read": 14.9
     },
     "calls": 2,
     "delivery": "push",
-    "ms_total": 1694
+    "ms_total": 1876
    },
    {
     "seed": 7,
@@ -143,12 +143,12 @@
      "read": 3894
     },
     "ms": {
-     "touch": 193,
-     "read": 46.1
+     "touch": 268.8,
+     "read": 18.8
     },
     "calls": 2,
     "delivery": "push",
-    "ms_total": 1746
+    "ms_total": 2410
    },
    {
     "seed": 8,
@@ -164,12 +164,12 @@
      "read": 3888
     },
     "ms": {
-     "touch": 13.7,
-     "read": 5.2
+     "touch": 115.3,
+     "read": 11.5
     },
     "calls": 2,
     "delivery": "push",
-    "ms_total": 1702
+    "ms_total": 2477
    },
    {
     "seed": 9,
@@ -185,12 +185,12 @@
      "read": 3892
     },
     "ms": {
-     "touch": 38.1,
-     "read": 323.6
+     "touch": 95.9,
+     "read": 34.5
     },
     "calls": 2,
     "delivery": "push",
-    "ms_total": 1879
+    "ms_total": 2791
    },
    {
     "seed": 10,
@@ -206,12 +206,12 @@
      "read": 3884
     },
     "ms": {
-     "touch": 35.5,
-     "read": 8.5
+     "touch": 429.9,
+     "read": 14.4
     },
     "calls": 2,
     "delivery": "push",
-    "ms_total": 1840
+    "ms_total": 2561
    },
    {
     "seed": 11,
@@ -227,12 +227,12 @@
      "read": 3892
     },
     "ms": {
-     "touch": 26.7,
-     "read": 203.2
+     "touch": 32.2,
+     "read": 123.7
     },
     "calls": 2,
     "delivery": "push",
-    "ms_total": 1899
+    "ms_total": 3561
    },
    {
     "seed": 12,
@@ -248,12 +248,12 @@
      "read": 3878
     },
     "ms": {
-     "touch": 19.8,
-     "read": 17.4
+     "touch": 350.1,
+     "read": 25
     },
     "calls": 2,
     "delivery": "push",
-    "ms_total": 1612
+    "ms_total": 3328
    },
    {
     "seed": 13,
@@ -269,12 +269,12 @@
      "read": 3890
     },
     "ms": {
-     "touch": 34.5,
-     "read": 192.1
+     "touch": 252.4,
+     "read": 13.6
     },
     "calls": 2,
     "delivery": "push",
-    "ms_total": 1684
+    "ms_total": 2166
    },
    {
     "seed": 14,
@@ -290,12 +290,12 @@
      "read": 3881
     },
     "ms": {
-     "touch": 42.1,
-     "read": 11.7
+     "touch": 35.8,
+     "read": 11.8
     },
     "calls": 2,
     "delivery": "push",
-    "ms_total": 1701
+    "ms_total": 2143
    },
    {
     "seed": 15,
@@ -311,12 +311,12 @@
      "read": 3883
     },
     "ms": {
-     "touch": 15.9,
-     "read": 217.1
+     "touch": 37.1,
+     "read": 9.5
     },
     "calls": 2,
     "delivery": "push",
-    "ms_total": 1837
+    "ms_total": 2009
    },
    {
     "seed": 16,
@@ -332,12 +332,12 @@
      "read": 3885
     },
     "ms": {
-     "touch": 32.9,
-     "read": 7.6
+     "touch": 91,
+     "read": 21.5
     },
     "calls": 2,
     "delivery": "push",
-    "ms_total": 1801
+    "ms_total": 2389
    },
    {
     "seed": 17,
@@ -353,12 +353,12 @@
      "read": 3896
     },
     "ms": {
-     "touch": 22.8,
-     "read": 185.5
+     "touch": 34,
+     "read": 325.1
     },
     "calls": 2,
     "delivery": "push",
-    "ms_total": 1684
+    "ms_total": 2711
    },
    {
     "seed": 18,
@@ -374,12 +374,12 @@
      "read": 3890
     },
     "ms": {
-     "touch": 27.3,
-     "read": 10.7
+     "touch": 99.1,
+     "read": 43.6
     },
     "calls": 2,
     "delivery": "push",
-    "ms_total": 1643
+    "ms_total": 2766
    },
    {
     "seed": 19,
@@ -395,12 +395,12 @@
      "read": 3889
     },
     "ms": {
-     "touch": 180.7,
-     "read": 15.2
+     "touch": 66.3,
+     "read": 15.5
     },
     "calls": 2,
     "delivery": "push",
-    "ms_total": 1822
+    "ms_total": 2692
    },
    {
     "seed": 20,
@@ -416,12 +416,12 @@
      "read": 3900
     },
     "ms": {
-     "touch": 15.4,
-     "read": 6.7
+     "touch": 31.4,
+     "read": 209.4
     },
     "calls": 2,
     "delivery": "push",
-    "ms_total": 1793
+    "ms_total": 2411
    }
   ]
  }

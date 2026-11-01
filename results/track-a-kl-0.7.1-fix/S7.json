@@ -18,12 +18,12 @@
      "read": 1371
     },
     "ms": {
-     "touch": 13.4,
-     "read": 44.6
+     "touch": 18,
+     "read": 5.7
     },
     "calls": 2,
     "delivery": "push",
-    "ms_total": 1668
+    "ms_total": 2338
    },
    {
     "seed": 2,
@@ -36,16 +36,16 @@
      "trivial": true
     },
     "bytes": {
-     "touch": 1335,
+     "touch": 1373,
      "read": 1376
     },
     "ms": {
-     "touch": 185.3,
-     "read": 11.2
+     "touch": 11.5,
+     "read": 9.9
     },
     "calls": 2,
     "delivery": "push",
-    "ms_total": 1611
+    "ms_total": 2836
    },
    {
     "seed": 3,
@@ -62,56 +62,56 @@
      "read": 1375
     },
     "ms": {
-     "touch": 26.3,
-     "read": 7
+     "touch": 7.2,
+     "read": 3.2
     },
     "calls": 2,
     "delivery": "push",
-    "ms_total": 1673
+    "ms_total": 2657
    },
    {
     "seed": 4,
     "variant": null,
-    "grade": "yes",
-    "reason": "quiet on comma_list",
+    "grade": "no",
+    "reason": "false alarm on comma_list",
     "flags": {
      "template": "comma_list",
-     "alarm": false,
+     "alarm": true,
      "trivial": true
     },
     "bytes": {
-     "touch": 1337,
+     "touch": 2079,
      "read": 1372
     },
     "ms": {
-     "touch": 26.2,
-     "read": 8.6
+     "touch": 502.7,
+     "read": 4
     },
     "calls": 2,
     "delivery": "push",
-    "ms_total": 1444
+    "ms_total": 3394
    },
    {
     "seed": 5,
     "variant": null,
-    "grade": "yes",
-    "reason": "quiet on smart_quote",
+    "grade": "no",
+    "reason": "false alarm on smart_quote",
     "flags": {
      "template": "smart_quote",
-     "alarm": false,
+     "alarm": true,
      "trivial": true
     },
     "bytes": {
-     "touch": 1327,
+     "touch": 2002,
      "read": 1371
     },
     "ms": {
-     "touch": 24.1,
-     "read": 200.1
+     "touch": 649.1,
+     "read": 3.8
     },
     "calls": 2,
     "delivery": "push",
-    "ms_total": 1751
+    "ms_total": 2724
    },
    {
     "seed": 6,
@@ -124,16 +124,16 @@
      "trivial": true
     },
     "bytes": {
-     "touch": 1339,
+     "touch": 1365,
      "read": 1372
     },
     "ms": {
-     "touch": 31.1,
-     "read": 7
+     "touch": 88.1,
+     "read": 129.6
     },
     "calls": 2,
     "delivery": "push",
-    "ms_total": 1725
+    "ms_total": 2516
    },
    {
     "seed": 7,
@@ -146,82 +146,82 @@
      "trivial": true
     },
     "bytes": {
-     "touch": 1331,
+     "touch": 1365,
      "read": 1376
     },
     "ms": {
-     "touch": 211.5,
-     "read": 25.9
+     "touch": 39,
+     "read": 288
     },
     "calls": 2,
     "delivery": "push",
-    "ms_total": 1738
+    "ms_total": 3287
    },
    {
     "seed": 8,
     "variant": null,
-    "grade": "yes",
-    "reason": "quiet on missing_period",
+    "grade": "no",
+    "reason": "false alarm on missing_period",
     "flags": {
      "template": "missing_period",
-     "alarm": false,
+     "alarm": true,
      "trivial": true
     },
     "bytes": {
-     "touch": 1337,
+     "touch": 1994,
      "read": 1371
     },
     "ms": {
-     "touch": 15.3,
-     "read": 3.4
+     "touch": 91.8,
+     "read": 6.6
     },
     "calls": 2,
     "delivery": "push",
-    "ms_total": 1640
+    "ms_total": 2278
    },
    {
     "seed": 9,
     "variant": null,
-    "grade": "yes",
-    "reason": "quiet on hyphenation",
+    "grade": "no",
+    "reason": "false alarm on hyphenation",
     "flags": {
      "template": "hyphenation",
-     "alarm": false,
+     "alarm": true,
      "trivial": true
     },
     "bytes": {
-     "touch": 1337,
+     "touch": 2011,
      "read": 1374
     },
     "ms": {
-     "touch": 38.6,
-     "read": 8.1
+     "touch": 44.6,
+     "read": 7.7
     },
     "calls": 2,
     "delivery": "push",
-    "ms_total": 1578
+    "ms_total": 2591
    },
    {
     "seed": 10,
     "variant": null,
-    "grade": "yes",
-    "reason": "quiet on typo_fix",
+    "grade": "no",
+    "reason": "false alarm on typo_fix",
     "flags": {
      "template": "typo_fix",
-     "alarm": false,
+     "alarm": true,
      "trivial": true
     },
     "bytes": {
-     "touch": 1323,
+     "touch": 2052,
      "read": 1371
     },
     "ms": {
-     "touch": 33.4,
-     "read": 4.8
+     "touch": 81.6,
+     "read": 5
     },
     "calls": 2,
     "delivery": "push",
-    "ms_total": 1774
+    "ms_total": 3204
    },
    {
     "seed": 11,
@@ -238,12 +238,12 @@
      "read": 1374
     },
     "ms": {
-     "touch": 6.5,
-     "read": 2.8
+     "touch": 13.3,
+     "read": 8.2
     },
     "calls": 2,
     "delivery": "push",
-    "ms_total": 1650
+    "ms_total": 2910
    },
    {
     "seed": 12,
@@ -256,16 +256,16 @@
      "trivial": true
     },
     "bytes": {
-     "touch": 1335,
+     "touch": 1373,
      "read": 1372
     },
     "ms": {
-     "touch": 191.7,
-     "read": 20.7
+     "touch": 23.1,
+     "read": 16
     },
     "calls": 2,
     "delivery": "push",
-    "ms_total": 1592
+    "ms_total": 2659
    },
    {
     "seed": 13,
@@ -282,56 +282,56 @@
      "read": 1378
     },
     "ms": {
-     "touch": 15.6,
-     "read": 22.7
+     "touch": 29.8,
+     "read": 9.8
     },
     "calls": 2,
     "delivery": "push",
-    "ms_total": 1583
+    "ms_total": 1704
    },
    {
     "seed": 14,
     "variant": null,
-    "grade": "yes",
-    "reason": "quiet on comma_list",
+    "grade": "no",
+    "reason": "false alarm on comma_list",
     "flags": {
      "template": "comma_list",
-     "alarm": false,
+     "alarm": true,
      "trivial": true
     },
     "bytes": {
-     "touch": 1337,
+     "touch": 2078,
      "read": 1370
     },
     "ms": {
-     "touch": 176.6,
-     "read": 3.6
+     "touch": 46.1,
+     "read": 9.5
     },
     "calls": 2,
     "delivery": "push",
-    "ms_total": 1531
+    "ms_total": 2228
    },
    {
     "seed": 15,
     "variant": null,
-    "grade": "yes",
-    "reason": "quiet on smart_quote",
+    "grade": "no",
+    "reason": "false alarm on smart_quote",
     "flags": {
      "template": "smart_quote",
-     "alarm": false,
+     "alarm": true,
      "trivial": true
     },
     "bytes": {
-     "touch": 1327,
+     "touch": 2002,
      "read": 1372
     },
     "ms": {
-     "touch": 19.6,
-     "read": 5.4
+     "touch": 21.7,
+     "read": 219.2
     },
     "calls": 2,
     "delivery": "push",
-    "ms_total": 1630
+    "ms_total": 2603
    },
    {
     "seed": 16,
@@ -344,16 +344,16 @@
      "trivial": true
     },
     "bytes": {
-     "touch": 1339,
+     "touch": 1365,
      "read": 1373
     },
     "ms": {
-     "touch": 28.2,
-     "read": 3.2
+     "touch": 79.6,
+     "read": 4.2
     },
     "calls": 2,
     "delivery": "push",
-    "ms_total": 1837
+    "ms_total": 1815
    },
    {
     "seed": 17,
@@ -366,82 +366,82 @@
      "trivial": true
     },
     "bytes": {
-     "touch": 1331,
+     "touch": 1365,
      "read": 1378
     },
     "ms": {
-     "touch": 26.9,
-     "read": 5.2
+     "touch": 20.1,
+     "read": 4.5
     },
     "calls": 2,
     "delivery": "push",
-    "ms_total": 1436
+    "ms_total": 1569
    },
    {
     "seed": 18,
     "variant": null,
-    "grade": "yes",
-    "reason": "quiet on missing_period",
+    "grade": "no",
+    "reason": "false alarm on missing_period",
     "flags": {
      "template": "missing_period",
-     "alarm": false,
+     "alarm": true,
      "trivial": true
     },
     "bytes": {
-     "touch": 1337,
+     "touch": 1994,
      "read": 1372
     },
     "ms": {
-     "touch": 82.3,
-     "read": 8.3
+     "touch": 52.4,
+     "read": 10.3
     },
     "calls": 2,
     "delivery": "push",
-    "ms_total": 1647
+    "ms_total": 2189
    },
    {
     "seed": 19,
     "variant": null,
-    "grade": "yes",
-    "reason": "quiet on hyphenation",
+    "grade": "no",
+    "reason": "false alarm on hyphenation",
     "flags": {
      "template": "hyphenation",
-     "alarm": false,
+     "alarm": true,
      "trivial": true
     },
     "bytes": {
-     "touch": 1337,
+     "touch": 2010,
      "read": 1376
     },
     "ms": {
-     "touch": 175.6,
-     "read": 3.8
+     "touch": 30.1,
+     "read": 299.6
     },
     "calls": 2,
     "delivery": "push",
-    "ms_total": 1301
+    "ms_total": 2343
    },
    {
     "seed": 20,
     "variant": null,
-    "grade": "yes",
-    "reason": "quiet on typo_fix",
+    "grade": "no",
+    "reason": "false alarm on typo_fix",
     "flags": {
      "template": "typo_fix",
-     "alarm": false,
+     "alarm": true,
      "trivial": true
     },
     "bytes": {
-     "touch": 1323,
+     "touch": 2054,
      "read": 1376
     },
     "ms": {
-     "touch": 19.6,
-     "read": 3.6
+     "touch": 28.9,
+     "read": 4.4
     },
     "calls": 2,
     "delivery": "push",
-    "ms_total": 1261
+    "ms_total": 1669
    }
   ]
  }
