@@ -5,6 +5,13 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
+// Sandbox: pin HOME and the default data dir to temp paths so nothing can fall back to ~/.kronicle-lite.
+{
+  const sb = mkdtempSync(join(tmpdir(), 'klr2-sandbox-'));
+  process.env.HOME = join(sb, 'home');
+  process.env.KRONICLE_LITE_DATA_DIR = join(sb, 'no-default-store');
+  process.on('exit', () => rmSync(sb, { recursive: true, force: true }));
+}
 export const KL = process.env.KL;
 if (!KL) { console.error('set KL=<kronicle-lite checkout with dist/>'); process.exit(2); }
 export const mod = await import(pathToFileURL(join(KL, 'dist/index.js')).href);
