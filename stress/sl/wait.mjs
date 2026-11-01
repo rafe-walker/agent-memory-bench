@@ -96,16 +96,16 @@ const tests = {
   async killHolder() {
     const w = world();
     const T = w.create('kill-holder');
+    const Wt = w.srv('waiter', 'w'); await Wt.init(); // start the waiter's server first (startup ~1 s)
     const H = w.srv('holder', 'h'); await H.init(); H.claimOk = (r) => { if (r.isError || r.error) throw new Error('holder claim failed: ' + JSON.stringify(r).slice(0, 200)); return r; };
-    H.claimOk(await H.call('sea_claim', { ticket_ids: [T], lease_seconds: 6 }));
-    const Wt = w.srv('waiter', 'w'); await Wt.init();
-    const t0 = Date.now();
+    const hc = H.claimOk(await H.call('sea_claim', { ticket_ids: [T], lease_seconds: 6 }));
+    const expiresAt = Date.parse(JSON.stringify(hc.result).match(/"expires_at":"([^"]+)"/)?.[1] ?? '');
     const p = Wt.call('sea_claim', { ticket_ids: [T], wait_seconds: 30 });
-    await sleep(500);
+    await sleep(300);
     H.p.kill('SIGKILL');
     const r = await p;
-    const ms = Date.now() - t0;
-    rec('kill -9 holder: waiter gets it at lease expiry (not before, not much after)', !r.isError && ms >= 5000 && ms < 8000, { ms, freed: r.result?.waited?.freed, err: r.isError ? JSON.stringify(r.result).slice(0, 200) : null });
+    const lateMs = Date.now() - expiresAt; // > 0 means the waiter got it after the lease's own expiry
+    rec('kill -9 holder: waiter gets it at lease expiry (0..1500 ms after it, never before)', !r.isError && Number.isFinite(lateMs) && lateMs >= 0 && lateMs < 1500, { ms_after_expiry: lateMs, freed: r.result?.waited?.freed, err: r.isError ? JSON.stringify(r.result).slice(0, 200) : null });
     await Wt.close();
     w.done();
   },

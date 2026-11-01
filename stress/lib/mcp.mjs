@@ -4,6 +4,7 @@ import { spawn } from 'node:child_process';
 export class Mcp {
   constructor(cmd, args, { env = {}, cwd, protocolVersion = '2025-06-18', timeoutMs = 30000 } = {}) {
     this.p = spawn(cmd, args, { env: { ...process.env, ...env }, cwd, stdio: ['pipe', 'pipe', 'pipe'] });
+    this.p.stdin.on('error', () => {});
     this.timeoutMs = timeoutMs;
     this.protocolVersion = protocolVersion;
     this.buf = '';
