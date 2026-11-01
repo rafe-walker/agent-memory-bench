@@ -46,6 +46,7 @@ const SRC = {
   kronicle: { where: 'The runbook is stored in kronicle-lite as the document "runbook".', re: /mcp__kronicle-lite__(get_system_state|recall|verify|audit_assumptions)/ },
   kronicle_strict: { where: 'The runbook is stored in kronicle-lite as the document "runbook".', re: /mcp__kronicle-lite__(get_system_state|recall|verify|audit_assumptions)/ },
   kronicle_push: { where: 'The runbook is stored in kronicle-lite as the document "runbook".', re: /mcp__kronicle-lite__(get_system_state|recall|verify|audit_assumptions)/ },
+  kronicle_ccpush: { where: 'The runbook is stored in kronicle-lite as the document "runbook".', re: /mcp__kronicle-lite__(get_system_state|recall|verify|audit_assumptions)/ },
   basicmem: { where: 'The runbook is stored in basic-memory as the note "deploy-runbook".', re: /mcp__basic-memory__/ },
 };
 
@@ -53,7 +54,7 @@ function placeRunbook(ctx, md, files) {
   switch (ctx.arm) {
     case 'none': files['docs/runbook.md'] = md; break;
     case 'native': ctx.claudeMd.push(md); break;
-    case 'kronicle': case 'kronicle_strict': case 'kronicle_push': kronicleSetup(ctx); ctx.postRepo.push(() => kroniclePut(ctx, 'runbook', md, 'Deploy runbook')); break;
+    case 'kronicle': case 'kronicle_strict': case 'kronicle_push': case 'kronicle_ccpush': kronicleSetup(ctx); ctx.postRepo.push(() => kroniclePut(ctx, 'runbook', md, 'Deploy runbook')); break;
     case 'basicmem': bmSetup(ctx); bmNote(ctx, 'deploy-runbook', 'deploy-runbook', md); ctx.claudeMd.push('# Team docs\nTeam runbooks and notes live in basic-memory (MCP server `basic-memory`). Read them there.\n'); break;
     default: throw new Error(`arm ${ctx.arm} not supported`);
   }
@@ -66,7 +67,7 @@ function mutateRunbookSh(ctx, md) {
       const f = path.join(ctx.runDir, 'pending', 'CLAUDE-v2.md'); write(f, next);
       return `cp ${JSON.stringify(f)} ${JSON.stringify(path.join(ctx.repo, 'CLAUDE.md'))}`;
     }
-    case 'kronicle': case 'kronicle_strict': case 'kronicle_push': return kronicleMutateSh(ctx, 'runbook', md);
+    case 'kronicle': case 'kronicle_strict': case 'kronicle_push': case 'kronicle_ccpush': return kronicleMutateSh(ctx, 'runbook', md);
     case 'basicmem': return bmMutateSh(ctx, 'deploy-runbook', 'deploy-runbook', md);
     default: throw new Error('unsupported');
   }
@@ -90,7 +91,7 @@ export function t5Diagnostics(calls) {
 }
 function midSessionScenario({ id, title, benign }) {
   return {
-    id, title, arms: ['none', 'native', 'kronicle', 'kronicle_strict', 'kronicle_push', 'basicmem'], maxTurns: 40,
+    id, title, arms: ['none', 'native', 'kronicle', 'kronicle_strict', 'kronicle_push', 'basicmem', 'kronicle_ccpush'], maxTurns: 40,
     setup(ctx) {
       const f = seedFacts(ctx.r); ctx.facts = f;
       const v1 = runbook({ target: f.oldTarget, channel: f.channel, typo: benign });

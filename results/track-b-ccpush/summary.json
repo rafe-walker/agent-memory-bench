@@ -1,0 +1,92 @@
+[
+  {
+    "scenario": "T1",
+    "model": "haiku",
+    "arm": "kronicle_ccpush",
+    "n": 10,
+    "success": 10,
+    "success_rate": 1,
+    "success_wilson": [
+      0.7224671969739421,
+      0.9999999999999999
+    ],
+    "success_exact": [
+      0.6915028921812394,
+      1
+    ],
+    "wrong": 0,
+    "wrong_rate": 0,
+    "wrong_wilson": [
+      0,
+      0.2775328030260577
+    ],
+    "fisher_p_vs_none": null,
+    "mean_tokens": 317966.7,
+    "mean_input_side": 315252.3,
+    "mean_output": 2714.4,
+    "mean_cost": 0.008447269,
+    "total_cost": 0.08447269,
+    "mean_wall_s": 31.9116,
+    "mean_tool_calls": 11.7,
+    "peeked": 0,
+    "steps_complete": 10,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "exposed": 10,
+    "reground": 10,
+    "fault_fired": 10
+  },
+  {
+    "scenario": "T6",
+    "model": "haiku",
+    "arm": "kronicle_ccpush",
+    "n": 6,
+    "success": 6,
+    "success_rate": 1,
+    "success_wilson": [
+      0.6096657083436265,
+      1
+    ],
+    "success_exact": [
+      0.5407418735600995,
+      1
+    ],
+    "wrong": 0,
+    "wrong_rate": 0,
+    "wrong_wilson": [
+      0,
+      0.39033429165637346
+    ],
+    "fisher_p_vs_none": null,
+    "mean_tokens": 314836.8333333333,
+    "mean_input_side": 312192.3333333333,
+    "mean_output": 2644.5,
+    "mean_cost": 0.008480395,
+    "total_cost": 0.050882369999999996,
+    "mean_wall_s": 27.647166666666664,
+    "mean_tool_calls": 11.5,
+    "peeked": 0,
+    "steps_complete": 6,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "exposed": 6,
+    "reground": 6,
+    "fault_fired": 6
+  }
+]

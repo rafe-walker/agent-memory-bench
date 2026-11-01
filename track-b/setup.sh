@@ -31,6 +31,14 @@ if [[ ! -f vendor/sea-lite/dist/cli.js ]]; then
   cp -a "$SEA_LITE_SRC"/{dist,package.json,skills,hooks} vendor/sea-lite/
   ln -sfn "$SEA_LITE_SRC/node_modules" vendor/sea-lite/node_modules
 fi
+# cc-anchor push-hook branch (arm kronicle_ccpush): a frozen `git archive` of one commit.
+CC_ANCHOR_PUSH_SRC="${CC_ANCHOR_PUSH_SRC:-/home/claude/cc-anchor-push}"
+CC_ANCHOR_PUSH_REF="${CC_ANCHOR_PUSH_REF:-push-hook}"
+if [[ ! -f vendor/cc-anchor-push/scripts/pulse.sh && -d "$CC_ANCHOR_PUSH_SRC" ]]; then
+  mkdir -p vendor/cc-anchor-push
+  git -C "$CC_ANCHOR_PUSH_SRC" archive "$CC_ANCHOR_PUSH_REF" | tar -x -C vendor/cc-anchor-push
+  git -C "$CC_ANCHOR_PUSH_SRC" rev-parse "$CC_ANCHOR_PUSH_REF" > vendor/cc-anchor-push/VERSION
+fi
 if [[ ! -f vendor/cc-anchor/scripts/anchor.mjs ]]; then
   mkdir -p vendor/cc-anchor
   (cd "$CC_ANCHOR_SRC" && tar --exclude=.git -cf - .) | (cd vendor/cc-anchor && tar -xf -)
