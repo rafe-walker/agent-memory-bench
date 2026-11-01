@@ -1,4 +1,4 @@
-Generated 2026-11-01T04:07:33.799Z from `results/track-b/runs.jsonl` (193 graded runs; 0 infra errors excluded). Headless invocations used: **222 / 240** (ledger, incl. 1 smoke test). Total metered cost: **$5.21** (stream-json `total_cost_usd`).
+Generated 2026-11-01T04:10:31.157Z from `results/track-b/runs.jsonl` (193 graded runs; 0 infra errors excluded). Headless invocations used: **222 / 240** (ledger, incl. 1 smoke test). Total metered cost: **$5.21** (stream-json `total_cost_usd`).
 
 CIs are 95% Wilson (exact Clopper–Pearson in summary.json). *p* = two-sided Fisher exact test of success vs the `none` arm in the same scenario/model. Tokens = input + cache read + cache write + output per run (all agents).
 
