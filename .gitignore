@@ -2,3 +2,4 @@ node_modules/
 .arms/
 track-a/.work/
 *.log
+.arms-lineage/

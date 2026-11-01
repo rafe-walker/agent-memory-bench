@@ -1,0 +1,688 @@
+{
+ "scenario": "S1",
+ "title": "Stale runbook (fact changed after the agent read it)",
+ "records": {
+  "S1|kronicle-lite-lineage": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "yes",
+    "reason": "old→new change surfaced",
+    "flags": {
+     "learned": true,
+     "pushedNew": true,
+     "staleUnmarked": false,
+     "nextSessionPass": false,
+     "nextSessionStaleCopy": true
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1371,
+     "touch": 2433,
+     "read": 1372,
+     "nextSession": 80,
+     "nextRead": 1372,
+     "nextRead2": 3131
+    },
+    "ms": {
+     "sessionStart": 607.7,
+     "read0": 74.5,
+     "touch": 46.3,
+     "read": 198.6,
+     "nextSession": 115.9,
+     "nextRead": 21.6,
+     "nextRead2": 5
+    },
+    "calls": 7,
+    "delivery": "push",
+    "ms_total": 3005
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "yes",
+    "reason": "old→new change surfaced",
+    "flags": {
+     "learned": true,
+     "pushedNew": true,
+     "staleUnmarked": false,
+     "nextSessionPass": false,
+     "nextSessionStaleCopy": true
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1376,
+     "touch": 2459,
+     "read": 1374,
+     "nextSession": 80,
+     "nextRead": 1374,
+     "nextRead2": 3139
+    },
+    "ms": {
+     "sessionStart": 408.2,
+     "read0": 26.1,
+     "touch": 26.6,
+     "read": 10.7,
+     "nextSession": 149.5,
+     "nextRead": 79.1,
+     "nextRead2": 11
+    },
+    "calls": 7,
+    "delivery": "push",
+    "ms_total": 3083
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "yes",
+    "reason": "old→new change surfaced",
+    "flags": {
+     "learned": true,
+     "pushedNew": true,
+     "staleUnmarked": false,
+     "nextSessionPass": false,
+     "nextSessionStaleCopy": true
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1375,
+     "touch": 2461,
+     "read": 1377,
+     "nextSession": 80,
+     "nextRead": 1377,
+     "nextRead2": 3140
+    },
+    "ms": {
+     "sessionStart": 424.9,
+     "read0": 66.4,
+     "touch": 58.4,
+     "read": 13.6,
+     "nextSession": 272.3,
+     "nextRead": 1090.1,
+     "nextRead2": 30.1
+    },
+    "calls": 7,
+    "delivery": "push",
+    "ms_total": 4799
+   },
+   {
+    "seed": 4,
+    "variant": null,
+    "grade": "yes",
+    "reason": "old→new change surfaced",
+    "flags": {
+     "learned": true,
+     "pushedNew": true,
+     "staleUnmarked": false,
+     "nextSessionPass": false,
+     "nextSessionStaleCopy": true
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1372,
+     "touch": 2440,
+     "read": 1374,
+     "nextSession": 80,
+     "nextRead": 1374,
+     "nextRead2": 3134
+    },
+    "ms": {
+     "sessionStart": 382.2,
+     "read0": 49.2,
+     "touch": 66.7,
+     "read": 12,
+     "nextSession": 72.1,
+     "nextRead": 28.5,
+     "nextRead2": 15.3
+    },
+    "calls": 7,
+    "delivery": "push",
+    "ms_total": 2653
+   },
+   {
+    "seed": 5,
+    "variant": null,
+    "grade": "yes",
+    "reason": "old→new change surfaced",
+    "flags": {
+     "learned": true,
+     "pushedNew": true,
+     "staleUnmarked": false,
+     "nextSessionPass": false,
+     "nextSessionStaleCopy": true
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1372,
+     "touch": 2460,
+     "read": 1378,
+     "nextSession": 80,
+     "nextRead": 1378,
+     "nextRead2": 3138
+    },
+    "ms": {
+     "sessionStart": 202.6,
+     "read0": 55.5,
+     "touch": 1033.4,
+     "read": 59.5,
+     "nextSession": 175.1,
+     "nextRead": 18.2,
+     "nextRead2": 21.1
+    },
+    "calls": 7,
+    "delivery": "push",
+    "ms_total": 6543
+   },
+   {
+    "seed": 6,
+    "variant": null,
+    "grade": "yes",
+    "reason": "old→new change surfaced",
+    "flags": {
+     "learned": true,
+     "pushedNew": true,
+     "staleUnmarked": false,
+     "nextSessionPass": false,
+     "nextSessionStaleCopy": true
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1373,
+     "touch": 2446,
+     "read": 1371,
+     "nextSession": 80,
+     "nextRead": 1371,
+     "nextRead2": 3132
+    },
+    "ms": {
+     "sessionStart": 233.6,
+     "read0": 12.1,
+     "touch": 43.9,
+     "read": 6.3,
+     "nextSession": 185.6,
+     "nextRead": 29.5,
+     "nextRead2": 26.6
+    },
+    "calls": 7,
+    "delivery": "push",
+    "ms_total": 5364
+   },
+   {
+    "seed": 7,
+    "variant": null,
+    "grade": "yes",
+    "reason": "old→new change surfaced",
+    "flags": {
+     "learned": true,
+     "pushedNew": true,
+     "staleUnmarked": false,
+     "nextSessionPass": false,
+     "nextSessionStaleCopy": true
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1377,
+     "touch": 2451,
+     "read": 1371,
+     "nextSession": 80,
+     "nextRead": 1371,
+     "nextRead2": 3136
+    },
+    "ms": {
+     "sessionStart": 439.1,
+     "read0": 13.6,
+     "touch": 30.8,
+     "read": 229.9,
+     "nextSession": 48.8,
+     "nextRead": 15.8,
+     "nextRead2": 8
+    },
+    "calls": 7,
+    "delivery": "push",
+    "ms_total": 3102
+   },
+   {
+    "seed": 8,
+    "variant": null,
+    "grade": "yes",
+    "reason": "old→new change surfaced",
+    "flags": {
+     "learned": true,
+     "pushedNew": true,
+     "staleUnmarked": false,
+     "nextSessionPass": false,
+     "nextSessionStaleCopy": true
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1371,
+     "touch": 2448,
+     "read": 1378,
+     "nextSession": 80,
+     "nextRead": 1378,
+     "nextRead2": 3137
+    },
+    "ms": {
+     "sessionStart": 232,
+     "read0": 19.7,
+     "touch": 51,
+     "read": 9.9,
+     "nextSession": 86.1,
+     "nextRead": 24.6,
+     "nextRead2": 6.7
+    },
+    "calls": 7,
+    "delivery": "push",
+    "ms_total": 2691
+   },
+   {
+    "seed": 9,
+    "variant": null,
+    "grade": "yes",
+    "reason": "old→new change surfaced",
+    "flags": {
+     "learned": true,
+     "pushedNew": true,
+     "staleUnmarked": false,
+     "nextSessionPass": false,
+     "nextSessionStaleCopy": true
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1375,
+     "touch": 2455,
+     "read": 1375,
+     "nextSession": 80,
+     "nextRead": 1375,
+     "nextRead2": 3138
+    },
+    "ms": {
+     "sessionStart": 665.8,
+     "read0": 57.7,
+     "touch": 41.3,
+     "read": 265.5,
+     "nextSession": 374.4,
+     "nextRead": 24.4,
+     "nextRead2": 10.7
+    },
+    "calls": 7,
+    "delivery": "push",
+    "ms_total": 3668
+   },
+   {
+    "seed": 10,
+    "variant": null,
+    "grade": "yes",
+    "reason": "old→new change surfaced",
+    "flags": {
+     "learned": true,
+     "pushedNew": true,
+     "staleUnmarked": false,
+     "nextSessionPass": false,
+     "nextSessionStaleCopy": true
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1372,
+     "touch": 2448,
+     "read": 1374,
+     "nextSession": 80,
+     "nextRead": 1374,
+     "nextRead2": 3134
+    },
+    "ms": {
+     "sessionStart": 332.6,
+     "read0": 27.4,
+     "touch": 52.5,
+     "read": 11.7,
+     "nextSession": 478.8,
+     "nextRead": 80.1,
+     "nextRead2": 11.2
+    },
+    "calls": 7,
+    "delivery": "push",
+    "ms_total": 4293
+   },
+   {
+    "seed": 11,
+    "variant": null,
+    "grade": "yes",
+    "reason": "old→new change surfaced",
+    "flags": {
+     "learned": true,
+     "pushedNew": true,
+     "staleUnmarked": false,
+     "nextSessionPass": false,
+     "nextSessionStaleCopy": true
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1374,
+     "touch": 2448,
+     "read": 1374,
+     "nextSession": 80,
+     "nextRead": 1374,
+     "nextRead2": 3136
+    },
+    "ms": {
+     "sessionStart": 500.4,
+     "read0": 46.2,
+     "touch": 34,
+     "read": 4.3,
+     "nextSession": 183.1,
+     "nextRead": 66.5,
+     "nextRead2": 8
+    },
+    "calls": 7,
+    "delivery": "push",
+    "ms_total": 4435
+   },
+   {
+    "seed": 12,
+    "variant": null,
+    "grade": "yes",
+    "reason": "old→new change surfaced",
+    "flags": {
+     "learned": true,
+     "pushedNew": true,
+     "staleUnmarked": false,
+     "nextSessionPass": false,
+     "nextSessionStaleCopy": true
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1372,
+     "touch": 2448,
+     "read": 1370,
+     "nextSession": 80,
+     "nextRead": 1370,
+     "nextRead2": 3132
+    },
+    "ms": {
+     "sessionStart": 440.6,
+     "read0": 22.6,
+     "touch": 37.1,
+     "read": 4.6,
+     "nextSession": 225.3,
+     "nextRead": 69,
+     "nextRead2": 17.3
+    },
+    "calls": 7,
+    "delivery": "push",
+    "ms_total": 3588
+   },
+   {
+    "seed": 13,
+    "variant": null,
+    "grade": "yes",
+    "reason": "old→new change surfaced",
+    "flags": {
+     "learned": true,
+     "pushedNew": true,
+     "staleUnmarked": false,
+     "nextSessionPass": false,
+     "nextSessionStaleCopy": true
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1378,
+     "touch": 2475,
+     "read": 1375,
+     "nextSession": 80,
+     "nextRead": 1375,
+     "nextRead2": 3141
+    },
+    "ms": {
+     "sessionStart": 1046.5,
+     "read0": 55.7,
+     "touch": 48.2,
+     "read": 26.9,
+     "nextSession": 60.8,
+     "nextRead": 38.4,
+     "nextRead2": 43.8
+    },
+    "calls": 7,
+    "delivery": "push",
+    "ms_total": 6008
+   },
+   {
+    "seed": 14,
+    "variant": null,
+    "grade": "yes",
+    "reason": "old→new change surfaced",
+    "flags": {
+     "learned": true,
+     "pushedNew": true,
+     "staleUnmarked": false,
+     "nextSessionPass": false,
+     "nextSessionStaleCopy": true
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1370,
+     "touch": 2434,
+     "read": 1371,
+     "nextSession": 80,
+     "nextRead": 1371,
+     "nextRead2": 3129
+    },
+    "ms": {
+     "sessionStart": 462,
+     "read0": 47.6,
+     "touch": 64.9,
+     "read": 13.2,
+     "nextSession": 772.6,
+     "nextRead": 37.2,
+     "nextRead2": 7.9
+    },
+    "calls": 7,
+    "delivery": "push",
+    "ms_total": 6987
+   },
+   {
+    "seed": 15,
+    "variant": null,
+    "grade": "yes",
+    "reason": "old→new change surfaced",
+    "flags": {
+     "learned": true,
+     "pushedNew": true,
+     "staleUnmarked": false,
+     "nextSessionPass": false,
+     "nextSessionStaleCopy": true
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1372,
+     "touch": 2439,
+     "read": 1370,
+     "nextSession": 80,
+     "nextRead": 1370,
+     "nextRead2": 3131
+    },
+    "ms": {
+     "sessionStart": 975.2,
+     "read0": 55.8,
+     "touch": 101.4,
+     "read": 799,
+     "nextSession": 260.3,
+     "nextRead": 127.7,
+     "nextRead2": 44
+    },
+    "calls": 7,
+    "delivery": "push",
+    "ms_total": 7532
+   },
+   {
+    "seed": 16,
+    "variant": null,
+    "grade": "yes",
+    "reason": "old→new change surfaced",
+    "flags": {
+     "learned": true,
+     "pushedNew": true,
+     "staleUnmarked": false,
+     "nextSessionPass": false,
+     "nextSessionStaleCopy": true
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1373,
+     "touch": 2449,
+     "read": 1373,
+     "nextSession": 80,
+     "nextRead": 1373,
+     "nextRead2": 3134
+    },
+    "ms": {
+     "sessionStart": 957.5,
+     "read0": 73.7,
+     "touch": 86.5,
+     "read": 63.9,
+     "nextSession": 192.4,
+     "nextRead": 82.1,
+     "nextRead2": 15.6
+    },
+    "calls": 7,
+    "delivery": "push",
+    "ms_total": 6158
+   },
+   {
+    "seed": 17,
+    "variant": null,
+    "grade": "yes",
+    "reason": "old→new change surfaced",
+    "flags": {
+     "learned": true,
+     "pushedNew": true,
+     "staleUnmarked": false,
+     "nextSessionPass": false,
+     "nextSessionStaleCopy": true
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1376,
+     "touch": 2458,
+     "read": 1370,
+     "nextSession": 80,
+     "nextRead": 1370,
+     "nextRead2": 3139
+    },
+    "ms": {
+     "sessionStart": 736.6,
+     "read0": 95.4,
+     "touch": 113,
+     "read": 801.1,
+     "nextSession": 228.9,
+     "nextRead": 13.9,
+     "nextRead2": 4.1
+    },
+    "calls": 7,
+    "delivery": "push",
+    "ms_total": 6058
+   },
+   {
+    "seed": 18,
+    "variant": null,
+    "grade": "yes",
+    "reason": "old→new change surfaced",
+    "flags": {
+     "learned": true,
+     "pushedNew": true,
+     "staleUnmarked": false,
+     "nextSessionPass": false,
+     "nextSessionStaleCopy": true
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1373,
+     "touch": 2459,
+     "read": 1379,
+     "nextSession": 80,
+     "nextRead": 1379,
+     "nextRead2": 3140
+    },
+    "ms": {
+     "sessionStart": 690.9,
+     "read0": 70.5,
+     "touch": 65.8,
+     "read": 14.1,
+     "nextSession": 410,
+     "nextRead": 202.3,
+     "nextRead2": 13.5
+    },
+    "calls": 7,
+    "delivery": "push",
+    "ms_total": 5806
+   },
+   {
+    "seed": 19,
+    "variant": null,
+    "grade": "yes",
+    "reason": "old→new change surfaced",
+    "flags": {
+     "learned": true,
+     "pushedNew": true,
+     "staleUnmarked": false,
+     "nextSessionPass": false,
+     "nextSessionStaleCopy": true
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1374,
+     "touch": 2455,
+     "read": 1369,
+     "nextSession": 80,
+     "nextRead": 1369,
+     "nextRead2": 3136
+    },
+    "ms": {
+     "sessionStart": 662.6,
+     "read0": 51,
+     "touch": 128.6,
+     "read": 11.9,
+     "nextSession": 161.5,
+     "nextRead": 54.5,
+     "nextRead2": 19.2
+    },
+    "calls": 7,
+    "delivery": "push",
+    "ms_total": 5519
+   },
+   {
+    "seed": 20,
+    "variant": null,
+    "grade": "yes",
+    "reason": "old→new change surfaced",
+    "flags": {
+     "learned": true,
+     "pushedNew": true,
+     "staleUnmarked": false,
+     "nextSessionPass": false,
+     "nextSessionStaleCopy": true
+    },
+    "bytes": {
+     "sessionStart": 1816,
+     "read0": 1375,
+     "touch": 2446,
+     "read": 1370,
+     "nextSession": 80,
+     "nextRead": 1370,
+     "nextRead2": 3138
+    },
+    "ms": {
+     "sessionStart": 573.5,
+     "read0": 68.1,
+     "touch": 194.6,
+     "read": 39.9,
+     "nextSession": 148.8,
+     "nextRead": 45.6,
+     "nextRead2": 32.1
+    },
+    "calls": 7,
+    "delivery": "push",
+    "ms_total": 4853
+   }
+  ]
+ }
+}
