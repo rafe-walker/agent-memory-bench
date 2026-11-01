@@ -1,0 +1,15 @@
+{
+  "name": "agent-memory-bench-track-b",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Track B: live headless coding agents in fixture repos with injected faults, graded deterministically from stub logs and git state.",
+  "type": "module",
+  "scripts": {
+    "bench": "bash run.sh",
+    "report": "node lib/report.mjs"
+  },
+  "dependencies": {
+    "kronicle-lite": "0.5.0",
+    "@beads/bd": "1.3.2"
+  }
+}

@@ -1,0 +1,2 @@
+{ "model": "haiku", "concurrency": 4, "maxUsdPerRun": 1.5, "timeoutSec": 900,
+  "cells": [ {"scenario":"T1","n":1}, {"scenario":"T5","n":1} ] }

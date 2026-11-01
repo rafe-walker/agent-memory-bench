@@ -1,0 +1,2 @@
+{ "model": "haiku", "concurrency": 6, "maxUsdPerRun": 1.5, "timeoutSec": 900,
+  "cells": [ {"scenario":"T1","n":1,"arms":["kronicle_push","none"]}, {"scenario":"T2","n":1}, {"scenario":"T4","n":1}, {"scenario":"T6","n":1,"arms":["kronicle_push"]}, {"scenario":"T3","n":1} ] }

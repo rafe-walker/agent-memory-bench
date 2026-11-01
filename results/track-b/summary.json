@@ -1,0 +1,1411 @@
+[
+  {
+    "scenario": "T1",
+    "model": "haiku",
+    "arm": "none",
+    "n": 8,
+    "success": 0,
+    "success_rate": 0,
+    "success_wilson": [
+      0,
+      0.3244075683414076
+    ],
+    "success_exact": [
+      0,
+      0.369416647552819
+    ],
+    "wrong": 8,
+    "wrong_rate": 1,
+    "wrong_wilson": [
+      0.6755924316585924,
+      1
+    ],
+    "fisher_p_vs_none": null,
+    "mean_tokens": 182069.5,
+    "mean_input_side": 180679.75,
+    "mean_output": 1389.75,
+    "mean_cost": 0.0043025725,
+    "total_cost": 0.03442058,
+    "mean_wall_s": 15.638875,
+    "mean_tool_calls": 7.75,
+    "peeked": 0,
+    "steps_complete": 8,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "exposed": 8,
+    "reground": 0,
+    "fault_fired": 8
+  },
+  {
+    "scenario": "T1",
+    "model": "haiku",
+    "arm": "native",
+    "n": 9,
+    "success": 0,
+    "success_rate": 0,
+    "success_wilson": [
+      0,
+      0.299145051727044
+    ],
+    "success_exact": [
+      0,
+      0.3362671168799428
+    ],
+    "wrong": 9,
+    "wrong_rate": 1,
+    "wrong_wilson": [
+      0.700854948272956,
+      1
+    ],
+    "fisher_p_vs_none": 1,
+    "mean_tokens": 142930.66666666666,
+    "mean_input_side": 141794.44444444444,
+    "mean_output": 1136.2222222222222,
+    "mean_cost": 0.0035766866666666667,
+    "total_cost": 0.03219018,
+    "mean_wall_s": 16.650777777777776,
+    "mean_tool_calls": 6,
+    "peeked": 0,
+    "steps_complete": 9,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "exposed": 0,
+    "reground": 0,
+    "fault_fired": 9
+  },
+  {
+    "scenario": "T1",
+    "model": "haiku",
+    "arm": "kronicle",
+    "n": 9,
+    "success": 0,
+    "success_rate": 0,
+    "success_wilson": [
+      0,
+      0.299145051727044
+    ],
+    "success_exact": [
+      0,
+      0.3362671168799428
+    ],
+    "wrong": 9,
+    "wrong_rate": 1,
+    "wrong_wilson": [
+      0.700854948272956,
+      1
+    ],
+    "fisher_p_vs_none": 1,
+    "mean_tokens": 232415.88888888888,
+    "mean_input_side": 230582.77777777778,
+    "mean_output": 1833.111111111111,
+    "mean_cost": 0.0062673411111111126,
+    "total_cost": 0.05640607000000001,
+    "mean_wall_s": 20.996000000000002,
+    "mean_tool_calls": 9.222222222222221,
+    "peeked": 0,
+    "steps_complete": 9,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "exposed": 9,
+    "reground": 0,
+    "fault_fired": 9
+  },
+  {
+    "scenario": "T1",
+    "model": "haiku",
+    "arm": "kronicle_strict",
+    "n": 10,
+    "success": 10,
+    "success_rate": 1,
+    "success_wilson": [
+      0.7224671969739421,
+      0.9999999999999999
+    ],
+    "success_exact": [
+      0.6915028921812394,
+      1
+    ],
+    "wrong": 0,
+    "wrong_rate": 0,
+    "wrong_wilson": [
+      0,
+      0.2775328030260577
+    ],
+    "fisher_p_vs_none": 0.00002285296402943479,
+    "mean_tokens": 515056.4,
+    "mean_input_side": 510100.2,
+    "mean_output": 4956.2,
+    "mean_cost": 0.012952052,
+    "total_cost": 0.12952052,
+    "mean_wall_s": 36.723800000000004,
+    "mean_tool_calls": 16.3,
+    "peeked": 0,
+    "steps_complete": 10,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "exposed": 10,
+    "reground": 10,
+    "fault_fired": 10
+  },
+  {
+    "scenario": "T1",
+    "model": "haiku",
+    "arm": "kronicle_push",
+    "n": 10,
+    "success": 10,
+    "success_rate": 1,
+    "success_wilson": [
+      0.7224671969739421,
+      0.9999999999999999
+    ],
+    "success_exact": [
+      0.6915028921812394,
+      1
+    ],
+    "wrong": 0,
+    "wrong_rate": 0,
+    "wrong_wilson": [
+      0,
+      0.2775328030260577
+    ],
+    "fisher_p_vs_none": 0.00002285296402943479,
+    "mean_tokens": 266750,
+    "mean_input_side": 264163.4,
+    "mean_output": 2586.6,
+    "mean_cost": 0.007976294,
+    "total_cost": 0.07976294,
+    "mean_wall_s": 33.7624,
+    "mean_tool_calls": 10.7,
+    "peeked": 0,
+    "steps_complete": 10,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "exposed": 10,
+    "reground": 10,
+    "fault_fired": 10
+  },
+  {
+    "scenario": "T1",
+    "model": "haiku",
+    "arm": "basicmem",
+    "n": 10,
+    "success": 0,
+    "success_rate": 0,
+    "success_wilson": [
+      0,
+      0.2775328030260577
+    ],
+    "success_exact": [
+      0,
+      0.3084971078187605
+    ],
+    "wrong": 10,
+    "wrong_rate": 1,
+    "wrong_wilson": [
+      0.7224671969739421,
+      0.9999999999999999
+    ],
+    "fisher_p_vs_none": 1,
+    "mean_tokens": 229448,
+    "mean_input_side": 227983.1,
+    "mean_output": 1464.9,
+    "mean_cost": 0.005331932,
+    "total_cost": 0.05331932,
+    "mean_wall_s": 47.8676,
+    "mean_tool_calls": 9,
+    "peeked": 0,
+    "steps_complete": 10,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "exposed": 10,
+    "reground": 0,
+    "fault_fired": 10
+  },
+  {
+    "scenario": "T1",
+    "model": "sonnet",
+    "arm": "none",
+    "n": 4,
+    "success": 0,
+    "success_rate": 0,
+    "success_wilson": [
+      0,
+      0.4898908403969213
+    ],
+    "success_exact": [
+      0,
+      0.6023646356164742
+    ],
+    "wrong": 4,
+    "wrong_rate": 1,
+    "wrong_wilson": [
+      0.5101091596030786,
+      0.9999999999999999
+    ],
+    "fisher_p_vs_none": null,
+    "mean_tokens": 110670.75,
+    "mean_input_side": 110131.75,
+    "mean_output": 539,
+    "mean_cost": 0.043307725000000005,
+    "total_cost": 0.17323090000000002,
+    "mean_wall_s": 13.96875,
+    "mean_tool_calls": 5.75,
+    "peeked": 0,
+    "steps_complete": 4,
+    "seeds": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "exposed": 4,
+    "reground": 0,
+    "fault_fired": 4
+  },
+  {
+    "scenario": "T1",
+    "model": "sonnet",
+    "arm": "kronicle",
+    "n": 4,
+    "success": 1,
+    "success_rate": 0.25,
+    "success_wilson": [
+      0.04558726029536886,
+      0.6993581599030918
+    ],
+    "success_exact": [
+      0.00630946320970986,
+      0.8058795503167562
+    ],
+    "wrong": 3,
+    "wrong_rate": 0.75,
+    "wrong_wilson": [
+      0.3006418400969081,
+      0.954412739704631
+    ],
+    "fisher_p_vs_none": 0.9999999999999999,
+    "mean_tokens": 150021.25,
+    "mean_input_side": 149173.5,
+    "mean_output": 847.75,
+    "mean_cost": 0.082421725,
+    "total_cost": 0.3296869,
+    "mean_wall_s": 19.84525,
+    "mean_tool_calls": 7,
+    "peeked": 0,
+    "steps_complete": 4,
+    "seeds": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "exposed": 4,
+    "reground": 1,
+    "fault_fired": 4
+  },
+  {
+    "scenario": "T1",
+    "model": "sonnet",
+    "arm": "kronicle_strict",
+    "n": 4,
+    "success": 4,
+    "success_rate": 1,
+    "success_wilson": [
+      0.5101091596030786,
+      0.9999999999999999
+    ],
+    "success_exact": [
+      0.3976353643835253,
+      1
+    ],
+    "wrong": 0,
+    "wrong_rate": 0,
+    "wrong_wilson": [
+      0,
+      0.4898908403969213
+    ],
+    "fisher_p_vs_none": 0.02857142857142846,
+    "mean_tokens": 315392.25,
+    "mean_input_side": 312725.25,
+    "mean_output": 2667,
+    "mean_cost": 0.14404565,
+    "total_cost": 0.5761826,
+    "mean_wall_s": 40.55425,
+    "mean_tool_calls": 14.75,
+    "peeked": 0,
+    "steps_complete": 4,
+    "seeds": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "exposed": 4,
+    "reground": 4,
+    "fault_fired": 4
+  },
+  {
+    "scenario": "T1",
+    "model": "sonnet",
+    "arm": "kronicle_push",
+    "n": 4,
+    "success": 3,
+    "success_rate": 0.75,
+    "success_wilson": [
+      0.3006418400969081,
+      0.954412739704631
+    ],
+    "success_exact": [
+      0.19412044968324355,
+      0.9936905367902902
+    ],
+    "wrong": 1,
+    "wrong_rate": 0.25,
+    "wrong_wilson": [
+      0.04558726029536886,
+      0.6993581599030918
+    ],
+    "fisher_p_vs_none": 0.14285714285714282,
+    "mean_tokens": 155467.75,
+    "mean_input_side": 154300,
+    "mean_output": 1167.75,
+    "mean_cost": 0.099409975,
+    "total_cost": 0.3976399,
+    "mean_wall_s": 25.95625,
+    "mean_tool_calls": 8,
+    "peeked": 0,
+    "steps_complete": 4,
+    "seeds": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "exposed": 4,
+    "reground": 3,
+    "fault_fired": 4
+  },
+  {
+    "scenario": "T2",
+    "model": "haiku",
+    "arm": "none",
+    "n": 6,
+    "success": 6,
+    "success_rate": 1,
+    "success_wilson": [
+      0.6096657083436265,
+      1
+    ],
+    "success_exact": [
+      0.5407418735600995,
+      1
+    ],
+    "wrong": 0,
+    "wrong_rate": 0,
+    "wrong_wilson": [
+      0,
+      0.39033429165637346
+    ],
+    "fisher_p_vs_none": null,
+    "mean_tokens": 189145.66666666666,
+    "mean_input_side": 187565.66666666666,
+    "mean_output": 1580,
+    "mean_cost": 0.004548658333333334,
+    "total_cost": 0.027291950000000002,
+    "mean_wall_s": 21.527,
+    "mean_tool_calls": 8,
+    "peeked": 0,
+    "steps_complete": 6,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "flagged": 5
+  },
+  {
+    "scenario": "T2",
+    "model": "haiku",
+    "arm": "native",
+    "n": 6,
+    "success": 6,
+    "success_rate": 1,
+    "success_wilson": [
+      0.6096657083436265,
+      1
+    ],
+    "success_exact": [
+      0.5407418735600995,
+      1
+    ],
+    "wrong": 0,
+    "wrong_rate": 0,
+    "wrong_wilson": [
+      0,
+      0.39033429165637346
+    ],
+    "fisher_p_vs_none": 0.9999999999999982,
+    "mean_tokens": 148724.33333333334,
+    "mean_input_side": 147319.16666666666,
+    "mean_output": 1405.1666666666667,
+    "mean_cost": 0.003838393333333334,
+    "total_cost": 0.023030360000000003,
+    "mean_wall_s": 18.939333333333334,
+    "mean_tool_calls": 6.333333333333333,
+    "peeked": 0,
+    "steps_complete": 6,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "flagged": 5
+  },
+  {
+    "scenario": "T2",
+    "model": "haiku",
+    "arm": "kronicle",
+    "n": 6,
+    "success": 6,
+    "success_rate": 1,
+    "success_wilson": [
+      0.6096657083436265,
+      1
+    ],
+    "success_exact": [
+      0.5407418735600995,
+      1
+    ],
+    "wrong": 0,
+    "wrong_rate": 0,
+    "wrong_wilson": [
+      0,
+      0.39033429165637346
+    ],
+    "fisher_p_vs_none": 0.9999999999999982,
+    "mean_tokens": 306689.1666666667,
+    "mean_input_side": 303660.3333333333,
+    "mean_output": 3028.8333333333335,
+    "mean_cost": 0.008545636666666667,
+    "total_cost": 0.05127382,
+    "mean_wall_s": 23.4025,
+    "mean_tool_calls": 13,
+    "peeked": 0,
+    "steps_complete": 6,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "flagged": 4
+  },
+  {
+    "scenario": "T2",
+    "model": "haiku",
+    "arm": "basicmem",
+    "n": 6,
+    "success": 6,
+    "success_rate": 1,
+    "success_wilson": [
+      0.6096657083436265,
+      1
+    ],
+    "success_exact": [
+      0.5407418735600995,
+      1
+    ],
+    "wrong": 0,
+    "wrong_rate": 0,
+    "wrong_wilson": [
+      0,
+      0.39033429165637346
+    ],
+    "fisher_p_vs_none": 0.9999999999999982,
+    "mean_tokens": 231126.16666666666,
+    "mean_input_side": 229422.66666666666,
+    "mean_output": 1703.5,
+    "mean_cost": 0.005536206666666667,
+    "total_cost": 0.03321724,
+    "mean_wall_s": 28.444166666666664,
+    "mean_tool_calls": 10.166666666666666,
+    "peeked": 0,
+    "steps_complete": 6,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "flagged": 6
+  },
+  {
+    "scenario": "T3",
+    "model": "haiku",
+    "arm": "none",
+    "n": 8,
+    "success": 7,
+    "success_rate": 0.875,
+    "success_wilson": [
+      0.5291118149439162,
+      0.9775825088000281
+    ],
+    "success_exact": [
+      0.4734903291247934,
+      0.9968402764687481
+    ],
+    "wrong": 1,
+    "wrong_rate": 0.125,
+    "wrong_wilson": [
+      0.022417491199971912,
+      0.47088818505608376
+    ],
+    "fisher_p_vs_none": null,
+    "mean_tokens": 1086616.875,
+    "mean_input_side": 1068777.25,
+    "mean_output": 17839.625,
+    "mean_cost": 0.028335608749999998,
+    "total_cost": 0.22668486999999998,
+    "mean_wall_s": 60.315124999999995,
+    "mean_tool_calls": 46.75,
+    "peeked": 4,
+    "steps_complete": 8,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "duplicate_tickets": 1,
+    "lost_edits": 0,
+    "lost_changelog": 0,
+    "conflict_marker_files": 0,
+    "edit_conflict_errors": 6,
+    "scope_denials": 0,
+    "git_lock_errors": 0,
+    "uncommitted_files": 0,
+    "runs_with_collision": 1,
+    "both_worked": 7,
+    "mean_functions_ok": 4
+  },
+  {
+    "scenario": "T3",
+    "model": "haiku",
+    "arm": "sea",
+    "n": 8,
+    "success": 8,
+    "success_rate": 1,
+    "success_wilson": [
+      0.6755924316585924,
+      1
+    ],
+    "success_exact": [
+      0.6305833524471807,
+      1
+    ],
+    "wrong": 0,
+    "wrong_rate": 0,
+    "wrong_wilson": [
+      0,
+      0.3244075683414076
+    ],
+    "fisher_p_vs_none": 0.999999999999999,
+    "mean_tokens": 1262796,
+    "mean_input_side": 1252999,
+    "mean_output": 9797,
+    "mean_cost": 0.02737625,
+    "total_cost": 0.21901,
+    "mean_wall_s": 155.988625,
+    "mean_tool_calls": 56.125,
+    "peeked": 0,
+    "steps_complete": 8,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "duplicate_tickets": 0,
+    "lost_edits": 0,
+    "lost_changelog": 0,
+    "conflict_marker_files": 0,
+    "edit_conflict_errors": 0,
+    "scope_denials": 19,
+    "git_lock_errors": 0,
+    "uncommitted_files": 0,
+    "runs_with_collision": 0,
+    "both_worked": 1,
+    "mean_functions_ok": 4
+  },
+  {
+    "scenario": "T3",
+    "model": "haiku",
+    "arm": "beads",
+    "n": 8,
+    "success": 6,
+    "success_rate": 0.75,
+    "success_wilson": [
+      0.40927542792725174,
+      0.9285207879020445
+    ],
+    "success_exact": [
+      0.34914420558717585,
+      0.9681459737500557
+    ],
+    "wrong": 2,
+    "wrong_rate": 0.25,
+    "wrong_wilson": [
+      0.07147921209795555,
+      0.5907245720727483
+    ],
+    "fisher_p_vs_none": 1,
+    "mean_tokens": 915974,
+    "mean_input_side": 904309.75,
+    "mean_output": 11664.25,
+    "mean_cost": 0.0221959025,
+    "total_cost": 0.17756722,
+    "mean_wall_s": 59.149125,
+    "mean_tool_calls": 32.875,
+    "peeked": 1,
+    "steps_complete": 8,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "duplicate_tickets": 1,
+    "lost_edits": 0,
+    "lost_changelog": 1,
+    "conflict_marker_files": 0,
+    "edit_conflict_errors": 1,
+    "scope_denials": 0,
+    "git_lock_errors": 0,
+    "uncommitted_files": 1,
+    "runs_with_collision": 2,
+    "both_worked": 8,
+    "mean_functions_ok": 4
+  },
+  {
+    "scenario": "T3",
+    "model": "sonnet",
+    "arm": "none",
+    "n": 2,
+    "success": 1,
+    "success_rate": 0.5,
+    "success_wilson": [
+      0.09453120463920084,
+      0.9054687953607992
+    ],
+    "success_exact": [
+      0.012579117093425029,
+      0.9874208829065749
+    ],
+    "wrong": 1,
+    "wrong_rate": 0.5,
+    "wrong_wilson": [
+      0.09453120463920084,
+      0.9054687953607992
+    ],
+    "fisher_p_vs_none": null,
+    "mean_tokens": 459726.5,
+    "mean_input_side": 455201,
+    "mean_output": 4525.5,
+    "mean_cost": 0.17084380000000002,
+    "total_cost": 0.34168760000000004,
+    "mean_wall_s": 37.6635,
+    "mean_tool_calls": 20.5,
+    "peeked": 0,
+    "steps_complete": 2,
+    "seeds": [
+      1,
+      2
+    ],
+    "duplicate_tickets": 1,
+    "lost_edits": 0,
+    "lost_changelog": 0,
+    "conflict_marker_files": 0,
+    "edit_conflict_errors": 1,
+    "scope_denials": 0,
+    "git_lock_errors": 0,
+    "uncommitted_files": 0,
+    "runs_with_collision": 1,
+    "both_worked": 2,
+    "mean_functions_ok": 4
+  },
+  {
+    "scenario": "T3",
+    "model": "sonnet",
+    "arm": "sea",
+    "n": 2,
+    "success": 2,
+    "success_rate": 1,
+    "success_wilson": [
+      0.3423802239546494,
+      1
+    ],
+    "success_exact": [
+      0.15811388300841883,
+      1
+    ],
+    "wrong": 0,
+    "wrong_rate": 0,
+    "wrong_wilson": [
+      0,
+      0.6576197760453506
+    ],
+    "fisher_p_vs_none": 1,
+    "mean_tokens": 833849.5,
+    "mean_input_side": 829580.5,
+    "mean_output": 4269,
+    "mean_cost": 0.29006925,
+    "total_cost": 0.5801385,
+    "mean_wall_s": 79.9695,
+    "mean_tool_calls": 33,
+    "peeked": 0,
+    "steps_complete": 2,
+    "seeds": [
+      1,
+      2
+    ],
+    "duplicate_tickets": 0,
+    "lost_edits": 0,
+    "lost_changelog": 0,
+    "conflict_marker_files": 0,
+    "edit_conflict_errors": 0,
+    "scope_denials": 5,
+    "git_lock_errors": 0,
+    "uncommitted_files": 0,
+    "runs_with_collision": 0,
+    "both_worked": 1,
+    "mean_functions_ok": 4
+  },
+  {
+    "scenario": "T4",
+    "model": "haiku",
+    "arm": "none",
+    "n": 5,
+    "success": 5,
+    "success_rate": 1,
+    "success_wilson": [
+      0.5655175313406071,
+      1
+    ],
+    "success_exact": [
+      0.47817624989501795,
+      1
+    ],
+    "wrong": 0,
+    "wrong_rate": 0,
+    "wrong_wilson": [
+      0,
+      0.43448246865939283
+    ],
+    "fisher_p_vs_none": null,
+    "mean_tokens": 864083.8,
+    "mean_input_side": 859573.2,
+    "mean_output": 4510.6,
+    "mean_cost": 0.06514788399999999,
+    "total_cost": 0.32573941999999995,
+    "mean_wall_s": 83.944,
+    "mean_tool_calls": 20.6,
+    "peeked": 0,
+    "steps_complete": 5,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "compacted": 5,
+    "target_ok": 5,
+    "channel_ok": 5,
+    "mean_compactions": 3,
+    "audit_all6": 5
+  },
+  {
+    "scenario": "T4",
+    "model": "haiku",
+    "arm": "native",
+    "n": 5,
+    "success": 5,
+    "success_rate": 1,
+    "success_wilson": [
+      0.5655175313406071,
+      1
+    ],
+    "success_exact": [
+      0.47817624989501795,
+      1
+    ],
+    "wrong": 0,
+    "wrong_rate": 0,
+    "wrong_wilson": [
+      0,
+      0.43448246865939283
+    ],
+    "fisher_p_vs_none": 1,
+    "mean_tokens": 767775.2,
+    "mean_input_side": 762673,
+    "mean_output": 5102.2,
+    "mean_cost": 0.06635209500000001,
+    "total_cost": 0.33176047500000005,
+    "mean_wall_s": 92.22640000000001,
+    "mean_tool_calls": 22,
+    "peeked": 0,
+    "steps_complete": 5,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "compacted": 5,
+    "target_ok": 5,
+    "channel_ok": 5,
+    "mean_compactions": 3.2,
+    "audit_all6": 5
+  },
+  {
+    "scenario": "T4",
+    "model": "haiku",
+    "arm": "ccanchor",
+    "n": 5,
+    "success": 5,
+    "success_rate": 1,
+    "success_wilson": [
+      0.5655175313406071,
+      1
+    ],
+    "success_exact": [
+      0.47817624989501795,
+      1
+    ],
+    "wrong": 0,
+    "wrong_rate": 0,
+    "wrong_wilson": [
+      0,
+      0.43448246865939283
+    ],
+    "fisher_p_vs_none": 1,
+    "mean_tokens": 857312.6,
+    "mean_input_side": 852212.8,
+    "mean_output": 5099.8,
+    "mean_cost": 0.06648083,
+    "total_cost": 0.33240415,
+    "mean_wall_s": 95.37519999999999,
+    "mean_tool_calls": 21.6,
+    "peeked": 0,
+    "steps_complete": 5,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "compacted": 5,
+    "target_ok": 5,
+    "channel_ok": 5,
+    "mean_compactions": 3.4,
+    "audit_all6": 5
+  },
+  {
+    "scenario": "T5",
+    "model": "haiku",
+    "arm": "none",
+    "n": 6,
+    "success": 6,
+    "success_rate": 1,
+    "success_wilson": [
+      0.6096657083436265,
+      1
+    ],
+    "success_exact": [
+      0.5407418735600995,
+      1
+    ],
+    "wrong": 0,
+    "wrong_rate": 0,
+    "wrong_wilson": [
+      0,
+      0.39033429165637346
+    ],
+    "fisher_p_vs_none": null,
+    "mean_tokens": 176082,
+    "mean_input_side": 174404.33333333334,
+    "mean_output": 1677.6666666666667,
+    "mean_cost": 0.004475575,
+    "total_cost": 0.02685345,
+    "mean_wall_s": 19.218999999999998,
+    "mean_tool_calls": 7.666666666666667,
+    "peeked": 0,
+    "steps_complete": 6,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "read_truth": 6,
+    "read_memory": 5
+  },
+  {
+    "scenario": "T5",
+    "model": "haiku",
+    "arm": "native",
+    "n": 6,
+    "success": 6,
+    "success_rate": 1,
+    "success_wilson": [
+      0.6096657083436265,
+      1
+    ],
+    "success_exact": [
+      0.5407418735600995,
+      1
+    ],
+    "wrong": 0,
+    "wrong_rate": 0,
+    "wrong_wilson": [
+      0,
+      0.39033429165637346
+    ],
+    "fisher_p_vs_none": 0.9999999999999982,
+    "mean_tokens": 167653.5,
+    "mean_input_side": 166104.83333333334,
+    "mean_output": 1548.6666666666667,
+    "mean_cost": 0.004380081666666667,
+    "total_cost": 0.026280490000000004,
+    "mean_wall_s": 22.1345,
+    "mean_tool_calls": 7,
+    "peeked": 0,
+    "steps_complete": 6,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "read_truth": 6,
+    "read_memory": 0
+  },
+  {
+    "scenario": "T5",
+    "model": "haiku",
+    "arm": "kronicle",
+    "n": 6,
+    "success": 6,
+    "success_rate": 1,
+    "success_wilson": [
+      0.6096657083436265,
+      1
+    ],
+    "success_exact": [
+      0.5407418735600995,
+      1
+    ],
+    "wrong": 0,
+    "wrong_rate": 0,
+    "wrong_wilson": [
+      0,
+      0.39033429165637346
+    ],
+    "fisher_p_vs_none": 0.9999999999999982,
+    "mean_tokens": 244796.33333333334,
+    "mean_input_side": 242208.83333333334,
+    "mean_output": 2587.5,
+    "mean_cost": 0.006466498333333333,
+    "total_cost": 0.03879899,
+    "mean_wall_s": 22.321166666666667,
+    "mean_tool_calls": 11,
+    "peeked": 0,
+    "steps_complete": 6,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "read_truth": 6,
+    "read_memory": 6
+  },
+  {
+    "scenario": "T5",
+    "model": "haiku",
+    "arm": "basicmem",
+    "n": 6,
+    "success": 6,
+    "success_rate": 1,
+    "success_wilson": [
+      0.6096657083436265,
+      1
+    ],
+    "success_exact": [
+      0.5407418735600995,
+      1
+    ],
+    "wrong": 0,
+    "wrong_rate": 0,
+    "wrong_wilson": [
+      0,
+      0.39033429165637346
+    ],
+    "fisher_p_vs_none": 0.9999999999999982,
+    "mean_tokens": 196061.5,
+    "mean_input_side": 194156.66666666666,
+    "mean_output": 1904.8333333333333,
+    "mean_cost": 0.0054594100000000005,
+    "total_cost": 0.03275646,
+    "mean_wall_s": 30.263333333333335,
+    "mean_tool_calls": 9.666666666666666,
+    "peeked": 0,
+    "steps_complete": 6,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "read_truth": 6,
+    "read_memory": 6
+  },
+  {
+    "scenario": "T5",
+    "model": "sonnet",
+    "arm": "native",
+    "n": 3,
+    "success": 3,
+    "success_rate": 1,
+    "success_wilson": [
+      0.43850296436068037,
+      1
+    ],
+    "success_exact": [
+      0.2924017738212866,
+      1
+    ],
+    "wrong": 0,
+    "wrong_rate": 0,
+    "wrong_wilson": [
+      0,
+      0.5614970356393196
+    ],
+    "fisher_p_vs_none": null,
+    "mean_tokens": 98632.66666666667,
+    "mean_input_side": 98014.33333333333,
+    "mean_output": 618.3333333333334,
+    "mean_cost": 0.04494956666666666,
+    "total_cost": 0.1348487,
+    "mean_wall_s": 17.083333333333332,
+    "mean_tool_calls": 5,
+    "peeked": 0,
+    "steps_complete": 3,
+    "seeds": [
+      1,
+      2,
+      3
+    ],
+    "read_truth": 3,
+    "read_memory": 0
+  },
+  {
+    "scenario": "T5",
+    "model": "sonnet",
+    "arm": "kronicle",
+    "n": 3,
+    "success": 3,
+    "success_rate": 1,
+    "success_wilson": [
+      0.43850296436068037,
+      1
+    ],
+    "success_exact": [
+      0.2924017738212866,
+      1
+    ],
+    "wrong": 0,
+    "wrong_rate": 0,
+    "wrong_wilson": [
+      0,
+      0.5614970356393196
+    ],
+    "fisher_p_vs_none": null,
+    "mean_tokens": 156975,
+    "mean_input_side": 155704,
+    "mean_output": 1271,
+    "mean_cost": 0.07702453333333333,
+    "total_cost": 0.2310736,
+    "mean_wall_s": 22.279,
+    "mean_tool_calls": 8.666666666666666,
+    "peeked": 0,
+    "steps_complete": 3,
+    "seeds": [
+      1,
+      2,
+      3
+    ],
+    "read_truth": 3,
+    "read_memory": 3
+  },
+  {
+    "scenario": "T6",
+    "model": "haiku",
+    "arm": "none",
+    "n": 6,
+    "success": 6,
+    "success_rate": 1,
+    "success_wilson": [
+      0.6096657083436265,
+      1
+    ],
+    "success_exact": [
+      0.5407418735600995,
+      1
+    ],
+    "wrong": 0,
+    "wrong_rate": 0,
+    "wrong_wilson": [
+      0,
+      0.39033429165637346
+    ],
+    "fisher_p_vs_none": null,
+    "mean_tokens": 173979.66666666666,
+    "mean_input_side": 172831.83333333334,
+    "mean_output": 1147.8333333333333,
+    "mean_cost": 0.00401953,
+    "total_cost": 0.024117180000000002,
+    "mean_wall_s": 15.194166666666666,
+    "mean_tool_calls": 7.333333333333333,
+    "peeked": 0,
+    "steps_complete": 6,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "exposed": 6,
+    "reground": 0,
+    "fault_fired": 6
+  },
+  {
+    "scenario": "T6",
+    "model": "haiku",
+    "arm": "kronicle",
+    "n": 6,
+    "success": 6,
+    "success_rate": 1,
+    "success_wilson": [
+      0.6096657083436265,
+      1
+    ],
+    "success_exact": [
+      0.5407418735600995,
+      1
+    ],
+    "wrong": 0,
+    "wrong_rate": 0,
+    "wrong_wilson": [
+      0,
+      0.39033429165637346
+    ],
+    "fisher_p_vs_none": 0.9999999999999982,
+    "mean_tokens": 224618.83333333334,
+    "mean_input_side": 222953.5,
+    "mean_output": 1665.3333333333333,
+    "mean_cost": 0.006075770000000001,
+    "total_cost": 0.03645462000000001,
+    "mean_wall_s": 19.234833333333334,
+    "mean_tool_calls": 8.666666666666666,
+    "peeked": 0,
+    "steps_complete": 6,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "exposed": 6,
+    "reground": 0,
+    "fault_fired": 6
+  },
+  {
+    "scenario": "T6",
+    "model": "haiku",
+    "arm": "kronicle_strict",
+    "n": 6,
+    "success": 6,
+    "success_rate": 1,
+    "success_wilson": [
+      0.6096657083436265,
+      1
+    ],
+    "success_exact": [
+      0.5407418735600995,
+      1
+    ],
+    "wrong": 0,
+    "wrong_rate": 0,
+    "wrong_wilson": [
+      0,
+      0.39033429165637346
+    ],
+    "fisher_p_vs_none": 0.9999999999999982,
+    "mean_tokens": 528466.8333333334,
+    "mean_input_side": 523373,
+    "mean_output": 5093.833333333333,
+    "mean_cost": 0.01294323,
+    "total_cost": 0.07765938,
+    "mean_wall_s": 39.508,
+    "mean_tool_calls": 17,
+    "peeked": 0,
+    "steps_complete": 6,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "exposed": 6,
+    "reground": 6,
+    "fault_fired": 6
+  },
+  {
+    "scenario": "T6",
+    "model": "haiku",
+    "arm": "kronicle_push",
+    "n": 6,
+    "success": 6,
+    "success_rate": 1,
+    "success_wilson": [
+      0.6096657083436265,
+      1
+    ],
+    "success_exact": [
+      0.5407418735600995,
+      1
+    ],
+    "wrong": 0,
+    "wrong_rate": 0,
+    "wrong_wilson": [
+      0,
+      0.39033429165637346
+    ],
+    "fisher_p_vs_none": 0.9999999999999982,
+    "mean_tokens": 308884.5,
+    "mean_input_side": 306313.5,
+    "mean_output": 2571,
+    "mean_cost": 0.008233141666666667,
+    "total_cost": 0.04939885,
+    "mean_wall_s": 32.6335,
+    "mean_tool_calls": 11.166666666666666,
+    "peeked": 0,
+    "steps_complete": 6,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "exposed": 6,
+    "reground": 6,
+    "fault_fired": 6
+  }
+]

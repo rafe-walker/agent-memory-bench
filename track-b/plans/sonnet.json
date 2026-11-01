@@ -1,0 +1,6 @@
+{ "model": "sonnet", "concurrency": 6, "maxUsdPerRun": 3, "timeoutSec": 900,
+  "cells": [
+    {"scenario":"T1","n":4,"arms":["none","kronicle","kronicle_push"]},
+    {"scenario":"T5","n":3,"arms":["native","kronicle"]},
+    {"scenario":"T3","n":2,"arms":["none","sea"]}
+  ] }
