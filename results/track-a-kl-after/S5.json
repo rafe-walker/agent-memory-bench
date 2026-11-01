@@ -1,0 +1,428 @@
+{
+ "scenario": "S5",
+ "title": "Retired / deleted doc still served",
+ "records": {
+  "S5|kronicle-lite-next": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "yes",
+    "reason": "retirement surfaced",
+    "flags": {
+     "served": false,
+     "noticed": true
+    },
+    "bytes": {
+     "touch": 3095,
+     "read": 3887
+    },
+    "ms": {
+     "touch": 220.3,
+     "read": 6.7
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1696
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "yes",
+    "reason": "retirement surfaced",
+    "flags": {
+     "served": false,
+     "noticed": true
+    },
+    "bytes": {
+     "touch": 3095,
+     "read": 3892
+    },
+    "ms": {
+     "touch": 41.3,
+     "read": 8.8
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1731
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "yes",
+    "reason": "retirement surfaced",
+    "flags": {
+     "served": false,
+     "noticed": true
+    },
+    "bytes": {
+     "touch": 3097,
+     "read": 3892
+    },
+    "ms": {
+     "touch": 538.2,
+     "read": 13.2
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 3346
+   },
+   {
+    "seed": 4,
+    "variant": null,
+    "grade": "yes",
+    "reason": "retirement surfaced",
+    "flags": {
+     "served": false,
+     "noticed": true
+    },
+    "bytes": {
+     "touch": 3097,
+     "read": 3889
+    },
+    "ms": {
+     "touch": 76.9,
+     "read": 28
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 3374
+   },
+   {
+    "seed": 5,
+    "variant": null,
+    "grade": "yes",
+    "reason": "retirement surfaced",
+    "flags": {
+     "served": false,
+     "noticed": true
+    },
+    "bytes": {
+     "touch": 3095,
+     "read": 3884
+    },
+    "ms": {
+     "touch": 32.7,
+     "read": 203.4
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2879
+   },
+   {
+    "seed": 6,
+    "variant": null,
+    "grade": "yes",
+    "reason": "retirement surfaced",
+    "flags": {
+     "served": false,
+     "noticed": true
+    },
+    "bytes": {
+     "touch": 3097,
+     "read": 3884
+    },
+    "ms": {
+     "touch": 40.8,
+     "read": 14.4
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2840
+   },
+   {
+    "seed": 7,
+    "variant": null,
+    "grade": "yes",
+    "reason": "retirement surfaced",
+    "flags": {
+     "served": false,
+     "noticed": true
+    },
+    "bytes": {
+     "touch": 3095,
+     "read": 3894
+    },
+    "ms": {
+     "touch": 16.1,
+     "read": 195.9
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2522
+   },
+   {
+    "seed": 8,
+    "variant": null,
+    "grade": "yes",
+    "reason": "retirement surfaced",
+    "flags": {
+     "served": false,
+     "noticed": true
+    },
+    "bytes": {
+     "touch": 3097,
+     "read": 3888
+    },
+    "ms": {
+     "touch": 32.7,
+     "read": 6.7
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2503
+   },
+   {
+    "seed": 9,
+    "variant": null,
+    "grade": "yes",
+    "reason": "retirement surfaced",
+    "flags": {
+     "served": false,
+     "noticed": true
+    },
+    "bytes": {
+     "touch": 3097,
+     "read": 3892
+    },
+    "ms": {
+     "touch": 20.3,
+     "read": 7.7
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2147
+   },
+   {
+    "seed": 10,
+    "variant": null,
+    "grade": "yes",
+    "reason": "retirement surfaced",
+    "flags": {
+     "served": false,
+     "noticed": true
+    },
+    "bytes": {
+     "touch": 3097,
+     "read": 3884
+    },
+    "ms": {
+     "touch": 21.7,
+     "read": 8.1
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1626
+   },
+   {
+    "seed": 11,
+    "variant": null,
+    "grade": "yes",
+    "reason": "retirement surfaced",
+    "flags": {
+     "served": false,
+     "noticed": true
+    },
+    "bytes": {
+     "touch": 3097,
+     "read": 3892
+    },
+    "ms": {
+     "touch": 22.7,
+     "read": 263.3
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2143
+   },
+   {
+    "seed": 12,
+    "variant": null,
+    "grade": "yes",
+    "reason": "retirement surfaced",
+    "flags": {
+     "served": false,
+     "noticed": true
+    },
+    "bytes": {
+     "touch": 3097,
+     "read": 3878
+    },
+    "ms": {
+     "touch": 63.1,
+     "read": 31.7
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1735
+   },
+   {
+    "seed": 13,
+    "variant": null,
+    "grade": "yes",
+    "reason": "retirement surfaced",
+    "flags": {
+     "served": false,
+     "noticed": true
+    },
+    "bytes": {
+     "touch": 3097,
+     "read": 3890
+    },
+    "ms": {
+     "touch": 22,
+     "read": 6
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2343
+   },
+   {
+    "seed": 14,
+    "variant": null,
+    "grade": "yes",
+    "reason": "retirement surfaced",
+    "flags": {
+     "served": false,
+     "noticed": true
+    },
+    "bytes": {
+     "touch": 3097,
+     "read": 3881
+    },
+    "ms": {
+     "touch": 15.8,
+     "read": 184.7
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2202
+   },
+   {
+    "seed": 15,
+    "variant": null,
+    "grade": "yes",
+    "reason": "retirement surfaced",
+    "flags": {
+     "served": false,
+     "noticed": true
+    },
+    "bytes": {
+     "touch": 3097,
+     "read": 3883
+    },
+    "ms": {
+     "touch": 22.1,
+     "read": 8.9
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1354
+   },
+   {
+    "seed": 16,
+    "variant": null,
+    "grade": "yes",
+    "reason": "retirement surfaced",
+    "flags": {
+     "served": false,
+     "noticed": true
+    },
+    "bytes": {
+     "touch": 3095,
+     "read": 3885
+    },
+    "ms": {
+     "touch": 48.6,
+     "read": 15.6
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 1687
+   },
+   {
+    "seed": 17,
+    "variant": null,
+    "grade": "yes",
+    "reason": "retirement surfaced",
+    "flags": {
+     "served": false,
+     "noticed": true
+    },
+    "bytes": {
+     "touch": 3095,
+     "read": 3896
+    },
+    "ms": {
+     "touch": 255,
+     "read": 6.5
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2341
+   },
+   {
+    "seed": 18,
+    "variant": null,
+    "grade": "yes",
+    "reason": "retirement surfaced",
+    "flags": {
+     "served": false,
+     "noticed": true
+    },
+    "bytes": {
+     "touch": 3095,
+     "read": 3890
+    },
+    "ms": {
+     "touch": 22.5,
+     "read": 24.4
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2304
+   },
+   {
+    "seed": 19,
+    "variant": null,
+    "grade": "yes",
+    "reason": "retirement surfaced",
+    "flags": {
+     "served": false,
+     "noticed": true
+    },
+    "bytes": {
+     "touch": 3095,
+     "read": 3889
+    },
+    "ms": {
+     "touch": 28.5,
+     "read": 7.6
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2339
+   },
+   {
+    "seed": 20,
+    "variant": null,
+    "grade": "yes",
+    "reason": "retirement surfaced",
+    "flags": {
+     "served": false,
+     "noticed": true
+    },
+    "bytes": {
+     "touch": 3097,
+     "read": 3900
+    },
+    "ms": {
+     "touch": 16.9,
+     "read": 349.2
+    },
+    "calls": 2,
+    "delivery": "push",
+    "ms_total": 2268
+   }
+  ]
+ }
+}

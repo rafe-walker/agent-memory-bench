@@ -1,0 +1,56 @@
+{
+ "bench": "agent-memory-bench Track A",
+ "version": "0.1.0",
+ "started_at": "2026-11-01T15:37:05.761Z",
+ "ci": false,
+ "seeds": 20,
+ "sizes": [
+  1000,
+  10000
+ ],
+ "host": {
+  "platform": "linux 6.18.44-fc-v185",
+  "node": "v22.23.4",
+  "cpus": 2,
+  "mem_gb": 8
+ },
+ "git": "4240247",
+ "token_estimate": "ceil(bytes/4); same proxy for every arm",
+ "arms": {
+  "kronicle-lite-next": {
+   "id": "kronicle-lite-next",
+   "label": "kronicle-lite next (unreleased, on 0.6.0)",
+   "version": "next unreleased — kronicle-lite next@a6ee9a1 (git archive, 2026-11-01T15:36:43Z)",
+   "kind": [
+    "knowledge",
+    "compaction"
+   ],
+   "setupSteps": [
+    "npm i -g kronicle-lite@0.5.0 (or npx)",
+    "claude mcp add kronicle-lite -- kronicle-lite serve",
+    "install the orient skill (plugin)",
+    "SessionStart+FileChanged hook: kronicle-lite put --from-instructions --stdin-hook (or run `kronicle-lite watch docs/`)"
+   ],
+   "notes": "MCP stdio. Data dir = default ~/.kronicle-lite under an isolated HOME.",
+   "tools_list": {
+    "tools": 10,
+    "bytes": 14230,
+    "tokens": 3558,
+    "names": [
+     "get_system_state",
+     "audit_assumptions",
+     "recall",
+     "verify",
+     "verify_chain",
+     "checkpoint_chain",
+     "anchor_status",
+     "put_document",
+     "supersede_block",
+     "tombstone_block"
+    ]
+   }
+  }
+ },
+ "finished_at": "2026-11-01T15:40:59.959Z",
+ "wall_s": 234
+}

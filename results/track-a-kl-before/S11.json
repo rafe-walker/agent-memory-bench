@@ -1,0 +1,488 @@
+{
+ "scenario": "S11",
+ "title": "Cross-project leak (two repos sharing a store)",
+ "records": {
+  "S11|kronicle-lite-0.6": [
+   {
+    "seed": 1,
+    "variant": null,
+    "grade": "partial",
+    "reason": "B's facts visible in A, labeled",
+    "flags": {
+     "leak": true,
+     "labeled": true,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 3261,
+     "read": 3873,
+     "nextSession": 1708
+    },
+    "ms": {
+     "touch": 24.2,
+     "read": 17.1,
+     "nextSession": 268.2
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 8597
+   },
+   {
+    "seed": 2,
+    "variant": null,
+    "grade": "partial",
+    "reason": "B's facts visible in A, labeled",
+    "flags": {
+     "leak": true,
+     "labeled": true,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 3261,
+     "read": 3878,
+     "nextSession": 1708
+    },
+    "ms": {
+     "touch": 21.7,
+     "read": 21.3,
+     "nextSession": 132
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 9379
+   },
+   {
+    "seed": 3,
+    "variant": null,
+    "grade": "partial",
+    "reason": "B's facts visible in A, labeled",
+    "flags": {
+     "leak": true,
+     "labeled": true,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 3261,
+     "read": 3872,
+     "nextSession": 1708
+    },
+    "ms": {
+     "touch": 734.7,
+     "read": 13,
+     "nextSession": 335.5
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 8961
+   },
+   {
+    "seed": 4,
+    "variant": null,
+    "grade": "partial",
+    "reason": "B's facts visible in A, labeled",
+    "flags": {
+     "leak": true,
+     "labeled": true,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 3261,
+     "read": 3873,
+     "nextSession": 1708
+    },
+    "ms": {
+     "touch": 61.6,
+     "read": 34.9,
+     "nextSession": 365.2
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 8508
+   },
+   {
+    "seed": 5,
+    "variant": null,
+    "grade": "partial",
+    "reason": "B's facts visible in A, labeled",
+    "flags": {
+     "leak": true,
+     "labeled": true,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 3261,
+     "read": 3870,
+     "nextSession": 1708
+    },
+    "ms": {
+     "touch": 60.8,
+     "read": 17.3,
+     "nextSession": 280.1
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 7997
+   },
+   {
+    "seed": 6,
+    "variant": null,
+    "grade": "partial",
+    "reason": "B's facts visible in A, labeled",
+    "flags": {
+     "leak": true,
+     "labeled": true,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 3261,
+     "read": 3870,
+     "nextSession": 1708
+    },
+    "ms": {
+     "touch": 21,
+     "read": 11.8,
+     "nextSession": 113.8
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 8309
+   },
+   {
+    "seed": 7,
+    "variant": null,
+    "grade": "partial",
+    "reason": "B's facts visible in A, labeled",
+    "flags": {
+     "leak": true,
+     "labeled": true,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 3261,
+     "read": 3882,
+     "nextSession": 1708
+    },
+    "ms": {
+     "touch": 55.8,
+     "read": 23.9,
+     "nextSession": 273.1
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 9451
+   },
+   {
+    "seed": 8,
+    "variant": null,
+    "grade": "partial",
+    "reason": "B's facts visible in A, labeled",
+    "flags": {
+     "leak": true,
+     "labeled": true,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 3261,
+     "read": 3867,
+     "nextSession": 1708
+    },
+    "ms": {
+     "touch": 111.6,
+     "read": 10.4,
+     "nextSession": 283.5
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 9365
+   },
+   {
+    "seed": 9,
+    "variant": null,
+    "grade": "partial",
+    "reason": "B's facts visible in A, labeled",
+    "flags": {
+     "leak": true,
+     "labeled": true,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 3261,
+     "read": 3874,
+     "nextSession": 1708
+    },
+    "ms": {
+     "touch": 38.8,
+     "read": 17,
+     "nextSession": 165.2
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 8696
+   },
+   {
+    "seed": 10,
+    "variant": null,
+    "grade": "partial",
+    "reason": "B's facts visible in A, labeled",
+    "flags": {
+     "leak": true,
+     "labeled": true,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 3261,
+     "read": 3869,
+     "nextSession": 1708
+    },
+    "ms": {
+     "touch": 38.9,
+     "read": 42.9,
+     "nextSession": 124.3
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 9458
+   },
+   {
+    "seed": 11,
+    "variant": null,
+    "grade": "partial",
+    "reason": "B's facts visible in A, labeled",
+    "flags": {
+     "leak": true,
+     "labeled": true,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 3261,
+     "read": 3872,
+     "nextSession": 1708
+    },
+    "ms": {
+     "touch": 32.8,
+     "read": 39.1,
+     "nextSession": 159
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 7818
+   },
+   {
+    "seed": 12,
+    "variant": null,
+    "grade": "partial",
+    "reason": "B's facts visible in A, labeled",
+    "flags": {
+     "leak": true,
+     "labeled": true,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 3261,
+     "read": 3867,
+     "nextSession": 1708
+    },
+    "ms": {
+     "touch": 37.6,
+     "read": 49.7,
+     "nextSession": 109.9
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 7131
+   },
+   {
+    "seed": 13,
+    "variant": null,
+    "grade": "partial",
+    "reason": "B's facts visible in A, labeled",
+    "flags": {
+     "leak": true,
+     "labeled": true,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 3261,
+     "read": 3879,
+     "nextSession": 1708
+    },
+    "ms": {
+     "touch": 67.9,
+     "read": 260.3,
+     "nextSession": 192.3
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 8549
+   },
+   {
+    "seed": 14,
+    "variant": null,
+    "grade": "partial",
+    "reason": "B's facts visible in A, labeled",
+    "flags": {
+     "leak": true,
+     "labeled": true,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 3261,
+     "read": 3863,
+     "nextSession": 1708
+    },
+    "ms": {
+     "touch": 63.9,
+     "read": 30.1,
+     "nextSession": 91.9
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 7030
+   },
+   {
+    "seed": 15,
+    "variant": null,
+    "grade": "partial",
+    "reason": "B's facts visible in A, labeled",
+    "flags": {
+     "leak": true,
+     "labeled": true,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 3261,
+     "read": 3871,
+     "nextSession": 1708
+    },
+    "ms": {
+     "touch": 59.3,
+     "read": 22.4,
+     "nextSession": 182.3
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 8267
+   },
+   {
+    "seed": 16,
+    "variant": null,
+    "grade": "partial",
+    "reason": "B's facts visible in A, labeled",
+    "flags": {
+     "leak": true,
+     "labeled": true,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 3261,
+     "read": 3872,
+     "nextSession": 1708
+    },
+    "ms": {
+     "touch": 72.4,
+     "read": 29.6,
+     "nextSession": 148.5
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 7918
+   },
+   {
+    "seed": 17,
+    "variant": null,
+    "grade": "partial",
+    "reason": "B's facts visible in A, labeled",
+    "flags": {
+     "leak": true,
+     "labeled": true,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 3261,
+     "read": 3882,
+     "nextSession": 1708
+    },
+    "ms": {
+     "touch": 117.4,
+     "read": 14.1,
+     "nextSession": 160.3
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 8509
+   },
+   {
+    "seed": 18,
+    "variant": null,
+    "grade": "partial",
+    "reason": "B's facts visible in A, labeled",
+    "flags": {
+     "leak": true,
+     "labeled": true,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 3261,
+     "read": 3877,
+     "nextSession": 1708
+    },
+    "ms": {
+     "touch": 59.7,
+     "read": 23.1,
+     "nextSession": 180.3
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 7815
+   },
+   {
+    "seed": 19,
+    "variant": null,
+    "grade": "partial",
+    "reason": "B's facts visible in A, labeled",
+    "flags": {
+     "leak": true,
+     "labeled": true,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 3261,
+     "read": 3875,
+     "nextSession": 1708
+    },
+    "ms": {
+     "touch": 39.7,
+     "read": 9.9,
+     "nextSession": 320
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 8805
+   },
+   {
+    "seed": 20,
+    "variant": null,
+    "grade": "partial",
+    "reason": "B's facts visible in A, labeled",
+    "flags": {
+     "leak": true,
+     "labeled": true,
+     "falseRetraction": false
+    },
+    "bytes": {
+     "touch": 3261,
+     "read": 3881,
+     "nextSession": 1708
+    },
+    "ms": {
+     "touch": 33.3,
+     "read": 27.7,
+     "nextSession": 79.2
+    },
+    "calls": 3,
+    "delivery": "push",
+    "ms_total": 8491
+   }
+  ]
+ }
+}

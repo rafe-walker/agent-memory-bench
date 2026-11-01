@@ -12,7 +12,7 @@ function dirBytes(p) { let n = 0; const walk = (d) => { for (const e of fs.readd
 
 export const S12 = {
   id: 'S12', title: 'Retrieval at scale (1k–10k docs: latency + bytes)',
-  arms: ['baseline', 'kronicle-lite', 'kronicle-lite-0.6', 'kronicle-lite-0.6-core', 'basic-memory', 'server-memory'],
+  arms: ['baseline', 'kronicle-lite', 'kronicle-lite-0.6', 'kronicle-lite-0.6-core', 'kronicle-lite-next', 'basic-memory', 'server-memory'],
   async run(Arm, { size, queries = 20, seed = 42 }) {
     const docs = scaleCorpus(size, seed);
     const home = tmpdir(`S12-${Arm.meta.id.replace(/[^a-z0-9]/gi, '')}-${size}`);

@@ -1,0 +1,130 @@
+{
+  "cli": "/home/claude/amb-kl/.arms-next/kronicle-lite-next/dist/cli.js",
+  "total": {
+    "starts": 1000,
+    "crashed": 0,
+    "split_identity_trials": 0
+  },
+  "trials": [
+    {
+      "n": 50,
+      "crashed": 0,
+      "distinct_keys": 1,
+      "sample_error": null
+    },
+    {
+      "n": 50,
+      "crashed": 0,
+      "distinct_keys": 1,
+      "sample_error": null
+    },
+    {
+      "n": 50,
+      "crashed": 0,
+      "distinct_keys": 1,
+      "sample_error": null
+    },
+    {
+      "n": 50,
+      "crashed": 0,
+      "distinct_keys": 1,
+      "sample_error": null
+    },
+    {
+      "n": 50,
+      "crashed": 0,
+      "distinct_keys": 1,
+      "sample_error": null
+    },
+    {
+      "n": 50,
+      "crashed": 0,
+      "distinct_keys": 1,
+      "sample_error": null
+    },
+    {
+      "n": 50,
+      "crashed": 0,
+      "distinct_keys": 1,
+      "sample_error": null
+    },
+    {
+      "n": 50,
+      "crashed": 0,
+      "distinct_keys": 1,
+      "sample_error": null
+    },
+    {
+      "n": 50,
+      "crashed": 0,
+      "distinct_keys": 1,
+      "sample_error": null
+    },
+    {
+      "n": 50,
+      "crashed": 0,
+      "distinct_keys": 1,
+      "sample_error": null
+    },
+    {
+      "n": 50,
+      "crashed": 0,
+      "distinct_keys": 1,
+      "sample_error": null
+    },
+    {
+      "n": 50,
+      "crashed": 0,
+      "distinct_keys": 1,
+      "sample_error": null
+    },
+    {
+      "n": 50,
+      "crashed": 0,
+      "distinct_keys": 1,
+      "sample_error": null
+    },
+    {
+      "n": 50,
+      "crashed": 0,
+      "distinct_keys": 1,
+      "sample_error": null
+    },
+    {
+      "n": 50,
+      "crashed": 0,
+      "distinct_keys": 1,
+      "sample_error": null
+    },
+    {
+      "n": 50,
+      "crashed": 0,
+      "distinct_keys": 1,
+      "sample_error": null
+    },
+    {
+      "n": 50,
+      "crashed": 0,
+      "distinct_keys": 1,
+      "sample_error": null
+    },
+    {
+      "n": 50,
+      "crashed": 0,
+      "distinct_keys": 1,
+      "sample_error": null
+    },
+    {
+      "n": 50,
+      "crashed": 0,
+      "distinct_keys": 1,
+      "sample_error": null
+    },
+    {
+      "n": 50,
+      "crashed": 0,
+      "distinct_keys": 1,
+      "sample_error": null
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+ "kronicle-lite-0.6|1000": {
+  "arm": "kronicle-lite-0.6",
+  "size": 1000,
+  "n": 20,
+  "hits": 20,
+  "hit_rate": {
+   "k": 20,
+   "n": 20,
+   "p": 1,
+   "wilson": {
+    "lo": 0.8388748419471806,
+    "hi": 1
+   },
+   "exact": {
+    "lo": 0.8315665290168521,
+    "hi": 1
+   }
+  },
+  "latency_ms": {
+   "n": 20,
+   "p50": 6.039110999961849,
+   "p95": 14.333388000028208,
+   "max": 48.26339300000109
+  },
+  "bytes_mean": 2247,
+  "tokens_mean": 562,
+  "bytes_max": 2249,
+  "ingest_ms": 6883.893947000004,
+  "corpus_bytes": 364786,
+  "store_bytes": 16180376,
+  "store_over_corpus": 44.36,
+  "wall_ms": 7548
+ },
+ "kronicle-lite-0.6|10000": {
+  "arm": "kronicle-lite-0.6",
+  "size": 10000,
+  "n": 20,
+  "hits": 20,
+  "hit_rate": {
+   "k": 20,
+   "n": 20,
+   "p": 1,
+   "wilson": {
+    "lo": 0.8388748419471806,
+    "hi": 1
+   },
+   "exact": {
+    "lo": 0.8315665290168521,
+    "hi": 1
+   }
+  },
+  "latency_ms": {
+   "n": 20,
+   "p50": 6.357459000020754,
+   "p95": 66.72597599995788,
+   "max": 71.81787699996494
+  },
+  "bytes_mean": 2256,
+  "tokens_mean": 564,
+  "bytes_max": 2263,
+  "ingest_ms": 71359.24296499998,
+  "corpus_bytes": 3664947,
+  "store_bytes": 122858600,
+  "store_over_corpus": 33.52,
+  "wall_ms": 97519
+ }
+}
