@@ -1,8 +1,8 @@
 # agent-memory-bench — Track A report
 
-Generated 2026-11-01T15:04:40.017Z by `npm run track-a` — deterministic, no LLM, $0. Seeds per randomized cell: **20**. Wall time 403 s on 2 CPU / 8 GB, Node v22.23.4. Bench code at commit `4240247` plus the working tree committed with these results.
+Generated 2026-11-01T15:48:59.449Z by `npm run track-a` — deterministic, no LLM, $0. Seeds per randomized cell: **20**. Wall time 435 s on 2 CPU / 8 GB, Node v22.23.4. Bench code at commit `f0597d7` plus the working tree committed with these results.
 
-> **Branch run.** The sea-lite arms ran `next@a5908f8` (`SEA_LITE_CLI`), not the build the hand-written prose describes. The prose (bottom line, scenario notes, priorities) is the main run's (results/track-a); read this report's tables for this build.
+> **Branch run.** The sea-lite arms ran `next@eca4e58` (`SEA_LITE_CLI`), not the build the hand-written prose describes. The prose (bottom line, scenario notes, priorities) is the main run's (results/track-a); read this report's tables for this build.
 
 **Bottom line.** On the faults where a fact *changes* (S1 stale runbook, S5 retired doc, S6 tamper), kronicle-lite is the only arm that tells the agent what changed: 20/20 seeds each, ✅ [84–100%], against 🟡 for files-on-disk (baseline, native: the fresh value is there if the agent re-reads) and ❌ for the reference memory server (it keeps serving the old value, 20/20). sea-lite is the only coordination arm that passes all four collision variants (S3a–d, 20/20 each) — beads fails out-of-the-box identity (S3c 0/20: both sessions believe they hold the issue), mcp_agent_mail is advisory (every racer is granted, conflict reported; blocked only at commit by its opt-in guard), Backlog.md and task-master have no claim primitive. With cc-anchor's heartbeat, sea-lite also keeps a lease alive through a long task (S13 3/3; alone it lapses and the holder learns only at its next write).
 
@@ -27,8 +27,8 @@ Generated 2026-11-01T15:04:40.017Z by `npm run track-a` — deterministic, no LL
 
 | arm | version | kinds | setup steps | tools/list | notes |
 |---|---|---|---|---|---|
-| sea-lite | next@a5908f8 | coordination | 5 | 15 tools, 31.5 KB (~8058 tok); `--core`: 9 tools, 11.7 KB (~2992 tok) |  |
-| sea-lite + cc-anchor hooks | sea-lite next@a5908f8 + cc-anchor 0.3.0 (unreleased local build) | coordination | 5 | 15 tools, 31.5 KB (~8058 tok); `--core`: 9 tools, 11.7 KB (~2992 tok) |  |
+| sea-lite | next@eca4e58 | coordination | 5 | 15 tools, 31.7 KB (~8128 tok); `--core`: 9 tools, 11.7 KB (~2989 tok) |  |
+| sea-lite + cc-anchor hooks | sea-lite next@eca4e58 + cc-anchor 0.3.0 (unreleased local build) | coordination | 5 | 15 tools, 31.7 KB (~8128 tok); `--core`: 9 tools, 11.7 KB (~2989 tok) |  |
 
 ### Arms not run
 
@@ -48,15 +48,15 @@ Bytes the agent sees, averaged over every scenario cell the arm ran (tokens ≈ 
 
 | arm | tools/list | session start | mid-session touch | lookup (read) | post-compaction |
 |---|---|---|---|---|---|
-| sea-lite | 31.5 KB | – | – | – | – |
-| sea-lite+cc-anchor | 31.5 KB | – | – | – | – |
+| sea-lite | 31.7 KB | – | – | – | – |
+| sea-lite+cc-anchor | 31.7 KB | – | – | – | – |
 
 ### Latency (ms, p50 / p95 over all calls of that kind)
 
 | arm | touch | read | claim race (S3a, all N) | edit guard (S3b) |
 |---|---|---|---|---|
-| sea-lite | – | – | 4081 / 6466 | 751 / 1178 |
-| sea-lite+cc-anchor | – | – | 2888 / 10048 | 495 / 563 |
+| sea-lite | – | – | 1983 / 2943 | 513 / 994 |
+| sea-lite+cc-anchor | – | – | 2429 / 5540 | 601 / 1251 |
 
 ## Per-scenario results
 
@@ -83,7 +83,7 @@ B tries to Edit inside A's claimed path. sea-lite's own PreToolUse hook and cc-a
 | arm | y / p / n (n/a) | score | yes-rate [95% CI] | delivery | bytes touch / read | majority reason |
 |---|---|---|---|---|---|---|
 | sea-lite | 20 / 0 / 0 | 100% | 100% [84%–100%] | – | 386 B / – | blocked at edit, holder named |
-| sea-lite+cc-anchor | 20 / 0 / 0 | 100% | 100% [84%–100%] | – | 543 B / – | blocked at edit, holder named |
+| sea-lite+cc-anchor | 20 / 0 / 0 | 100% | 100% [84%–100%] | – | 542 B / – | blocked at edit, holder named |
 
 ### S3c — Parallel edit collision (two+ sessions, same file/path)
 
@@ -144,9 +144,9 @@ Same plan for every path: 21 tickets (1 epic + 20, one-line acceptance body each
 
 | tool · path | surface | calls (= turns) | written (≈tok) | results read (≈tok) | total ≈tok | wall ms (mean ± sd) | graph exact | re-run duplicates? | atomic on invalid item | dry-run catches it |
 |---|---|---|---|---|---|---|---|---|---|---|
-| sea-lite next@a5908f8 · `sea_apply` with `templates` (one MCP call, 20 steps written once) | MCP | 1 | 617 B (155) | 996 B (249) | 404 | 75 ± 41 | ✅ 3/3 | no (21 tickets after) | ✅ rejected, nothing left | ✅ 3/3 |
-| sea-lite next@a5908f8 · `sea_apply` (one MCP call) | MCP | 1 | 5.3 KB (1369) | 996 B (249) | 1618 | 50 ± 18 | ✅ 3/3 | no (21 tickets after) | ✅ rejected, nothing left | ✅ 3/3 |
-| sea-lite next@a5908f8 · `sea_create` (claim_seconds) ×21 + `sea_link` ×39 (MCP) | MCP | 60 | 13.8 KB (3534) | 51.6 KB (13203) | 16737 | 302 ± 151 | ✅ 3/3 | no (21 tickets after) | ❌ item rejected; 21 tickets + 39 links left | – |
+| sea-lite next@eca4e58 · `sea_apply` with `templates` (one MCP call, 20 steps written once) | MCP | 1 | 617 B (155) | 996 B (249) | 404 | 173 ± 89 | ✅ 3/3 | no (21 tickets after) | ✅ rejected, nothing left | ✅ 3/3 |
+| sea-lite next@eca4e58 · `sea_apply` (one MCP call) | MCP | 1 | 5.3 KB (1369) | 996 B (249) | 1618 | 110 ± 27 | ✅ 3/3 | no (21 tickets after) | ✅ rejected, nothing left | ✅ 3/3 |
+| sea-lite next@eca4e58 · `sea_create` (claim_seconds) ×21 + `sea_link` ×39 (MCP) | MCP | 60 | 13.8 KB (3534) | 51.6 KB (13198) | 16732 | 536 ± 211 | ✅ 3/3 | no (21 tickets after) | ❌ item rejected; 21 tickets + 39 links left | – |
 | task-master-ai 0.43.1 · `parse_prd` (plan from a PRD) | – | n/a — generates tasks with an LLM; Track A is LLM-free | | | | | | | | |
 | mcp_agent_mail 0.3.4 · — | – | n/a — no tickets or dependency graph (messages + file reservations only) | | | | | | | | |
 

@@ -16,64 +16,7 @@
      "calls": 1,
      "written": 5474,
      "result": 996,
-     "ms": 71,
-     "errors": 0,
-     "crashed": false
-    },
-    "ok": true,
-    "graph": {
-     "exact": true,
-     "problems": [],
-     "tickets": 21,
-     "edges": 39
-    },
-    "rerun": {
-     "calls": 1,
-     "written": 5474,
-     "result": 995,
-     "ms": 2,
-     "errors": 0,
-     "crashed": false,
-     "tickets_after": 21,
-     "edges_after": 39,
-     "duplicated": false
-    },
-    "dry": {
-     "caught": true,
-     "wrote": 0,
-     "note": "{\"error\":\"cycle\",\"message\":\"batch would create a cycle: t01 → t20 → t19 → t18 → t17 → t16 → t15 → t14 → t13 → t12 → t11 → t10 → t09 → t08 → t07 → t06 → t05 → t0",
-     "calls": 1,
-     "written": 5519,
-     "result": 439,
-     "ms": 15,
-     "errors": 1,
-     "crashed": false
-    },
-    "inject": {
-     "rejected": true,
-     "crashed": false,
-     "tickets_left": 0,
-     "edges_left": 0,
-     "atomic": true,
-     "cost": {
-      "calls": 1,
-      "written": 5541,
-      "result": 439,
-      "ms": 2,
-      "errors": 1,
-      "crashed": false
-     },
-     "note": "{\"error\":\"cycle\",\"message\":\"batch would create a cycle: t01 → t20 → t19 → t18 → t17 → t16 → t15 → t14 → t13 → t12 → t11 → t10 → t09 → t08 → t07 → t06 → t05 → t0"
-    }
-   },
-   {
-    "path": "sea-lite/apply",
-    "seed": 2,
-    "cost": {
-     "calls": 1,
-     "written": 5474,
-     "result": 996,
-     "ms": 37,
+     "ms": 82,
      "errors": 0,
      "crashed": false
     },
@@ -101,8 +44,8 @@
      "note": "{\"error\":\"cycle\",\"message\":\"batch would create a cycle: t01 → t20 → t19 → t18 → t17 → t16 → t15 → t14 → t13 → t12 → t11 → t10 → t09 → t08 → t07 → t06 → t05 → t0",
      "calls": 1,
      "written": 5519,
-     "result": 439,
-     "ms": 22,
+     "result": 504,
+     "ms": 71,
      "errors": 1,
      "crashed": false
     },
@@ -115,8 +58,8 @@
      "cost": {
       "calls": 1,
       "written": 5541,
-      "result": 439,
-      "ms": 3,
+      "result": 504,
+      "ms": 9,
       "errors": 1,
       "crashed": false
      },
@@ -125,12 +68,12 @@
    },
    {
     "path": "sea-lite/apply",
-    "seed": 3,
+    "seed": 2,
     "cost": {
      "calls": 1,
      "written": 5474,
      "result": 996,
-     "ms": 43,
+     "ms": 111,
      "errors": 0,
      "crashed": false
     },
@@ -158,8 +101,8 @@
      "note": "{\"error\":\"cycle\",\"message\":\"batch would create a cycle: t01 → t20 → t19 → t18 → t17 → t16 → t15 → t14 → t13 → t12 → t11 → t10 → t09 → t08 → t07 → t06 → t05 → t0",
      "calls": 1,
      "written": 5519,
-     "result": 439,
-     "ms": 21,
+     "result": 504,
+     "ms": 55,
      "errors": 1,
      "crashed": false
     },
@@ -172,8 +115,65 @@
      "cost": {
       "calls": 1,
       "written": 5541,
-      "result": 439,
-      "ms": 2,
+      "result": 504,
+      "ms": 3,
+      "errors": 1,
+      "crashed": false
+     },
+     "note": "{\"error\":\"cycle\",\"message\":\"batch would create a cycle: t01 → t20 → t19 → t18 → t17 → t16 → t15 → t14 → t13 → t12 → t11 → t10 → t09 → t08 → t07 → t06 → t05 → t0"
+    }
+   },
+   {
+    "path": "sea-lite/apply",
+    "seed": 3,
+    "cost": {
+     "calls": 1,
+     "written": 5474,
+     "result": 996,
+     "ms": 136,
+     "errors": 0,
+     "crashed": false
+    },
+    "ok": true,
+    "graph": {
+     "exact": true,
+     "problems": [],
+     "tickets": 21,
+     "edges": 39
+    },
+    "rerun": {
+     "calls": 1,
+     "written": 5474,
+     "result": 995,
+     "ms": 5,
+     "errors": 0,
+     "crashed": false,
+     "tickets_after": 21,
+     "edges_after": 39,
+     "duplicated": false
+    },
+    "dry": {
+     "caught": true,
+     "wrote": 0,
+     "note": "{\"error\":\"cycle\",\"message\":\"batch would create a cycle: t01 → t20 → t19 → t18 → t17 → t16 → t15 → t14 → t13 → t12 → t11 → t10 → t09 → t08 → t07 → t06 → t05 → t0",
+     "calls": 1,
+     "written": 5519,
+     "result": 504,
+     "ms": 55,
+     "errors": 1,
+     "crashed": false
+    },
+    "inject": {
+     "rejected": true,
+     "crashed": false,
+     "tickets_left": 0,
+     "edges_left": 0,
+     "atomic": true,
+     "cost": {
+      "calls": 1,
+      "written": 5541,
+      "result": 504,
+      "ms": 3,
       "errors": 1,
       "crashed": false
      },
@@ -189,7 +189,7 @@
      "calls": 1,
      "written": 617,
      "result": 996,
-     "ms": 57,
+     "ms": 75,
      "errors": 0,
      "crashed": false
     },
@@ -217,8 +217,8 @@
      "note": "{\"error\":\"cycle\",\"message\":\"batch would create a cycle: t01 → t20 → t19 → t18 → t17 → t16 → t15 → t14 → t13 → t12 → t11 → t10 → t09 → t08 → t07 → t06 → t05 → t0",
      "calls": 1,
      "written": 671,
-     "result": 439,
-     "ms": 72,
+     "result": 501,
+     "ms": 250,
      "errors": 1,
      "crashed": false
     },
@@ -231,8 +231,8 @@
      "cost": {
       "calls": 1,
       "written": 694,
-      "result": 439,
-      "ms": 24,
+      "result": 501,
+      "ms": 8,
       "errors": 1,
       "crashed": false
      },
@@ -246,7 +246,7 @@
      "calls": 1,
      "written": 617,
      "result": 996,
-     "ms": 45,
+     "ms": 249,
      "errors": 0,
      "crashed": false
     },
@@ -261,7 +261,7 @@
      "calls": 1,
      "written": 617,
      "result": 995,
-     "ms": 1,
+     "ms": 2,
      "errors": 0,
      "crashed": false,
      "tickets_after": 21,
@@ -274,8 +274,8 @@
      "note": "{\"error\":\"cycle\",\"message\":\"batch would create a cycle: t01 → t20 → t19 → t18 → t17 → t16 → t15 → t14 → t13 → t12 → t11 → t10 → t09 → t08 → t07 → t06 → t05 → t0",
      "calls": 1,
      "written": 671,
-     "result": 439,
-     "ms": 33,
+     "result": 501,
+     "ms": 85,
      "errors": 1,
      "crashed": false
     },
@@ -288,8 +288,8 @@
      "cost": {
       "calls": 1,
       "written": 694,
-      "result": 439,
-      "ms": 4,
+      "result": 501,
+      "ms": 8,
       "errors": 1,
       "crashed": false
      },
@@ -303,7 +303,7 @@
      "calls": 1,
      "written": 617,
      "result": 996,
-     "ms": 122,
+     "ms": 194,
      "errors": 0,
      "crashed": false
     },
@@ -331,8 +331,8 @@
      "note": "{\"error\":\"cycle\",\"message\":\"batch would create a cycle: t01 → t20 → t19 → t18 → t17 → t16 → t15 → t14 → t13 → t12 → t11 → t10 → t09 → t08 → t07 → t06 → t05 → t0",
      "calls": 1,
      "written": 671,
-     "result": 439,
-     "ms": 42,
+     "result": 501,
+     "ms": 32,
      "errors": 1,
      "crashed": false
     },
@@ -345,8 +345,8 @@
      "cost": {
       "calls": 1,
       "written": 694,
-      "result": 439,
-      "ms": 9,
+      "result": 501,
+      "ms": 11,
       "errors": 1,
       "crashed": false
      },
@@ -361,8 +361,8 @@
     "cost": {
      "calls": 60,
      "written": 14135,
-     "result": 52812,
-     "ms": 137,
+     "result": 52791,
+     "ms": 763,
      "errors": 0,
      "crashed": false
     },
@@ -376,8 +376,8 @@
     "rerun": {
      "calls": 60,
      "written": 14135,
-     "result": 33123,
-     "ms": 35,
+     "result": 33102,
+     "ms": 47,
      "errors": 0,
      "crashed": false,
      "tickets_after": 21,
@@ -393,12 +393,12 @@
      "cost": {
       "calls": 61,
       "written": 14398,
-      "result": 54783,
-      "ms": 255,
+      "result": 54762,
+      "ms": 607,
       "errors": 1,
       "crashed": false
      },
-     "note": "{\"error\":\"cycle\",\"message\":\"adding depends_on would close a cycle: dede7928-56c5-4e7c-b565-9e8707db89cc → 9ce1e44d-46b3-4ee6-af4f-33193ef38ec7 → 8ae49c23-723c-4"
+     "note": "{\"error\":\"cycle\",\"message\":\"adding depends_on would close a cycle: 117abadd-9d9b-4e19-aa20-22d1567aeb04 → 81a5a59a-cd87-4c42-901e-62caa1e721e1 → 0bed7d32-a39c-4"
     }
    },
    {
@@ -407,8 +407,8 @@
     "cost": {
      "calls": 60,
      "written": 14135,
-     "result": 52812,
-     "ms": 338,
+     "result": 52791,
+     "ms": 498,
      "errors": 0,
      "crashed": false
     },
@@ -422,8 +422,8 @@
     "rerun": {
      "calls": 60,
      "written": 14135,
-     "result": 33123,
-     "ms": 58,
+     "result": 33102,
+     "ms": 170,
      "errors": 0,
      "crashed": false,
      "tickets_after": 21,
@@ -439,12 +439,12 @@
      "cost": {
       "calls": 61,
       "written": 14398,
-      "result": 54783,
-      "ms": 236,
+      "result": 54762,
+      "ms": 305,
       "errors": 1,
       "crashed": false
      },
-     "note": "{\"error\":\"cycle\",\"message\":\"adding depends_on would close a cycle: 4e3370c5-518c-498b-9696-4ff3e17504bc → e683b148-352d-40f3-8f6a-9e54ad6894fc → a4e02fd1-51eb-4"
+     "note": "{\"error\":\"cycle\",\"message\":\"adding depends_on would close a cycle: eff5b056-0c51-44d1-924d-f68a05dbb61a → 59eab0b6-8352-4e2c-8207-31fb38fa93fc → 8073240e-e453-4"
     }
    },
    {
@@ -453,8 +453,8 @@
     "cost": {
      "calls": 60,
      "written": 14135,
-     "result": 52812,
-     "ms": 432,
+     "result": 52791,
+     "ms": 347,
      "errors": 0,
      "crashed": false
     },
@@ -468,8 +468,8 @@
     "rerun": {
      "calls": 60,
      "written": 14135,
-     "result": 33123,
-     "ms": 194,
+     "result": 33102,
+     "ms": 49,
      "errors": 0,
      "crashed": false,
      "tickets_after": 21,
@@ -485,12 +485,12 @@
      "cost": {
       "calls": 61,
       "written": 14398,
-      "result": 54783,
-      "ms": 153,
+      "result": 54762,
+      "ms": 147,
       "errors": 1,
       "crashed": false
      },
-     "note": "{\"error\":\"cycle\",\"message\":\"adding depends_on would close a cycle: b92e7c5f-d68c-40d5-856f-7c1a26845465 → cc4c2567-26f0-4dbd-9ad1-02472ed4e877 → 94fea04d-54c3-4"
+     "note": "{\"error\":\"cycle\",\"message\":\"adding depends_on would close a cycle: 51ff28d7-63f2-49ba-a491-728fe42f170c → 310a14d4-cf4d-4159-b08e-d5eddda377e1 → be7d1ce3-b10b-4"
     }
    }
   ]

@@ -1,7 +1,7 @@
 {
  "bench": "agent-memory-bench Track A",
  "version": "0.1.0",
- "started_at": "2026-11-01T14:57:56.542Z",
+ "started_at": "2026-11-01T15:41:44.698Z",
  "ci": false,
  "seeds": 20,
  "sizes": [
@@ -14,13 +14,13 @@
   "cpus": 2,
   "mem_gb": 8
  },
- "git": "4240247",
+ "git": "f0597d7",
  "token_estimate": "ceil(bytes/4); same proxy for every arm",
  "arms": {
   "sea-lite": {
    "id": "sea-lite",
    "label": "sea-lite",
-   "version": "next@a5908f8",
+   "version": "next@eca4e58",
    "kind": [
     "coordination"
    ],
@@ -43,8 +43,8 @@
    },
    "tools_list": {
     "tools": 15,
-    "bytes": 32231,
-    "tokens": 8058,
+    "bytes": 32510,
+    "tokens": 8128,
     "names": [
      "sea_create",
      "sea_apply",
@@ -65,8 +65,8 @@
    },
    "tools_list_core": {
     "tools": 9,
-    "bytes": 11967,
-    "tokens": 2992,
+    "bytes": 11954,
+    "tokens": 2989,
     "names": [
      "sea_apply",
      "sea_transition",
@@ -86,7 +86,7 @@
   "sea-lite+cc-anchor": {
    "id": "sea-lite+cc-anchor",
    "label": "sea-lite + cc-anchor hooks",
-   "version": "sea-lite next@a5908f8 + cc-anchor 0.3.0 (unreleased local build)",
+   "version": "sea-lite next@eca4e58 + cc-anchor 0.3.0 (unreleased local build)",
    "kind": [
     "coordination"
    ],
@@ -111,8 +111,8 @@
    "heartbeat": "PostToolUse",
    "tools_list": {
     "tools": 15,
-    "bytes": 32231,
-    "tokens": 8058,
+    "bytes": 32510,
+    "tokens": 8128,
     "names": [
      "sea_create",
      "sea_apply",
@@ -133,8 +133,8 @@
    },
    "tools_list_core": {
     "tools": 9,
-    "bytes": 11967,
-    "tokens": 2992,
+    "bytes": 11954,
+    "tokens": 2989,
     "names": [
      "sea_apply",
      "sea_transition",
@@ -152,6 +152,6 @@
    }
   }
  },
- "finished_at": "2026-11-01T15:04:40.017Z",
- "wall_s": 403
+ "finished_at": "2026-11-01T15:48:59.449Z",
+ "wall_s": 435
 }

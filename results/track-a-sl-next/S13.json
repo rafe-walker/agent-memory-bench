@@ -14,7 +14,7 @@
      "lost": true,
      "holderTold": true
     },
-    "ms_total": 15085
+    "ms_total": 16734
    },
    {
     "seed": 2,
@@ -27,7 +27,7 @@
      "lost": true,
      "holderTold": true
     },
-    "ms_total": 15509
+    "ms_total": 17607
    },
    {
     "seed": 3,
@@ -40,7 +40,7 @@
      "lost": true,
      "holderTold": true
     },
-    "ms_total": 15062
+    "ms_total": 17141
    }
   ],
   "S13|sea-lite+cc-anchor": [
@@ -54,7 +54,7 @@
      "task_s": 12,
      "lost": false
     },
-    "ms_total": 17325
+    "ms_total": 23947
    },
    {
     "seed": 2,
@@ -66,7 +66,7 @@
      "task_s": 12,
      "lost": false
     },
-    "ms_total": 15734
+    "ms_total": 23659
    },
    {
     "seed": 3,
@@ -78,7 +78,7 @@
      "task_s": 12,
      "lost": false
     },
-    "ms_total": 17722
+    "ms_total": 16600
    }
   ]
  }

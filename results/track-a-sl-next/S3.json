@@ -15,12 +15,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 6357
+     "claim_race": 2999
     },
     "bytes": {
      "claim": 360
     },
-    "ms_total": 7352
+    "ms_total": 3755
    },
    {
     "seed": 2,
@@ -34,12 +34,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 6466
+     "claim_race": 2937
     },
     "bytes": {
      "claim": 360
     },
-    "ms_total": 7668
+    "ms_total": 3944
    },
    {
     "seed": 3,
@@ -53,12 +53,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 6152
+     "claim_race": 2048
     },
     "bytes": {
      "claim": 360
     },
-    "ms_total": 7561
+    "ms_total": 2707
    },
    {
     "seed": 4,
@@ -72,12 +72,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 6731
+     "claim_race": 2687
     },
     "bytes": {
      "claim": 360
     },
-    "ms_total": 8155
+    "ms_total": 3510
    },
    {
     "seed": 5,
@@ -91,12 +91,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 4655
+     "claim_race": 1555
     },
     "bytes": {
      "claim": 360
     },
-    "ms_total": 6562
+    "ms_total": 2944
    },
    {
     "seed": 6,
@@ -110,12 +110,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 4801
+     "claim_race": 2786
     },
     "bytes": {
      "claim": 360
     },
-    "ms_total": 6560
+    "ms_total": 3785
    },
    {
     "seed": 7,
@@ -129,12 +129,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 2369
+     "claim_race": 2167
     },
     "bytes": {
      "claim": 361
     },
-    "ms_total": 3586
+    "ms_total": 4194
    },
    {
     "seed": 8,
@@ -148,12 +148,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 2566
+     "claim_race": 2274
     },
     "bytes": {
      "claim": 360
     },
-    "ms_total": 3956
+    "ms_total": 4015
    },
    {
     "seed": 9,
@@ -167,12 +167,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 898
+     "claim_race": 766
     },
     "bytes": {
      "claim": 362
     },
-    "ms_total": 2342
+    "ms_total": 2645
    },
    {
     "seed": 10,
@@ -186,12 +186,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 910
+     "claim_race": 640
     },
     "bytes": {
      "claim": 360
     },
-    "ms_total": 1900
+    "ms_total": 1388
    },
    {
     "seed": 11,
@@ -205,12 +205,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 3731
+     "claim_race": 2943
     },
     "bytes": {
      "claim": 360
     },
-    "ms_total": 4845
+    "ms_total": 3611
    },
    {
     "seed": 12,
@@ -224,12 +224,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 2190
+     "claim_race": 2748
     },
     "bytes": {
      "claim": 361
     },
-    "ms_total": 5817
+    "ms_total": 4203
    },
    {
     "seed": 13,
@@ -243,12 +243,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 4081
+     "claim_race": 2012
     },
     "bytes": {
      "claim": 361
     },
-    "ms_total": 6052
+    "ms_total": 3314
    },
    {
     "seed": 14,
@@ -262,12 +262,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 3220
+     "claim_race": 1831
     },
     "bytes": {
      "claim": 360
     },
-    "ms_total": 6318
+    "ms_total": 3223
    },
    {
     "seed": 15,
@@ -281,12 +281,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 4295
+     "claim_race": 1311
     },
     "bytes": {
      "claim": 360
     },
-    "ms_total": 6882
+    "ms_total": 2284
    },
    {
     "seed": 16,
@@ -300,12 +300,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 4302
+     "claim_race": 1412
     },
     "bytes": {
      "claim": 361
     },
-    "ms_total": 7709
+    "ms_total": 2400
    },
    {
     "seed": 17,
@@ -319,12 +319,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 4018
+     "claim_race": 1860
     },
     "bytes": {
      "claim": 361
     },
-    "ms_total": 7399
+    "ms_total": 2977
    },
    {
     "seed": 18,
@@ -338,12 +338,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 4345
+     "claim_race": 1983
     },
     "bytes": {
      "claim": 360
     },
-    "ms_total": 8509
+    "ms_total": 3847
    },
    {
     "seed": 19,
@@ -357,12 +357,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 2782
+     "claim_race": 1641
     },
     "bytes": {
      "claim": 362
     },
-    "ms_total": 6943
+    "ms_total": 3574
    },
    {
     "seed": 20,
@@ -376,12 +376,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 6077
+     "claim_race": 1918
     },
     "bytes": {
      "claim": 361
     },
-    "ms_total": 8398
+    "ms_total": 3220
    }
   ],
   "S3b|sea-lite": [
@@ -395,12 +395,12 @@
      "stage": "edit"
     },
     "ms": {
-     "guard": 1178
+     "guard": 499
     },
     "bytes": {
      "guard": 387
     },
-    "ms_total": 4333
+    "ms_total": 2161
    },
    {
     "seed": 2,
@@ -412,12 +412,12 @@
      "stage": "edit"
     },
     "ms": {
-     "guard": 798
+     "guard": 392
     },
     "bytes": {
      "guard": 375
     },
-    "ms_total": 5364
+    "ms_total": 1516
    },
    {
     "seed": 3,
@@ -429,12 +429,12 @@
      "stage": "edit"
     },
     "ms": {
-     "guard": 833
+     "guard": 395
     },
     "bytes": {
      "guard": 374
     },
-    "ms_total": 3049
+    "ms_total": 1671
    },
    {
     "seed": 4,
@@ -446,12 +446,12 @@
      "stage": "edit"
     },
     "ms": {
-     "guard": 751
+     "guard": 472
     },
     "bytes": {
      "guard": 388
     },
-    "ms_total": 4460
+    "ms_total": 2321
    },
    {
     "seed": 5,
@@ -463,12 +463,12 @@
      "stage": "edit"
     },
     "ms": {
-     "guard": 505
+     "guard": 395
     },
     "bytes": {
      "guard": 376
     },
-    "ms_total": 4458
+    "ms_total": 1802
    },
    {
     "seed": 6,
@@ -480,12 +480,12 @@
      "stage": "edit"
     },
     "ms": {
-     "guard": 606
+     "guard": 582
     },
     "bytes": {
      "guard": 387
     },
-    "ms_total": 3483
+    "ms_total": 1728
    },
    {
     "seed": 7,
@@ -497,12 +497,12 @@
      "stage": "edit"
     },
     "ms": {
-     "guard": 495
+     "guard": 383
     },
     "bytes": {
      "guard": 399
     },
-    "ms_total": 3353
+    "ms_total": 1949
    },
    {
     "seed": 8,
@@ -514,12 +514,12 @@
      "stage": "edit"
     },
     "ms": {
-     "guard": 651
+     "guard": 472
     },
     "bytes": {
      "guard": 388
     },
-    "ms_total": 3364
+    "ms_total": 2755
    },
    {
     "seed": 9,
@@ -531,12 +531,12 @@
      "stage": "edit"
     },
     "ms": {
-     "guard": 881
+     "guard": 513
     },
     "bytes": {
      "guard": 387
     },
-    "ms_total": 3305
+    "ms_total": 2909
    },
    {
     "seed": 10,
@@ -548,12 +548,12 @@
      "stage": "edit"
     },
     "ms": {
-     "guard": 877
+     "guard": 781
     },
     "bytes": {
      "guard": 376
     },
-    "ms_total": 2928
+    "ms_total": 3583
    },
    {
     "seed": 11,
@@ -565,12 +565,12 @@
      "stage": "edit"
     },
     "ms": {
-     "guard": 1007
+     "guard": 1006
     },
     "bytes": {
      "guard": 388
     },
-    "ms_total": 3919
+    "ms_total": 2902
    },
    {
     "seed": 12,
@@ -582,12 +582,12 @@
      "stage": "edit"
     },
     "ms": {
-     "guard": 1136
+     "guard": 695
     },
     "bytes": {
      "guard": 399
     },
-    "ms_total": 4184
+    "ms_total": 3211
    },
    {
     "seed": 13,
@@ -599,12 +599,12 @@
      "stage": "edit"
     },
     "ms": {
-     "guard": 947
+     "guard": 920
     },
     "bytes": {
      "guard": 388
     },
-    "ms_total": 4023
+    "ms_total": 3166
    },
    {
     "seed": 14,
@@ -616,12 +616,12 @@
      "stage": "edit"
     },
     "ms": {
-     "guard": 751
+     "guard": 714
     },
     "bytes": {
      "guard": 375
     },
-    "ms_total": 4454
+    "ms_total": 2561
    },
    {
     "seed": 15,
@@ -633,12 +633,12 @@
      "stage": "edit"
     },
     "ms": {
-     "guard": 1191
+     "guard": 994
     },
     "bytes": {
      "guard": 377
     },
-    "ms_total": 4411
+    "ms_total": 3491
    },
    {
     "seed": 16,
@@ -650,12 +650,12 @@
      "stage": "edit"
     },
     "ms": {
-     "guard": 762
+     "guard": 886
     },
     "bytes": {
      "guard": 388
     },
-    "ms_total": 4746
+    "ms_total": 3193
    },
    {
     "seed": 17,
@@ -667,12 +667,12 @@
      "stage": "edit"
     },
     "ms": {
-     "guard": 540
+     "guard": 515
     },
     "bytes": {
      "guard": 387
     },
-    "ms_total": 4117
+    "ms_total": 2875
    },
    {
     "seed": 18,
@@ -684,12 +684,12 @@
      "stage": "edit"
     },
     "ms": {
-     "guard": 489
+     "guard": 455
     },
     "bytes": {
      "guard": 375
     },
-    "ms_total": 3237
+    "ms_total": 2883
    },
    {
     "seed": 19,
@@ -701,12 +701,12 @@
      "stage": "edit"
     },
     "ms": {
-     "guard": 500
+     "guard": 513
     },
     "bytes": {
      "guard": 400
     },
-    "ms_total": 2833
+    "ms_total": 2341
    },
    {
     "seed": 20,
@@ -718,12 +718,12 @@
      "stage": "edit"
     },
     "ms": {
-     "guard": 513
+     "guard": 410
     },
     "bytes": {
      "guard": 399
     },
-    "ms_total": 2760
+    "ms_total": 1607
    }
   ],
   "S3c|sea-lite": [
@@ -739,12 +739,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 2078
+     "claim_race": 1595
     },
     "bytes": {
      "claim": 367
     },
-    "ms_total": 3294
+    "ms_total": 2306
    },
    {
     "seed": 2,
@@ -758,12 +758,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 1950
+     "claim_race": 1398
     },
     "bytes": {
      "claim": 365
     },
-    "ms_total": 3067
+    "ms_total": 2080
    },
    {
     "seed": 3,
@@ -777,12 +777,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 1684
+     "claim_race": 1447
     },
     "bytes": {
      "claim": 365
     },
-    "ms_total": 2651
+    "ms_total": 2468
    },
    {
     "seed": 4,
@@ -796,12 +796,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 1665
+     "claim_race": 1152
     },
     "bytes": {
      "claim": 367
     },
-    "ms_total": 3114
+    "ms_total": 2531
    },
    {
     "seed": 5,
@@ -815,12 +815,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 2851
+     "claim_race": 807
     },
     "bytes": {
      "claim": 365
     },
-    "ms_total": 4140
+    "ms_total": 1431
    },
    {
     "seed": 6,
@@ -834,12 +834,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 2485
+     "claim_race": 836
     },
     "bytes": {
      "claim": 367
     },
-    "ms_total": 5017
+    "ms_total": 1598
    },
    {
     "seed": 7,
@@ -853,12 +853,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 1405
+     "claim_race": 1139
     },
     "bytes": {
      "claim": 368
     },
-    "ms_total": 3459
+    "ms_total": 1988
    },
    {
     "seed": 8,
@@ -872,12 +872,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 1477
+     "claim_race": 1780
     },
     "bytes": {
      "claim": 367
     },
-    "ms_total": 2900
+    "ms_total": 2718
    },
    {
     "seed": 9,
@@ -891,12 +891,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 1228
+     "claim_race": 1751
     },
     "bytes": {
      "claim": 367
     },
-    "ms_total": 2461
+    "ms_total": 3333
    },
    {
     "seed": 10,
@@ -910,12 +910,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 1555
+     "claim_race": 1491
     },
     "bytes": {
      "claim": 365
     },
-    "ms_total": 2607
+    "ms_total": 3317
    },
    {
     "seed": 11,
@@ -929,12 +929,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 2210
+     "claim_race": 2161
     },
     "bytes": {
      "claim": 367
     },
-    "ms_total": 3656
+    "ms_total": 3893
    },
    {
     "seed": 12,
@@ -948,12 +948,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 1992
+     "claim_race": 1513
     },
     "bytes": {
      "claim": 368
     },
-    "ms_total": 3762
+    "ms_total": 3655
    },
    {
     "seed": 13,
@@ -967,12 +967,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 1520
+     "claim_race": 1716
     },
     "bytes": {
      "claim": 367
     },
-    "ms_total": 3094
+    "ms_total": 3309
    },
    {
     "seed": 14,
@@ -986,12 +986,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 1968
+     "claim_race": 1640
     },
     "bytes": {
      "claim": 365
     },
-    "ms_total": 4000
+    "ms_total": 2925
    },
    {
     "seed": 15,
@@ -1005,12 +1005,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 1676
+     "claim_race": 2703
     },
     "bytes": {
      "claim": 365
     },
-    "ms_total": 3632
+    "ms_total": 3985
    },
    {
     "seed": 16,
@@ -1024,12 +1024,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 1438
+     "claim_race": 1806
     },
     "bytes": {
      "claim": 367
     },
-    "ms_total": 3319
+    "ms_total": 3243
    },
    {
     "seed": 17,
@@ -1043,12 +1043,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 1630
+     "claim_race": 2469
     },
     "bytes": {
      "claim": 367
     },
-    "ms_total": 3099
+    "ms_total": 3663
    },
    {
     "seed": 18,
@@ -1062,12 +1062,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 1391
+     "claim_race": 1833
     },
     "bytes": {
      "claim": 365
     },
-    "ms_total": 2928
+    "ms_total": 3673
    },
    {
     "seed": 19,
@@ -1081,12 +1081,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 1571
+     "claim_race": 1557
     },
     "bytes": {
      "claim": 368
     },
-    "ms_total": 3582
+    "ms_total": 2384
    },
    {
     "seed": 20,
@@ -1100,12 +1100,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 894
+     "claim_race": 663
     },
     "bytes": {
      "claim": 368
     },
-    "ms_total": 2685
+    "ms_total": 2482
    }
   ],
   "S3d|sea-lite": [
@@ -1119,7 +1119,7 @@
      "lost_or_dup": false,
      "duplicate_ids": false
     },
-    "ms_total": 5208
+    "ms_total": 4974
    },
    {
     "seed": 2,
@@ -1131,7 +1131,7 @@
      "lost_or_dup": false,
      "duplicate_ids": false
     },
-    "ms_total": 5459
+    "ms_total": 4726
    },
    {
     "seed": 3,
@@ -1143,7 +1143,7 @@
      "lost_or_dup": false,
      "duplicate_ids": false
     },
-    "ms_total": 3806
+    "ms_total": 6185
    },
    {
     "seed": 4,
@@ -1155,7 +1155,7 @@
      "lost_or_dup": false,
      "duplicate_ids": false
     },
-    "ms_total": 5193
+    "ms_total": 8143
    },
    {
     "seed": 5,
@@ -1167,7 +1167,7 @@
      "lost_or_dup": false,
      "duplicate_ids": false
     },
-    "ms_total": 5532
+    "ms_total": 7019
    },
    {
     "seed": 6,
@@ -1179,7 +1179,7 @@
      "lost_or_dup": false,
      "duplicate_ids": false
     },
-    "ms_total": 6250
+    "ms_total": 7431
    },
    {
     "seed": 7,
@@ -1191,7 +1191,7 @@
      "lost_or_dup": false,
      "duplicate_ids": false
     },
-    "ms_total": 6540
+    "ms_total": 5903
    },
    {
     "seed": 8,
@@ -1203,7 +1203,7 @@
      "lost_or_dup": false,
      "duplicate_ids": false
     },
-    "ms_total": 5946
+    "ms_total": 6148
    },
    {
     "seed": 9,
@@ -1215,7 +1215,7 @@
      "lost_or_dup": false,
      "duplicate_ids": false
     },
-    "ms_total": 3968
+    "ms_total": 3672
    },
    {
     "seed": 10,
@@ -1227,7 +1227,7 @@
      "lost_or_dup": false,
      "duplicate_ids": false
     },
-    "ms_total": 3448
+    "ms_total": 4267
    },
    {
     "seed": 11,
@@ -1239,7 +1239,7 @@
      "lost_or_dup": false,
      "duplicate_ids": false
     },
-    "ms_total": 6365
+    "ms_total": 7953
    },
    {
     "seed": 12,
@@ -1251,7 +1251,7 @@
      "lost_or_dup": false,
      "duplicate_ids": false
     },
-    "ms_total": 5427
+    "ms_total": 7867
    },
    {
     "seed": 13,
@@ -1263,7 +1263,7 @@
      "lost_or_dup": false,
      "duplicate_ids": false
     },
-    "ms_total": 3573
+    "ms_total": 6997
    },
    {
     "seed": 14,
@@ -1275,7 +1275,7 @@
      "lost_or_dup": false,
      "duplicate_ids": false
     },
-    "ms_total": 3733
+    "ms_total": 6334
    },
    {
     "seed": 15,
@@ -1287,7 +1287,7 @@
      "lost_or_dup": false,
      "duplicate_ids": false
     },
-    "ms_total": 3276
+    "ms_total": 7411
    },
    {
     "seed": 16,
@@ -1299,7 +1299,7 @@
      "lost_or_dup": false,
      "duplicate_ids": false
     },
-    "ms_total": 3626
+    "ms_total": 7306
    },
    {
     "seed": 17,
@@ -1311,7 +1311,7 @@
      "lost_or_dup": false,
      "duplicate_ids": false
     },
-    "ms_total": 4846
+    "ms_total": 6385
    },
    {
     "seed": 18,
@@ -1323,7 +1323,7 @@
      "lost_or_dup": false,
      "duplicate_ids": false
     },
-    "ms_total": 5174
+    "ms_total": 7652
    },
    {
     "seed": 19,
@@ -1335,7 +1335,7 @@
      "lost_or_dup": false,
      "duplicate_ids": false
     },
-    "ms_total": 4270
+    "ms_total": 8150
    },
    {
     "seed": 20,
@@ -1347,7 +1347,7 @@
      "lost_or_dup": false,
      "duplicate_ids": false
     },
-    "ms_total": 4846
+    "ms_total": 8338
    }
   ],
   "S3a|sea-lite+cc-anchor": [
@@ -1363,12 +1363,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 5485
+     "claim_race": 6671
     },
     "bytes": {
      "claim": 360
     },
-    "ms_total": 6420
+    "ms_total": 7851
    },
    {
     "seed": 2,
@@ -1382,12 +1382,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 5122
+     "claim_race": 5540
     },
     "bytes": {
      "claim": 360
     },
-    "ms_total": 6894
+    "ms_total": 8719
    },
    {
     "seed": 3,
@@ -1401,12 +1401,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 10048
+     "claim_race": 3097
     },
     "bytes": {
      "claim": 360
     },
-    "ms_total": 11687
+    "ms_total": 4407
    },
    {
     "seed": 4,
@@ -1420,12 +1420,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 10280
+     "claim_race": 3835
     },
     "bytes": {
      "claim": 360
     },
-    "ms_total": 11643
+    "ms_total": 5290
    },
    {
     "seed": 5,
@@ -1439,12 +1439,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 8247
+     "claim_race": 2259
     },
     "bytes": {
      "claim": 360
     },
-    "ms_total": 10157
+    "ms_total": 4268
    },
    {
     "seed": 6,
@@ -1458,12 +1458,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 8343
+     "claim_race": 3053
     },
     "bytes": {
      "claim": 360
     },
-    "ms_total": 10320
+    "ms_total": 3816
    },
    {
     "seed": 7,
@@ -1477,12 +1477,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 4485
+     "claim_race": 2087
     },
     "bytes": {
      "claim": 361
     },
-    "ms_total": 5673
+    "ms_total": 3606
    },
    {
     "seed": 8,
@@ -1496,12 +1496,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 3070
+     "claim_race": 2473
     },
     "bytes": {
      "claim": 360
     },
-    "ms_total": 6006
+    "ms_total": 3621
    },
    {
     "seed": 9,
@@ -1515,12 +1515,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 855
+     "claim_race": 932
     },
     "bytes": {
      "claim": 362
     },
-    "ms_total": 2026
+    "ms_total": 2478
    },
    {
     "seed": 10,
@@ -1534,12 +1534,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 848
+     "claim_race": 702
     },
     "bytes": {
      "claim": 360
     },
-    "ms_total": 1626
+    "ms_total": 1701
    },
    {
     "seed": 11,
@@ -1553,12 +1553,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 2888
+     "claim_race": 2429
     },
     "bytes": {
      "claim": 360
     },
-    "ms_total": 3750
+    "ms_total": 3185
    },
    {
     "seed": 12,
@@ -1572,12 +1572,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 2603
+     "claim_race": 1775
     },
     "bytes": {
      "claim": 361
     },
-    "ms_total": 4282
+    "ms_total": 4107
    },
    {
     "seed": 13,
@@ -1591,12 +1591,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 1972
+     "claim_race": 1673
     },
     "bytes": {
      "claim": 361
     },
-    "ms_total": 3300
+    "ms_total": 3281
    },
    {
     "seed": 14,
@@ -1610,12 +1610,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 1652
+     "claim_race": 1563
     },
     "bytes": {
      "claim": 360
     },
-    "ms_total": 3013
+    "ms_total": 3208
    },
    {
     "seed": 15,
@@ -1629,12 +1629,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 2097
+     "claim_race": 2399
     },
     "bytes": {
      "claim": 360
     },
-    "ms_total": 3051
+    "ms_total": 4042
    },
    {
     "seed": 16,
@@ -1648,12 +1648,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 2019
+     "claim_race": 2575
     },
     "bytes": {
      "claim": 361
     },
-    "ms_total": 3700
+    "ms_total": 5480
    },
    {
     "seed": 17,
@@ -1667,12 +1667,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 3800
+     "claim_race": 3168
     },
     "bytes": {
      "claim": 361
     },
-    "ms_total": 5817
+    "ms_total": 4663
    },
    {
     "seed": 18,
@@ -1686,12 +1686,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 3383
+     "claim_race": 3651
     },
     "bytes": {
      "claim": 360
     },
-    "ms_total": 5705
+    "ms_total": 5916
    },
    {
     "seed": 19,
@@ -1705,12 +1705,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 2312
+     "claim_race": 2771
     },
     "bytes": {
      "claim": 362
     },
-    "ms_total": 3851
+    "ms_total": 4995
    },
    {
     "seed": 20,
@@ -1724,12 +1724,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 2738
+     "claim_race": 1804
     },
     "bytes": {
      "claim": 361
     },
-    "ms_total": 3698
+    "ms_total": 2881
    }
   ],
   "S3b|sea-lite+cc-anchor": [
@@ -1743,12 +1743,12 @@
      "stage": "edit"
     },
     "ms": {
-     "guard": 397
+     "guard": 679
     },
     "bytes": {
-     "guard": 543
+     "guard": 542
     },
-    "ms_total": 1643
+    "ms_total": 1763
    },
    {
     "seed": 2,
@@ -1760,12 +1760,12 @@
      "stage": "edit"
     },
     "ms": {
-     "guard": 563
+     "guard": 461
     },
     "bytes": {
-     "guard": 537
+     "guard": 536
     },
-    "ms_total": 2324
+    "ms_total": 2320
    },
    {
     "seed": 3,
@@ -1777,12 +1777,12 @@
      "stage": "edit"
     },
     "ms": {
-     "guard": 445
+     "guard": 455
     },
     "bytes": {
-     "guard": 536
+     "guard": 535
     },
-    "ms_total": 1833
+    "ms_total": 1700
    },
    {
     "seed": 4,
@@ -1794,12 +1794,12 @@
      "stage": "edit"
     },
     "ms": {
-     "guard": 496
+     "guard": 511
     },
     "bytes": {
-     "guard": 544
+     "guard": 543
     },
-    "ms_total": 1774
+    "ms_total": 1752
    },
    {
     "seed": 5,
@@ -1811,12 +1811,12 @@
      "stage": "edit"
     },
     "ms": {
-     "guard": 385
+     "guard": 454
     },
     "bytes": {
-     "guard": 538
+     "guard": 537
     },
-    "ms_total": 1666
+    "ms_total": 1712
    },
    {
     "seed": 6,
@@ -1828,12 +1828,12 @@
      "stage": "edit"
     },
     "ms": {
-     "guard": 389
+     "guard": 451
     },
     "bytes": {
-     "guard": 543
+     "guard": 542
     },
-    "ms_total": 2091
+    "ms_total": 1651
    },
    {
     "seed": 7,
@@ -1845,12 +1845,12 @@
      "stage": "edit"
     },
     "ms": {
-     "guard": 448
+     "guard": 603
     },
     "bytes": {
-     "guard": 549
+     "guard": 548
     },
-    "ms_total": 1629
+    "ms_total": 2083
    },
    {
     "seed": 8,
@@ -1862,12 +1862,12 @@
      "stage": "edit"
     },
     "ms": {
-     "guard": 500
+     "guard": 520
     },
     "bytes": {
-     "guard": 544
+     "guard": 543
     },
-    "ms_total": 1922
+    "ms_total": 2155
    },
    {
     "seed": 9,
@@ -1879,12 +1879,12 @@
      "stage": "edit"
     },
     "ms": {
-     "guard": 502
+     "guard": 374
     },
     "bytes": {
-     "guard": 543
+     "guard": 542
     },
-    "ms_total": 1983
+    "ms_total": 1552
    },
    {
     "seed": 10,
@@ -1896,12 +1896,12 @@
      "stage": "edit"
     },
     "ms": {
-     "guard": 480
+     "guard": 442
     },
     "bytes": {
-     "guard": 539
+     "guard": 538
     },
-    "ms_total": 1715
+    "ms_total": 2023
    },
    {
     "seed": 11,
@@ -1913,12 +1913,12 @@
      "stage": "edit"
     },
     "ms": {
-     "guard": 509
+     "guard": 693
     },
     "bytes": {
-     "guard": 545
+     "guard": 544
     },
-    "ms_total": 1707
+    "ms_total": 2519
    },
    {
     "seed": 12,
@@ -1930,12 +1930,12 @@
      "stage": "edit"
     },
     "ms": {
-     "guard": 532
+     "guard": 832
     },
     "bytes": {
-     "guard": 550
+     "guard": 549
     },
-    "ms_total": 1890
+    "ms_total": 2360
    },
    {
     "seed": 13,
@@ -1947,12 +1947,12 @@
      "stage": "edit"
     },
     "ms": {
-     "guard": 490
+     "guard": 513
     },
     "bytes": {
-     "guard": 545
+     "guard": 544
     },
-    "ms_total": 1875
+    "ms_total": 2240
    },
    {
     "seed": 14,
@@ -1964,12 +1964,12 @@
      "stage": "edit"
     },
     "ms": {
-     "guard": 495
+     "guard": 601
     },
     "bytes": {
-     "guard": 538
+     "guard": 537
     },
-    "ms_total": 1855
+    "ms_total": 2734
    },
    {
     "seed": 15,
@@ -1981,12 +1981,12 @@
      "stage": "edit"
     },
     "ms": {
-     "guard": 550
+     "guard": 1251
     },
     "bytes": {
-     "guard": 540
+     "guard": 539
     },
-    "ms_total": 1907
+    "ms_total": 3804
    },
    {
     "seed": 16,
@@ -1998,12 +1998,12 @@
      "stage": "edit"
     },
     "ms": {
-     "guard": 476
+     "guard": 1209
     },
     "bytes": {
-     "guard": 545
+     "guard": 544
     },
-    "ms_total": 1800
+    "ms_total": 3816
    },
    {
     "seed": 17,
@@ -2015,12 +2015,12 @@
      "stage": "edit"
     },
     "ms": {
-     "guard": 505
+     "guard": 1275
     },
     "bytes": {
-     "guard": 544
+     "guard": 543
     },
-    "ms_total": 1792
+    "ms_total": 4331
    },
    {
     "seed": 18,
@@ -2032,12 +2032,12 @@
      "stage": "edit"
     },
     "ms": {
-     "guard": 703
+     "guard": 1070
     },
     "bytes": {
-     "guard": 538
+     "guard": 537
     },
-    "ms_total": 2034
+    "ms_total": 6398
    },
    {
     "seed": 19,
@@ -2049,12 +2049,12 @@
      "stage": "edit"
     },
     "ms": {
-     "guard": 524
+     "guard": 1214
     },
     "bytes": {
-     "guard": 551
+     "guard": 550
     },
-    "ms_total": 2008
+    "ms_total": 6311
    },
    {
     "seed": 20,
@@ -2066,12 +2066,12 @@
      "stage": "edit"
     },
     "ms": {
-     "guard": 395
+     "guard": 727
     },
     "bytes": {
-     "guard": 550
+     "guard": 549
     },
-    "ms_total": 1384
+    "ms_total": 3628
    }
   ],
   "S3c|sea-lite+cc-anchor": [
@@ -2087,12 +2087,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 986
+     "claim_race": 2323
     },
     "bytes": {
      "claim": 367
     },
-    "ms_total": 1591
+    "ms_total": 3592
    },
    {
     "seed": 2,
@@ -2106,12 +2106,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 1015
+     "claim_race": 1611
     },
     "bytes": {
      "claim": 365
     },
-    "ms_total": 1862
+    "ms_total": 4183
    },
    {
     "seed": 3,
@@ -2125,12 +2125,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 982
+     "claim_race": 1737
     },
     "bytes": {
      "claim": 365
     },
-    "ms_total": 1713
+    "ms_total": 3145
    },
    {
     "seed": 4,
@@ -2144,12 +2144,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 944
+     "claim_race": 1999
     },
     "bytes": {
      "claim": 367
     },
-    "ms_total": 1758
+    "ms_total": 3152
    },
    {
     "seed": 5,
@@ -2163,12 +2163,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 959
+     "claim_race": 1493
     },
     "bytes": {
      "claim": 365
     },
-    "ms_total": 1749
+    "ms_total": 2533
    },
    {
     "seed": 6,
@@ -2182,12 +2182,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 1126
+     "claim_race": 1413
     },
     "bytes": {
      "claim": 367
     },
-    "ms_total": 1848
+    "ms_total": 2521
    },
    {
     "seed": 7,
@@ -2201,12 +2201,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 948
+     "claim_race": 1912
     },
     "bytes": {
      "claim": 368
     },
-    "ms_total": 1717
+    "ms_total": 3479
    },
    {
     "seed": 8,
@@ -2220,12 +2220,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 854
+     "claim_race": 1869
     },
     "bytes": {
      "claim": 367
     },
-    "ms_total": 1884
+    "ms_total": 3428
    },
    {
     "seed": 9,
@@ -2239,12 +2239,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 856
+     "claim_race": 2746
     },
     "bytes": {
      "claim": 367
     },
-    "ms_total": 1737
+    "ms_total": 4314
    },
    {
     "seed": 10,
@@ -2258,12 +2258,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 681
+     "claim_race": 3594
     },
     "bytes": {
      "claim": 365
     },
-    "ms_total": 1695
+    "ms_total": 5161
    },
    {
     "seed": 11,
@@ -2277,12 +2277,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 801
+     "claim_race": 2955
     },
     "bytes": {
      "claim": 367
     },
-    "ms_total": 1552
+    "ms_total": 5903
    },
    {
     "seed": 12,
@@ -2296,12 +2296,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 816
+     "claim_race": 3260
     },
     "bytes": {
      "claim": 368
     },
-    "ms_total": 1722
+    "ms_total": 5517
    },
    {
     "seed": 13,
@@ -2315,12 +2315,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 1118
+     "claim_race": 3173
     },
     "bytes": {
      "claim": 367
     },
-    "ms_total": 1996
+    "ms_total": 5866
    },
    {
     "seed": 14,
@@ -2334,12 +2334,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 634
+     "claim_race": 3164
     },
     "bytes": {
      "claim": 365
     },
-    "ms_total": 1818
+    "ms_total": 5284
    },
    {
     "seed": 15,
@@ -2353,12 +2353,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 909
+     "claim_race": 2694
     },
     "bytes": {
      "claim": 365
     },
-    "ms_total": 1666
+    "ms_total": 3961
    },
    {
     "seed": 16,
@@ -2372,12 +2372,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 867
+     "claim_race": 2009
     },
     "bytes": {
      "claim": 367
     },
-    "ms_total": 1823
+    "ms_total": 5236
    },
    {
     "seed": 17,
@@ -2391,12 +2391,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 988
+     "claim_race": 2038
     },
     "bytes": {
      "claim": 367
     },
-    "ms_total": 1853
+    "ms_total": 4244
    },
    {
     "seed": 18,
@@ -2410,12 +2410,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 1014
+     "claim_race": 2383
     },
     "bytes": {
      "claim": 365
     },
-    "ms_total": 1885
+    "ms_total": 5376
    },
    {
     "seed": 19,
@@ -2429,12 +2429,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 833
+     "claim_race": 1445
     },
     "bytes": {
      "claim": 368
     },
-    "ms_total": 1718
+    "ms_total": 3969
    },
    {
     "seed": 20,
@@ -2448,12 +2448,12 @@
      "advisory": false
     },
     "ms": {
-     "claim_race": 555
+     "claim_race": 870
     },
     "bytes": {
      "claim": 368
     },
-    "ms_total": 1689
+    "ms_total": 2351
    }
   ],
   "S3d|sea-lite+cc-anchor": [
@@ -2467,7 +2467,7 @@
      "lost_or_dup": false,
      "duplicate_ids": false
     },
-    "ms_total": 4847
+    "ms_total": 5260
    },
    {
     "seed": 2,
@@ -2479,7 +2479,7 @@
      "lost_or_dup": false,
      "duplicate_ids": false
     },
-    "ms_total": 5105
+    "ms_total": 5612
    },
    {
     "seed": 3,
@@ -2491,7 +2491,7 @@
      "lost_or_dup": false,
      "duplicate_ids": false
     },
-    "ms_total": 2580
+    "ms_total": 5362
    },
    {
     "seed": 4,
@@ -2503,7 +2503,7 @@
      "lost_or_dup": false,
      "duplicate_ids": false
     },
-    "ms_total": 3258
+    "ms_total": 6678
    },
    {
     "seed": 5,
@@ -2515,7 +2515,7 @@
      "lost_or_dup": false,
      "duplicate_ids": false
     },
-    "ms_total": 2751
+    "ms_total": 4849
    },
    {
     "seed": 6,
@@ -2527,7 +2527,7 @@
      "lost_or_dup": false,
      "duplicate_ids": false
     },
-    "ms_total": 3853
+    "ms_total": 5393
    },
    {
     "seed": 7,
@@ -2539,7 +2539,7 @@
      "lost_or_dup": false,
      "duplicate_ids": false
     },
-    "ms_total": 4176
+    "ms_total": 5721
    },
    {
     "seed": 8,
@@ -2551,7 +2551,7 @@
      "lost_or_dup": false,
      "duplicate_ids": false
     },
-    "ms_total": 6017
+    "ms_total": 6503
    },
    {
     "seed": 9,
@@ -2563,7 +2563,7 @@
      "lost_or_dup": false,
      "duplicate_ids": false
     },
-    "ms_total": 4959
+    "ms_total": 4663
    },
    {
     "seed": 10,
@@ -2575,7 +2575,7 @@
      "lost_or_dup": false,
      "duplicate_ids": false
     },
-    "ms_total": 5173
+    "ms_total": 3223
    },
    {
     "seed": 11,
@@ -2587,7 +2587,7 @@
      "lost_or_dup": false,
      "duplicate_ids": false
     },
-    "ms_total": 6221
+    "ms_total": 6057
    },
    {
     "seed": 12,
@@ -2599,7 +2599,7 @@
      "lost_or_dup": false,
      "duplicate_ids": false
     },
-    "ms_total": 4670
+    "ms_total": 5163
    },
    {
     "seed": 13,
@@ -2611,7 +2611,7 @@
      "lost_or_dup": false,
      "duplicate_ids": false
     },
-    "ms_total": 3508
+    "ms_total": 3657
    },
    {
     "seed": 14,
@@ -2623,7 +2623,7 @@
      "lost_or_dup": false,
      "duplicate_ids": false
     },
-    "ms_total": 1964
+    "ms_total": 3934
    },
    {
     "seed": 15,
@@ -2635,7 +2635,7 @@
      "lost_or_dup": false,
      "duplicate_ids": false
     },
-    "ms_total": 2262
+    "ms_total": 3977
    },
    {
     "seed": 16,
@@ -2647,7 +2647,7 @@
      "lost_or_dup": false,
      "duplicate_ids": false
     },
-    "ms_total": 2479
+    "ms_total": 5280
    },
    {
     "seed": 17,
@@ -2659,7 +2659,7 @@
      "lost_or_dup": false,
      "duplicate_ids": false
     },
-    "ms_total": 2947
+    "ms_total": 6708
    },
    {
     "seed": 18,
@@ -2671,7 +2671,7 @@
      "lost_or_dup": false,
      "duplicate_ids": false
     },
-    "ms_total": 3030
+    "ms_total": 6361
    },
    {
     "seed": 19,
@@ -2683,7 +2683,7 @@
      "lost_or_dup": false,
      "duplicate_ids": false
     },
-    "ms_total": 2813
+    "ms_total": 4512
    },
    {
     "seed": 20,
@@ -2695,7 +2695,7 @@
      "lost_or_dup": false,
      "duplicate_ids": false
     },
-    "ms_total": 2668
+    "ms_total": 4389
    }
   ]
  }
