@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 // Track A runner: deterministic, no LLM, $0.
 //   node track-a/run.mjs [--ci] [--seeds N] [--arms a,b] [--scenarios S1,S3] [--sizes 1000,10000] [--out DIR] [--jobs N]
+// S16 (exec-time gate) applies only to the opt-in arm: --arms kronicle-lite-shims --scenarios S16
+//   (build it first: bash track-a/setup-kl-shims.sh).
 // Writes results/track-a/{meta,summary,<scenario>}.json and REPORT.md (via lib/report.mjs).
 import fs from 'node:fs';
 import path from 'node:path';
@@ -12,6 +14,7 @@ import { KNOWLEDGE } from './scenarios/knowledge.mjs';
 import { COORDINATION } from './scenarios/coordination.mjs';
 import { S12 } from './scenarios/scale.mjs';
 import { S14 } from './scenarios/planning.mjs';
+import { EXEC_GATE } from './scenarios/exec-gate.mjs';
 import { writeReport } from './lib/report.mjs';
 
 const args = Object.fromEntries(process.argv.slice(2).reduce((acc, a, i, arr) => { if (a.startsWith('--')) acc.push([a.slice(2), arr[i + 1] && !arr[i + 1].startsWith('--') ? arr[i + 1] : true]); return acc; }, []));
@@ -28,7 +31,7 @@ const SIZES = String(args.sizes ?? (CI ? '300' : '1000,10000')).split(',').map(N
 const armModules = {};
 for (const id of armIds) armModules[id] = (await import(`./arms/${id}.mjs`)).default;
 
-const SCENARIOS = [...KNOWLEDGE, ...COORDINATION].filter((s) => !scenarioIds || scenarioIds.includes(s.id));
+const SCENARIOS = [...KNOWLEDGE, ...COORDINATION, ...EXEC_GATE].filter((s) => !scenarioIds || scenarioIds.includes(s.id));
 const runId = `${Date.now()}`;
 fs.mkdirSync(OUT, { recursive: true });
 
