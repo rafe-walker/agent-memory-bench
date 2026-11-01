@@ -1,0 +1,78 @@
+[
+  {
+    "scenario": "T7",
+    "model": "haiku",
+    "arm": "kronicle_ccpush",
+    "n": 1,
+    "success": 1,
+    "success_rate": 1,
+    "success_wilson": [
+      0.2065493117918027,
+      1
+    ],
+    "success_exact": [
+      0.02499999999999996,
+      1
+    ],
+    "wrong": 0,
+    "wrong_rate": 0,
+    "wrong_wilson": [
+      0,
+      0.7934506882081973
+    ],
+    "fisher_p_vs_none": null,
+    "mean_tokens": 284119,
+    "mean_input_side": 278386,
+    "mean_output": 5733,
+    "mean_cost": 0.022172945000000006,
+    "total_cost": 0.022172945000000006,
+    "mean_wall_s": 100.314,
+    "mean_tool_calls": 25,
+    "peeked": 0,
+    "steps_complete": 1,
+    "seeds": [
+      1
+    ],
+    "final_new": 1,
+    "stopped": 0,
+    "correct_deploy": 1
+  },
+  {
+    "scenario": "T7",
+    "model": "haiku",
+    "arm": "kronicle_ccsub",
+    "n": 1,
+    "success": 0,
+    "success_rate": 0,
+    "success_wilson": [
+      0,
+      0.7934506882081973
+    ],
+    "success_exact": [
+      0,
+      0.9749999999999999
+    ],
+    "wrong": 0,
+    "wrong_rate": 0,
+    "wrong_wilson": [
+      0,
+      0.7934506882081973
+    ],
+    "fisher_p_vs_none": null,
+    "mean_tokens": 155092,
+    "mean_input_side": 152212,
+    "mean_output": 2880,
+    "mean_cost": 0.012955790000000002,
+    "total_cost": 0.012955790000000002,
+    "mean_wall_s": 61.175,
+    "mean_tool_calls": 15,
+    "peeked": 0,
+    "steps_complete": 0,
+    "seeds": [
+      1
+    ],
+    "final_new": 1,
+    "stopped": 0,
+    "correct_deploy": 1
+  }
+]

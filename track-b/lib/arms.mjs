@@ -11,6 +11,7 @@ export const ARMS = {
   kronicle_strict: { label: 'kronicle-lite + orient skill + stricter wake contract (pulse before every world-changing command; no hook)', version: 'kronicle-lite 0.5.0 (npm), CLAUDE.md variant' },
   kronicle_push: { label: 'kronicle-lite + orient skill + PostToolUse retraction push (bench prototype)', version: 'kronicle-lite 0.5.0 + prototypes/kronicle-push-hook.mjs' },
   kronicle_ccpush: { label: 'kronicle-lite + orient skill + cc-anchor retraction push + pulse (shipped hooks)', version: 'kronicle-lite 0.5.0 + cc-anchor push-hook (vendor/cc-anchor-push, see VERSION)' },
+  kronicle_ccsub: { label: 'kronicle-lite + orient skill + cc-anchor next-cycle (per-subagent retraction cursors)', version: 'kronicle-lite 0.5.0 + cc-anchor next-cycle (vendor/cc-anchor-next, see VERSION)' },
   basicmem: { label: 'basic-memory (competitor, memory)', version: 'basic-memory 1.0.0 (PyPI)' },
   ccanchor: { label: 'cc-anchor anchor card', version: 'cc-anchor 0.3.0 (local)' },
   sea: { label: 'sea-lite + cc-anchor scope guard', version: 'sea-lite 0.4.0 (local, unreleased) + cc-anchor 0.3.0' },
@@ -59,11 +60,11 @@ export function kronicleSetup(ctx) {
     ctx.env.KRONICLE_LITE_DATA_DIR = ctx.kl;
     ctx.env.KL_PUSH_CLI = BIN.kronicle;
   }
-  if (ctx.arm === 'kronicle_ccpush') {
+  if (ctx.arm === 'kronicle_ccpush' || ctx.arm === 'kronicle_ccsub') {
     // The real cc-anchor plugin (all hooks, defaults), not a hand-wired prototype.
     // The MCP config is passed with --mcp-config (not .mcp.json), so cc-anchor's
     // file-based detection cannot see it: name the store and CLI explicitly.
-    ctx.pluginDirs.push(BIN.ccAnchorPush);
+    ctx.pluginDirs.push(ctx.arm === 'kronicle_ccsub' ? BIN.ccAnchorNext : BIN.ccAnchorPush);
     ctx.env.CC_ANCHOR_KRONICLE = '1';
     ctx.env.CC_ANCHOR_KRONICLE_DATA_DIR = ctx.kl;
     ctx.env.CC_ANCHOR_KRONICLE_LITE_BIN = BIN.kronicle;

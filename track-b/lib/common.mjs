@@ -13,6 +13,7 @@ export const BIN = {
   sea: path.join(TB, 'vendor', 'sea-lite', 'dist', 'cli.js'),
   ccAnchor: path.join(TB, 'vendor', 'cc-anchor'),
   ccAnchorPush: path.join(TB, 'vendor', 'cc-anchor-push'),
+  ccAnchorNext: path.join(TB, 'vendor', 'cc-anchor-next'),
   bd: path.join(TB, 'node_modules', '.bin', 'bd'),
   bm: path.join(TB, '.venv', 'bin', 'basic-memory'),
   fastembedCache: path.join(TB, 'vendor', 'fastembed_cache'),

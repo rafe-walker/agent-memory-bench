@@ -47,6 +47,7 @@ const SRC = {
   kronicle_strict: { where: 'The runbook is stored in kronicle-lite as the document "runbook".', re: /mcp__kronicle-lite__(get_system_state|recall|verify|audit_assumptions)/ },
   kronicle_push: { where: 'The runbook is stored in kronicle-lite as the document "runbook".', re: /mcp__kronicle-lite__(get_system_state|recall|verify|audit_assumptions)/ },
   kronicle_ccpush: { where: 'The runbook is stored in kronicle-lite as the document "runbook".', re: /mcp__kronicle-lite__(get_system_state|recall|verify|audit_assumptions)/ },
+  kronicle_ccsub: { where: 'The runbook is stored in kronicle-lite as the document "runbook".', re: /mcp__kronicle-lite__(get_system_state|recall|verify|audit_assumptions)/ },
   basicmem: { where: 'The runbook is stored in basic-memory as the note "deploy-runbook".', re: /mcp__basic-memory__/ },
 };
 
@@ -54,7 +55,7 @@ function placeRunbook(ctx, md, files) {
   switch (ctx.arm) {
     case 'none': files['docs/runbook.md'] = md; break;
     case 'native': ctx.claudeMd.push(md); break;
-    case 'kronicle': case 'kronicle_strict': case 'kronicle_push': case 'kronicle_ccpush': kronicleSetup(ctx); ctx.postRepo.push(() => kroniclePut(ctx, 'runbook', md, 'Deploy runbook')); break;
+    case 'kronicle': case 'kronicle_strict': case 'kronicle_push': case 'kronicle_ccpush': case 'kronicle_ccsub': kronicleSetup(ctx); ctx.postRepo.push(() => kroniclePut(ctx, 'runbook', md, 'Deploy runbook')); break;
     case 'basicmem': bmSetup(ctx); bmNote(ctx, 'deploy-runbook', 'deploy-runbook', md); ctx.claudeMd.push('# Team docs\nTeam runbooks and notes live in basic-memory (MCP server `basic-memory`). Read them there.\n'); break;
     default: throw new Error(`arm ${ctx.arm} not supported`);
   }
@@ -67,7 +68,7 @@ function mutateRunbookSh(ctx, md) {
       const f = path.join(ctx.runDir, 'pending', 'CLAUDE-v2.md'); write(f, next);
       return `cp ${JSON.stringify(f)} ${JSON.stringify(path.join(ctx.repo, 'CLAUDE.md'))}`;
     }
-    case 'kronicle': case 'kronicle_strict': case 'kronicle_push': case 'kronicle_ccpush': return kronicleMutateSh(ctx, 'runbook', md);
+    case 'kronicle': case 'kronicle_strict': case 'kronicle_push': case 'kronicle_ccpush': case 'kronicle_ccsub': return kronicleMutateSh(ctx, 'runbook', md);
     case 'basicmem': return bmMutateSh(ctx, 'deploy-runbook', 'deploy-runbook', md);
     default: throw new Error('unsupported');
   }
@@ -120,6 +121,53 @@ function midSessionScenario({ id, title, benign }) {
     },
   };
 }
+
+// ---------------- T7: coordinator + subagents, runbook changes mid-run ----------------
+// Diagnostics from the tool-call sequence (all agents' calls, in stream order):
+//   subagents        Task/Agent calls made
+//   first_handoff    target named in the first subagent prompt that mentions deploy
+//   final_handoff    same, for the last such prompt (the coordinator may stop a
+//                    stale subagent with TaskStop and start a corrected one)
+//   stopped_subagent the coordinator used TaskStop
+export function t7Diagnostics(calls, want, stale) {
+  const tasks = calls.filter((c) => c.name === 'Task' || c.name === 'Agent').map((c) => JSON.stringify(c.input || {}));
+  const dep = tasks.filter((t) => /deploy/.test(t));
+  const which = (t) => (t == null ? 'none' : t.includes(want) ? 'new' : t.includes(stale) ? 'stale' : 'none');
+  return { subagents: tasks.length, first_handoff: which(dep[0]), final_handoff: which(dep[dep.length - 1]), stopped_subagent: calls.some((c) => c.name === 'TaskStop') };
+}
+// The coordinator reads the runbook, delegates steps 1-2 to one subagent and
+// steps 3-5 to a second one, passing the commands. The runbook changes during
+// the first subagent's build. With ONE retraction cursor per session the first
+// subagent consumes the push and the coordinator is never told, so it hands the
+// stale target to the second subagent; with per-agent cursors the coordinator
+// is told at its next tool call (the Task result).
+const T7 = {
+  id: 'T7', title: 'coordinator + two subagents, runbook changes during subagent 1', arms: ['kronicle_ccpush', 'kronicle_ccsub'], maxTurns: 40,
+  setup(ctx) {
+    const f = seedFacts(ctx.r); ctx.facts = f;
+    const v1 = runbook({ target: f.oldTarget, channel: f.channel });
+    const v2 = runbook({ target: f.newTarget, channel: f.channel, reviewed: '2026-10-31' });
+    ctx.runbookV1 = v1;
+    const files = {};
+    placeRunbook(ctx, v1, files);
+    initRepo(ctx, files);
+    ctx.allowed.push('Task');
+    ctx.injectLater = () => ctx.inject.push({ id: 'runbook-v2', on: 'build', sh: mutateRunbookSh(ctx, v2) });
+  },
+  agents(ctx) {
+    return [{ id: 'A', prompt: `You are coordinating today's release of orders-svc in this repository. The team's deploy runbook is stored in kronicle-lite as the document "runbook"; read it now. Then delegate the work to subagents with the Task tool, one subagent at a time, and do not run any ./bin command yourself: (1) start a subagent that runs runbook steps 1-2 (preflight, build) and whose final reply must be exactly one line, "BUILD OK <sha>" or "BUILD FAILED" (tell it so); (2) after it has reported, start a second subagent that runs steps 3-5 (migrate, deploy, notify), and put the exact commands it must run in its prompt. ${NO_ASK} When both subagents are done, reply with one line: what was deployed and to which cluster.` }];
+  },
+  grade(ctx, run) {
+    const f = ctx.facts;
+    const g = gradeTarget(ctx, run, { want: f.newTarget, wrong: [f.oldTarget] });
+    return {
+      success: g.success, wrong_action: g.wrong_action, steps_complete: g.complete, deploy_targets: g.deploy_targets,
+      expected: f.newTarget, stale_value: f.oldTarget,
+      ...t7Diagnostics(run.toolCalls, f.newTarget, f.oldTarget),
+      fault_fired: fs.existsSync(path.join(ctx.runDir, '.injected-runbook-v2')),
+    };
+  },
+};
 
 // ---------------- T2: contradicting sources ----------------
 const T2 = {
@@ -339,5 +387,6 @@ export const SCENARIOS = {
   T3,
   T4,
   T5,
+  T7,
   T6: midSessionScenario({ id: 'T6', title: 'benign-noise control (typo/whitespace edit after build)', benign: true }),
 };

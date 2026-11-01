@@ -39,6 +39,13 @@ if [[ ! -f vendor/cc-anchor-push/scripts/pulse.sh && -d "$CC_ANCHOR_PUSH_SRC" ]]
   git -C "$CC_ANCHOR_PUSH_SRC" archive "$CC_ANCHOR_PUSH_REF" | tar -x -C vendor/cc-anchor-push
   git -C "$CC_ANCHOR_PUSH_SRC" rev-parse "$CC_ANCHOR_PUSH_REF" > vendor/cc-anchor-push/VERSION
 fi
+# cc-anchor next-cycle branch (arm kronicle_ccsub, scenario T7).
+CC_ANCHOR_NEXT_REF="${CC_ANCHOR_NEXT_REF:-next-cycle}"
+if [[ ! -f vendor/cc-anchor-next/scripts/subagent-start.sh && -d "$CC_ANCHOR_PUSH_SRC" ]]; then
+  mkdir -p vendor/cc-anchor-next
+  git -C "$CC_ANCHOR_PUSH_SRC" archive "$CC_ANCHOR_NEXT_REF" | tar -x -C vendor/cc-anchor-next
+  git -C "$CC_ANCHOR_PUSH_SRC" rev-parse "$CC_ANCHOR_NEXT_REF" > vendor/cc-anchor-next/VERSION
+fi
 if [[ ! -f vendor/cc-anchor/scripts/anchor.mjs ]]; then
   mkdir -p vendor/cc-anchor
   (cd "$CC_ANCHOR_SRC" && tar --exclude=.git -cf - .) | (cd vendor/cc-anchor && tar -xf -)

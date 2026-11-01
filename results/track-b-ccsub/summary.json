@@ -1,0 +1,88 @@
+[
+  {
+    "scenario": "T7",
+    "model": "haiku",
+    "arm": "kronicle_ccpush",
+    "n": 6,
+    "success": 1,
+    "success_rate": 0.16666666666666666,
+    "success_wilson": [
+      0.030053369411815023,
+      0.5635028250257673
+    ],
+    "success_exact": [
+      0.004210744514489462,
+      0.6412345789976748
+    ],
+    "wrong": 4,
+    "wrong_rate": 0.6666666666666666,
+    "wrong_wilson": [
+      0.29999331299474324,
+      0.9032285897864654
+    ],
+    "fisher_p_vs_none": null,
+    "mean_tokens": 156910.66666666666,
+    "mean_input_side": 153799.33333333334,
+    "mean_output": 3111.3333333333335,
+    "mean_cost": 0.014227054166666668,
+    "total_cost": 0.085362325,
+    "mean_wall_s": 65.12616666666666,
+    "mean_tool_calls": 17.666666666666668,
+    "peeked": 0,
+    "steps_complete": 1,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "final_new": 2,
+    "stopped": 0,
+    "correct_deploy": 2
+  },
+  {
+    "scenario": "T7",
+    "model": "haiku",
+    "arm": "kronicle_ccsub",
+    "n": 6,
+    "success": 0,
+    "success_rate": 0,
+    "success_wilson": [
+      0,
+      0.39033429165637346
+    ],
+    "success_exact": [
+      0,
+      0.45925812643990016
+    ],
+    "wrong": 0,
+    "wrong_rate": 0,
+    "wrong_wilson": [
+      0,
+      0.39033429165637346
+    ],
+    "fisher_p_vs_none": null,
+    "mean_tokens": 108610.33333333333,
+    "mean_input_side": 106886.5,
+    "mean_output": 1723.8333333333333,
+    "mean_cost": 0.016501724166666665,
+    "total_cost": 0.09901034499999999,
+    "mean_wall_s": 67.16783333333333,
+    "mean_tool_calls": 20.666666666666668,
+    "peeked": 0,
+    "steps_complete": 0,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "final_new": 5,
+    "stopped": 5,
+    "correct_deploy": 5
+  }
+]
