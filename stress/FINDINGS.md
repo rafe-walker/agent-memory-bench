@@ -35,3 +35,23 @@ kl property fuzz (270 runs × 25–30 steps, 3 seeds); kl chaos (kill -9 ×40 mi
 
 ### Coverage gaps → round 2
 Clock skew (no faketime), bash 3.2 / macOS same-second mtimes and case-insensitive paths, Windows separators, 2026-07-28 client handshakes, kl `watch`/`--stdin-hook` under concurrency, sea-lite `serve --http` per-actor tokens, live runs with compaction/resume, scale re-run on f66f096, ~$2 of live multi-agent scenarios.
+
+## Round 2 (2026-11-01, in progress)
+
+### Track 6 — hosted anchor (local only): 2 S1, 5 S2, 9 S3, 5 S4
+Full file: isokron-anchor scratch clone `docs/hardening/FINDINGS.md` (bfddb2d). Targets isokron-anchor@7327b55, kronicle-lite@7e50702.
+
+| id | sev | where | one-line | status |
+|---|---|---|---|---|
+| A2-01 | S1 | kl src/anchor/anchor.ts | verify --remote / --offline / anchor_status compare against unsigned root fields → rewritten chain passes | fixing (kl branch fix-anchor-client → 0.8.1) |
+| A2-02 | S1 | anchor verifier.ts | verify page shows VERIFIED for a pasted list with forged root/range/time/status | fixing (anchor branch hardening-a2) |
+| A2-03 | S2 | anchor routes/anchor.ts | concurrent different-root pushes never flagged as conflict | fixing (hardening-a2) |
+| A2-04 | S2 | verifier + both clients | service-key validity window/status ignored | fixing (both) |
+| A2-11 | S2 | kl anchor.ts | online verify ignores local receipts | fixing (kl) |
+| A2-12 | S2 | kl client/config | service key not pinned; MITM re-signs | fixing (kl) |
+| A2-02b | S2 | anchor verifier.ts | VERIFIED "public logs" with no inclusion proof | fixing (hardening-a2) |
+| A2-05..10, 13 | S3 | anchor | quota burn, silent R2 failure, rate-limit order, body cap, small-order keys, wrong-chain PENDING, unbounded listing | fixing (hardening-a2) |
+| A2-17 | S3 | kl anchor.ts | push stores unverified receipt | fixing (kl) |
+| A2-18 | S3 | isokron-site pricing | claimed public logs not yet running | fixed @ isokron-site c734429 |
+| A2-14, 15, 19 | S4 | anchor | raw errors, erasure undone, npm ci ERESOLVE | fixing (hardening-a2) |
+| A2-20, 21 | S4 | kl | key on argv / http allowed; stale threat model | fixing (kl) |
