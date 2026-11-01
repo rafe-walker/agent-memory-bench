@@ -1,0 +1,2702 @@
+{
+ "scenario": "S3",
+ "title": "Parallel edit collision (two+ sessions, same file/path)",
+ "records": {
+  "S3a|sea-lite": [
+   {
+    "seed": 1,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 8,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 6357
+    },
+    "bytes": {
+     "claim": 360
+    },
+    "ms_total": 7352
+   },
+   {
+    "seed": 2,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 3,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 6466
+    },
+    "bytes": {
+     "claim": 360
+    },
+    "ms_total": 7668
+   },
+   {
+    "seed": 3,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 3,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 6152
+    },
+    "bytes": {
+     "claim": 360
+    },
+    "ms_total": 7561
+   },
+   {
+    "seed": 4,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 8,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 6731
+    },
+    "bytes": {
+     "claim": 360
+    },
+    "ms_total": 8155
+   },
+   {
+    "seed": 5,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 3,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 4655
+    },
+    "bytes": {
+     "claim": 360
+    },
+    "ms_total": 6562
+   },
+   {
+    "seed": 6,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 8,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 4801
+    },
+    "bytes": {
+     "claim": 360
+    },
+    "ms_total": 6560
+   },
+   {
+    "seed": 7,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 5,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 2369
+    },
+    "bytes": {
+     "claim": 361
+    },
+    "ms_total": 3586
+   },
+   {
+    "seed": 8,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 7,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 2566
+    },
+    "bytes": {
+     "claim": 360
+    },
+    "ms_total": 3956
+   },
+   {
+    "seed": 9,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 898
+    },
+    "bytes": {
+     "claim": 362
+    },
+    "ms_total": 2342
+   },
+   {
+    "seed": 10,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 910
+    },
+    "bytes": {
+     "claim": 360
+    },
+    "ms_total": 1900
+   },
+   {
+    "seed": 11,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 8,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 3731
+    },
+    "bytes": {
+     "claim": 360
+    },
+    "ms_total": 4845
+   },
+   {
+    "seed": 12,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 5,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 2190
+    },
+    "bytes": {
+     "claim": 361
+    },
+    "ms_total": 5817
+   },
+   {
+    "seed": 13,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 5,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 4081
+    },
+    "bytes": {
+     "claim": 361
+    },
+    "ms_total": 6052
+   },
+   {
+    "seed": 14,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 3,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 3220
+    },
+    "bytes": {
+     "claim": 360
+    },
+    "ms_total": 6318
+   },
+   {
+    "seed": 15,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 4,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 4295
+    },
+    "bytes": {
+     "claim": 360
+    },
+    "ms_total": 6882
+   },
+   {
+    "seed": 16,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 4,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 4302
+    },
+    "bytes": {
+     "claim": 361
+    },
+    "ms_total": 7709
+   },
+   {
+    "seed": 17,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 5,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 4018
+    },
+    "bytes": {
+     "claim": 361
+    },
+    "ms_total": 7399
+   },
+   {
+    "seed": 18,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 6,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 4345
+    },
+    "bytes": {
+     "claim": 360
+    },
+    "ms_total": 8509
+   },
+   {
+    "seed": 19,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 4,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 2782
+    },
+    "bytes": {
+     "claim": 362
+    },
+    "ms_total": 6943
+   },
+   {
+    "seed": 20,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 7,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 6077
+    },
+    "bytes": {
+     "claim": 361
+    },
+    "ms_total": 8398
+   }
+  ],
+  "S3b|sea-lite": [
+   {
+    "seed": 1,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "blocked at edit, holder named",
+    "flags": {
+     "blocked": true,
+     "stage": "edit"
+    },
+    "ms": {
+     "guard": 1178
+    },
+    "bytes": {
+     "guard": 387
+    },
+    "ms_total": 4333
+   },
+   {
+    "seed": 2,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "blocked at edit, holder named",
+    "flags": {
+     "blocked": true,
+     "stage": "edit"
+    },
+    "ms": {
+     "guard": 798
+    },
+    "bytes": {
+     "guard": 375
+    },
+    "ms_total": 5364
+   },
+   {
+    "seed": 3,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "blocked at edit, holder named",
+    "flags": {
+     "blocked": true,
+     "stage": "edit"
+    },
+    "ms": {
+     "guard": 833
+    },
+    "bytes": {
+     "guard": 374
+    },
+    "ms_total": 3049
+   },
+   {
+    "seed": 4,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "blocked at edit, holder named",
+    "flags": {
+     "blocked": true,
+     "stage": "edit"
+    },
+    "ms": {
+     "guard": 751
+    },
+    "bytes": {
+     "guard": 388
+    },
+    "ms_total": 4460
+   },
+   {
+    "seed": 5,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "blocked at edit, holder named",
+    "flags": {
+     "blocked": true,
+     "stage": "edit"
+    },
+    "ms": {
+     "guard": 505
+    },
+    "bytes": {
+     "guard": 376
+    },
+    "ms_total": 4458
+   },
+   {
+    "seed": 6,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "blocked at edit, holder named",
+    "flags": {
+     "blocked": true,
+     "stage": "edit"
+    },
+    "ms": {
+     "guard": 606
+    },
+    "bytes": {
+     "guard": 387
+    },
+    "ms_total": 3483
+   },
+   {
+    "seed": 7,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "blocked at edit, holder named",
+    "flags": {
+     "blocked": true,
+     "stage": "edit"
+    },
+    "ms": {
+     "guard": 495
+    },
+    "bytes": {
+     "guard": 399
+    },
+    "ms_total": 3353
+   },
+   {
+    "seed": 8,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "blocked at edit, holder named",
+    "flags": {
+     "blocked": true,
+     "stage": "edit"
+    },
+    "ms": {
+     "guard": 651
+    },
+    "bytes": {
+     "guard": 388
+    },
+    "ms_total": 3364
+   },
+   {
+    "seed": 9,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "blocked at edit, holder named",
+    "flags": {
+     "blocked": true,
+     "stage": "edit"
+    },
+    "ms": {
+     "guard": 881
+    },
+    "bytes": {
+     "guard": 387
+    },
+    "ms_total": 3305
+   },
+   {
+    "seed": 10,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "blocked at edit, holder named",
+    "flags": {
+     "blocked": true,
+     "stage": "edit"
+    },
+    "ms": {
+     "guard": 877
+    },
+    "bytes": {
+     "guard": 376
+    },
+    "ms_total": 2928
+   },
+   {
+    "seed": 11,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "blocked at edit, holder named",
+    "flags": {
+     "blocked": true,
+     "stage": "edit"
+    },
+    "ms": {
+     "guard": 1007
+    },
+    "bytes": {
+     "guard": 388
+    },
+    "ms_total": 3919
+   },
+   {
+    "seed": 12,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "blocked at edit, holder named",
+    "flags": {
+     "blocked": true,
+     "stage": "edit"
+    },
+    "ms": {
+     "guard": 1136
+    },
+    "bytes": {
+     "guard": 399
+    },
+    "ms_total": 4184
+   },
+   {
+    "seed": 13,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "blocked at edit, holder named",
+    "flags": {
+     "blocked": true,
+     "stage": "edit"
+    },
+    "ms": {
+     "guard": 947
+    },
+    "bytes": {
+     "guard": 388
+    },
+    "ms_total": 4023
+   },
+   {
+    "seed": 14,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "blocked at edit, holder named",
+    "flags": {
+     "blocked": true,
+     "stage": "edit"
+    },
+    "ms": {
+     "guard": 751
+    },
+    "bytes": {
+     "guard": 375
+    },
+    "ms_total": 4454
+   },
+   {
+    "seed": 15,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "blocked at edit, holder named",
+    "flags": {
+     "blocked": true,
+     "stage": "edit"
+    },
+    "ms": {
+     "guard": 1191
+    },
+    "bytes": {
+     "guard": 377
+    },
+    "ms_total": 4411
+   },
+   {
+    "seed": 16,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "blocked at edit, holder named",
+    "flags": {
+     "blocked": true,
+     "stage": "edit"
+    },
+    "ms": {
+     "guard": 762
+    },
+    "bytes": {
+     "guard": 388
+    },
+    "ms_total": 4746
+   },
+   {
+    "seed": 17,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "blocked at edit, holder named",
+    "flags": {
+     "blocked": true,
+     "stage": "edit"
+    },
+    "ms": {
+     "guard": 540
+    },
+    "bytes": {
+     "guard": 387
+    },
+    "ms_total": 4117
+   },
+   {
+    "seed": 18,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "blocked at edit, holder named",
+    "flags": {
+     "blocked": true,
+     "stage": "edit"
+    },
+    "ms": {
+     "guard": 489
+    },
+    "bytes": {
+     "guard": 375
+    },
+    "ms_total": 3237
+   },
+   {
+    "seed": 19,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "blocked at edit, holder named",
+    "flags": {
+     "blocked": true,
+     "stage": "edit"
+    },
+    "ms": {
+     "guard": 500
+    },
+    "bytes": {
+     "guard": 400
+    },
+    "ms_total": 2833
+   },
+   {
+    "seed": 20,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "blocked at edit, holder named",
+    "flags": {
+     "blocked": true,
+     "stage": "edit"
+    },
+    "ms": {
+     "guard": 513
+    },
+    "bytes": {
+     "guard": 399
+    },
+    "ms_total": 2760
+   }
+  ],
+  "S3c|sea-lite": [
+   {
+    "seed": 1,
+    "variant": "c",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 2078
+    },
+    "bytes": {
+     "claim": 367
+    },
+    "ms_total": 3294
+   },
+   {
+    "seed": 2,
+    "variant": "c",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 1950
+    },
+    "bytes": {
+     "claim": 365
+    },
+    "ms_total": 3067
+   },
+   {
+    "seed": 3,
+    "variant": "c",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 1684
+    },
+    "bytes": {
+     "claim": 365
+    },
+    "ms_total": 2651
+   },
+   {
+    "seed": 4,
+    "variant": "c",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 1665
+    },
+    "bytes": {
+     "claim": 367
+    },
+    "ms_total": 3114
+   },
+   {
+    "seed": 5,
+    "variant": "c",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 2851
+    },
+    "bytes": {
+     "claim": 365
+    },
+    "ms_total": 4140
+   },
+   {
+    "seed": 6,
+    "variant": "c",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 2485
+    },
+    "bytes": {
+     "claim": 367
+    },
+    "ms_total": 5017
+   },
+   {
+    "seed": 7,
+    "variant": "c",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 1405
+    },
+    "bytes": {
+     "claim": 368
+    },
+    "ms_total": 3459
+   },
+   {
+    "seed": 8,
+    "variant": "c",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 1477
+    },
+    "bytes": {
+     "claim": 367
+    },
+    "ms_total": 2900
+   },
+   {
+    "seed": 9,
+    "variant": "c",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 1228
+    },
+    "bytes": {
+     "claim": 367
+    },
+    "ms_total": 2461
+   },
+   {
+    "seed": 10,
+    "variant": "c",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 1555
+    },
+    "bytes": {
+     "claim": 365
+    },
+    "ms_total": 2607
+   },
+   {
+    "seed": 11,
+    "variant": "c",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 2210
+    },
+    "bytes": {
+     "claim": 367
+    },
+    "ms_total": 3656
+   },
+   {
+    "seed": 12,
+    "variant": "c",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 1992
+    },
+    "bytes": {
+     "claim": 368
+    },
+    "ms_total": 3762
+   },
+   {
+    "seed": 13,
+    "variant": "c",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 1520
+    },
+    "bytes": {
+     "claim": 367
+    },
+    "ms_total": 3094
+   },
+   {
+    "seed": 14,
+    "variant": "c",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 1968
+    },
+    "bytes": {
+     "claim": 365
+    },
+    "ms_total": 4000
+   },
+   {
+    "seed": 15,
+    "variant": "c",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 1676
+    },
+    "bytes": {
+     "claim": 365
+    },
+    "ms_total": 3632
+   },
+   {
+    "seed": 16,
+    "variant": "c",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 1438
+    },
+    "bytes": {
+     "claim": 367
+    },
+    "ms_total": 3319
+   },
+   {
+    "seed": 17,
+    "variant": "c",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 1630
+    },
+    "bytes": {
+     "claim": 367
+    },
+    "ms_total": 3099
+   },
+   {
+    "seed": 18,
+    "variant": "c",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 1391
+    },
+    "bytes": {
+     "claim": 365
+    },
+    "ms_total": 2928
+   },
+   {
+    "seed": 19,
+    "variant": "c",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 1571
+    },
+    "bytes": {
+     "claim": 368
+    },
+    "ms_total": 3582
+   },
+   {
+    "seed": 20,
+    "variant": "c",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 894
+    },
+    "bytes": {
+     "claim": 368
+    },
+    "ms_total": 2685
+   }
+  ],
+  "S3d|sea-lite": [
+   {
+    "seed": 1,
+    "variant": "d",
+    "grade": "yes",
+    "reason": "8 concurrent creates, 8 unique, all present",
+    "flags": {
+     "writers": 8,
+     "lost_or_dup": false,
+     "duplicate_ids": false
+    },
+    "ms_total": 5208
+   },
+   {
+    "seed": 2,
+    "variant": "d",
+    "grade": "yes",
+    "reason": "3 concurrent creates, 3 unique, all present",
+    "flags": {
+     "writers": 3,
+     "lost_or_dup": false,
+     "duplicate_ids": false
+    },
+    "ms_total": 5459
+   },
+   {
+    "seed": 3,
+    "variant": "d",
+    "grade": "yes",
+    "reason": "3 concurrent creates, 3 unique, all present",
+    "flags": {
+     "writers": 3,
+     "lost_or_dup": false,
+     "duplicate_ids": false
+    },
+    "ms_total": 3806
+   },
+   {
+    "seed": 4,
+    "variant": "d",
+    "grade": "yes",
+    "reason": "8 concurrent creates, 8 unique, all present",
+    "flags": {
+     "writers": 8,
+     "lost_or_dup": false,
+     "duplicate_ids": false
+    },
+    "ms_total": 5193
+   },
+   {
+    "seed": 5,
+    "variant": "d",
+    "grade": "yes",
+    "reason": "3 concurrent creates, 3 unique, all present",
+    "flags": {
+     "writers": 3,
+     "lost_or_dup": false,
+     "duplicate_ids": false
+    },
+    "ms_total": 5532
+   },
+   {
+    "seed": 6,
+    "variant": "d",
+    "grade": "yes",
+    "reason": "8 concurrent creates, 8 unique, all present",
+    "flags": {
+     "writers": 8,
+     "lost_or_dup": false,
+     "duplicate_ids": false
+    },
+    "ms_total": 6250
+   },
+   {
+    "seed": 7,
+    "variant": "d",
+    "grade": "yes",
+    "reason": "5 concurrent creates, 5 unique, all present",
+    "flags": {
+     "writers": 5,
+     "lost_or_dup": false,
+     "duplicate_ids": false
+    },
+    "ms_total": 6540
+   },
+   {
+    "seed": 8,
+    "variant": "d",
+    "grade": "yes",
+    "reason": "7 concurrent creates, 7 unique, all present",
+    "flags": {
+     "writers": 7,
+     "lost_or_dup": false,
+     "duplicate_ids": false
+    },
+    "ms_total": 5946
+   },
+   {
+    "seed": 9,
+    "variant": "d",
+    "grade": "yes",
+    "reason": "3 concurrent creates, 3 unique, all present",
+    "flags": {
+     "writers": 3,
+     "lost_or_dup": false,
+     "duplicate_ids": false
+    },
+    "ms_total": 3968
+   },
+   {
+    "seed": 10,
+    "variant": "d",
+    "grade": "yes",
+    "reason": "3 concurrent creates, 3 unique, all present",
+    "flags": {
+     "writers": 3,
+     "lost_or_dup": false,
+     "duplicate_ids": false
+    },
+    "ms_total": 3448
+   },
+   {
+    "seed": 11,
+    "variant": "d",
+    "grade": "yes",
+    "reason": "8 concurrent creates, 8 unique, all present",
+    "flags": {
+     "writers": 8,
+     "lost_or_dup": false,
+     "duplicate_ids": false
+    },
+    "ms_total": 6365
+   },
+   {
+    "seed": 12,
+    "variant": "d",
+    "grade": "yes",
+    "reason": "5 concurrent creates, 5 unique, all present",
+    "flags": {
+     "writers": 5,
+     "lost_or_dup": false,
+     "duplicate_ids": false
+    },
+    "ms_total": 5427
+   },
+   {
+    "seed": 13,
+    "variant": "d",
+    "grade": "yes",
+    "reason": "5 concurrent creates, 5 unique, all present",
+    "flags": {
+     "writers": 5,
+     "lost_or_dup": false,
+     "duplicate_ids": false
+    },
+    "ms_total": 3573
+   },
+   {
+    "seed": 14,
+    "variant": "d",
+    "grade": "yes",
+    "reason": "3 concurrent creates, 3 unique, all present",
+    "flags": {
+     "writers": 3,
+     "lost_or_dup": false,
+     "duplicate_ids": false
+    },
+    "ms_total": 3733
+   },
+   {
+    "seed": 15,
+    "variant": "d",
+    "grade": "yes",
+    "reason": "4 concurrent creates, 4 unique, all present",
+    "flags": {
+     "writers": 4,
+     "lost_or_dup": false,
+     "duplicate_ids": false
+    },
+    "ms_total": 3276
+   },
+   {
+    "seed": 16,
+    "variant": "d",
+    "grade": "yes",
+    "reason": "4 concurrent creates, 4 unique, all present",
+    "flags": {
+     "writers": 4,
+     "lost_or_dup": false,
+     "duplicate_ids": false
+    },
+    "ms_total": 3626
+   },
+   {
+    "seed": 17,
+    "variant": "d",
+    "grade": "yes",
+    "reason": "5 concurrent creates, 5 unique, all present",
+    "flags": {
+     "writers": 5,
+     "lost_or_dup": false,
+     "duplicate_ids": false
+    },
+    "ms_total": 4846
+   },
+   {
+    "seed": 18,
+    "variant": "d",
+    "grade": "yes",
+    "reason": "6 concurrent creates, 6 unique, all present",
+    "flags": {
+     "writers": 6,
+     "lost_or_dup": false,
+     "duplicate_ids": false
+    },
+    "ms_total": 5174
+   },
+   {
+    "seed": 19,
+    "variant": "d",
+    "grade": "yes",
+    "reason": "4 concurrent creates, 4 unique, all present",
+    "flags": {
+     "writers": 4,
+     "lost_or_dup": false,
+     "duplicate_ids": false
+    },
+    "ms_total": 4270
+   },
+   {
+    "seed": 20,
+    "variant": "d",
+    "grade": "yes",
+    "reason": "7 concurrent creates, 7 unique, all present",
+    "flags": {
+     "writers": 7,
+     "lost_or_dup": false,
+     "duplicate_ids": false
+    },
+    "ms_total": 4846
+   }
+  ],
+  "S3a|sea-lite+cc-anchor": [
+   {
+    "seed": 1,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 8,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 5485
+    },
+    "bytes": {
+     "claim": 360
+    },
+    "ms_total": 6420
+   },
+   {
+    "seed": 2,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 3,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 5122
+    },
+    "bytes": {
+     "claim": 360
+    },
+    "ms_total": 6894
+   },
+   {
+    "seed": 3,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 3,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 10048
+    },
+    "bytes": {
+     "claim": 360
+    },
+    "ms_total": 11687
+   },
+   {
+    "seed": 4,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 8,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 10280
+    },
+    "bytes": {
+     "claim": 360
+    },
+    "ms_total": 11643
+   },
+   {
+    "seed": 5,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 3,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 8247
+    },
+    "bytes": {
+     "claim": 360
+    },
+    "ms_total": 10157
+   },
+   {
+    "seed": 6,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 8,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 8343
+    },
+    "bytes": {
+     "claim": 360
+    },
+    "ms_total": 10320
+   },
+   {
+    "seed": 7,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 5,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 4485
+    },
+    "bytes": {
+     "claim": 361
+    },
+    "ms_total": 5673
+   },
+   {
+    "seed": 8,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 7,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 3070
+    },
+    "bytes": {
+     "claim": 360
+    },
+    "ms_total": 6006
+   },
+   {
+    "seed": 9,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 855
+    },
+    "bytes": {
+     "claim": 362
+    },
+    "ms_total": 2026
+   },
+   {
+    "seed": 10,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 848
+    },
+    "bytes": {
+     "claim": 360
+    },
+    "ms_total": 1626
+   },
+   {
+    "seed": 11,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 8,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 2888
+    },
+    "bytes": {
+     "claim": 360
+    },
+    "ms_total": 3750
+   },
+   {
+    "seed": 12,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 5,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 2603
+    },
+    "bytes": {
+     "claim": 361
+    },
+    "ms_total": 4282
+   },
+   {
+    "seed": 13,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 5,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 1972
+    },
+    "bytes": {
+     "claim": 361
+    },
+    "ms_total": 3300
+   },
+   {
+    "seed": 14,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 3,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 1652
+    },
+    "bytes": {
+     "claim": 360
+    },
+    "ms_total": 3013
+   },
+   {
+    "seed": 15,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 4,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 2097
+    },
+    "bytes": {
+     "claim": 360
+    },
+    "ms_total": 3051
+   },
+   {
+    "seed": 16,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 4,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 2019
+    },
+    "bytes": {
+     "claim": 361
+    },
+    "ms_total": 3700
+   },
+   {
+    "seed": 17,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 5,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 3800
+    },
+    "bytes": {
+     "claim": 361
+    },
+    "ms_total": 5817
+   },
+   {
+    "seed": 18,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 6,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 3383
+    },
+    "bytes": {
+     "claim": 360
+    },
+    "ms_total": 5705
+   },
+   {
+    "seed": 19,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 4,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 2312
+    },
+    "bytes": {
+     "claim": 362
+    },
+    "ms_total": 3851
+   },
+   {
+    "seed": 20,
+    "variant": "a",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 7,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 2738
+    },
+    "bytes": {
+     "claim": 361
+    },
+    "ms_total": 3698
+   }
+  ],
+  "S3b|sea-lite+cc-anchor": [
+   {
+    "seed": 1,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "blocked at edit, holder named",
+    "flags": {
+     "blocked": true,
+     "stage": "edit"
+    },
+    "ms": {
+     "guard": 397
+    },
+    "bytes": {
+     "guard": 543
+    },
+    "ms_total": 1643
+   },
+   {
+    "seed": 2,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "blocked at edit, holder named",
+    "flags": {
+     "blocked": true,
+     "stage": "edit"
+    },
+    "ms": {
+     "guard": 563
+    },
+    "bytes": {
+     "guard": 537
+    },
+    "ms_total": 2324
+   },
+   {
+    "seed": 3,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "blocked at edit, holder named",
+    "flags": {
+     "blocked": true,
+     "stage": "edit"
+    },
+    "ms": {
+     "guard": 445
+    },
+    "bytes": {
+     "guard": 536
+    },
+    "ms_total": 1833
+   },
+   {
+    "seed": 4,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "blocked at edit, holder named",
+    "flags": {
+     "blocked": true,
+     "stage": "edit"
+    },
+    "ms": {
+     "guard": 496
+    },
+    "bytes": {
+     "guard": 544
+    },
+    "ms_total": 1774
+   },
+   {
+    "seed": 5,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "blocked at edit, holder named",
+    "flags": {
+     "blocked": true,
+     "stage": "edit"
+    },
+    "ms": {
+     "guard": 385
+    },
+    "bytes": {
+     "guard": 538
+    },
+    "ms_total": 1666
+   },
+   {
+    "seed": 6,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "blocked at edit, holder named",
+    "flags": {
+     "blocked": true,
+     "stage": "edit"
+    },
+    "ms": {
+     "guard": 389
+    },
+    "bytes": {
+     "guard": 543
+    },
+    "ms_total": 2091
+   },
+   {
+    "seed": 7,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "blocked at edit, holder named",
+    "flags": {
+     "blocked": true,
+     "stage": "edit"
+    },
+    "ms": {
+     "guard": 448
+    },
+    "bytes": {
+     "guard": 549
+    },
+    "ms_total": 1629
+   },
+   {
+    "seed": 8,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "blocked at edit, holder named",
+    "flags": {
+     "blocked": true,
+     "stage": "edit"
+    },
+    "ms": {
+     "guard": 500
+    },
+    "bytes": {
+     "guard": 544
+    },
+    "ms_total": 1922
+   },
+   {
+    "seed": 9,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "blocked at edit, holder named",
+    "flags": {
+     "blocked": true,
+     "stage": "edit"
+    },
+    "ms": {
+     "guard": 502
+    },
+    "bytes": {
+     "guard": 543
+    },
+    "ms_total": 1983
+   },
+   {
+    "seed": 10,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "blocked at edit, holder named",
+    "flags": {
+     "blocked": true,
+     "stage": "edit"
+    },
+    "ms": {
+     "guard": 480
+    },
+    "bytes": {
+     "guard": 539
+    },
+    "ms_total": 1715
+   },
+   {
+    "seed": 11,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "blocked at edit, holder named",
+    "flags": {
+     "blocked": true,
+     "stage": "edit"
+    },
+    "ms": {
+     "guard": 509
+    },
+    "bytes": {
+     "guard": 545
+    },
+    "ms_total": 1707
+   },
+   {
+    "seed": 12,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "blocked at edit, holder named",
+    "flags": {
+     "blocked": true,
+     "stage": "edit"
+    },
+    "ms": {
+     "guard": 532
+    },
+    "bytes": {
+     "guard": 550
+    },
+    "ms_total": 1890
+   },
+   {
+    "seed": 13,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "blocked at edit, holder named",
+    "flags": {
+     "blocked": true,
+     "stage": "edit"
+    },
+    "ms": {
+     "guard": 490
+    },
+    "bytes": {
+     "guard": 545
+    },
+    "ms_total": 1875
+   },
+   {
+    "seed": 14,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "blocked at edit, holder named",
+    "flags": {
+     "blocked": true,
+     "stage": "edit"
+    },
+    "ms": {
+     "guard": 495
+    },
+    "bytes": {
+     "guard": 538
+    },
+    "ms_total": 1855
+   },
+   {
+    "seed": 15,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "blocked at edit, holder named",
+    "flags": {
+     "blocked": true,
+     "stage": "edit"
+    },
+    "ms": {
+     "guard": 550
+    },
+    "bytes": {
+     "guard": 540
+    },
+    "ms_total": 1907
+   },
+   {
+    "seed": 16,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "blocked at edit, holder named",
+    "flags": {
+     "blocked": true,
+     "stage": "edit"
+    },
+    "ms": {
+     "guard": 476
+    },
+    "bytes": {
+     "guard": 545
+    },
+    "ms_total": 1800
+   },
+   {
+    "seed": 17,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "blocked at edit, holder named",
+    "flags": {
+     "blocked": true,
+     "stage": "edit"
+    },
+    "ms": {
+     "guard": 505
+    },
+    "bytes": {
+     "guard": 544
+    },
+    "ms_total": 1792
+   },
+   {
+    "seed": 18,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "blocked at edit, holder named",
+    "flags": {
+     "blocked": true,
+     "stage": "edit"
+    },
+    "ms": {
+     "guard": 703
+    },
+    "bytes": {
+     "guard": 538
+    },
+    "ms_total": 2034
+   },
+   {
+    "seed": 19,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "blocked at edit, holder named",
+    "flags": {
+     "blocked": true,
+     "stage": "edit"
+    },
+    "ms": {
+     "guard": 524
+    },
+    "bytes": {
+     "guard": 551
+    },
+    "ms_total": 2008
+   },
+   {
+    "seed": 20,
+    "variant": "b",
+    "grade": "yes",
+    "reason": "blocked at edit, holder named",
+    "flags": {
+     "blocked": true,
+     "stage": "edit"
+    },
+    "ms": {
+     "guard": 395
+    },
+    "bytes": {
+     "guard": 550
+    },
+    "ms_total": 1384
+   }
+  ],
+  "S3c|sea-lite+cc-anchor": [
+   {
+    "seed": 1,
+    "variant": "c",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 986
+    },
+    "bytes": {
+     "claim": 367
+    },
+    "ms_total": 1591
+   },
+   {
+    "seed": 2,
+    "variant": "c",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 1015
+    },
+    "bytes": {
+     "claim": 365
+    },
+    "ms_total": 1862
+   },
+   {
+    "seed": 3,
+    "variant": "c",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 982
+    },
+    "bytes": {
+     "claim": 365
+    },
+    "ms_total": 1713
+   },
+   {
+    "seed": 4,
+    "variant": "c",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 944
+    },
+    "bytes": {
+     "claim": 367
+    },
+    "ms_total": 1758
+   },
+   {
+    "seed": 5,
+    "variant": "c",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 959
+    },
+    "bytes": {
+     "claim": 365
+    },
+    "ms_total": 1749
+   },
+   {
+    "seed": 6,
+    "variant": "c",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 1126
+    },
+    "bytes": {
+     "claim": 367
+    },
+    "ms_total": 1848
+   },
+   {
+    "seed": 7,
+    "variant": "c",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 948
+    },
+    "bytes": {
+     "claim": 368
+    },
+    "ms_total": 1717
+   },
+   {
+    "seed": 8,
+    "variant": "c",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 854
+    },
+    "bytes": {
+     "claim": 367
+    },
+    "ms_total": 1884
+   },
+   {
+    "seed": 9,
+    "variant": "c",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 856
+    },
+    "bytes": {
+     "claim": 367
+    },
+    "ms_total": 1737
+   },
+   {
+    "seed": 10,
+    "variant": "c",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 681
+    },
+    "bytes": {
+     "claim": 365
+    },
+    "ms_total": 1695
+   },
+   {
+    "seed": 11,
+    "variant": "c",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 801
+    },
+    "bytes": {
+     "claim": 367
+    },
+    "ms_total": 1552
+   },
+   {
+    "seed": 12,
+    "variant": "c",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 816
+    },
+    "bytes": {
+     "claim": 368
+    },
+    "ms_total": 1722
+   },
+   {
+    "seed": 13,
+    "variant": "c",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 1118
+    },
+    "bytes": {
+     "claim": 367
+    },
+    "ms_total": 1996
+   },
+   {
+    "seed": 14,
+    "variant": "c",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 634
+    },
+    "bytes": {
+     "claim": 365
+    },
+    "ms_total": 1818
+   },
+   {
+    "seed": 15,
+    "variant": "c",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 909
+    },
+    "bytes": {
+     "claim": 365
+    },
+    "ms_total": 1666
+   },
+   {
+    "seed": 16,
+    "variant": "c",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 867
+    },
+    "bytes": {
+     "claim": 367
+    },
+    "ms_total": 1823
+   },
+   {
+    "seed": 17,
+    "variant": "c",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 988
+    },
+    "bytes": {
+     "claim": 367
+    },
+    "ms_total": 1853
+   },
+   {
+    "seed": 18,
+    "variant": "c",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 1014
+    },
+    "bytes": {
+     "claim": 365
+    },
+    "ms_total": 1885
+   },
+   {
+    "seed": 19,
+    "variant": "c",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 833
+    },
+    "bytes": {
+     "claim": 368
+    },
+    "ms_total": 1718
+   },
+   {
+    "seed": 20,
+    "variant": "c",
+    "grade": "yes",
+    "reason": "exactly one winner; losers told who holds it",
+    "flags": {
+     "racers": 2,
+     "winners": 1,
+     "double_claim": false,
+     "advisory": false
+    },
+    "ms": {
+     "claim_race": 555
+    },
+    "bytes": {
+     "claim": 368
+    },
+    "ms_total": 1689
+   }
+  ],
+  "S3d|sea-lite+cc-anchor": [
+   {
+    "seed": 1,
+    "variant": "d",
+    "grade": "yes",
+    "reason": "8 concurrent creates, 8 unique, all present",
+    "flags": {
+     "writers": 8,
+     "lost_or_dup": false,
+     "duplicate_ids": false
+    },
+    "ms_total": 4847
+   },
+   {
+    "seed": 2,
+    "variant": "d",
+    "grade": "yes",
+    "reason": "3 concurrent creates, 3 unique, all present",
+    "flags": {
+     "writers": 3,
+     "lost_or_dup": false,
+     "duplicate_ids": false
+    },
+    "ms_total": 5105
+   },
+   {
+    "seed": 3,
+    "variant": "d",
+    "grade": "yes",
+    "reason": "3 concurrent creates, 3 unique, all present",
+    "flags": {
+     "writers": 3,
+     "lost_or_dup": false,
+     "duplicate_ids": false
+    },
+    "ms_total": 2580
+   },
+   {
+    "seed": 4,
+    "variant": "d",
+    "grade": "yes",
+    "reason": "8 concurrent creates, 8 unique, all present",
+    "flags": {
+     "writers": 8,
+     "lost_or_dup": false,
+     "duplicate_ids": false
+    },
+    "ms_total": 3258
+   },
+   {
+    "seed": 5,
+    "variant": "d",
+    "grade": "yes",
+    "reason": "3 concurrent creates, 3 unique, all present",
+    "flags": {
+     "writers": 3,
+     "lost_or_dup": false,
+     "duplicate_ids": false
+    },
+    "ms_total": 2751
+   },
+   {
+    "seed": 6,
+    "variant": "d",
+    "grade": "yes",
+    "reason": "8 concurrent creates, 8 unique, all present",
+    "flags": {
+     "writers": 8,
+     "lost_or_dup": false,
+     "duplicate_ids": false
+    },
+    "ms_total": 3853
+   },
+   {
+    "seed": 7,
+    "variant": "d",
+    "grade": "yes",
+    "reason": "5 concurrent creates, 5 unique, all present",
+    "flags": {
+     "writers": 5,
+     "lost_or_dup": false,
+     "duplicate_ids": false
+    },
+    "ms_total": 4176
+   },
+   {
+    "seed": 8,
+    "variant": "d",
+    "grade": "yes",
+    "reason": "7 concurrent creates, 7 unique, all present",
+    "flags": {
+     "writers": 7,
+     "lost_or_dup": false,
+     "duplicate_ids": false
+    },
+    "ms_total": 6017
+   },
+   {
+    "seed": 9,
+    "variant": "d",
+    "grade": "yes",
+    "reason": "3 concurrent creates, 3 unique, all present",
+    "flags": {
+     "writers": 3,
+     "lost_or_dup": false,
+     "duplicate_ids": false
+    },
+    "ms_total": 4959
+   },
+   {
+    "seed": 10,
+    "variant": "d",
+    "grade": "yes",
+    "reason": "3 concurrent creates, 3 unique, all present",
+    "flags": {
+     "writers": 3,
+     "lost_or_dup": false,
+     "duplicate_ids": false
+    },
+    "ms_total": 5173
+   },
+   {
+    "seed": 11,
+    "variant": "d",
+    "grade": "yes",
+    "reason": "8 concurrent creates, 8 unique, all present",
+    "flags": {
+     "writers": 8,
+     "lost_or_dup": false,
+     "duplicate_ids": false
+    },
+    "ms_total": 6221
+   },
+   {
+    "seed": 12,
+    "variant": "d",
+    "grade": "yes",
+    "reason": "5 concurrent creates, 5 unique, all present",
+    "flags": {
+     "writers": 5,
+     "lost_or_dup": false,
+     "duplicate_ids": false
+    },
+    "ms_total": 4670
+   },
+   {
+    "seed": 13,
+    "variant": "d",
+    "grade": "yes",
+    "reason": "5 concurrent creates, 5 unique, all present",
+    "flags": {
+     "writers": 5,
+     "lost_or_dup": false,
+     "duplicate_ids": false
+    },
+    "ms_total": 3508
+   },
+   {
+    "seed": 14,
+    "variant": "d",
+    "grade": "yes",
+    "reason": "3 concurrent creates, 3 unique, all present",
+    "flags": {
+     "writers": 3,
+     "lost_or_dup": false,
+     "duplicate_ids": false
+    },
+    "ms_total": 1964
+   },
+   {
+    "seed": 15,
+    "variant": "d",
+    "grade": "yes",
+    "reason": "4 concurrent creates, 4 unique, all present",
+    "flags": {
+     "writers": 4,
+     "lost_or_dup": false,
+     "duplicate_ids": false
+    },
+    "ms_total": 2262
+   },
+   {
+    "seed": 16,
+    "variant": "d",
+    "grade": "yes",
+    "reason": "4 concurrent creates, 4 unique, all present",
+    "flags": {
+     "writers": 4,
+     "lost_or_dup": false,
+     "duplicate_ids": false
+    },
+    "ms_total": 2479
+   },
+   {
+    "seed": 17,
+    "variant": "d",
+    "grade": "yes",
+    "reason": "5 concurrent creates, 5 unique, all present",
+    "flags": {
+     "writers": 5,
+     "lost_or_dup": false,
+     "duplicate_ids": false
+    },
+    "ms_total": 2947
+   },
+   {
+    "seed": 18,
+    "variant": "d",
+    "grade": "yes",
+    "reason": "6 concurrent creates, 6 unique, all present",
+    "flags": {
+     "writers": 6,
+     "lost_or_dup": false,
+     "duplicate_ids": false
+    },
+    "ms_total": 3030
+   },
+   {
+    "seed": 19,
+    "variant": "d",
+    "grade": "yes",
+    "reason": "4 concurrent creates, 4 unique, all present",
+    "flags": {
+     "writers": 4,
+     "lost_or_dup": false,
+     "duplicate_ids": false
+    },
+    "ms_total": 2813
+   },
+   {
+    "seed": 20,
+    "variant": "d",
+    "grade": "yes",
+    "reason": "7 concurrent creates, 7 unique, all present",
+    "flags": {
+     "writers": 7,
+     "lost_or_dup": false,
+     "duplicate_ids": false
+    },
+    "ms_total": 2668
+   }
+  ]
+ }
+}

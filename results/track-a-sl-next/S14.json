@@ -1,0 +1,498 @@
+{
+ "scenario": "S14",
+ "title": "Planning cost (1 epic + 20 tickets, 39 links)",
+ "plan": {
+  "tickets": 21,
+  "parent_edges": 20,
+  "dep_edges": 19,
+  "invalid_item": "edge \"ticket 01 depends on ticket 20\" (closes a cycle)"
+ },
+ "records": {
+  "sea-lite/apply": [
+   {
+    "path": "sea-lite/apply",
+    "seed": 1,
+    "cost": {
+     "calls": 1,
+     "written": 5474,
+     "result": 996,
+     "ms": 71,
+     "errors": 0,
+     "crashed": false
+    },
+    "ok": true,
+    "graph": {
+     "exact": true,
+     "problems": [],
+     "tickets": 21,
+     "edges": 39
+    },
+    "rerun": {
+     "calls": 1,
+     "written": 5474,
+     "result": 995,
+     "ms": 2,
+     "errors": 0,
+     "crashed": false,
+     "tickets_after": 21,
+     "edges_after": 39,
+     "duplicated": false
+    },
+    "dry": {
+     "caught": true,
+     "wrote": 0,
+     "note": "{\"error\":\"cycle\",\"message\":\"batch would create a cycle: t01 → t20 → t19 → t18 → t17 → t16 → t15 → t14 → t13 → t12 → t11 → t10 → t09 → t08 → t07 → t06 → t05 → t0",
+     "calls": 1,
+     "written": 5519,
+     "result": 439,
+     "ms": 15,
+     "errors": 1,
+     "crashed": false
+    },
+    "inject": {
+     "rejected": true,
+     "crashed": false,
+     "tickets_left": 0,
+     "edges_left": 0,
+     "atomic": true,
+     "cost": {
+      "calls": 1,
+      "written": 5541,
+      "result": 439,
+      "ms": 2,
+      "errors": 1,
+      "crashed": false
+     },
+     "note": "{\"error\":\"cycle\",\"message\":\"batch would create a cycle: t01 → t20 → t19 → t18 → t17 → t16 → t15 → t14 → t13 → t12 → t11 → t10 → t09 → t08 → t07 → t06 → t05 → t0"
+    }
+   },
+   {
+    "path": "sea-lite/apply",
+    "seed": 2,
+    "cost": {
+     "calls": 1,
+     "written": 5474,
+     "result": 996,
+     "ms": 37,
+     "errors": 0,
+     "crashed": false
+    },
+    "ok": true,
+    "graph": {
+     "exact": true,
+     "problems": [],
+     "tickets": 21,
+     "edges": 39
+    },
+    "rerun": {
+     "calls": 1,
+     "written": 5474,
+     "result": 995,
+     "ms": 1,
+     "errors": 0,
+     "crashed": false,
+     "tickets_after": 21,
+     "edges_after": 39,
+     "duplicated": false
+    },
+    "dry": {
+     "caught": true,
+     "wrote": 0,
+     "note": "{\"error\":\"cycle\",\"message\":\"batch would create a cycle: t01 → t20 → t19 → t18 → t17 → t16 → t15 → t14 → t13 → t12 → t11 → t10 → t09 → t08 → t07 → t06 → t05 → t0",
+     "calls": 1,
+     "written": 5519,
+     "result": 439,
+     "ms": 22,
+     "errors": 1,
+     "crashed": false
+    },
+    "inject": {
+     "rejected": true,
+     "crashed": false,
+     "tickets_left": 0,
+     "edges_left": 0,
+     "atomic": true,
+     "cost": {
+      "calls": 1,
+      "written": 5541,
+      "result": 439,
+      "ms": 3,
+      "errors": 1,
+      "crashed": false
+     },
+     "note": "{\"error\":\"cycle\",\"message\":\"batch would create a cycle: t01 → t20 → t19 → t18 → t17 → t16 → t15 → t14 → t13 → t12 → t11 → t10 → t09 → t08 → t07 → t06 → t05 → t0"
+    }
+   },
+   {
+    "path": "sea-lite/apply",
+    "seed": 3,
+    "cost": {
+     "calls": 1,
+     "written": 5474,
+     "result": 996,
+     "ms": 43,
+     "errors": 0,
+     "crashed": false
+    },
+    "ok": true,
+    "graph": {
+     "exact": true,
+     "problems": [],
+     "tickets": 21,
+     "edges": 39
+    },
+    "rerun": {
+     "calls": 1,
+     "written": 5474,
+     "result": 995,
+     "ms": 3,
+     "errors": 0,
+     "crashed": false,
+     "tickets_after": 21,
+     "edges_after": 39,
+     "duplicated": false
+    },
+    "dry": {
+     "caught": true,
+     "wrote": 0,
+     "note": "{\"error\":\"cycle\",\"message\":\"batch would create a cycle: t01 → t20 → t19 → t18 → t17 → t16 → t15 → t14 → t13 → t12 → t11 → t10 → t09 → t08 → t07 → t06 → t05 → t0",
+     "calls": 1,
+     "written": 5519,
+     "result": 439,
+     "ms": 21,
+     "errors": 1,
+     "crashed": false
+    },
+    "inject": {
+     "rejected": true,
+     "crashed": false,
+     "tickets_left": 0,
+     "edges_left": 0,
+     "atomic": true,
+     "cost": {
+      "calls": 1,
+      "written": 5541,
+      "result": 439,
+      "ms": 2,
+      "errors": 1,
+      "crashed": false
+     },
+     "note": "{\"error\":\"cycle\",\"message\":\"batch would create a cycle: t01 → t20 → t19 → t18 → t17 → t16 → t15 → t14 → t13 → t12 → t11 → t10 → t09 → t08 → t07 → t06 → t05 → t0"
+    }
+   }
+  ],
+  "sea-lite/apply-template": [
+   {
+    "path": "sea-lite/apply-template",
+    "seed": 1,
+    "cost": {
+     "calls": 1,
+     "written": 617,
+     "result": 996,
+     "ms": 57,
+     "errors": 0,
+     "crashed": false
+    },
+    "ok": true,
+    "graph": {
+     "exact": true,
+     "problems": [],
+     "tickets": 21,
+     "edges": 39
+    },
+    "rerun": {
+     "calls": 1,
+     "written": 617,
+     "result": 995,
+     "ms": 1,
+     "errors": 0,
+     "crashed": false,
+     "tickets_after": 21,
+     "edges_after": 39,
+     "duplicated": false
+    },
+    "dry": {
+     "caught": true,
+     "wrote": 0,
+     "note": "{\"error\":\"cycle\",\"message\":\"batch would create a cycle: t01 → t20 → t19 → t18 → t17 → t16 → t15 → t14 → t13 → t12 → t11 → t10 → t09 → t08 → t07 → t06 → t05 → t0",
+     "calls": 1,
+     "written": 671,
+     "result": 439,
+     "ms": 72,
+     "errors": 1,
+     "crashed": false
+    },
+    "inject": {
+     "rejected": true,
+     "crashed": false,
+     "tickets_left": 0,
+     "edges_left": 0,
+     "atomic": true,
+     "cost": {
+      "calls": 1,
+      "written": 694,
+      "result": 439,
+      "ms": 24,
+      "errors": 1,
+      "crashed": false
+     },
+     "note": "{\"error\":\"cycle\",\"message\":\"batch would create a cycle: t01 → t20 → t19 → t18 → t17 → t16 → t15 → t14 → t13 → t12 → t11 → t10 → t09 → t08 → t07 → t06 → t05 → t0"
+    }
+   },
+   {
+    "path": "sea-lite/apply-template",
+    "seed": 2,
+    "cost": {
+     "calls": 1,
+     "written": 617,
+     "result": 996,
+     "ms": 45,
+     "errors": 0,
+     "crashed": false
+    },
+    "ok": true,
+    "graph": {
+     "exact": true,
+     "problems": [],
+     "tickets": 21,
+     "edges": 39
+    },
+    "rerun": {
+     "calls": 1,
+     "written": 617,
+     "result": 995,
+     "ms": 1,
+     "errors": 0,
+     "crashed": false,
+     "tickets_after": 21,
+     "edges_after": 39,
+     "duplicated": false
+    },
+    "dry": {
+     "caught": true,
+     "wrote": 0,
+     "note": "{\"error\":\"cycle\",\"message\":\"batch would create a cycle: t01 → t20 → t19 → t18 → t17 → t16 → t15 → t14 → t13 → t12 → t11 → t10 → t09 → t08 → t07 → t06 → t05 → t0",
+     "calls": 1,
+     "written": 671,
+     "result": 439,
+     "ms": 33,
+     "errors": 1,
+     "crashed": false
+    },
+    "inject": {
+     "rejected": true,
+     "crashed": false,
+     "tickets_left": 0,
+     "edges_left": 0,
+     "atomic": true,
+     "cost": {
+      "calls": 1,
+      "written": 694,
+      "result": 439,
+      "ms": 4,
+      "errors": 1,
+      "crashed": false
+     },
+     "note": "{\"error\":\"cycle\",\"message\":\"batch would create a cycle: t01 → t20 → t19 → t18 → t17 → t16 → t15 → t14 → t13 → t12 → t11 → t10 → t09 → t08 → t07 → t06 → t05 → t0"
+    }
+   },
+   {
+    "path": "sea-lite/apply-template",
+    "seed": 3,
+    "cost": {
+     "calls": 1,
+     "written": 617,
+     "result": 996,
+     "ms": 122,
+     "errors": 0,
+     "crashed": false
+    },
+    "ok": true,
+    "graph": {
+     "exact": true,
+     "problems": [],
+     "tickets": 21,
+     "edges": 39
+    },
+    "rerun": {
+     "calls": 1,
+     "written": 617,
+     "result": 995,
+     "ms": 1,
+     "errors": 0,
+     "crashed": false,
+     "tickets_after": 21,
+     "edges_after": 39,
+     "duplicated": false
+    },
+    "dry": {
+     "caught": true,
+     "wrote": 0,
+     "note": "{\"error\":\"cycle\",\"message\":\"batch would create a cycle: t01 → t20 → t19 → t18 → t17 → t16 → t15 → t14 → t13 → t12 → t11 → t10 → t09 → t08 → t07 → t06 → t05 → t0",
+     "calls": 1,
+     "written": 671,
+     "result": 439,
+     "ms": 42,
+     "errors": 1,
+     "crashed": false
+    },
+    "inject": {
+     "rejected": true,
+     "crashed": false,
+     "tickets_left": 0,
+     "edges_left": 0,
+     "atomic": true,
+     "cost": {
+      "calls": 1,
+      "written": 694,
+      "result": 439,
+      "ms": 9,
+      "errors": 1,
+      "crashed": false
+     },
+     "note": "{\"error\":\"cycle\",\"message\":\"batch would create a cycle: t01 → t20 → t19 → t18 → t17 → t16 → t15 → t14 → t13 → t12 → t11 → t10 → t09 → t08 → t07 → t06 → t05 → t0"
+    }
+   }
+  ],
+  "sea-lite/per-item": [
+   {
+    "path": "sea-lite/per-item",
+    "seed": 1,
+    "cost": {
+     "calls": 60,
+     "written": 14135,
+     "result": 52812,
+     "ms": 137,
+     "errors": 0,
+     "crashed": false
+    },
+    "ok": true,
+    "graph": {
+     "exact": true,
+     "problems": [],
+     "tickets": 21,
+     "edges": 39
+    },
+    "rerun": {
+     "calls": 60,
+     "written": 14135,
+     "result": 33123,
+     "ms": 35,
+     "errors": 0,
+     "crashed": false,
+     "tickets_after": 21,
+     "edges_after": 39,
+     "duplicated": false
+    },
+    "inject": {
+     "rejected": true,
+     "crashed": false,
+     "tickets_left": 21,
+     "edges_left": 39,
+     "atomic": false,
+     "cost": {
+      "calls": 61,
+      "written": 14398,
+      "result": 54783,
+      "ms": 255,
+      "errors": 1,
+      "crashed": false
+     },
+     "note": "{\"error\":\"cycle\",\"message\":\"adding depends_on would close a cycle: dede7928-56c5-4e7c-b565-9e8707db89cc → 9ce1e44d-46b3-4ee6-af4f-33193ef38ec7 → 8ae49c23-723c-4"
+    }
+   },
+   {
+    "path": "sea-lite/per-item",
+    "seed": 2,
+    "cost": {
+     "calls": 60,
+     "written": 14135,
+     "result": 52812,
+     "ms": 338,
+     "errors": 0,
+     "crashed": false
+    },
+    "ok": true,
+    "graph": {
+     "exact": true,
+     "problems": [],
+     "tickets": 21,
+     "edges": 39
+    },
+    "rerun": {
+     "calls": 60,
+     "written": 14135,
+     "result": 33123,
+     "ms": 58,
+     "errors": 0,
+     "crashed": false,
+     "tickets_after": 21,
+     "edges_after": 39,
+     "duplicated": false
+    },
+    "inject": {
+     "rejected": true,
+     "crashed": false,
+     "tickets_left": 21,
+     "edges_left": 39,
+     "atomic": false,
+     "cost": {
+      "calls": 61,
+      "written": 14398,
+      "result": 54783,
+      "ms": 236,
+      "errors": 1,
+      "crashed": false
+     },
+     "note": "{\"error\":\"cycle\",\"message\":\"adding depends_on would close a cycle: 4e3370c5-518c-498b-9696-4ff3e17504bc → e683b148-352d-40f3-8f6a-9e54ad6894fc → a4e02fd1-51eb-4"
+    }
+   },
+   {
+    "path": "sea-lite/per-item",
+    "seed": 3,
+    "cost": {
+     "calls": 60,
+     "written": 14135,
+     "result": 52812,
+     "ms": 432,
+     "errors": 0,
+     "crashed": false
+    },
+    "ok": true,
+    "graph": {
+     "exact": true,
+     "problems": [],
+     "tickets": 21,
+     "edges": 39
+    },
+    "rerun": {
+     "calls": 60,
+     "written": 14135,
+     "result": 33123,
+     "ms": 194,
+     "errors": 0,
+     "crashed": false,
+     "tickets_after": 21,
+     "edges_after": 39,
+     "duplicated": false
+    },
+    "inject": {
+     "rejected": true,
+     "crashed": false,
+     "tickets_left": 21,
+     "edges_left": 39,
+     "atomic": false,
+     "cost": {
+      "calls": 61,
+      "written": 14398,
+      "result": 54783,
+      "ms": 153,
+      "errors": 1,
+      "crashed": false
+     },
+     "note": "{\"error\":\"cycle\",\"message\":\"adding depends_on would close a cycle: b92e7c5f-d68c-40d5-856f-7c1a26845465 → cc4c2567-26f0-4dbd-9ad1-02472ed4e877 → 94fea04d-54c3-4"
+    }
+   }
+  ]
+ }
+}

@@ -4,7 +4,7 @@
 // Time is compressed 1:60 for S13: lease 5 s (default 300 s), heartbeat interval 1 s (default 60 s).
 import path from 'node:path';
 import fs from 'node:fs';
-import SeaLite, { SEA_CLI } from './sea-lite.mjs';
+import SeaLite, { SEA_CLI, SEA_LABEL } from './sea-lite.mjs';
 import { view } from './_base.mjs';
 import { sh, shAsync, sleep } from '../lib/util.mjs';
 
@@ -12,7 +12,7 @@ export const CC_ANCHOR_DIR = process.env.AMB_CC_ANCHOR_DIR || '/home/claude/cc-a
 
 export default class SeaLiteCcAnchor extends SeaLite {
   static meta = {
-    ...SeaLite.meta, id: 'sea-lite+cc-anchor', label: 'sea-lite + cc-anchor hooks', version: 'sea-lite 0.4.0 + cc-anchor 0.3.0 (both unreleased local builds)',
+    ...SeaLite.meta, id: 'sea-lite+cc-anchor', label: 'sea-lite + cc-anchor hooks', version: `sea-lite ${SEA_LABEL} + cc-anchor 0.3.0 (unreleased local build)`,
     setupSteps: [...SeaLite.meta.setupSteps.slice(0, 3), 'claude plugin install cc-anchor', 'cc-anchor config set scope_guard true (heartbeat is auto once sea-lite is configured)'],
     editGuard: 'hook', heartbeat: 'PostToolUse',
     s13: { lease: 5, duration: 12, heartbeat: 1 }, reps: { S13: 3 },

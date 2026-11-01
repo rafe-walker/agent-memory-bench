@@ -110,6 +110,11 @@ async function armMeta() {
     if (Arm.prototype.listTools) {
       try { const t = await Arm.listToolsOnce(); if (t) m.tools_list = { tools: t.names.length, bytes: t.bytes, tokens: tokens(t.bytes), names: t.names }; }
       catch (e) { m.tools_list = { error: String(e.message).slice(0, 300) }; }
+      // A second, smaller profile the arm can serve (sea-lite `serve --core`), measured the same way.
+      if (Arm.coreArgs) {
+        try { const t = await Arm.listToolsOnce(Arm.coreArgs); if (t) m.tools_list_core = { tools: t.names.length, bytes: t.bytes, tokens: tokens(t.bytes), names: t.names, args: Arm.coreArgs }; }
+        catch (e) { m.tools_list_core = { error: String(e.message).slice(0, 300) }; }
+      }
     }
     meta[id] = m;
   }

@@ -51,6 +51,7 @@ export async function writeReport(outDir, meta, summary) {
   const L = [];
   L.push('# agent-memory-bench — Track A report', '');
   L.push(`Generated ${meta.finished_at ?? meta.started_at} by \`npm run track-a${meta.ci ? ':ci' : ''}\` — deterministic, no LLM, $0. Seeds per randomized cell: **${meta.seeds}**. Wall time ${meta.wall_s_initial ?? meta.wall_s ?? '?'} s${meta.merges ? ` (+ merged re-runs: ${meta.merges.map((m) => `${m.arms.join(',')} × ${m.scenarios?.join(',') ?? 'all'}`).join('; ')})` : ''} on ${meta.host.cpus} CPU / ${meta.host.mem_gb} GB, Node ${meta.host.node}. Bench code at commit \`${meta.git ?? 'uncommitted'}\` plus the working tree committed with these results.`, '');
+  if (process.env.SEA_LITE_CLI) L.push(`> **Branch run.** The sea-lite arms ran \`${process.env.SEA_LITE_LABEL ?? 'a local build'}\` (\`SEA_LITE_CLI\`), not the build the hand-written prose describes. The prose (bottom line, scenario notes, priorities) is the main run's (results/track-a); read this report's tables for this build.`, '');
   if (A.summary) L.push(A.summary, '');
   L.push('**How to read the grades.** Each cell is graded per seed against the scenario\'s expected signal (scenarios/*.yaml) by fixed string/regex rules in `track-a/lib/grade.mjs`: ✅ yes = the tool surfaced the fault the way the scenario expects; 🟡 partial = the agent could notice (e.g. the fresh value on re-lookup) but is not told what changed, or the signal is advisory; ❌ no = nothing, or the wrong thing, is shown. **Score** = (yes + ½·partial)/n. ◐ = mixed across seeds. · = not applicable (reason in the per-scenario table). Intervals are 95% Wilson on the yes-rate; exact Clopper–Pearson bounds are in the JSON.', '');
 
@@ -76,7 +77,8 @@ export async function writeReport(outDir, meta, summary) {
   L.push('| arm | version | kinds | setup steps | tools/list | notes |', '|---|---|---|---|---|---|');
   for (const a of arms) {
     const m = meta.arms[a];
-    const tl = m.tools_list ? (m.tools_list.error ? `error: ${m.tools_list.error.slice(0, 60)}` : `${m.tools_list.tools} tools, ${kb(m.tools_list.bytes)} (~${m.tools_list.tokens} tok)`) : 'no MCP (CLI/hooks)';
+    let tl = m.tools_list ? (m.tools_list.error ? `error: ${m.tools_list.error.slice(0, 60)}` : `${m.tools_list.tools} tools, ${kb(m.tools_list.bytes)} (~${m.tools_list.tokens} tok)`) : 'no MCP (CLI/hooks)';
+    if (m.tools_list_core?.bytes) tl += `; \`${m.tools_list_core.args.join(' ')}\`: ${m.tools_list_core.tools} tools, ${kb(m.tools_list_core.bytes)} (~${m.tools_list_core.tokens} tok)`;
     L.push(`| ${m.label} | ${m.version} | ${m.kind.join(', ')} | ${m.setupSteps.length} | ${tl} | ${(m.notes ?? '').replace(/\|/g, '/')} |`);
   }
   L.push('');

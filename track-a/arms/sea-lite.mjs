@@ -1,4 +1,6 @@
 // A7: sea-lite 0.4.0 — UNRELEASED local build (/home/claude/sea-lite dist; npm latest is 0.3.0).
+// SEA_LITE_CLI=/path/to/dist/cli.js runs another build (e.g. a branch worktree) in every sea-lite
+// arm (and S14); SEA_LITE_LABEL names it in the tables. Use a separate --out for such runs.
 // One MCP server per agent session (`serve --actor <a> --session <s>`), as each Claude Code session
 // spawns its own. The edit guard is sea-lite's own PreToolUse hook (`sea-lite scope-check --hook`).
 // "default identity" variant: the plugin's .mcp.json (no --actor), sessions told apart only by
@@ -9,22 +11,26 @@ import { Arm, view, mcpView } from './_base.mjs';
 import { McpClient } from '../lib/mcp.mjs';
 import { sh } from '../lib/util.mjs';
 
-export const SEA_DIR = process.env.AMB_SEA_LITE_DIR || '/home/claude/sea-lite';
-export const SEA_CLI = path.join(SEA_DIR, 'dist', 'cli.js');
+export const SEA_CLI = process.env.SEA_LITE_CLI ? path.resolve(process.env.SEA_LITE_CLI) : path.join(process.env.AMB_SEA_LITE_DIR || '/home/claude/sea-lite', 'dist', 'cli.js');
+export const SEA_DIR = process.env.SEA_LITE_CLI ? path.dirname(path.dirname(SEA_CLI)) : process.env.AMB_SEA_LITE_DIR || '/home/claude/sea-lite';
+export const SEA_LABEL = process.env.SEA_LITE_LABEL || '0.4.0 (unreleased local build; npm latest 0.3.0)';
+export const SEA_TOOL = `sea-lite ${process.env.SEA_LITE_LABEL || '0.4.0'}`;
 
 export default class SeaLite extends Arm {
   static meta = {
-    id: 'sea-lite', label: 'sea-lite', version: '0.4.0 (unreleased local build; npm latest 0.3.0)', kind: ['coordination'],
+    id: 'sea-lite', label: 'sea-lite', version: SEA_LABEL, kind: ['coordination'],
     setupSteps: ['npm i -g sea-lite', 'claude mcp add sea-lite -- sea-lite serve', 'install the work-queue skill', 'PreToolUse hook: sea-lite scope-check --hook', '(optional) sea-lite precommit --install'],
     claims: true, leases: true, editGuard: 'hook',
     s13: { lease: 5, duration: 12 }, reps: { S13: 3 },
   };
+  // `serve --core` (sea-lite ≥ next): only its tools/list is measured (the scenarios need the full set).
+  static coreArgs = process.env.SEA_LITE_CLI ? ['--core'] : null;
   get env() { return { ...process.env, HOME: this.ctx.home }; }
   async setup() { this.agents = new Map(); this.sessions = new Map(); }
   sessionOf(agent) { return this.ctx.identity === 'default' ? `cc-${agent}` : `s-${agent}`; }
   async client(agent) {
     if (this.agents.has(agent)) return this.agents.get(agent);
-    const args = [SEA_CLI, 'serve'];
+    const args = [SEA_CLI, 'serve', ...(this.ctx.serveArgs ?? [])];
     const env = { ...this.env };
     if (this.ctx.identity === 'default') env.CLAUDE_CODE_SESSION_ID = this.sessionOf(agent);
     else args.push('--actor', agent, '--session', this.sessionOf(agent));
