@@ -2,3 +2,5 @@ node_modules/
 .arms/
 track-a/.work/
 *.log
+stress/logs/
+stress/.work/
