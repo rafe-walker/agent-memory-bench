@@ -75,3 +75,26 @@ Full file: hard-hooks `stress/findings/hooks.md` (386db8c, branch hardening-hook
 | H2-23 | S3 | sea-lite + cc-anchor | dangling symlink passes; `src/../src` rejected; exit 2 cached ok | fixing (sea-lite fix-0.6.1) |
 | H2-24 | S3 | cc-anchor | git-ignored claims unreported; same-session subagent unwarned | fixing (fix-0.5.1) |
 | F15 | S4 | sea-lite | paths after `--` dropped | fixing (fix-0.6.1) |
+
+### Track 1 — retractions, lineage, pending: 4 S1, 8 S2, 5 S3 (R2-01..17)
+Full file: hard-ret `stress/findings/retractions.md` (3eb7bd0, branch hardening-retractions). Target kl @ 7e50702 (0.8.0).
+
+| id | sev | where | one-line | status |
+|---|---|---|---|---|
+| R2-01 | S1 | classifier parseBlock | list numbers dropped → `9090.`→`9091.` format-only, gate silent | fixing (fix-0.8.1) |
+| R2-02 | S1 | classifier (FORMAT §3.8) | CommonMark-equal edits that change raw text (globs, tabs, list numbers) silent | fixing (fix-0.8.1: raw-text rule) |
+| R2-04 | S1 | lineage inference | re-orient between recall and note drops lineage → stale note stays can_act | fixing (fix-lineage-integrity) |
+| R2-05 | S1 | Lineage.staleness memo | truncated results cached across one recall → stale note inspect_only | fixing (fix-lineage-integrity) |
+| R2-06 | S2 | planRevision | block reorder within a section: no event | fixing (fix-0.8.1) |
+| R2-07 | S2 | pulse/shim seed | no stored position → `seed`, exit 0 with pending | fixing (fix-lineage-integrity) |
+| R2-08 | S2 | pulse wording | counts since actor's last briefing, not presented cursor → "proceed" | fixing (fix-lineage-integrity) |
+| R2-09 | S2 | integrity | superseded row made live / lineage rows deleted: integrity.ok true | fixing (fix-lineage-integrity) |
+| R2-10 | S2 | secret guard | indented/quoted PEM key not refused | fixing (fix-lineage-integrity) |
+| R2-11 | S2 | secret guard | `db_password:` / `"dbPassword"` not refused or scrubbed | fixing (fix-lineage-integrity) |
+| R2-17 | S2 | honest absence | rewritten FTS row → `absent_in_searched`, all checks ok | fixing (fix-lineage-integrity) |
+| R2-03 | S3 | classifier | backslash hard break format-only | fixing (fix-0.8.1) |
+| R2-12 | S3 | editDistance | long token → 17.7 s pulse (past shim timeout), OOM at 8k | fixing (fix-0.8.1) |
+| R2-13 | S3 | HEADING_RE | `C#`→`C` no event | fixing (fix-0.8.1) |
+| R2-14 | S3 | lineage | removed source → note stale forever | fixing (fix-lineage-integrity) |
+| R2-15 | S3 | derivedRetractions | not transitive | fixing (fix-lineage-integrity) |
+| R2-16 | S3 | wordDiff snippet | >400-token block: diff/old/new identical | fixing (fix-0.8.1) |
