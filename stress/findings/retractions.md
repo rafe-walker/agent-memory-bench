@@ -42,6 +42,12 @@ Env for the repros: `KL=<kl checkout>`, `KLBIN=$KL/dist/cli.js`, `MDIT=<dir with
 - Write-time guard: a soft hyphen inside a `ghp_` token or a password containing "example" pass (deliberate evasion / documented placeholder rule); read scrub masks the token.
 - `__mutants` (classifier heuristics switch) is not exported from the published `dist/index.js`; source mutants below were run on the src build.
 
+## Mutation runs (`r2-mutants.mjs`, src build of 7e50702, repo vitest suites)
+The host load average was 30–43 throughout (other agents). The identity mutant M00 FAILS unmutated: the CLI-contract tests (20 s), the format-only meta-suite (60 s) and, under `--fast`, the 400-case property test time out. So a kill counts only when a test that passes at baseline fails.
+- **Killed by a fast, specific test:** M01 tables opaque, M02 quotes opaque, M05 link targets, M07 NBSP/zero-width folded, M10 moved block as twin, M11 near-current read clears, M13 session bound ignored, M15 moved identical block format-only, M16 pre-removal read clears, M17 superseded never stale, M18 cross-section carry, M19 github detector removed, M20 stale_derived row removed.
+- **Undecided (killed only by the load-timing property test, which also fails at baseline):** M03 fenced code parsed as prose, M04 whitespace collapsed in inline code, M06 inline HTML as prose, M08 list indent ignored, M09 strong == em. Re-run on an idle host with `--fast`.
+- **Probable survivors (only baseline-noise failures in two runs):** M12 `MAX_DERIVED_DEPTH` 4 → 1 (no test has a chain deeper than 1; see R2-05) and M14 format-only source edits producing `derived` retractions (no test asserts their absence in orient).
+
 ## Process note
 An early version of `r2-gate.sh` appended `--data-dir` after `-- git push`, so 12 `pulse` calls (actor `shim`, temp project cwd, read-only `--pending-actor agent`) opened the default store `~/.kronicle-lite` instead of the temp store (its DB mtime moved to 16:13:49 local). The script now sets `HOME` and `KRONICLE_LITE_DATA_DIR` to temp paths and passes `--data-dir` right after the command; later runs left that DB untouched. Nothing was cleaned up there (to avoid touching it again); the owner may want to check for `shim` briefings from 2026-11-01 ~16:05–16:14 local.
 

@@ -14,6 +14,10 @@ if (!KL) { console.error('set KL=<kronicle-lite checkout>'); process.exit(2); }
 const args = process.argv.slice(2);
 const jobs = Number(args.includes('--jobs') ? args[args.indexOf('--jobs') + 1] : 6);
 const want = args.filter((a) => /^M\d+$/.test(a));
+// --fast: drop the suites whose wall-clock timeouts fail under host load even unmutated (CLI contract, the
+// format-only mutant meta-suite); kills are then attributable to the mutation.
+const SLOW = new Set(['test/lineage-cli.test.ts', 'test/format-only-mutants.test.ts']);
+const fast = args.includes('--fast');
 const COS = ['test/cosmetic.test.ts', 'test/stress-corpus.test.ts', 'test/format-only-property.test.ts', 'test/format-only-mutants.test.ts', 'test/orient.test.ts', 'test/stress-repros.test.ts'];
 const LIN = ['test/lineage.test.ts', 'test/lineage-property.test.ts', 'test/lineage-cli.test.ts', 'test/orient.test.ts'];
 const DOC = ['test/documents.test.ts', 'test/orient.test.ts', 'test/stress-repros.test.ts', 'test/integrity.test.ts'];
@@ -71,7 +75,7 @@ function run(m) {
   const p = prepare(m);
   if (!p.applied) return Promise.resolve({ id, what, result: 'NOT-APPLIED', missing: p.missing });
   return new Promise((res) => {
-    const ch = spawn('npx', ['vitest', 'run', ...suites], { cwd: p.d, env, stdio: ['ignore', 'pipe', 'pipe'] });
+    const ch = spawn('npx', ['vitest', 'run', ...suites.filter((x) => !(fast && SLOW.has(x)))], { cwd: p.d, env, stdio: ['ignore', 'pipe', 'pipe'] });
     let log = '';
     ch.stdout.on('data', (x) => (log += x));
     ch.stderr.on('data', (x) => (log += x));
@@ -79,7 +83,7 @@ function run(m) {
     ch.on('close', (code) => {
       clearTimeout(t);
       const failed = /(\d+) failed/.exec(log)?.[1];
-      const names = [...new Set((log.match(/^ *(?:FAIL|×) .*$/gm) ?? []).map((l) => l.trim().slice(0, 140)))].slice(0, 4);
+      const names = [...new Set((log.match(/^ *(?:FAIL|×) .*$/gm) ?? []).map((l) => l.trim().slice(0, 140)))].slice(0, 12);
       res({ id, file, what, result: code === 0 ? 'SURVIVED' : 'killed', failed_tests: failed ? Number(failed) : null, failing: names });
     });
   });
