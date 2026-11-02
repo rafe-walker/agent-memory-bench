@@ -98,3 +98,6 @@ Full file: hard-ret `stress/findings/retractions.md` (3eb7bd0, branch hardening-
 | R2-14 | S3 | lineage | removed source → note stale forever | fixing (fix-lineage-integrity) |
 | R2-15 | S3 | derivedRetractions | not transitive | fixing (fix-lineage-integrity) |
 | R2-16 | S3 | wordDiff snippet | >400-token block: diff/old/new identical | fixing (fix-0.8.1) |
+
+### Track 5 — live agents (304 runs, $3.56): 1 S1, 4 S2, 3 S3, 3 S4 (L2-01..11)
+Full file: agent-memory-bench branch hardening-live `results/hardening-live/FINDINGS.md`. S1: L2-01 pulse returns `integrity: null` + "proceed" on a corrupted store → Haiku deployed from tampered store 5/6 (fixing, fix-lineage-integrity). S2: L2-02 projection tamper invisible to cc-anchor; L2-03 malformed store fails open in MCP, hooks and shim (12/12 deployed); L2-04 gate disarms when actor not found; L2-05 gate shared across subagents. All routed to fix-0.8.1 / fix-lineage-integrity / fix-shims / cc-anchor fix-0.5.1 / sea-lite fix-0.6.1.
