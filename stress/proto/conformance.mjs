@@ -158,7 +158,8 @@ for (const [label, meta, want] of envelopes) {
       const leaked = JSON.stringify(m).includes('root:x:0:0');
       const ok = !leaked && (want === 'ok' ? !!m.result?.contents?.[0]?.text : want === 'any' ? !!(m.result || m.error) : !!m.error);
       check(`[resource ${label}] ${want}`, ok, JSON.stringify(m.error ?? m.result).slice(0, 160));
-      if (want === 'notfound') check(`[resource ${label}] uses -32002 (resource not found, spec)`, m.error?.code === -32002, `code ${m.error?.code}`);
+      // 2025-06-18: -32002; 2026-07-28: -32602 with data.uri (MUST; clients SHOULD also accept -32002). SDK 2.4 emits only the latter.
+      if (want === 'notfound') check(`[resource ${label}] resource not found (-32002, or -32602 + data.uri per 2026-07-28), not -32603`, m.error?.code === -32002 || (m.error?.code === -32602 && typeof m.error?.data?.uri === 'string'), `code ${m.error?.code} data ${JSON.stringify(m.error?.data ?? null)}`);
     }
   } else {
     const c = await r.rpc(1, 'tools/call', { name: 'sea_create', arguments: { title: 'res' }, _meta: META });
@@ -169,7 +170,8 @@ for (const [label, meta, want] of envelopes) {
       const m = await r.rpc(i++, 'resources/read', { uri, _meta: META });
       const ok = want === 'ok' ? !!m.result?.contents?.[0]?.text : !!m.error;
       check(`[resource ${label}] ${want}`, ok, JSON.stringify(m.error ?? m.result).slice(0, 160));
-      if (want === 'notfound') check(`[resource ${label}] uses -32002 (resource not found, spec)`, m.error?.code === -32002, `code ${m.error?.code}`);
+      // 2025-06-18: -32002; 2026-07-28: -32602 with data.uri (MUST; clients SHOULD also accept -32002). SDK 2.4 emits only the latter.
+      if (want === 'notfound') check(`[resource ${label}] resource not found (-32002, or -32602 + data.uri per 2026-07-28), not -32603`, m.error?.code === -32002 || (m.error?.code === -32602 && typeof m.error?.data?.uri === 'string'), `code ${m.error?.code} data ${JSON.stringify(m.error?.data ?? null)}`);
     }
   }
   check('[resource] alive', await alive(r));

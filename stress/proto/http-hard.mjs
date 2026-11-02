@@ -107,8 +107,13 @@ for (const m of ['DELETE', 'PUT', 'PATCH', 'GET']) {
   try { code = execFileSync('curl', ['-s', '--noproxy', '*', '-o', '/dev/null', '-w', '%{http_code}', '-X', 'POST', '-H', `@${join(cd, 'hdr')}`, '-H', 'Content-Type: application/json', '-H', 'Accept: application/json, text/event-stream', '-H', `MCP-Protocol-Version: ${MODERN}`, '-H', 'Mcp-Method: tools/call', '-H', `Mcp-Name: ${name}`, '--data-binary', `@${join(cd, 'body.json')}`, srv.url], { encoding: 'utf8' }); } catch (e) { code = String(e.stdout ?? '000'); }
   rmSync(cd, { recursive: true, force: true });
   check(`[limits] schema-valid ${name} at the schema max (${n} CJK chars = ${(Buffer.byteLength(b1) / 1048576).toFixed(1)} MiB) is accepted`, code === '200', `HTTP ${code}`);
-  const r2 = await fetch(srv.url, { method: 'POST', headers: H({}, 'tools/call', name), body: big(5_000_000, 'a') }).then((x) => x.status, (e) => `client saw ${e.cause?.code ?? e.message} (server closed early)`);
-  check('[limits] 5 MB body → 413 or early close', r2 === 413 || /closed early/.test(String(r2)), String(r2));
+  // Body over the server's message limit (BODY_LIMIT, default 4 MiB = SDK default; kronicle-lite >= 0.8.1 uses 16 MiB on
+  // both transports, P2-08) → 413 or early close. A 5 MB body over the schema maxLength is answered either way.
+  const limit = Number(process.env.BODY_LIMIT ?? (which === 'kl' ? 16 * 1024 * 1024 : 4 * 1024 * 1024));
+  const r2 = await fetch(srv.url, { method: 'POST', headers: H({}, 'tools/call', name), body: big(limit + 1024 * 1024, 'a') }).then((x) => x.status, (e) => `client saw ${e.cause?.code ?? e.message} (server closed early)`);
+  check(`[limits] body over the ${(limit / 1048576).toFixed(0)} MiB limit → 413 or early close`, r2 === 413 || /closed early/.test(String(r2)), String(r2));
+  const r3 = await fetch(srv.url, { method: 'POST', headers: H({}, 'tools/call', name), body: big(5_000_000, 'a') }).then(async (x) => `${x.status} ${(await x.text()).slice(0, 120)}`, (e) => `client saw ${e.cause?.code ?? e.message} (server closed early)`);
+  check('[limits] 5 MB body over the schema maxLength → answered (413, early close, or a validation error)', /^413|closed early|^200 .*(isError|error)/.test(r3), r3.slice(0, 160));
   // Content-Length lies (claims 100 MB) and chunked oversize
   const lie = await raw(`POST ${U.pathname} HTTP/1.1\r\nHost: 127.0.0.1:${p}\r\nContent-Type: application/json\r\nAccept: application/json, text/event-stream\r\nAuthorization: Bearer ${T}\r\nMCP-Protocol-Version: ${MODERN}\r\nMcp-Method: tools/list\r\nContent-Length: 104857600\r\nConnection: close\r\n\r\n{"jsonrpc":`, { timeoutMs: 3000 });
   check('[limits] Content-Length 100 MB declared → 413 before reading', status(lie) === 413, lie === 'TIMEOUT' ? 'no answer in 3 s (waits for the body)' : `HTTP ${status(lie)}`);

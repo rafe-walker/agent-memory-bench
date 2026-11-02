@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Round-2 protocol track (P2-xx). Targets are the npm-published kronicle-lite 0.8.0, sea-lite 0.6.0,
 # mcp-catalog-snap 0.1.0 installed by stress/proto/setup.sh into $PROTO_PKG (default /tmp/claude-0/proto);
-# override with KLBIN / SLBIN / SNAP. Logs: stress/logs/proto/ (gitignored). Binds 127.0.0.1 only.
+# override with KLBIN / SLBIN / SNAP (e.g. KLBIN=<kronicle-lite checkout>/dist/cli.js to test a build; BODY_LIMIT for http-hard). Logs: stress/logs/proto/ (gitignored). Binds 127.0.0.1 only.
 #   stress/proto/run-all.sh [--slow]   (--slow adds the oversized-response runs, ~6 min)
 set -uo pipefail
 HERE=$(cd "$(dirname "$0")" && pwd); LOG=$HERE/../logs/proto; mkdir -p "$LOG"
