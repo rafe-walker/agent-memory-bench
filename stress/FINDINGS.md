@@ -118,3 +118,26 @@ Full file: hard-proto `stress/findings/protocol.md` (633a5c0, branch hardening-p
 | P2-15 | S4 | mcp-catalog-snap | sha mismatch only warns; emptied snapshot passes with --allow-additions | fixing (fix-0.1.1) |
 | P2-16 | S4 | docs | no Hermes config; --actor docs disagree | fixing (docs-clients) |
 | F12, F14 | S3/S4 | kl (round 1) | read-only data dir; export EPIPE | fixing (fix-protocol) |
+
+### Track 2 — concurrency, chaos, storage, upgrades: 0 S1, 3 S2, 7 S3 (C2-01..10)
+Full file: hard-chaos `stress/findings/chaos.md` (c76a3eb, branch hardening-chaos). Published kl 0.8.0 / sl 0.6.0; host load 20–48, absolute latencies inflated.
+
+| id | sev | where | one-line | status |
+|---|---|---|---|---|
+| C2-03 | S2 | kl pulse/shim | lost or regenerated per-project cursor → re-seed at head, push allowed with pending | fixing (fix-lineage-integrity, with R2-07) |
+| C2-04 | S2 | kl pulse | after chain rollback, a plain retry is allowed (denial counted as a briefing) | fixing (fix-lineage-integrity) |
+| C2-05 | S2 | kl lineage | wall-clock string compare; +3 s skew drops every inferred edge | fixing (fix-lineage-integrity, with R2-04) |
+| C2-01 | S3 | kl storage | no downgrade guard; 0.5/0.6 rebuild nulls project_key; all checks pass | fixing (fix-protocol) |
+| C2-02 | S3 | sl CLI | unlocked cli-claims.json RMW loses tokens under 40-way concurrency | fixing (sl fix-0.6.1 / 0.6.2) |
+| C2-06 | S3 | sl leases | per-process wall clock; 15 min skew steals live lease | fixing (sl, doc + guard) |
+| C2-07 | S3 | sl idempotency | F09 returns across 0.4→0.6 upgrade (no request_hash on old events) | fixing (sl) |
+| C2-08 | S3 | kl openDatabase | BEGIN IMMEDIATE on every open → readers wait on writers; 14 s hold → shim runs unchecked (likely root of "1 pulse in 80 ≥ 10 s") | fixing (fix-protocol) |
+| C2-09 | S3 | kl scale | 10k docs: new-actor orient 12.6–17.7 s; reads log never pruned, pending linear | fixing (kl fix-scale) |
+| C2-10 | S3 | kl import | concurrent imports write duplicate identical puts | fixing (fix-scale) |
+| F12 (wider) | S3 | kl | read-only/full data dir → pulse exit 3, shims fail open | fixing (fix-protocol) |
+| F13 | — | kl | RSS growth did not reproduce at 10k (flat 175–177 MB) | closed (not reproduced) |
+
+Passed: kl upgrades 0.5/0.6/0.7→0.8 incl. symlinked paths; sl up/downgrades 0.4/0.5↔0.6; mixed writers; 30/30/40-process storms (no locks, no double claims); kill -9 ×40 all-or-nothing; WAL loss + snapshot restore; sl 10k tickets (sea_next p95 179 ms); wait herd of 50 (one winner).
+
+### Round 2 status
+All six tracks reported. Totals: S1 9 (A2-01, A2-02, H2-01, H2-10, R2-01, R2-02, R2-04, R2-05, L2-01), all routed to fixers. Exit rule needs a round 3 on the merged fixes.
