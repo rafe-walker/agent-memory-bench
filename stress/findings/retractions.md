@@ -25,6 +25,7 @@ Env for the repros: `KL=<kl checkout>`, `KLBIN=$KL/dist/cli.js`, `MDIT=<dir with
 | R2-14 | S3 | kl lineage (tombstoned sources) @ 7e50702 | lineage scenarios | A note derived from a block that is later removed, or moved to another document (tombstone + new block), stays `stale` forever after the agent re-derives it from the new location. Only an explicit `derived_from` replaces lineage, and inferred edges only accumulate. A client that never declares lineage (the bench adapter) can never clear it: permanent `never_act` false-stale | `KL=… node stress/kl/r2-lineage.mjs --only C04` → `stale_after: [["tombstoned", …]]` | open |
 | R2-15 | S3 | kl `Orient.derivedRetractions` @ 7e50702 | lineage scenarios | `derived` retractions are listed only for notes with a DIRECT edge to the changed block (`!s.via`). A note derived from a stale note (stale per `staleness`, `via`) gets no retraction in the push contract. Its reader's `pending` does list it, so a cursor-based hook pushes nothing for it | `KL=… node stress/kl/r2-lineage.mjs --only C08` → `n2_stale:1, derived_retractions_for:["n1"], reader_pending:1` | open |
 | R2-16 | S3 | kl `wordDiff` / `snippet` (`src/orient/textdiff.ts`) @ 7e50702 | wording probe | A retraction of a block over 400 tokens (a ~45-line script) with the change near the end shows **no visible change**: `old_text === new_text`, the diff falls back to two identical 194-character prefixes, and the reason line reads "relied on X; current truth is X". The pending item's diff is the same. The real edit is `--target staging-a` → `prod-eu` | `KL=… node stress/kl/r2-diff.mjs` → `diff_shows_change:false, old_eq_new:true` | open |
+| R2-17 | S2 | kl honest absence (`src/recall/absence.ts`) + integrity/doctor FTS checks @ 7e50702 | FTS tamper (one SQL statement, temp store) | Rewrite the full-text row of a live block (same row count; a bad partial restore of the FTS shadow tables). Recall then certifies `absent_in_searched` with `index_fresh: true` for a term that the live block holds ("Never deploy to zebracluster on Fridays."). Orient `integrity.ok`, `verifyAll()` and `doctor` (FTS5 integrity-check ok) all pass. Freshness is judged by row counts and the chain position only, never by checking indexed content against block content | `KL=… node stress/kl/r2-absence.mjs` → `verdict: absent_in_searched, index_fresh: true, live_blocks_with_term: 1, verify_all_ok: true, doctor.ok: true` | open |
 
 ## Controls (no finding)
 **Classifier corpus (part 1):** of 61 real-change cases, 48 retract correctly, including link target/title/text, reference definitions, images, autolinks, inline HTML, pipe and pipeless tables, block quotes, front-matter-ish `---` blocks, setext `=`→`-`, fenced code (body, info string, tilde fences, whitespace inside), inline-code whitespace, indented code, zero-width chars (added, removed, counted), Cyrillic homoglyph, RTL marks, CJK/Arabic word swaps, NFC↔NFD, fullwidth letters, thin space, U+2028, entities, CRLF + a real change, bare CR, change at the end of a 600-word line, task-list checkbox, list reorder/re-nest. Benign: 8/8 quiet.
@@ -45,6 +46,23 @@ Env for the repros: `KL=<kl checkout>`, `KLBIN=$KL/dist/cli.js`, `MDIT=<dir with
 An early version of `r2-gate.sh` appended `--data-dir` after `-- git push`, so 12 `pulse` calls (actor `shim`, temp project cwd, read-only `--pending-actor agent`) opened the default store `~/.kronicle-lite` instead of the temp store (its DB mtime moved to 16:13:49 local). The script now sets `HOME` and `KRONICLE_LITE_DATA_DIR` to temp paths and passes `--data-dir` right after the command; later runs left that DB untouched. Nothing was cleaned up there (to avoid touching it again); the owner may want to check for `shim` briefings from 2026-11-01 ~16:05–16:14 local.
 
 ## Coverage
-Covered at 7e50702: attack (a) corpus + CommonMark oracle, end to end through orient / pending / pulse (CLI).
-Not covered (stopped early on S1): (a) property/metamorphic generation and mutation runs; (b) section moves/renames/re-levels; (c) lineage; (d) pending; (e) pulse wording; (f) authority/absence/integrity/secret guard.
-Leads from code reading, NOT verified (no findings claimed): `looksLikeTypo`→`editDistance` allocates an (m+1)(n+1) matrix for one long letters-only word (orient/pulse cost → shim timeout fail-open?); `wordDiff` falls back to identical 194-char prefixes for blocks > 400 tokens (diff/old/new may show no visible change); `HEADING_RE` strips a trailing `#` (`## Use C#` stores `Use C`, so `C#`→`C` makes no event); `planRevision` carries blocks by hash+path regardless of order (reordering two code blocks in one section: no event); `Lineage.staleness` memoizes depth-truncated (depth 4) and cycle-cut results in the shared memo (a note evaluated after its descendant/cycle partner may read fresh); `sessionStart` = latest orient, so an agent that recalls, orients again before writing (as the wake contract says) and then puts a note infers no lineage.
+Covered at kronicle-lite 7e50702 (0.8.0):
+- (a) the classifier corpus (69 cases, 2 oracles), symmetry over the corpus, 715 seeded property mutations, and source-mutation runs of the repo's vitest suites (`r2-mutants.mjs`, 20 mutants + an identity baseline; results below);
+- (b) section moves, renames, re-levels, duplicate and colliding paths, block reorders, closing hashes, indented fences, export→import identity;
+- (c) lineage: explicit vs inferred, session bound with re-orient, tombstoned/moved sources, chains to depth 6, cycles, shared memo, cross-project, reverts;
+- (d) pending: current/twin/middle-version reads, own writes, removals and re-adds, section renames, cursor recovery (seed path), shared actor ids;
+- (e) pulse/next_steps wording for every focus, and diff visibility on long blocks;
+- (f) projection tamper vs integrity flags and authority, secret shapes (PEM layouts, key spellings, headers, CLI flags, placeholders, soft hyphen), long-token cost.
+
+Gaps:
+- No live LLM runs (no `claude -p`).
+- No Windows, macOS or case-insensitive file systems.
+- No HTTP transport or `--core` profile.
+- No `watch` / `--stdin-hook` under concurrency.
+- Receipts across export/import were not checked.
+- Not every secret detector was probed (no Slack, Stripe or JWT variants).
+- `absence` verdicts under a stale or cold FTS index were not probed.
+- Truncation (more than 200 blocks read without a session) was not re-measured; the CHANGELOG bench covers it.
+- The classifier list-numbering and emphasis internals were skipped by agreement (fix-0.8.1).
+- The 8,000-letter case was run once only, because it OOM-kills the process on a shared host.
+

@@ -21,6 +21,7 @@ const SEC = ['test/secrets.test.ts'];
 const HON = ['test/honesty.test.ts', 'test/recall.test.ts', 'test/lineage.test.ts'];
 // [id, file, [[old, new], …], suites, what]
 const MUTANTS = [
+  ['M00', 'src/orient/cosmetic.ts', [['export const FORMAT_RULES', 'export const FORMAT_RULES']], [...new Set([...COS, ...LIN])], 'baseline (identity mutant): must pass, else kills are noise'],
   ['M01', 'src/orient/cosmetic.ts', [['|\\||<|', '|<|']], COS, 'tables (| lines) no longer opaque'],
   ['M02', 'src/orient/cosmetic.ts', [['(?: {4}|\\t|>|', '(?: {4}|\\t|']], COS, 'block quotes no longer opaque'],
   ['M03', 'src/orient/cosmetic.ts', [["if (kind === 'code') return null;", '']], COS, 'fenced code blocks parsed as prose'],
@@ -56,6 +57,7 @@ function prepare([id, file, subs]) {
   }
   symlinkSync(realpathSync(join(KL, 'node_modules')), join(d, 'node_modules'));
   let src = readFileSync(join(d, file), 'utf8');
+  if (subs.every(([a, b]) => a === b)) return { d, applied: true };
   for (const [a, b] of subs) {
     if (!src.includes(a)) return { d, applied: false, missing: a.slice(0, 60) };
     src = src.replace(a, b);
@@ -77,7 +79,8 @@ function run(m) {
     ch.on('close', (code) => {
       clearTimeout(t);
       const failed = /(\d+) failed/.exec(log)?.[1];
-      res({ id, file, what, result: code === 0 ? 'SURVIVED' : 'killed', failed_tests: failed ? Number(failed) : null });
+      const names = [...new Set((log.match(/^ *(?:FAIL|×) .*$/gm) ?? []).map((l) => l.trim().slice(0, 140)))].slice(0, 4);
+      res({ id, file, what, result: code === 0 ? 'SURVIVED' : 'killed', failed_tests: failed ? Number(failed) : null, failing: names });
     });
   });
 }
