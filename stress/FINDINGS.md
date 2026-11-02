@@ -55,3 +55,23 @@ Full file: isokron-anchor scratch clone `docs/hardening/FINDINGS.md` (bfddb2d). 
 | A2-18 | S3 | isokron-site pricing | claimed public logs not yet running | fixed @ isokron-site c734429 |
 | A2-14, 15, 19 | S4 | anchor | raw errors, erasure undone, npm ci ERESOLVE | fixing (hardening-a2) |
 | A2-20, 21 | S4 | kl | key on argv / http allowed; stale threat model | fixing (kl) |
+
+### Track 3 — hooks, shims, guards: 2 S1, 14 S2, 7 S3 (H2-01..24; H2-17 unused)
+Full file: hard-hooks `stress/findings/hooks.md` (386db8c, branch hardening-hooks).
+
+| id | sev | where | one-line | status |
+|---|---|---|---|---|
+| H2-01 | S1 | cc-anchor 0.5.0 | `--actor=X` not parsed → wrong actor checked, push allowed | fixing (cc-anchor fix-0.5.1) |
+| H2-10 | S1 | cc-anchor 0.5.0 | resumed subagent loses its actor at SubagentStop → push allowed | fixing (fix-0.5.1) |
+| H2-02..05, 09 | S2 | cc-anchor | pulse matcher misses | fixing (fix-0.5.1) |
+| H2-11 | S2 | cc-anchor | back-off uses stale pending=0 → silent allow | fixing (fix-0.5.1) |
+| H2-12 | S2 | kl shims + cc-anchor | refusal tells agent to `shim ack`; agent clears gate without re-read | fixing (kl fix-shims + fix-0.5.1) |
+| H2-13 | S2 | kl shims | git-core PATH (alias, hooks, rebase -x, submodule foreach) skips shim | fixing (fix-shims: pre-push hook) |
+| H2-14 | S2 | kl shims | `git -C <project>` from outside allowed | fixing (fix-shims) |
+| H2-18..22 | S2 | cc-anchor guards | parent rm/mv, late writes, board timeout blind 30 s, stale verdict cache, silent fail-open | fixing (fix-0.5.1) |
+| H2-06..08 | S3 | cc-anchor | (round-1 report) | fixing (fix-0.5.1) |
+| H2-15 | S3 | kl shims | sudo / env -i / absolute path bypass undocumented | fixing (docs + git hook) |
+| H2-16 | S3 | kl shims | one agent blocked by another's stale reads | fixing (fix-shims) |
+| H2-23 | S3 | sea-lite + cc-anchor | dangling symlink passes; `src/../src` rejected; exit 2 cached ok | fixing (sea-lite fix-0.6.1) |
+| H2-24 | S3 | cc-anchor | git-ignored claims unreported; same-session subagent unwarned | fixing (fix-0.5.1) |
+| F15 | S4 | sea-lite | paths after `--` dropped | fixing (fix-0.6.1) |
