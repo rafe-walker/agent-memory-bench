@@ -1,0 +1,203 @@
+{
+ "meta": {
+  "started_at": "2026-11-02T01:27:59.981Z",
+  "seeds": 20,
+  "ci": false
+ },
+ "cells": {
+  "S7|kronicle-lite-081": {
+   "scenario": "S7",
+   "title": "Benign-edit noise (must NOT alarm; false-positive control)",
+   "arm": "kronicle-lite-081",
+   "n": 20,
+   "yes": 4,
+   "partial": 0,
+   "no": 16,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 4,
+    "n": 20,
+    "p": 0.2,
+    "wilson": {
+     "lo": 0.08065766257979806,
+     "hi": 0.41601743225189364
+    },
+    "exact": {
+     "lo": 0.057333997049934915,
+     "hi": 0.4366140029969944
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 4,
+    "n": 20,
+    "p": 0.2,
+    "wilson": {
+     "lo": 0.08065766257979806,
+     "hi": 0.41601743225189364
+    },
+    "exact": {
+     "lo": 0.057333997049934915,
+     "hi": 0.4366140029969944
+    }
+   },
+   "score": 0.2,
+   "verdict": "mixed",
+   "reason": "quiet on whitespace_trim",
+   "delivery": "push",
+   "bytes": {
+    "touch": {
+     "mean": 1911,
+     "max": 2454,
+     "tokens_mean": 478
+    },
+    "read": {
+     "mean": 1374,
+     "max": 1378,
+     "tokens_mean": 344
+    }
+   },
+   "latency_ms": {
+    "touch": {
+     "n": 20,
+     "p50": 139.5,
+     "p95": 240.2,
+     "max": 1318.1
+    },
+    "read": {
+     "n": 20,
+     "p50": 34.3,
+     "p95": 1019.9,
+     "max": 1215.6
+    }
+   },
+   "flags": {
+    "alarm": {
+     "k": 16,
+     "n": 20,
+     "p": 0.8,
+     "wilson": {
+      "lo": 0.5839825677481064,
+      "hi": 0.919342337420202
+     },
+     "exact": {
+      "lo": 0.5633859970030055,
+      "hi": 0.9426660029500651
+     }
+    },
+    "trivial": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 92209
+  },
+  "S7note|kronicle-lite-081": {
+   "scenario": "S7note",
+   "title": "Benign-edit noise (must NOT alarm; false-positive control)",
+   "arm": "kronicle-lite-081",
+   "n": 20,
+   "yes": 4,
+   "partial": 0,
+   "no": 16,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 4,
+    "n": 20,
+    "p": 0.2,
+    "wilson": {
+     "lo": 0.08065766257979806,
+     "hi": 0.41601743225189364
+    },
+    "exact": {
+     "lo": 0.057333997049934915,
+     "hi": 0.4366140029969944
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 4,
+    "n": 20,
+    "p": 0.2,
+    "wilson": {
+     "lo": 0.08065766257979806,
+     "hi": 0.41601743225189364
+    },
+    "exact": {
+     "lo": 0.057333997049934915,
+     "hi": 0.4366140029969944
+    }
+   },
+   "score": 0.2,
+   "verdict": "mixed",
+   "reason": "quiet on whitespace_trim",
+   "delivery": "push",
+   "bytes": {
+    "touch": {
+     "mean": 2645,
+     "max": 3151,
+     "tokens_mean": 662
+    },
+    "read": {
+     "mean": 1373,
+     "max": 1378,
+     "tokens_mean": 344
+    }
+   },
+   "latency_ms": {
+    "touch": {
+     "n": 20,
+     "p50": 215.8,
+     "p95": 1011.8,
+     "max": 1756.8
+    },
+    "read": {
+     "n": 20,
+     "p50": 31.9,
+     "p95": 51.9,
+     "max": 78.2
+    }
+   },
+   "flags": {
+    "alarm": {
+     "k": 16,
+     "n": 20,
+     "p": 0.8,
+     "wilson": {
+      "lo": 0.5839825677481064,
+      "hi": 0.919342337420202
+     },
+     "exact": {
+      "lo": 0.5633859970030055,
+      "hi": 0.9426660029500651
+     }
+    },
+    "trivial": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 99422
+  }
+ }
+}

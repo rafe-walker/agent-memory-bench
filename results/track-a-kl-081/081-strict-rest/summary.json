@@ -1,0 +1,515 @@
+{
+ "meta": {
+  "started_at": "2026-11-02T01:42:49.529Z",
+  "seeds": 20,
+  "ci": false
+ },
+ "cells": {
+  "S1|kronicle-lite-081": {
+   "scenario": "S1",
+   "title": "Stale runbook (fact changed after the agent read it)",
+   "arm": "kronicle-lite-081",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "old→new change surfaced",
+   "delivery": "push",
+   "bytes": {
+    "sessionStart": {
+     "mean": 1816,
+     "max": 1816,
+     "tokens_mean": 454
+    },
+    "read0": {
+     "mean": 1374,
+     "max": 1378,
+     "tokens_mean": 344
+    },
+    "touch": {
+     "mean": 3238,
+     "max": 3273,
+     "tokens_mean": 810
+    },
+    "read": {
+     "mean": 1373,
+     "max": 1379,
+     "tokens_mean": 344
+    },
+    "nextSession": {
+     "mean": 80,
+     "max": 80,
+     "tokens_mean": 20
+    },
+    "nextRead": {
+     "mean": 1373,
+     "max": 1379,
+     "tokens_mean": 344
+    },
+    "nextRead2": {
+     "mean": 4280,
+     "max": 4298,
+     "tokens_mean": 1070
+    }
+   },
+   "latency_ms": {
+    "sessionStart": {
+     "n": 20,
+     "p50": 1194.2,
+     "p95": 1934.2,
+     "max": 2120.4
+    },
+    "read0": {
+     "n": 20,
+     "p50": 114.2,
+     "p95": 167.5,
+     "max": 174.2
+    },
+    "touch": {
+     "n": 20,
+     "p50": 190.9,
+     "p95": 1096.7,
+     "max": 1099.3
+    },
+    "read": {
+     "n": 20,
+     "p50": 28.3,
+     "p95": 103,
+     "max": 580.6
+    },
+    "nextSession": {
+     "n": 20,
+     "p50": 426.7,
+     "p95": 613.2,
+     "max": 625.8
+    },
+    "nextRead": {
+     "n": 20,
+     "p50": 109.3,
+     "p95": 185,
+     "max": 247.7
+    },
+    "nextRead2": {
+     "n": 20,
+     "p50": 50.3,
+     "p95": 97.8,
+     "max": 98.2
+    }
+   },
+   "flags": {
+    "learned": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "pushedNew": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "staleUnmarked": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "nextSessionPass": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "nextSessionStaleCopy": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 100523
+  },
+  "S5|kronicle-lite-081": {
+   "scenario": "S5",
+   "title": "Retired / deleted doc still served",
+   "arm": "kronicle-lite-081",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "retirement surfaced",
+   "delivery": "push",
+   "bytes": {
+    "touch": {
+     "mean": 3599,
+     "max": 3600,
+     "tokens_mean": 900
+    },
+    "read": {
+     "mean": 3889,
+     "max": 3900,
+     "tokens_mean": 973
+    }
+   },
+   "latency_ms": {
+    "touch": {
+     "n": 20,
+     "p50": 313.2,
+     "p95": 1050.5,
+     "max": 1239.2
+    },
+    "read": {
+     "n": 20,
+     "p50": 49.8,
+     "p95": 1033.9,
+     "max": 1154.7
+    }
+   },
+   "flags": {
+    "served": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "noticed": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 93039
+  },
+  "S8|kronicle-lite-081": {
+   "scenario": "S8",
+   "title": "Moved section (identity must survive)",
+   "arm": "kronicle-lite-081",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "reorder: identity survived quietly",
+   "delivery": "push",
+   "bytes": {
+    "touch": {
+     "mean": 1042,
+     "max": 1175,
+     "tokens_mean": 261
+    },
+    "read": {
+     "mean": 1386,
+     "max": 1402,
+     "tokens_mean": 347
+    }
+   },
+   "latency_ms": {
+    "touch": {
+     "n": 20,
+     "p50": 74.8,
+     "p95": 2148.3,
+     "max": 2206.6
+    },
+    "read": {
+     "n": 20,
+     "p50": 26.9,
+     "p95": 64.3,
+     "max": 65.4
+    }
+   },
+   "flags": {
+    "retrievable": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "falseAlarm": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 92257
+  },
+  "S11|kronicle-lite-081": {
+   "scenario": "S11",
+   "title": "Cross-project leak (two repos sharing a store)",
+   "arm": "kronicle-lite-081",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "isolated",
+   "delivery": "push",
+   "bytes": {
+    "touch": {
+     "mean": 1488,
+     "max": 1493,
+     "tokens_mean": 372
+    },
+    "read": {
+     "mean": 1373,
+     "max": 1378,
+     "tokens_mean": 344
+    },
+    "nextSession": {
+     "mean": 80,
+     "max": 80,
+     "tokens_mean": 20
+    }
+   },
+   "latency_ms": {
+    "touch": {
+     "n": 20,
+     "p50": 104.8,
+     "p95": 150.3,
+     "max": 164.6
+    },
+    "read": {
+     "n": 20,
+     "p50": 39.9,
+     "p95": 577.5,
+     "max": 867.8
+    },
+    "nextSession": {
+     "n": 20,
+     "p50": 442.3,
+     "p95": 637.4,
+     "max": 652.1
+    }
+   },
+   "flags": {
+    "leak": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "labeled": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "falseRetraction": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 149035
+  }
+ }
+}
