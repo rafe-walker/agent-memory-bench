@@ -1,0 +1,14 @@
+{ "model": "haiku", "concurrency": 3, "maxUsdPerRun": 0.3, "timeoutSec": 900,
+  "cells": [
+    {"scenario":"L1","n":6,"arms":["none","kronicle","full"]},
+    {"scenario":"L2","n":6,"arms":["none","kronicle","full"]},
+    {"scenario":"L3","n":6,"arms":["none","kronicle","full"]},
+    {"scenario":"L4","n":6,"arms":["none","kronicle","full","full_noactor"]},
+    {"scenario":"L5","n":6,"arms":["none","kronicle","full"]},
+    {"scenario":"L6","n":6,"arms":["none","full"]},
+    {"scenario":"L7","n":6,"arms":["none","kronicle","full"]},
+    {"scenario":"L8","n":6,"arms":["none","kronicle","kronicle_shim","full","full_shim"]},
+    {"scenario":"L9","n":6,"arms":["none","kronicle","full"]},
+    {"scenario":"L9b","n":6,"arms":["kronicle","full"]},
+    {"scenario":"L9c","n":6,"arms":["kronicle","full"]}
+  ] }

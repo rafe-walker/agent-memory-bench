@@ -9,7 +9,7 @@
 set -euo pipefail
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"; cd "$HERE"
 CC_ANCHOR_SRC="${CC_ANCHOR_SRC:-/home/claude/cc-anchor}"
-CC_ANCHOR_REF="${CC_ANCHOR_REF:-v0.4.0}"
+CC_ANCHOR_REF="${CC_ANCHOR_REF:-v0.5.0}"
 
 npm install --no-audit --no-fund
 

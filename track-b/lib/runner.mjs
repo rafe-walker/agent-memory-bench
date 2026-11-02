@@ -49,11 +49,11 @@ function cleanEnv(ctx, agentId) {
 }
 
 function parseStream(text) {
-  const out = { toolCalls: [], toolErrors: [], compactions: 0, result: null, resultText: '', hookEvents: 0, initTools: null, mcpServers: null, skills: null, pushes: 0, pulseDenies: 0 };
+  const out = { toolCalls: [], toolErrors: [], compactions: 0, result: null, resultText: '', hookEvents: 0, initTools: null, mcpServers: null, skills: null, pushes: 0, pulseDenies: 0, sessionId: null, hooks: [], denies: 0 };
   for (const line of text.split('\n')) {
     if (!line.trim()) continue;
     let m; try { m = JSON.parse(line); } catch { continue; }
-    if (m.type === 'system' && m.subtype === 'init') { out.initTools = m.tools; out.mcpServers = m.mcp_servers; out.skills = m.skills; }
+    if (m.type === 'system' && m.subtype === 'init') { out.initTools = m.tools; out.mcpServers = m.mcp_servers; out.skills = m.skills; out.sessionId ||= m.session_id; }
     if (m.type === 'system' && m.subtype === 'compact_boundary') out.compactions++;
     if (m.type === 'system' && /^hook_/.test(m.subtype || '')) out.hookEvents++;
     // cc-anchor retraction push (PostToolUse additionalContext) and pulse (PreToolUse deny before a world-changing command)
@@ -61,6 +61,9 @@ function parseStream(text) {
       const o = String(m.output || '');
       if (m.hook_event === 'PostToolUse' && /retraction\(s\) since your last check/.test(o)) out.pushes++;
       if (m.hook_event === 'PreToolUse' && /"permissionDecision"\s*:\s*"deny"/.test(o) && /kronicle|retraction|changed/i.test(o)) out.pulseDenies++;
+      if (/"permissionDecision"\s*:\s*"deny"/.test(o)) out.denies++;
+      // every hook message that put text in front of the agent (for "hook output that confused the agent")
+      if (/additionalContext|permissionDecisionReason|systemMessage/.test(o)) out.hooks.push({ event: m.hook_event, at_call: out.toolCalls.length, text: o.slice(0, 1500) });
     }
     if (m.type === 'assistant' && Array.isArray(m.message?.content)) {
       for (const c of m.message.content) if (c.type === 'tool_use') out.toolCalls.push({ name: c.name, input: c.input });
@@ -84,7 +87,8 @@ function runClaude(ctx, agent, model, scn) {
     const mcpFile = path.join(ctx.runDir, `mcp-${agent.id}.json`);
     write(mcpFile, JSON.stringify(mcp, null, 2));
     const cliArgs = [
-      '-p', agent.prompt, '--model', model, '--output-format', 'stream-json', '--verbose',
+      '-p', agent.prompt, '--model', agent.model || model,
+      ...(agent.resumeSid ? ['--resume', agent.resumeSid] : []), '--output-format', 'stream-json', '--verbose',
       '--permission-mode', 'dontAsk', '--allowedTools', ctx.allowed.join(','),
       '--strict-mcp-config', '--mcp-config', mcpFile,
       '--max-turns', String(scn.maxTurns || 40), '--max-budget-usd', String(PLAN.maxUsdPerRun || 1.5),
@@ -92,7 +96,7 @@ function runClaude(ctx, agent, model, scn) {
       ...ctx.pluginDirs.flatMap((p) => ['--plugin-dir', p]),
       ...ctx.extraArgs,
     ];
-    appendJsonl(LEDGER, { ts: new Date().toISOString(), key: ctx.key, agent: agent.id, model });
+    appendJsonl(LEDGER, { ts: new Date().toISOString(), key: ctx.key, agent: agent.id, model: agent.model || model });
     invocations++;
     const t0 = Date.now();
     const p = spawn('claude', cliArgs, { cwd: ctx.repo, env: cleanEnv(ctx, agent.id), stdio: ['ignore', 'pipe', 'pipe'] });
@@ -150,22 +154,36 @@ async function runOne(item) {
 
   const agents = scn.agents(ctx);
   if (args['setup-only']) { log(`setup ok ${key} in ${setupMs}ms -> ${runDir}`); return { key, ctx, agents }; }
-  const runs = await Promise.all(agents.map((a) => runClaude(ctx, a, model, scn)));
-  const grade = scn.parallel ? scn.grade(ctx, runs) : scn.grade(ctx, runs[0]);
+  let runs;
+  if (scn.sequential) {
+    // phases in order: a phase may resume an earlier phase's session (`resume: '<agent id>'`),
+    // run a harness step first (`before(ctx, runsSoFar)`), or be a bare `/compact` of that session.
+    runs = [];
+    for (const a of agents) {
+      if (a.before) { try { a.before(ctx, runs); } catch (e) { appendJsonl(path.join(ctx.runDir, 'phase-errors.jsonl'), { phase: a.id, error: String(e.message || e) }); } }
+      if (a.resume) { const prev = runs.find((x) => x.agent === a.resume); a.resumeSid = prev?.sessionId || null; if (!a.resumeSid) { runs.push({ agent: a.id, code: -1, wall_ms: 0, toolCalls: [], toolErrors: [], hooks: [], compactions: 0, result: null, resultText: '', skipped: 'no session to resume' }); continue; } }
+      const r = await runClaude(ctx, a, model, scn);
+      r.phase = a.id;
+      runs.push(r);
+    }
+  } else runs = await Promise.all(agents.map((a) => runClaude(ctx, a, model, scn)));
+  const grade = scn.parallel || scn.sequential ? scn.grade(ctx, runs) : scn.grade(ctx, runs[0]);
   const usage = sumUsage(runs);
   const rec = {
     key, scenario, arm, model, seed, ts: new Date().toISOString(), setup_ms: setupMs,
-    wall_ms: Math.max(...runs.map((r) => r.wall_ms)), usage,
+    wall_ms: scn.sequential ? runs.reduce((a, r) => a + r.wall_ms, 0) : Math.max(...runs.map((r) => r.wall_ms)), usage,
     agents: runs.map((r) => ({
       agent: r.agent, exit: r.code, subtype: r.result?.subtype ?? null, is_error: r.result?.is_error ?? null,
       model_usage: r.result?.modelUsage ? Object.keys(r.result.modelUsage) : null, tool_calls: r.toolCalls.length,
       tool_errors: r.toolErrors.length, compactions: r.compactions, hook_events: r.hookEvents, pushes: r.pushes, pulse_denies: r.pulseDenies,
+      denies: r.denies, hook_msgs: r.hooks?.length || 0, wall_ms: r.wall_ms, session_id: r.sessionId || null, skipped: r.skipped,
       mcp_servers: r.mcpServers, result_text: (r.resultText || '').slice(0, 600), stderr_tail: r.code ? r.stderr_tail : undefined,
       tool_seq: r.toolCalls.map((c) => c.name === 'Bash' ? `Bash:${String(c.input?.command || '').slice(0, 80)}` : c.name.startsWith('mcp__') ? c.name : `${c.name}:${String(c.input?.file_path || c.input?.skill || c.input?.pattern || '').split('/').slice(-2).join('/')}`),
     })),
     actions: readJsonl(path.join(runDir, 'actions.jsonl')).map(({ cmd, argv, agent }) => ({ cmd, argv, agent })),
     peeked: runs.some((r) => r.toolCalls.some((c) => /stub-config|stub\.mjs|\/pending\/|\.injected-|actions\.jsonl|\/kl\/|docs-src/.test(JSON.stringify(c.input || {})))),
-    infra_error: runs.some((r) => !r.result) ? 'no result line (crash/timeout)' : null,
+    infra_error: runs.some((r) => !r.result && !r.skipped) ? 'no result line (crash/timeout)' : null,
+    hooks: runs.flatMap((r) => (r.hooks || []).map((h) => ({ agent: r.agent, ...h }))),
     ...grade,
   };
   appendJsonl(RUNS, rec);

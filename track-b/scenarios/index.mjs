@@ -9,28 +9,30 @@ import { initRepo, commitAll, seedFacts, runbook } from '../lib/fixture.mjs';
 import {
   kronicleSetup, kroniclePut, kronicleMutateSh, bmSetup, bmNote, bmMutateSh,
   nativeSetMemory, ccAnchorSetup, seaSetup, seaCreate, seaPrecommit, beadsSetup, beadsInit, beadsCreate,
+  KL_ARMS,
 } from '../lib/arms.mjs';
+import { LIVE } from './live.mjs';
 
 const NO_ASK = 'Do not ask questions and do not stop early.';
 const STEPS = 'Run the five runbook steps in order using the commands in ./bin: preflight, build, migrate, deploy, notify.';
 
 // ---------------- shared grading ----------------
-function actionsOf(ctx) { return readJsonl(path.join(ctx.runDir, 'actions.jsonl')); }
-function stepsComplete(acts) {
+export function actionsOf(ctx) { return readJsonl(path.join(ctx.runDir, 'actions.jsonl')); }
+export function stepsComplete(acts) {
   const has = (c, pred = () => true) => acts.some((a) => a.cmd === c && pred(a));
   return has('preflight') && has('build') && has('migrate') && has('deploy', (a) => typeof a.flags.target === 'string') && has('notify', (a) => typeof a.flags.channel === 'string');
 }
-function deployTargets(acts) { return acts.filter((a) => a.cmd === 'deploy' && typeof a.flags.target === 'string').map((a) => a.flags.target.replace(/[`'"]/g, '')); }
-function notifyChannels(acts) { return acts.filter((a) => a.cmd === 'notify' && typeof a.flags.channel === 'string').map((a) => a.flags.channel.replace(/[`'"]/g, '')); }
+export function deployTargets(acts) { return acts.filter((a) => a.cmd === 'deploy' && typeof a.flags.target === 'string').map((a) => a.flags.target.replace(/[`'"]/g, '')); }
+export function notifyChannels(acts) { return acts.filter((a) => a.cmd === 'notify' && typeof a.flags.channel === 'string').map((a) => a.flags.channel.replace(/[`'"]/g, '')); }
 
 // tool-call sequence helpers (calls = [{name, input}] in order)
-function idxOf(calls, re) { return calls.findIndex((c) => c.name === 'Bash' && re.test(String(c.input?.command || ''))); }
+export function idxOf(calls, re) { return calls.findIndex((c) => c.name === 'Bash' && re.test(String(c.input?.command || ''))); }
 // match on what was executed/read — never on the free-text `description` field
 export function actionText(c) { const { description, ...rest } = c.input || {}; return JSON.stringify(rest); }
-function touches(c, re) { return re.test(c.name) || re.test(actionText(c)); }
-function consulted(calls, from, to, re) { return calls.slice(Math.max(0, from), to < 0 ? undefined : to).some((c) => touches(c, re)); }
+export function touches(c, re) { return re.test(c.name) || re.test(actionText(c)); }
+export function consulted(calls, from, to, re) { return calls.slice(Math.max(0, from), to < 0 ? undefined : to).some((c) => touches(c, re)); }
 
-function gradeTarget(ctx, run, { want, wrong }) {
+export function gradeTarget(ctx, run, { want, wrong }) {
   const acts = actionsOf(ctx);
   const t = deployTargets(acts);
   const complete = stepsComplete(acts);
@@ -55,7 +57,7 @@ function placeRunbook(ctx, md, files) {
   switch (ctx.arm) {
     case 'none': files['docs/runbook.md'] = md; break;
     case 'native': ctx.claudeMd.push(md); break;
-    case 'kronicle': case 'kronicle_strict': case 'kronicle_push': case 'kronicle_ccpush': case 'kronicle_ccsub': kronicleSetup(ctx); ctx.postRepo.push(() => kroniclePut(ctx, 'runbook', md, 'Deploy runbook')); break;
+    case 'kronicle': case 'kronicle_strict': case 'kronicle_push': case 'kronicle_ccpush': case 'kronicle_ccsub': case 'kronicle_shim': case 'full': case 'full_noactor': case 'full_shim': kronicleSetup(ctx); ctx.postRepo.push(() => kroniclePut(ctx, 'runbook', md, 'Deploy runbook')); break;
     case 'basicmem': bmSetup(ctx); bmNote(ctx, 'deploy-runbook', 'deploy-runbook', md); ctx.claudeMd.push('# Team docs\nTeam runbooks and notes live in basic-memory (MCP server `basic-memory`). Read them there.\n'); break;
     default: throw new Error(`arm ${ctx.arm} not supported`);
   }
@@ -317,7 +319,7 @@ const TICKETS = [
   { id: 'T-3', fn: 'upper', file: 'src/str.js', desc: 'add `upper(s)` returning s.toUpperCase() to src/str.js (export it)', test: "s.upper('ab')==='AB'" },
   { id: 'T-4', fn: 'lower', file: 'src/str.js', desc: 'add `lower(s)` returning s.toLowerCase() to src/str.js (export it)', test: "s.lower('AB')==='ab'" },
 ];
-const T3 = {
+export const T3 = {
   id: 'T3', title: 'two agents in parallel on overlapping files', arms: ['none', 'sea', 'beads'], maxTurns: 60, parallel: true,
   setup(ctx) {
     const files = {
@@ -331,6 +333,11 @@ const T3 = {
       case 'none':
         files['BACKLOG.md'] = '# Backlog\n\nMark a ticket `[~] … (agent X)` when you take it and `[x]` when done.\n\n' + TICKETS.map((t) => `- [ ] ${tdesc(t)}`).join('\n') + '\n';
         ctx.queue = 'The backlog is BACKLOG.md. Before starting a ticket, mark its line as taken: `- [~] T-n … (agent <you>)`; mark it `- [x]` when done. Skip tickets that are already taken or done.';
+        break;
+      case 'full':
+        kronicleSetup(ctx);
+        ctx.postRepo.push(() => { for (const t of TICKETS) seaCreate(ctx, tdesc(t), `Ticket ${t.id}. Done = test/run.js passes for ${t.fn}, CHANGELOG line added, ./bin/ticket-done ${t.id} run.`, [t.file, 'CHANGELOG.md']); seaPrecommit(ctx); });
+        ctx.queue = 'The backlog is the sea-lite work queue (MCP server `sea-lite`). Follow the work-queue skill: take one ticket at a time with sea_next, passing as scope the paths the ticket names and `wait_seconds: 45`, so that you wait for a held ticket or scope instead of failing; transition it to resolved (confirm: true) when done. If sea_next times out (wait_timeout) or says the queue is empty, stop.';
         break;
       case 'sea':
         seaSetup(ctx);
@@ -390,4 +397,5 @@ export const SCENARIOS = {
   T5,
   T7,
   T6: midSessionScenario({ id: 'T6', title: 'benign-noise control (typo/whitespace edit after build)', benign: true }),
+  ...LIVE,
 };

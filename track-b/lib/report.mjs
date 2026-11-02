@@ -66,7 +66,7 @@ md += 'CIs are 95% Wilson (exact Clopper–Pearson in summary.json). *p* = two-s
 
 for (const scn of Object.keys(SCENARIOS)) {
   const rows = summary.filter((r) => r.scenario === scn);
-  if (!rows.length) continue;
+  if (!rows.length || scn.startsWith('L')) continue; // L*: lib/live-report.mjs
   md += `### ${scn} — ${SCENARIOS[scn].title}\n\n`;
   if (scn === 'T3') {
     md += '| model | arm | n | success (all 4 tickets, no collision) | runs with ≥1 collision | dup tickets | lost edits (fn / changelog) | conflict markers | edit "modified since read" errors | scope denials | tokens/run | $/run | wall s |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|\n';

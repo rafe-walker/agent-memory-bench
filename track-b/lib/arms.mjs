@@ -7,7 +7,7 @@ import { BIN, TB, sh, write, copyDir } from './common.mjs';
 export const ARMS = {
   none: { label: 'no memory', version: '-' },
   native: { label: 'native CLAUDE.md (+ auto-memory MEMORY.md)', version: 'claude-code built-in' },
-  kronicle: { label: 'kronicle-lite + orient skill (pull only)', version: 'kronicle-lite 0.7.0 (npm)' },
+  kronicle: { label: 'kronicle-lite + orient skill (pull only)', version: 'kronicle-lite 0.8.0 (npm)' },
   kronicle_strict: { label: 'kronicle-lite + orient skill + stricter wake contract (pulse before every world-changing command; no hook)', version: 'kronicle-lite 0.5.0 (npm), CLAUDE.md variant' },
   kronicle_push: { label: 'kronicle-lite + orient skill + PostToolUse retraction push (bench prototype)', version: 'kronicle-lite 0.5.0 + prototypes/kronicle-push-hook.mjs' },
   kronicle_ccpush: { label: 'kronicle-lite + orient skill + cc-anchor retraction push + pulse (all hooks at defaults)', version: 'kronicle-lite 0.7.0 (npm) + cc-anchor 0.4.0 (tag v0.4.0, vendor/cc-anchor/VERSION)' },
@@ -16,7 +16,14 @@ export const ARMS = {
   ccanchor: { label: 'cc-anchor anchor card', version: 'cc-anchor 0.4.0 (tag v0.4.0)' },
   sea: { label: 'sea-lite + cc-anchor scope guard', version: 'sea-lite 0.5.0 (npm) + cc-anchor 0.4.0 (tag v0.4.0); no wait_seconds in 0.5.0' },
   beads: { label: 'beads (competitor, coordination)', version: '@beads/bd 1.3.2 (npm)' },
+  // hardening-live (round 2, track 5): the released stack as one arm
+  full: { label: 'full stack: kronicle-lite (orient skill) + sea-lite (work-queue skill) + cc-anchor (all hooks; kronicle actor named)', version: 'kronicle-lite 0.8.0 + sea-lite 0.6.0 (npm) + cc-anchor 0.5.0 (tag v0.5.0)' },
+  full_noactor: { label: 'full stack, kronicle actor NOT named to cc-anchor (the 0.4-era bench config: data dir + CLI only)', version: 'kronicle-lite 0.8.0 + sea-lite 0.6.0 + cc-anchor 0.5.0' },
+  full_shim: { label: 'full stack + kronicle-lite exec-time shims on PATH (git,npm,make)', version: 'kronicle-lite 0.8.0 + sea-lite 0.6.0 + cc-anchor 0.5.0' },
+  kronicle_shim: { label: 'kronicle-lite pull only + exec-time shims on PATH (git,npm,make); no hooks', version: 'kronicle-lite 0.8.0 (npm)' },
 };
+export const FULL_ARMS = ['full', 'full_noactor', 'full_shim'];
+export const KL_ARMS = ['kronicle', 'kronicle_strict', 'kronicle_push', 'kronicle_ccpush', 'kronicle_ccsub', 'kronicle_shim', ...FULL_ARMS];
 
 const WAKE = `# Agent wake contract (kronicle-lite)
 
@@ -60,7 +67,7 @@ export function kronicleSetup(ctx) {
     ctx.env.KRONICLE_LITE_DATA_DIR = ctx.kl;
     ctx.env.KL_PUSH_CLI = BIN.kronicle;
   }
-  if (ctx.arm === 'kronicle_ccpush' || ctx.arm === 'kronicle_ccsub') {
+  if (ctx.arm === 'kronicle_ccpush' || ctx.arm === 'kronicle_ccsub' || FULL_ARMS.includes(ctx.arm)) {
     // The real cc-anchor plugin (all hooks, defaults), not a hand-wired prototype.
     // The MCP config is passed with --mcp-config (not .mcp.json), so cc-anchor's
     // file-based detection cannot see it: name the store and CLI explicitly.
@@ -69,6 +76,40 @@ export function kronicleSetup(ctx) {
     ctx.env.CC_ANCHOR_KRONICLE_DATA_DIR = ctx.kl;
     ctx.env.CC_ANCHOR_KRONICLE_LITE_BIN = BIN.kronicle;
   }
+  if (FULL_ARMS.includes(ctx.arm)) fullExtras(ctx);
+  if (ctx.arm === 'kronicle_shim' || ctx.arm === 'full_shim') shimSetup(ctx);
+}
+
+// Full stack: kronicle-lite as above + sea-lite (per-agent MCP server, work-queue
+// skill, cc-anchor scope guard + 0.5.0 Bash guard). cc-anchor gets the kronicle
+// actor named (CC_ANCHOR_KRONICLE_ACTOR) because --mcp-config is invisible to its
+// .mcp.json / ~/.claude.json detection; full_noactor leaves it out (L2-01).
+function fullExtras(ctx) {
+  if (ctx.arm !== 'full_noactor') ctx.env.CC_ANCHOR_KRONICLE_ACTOR = 'agent';
+  ctx.sea = path.join(ctx.runDir, 'sea');
+  fs.mkdirSync(ctx.sea, { recursive: true });
+  const wrapDir = path.join(ctx.runDir, 'tools');
+  write(path.join(wrapDir, 'sea-lite'), `#!/usr/bin/env bash\nKRONICLE_LITE_DATA_DIR=${JSON.stringify(ctx.sea)} exec node ${JSON.stringify(BIN.sea)} "$@"\n`, 0o755);
+  ctx.pathPrepend.push(wrapDir);
+  ctx.env.CC_ANCHOR_SEA_DATA_DIR = ctx.sea;
+  ctx.env.CC_ANCHOR_SEA_LITE_BIN = path.join(wrapDir, 'sea-lite');
+  ctx.env.CC_ANCHOR_SEA = '1';
+  ctx.postRepo.push(() => {
+    write(path.join(ctx.repo, '.claude', 'cc-anchor.json'), JSON.stringify({ scope_guard: true }, null, 2));
+    copyDir(path.join(BIN.seaPkg, 'skills', 'work-queue'), path.join(ctx.repo, '.claude', 'skills', 'work-queue'));
+  });
+  ctx.allowed.push('mcp__sea-lite');
+  ctx.perAgentMcp = (agentId) => ({
+    'sea-lite': { command: 'node', args: [BIN.sea, 'serve', '--actor', `agent-${agentId}`, '--data-dir', ctx.sea] },
+  });
+}
+
+// kronicle-lite 0.8.0 exec-time shims (git, npm, make) first on PATH, default
+// world-changing patterns, deny mode; installed after the runbook is stored.
+export function shimSetup(ctx) {
+  ctx.shimDir = path.join(ctx.runDir, 'shims');
+  ctx.pathPrepend.unshift(ctx.shimDir);
+  ctx.postCommit.push(() => sh('node', [BIN.kronicle, 'shim', 'install', '--dir', ctx.shimDir, '--commands', 'git,npm,make', '--data-dir', ctx.kl], { cwd: ctx.repo, env: { ...process.env, HOME: ctx.home } }));
 }
 export function kroniclePut(ctx, slug, content, title) {
   const f = path.join(ctx.runDir, 'docs-src', `${slug}.md`);
