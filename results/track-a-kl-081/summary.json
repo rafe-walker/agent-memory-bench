@@ -1,0 +1,1409 @@
+{
+ "meta": {
+  "started_at": "2026-11-02T00:33:08.334Z",
+  "seeds": 20,
+  "ci": false
+ },
+ "cells": {
+  "S1|kronicle-lite-080": {
+   "scenario": "S1",
+   "title": "Stale runbook (fact changed after the agent read it)",
+   "arm": "kronicle-lite-080",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "old→new change surfaced",
+   "delivery": "push",
+   "bytes": {
+    "sessionStart": {
+     "mean": 1816,
+     "max": 1816,
+     "tokens_mean": 454
+    },
+    "read0": {
+     "mean": 1374,
+     "max": 1378,
+     "tokens_mean": 344
+    },
+    "touch": {
+     "mean": 3238,
+     "max": 3273,
+     "tokens_mean": 810
+    },
+    "read": {
+     "mean": 1373,
+     "max": 1379,
+     "tokens_mean": 344
+    },
+    "nextSession": {
+     "mean": 80,
+     "max": 80,
+     "tokens_mean": 20
+    },
+    "nextRead": {
+     "mean": 1373,
+     "max": 1379,
+     "tokens_mean": 344
+    },
+    "nextRead2": {
+     "mean": 4280,
+     "max": 4298,
+     "tokens_mean": 1070
+    }
+   },
+   "latency_ms": {
+    "sessionStart": {
+     "n": 20,
+     "p50": 2302.8,
+     "p95": 3519,
+     "max": 3774.1
+    },
+    "read0": {
+     "n": 20,
+     "p50": 179.4,
+     "p95": 284.6,
+     "max": 314.7
+    },
+    "touch": {
+     "n": 20,
+     "p50": 332.4,
+     "p95": 1820.1,
+     "max": 1909.2
+    },
+    "read": {
+     "n": 20,
+     "p50": 65.2,
+     "p95": 1514.9,
+     "max": 1684.8
+    },
+    "nextSession": {
+     "n": 20,
+     "p50": 820.7,
+     "p95": 1022.4,
+     "max": 1160.2
+    },
+    "nextRead": {
+     "n": 20,
+     "p50": 243.5,
+     "p95": 415.7,
+     "max": 532.3
+    },
+    "nextRead2": {
+     "n": 20,
+     "p50": 109.2,
+     "p95": 272,
+     "max": 304.4
+    }
+   },
+   "flags": {
+    "learned": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "pushedNew": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "staleUnmarked": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "nextSessionPass": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "nextSessionStaleCopy": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 194779
+  },
+  "S1|kronicle-lite-081": {
+   "scenario": "S1",
+   "title": "Stale runbook (fact changed after the agent read it)",
+   "arm": "kronicle-lite-081",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "old→new change surfaced",
+   "delivery": "push",
+   "bytes": {
+    "sessionStart": {
+     "mean": 1816,
+     "max": 1816,
+     "tokens_mean": 454
+    },
+    "read0": {
+     "mean": 1374,
+     "max": 1378,
+     "tokens_mean": 344
+    },
+    "touch": {
+     "mean": 3238,
+     "max": 3273,
+     "tokens_mean": 810
+    },
+    "read": {
+     "mean": 1373,
+     "max": 1379,
+     "tokens_mean": 344
+    },
+    "nextSession": {
+     "mean": 80,
+     "max": 80,
+     "tokens_mean": 20
+    },
+    "nextRead": {
+     "mean": 1373,
+     "max": 1379,
+     "tokens_mean": 344
+    },
+    "nextRead2": {
+     "mean": 4280,
+     "max": 4298,
+     "tokens_mean": 1070
+    }
+   },
+   "latency_ms": {
+    "sessionStart": {
+     "n": 20,
+     "p50": 2556.4,
+     "p95": 3773.6,
+     "max": 4029.8
+    },
+    "read0": {
+     "n": 20,
+     "p50": 189.2,
+     "p95": 315.5,
+     "max": 319.4
+    },
+    "touch": {
+     "n": 20,
+     "p50": 358.2,
+     "p95": 500.1,
+     "max": 1897.1
+    },
+    "read": {
+     "n": 20,
+     "p50": 92.7,
+     "p95": 1562.3,
+     "max": 1765.2
+    },
+    "nextSession": {
+     "n": 20,
+     "p50": 816.1,
+     "p95": 999.3,
+     "max": 1089.2
+    },
+    "nextRead": {
+     "n": 20,
+     "p50": 241.8,
+     "p95": 362.7,
+     "max": 408.1
+    },
+    "nextRead2": {
+     "n": 20,
+     "p50": 106.6,
+     "p95": 166,
+     "max": 420.2
+    }
+   },
+   "flags": {
+    "learned": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "pushedNew": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "staleUnmarked": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "nextSessionPass": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "nextSessionStaleCopy": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 200635
+  },
+  "S5|kronicle-lite-080": {
+   "scenario": "S5",
+   "title": "Retired / deleted doc still served",
+   "arm": "kronicle-lite-080",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "retirement surfaced",
+   "delivery": "push",
+   "bytes": {
+    "touch": {
+     "mean": 3599,
+     "max": 3600,
+     "tokens_mean": 900
+    },
+    "read": {
+     "mean": 3889,
+     "max": 3900,
+     "tokens_mean": 973
+    }
+   },
+   "latency_ms": {
+    "touch": {
+     "n": 20,
+     "p50": 406.8,
+     "p95": 1576.2,
+     "max": 1848.7
+    },
+    "read": {
+     "n": 20,
+     "p50": 88.9,
+     "p95": 1363.7,
+     "max": 1427.9
+    }
+   },
+   "flags": {
+    "served": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "noticed": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 135553
+  },
+  "S5|kronicle-lite-081": {
+   "scenario": "S5",
+   "title": "Retired / deleted doc still served",
+   "arm": "kronicle-lite-081",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "retirement surfaced",
+   "delivery": "push",
+   "bytes": {
+    "touch": {
+     "mean": 3599,
+     "max": 3600,
+     "tokens_mean": 900
+    },
+    "read": {
+     "mean": 3889,
+     "max": 3900,
+     "tokens_mean": 973
+    }
+   },
+   "latency_ms": {
+    "touch": {
+     "n": 20,
+     "p50": 399.4,
+     "p95": 1475.9,
+     "max": 1661.3
+    },
+    "read": {
+     "n": 20,
+     "p50": 71.9,
+     "p95": 1015.3,
+     "max": 1578.2
+    }
+   },
+   "flags": {
+    "served": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "noticed": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 121305
+  },
+  "S7|kronicle-lite-080": {
+   "scenario": "S7",
+   "title": "Benign-edit noise (must NOT alarm; false-positive control)",
+   "arm": "kronicle-lite-080",
+   "n": 20,
+   "yes": 10,
+   "partial": 0,
+   "no": 10,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 10,
+    "n": 20,
+    "p": 0.5,
+    "wilson": {
+     "lo": 0.2992980081982123,
+     "hi": 0.7007019918017877
+    },
+    "exact": {
+     "lo": 0.2719578495603854,
+     "hi": 0.7280421504396144
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 10,
+    "n": 20,
+    "p": 0.5,
+    "wilson": {
+     "lo": 0.2992980081982123,
+     "hi": 0.7007019918017877
+    },
+    "exact": {
+     "lo": 0.2719578495603854,
+     "hi": 0.7280421504396144
+    }
+   },
+   "score": 0.5,
+   "verdict": "mixed",
+   "reason": "quiet on whitespace_trim",
+   "delivery": "push",
+   "bytes": {
+    "touch": {
+     "mean": 1608,
+     "max": 2416,
+     "tokens_mean": 402
+    },
+    "read": {
+     "mean": 1374,
+     "max": 1378,
+     "tokens_mean": 344
+    }
+   },
+   "latency_ms": {
+    "touch": {
+     "n": 20,
+     "p50": 149.7,
+     "p95": 1391.2,
+     "max": 1519.4
+    },
+    "read": {
+     "n": 20,
+     "p50": 23.6,
+     "p95": 62.8,
+     "max": 392.9
+    }
+   },
+   "flags": {
+    "alarm": {
+     "k": 10,
+     "n": 20,
+     "p": 0.5,
+     "wilson": {
+      "lo": 0.2992980081982123,
+      "hi": 0.7007019918017877
+     },
+     "exact": {
+      "lo": 0.2719578495603854,
+      "hi": 0.7280421504396144
+     }
+    },
+    "trivial": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 105345
+  },
+  "S7note|kronicle-lite-080": {
+   "scenario": "S7note",
+   "title": "Benign-edit noise (must NOT alarm; false-positive control)",
+   "arm": "kronicle-lite-080",
+   "n": 20,
+   "yes": 10,
+   "partial": 0,
+   "no": 10,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 10,
+    "n": 20,
+    "p": 0.5,
+    "wilson": {
+     "lo": 0.2992980081982123,
+     "hi": 0.7007019918017877
+    },
+    "exact": {
+     "lo": 0.2719578495603854,
+     "hi": 0.7280421504396144
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 10,
+    "n": 20,
+    "p": 0.5,
+    "wilson": {
+     "lo": 0.2992980081982123,
+     "hi": 0.7007019918017877
+    },
+    "exact": {
+     "lo": 0.2719578495603854,
+     "hi": 0.7280421504396144
+    }
+   },
+   "score": 0.5,
+   "verdict": "mixed",
+   "reason": "quiet on whitespace_trim",
+   "delivery": "push",
+   "bytes": {
+    "touch": {
+     "mean": 2217,
+     "max": 3090,
+     "tokens_mean": 555
+    },
+    "read": {
+     "mean": 1373,
+     "max": 1378,
+     "tokens_mean": 344
+    }
+   },
+   "latency_ms": {
+    "touch": {
+     "n": 20,
+     "p50": 190.1,
+     "p95": 450,
+     "max": 650.7
+    },
+    "read": {
+     "n": 20,
+     "p50": 36.5,
+     "p95": 76.5,
+     "max": 112.4
+    }
+   },
+   "flags": {
+    "alarm": {
+     "k": 10,
+     "n": 20,
+     "p": 0.5,
+     "wilson": {
+      "lo": 0.2992980081982123,
+      "hi": 0.7007019918017877
+     },
+     "exact": {
+      "lo": 0.2719578495603854,
+      "hi": 0.7280421504396144
+     }
+    },
+    "trivial": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 88772
+  },
+  "S7|kronicle-lite-081": {
+   "scenario": "S7",
+   "title": "Benign-edit noise (must NOT alarm; false-positive control)",
+   "arm": "kronicle-lite-081",
+   "n": 20,
+   "yes": 6,
+   "partial": 0,
+   "no": 14,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 6,
+    "n": 20,
+    "p": 0.3,
+    "wilson": {
+     "lo": 0.1454772448676043,
+     "hi": 0.5189728183535235
+    },
+    "exact": {
+     "lo": 0.11893159040552059,
+     "hi": 0.5427891822766999
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 6,
+    "n": 20,
+    "p": 0.3,
+    "wilson": {
+     "lo": 0.1454772448676043,
+     "hi": 0.5189728183535235
+    },
+    "exact": {
+     "lo": 0.11893159040552059,
+     "hi": 0.5427891822766999
+    }
+   },
+   "score": 0.3,
+   "verdict": "mixed",
+   "reason": "quiet on whitespace_trim",
+   "delivery": "push",
+   "bytes": {
+    "touch": {
+     "mean": 1812,
+     "max": 2454,
+     "tokens_mean": 453
+    },
+    "read": {
+     "mean": 1374,
+     "max": 1378,
+     "tokens_mean": 344
+    }
+   },
+   "latency_ms": {
+    "touch": {
+     "n": 20,
+     "p50": 70.5,
+     "p95": 276.8,
+     "max": 970.6
+    },
+    "read": {
+     "n": 20,
+     "p50": 22.6,
+     "p95": 572.6,
+     "max": 811.9
+    }
+   },
+   "flags": {
+    "alarm": {
+     "k": 14,
+     "n": 20,
+     "p": 0.7,
+     "wilson": {
+      "lo": 0.4810271816464765,
+      "hi": 0.8545227551323956
+     },
+     "exact": {
+      "lo": 0.45721081772329986,
+      "hi": 0.8810684095944794
+     }
+    },
+    "trivial": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 68248
+  },
+  "S7note|kronicle-lite-081": {
+   "scenario": "S7note",
+   "title": "Benign-edit noise (must NOT alarm; false-positive control)",
+   "arm": "kronicle-lite-081",
+   "n": 20,
+   "yes": 6,
+   "partial": 0,
+   "no": 14,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 6,
+    "n": 20,
+    "p": 0.3,
+    "wilson": {
+     "lo": 0.1454772448676043,
+     "hi": 0.5189728183535235
+    },
+    "exact": {
+     "lo": 0.11893159040552059,
+     "hi": 0.5427891822766999
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 6,
+    "n": 20,
+    "p": 0.3,
+    "wilson": {
+     "lo": 0.1454772448676043,
+     "hi": 0.5189728183535235
+    },
+    "exact": {
+     "lo": 0.11893159040552059,
+     "hi": 0.5427891822766999
+    }
+   },
+   "score": 0.3,
+   "verdict": "mixed",
+   "reason": "quiet on whitespace_trim",
+   "delivery": "push",
+   "bytes": {
+    "touch": {
+     "mean": 2506,
+     "max": 3151,
+     "tokens_mean": 627
+    },
+    "read": {
+     "mean": 1373,
+     "max": 1378,
+     "tokens_mean": 344
+    }
+   },
+   "latency_ms": {
+    "touch": {
+     "n": 20,
+     "p50": 101.2,
+     "p95": 224.1,
+     "max": 714.9
+    },
+    "read": {
+     "n": 20,
+     "p50": 19.6,
+     "p95": 75,
+     "max": 76.3
+    }
+   },
+   "flags": {
+    "alarm": {
+     "k": 14,
+     "n": 20,
+     "p": 0.7,
+     "wilson": {
+      "lo": 0.4810271816464765,
+      "hi": 0.8545227551323956
+     },
+     "exact": {
+      "lo": 0.45721081772329986,
+      "hi": 0.8810684095944794
+     }
+    },
+    "trivial": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 56420
+  },
+  "S8|kronicle-lite-080": {
+   "scenario": "S8",
+   "title": "Moved section (identity must survive)",
+   "arm": "kronicle-lite-080",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "reorder: identity survived quietly",
+   "delivery": "push",
+   "bytes": {
+    "touch": {
+     "mean": 1042,
+     "max": 1175,
+     "tokens_mean": 261
+    },
+    "read": {
+     "mean": 1386,
+     "max": 1402,
+     "tokens_mean": 347
+    }
+   },
+   "latency_ms": {
+    "touch": {
+     "n": 20,
+     "p50": 81.9,
+     "p95": 1353.8,
+     "max": 1667.5
+    },
+    "read": {
+     "n": 20,
+     "p50": 19.9,
+     "p95": 47.7,
+     "max": 82.5
+    }
+   },
+   "flags": {
+    "retrievable": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "falseAlarm": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 76058
+  },
+  "S8|kronicle-lite-081": {
+   "scenario": "S8",
+   "title": "Moved section (identity must survive)",
+   "arm": "kronicle-lite-081",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "reorder: identity survived quietly",
+   "delivery": "push",
+   "bytes": {
+    "touch": {
+     "mean": 1042,
+     "max": 1175,
+     "tokens_mean": 261
+    },
+    "read": {
+     "mean": 1386,
+     "max": 1402,
+     "tokens_mean": 347
+    }
+   },
+   "latency_ms": {
+    "touch": {
+     "n": 20,
+     "p50": 85.6,
+     "p95": 1649.1,
+     "max": 1779.2
+    },
+    "read": {
+     "n": 20,
+     "p50": 19.5,
+     "p95": 57,
+     "max": 78.3
+    }
+   },
+   "flags": {
+    "retrievable": {
+     "k": 20,
+     "n": 20,
+     "p": 1,
+     "wilson": {
+      "lo": 0.8388748419471806,
+      "hi": 1
+     },
+     "exact": {
+      "lo": 0.8315665290168521,
+      "hi": 1
+     }
+    },
+    "falseAlarm": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 83901
+  },
+  "S11|kronicle-lite-080": {
+   "scenario": "S11",
+   "title": "Cross-project leak (two repos sharing a store)",
+   "arm": "kronicle-lite-080",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "isolated",
+   "delivery": "push",
+   "bytes": {
+    "touch": {
+     "mean": 1488,
+     "max": 1493,
+     "tokens_mean": 372
+    },
+    "read": {
+     "mean": 1373,
+     "max": 1378,
+     "tokens_mean": 344
+    },
+    "nextSession": {
+     "mean": 80,
+     "max": 80,
+     "tokens_mean": 20
+    }
+   },
+   "latency_ms": {
+    "touch": {
+     "n": 20,
+     "p50": 95.1,
+     "p95": 246.1,
+     "max": 1169.4
+    },
+    "read": {
+     "n": 20,
+     "p50": 34.2,
+     "p95": 127.9,
+     "max": 433.2
+    },
+    "nextSession": {
+     "n": 20,
+     "p50": 485.8,
+     "p95": 692.3,
+     "max": 719.5
+    }
+   },
+   "flags": {
+    "leak": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "labeled": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "falseRetraction": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 167832
+  },
+  "S11|kronicle-lite-081": {
+   "scenario": "S11",
+   "title": "Cross-project leak (two repos sharing a store)",
+   "arm": "kronicle-lite-081",
+   "n": 20,
+   "yes": 20,
+   "partial": 0,
+   "no": 0,
+   "na": 0,
+   "errors": 0,
+   "yes_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "at_least_partial_rate": {
+    "k": 20,
+    "n": 20,
+    "p": 1,
+    "wilson": {
+     "lo": 0.8388748419471806,
+     "hi": 1
+    },
+    "exact": {
+     "lo": 0.8315665290168521,
+     "hi": 1
+    }
+   },
+   "score": 1,
+   "verdict": "yes",
+   "reason": "isolated",
+   "delivery": "push",
+   "bytes": {
+    "touch": {
+     "mean": 1488,
+     "max": 1493,
+     "tokens_mean": 372
+    },
+    "read": {
+     "mean": 1373,
+     "max": 1378,
+     "tokens_mean": 344
+    },
+    "nextSession": {
+     "mean": 80,
+     "max": 80,
+     "tokens_mean": 20
+    }
+   },
+   "latency_ms": {
+    "touch": {
+     "n": 20,
+     "p50": 98.7,
+     "p95": 164.1,
+     "max": 184.4
+    },
+    "read": {
+     "n": 20,
+     "p50": 31.5,
+     "p95": 59.4,
+     "max": 103.9
+    },
+    "nextSession": {
+     "n": 20,
+     "p50": 543.7,
+     "p95": 779.2,
+     "max": 784.7
+    }
+   },
+   "flags": {
+    "leak": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "labeled": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    },
+    "falseRetraction": {
+     "k": 0,
+     "n": 20,
+     "p": 0,
+     "wilson": {
+      "lo": 0,
+      "hi": 0.16112515805281938
+     },
+     "exact": {
+      "lo": 0,
+      "hi": 0.16843347098314781
+     }
+    }
+   },
+   "error_samples": [],
+   "wall_ms": 172914
+  }
+ }
+}
