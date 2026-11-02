@@ -141,3 +141,9 @@ Passed: kl upgrades 0.5/0.6/0.7→0.8 incl. symlinked paths; sl up/downgrades 0.
 
 ### Round 2 status
 All six tracks reported. Totals: S1 9 (A2-01, A2-02, H2-01, H2-10, R2-01, R2-02, R2-04, R2-05, L2-01), all routed to fixers. Exit rule needs a round 3 on the merged fixes.
+
+### Fix status (2026-11-01 evening)
+- sea-lite 0.6.1 merged (831d143): kl ^0.8.0, H2-23, P2-03, P2-05 (sl), P2-07, P2-12, P2-13, C2-02, L2-06 wording. F15 was already fixed in 0.6.0. Deferred to 0.6.2: C2-06, C2-07.
+- Round-3 lead: `sl-cli-tokens.sh 40` — 1 of 4 runs had one claim process crash inside a SQLite transaction under load (cause not captured).
+- kronicle-lite 0.8.1 merged so far: anchor client (#4, e256ef4), shims (#5, 616ce0d). Pending: fix-0.8.1 (#3, rebasing), fix-lineage-integrity, fix-protocol, fix-scale, fix-anchor-paging.
+- mcp-catalog-snap 0.1.1 merged (e580462); isokron-plugins docs-clients merged (6880f88).
