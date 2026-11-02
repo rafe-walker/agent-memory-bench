@@ -101,3 +101,20 @@ Full file: hard-ret `stress/findings/retractions.md` (3eb7bd0, branch hardening-
 
 ### Track 5 — live agents (304 runs, $3.56): 1 S1, 4 S2, 3 S3, 3 S4 (L2-01..11)
 Full file: agent-memory-bench branch hardening-live `results/hardening-live/FINDINGS.md`. S1: L2-01 pulse returns `integrity: null` + "proceed" on a corrupted store → Haiku deployed from tampered store 5/6 (fixing, fix-lineage-integrity). S2: L2-02 projection tamper invisible to cc-anchor; L2-03 malformed store fails open in MCP, hooks and shim (12/12 deployed); L2-04 gate disarms when actor not found; L2-05 gate shared across subagents. All routed to fix-0.8.1 / fix-lineage-integrity / fix-shims / cc-anchor fix-0.5.1 / sea-lite fix-0.6.1.
+
+### Track 4 — protocol and real clients: 0 S1, 1 S2, 6 S3, 9 S4 (P2-01..16)
+Full file: hard-proto `stress/findings/protocol.md` (633a5c0, branch hardening-protocol). Tested npm kl 0.8.0, sl 0.6.0, mcp-catalog-snap 0.1.0; 180/180 real-client tool calls passed (TS SDK v1/v2, Python mcp 1.x/2.x, stdio + HTTP).
+
+| id | sev | where | one-line | status |
+|---|---|---|---|---|
+| P2-01 | S2 | kl shims × client docs | Cursor/Copilot snippets set a project data dir; shim checks ~/.kronicle-lite → push after change lands silently | fixing (fix-shims + isokron-plugins docs-clients) |
+| P2-02 | S3 | kl put_document | response echoes every block → >10 MiB kills TS v2 client after commit | fixing (kl fix-protocol) |
+| P2-03 | S3 | sl sea_list/sea_history | no response budget → 38 MiB, client dies | fixing (sl fix-0.6.1) |
+| P2-04 | S3 | kl schemas | get_system_state fails its own full output schema (`integrity.seq`) | fixing (fix-protocol) |
+| P2-05 | S3 | both (F11) | >10 MiB frame → exit 0, no error; now reachable by a schema-valid put | fixing (both) |
+| P2-06 | S3 | both (SDK stdio) | parse errors / BOM / batch never answered → client hangs | fixing (both, SDK limits documented) |
+| P2-07 | S3 | sl serve --http | bearer-file first-start race | fixing (fix-0.6.1) |
+| P2-08..14 | S4 | kl, sl | HTTP vs stdio size limit, Host userinfo 500, wrong error codes, pre-initialize calls run, token reload, 0644 token file, uuid/seq validation | fixing (fix-protocol, fix-0.6.1) |
+| P2-15 | S4 | mcp-catalog-snap | sha mismatch only warns; emptied snapshot passes with --allow-additions | fixing (fix-0.1.1) |
+| P2-16 | S4 | docs | no Hermes config; --actor docs disagree | fixing (docs-clients) |
+| F12, F14 | S3/S4 | kl (round 1) | read-only data dir; export EPIPE | fixing (fix-protocol) |
