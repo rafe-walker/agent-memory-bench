@@ -27,16 +27,16 @@ rm -f .mcp-catalog.json
 $S check >/dev/null 2>&1; res "no config and no args" $? "2"
 python3 -c "
 import json; p='.mcp-catalog/kronicle-lite.json'; d=json.load(open(p)); d['catalog']['tools'][0]['description']+=' X'; open(p,'w').write(json.dumps(d))"
-$S check -- "$KL" serve >/dev/null 2>&1; res "hand-edited snapshot (catalog edited, stale sha256)" $? "1 2"
+$S check -- "$KL" serve >/dev/null 2>&1; res "hand-edited snapshot (catalog edited, stale sha256)" $? "1 2 3"
 cp k1.json .mcp-catalog/kronicle-lite.json
 python3 -c "
 import json; p='.mcp-catalog/kronicle-lite.json'; d=json.load(open(p)); d['catalog']['tools']=[]; open(p,'w').write(json.dumps(d))"
-$S check -- "$KL" serve >/dev/null 2>&1; res "snapshot with tools emptied by hand (sha256 left stale)" $? "1 2"
-$S check --allow-additions -- "$KL" serve >/dev/null 2>&1; res "  same, --allow-additions (every live tool is an 'addition')" $? "1 2"
+$S check -- "$KL" serve >/dev/null 2>&1; res "snapshot with tools emptied by hand (sha256 left stale)" $? "1 2 3"
+$S check --allow-additions -- "$KL" serve >/dev/null 2>&1; res "  same, --allow-additions (every live tool is an 'addition')" $? "1 2 3"
 cp k1.json .mcp-catalog/kronicle-lite.json
 python3 -c "
 import json; p='.mcp-catalog/kronicle-lite.json'; d=json.load(open(p)); d['sha256']='0'*64; open(p,'w').write(json.dumps(d))"
-out=$($S check -- "$KL" serve 2>&1); c=$?; res "snapshot whose sha256 field is wrong (catalog intact)" $c "1 2" "$(echo "$out" | grep -i -m1 sha || echo '(no mention of sha256)')"
+out=$($S check -- "$KL" serve 2>&1); c=$?; res "snapshot whose sha256 field is wrong (catalog intact)" $c "1 2 3" "$(echo "$out" | grep -i -m1 sha || echo '(no mention of sha256)')"
 cp k1.json .mcp-catalog/kronicle-lite.json
 $S check -- false >/dev/null 2>&1; res "server command exits 1" $? "2"
 $S check -- sh -c 'echo not-json; sleep 1' >/dev/null 2>&1; res "server prints garbage then exits" $? "2"
