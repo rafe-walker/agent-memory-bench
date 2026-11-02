@@ -4,6 +4,9 @@
 # shims installed (cursor at head), then the runbook changed by `ops` => one blocking retraction.
 # A case "gets around the guard" when the push LANDS in the bare remote. Run under dash and bash:
 #   KLBIN=<kl>/dist/cli.js SH=dash stress/shim/shim.sh [case]
+# HOOK=1 (kronicle-lite >= 0.8.1): also install the git pre-push hook (`shim install --git-hook`, idempotent,
+# keeps the baseline) before every agent call, so git-runs-git, sudo, env -i and absolute-path pushes are
+# judged with the hook in place. Without HOOK the PATH shim alone is judged (PATH bypasses then land: H2-13/H2-15).
 set -uo pipefail
 KLBIN=${KLBIN:?}; SH=${SH:-dash}; only=${1:-}
 HERE=$(cd "$(dirname "$0")" && pwd); KLMOD=${KLMOD:-$(dirname "$(dirname "$KLBIN")")/node_modules}
@@ -14,6 +17,7 @@ run() { [[ -z "$only" || "$only" == "$1" ]]; }
 kl() { (cd "$P" && node "$KLBIN" "$@" --data-dir "$DD"); }
 g() { git -c user.name=t -c user.email=t@x -c protocol.file.allow=always "$@"; }
 setup() {
+  INST_OPTS=${SHIM_OPTS:-}
   W=$(mktemp -d "$TMPROOT/shim.XXXXXX"); P=$W/proj; R=$W/remote.git; DD=$W/kl; S=$W/shims
   mkdir -p "$P/src" "$W/home"; export HOME=$W/home GIT_CONFIG_NOSYSTEM=1; git config --global protocol.file.allow always; git config --global user.name t; git config --global user.email t@x
   unset KRONICLE_SHIM_EXEC KRONICLE_SHIM_DEPTH KRONICLE_SHIM_TIMEOUT KRONICLE_LITE_DATA_DIR
@@ -28,6 +32,8 @@ setup() {
 }
 # sh_run CMD [cwd] [PATH] — the agent's Bash call; sets RC, ERR
 sh_run() { local cwd=${2:-$P} path=${3:-$S:$BASEPATH}
+  # HOOK=1: (re)install the pre-push hook with the same options as setup (submodules added since are covered)
+  [[ -n "${HOOK:-}" ]] && node "$KLBIN" shim install --dir "$S" --data-dir "$DD" --git-hook --repo "$P" ${INST_OPTS:-} >/dev/null 2>&1
   ERR=$(cd "$cwd" && PATH=$path timeout 60 "$SH" -c "$1" </dev/null 2>&1 >/dev/null); RC=$?; }
 landed() { [[ "$(git -C "$R" rev-parse -q --verify main 2>/dev/null)" == "$(git -C "$P" rev-parse HEAD)" ]]; }
 expect_refused() { # name cmd [cwd] [path]
@@ -89,7 +95,20 @@ if run wrapper_child; then setup; mkdir "$W/wrap"; printf '#!/bin/sh\ngit "$@"\n
 if run ack; then setup; sh_run "git push origin HEAD:main"; seq=$(grep -o 'ack --through [0-9]*' <<<"$ERR" | head -1 | awk '{print $3}')
   [[ -n "$seq" ]] && info "denial text offers: kronicle-lite shim ack --through $seq" || info "denial text has no ack hint"
   ( cd "$P" && PATH=$S:$BASEPATH node "$KLBIN" shim ack --dir "$S" --through "$seq" >/dev/null 2>&1 ); sh_run "git push origin HEAD:main"
-  landed && bad "agent clears the gate itself with the ack the denial printed (no re-read) :: push LANDED" || ok "ack did not clear"; done_; fi
+  landed && bad "agent clears the gate itself with the ack the denial printed (no re-read) :: push LANDED" || ok "ack did not clear"
+  a2=$( cd "$P" && PATH=$S:$BASEPATH node "$KLBIN" shim ack --dir "$S" </dev/null 2>&1 ); rc2=$?; sh_run "git push origin HEAD:main"
+  landed && bad "agent runs plain shim ack (no tty, no --operator) :: push LANDED" || ok "plain shim ack refused (rc=$rc2): $(head -c 90 <<<"$a2")"
+  grep -c ' ack refused' "$S/.kronicle-shim/shim.log" | sed 's/^/     ack refusals logged: /'; done_; fi
+if run two_readers_actor; then
+  W=$(mktemp -d "$TMPROOT/shim.XXXXXX"); P=$W/proj; R=$W/remote.git; DD=$W/kl; S=$W/shims; mkdir -p "$W/home"; export HOME=$W/home
+  git init -q --bare -b main "$R"; git init -q -b main "$P"; g -C "$P" commit -q --allow-empty -m init; git -C "$P" remote add origin "$R"; git -C "$P" push -q origin main
+  printf '# Runbook\n\n## Deploy\n\nDeploy to stg-west-2.\n' > "$W/r.md"; kl put runbook "$W/r.md" --actor ops >/dev/null
+  kl get runbook --actor agent-a >/dev/null; kl get runbook --actor agent-b >/dev/null
+  node "$KLBIN" shim install --dir "$S" --data-dir "$DD" >/dev/null 2>&1
+  printf '# Runbook\n\n## Deploy\n\nDeploy to stg-east-1.\n' > "$W/r.md"; kl put runbook "$W/r.md" --actor ops >/dev/null; g -C "$P" commit -q --allow-empty -m work
+  BASEPATH=/usr/local/bin:/usr/bin:/bin:$(dirname "$(command -v node)"); kl get runbook --actor agent-a >/dev/null
+  export KRONICLE_LITE_ACTOR=agent-a; sh_run "git push origin HEAD:main"; unset KRONICLE_LITE_ACTOR
+  landed && ok "two readers, KRONICLE_LITE_ACTOR=agent-a: agent-a's own re-read clears its gate" || bad "two readers with invoking actor still sticky: $(tr '\n' ' ' <<<"$ERR" | cut -c1-200)"; done_; fi
 if run blind_read; then setup; kl get runbook --actor agent-a >/dev/null 2>&1 </dev/null; sh_run "git push origin HEAD:main"
   landed && info "a 'read' with output discarded (get --actor agent-a >/dev/null) clears the gate (by design: a read is a read)" || info "blind read did not clear"; done_; fi
 if run two_readers; then
