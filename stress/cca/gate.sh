@@ -15,6 +15,9 @@ kl() { (cd "$P" && node "$KLBIN" "$@" --data-dir "$DD"); }
 setup() {
   W=$(mktemp -d "$TMPROOT/gate.XXXXXX"); P=$W/proj; DD=$W/kl; mkdir -p "$P/.claude" "$W/home"; git -C "$P" init -q
   export HOME=$W/home CLAUDE_PROJECT_DIR=$P CC_ANCHOR_KRONICLE_LITE_BIN=$KLBIN CC_ANCHOR_SEA=0
+  # a CLI wrapper the cases can slow down / break: touch $W/slow (sleep 5 s) or $W/broken (exit 1)
+  printf '#!/bin/bash\n[ -e %q/slow ] && sleep 5\n[ -e %q/broken ] && { echo "{oops"; exit 1; }\nexec node %q "$@"\n' "$W" "$W" "$KLBIN" > "$W/klwrap"; chmod +x "$W/klwrap"
+  [[ -n "${WRAP:-}" ]] && export CC_ANCHOR_KRONICLE_LITE_BIN=$W/klwrap
   unset CC_ANCHOR_KRONICLE_ACTOR CC_ANCHOR_PULSE_MODE KRONICLE_LITE_ACTOR KRONICLE_LITE_DATA_DIR
   local f=${MCP:-'{mcpServers:{"kronicle-lite":{command:"node",args:[$kl,"serve","--data-dir",$dd,"--actor","agent-a"]}}}'}
   jq -n --arg kl "$KLBIN" --arg dd "$DD" "$f" > "${MCPFILE:-$P/.mcp.json}"
@@ -100,5 +103,28 @@ if run retry; then setup; pulse "git push" >/dev/null; expect_deny "plain retry 
 if run compact; then setup; hook session-start.sh SessionStart "" '{"source":"compact"}' >/dev/null; expect_deny "after compaction SessionStart" "git push"; done_; fi
 if run resume; then setup; hook session-start.sh SessionStart "" '{"source":"resume"}' >/dev/null; expect_deny "after resume SessionStart" "git push"; done_; fi
 if run clear; then setup; hook session-start.sh SessionStart "" '{"source":"clear","session_id":"sess-0002-bbbb"}' >/dev/null; SID=sess-0002-bbbb expect_deny "after /clear (new session id)" "git push"; done_; fi
+
+# --- 0.5.0 remaining: back-off on cached pending, offline advisory, integrity under the gate, warn
+if run backoff; then WRAP=1 setup  # klpend cached with count 0 (before the change); store now has pending 1
+  touch "$W/slow"; t0=$(date +%s%N); hook post-tool-use.sh PostToolUse >/dev/null; t=$(( ($(date +%s%N)-t0)/1000000 )); rm -f "$W/slow"
+  echo "     one slow read: post-tool-use ${t} ms (push_timeout 3 s); store healthy again, pending(agent-a)=$(pend)"
+  expect_deny "deploy within 60 s of ONE slow read (store healthy again, pending 1)" "git push"; done_; fi
+if run offline; then WRAP=1 setup; touch "$W/broken"; n=0; first=0
+  for i in $(seq 1 30); do o=$(hook post-tool-use.sh PostToolUse); if [[ "$o" == *"offline for"* ]]; then n=$((n+1)); (( first )) || first=$i; fi; done
+  [[ $n == 1 ]] && ok "feed-offline advisory given once (at call $first of 30)" || bad "feed-offline advisory given $n times in 30 broken calls"
+  o=$(pulse "git push"); [[ "$o" != *deny* ]] && ok "pulse fails open while the CLI is broken (by design)" || bad "pulse denied with a broken CLI"; done_; fi
+for m in deny warn; do if run "integrity_$m"; then setup; [[ $m == warn ]] && export CC_ANCHOR_PULSE_MODE=warn
+  NODE_PATH=${KLMOD:-$(dirname "$(dirname "$KLBIN")")/node_modules} node "$(dirname "$0")/../kl/tamper-event.cjs" "$DD" valid stg-east-1 stg-evil-9 >/dev/null
+  kl get runbook --actor agent-a >/dev/null 2>&1   # the agent re-reads: pending would be 0
+  o=$(pulse "git push"); unset CC_ANCHOR_PULSE_MODE
+  if [[ $m == deny ]]; then [[ "$o" == *deny* && "$o" == *INTEGRITY* ]] && ok "tampered store (agent re-read) denied with the integrity text" || bad "tampered store not denied: ${o:0:120}"
+  else [[ "$o" == *INTEGRITY* ]] && ok "warn mode + tampered store: warned (documented: cc-anchor warn only warns)" || bad "warn mode + tampered store: nothing said: ${o:0:120}"; fi; done_; fi; done
+if run warn; then setup; export CC_ANCHOR_PULSE_MODE=warn; o=$(pulse "git push"); unset CC_ANCHOR_PULSE_MODE
+  [[ "$o" != *'"deny"'* && "$o" == *"not re-read"* ]] && ok "warn mode: allowed with the pending items as context" || bad "warn mode: ${o:0:140}"; done_; fi
+if run substop_pending; then READER=sub-1 setup; hook subagent-start.sh SubagentStart ag-1 >/dev/null
+  hook post-tool-use.sh PostToolUse ag-1 '{"tool_name":"mcp__kronicle-lite__recall","tool_input":{"query":"deploy","actor_id":"sub-1"}}' >/dev/null
+  hook subagent-stop.sh SubagentStop ag-1 >/dev/null; left=$(ls "$P/.claude/cc-anchor/push" | grep -c 'a-ag-1' || true)
+  [[ $left == 0 ]] && ok "SubagentStop drops the subagent's files (incl. .actor)" || bad "SubagentStop left $left files: $(ls "$P/.claude/cc-anchor/push" | grep 'a-ag-1' | tr '\n' ' ')"
+  hook subagent-start.sh SubagentStart ag-1 >/dev/null; PA=sub-1 expect_deny "agent_id reused after stop, first call is a deploy (actor sub-1 still pending)" "git push" ag-1; done_; fi
 
 echo; echo "gate: pass=$pass fail=$fail"; exit $(( fail > 0 ))

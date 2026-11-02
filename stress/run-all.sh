@@ -26,6 +26,13 @@ step sl-http           env BIN="$SL/dist/cli.js" KIND=sl PORT=7496 bash "$HERE/k
 step cca-pulse-corpus  env CCA="$CCA" bash "$HERE/cca/pulse-corpus.sh"
 step cca-push          env CCA="$CCA" KLMOD="$KL/node_modules" bash "$HERE/cca/push.sh"
 step cca-bash-guard    env CCA="$CCA_NEXT" SLBIN="$SL/dist/cli.js" bash "$HERE/cca/bash-guard.sh"
+step cca-pulse-corpus2  env CCA="$CCA" bash "$HERE/cca/pulse-corpus2.sh"
+step cca-gate          env CCA="$CCA" KLBIN="$KLBIN" KLMOD="$KL/node_modules" bash "$HERE/cca/gate.sh"
+step cca-bash-guard2   env CCA="$CCA_NEXT" SLBIN="$SL/dist/cli.js" bash "$HERE/cca/bash-guard2.sh"
+step cca-scope-guard   env CCA="$CCA" SLBIN="$SL/dist/cli.js" bash "$HERE/cca/scope-guard.sh"
+step sl-scope2         env SLBIN="$SL/dist/cli.js" bash "$HERE/sl/scope2.sh"
+step shim-dash         env KLBIN="$KLBIN" SH=dash bash "$HERE/shim/shim.sh"
+step shim-bash         env KLBIN="$KLBIN" SH=bash bash "$HERE/shim/shim.sh"
 if [[ " $* " == *" --live "* ]]; then
   step live-hidden  env CCA="$CCA_NEXT" bash "$HERE/live/run.sh" hidden 4
   step live-control env CCA="$CCA_NEXT" bash "$HERE/live/run.sh" control 4
