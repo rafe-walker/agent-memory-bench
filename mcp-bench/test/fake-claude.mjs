@@ -2,7 +2,7 @@
 // Test double for `claude -p --output-format stream-json`. Never calls a model.
 // Behaviour comes from the agent env (set through a task's env:), so it also proves the runner
 // scrubs everything else:
-//   FAKE_CLAUDE_MODE   ok (default) | dup (writes the file twice) | skip | error | hang | crash | flood | unicode | orphan
+//   FAKE_CLAUDE_MODE   ok (default) | dup (writes the file twice) | skip | error | hang | crash | flood | unicode | orphan | leak
 //   FAKE_PID_FILE      write the fake's pid here (signal tests)
 //   FAKE_TOKENS        input tokens per turn (default 1000)
 //   FAKE_CLAUDE_LOG    append {argv, env_keys, cwd} as one JSON line
@@ -43,6 +43,13 @@ if (mode === 'flood') {
   emit({ type: 'assistant', message: { id: 'msg_1', model: arg('--model'), content: [{ type: 'tool_use', id: 'tu_1', name: 'mcp__fake__write', input: {} }], usage: { input_tokens: 1 } } });
   emit({ type: 'user', message: { content: [{ type: 'tool_result', tool_use_id: 'tu_1', content: t }] } });
   emit({ type: 'result', subtype: 'success', is_error: false, num_turns: 1, total_cost_usd: 0, usage: { input_tokens: 1 }, result: t });
+} else if (mode === 'leak') {
+  // a server/agent that echoes its credential back (error message, tool result, final text)
+  const k = process.env.FAKE_SECRET;
+  process.stderr.write(`MCP auth failed with key ${k}\n`);
+  emit({ type: 'assistant', message: { id: 'msg_1', content: [{ type: 'tool_use', id: 'tu_1', name: 'mcp__fake__write', input: { k } }], usage: { input_tokens: 1 } } });
+  emit({ type: 'user', message: { content: [{ type: 'tool_result', tool_use_id: 'tu_1', content: `401 for Bearer ${k}` }] } });
+  emit({ type: 'result', subtype: 'success', is_error: false, num_turns: 1, total_cost_usd: 0, usage: { input_tokens: 1 }, result: `the key is ${k}` });
 } else if (mode === 'hang') { setTimeout(() => {}, 60_000); } else {
   const u1 = { input_tokens: base, cache_read_input_tokens: 200, cache_creation_input_tokens: 50, output_tokens: 40 };
   const u2 = { input_tokens: base + 100, cache_read_input_tokens: 300, cache_creation_input_tokens: 0, output_tokens: 20 };
