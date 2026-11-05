@@ -2,3 +2,5 @@ node_modules/
 .arms/
 track-a/.work/
 *.log
+mcp-bench/results/
+__pycache__/
