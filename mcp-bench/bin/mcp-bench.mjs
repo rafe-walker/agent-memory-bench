@@ -34,6 +34,10 @@ const seedOf = (s) => {
   return Number(s);
 };
 
+// why: the agent is spawned with cwd = its work dir, so a relative path (./claude, bin/claude) must
+// be resolved against the caller's cwd first; a bare name is still looked up on PATH.
+const binPath = (b) => (b.includes('/') && !path.isAbsolute(b) ? path.resolve(b) : b);
+
 function loadAll(files) {
   if (!files.length) throw new Error('no task files given');
   const tasks = [], errors = [];
@@ -150,7 +154,7 @@ async function main(argv) {
       purpose: v.purpose || null, arms: list(v.arms), n, seed: seedOf(v.seed),
       model: v.model, models: list(v.models), maxTurns: num(v['max-turns'], 'max-turns', true),
       maxBudgetUsd: num(v['max-budget-usd'], 'max-budget-usd'), maxTotalUsd: num(v['max-total-usd'], 'max-total-usd'),
-      out: v.out, claudeBin: v['claude-bin'] || process.env.MCP_BENCH_CLAUDE || 'claude', dryRun: !!v['dry-run'],
+      out: v.out, claudeBin: binPath(v['claude-bin'] || process.env.MCP_BENCH_CLAUDE || 'claude'), dryRun: !!v['dry-run'],
     });
   }
   console.error(USAGE);
