@@ -6,6 +6,7 @@ import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import zlib from 'node:zlib';
 import { ROOT, FAKE, tmpdir, makeTask, readJsonl } from './helpers.mjs';
+import { secretValues, redactor } from '../lib/runner.mjs';
 
 const CLI = path.join(ROOT, 'bin', 'mcp-bench.mjs');
 const SECRET = 'not-a-real-secret-0123456789';
@@ -206,12 +207,36 @@ test('spec: extra_args may not override harness-controlled flags; env may not mo
     [{ arms: { a: { extra_args: ['--dangerously-skip-permissions'] } } }, /extra_args.*--dangerously-skip-permissions/],
     [{ arms: { a: { env: { HOME: '/root' } } } }, /env\.HOME: reserved/],
     [{ env: { CLAUDE_CONFIG_DIR: '/root/.claude' } }, /env\.CLAUDE_CONFIG_DIR: reserved/],
+    // model selection through the env would change the model mid-comparison
+    [{ arms: { a: { env: { ANTHROPIC_DEFAULT_SONNET_MODEL: 'claude-opus-x' } } } }, /env\.ANTHROPIC_DEFAULT_SONNET_MODEL: reserved/],
+    [{ env: { CLAUDE_CODE_SUBAGENT_MODEL: 'opus' } }, /env\.CLAUDE_CODE_SUBAGENT_MODEL: reserved/],
+    [{ env: { ANTHROPIC_MODEL: 'opus' } }, /env\.ANTHROPIC_MODEL: reserved/],
+    [{ arms: { a: { env_passthrough: ['ANTHROPIC_DEFAULT_HAIKU_MODEL'] } } }, /env_passthrough: ANTHROPIC_DEFAULT_HAIKU_MODEL is reserved/],
+    // combined short flags: -pc is -p -c
+    [{ arms: { a: { extra_args: ['-pc'] } } }, /extra_args.*-c is set by the harness/],
+    [{ extra_args: ['-dr=abc'] }, /extra_args.*-r is set by the harness/],
   ]) {
     const r = cli(['validate', makeTask(d, over)]);
     assert.equal(r.code, 1, JSON.stringify(over) + r.out);
     assert.match(r.out, re);
   }
   assert.equal(cli(['validate', makeTask(d, { extra_args: ['--add-dir', '/tmp'] })]).code, 0);
+  assert.equal(cli(['validate', makeTask(d, { extra_args: ['-d'] })]).code, 0, 'a single unreserved short flag is fine');
+});
+
+test('redaction: only credentials, vars marked secret_env and credential-looking names; not plain paths', () => {
+  const env = { ANTHROPIC_API_KEY: 'sk-ant-harness-key-123', DATA_DIR: '/srv/data/bench', RULES_PATH: '/srv/rules.json', MY_TOKEN: 'tok-0123456789', PLAIN: 'marked-secret-value' };
+  const armCfg = { env_passthrough: ['DATA_DIR', 'MY_TOKEN', 'PLAIN'], secret_env: ['PLAIN'], mcp_servers: { x: { command: 'node', args: ['${RULES_PATH}'] } } };
+  const names = [...new Set(secretValues(armCfg, env).map(([k]) => k))].sort();
+  assert.deepEqual(names, ['ANTHROPIC_API_KEY', 'MY_TOKEN', 'PLAIN']);
+  const red = redactor(secretValues(armCfg, env));
+  assert.equal(red('dir /srv/data/bench key tok-0123456789'), 'dir /srv/data/bench key [REDACTED:MY_TOKEN]');
+});
+
+test('spec: secret_env is a known key and merges across top level and arm', () => {
+  const d = tmpdir();
+  const r = cli(['validate', makeTask(d, { secret_env: ['FAKE_SECRET'], arms: { a: { secret_env: ['OTHER_VALUE'] } } })]);
+  assert.equal(r.code, 0, r.out);
 });
 
 test('agent output: multi-byte UTF-8 split across pipe chunks is decoded intact', () => {

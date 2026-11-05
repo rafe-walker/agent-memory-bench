@@ -33,11 +33,17 @@ export function buildClaudeArgs({ prompt, armCfg, model, maxTurns, maxBudgetUsd,
 
 const CREDENTIAL_VARS = ['ANTHROPIC_API_KEY', 'ANTHROPIC_AUTH_TOKEN', 'CLAUDE_CODE_OAUTH_TOKEN'];
 
-/** Values that must never be written: env_passthrough vars, every ${VAR} an MCP config references,
- *  and the harness's own model credentials. Short values (< 8 chars) would redact noise. */
+// why: fail-safe for a secret the spec forgot to list in secret_env; a false positive only redacts.
+const CREDENTIAL_NAME = /KEY|TOKEN|SECRET|PASSW|CREDENTIAL|AUTH|COOKIE/i;
+
+/** Values that must never be written: the harness's own model credentials, every var the spec marks
+ *  secret_env, and any env_passthrough or MCP ${VAR} name that looks like a credential. Plain values
+ *  (paths, URLs) stay readable. Short values (< 8 chars) would redact noise. */
 export function secretValues(armCfg, harnessEnv = process.env) {
-  const names = new Set([...CREDENTIAL_VARS, ...armCfg.env_passthrough]);
-  for (const m of JSON.stringify(armCfg.mcp_servers || {}).matchAll(/\$\{([A-Za-z_][A-Za-z0-9_]*)\}/g)) if (m[1] !== 'TASK_DIR') names.add(m[1]);
+  const names = new Set([...CREDENTIAL_VARS, ...(armCfg.secret_env || [])]);
+  const passed = new Set(armCfg.env_passthrough || []);
+  for (const m of JSON.stringify(armCfg.mcp_servers || {}).matchAll(/\$\{([A-Za-z_][A-Za-z0-9_]*)\}/g)) if (m[1] !== 'TASK_DIR') passed.add(m[1]);
+  for (const k of passed) if (CREDENTIAL_NAME.test(k)) names.add(k);
   const out = [];
   for (const k of names) {
     const v = harnessEnv[k];

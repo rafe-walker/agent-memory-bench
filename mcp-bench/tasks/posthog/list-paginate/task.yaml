@@ -22,6 +22,7 @@ mcp_servers:
     url: https://mcp.posthog.com/mcp
     headers: { Authorization: "Bearer ${POSTHOG_AUDIT_KEY}" }
 env_passthrough: [POSTHOG_AUDIT_KEY]
+secret_env: [POSTHOG_AUDIT_KEY]
 allowed_tools: [mcp__posthog]
 builtin_tools: []
 setup: python3 setup.py
