@@ -254,3 +254,11 @@ test('secrets echoed by the agent, a server, setup or the verifier never reach d
   const rec = JSON.parse(fs.readFileSync(path.join(out, 'results.json'), 'utf8')).tasks[0].records[0];
   assert.match(rec.agent.result_text, /\[REDACTED:FAKE_SECRET\]/);
 });
+
+test('--seed: 0 is its own seed; non-integer or out-of-range seeds are rejected, not silently 1', () => {
+  const d = tmpdir();
+  const task = makeTask(d);
+  const plan = (seed) => cli(['run', task, '--n', '4', '--seed', seed, '--dry-run', '--claude-bin', FAKE]).out.split('\n').filter((l) => /^ {2}\S+ t\d/.test(l)).join('\n');
+  assert.notEqual(plan('0'), plan('1'), 'seed 0 is not seed 1');
+  for (const bad of ['abc', '1.5', '-1', '4294967296']) assert.notEqual(cli(['run', task, '--seed', bad, '--dry-run', '--claude-bin', FAKE]).code, 0, bad);
+});

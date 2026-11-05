@@ -52,3 +52,22 @@ test('renderTemplate fills run vars and state, and refuses unknown variables', (
   assert.equal(renderTemplate('a {{run_tag}} {{ state.n }} {{state.o}}', { run_tag: 'T', state: { n: 3, o: { k: 1 } } }), 'a T 3 {"k":1}');
   assert.throws(() => renderTemplate('{{state.missing}}', { state: {} }), /state\.missing/);
 });
+
+test('fuzz: timeouts that overflow setTimeout, prototype keys, and broader literal-key patterns are rejected', () => {
+  const base = { id: 'x', prompt: 'p', verifier: 'true' };
+  const errs = (o) => validateSpec({ ...base, ...o }, '/tmp').errors.join('\n');
+  assert.match(errs({ timeout_sec: 3000000 }), /timeout_sec/);
+  assert.match(errs({ script_timeout_sec: 1e12 }), /script_timeout_sec/);
+  assert.equal(errs({ timeout_sec: 86400 }), '');
+  assert.match(errs({ max_budget_usd: Infinity }), /max_budget_usd/);
+  assert.match(errs(JSON.parse('{"toString":"x","constructor":"y"}')), /toString: unknown key[\s\S]*constructor: unknown key/);
+  assert.match(errs({ arms: JSON.parse('{"a":{"__proto__":{"x":1}}}') }), /unknown key|expected/);
+  assert.match(errs({ mcp_servers: { s: { url: 'https://x', headers: { Authorization: 'Bearer sk-proj-ABCDEFGHIJKLMNOPQRST' } } } }), /literal secret/);
+  assert.equal(errs({ mcp_servers: { s: { url: 'https://x', headers: { Authorization: 'Bearer ${KEY}' } } } }), '');
+});
+
+test('templates only read own properties of run vars', () => {
+  assert.throws(() => renderTemplate('{{state.constructor}}', { state: {} }), /not set/);
+  assert.throws(() => renderTemplate('{{toString}}', {}), /not set/);
+  assert.equal(renderTemplate('{{state.x}}', { state: { x: '$(id); `rm -rf /`' } }), '$(id); `rm -rf /`');
+});
