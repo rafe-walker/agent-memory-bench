@@ -1,5 +1,6 @@
 // One attempt = setup -> headless claude -> independent verifier -> cleanup (always), in a fresh
 // run dir with an isolated HOME / CLAUDE_CONFIG_DIR and a scrubbed agent environment.
+import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
@@ -172,11 +173,35 @@ export function sideEffects(details) {
   return { duplicates: n('duplicates'), unexpected_mutations: n('unexpected_mutations') };
 }
 
-function readState(file) {
-  try { const s = fs.readFileSync(file, 'utf8').trim(); return s ? JSON.parse(s) : {}; } catch (e) {
-    if (e.code === 'ENOENT') return {};
+function parseState(buf) {
+  try { const s = buf ? buf.toString('utf8').trim() : ''; return s ? JSON.parse(s) : {}; } catch (e) {
     throw new Error(`setup wrote invalid JSON to $BENCH_STATE: ${e.message}`);
   }
+}
+
+// why: the agent runs as the harness's uid with no sandbox, so no path is out of its reach;
+// outDir/.harness only keeps state off the agent's own dirs. Integrity comes from sealing: the
+// runner keeps setup's state bytes and their HMAC under a per-process key that never touches disk,
+// and checks and restores the file before the verifier and cleanup read it.
+const STATE_KEY = crypto.randomBytes(32);
+const readBytes = (f) => { try { return fs.readFileSync(f); } catch (e) { if (e.code === 'ENOENT') return null; throw e; } };
+const macOf = (buf) => (buf === null ? 'absent' : crypto.createHmac('sha256', STATE_KEY).update(buf).digest('hex'));
+export const stateFileOf = (outDir, runName) => path.join(outDir, '.harness', runName, 'state.json');
+
+/** Seal the state file as it is now. check() returns true if it changed since, and restores it. */
+function sealState(file) {
+  const bytes = readBytes(file), mac = macOf(bytes);
+  return {
+    bytes,
+    check() {
+      let cur;
+      try { cur = readBytes(file); } catch { cur = undefined; }
+      if (cur !== undefined && macOf(cur) === mac) return false;
+      fs.rmSync(file, { recursive: true, force: true });
+      if (bytes !== null) fs.writeFileSync(file, bytes);
+      return true;
+    },
+  };
 }
 
 // why: a SIGKILLed runner runs no cleanup, leaving sandbox resources tagged with that attempt's
@@ -192,10 +217,10 @@ export const runDirName = (taskId, model, arm, trial) => `${taskId}__${model}__$
 /** Exact format schedule() generates: seeded hex, then the per-invocation nonce. */
 export const runTagPattern = (taskId, arm, trial) => new RegExp(`^mcpbench-${reEsc(taskId)}-${reEsc(arm)}-t${trial}-[0-9a-f]{6}-[0-9a-f]{8}$`);
 
-function scriptEnvOf({ taskId, arm, trial, model, runTag, runDir }) {
+function scriptEnvOf({ taskId, arm, trial, model, runTag, runDir, stateFile }) {
   return {
     BENCH_TASK: taskId, BENCH_ARM: arm, BENCH_TRIAL: String(trial), BENCH_MODEL: model, BENCH_RUN_TAG: runTag,
-    BENCH_RUN_DIR: runDir, BENCH_WORKDIR: path.join(runDir, 'work'), BENCH_STATE: path.join(runDir, 'state.json'),
+    BENCH_RUN_DIR: runDir, BENCH_WORKDIR: path.join(runDir, 'work'), BENCH_STATE: stateFile,
   };
 }
 
@@ -230,7 +255,8 @@ export async function replayPendingCleanups(outDir, tasks, log = () => {}) {
     }
     if (why) { log(`mcp-bench: skipped cleanup journal ${f}: ${why}`); out.push({ journal: f, ok: false, skipped: why }); continue; }
     const task = byId.get(j.task_id);
-    const scriptEnv = scriptEnvOf({ taskId: task.id, arm: j.arm, trial: j.trial, model: j.model, runTag: j.run_tag, runDir: path.join(runsDir, d) });
+    // why: the sealing key died with the killed runner, so a replayed cleanup reads state unverified.
+    const scriptEnv = scriptEnvOf({ taskId: task.id, arm: j.arm, trial: j.trial, model: j.model, runTag: j.run_tag, runDir: path.join(runsDir, d), stateFile: stateFileOf(outDir, d) });
     const redact = redactor(secretValues(resolveArm(task, j.arm)));
     const c = await runScript(task.cleanup, { taskDir: task.dir, scriptEnv, redact }, task.script_timeout_sec, 'cleanup');
     const ok = c.code === 0 && !c.timed_out;
@@ -247,20 +273,24 @@ export async function replayPendingCleanups(outDir, tasks, log = () => {}) {
  * plus agent metrics. setup_error attempts never reached the agent and are excluded from rates.
  */
 export async function runAttempt({ task, armCfg, model, maxTurns, maxBudgetUsd, claudeBin, outDir, trial, order, runTag }) {
-  const runDir = path.join(outDir, 'runs', runDirName(task.id, model, armCfg.arm, trial));
+  const runName = runDirName(task.id, model, armCfg.arm, trial);
+  const runDir = path.join(outDir, 'runs', runName);
   fs.rmSync(runDir, { recursive: true, force: true });
+  const stateFile = stateFileOf(outDir, runName);
+  fs.rmSync(path.dirname(stateFile), { recursive: true, force: true });
+  fs.mkdirSync(path.dirname(stateFile), { recursive: true, mode: 0o700 });
   const dirs = { run: runDir, work: path.join(runDir, 'work'), home: path.join(runDir, 'home') };
   fs.mkdirSync(path.join(dirs.home, '.claude'), { recursive: true });
   fs.mkdirSync(dirs.work, { recursive: true });
-  const stateFile = path.join(runDir, 'state.json');
   // why: a server or agent can echo its credential (auth errors, tool results, final text); scrub
   // every captured stream before it is parsed, stored or written.
   const redact = redactor(secretValues(armCfg));
   const ctx = {
     taskDir: task.dir, redact,
-    scriptEnv: scriptEnvOf({ taskId: task.id, arm: armCfg.arm, trial, model, runTag, runDir }),
+    scriptEnv: scriptEnvOf({ taskId: task.id, arm: armCfg.arm, trial, model, runTag, runDir, stateFile }),
   };
-  const rec = { task: task.id, arm: armCfg.arm, model, trial, order, run_tag: runTag, run_dir: runDir, status: null, setup: null, verifier: null, cleanup: null, agent: null };
+  const rec = { task: task.id, arm: armCfg.arm, model, trial, order, run_tag: runTag, run_dir: runDir, status: null, state_tampered: false, setup: null, verifier: null, cleanup: null, agent: null };
+  let sealed = null;
   const journal = path.join(runDir, PENDING);
   if (task.cleanup) {
     fs.writeFileSync(journal, JSON.stringify({ task_id: task.id, run_tag: runTag, arm: armCfg.arm, trial, model }, null, 2));
@@ -273,8 +303,9 @@ export async function runAttempt({ task, armCfg, model, maxTurns, maxBudgetUsd, 
       if (interrupted) { rec.status = 'interrupted'; return rec; }
       if (s.code !== 0 || s.timed_out) { rec.status = 'setup_error'; return rec; }
     }
+    sealed = sealState(stateFile);
     let prompt;
-    try { prompt = renderTemplate(armCfg.prompt, { run_tag: runTag, arm: armCfg.arm, trial, state: readState(stateFile) }); } catch (e) {
+    try { prompt = renderTemplate(armCfg.prompt, { run_tag: runTag, arm: armCfg.arm, trial, state: parseState(sealed.bytes) }); } catch (e) {
       rec.status = 'setup_error'; rec.setup = { ...(rec.setup || {}), error: e.message }; return rec;
     }
     let mcpFile = null;
@@ -311,15 +342,20 @@ export async function runAttempt({ task, armCfg, model, maxTurns, maxBudgetUsd, 
     }
     // why: verifiers read the sandbox through an independent surface and never the agent's narrative,
     // so nothing the agent said (transcript, final text) is on disk until the verifier has finished.
+    // why: checked before (agent) and after (anything the agent left running) the verifier; a
+    // tampered attempt is never verified, whatever the verifier then saw.
+    const before = sealed.check();
     const v = await runScript(task.verifier, ctx, task.script_timeout_sec);
+    rec.state_tampered = sealed.check() || before;
     rec.verifier = { ...interpretVerifier(v), wall_ms: v.wall_ms };
     fs.writeFileSync(path.join(runDir, 'transcript.jsonl.gz'), zlib.gzipSync(r.stdout));
     // why: interrupt() SIGKILLs the verifier group; its exit is the harness's doing, not a verdict.
     if (interrupted && rec.verifier.status === 'error') { rec.status = 'interrupted'; return rec; }
     rec.side_effects = sideEffects(rec.verifier.details);
-    rec.status = rec.verifier.status === 'pass' ? 'verified' : rec.verifier.status === 'fail' ? 'unverified' : 'verifier_error';
+    rec.status = rec.state_tampered ? 'unverified' : rec.verifier.status === 'pass' ? 'verified' : rec.verifier.status === 'fail' ? 'unverified' : 'verifier_error';
     return rec;
   } finally {
+    if (sealed && sealed.check()) rec.state_tampered = true;
     if (task.cleanup) {
       const c = await runScript(task.cleanup, ctx, task.script_timeout_sec, 'cleanup');
       rec.cleanup = { code: c.code, wall_ms: c.wall_ms, timed_out: c.timed_out, stderr_tail: c.code === 0 ? '' : c.stderr.slice(-500) };
