@@ -262,3 +262,22 @@ test('--seed: 0 is its own seed; non-integer or out-of-range seeds are rejected,
   assert.notEqual(plan('0'), plan('1'), 'seed 0 is not seed 1');
   for (const bad of ['abc', '1.5', '-1', '4294967296']) assert.notEqual(cli(['run', task, '--seed', bad, '--dry-run', '--claude-bin', FAKE]).code, 0, bad);
 });
+
+test('an agent that never started is a harness error, not an unverified attempt; a relative --claude-bin works', () => {
+  const d = tmpdir(); const out = path.join(d, 'out');
+  const task = makeTask(d, { verifier: 'echo verifier-ran >> "$VERIFY_LOG"; echo \'{"pass":false}\'' });
+  cli(['run', task, '--n', '2', '--max-total-usd', '1', '--out', out, '--claude-bin', path.join(d, 'no-such-claude')], { CLEANUP_LOG: path.join(d, 'c.log'), VERIFY_LOG: path.join(d, 'v.log') });
+  const t = JSON.parse(fs.readFileSync(path.join(out, 'results.json'), 'utf8')).tasks[0];
+  assert.equal(t.records[0].status, 'setup_error');
+  assert.match(t.records[0].setup.error, /agent did not start.*ENOENT/);
+  assert.equal(t.models.haiku.arms.baseline.attempts + t.models.haiku.arms.variant.attempts, 0, 'not in any denominator');
+  assert.ok(!fs.existsSync(path.join(d, 'v.log')), 'verifier not run for an agent that never started');
+  assert.match(t.stopped, /claude binary/);
+  assert.equal(t.completed_attempts, 1, 'stops instead of failing every attempt');
+
+  const out2 = path.join(d, 'out2');
+  const rel = path.relative(process.cwd(), FAKE);
+  cli(['run', task, '--n', '1', '--arms', 'baseline', '--max-total-usd', '1', '--out', out2, '--claude-bin', rel], { CLEANUP_LOG: path.join(d, 'c.log'), VERIFY_LOG: path.join(d, 'v2.log') });
+  const t2 = JSON.parse(fs.readFileSync(path.join(out2, 'results.json'), 'utf8')).tasks[0];
+  assert.equal(t2.records[0].agent?.spawn_error ?? null, null, `relative ${rel} resolved against the caller's cwd`);
+});
