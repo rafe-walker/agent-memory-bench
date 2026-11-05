@@ -57,3 +57,38 @@ test('empty output parses to zeros', () => {
   assert.equal(m.usage.total, 0);
   assert.equal(m.tool_call_count, 0);
 });
+
+test('hostile stream: non-object JSON lines and malformed content never throw', () => {
+  const s = [
+    'null', '123', '"str"', '[1,2]', 'true',
+    j({ type: 'system', subtype: 'init', model: 'm', mcp_servers: 'nope', tools: 5 }),
+    j({ type: 'assistant', message: { id: 'a', content: 5, usage: U(1, 0, 0, 0) } }),
+    j({ type: 'assistant', message: { id: 'b', content: [null, 7, { type: 'tool_use' }], usage: null } }),
+    j({ type: 'assistant', message: 'x' }),
+    j({ type: 'user', message: { content: [null, { type: 'tool_result', tool_use_id: 'zz', content: null }] } }),
+    j({ type: 'result', subtype: 'success', num_turns: 'two', permission_denials: 'x', modelUsage: 'y', usage: { input_tokens: 3 } }),
+  ].join('\n');
+  const m = parseStreamJson(s);
+  assert.equal(m.usage.input, 3);
+  assert.deepEqual(m.mcp_failed, []);
+  assert.deepEqual(m.permission_denials, []);
+  assert.equal(m.num_turns, null);
+});
+
+test('the same message re-emitted with the same tool_use block counts one tool call', () => {
+  const msg = j({ type: 'assistant', message: { id: 'm1', content: [{ type: 'tool_use', id: 't1', name: 'x', input: {} }], usage: U(10, 0, 0, 1) } });
+  const m = parseStreamJson([msg, msg, j({ type: 'result', subtype: 'success', num_turns: 1, total_cost_usd: 0.01, usage: U(10, 0, 0, 1) })].join('\n'));
+  assert.equal(m.tool_call_count, 1);
+  assert.equal(m.usage.total, 11);
+});
+
+test('non-numeric, negative and overflowing usage/cost values are rejected, never summed', () => {
+  const m = parseStreamJson([
+    '{"type":"assistant","message":{"id":"a","content":[],"usage":{"input_tokens":"1000","output_tokens":-5,"cache_read_input_tokens":1e400}}}',
+    '{"type":"result","subtype":"success","num_turns":1,"total_cost_usd":1e400,"usage":{"input_tokens":"1000","output_tokens":1e400}}',
+  ].join('\n'));
+  for (const v of Object.values(m.usage)) assert.ok(typeof v === 'number' && Number.isFinite(v) && v >= 0, JSON.stringify(m.usage));
+  assert.equal(m.cost_usd, null, 'an invalid cost is unknown, not a number');
+  assert.ok(m.invalid_fields > 0);
+  assert.equal(parseStreamJson('{"type":"result","total_cost_usd":-5,"usage":{"input_tokens":1}}').cost_usd, null);
+});
