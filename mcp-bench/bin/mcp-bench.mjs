@@ -4,20 +4,23 @@
 //   mcp-bench run <task.yaml...> --max-total-usd X [--purpose P] [--arms a,b] [--n N] [--seed 1] [--model m | --models a,b]
 //                 [--max-turns N] [--max-budget-usd X] [--out DIR] [--claude-bin PATH] [--dry-run]
 //   mcp-bench report <results.json> [--out REPORT.md]
+//   mcp-bench cleanup <out-dir>
+import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { parseArgs } from 'node:util';
 import { loadTask, resolveArm } from '../lib/spec.mjs';
 import { schedule, effective, missingEnv, runTask, balanced, PURPOSE_N } from '../lib/trials.mjs';
-import { buildClaudeArgs, interrupt, isInterrupted } from '../lib/runner.mjs';
+import { buildClaudeArgs, interrupt, isInterrupted, replayPendingCleanups } from '../lib/runner.mjs';
 import { renderMarkdown } from '../lib/report.mjs';
 
 const USAGE = `usage:
   mcp-bench validate <task.yaml|json...>
   mcp-bench run <task...> --max-total-usd X [--purpose smoke|before-after|publish] [--arms a,b] [--n N] [--seed 1] [--model M | --models A,B]
                 [--max-turns N] [--max-budget-usd X] [--out DIR] [--claude-bin PATH] [--dry-run]
-  mcp-bench report <results.json> [--out REPORT.md]`;
+  mcp-bench report <results.json> [--out REPORT.md]
+  mcp-bench cleanup <out-dir>    re-run cleanups a killed run never ran (run also does this for its --out)`;
 
 const list = (s) => (s ? s.split(',').map((x) => x.trim()).filter(Boolean) : undefined);
 const num = (s, name, int = false) => {
@@ -99,7 +102,8 @@ async function cmdRun(files, opts) {
   if (opts.maxTotalUsd == null) { console.error('run: --max-total-usd is required (use --dry-run to see the worst-case spend)'); return 2; }
   const outDir = path.resolve(opts.out || path.join('results', new Date().toISOString().replace(/[:.]/g, '-')));
   fs.mkdirSync(outDir, { recursive: true });
-  const res = { generated_at: new Date().toISOString(), purpose: opts.purpose, seed: opts.seed, n: opts.n, claude_version: null, max_total_usd: opts.maxTotalUsd, tasks: [] };
+  const runNonce = crypto.randomBytes(4).toString('hex');
+  const res = { generated_at: new Date().toISOString(), purpose: opts.purpose, seed: opts.seed, n: opts.n, run_nonce: runNonce, claude_version: null, max_total_usd: opts.maxTotalUsd, tasks: [] };
   let spent = 0;
   // Children run in their own process groups; forward Ctrl-C / SIGTERM / SIGHUP (terminal or SSH
   // session closed) so the agent stops, cleanup runs and partial results are written. A second
@@ -109,8 +113,13 @@ async function cmdRun(files, opts) {
     console.error(`mcp-bench: ${sig}: stopping; running cleanup and writing partial results (send again to exit now)`);
   };
   for (const sig of ['SIGINT', 'SIGTERM', 'SIGHUP']) process.on(sig, onSignal);
+  // A reused --out may hold attempts a SIGKILLed run never cleaned up; their run dirs are about to
+  // be replaced, so replay their cleanup first.
+  const replayed = await replayPendingCleanups(outDir, (s) => console.error(s));
+  res.cleanups_replayed = replayed.length;
+  res.cleanups_replay_failed = replayed.filter((x) => !x.ok).length;
   for (const t of tasks) {
-    const r = await runTask(t, { ...opts, outDir, spentUsd: spent, log: (s) => console.error(s) });
+    const r = await runTask(t, { ...opts, outDir, runNonce, spentUsd: spent, log: (s) => console.error(s) });
     spent = r.spent_usd;
     res.tasks.push(r);
     res.claude_version ||= r.claude_version;
@@ -120,6 +129,13 @@ async function cmdRun(files, opts) {
   fs.writeFileSync(path.join(outDir, 'REPORT.md'), renderMarkdown(res));
   console.log(path.join(outDir, 'REPORT.md'));
   return isInterrupted() ? 130 : 0;
+}
+
+async function cmdCleanup(dir) {
+  if (!dir || !fs.existsSync(dir)) { console.error(`cleanup: no such run directory: ${dir}`); return 2; }
+  const r = await replayPendingCleanups(path.resolve(dir), (s) => console.error(s));
+  console.log(`${r.length} pending cleanup(s) replayed, ${r.filter((x) => !x.ok).length} failed`);
+  return r.every((x) => x.ok) ? 0 : 1;
 }
 
 function cmdReport(file, out) {
@@ -144,6 +160,7 @@ async function main(argv) {
   const files = [...rest, ...(v.task || [])];
   if (cmd === 'validate') return cmdValidate(files);
   if (cmd === 'report') return cmdReport(rest[0], v.out);
+  if (cmd === 'cleanup') return cmdCleanup(rest[0]);
   if (cmd === 'run') {
     if (v.purpose && !(v.purpose in PURPOSE_N)) throw new Error(`--purpose: one of ${Object.keys(PURPOSE_N).join(', ')}`);
     const n = num(v.n, 'n', true) ?? PURPOSE_N[v.purpose || 'smoke'];

@@ -180,6 +180,34 @@ function readState(file) {
   }
 }
 
+// why: a SIGKILLed runner runs no cleanup, leaving sandbox resources tagged with that attempt's
+// run tag. The journal (script env only, no secret values) is written before setup and removed
+// once cleanup succeeds; replayPendingCleanups runs whatever is left.
+const PENDING = 'CLEANUP_PENDING.json';
+
+/** Re-run the cleanup of every attempt under outDir whose journal is still present (runner killed,
+ *  or cleanup failed). Removes each journal whose cleanup succeeds. */
+export async function replayPendingCleanups(outDir, log = () => {}) {
+  let dirs;
+  try { dirs = fs.readdirSync(path.join(outDir, 'runs')).sort(); } catch { return []; }
+  const out = [];
+  for (const d of dirs) {
+    const f = path.join(outDir, 'runs', d, PENDING);
+    let j;
+    try { j = JSON.parse(fs.readFileSync(f, 'utf8')); } catch (e) {
+      if (e.code !== 'ENOENT') { log(`mcp-bench: unreadable cleanup journal ${f}: ${e.message}`); out.push({ journal: f, ok: false, error: e.message }); }
+      continue;
+    }
+    const redact = redactor(secretValues({ secret_env: j.secret_names || [], env_passthrough: [], mcp_servers: {} }));
+    const c = await runScript(j.cleanup, { taskDir: j.task_dir, scriptEnv: j.env, redact }, j.script_timeout_sec, 'cleanup');
+    const ok = c.code === 0 && !c.timed_out;
+    if (ok) fs.rmSync(f, { force: true });
+    log(`mcp-bench: replayed cleanup for ${j.env?.BENCH_RUN_TAG}: ${ok ? 'ok' : `failed (exit ${c.code}${c.timed_out ? ', timed out' : ''}) ${c.stderr.trim().slice(-300)}`}`);
+    out.push({ journal: f, run_tag: j.env?.BENCH_RUN_TAG ?? null, ok, code: c.code, timed_out: c.timed_out });
+  }
+  return out;
+}
+
 /**
  * Run one attempt. Returns a record with status:
  *   verified | unverified | setup_error | verifier_error
@@ -194,7 +222,8 @@ export async function runAttempt({ task, armCfg, model, maxTurns, maxBudgetUsd, 
   const stateFile = path.join(runDir, 'state.json');
   // why: a server or agent can echo its credential (auth errors, tool results, final text); scrub
   // every captured stream before it is parsed, stored or written.
-  const redact = redactor(secretValues(armCfg));
+  const secrets = secretValues(armCfg);
+  const redact = redactor(secrets);
   const ctx = {
     taskDir: task.dir, redact,
     scriptEnv: {
@@ -203,6 +232,13 @@ export async function runAttempt({ task, armCfg, model, maxTurns, maxBudgetUsd, 
     },
   };
   const rec = { task: task.id, arm: armCfg.arm, model, trial, order, run_tag: runTag, run_dir: runDir, status: null, setup: null, verifier: null, cleanup: null, agent: null };
+  const journal = path.join(runDir, PENDING);
+  if (task.cleanup) {
+    fs.writeFileSync(journal, JSON.stringify({
+      task: task.id, task_dir: task.dir, cleanup: task.cleanup, script_timeout_sec: task.script_timeout_sec,
+      env: ctx.scriptEnv, secret_names: [...new Set(secrets.map(([k]) => k))],
+    }, null, 2));
+  }
 
   try {
     if (task.setup) {
@@ -261,6 +297,7 @@ export async function runAttempt({ task, armCfg, model, maxTurns, maxBudgetUsd, 
     if (task.cleanup) {
       const c = await runScript(task.cleanup, ctx, task.script_timeout_sec, 'cleanup');
       rec.cleanup = { code: c.code, wall_ms: c.wall_ms, timed_out: c.timed_out, stderr_tail: c.code === 0 ? '' : c.stderr.slice(-500) };
+      if (c.code === 0 && !c.timed_out) fs.rmSync(journal, { force: true });
     }
     fs.rmSync(dirs.home, { recursive: true, force: true });
   }

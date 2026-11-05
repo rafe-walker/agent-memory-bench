@@ -13,8 +13,10 @@ import { summarizeArm, summarizePairs } from './stats.mjs';
  * its rows are the k cyclic rotations of a random arm permutation (a Latin square: every arm runs in
  * every position once), in random row order. n not divisible by k leaves a partial last block, which
  * is flagged as unbalanced. Each attempt still gets its own setup/cleanup (state reset per trial).
+ * nonce (per invocation) is appended to every run tag: the plan stays reproducible from the seed,
+ * but a rerun never reuses the tags of a killed run whose resources may still exist.
  */
-export function schedule({ task, arms, models, n, seed }) {
+export function schedule({ task, arms, models, n, seed, nonce = null }) {
   const r = mulberry32(seed);
   const k = arms.length;
   const out = [];
@@ -25,7 +27,7 @@ export function schedule({ task, arms, models, n, seed }) {
       const rows = r.shuffle(perm.map((_, i) => [...perm.slice(i), ...perm.slice(0, i)]));
       for (const order of rows) {
         if (trial >= n) break;
-        order.forEach((arm, i) => out.push({ task: task.id, model, trial, block, arm, order: i, run_tag: `mcpbench-${task.id}-${arm}-t${trial}-${r.hex(6)}` }));
+        order.forEach((arm, i) => out.push({ task: task.id, model, trial, block, arm, order: i, run_tag: `mcpbench-${task.id}-${arm}-t${trial}-${r.hex(6)}${nonce ? `-${nonce}` : ''}` }));
         trial++;
       }
     }
@@ -65,7 +67,7 @@ export async function runTask(task, opts) {
   const miss = missingEnv(task, arms);
   if (miss.length) throw new Error(`task ${task.id}: missing env ${miss.join(', ')}`);
   const eff = effective(task, opts);
-  const plan = schedule({ task, arms, models: eff.models, n: opts.n, seed: opts.seed });
+  const plan = schedule({ task, arms, models: eff.models, n: opts.n, seed: opts.seed, nonce: opts.runNonce });
   const records = [];
   let spent = opts.spentUsd || 0;
   let spentReported = 0, unpriced = 0, maxCharged = 0;
