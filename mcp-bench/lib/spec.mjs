@@ -53,6 +53,22 @@ function checkMcp(servers, where, errors) {
   }
 }
 
+// Flags the harness sets itself; an arm overriding them would bypass the budget cap, change the
+// model mid-comparison, or break isolation.
+const RESERVED_FLAGS = ['-p', '--print', '--output-format', '--verbose', '--model', '--fallback-model', '--max-turns', '--max-budget-usd',
+  '--permission-mode', '--dangerously-skip-permissions', '--allow-dangerously-skip-permissions', '--no-session-persistence',
+  '--strict-mcp-config', '--mcp-config', '--resume', '-r', '--continue', '-c', '--session-id', '--settings', '--setting-sources'];
+const RESERVED_ENV = ['HOME', 'CLAUDE_CONFIG_DIR'];
+
+function checkReserved(obj, where, errors) {
+  if (!obj || typeof obj !== 'object') return;
+  for (const a of Array.isArray(obj.extra_args) ? obj.extra_args : []) {
+    const flag = String(a).split('=')[0];
+    if (RESERVED_FLAGS.includes(flag)) errors.push(`${where}.extra_args: ${flag} is set by the harness and may not be overridden`);
+  }
+  if (obj.env && typeof obj.env === 'object') for (const k of Object.keys(obj.env)) if (RESERVED_ENV.includes(k)) errors.push(`${where}.env.${k}: reserved (the harness isolates HOME per attempt)`);
+}
+
 export function parseSpecText(text, file) {
   return /\.json$/i.test(file) ? JSON.parse(text) : YAML.parse(text);
 }
@@ -66,6 +82,7 @@ export function validateSpec(raw, dir) {
   if (!raw.prompt || !String(raw.prompt).trim()) errors.push('spec.prompt: required');
   if (!raw.verifier) errors.push('spec.verifier: required (an independent state check; the agent\'s own claim never counts)');
   checkMcp(raw.mcp_servers, 'spec', errors);
+  checkReserved(raw, 'spec', errors);
   const arms = raw.arms || { default: {} };
   if (!typeOk(arms, 'object') || !Object.keys(arms).length) errors.push('spec.arms: needs at least one arm');
   else for (const [name, a] of Object.entries(arms)) {
@@ -73,6 +90,7 @@ export function validateSpec(raw, dir) {
     if (!typeOk(a ?? {}, 'object')) { errors.push(`spec.arms.${name}: expected mapping`); continue; }
     checkKeys(a ?? {}, ARM_KEYS, `spec.arms.${name}`, errors);
     checkMcp(a?.mcp_servers, `spec.arms.${name}`, errors);
+    checkReserved(a, `spec.arms.${name}`, errors);
   }
   for (const k of ['setup', 'verifier', 'cleanup']) {
     const cmd = raw[k];

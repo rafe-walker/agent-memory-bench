@@ -20,6 +20,7 @@ export function renderMarkdown(res) {
     if (t.description) L.push(t.description.trim(), '');
     L.push(`Arms: ${t.arms.map((a) => (a === t.baseline ? `**${a}** (baseline)` : a)).join(', ')}. max_turns ${t.max_turns}, max $${t.max_budget_usd_per_attempt}/attempt. ${t.completed_attempts}/${t.planned_attempts} attempts run, spent ${usd(t.spent_usd)}.`, '');
     if (t.stopped) L.push(`> **Stopped early:** ${t.stopped}`, '');
+    if (t.unpriced_attempts) L.push(`> **Spend estimate:** ${t.unpriced_attempts} attempt(s) reported no cost (crash, timeout or invalid value) and were charged at the per-attempt cap; provider-reported spend ${usd(t.spent_usd_reported)}.`, '');
     if (t.balanced === false) L.push(`> **Unbalanced:** n=${t.n} is not a multiple of ${t.arms.length} arms; the last block does not counterbalance order.`, '');
     for (const [model, m] of Object.entries(t.models)) {
       const ids = [...new Set(Object.values(m.arms).flatMap((a) => a.model_ids || []))];
