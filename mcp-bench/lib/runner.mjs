@@ -252,6 +252,8 @@ export async function runAttempt({ task, armCfg, model, maxTurns, maxBudgetUsd, 
     const v = await runScript(task.verifier, ctx, task.script_timeout_sec);
     rec.verifier = { ...interpretVerifier(v), wall_ms: v.wall_ms };
     fs.writeFileSync(path.join(runDir, 'transcript.jsonl.gz'), zlib.gzipSync(r.stdout));
+    // why: interrupt() SIGKILLs the verifier group; its exit is the harness's doing, not a verdict.
+    if (interrupted && rec.verifier.status === 'error') { rec.status = 'interrupted'; return rec; }
     rec.side_effects = sideEffects(rec.verifier.details);
     rec.status = rec.verifier.status === 'pass' ? 'verified' : rec.verifier.status === 'fail' ? 'unverified' : 'verifier_error';
     return rec;
