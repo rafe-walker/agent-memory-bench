@@ -30,6 +30,32 @@ export function buildClaudeArgs({ prompt, armCfg, model, maxTurns, maxBudgetUsd,
   return a;
 }
 
+const CREDENTIAL_VARS = ['ANTHROPIC_API_KEY', 'ANTHROPIC_AUTH_TOKEN', 'CLAUDE_CODE_OAUTH_TOKEN'];
+
+/** Values that must never be written: env_passthrough vars, every ${VAR} an MCP config references,
+ *  and the harness's own model credentials. Short values (< 8 chars) would redact noise. */
+export function secretValues(armCfg, harnessEnv = process.env) {
+  const names = new Set([...CREDENTIAL_VARS, ...armCfg.env_passthrough]);
+  for (const m of JSON.stringify(armCfg.mcp_servers || {}).matchAll(/\$\{([A-Za-z_][A-Za-z0-9_]*)\}/g)) if (m[1] !== 'TASK_DIR') names.add(m[1]);
+  const out = [];
+  for (const k of names) {
+    const v = harnessEnv[k];
+    if (typeof v !== 'string' || v.length < 8) continue;
+    out.push([k, v]);
+    const esc = JSON.stringify(v).slice(1, -1); // as it appears inside a JSON string
+    if (esc !== v) out.push([k, esc]);
+  }
+  return out.sort((a, b) => b[1].length - a[1].length);
+}
+
+export function redactor(secrets) {
+  return (s) => {
+    if (typeof s !== 'string' || !secrets.length) return s;
+    for (const [k, v] of secrets) if (s.includes(v)) s = s.split(v).join(`[REDACTED:${k}]`);
+    return s;
+  };
+}
+
 export function agentEnv(armCfg, dirs, harnessEnv = process.env) {
   const env = {};
   for (const k of [...AGENT_ENV_KEEP, ...armCfg.env_passthrough]) if (harnessEnv[k] !== undefined) env[k] = harnessEnv[k];
@@ -66,7 +92,9 @@ function spawnCapture(cmd, args, { cwd, env, timeoutMs, onSpawn }) {
 /** Run a task script (setup / verifier / cleanup) through bash in the task dir. */
 export async function runScript(cmd, ctx, timeoutSec) {
   const env = { ...process.env, ...ctx.scriptEnv };
-  return spawnCapture('bash', ['-c', cmd], { cwd: ctx.taskDir, env, timeoutMs: timeoutSec * 1000 });
+  const r = await spawnCapture('bash', ['-c', cmd], { cwd: ctx.taskDir, env, timeoutMs: timeoutSec * 1000 });
+  const red = ctx.redact || ((x) => x);
+  return { ...r, stdout: red(r.stdout), stderr: red(r.stderr) };
 }
 
 /** Verifier contract: last stdout line that parses as JSON {pass, details} wins; else exit 0 = pass,
@@ -113,8 +141,11 @@ export async function runAttempt({ task, armCfg, model, maxTurns, maxBudgetUsd, 
   fs.mkdirSync(path.join(dirs.home, '.claude'), { recursive: true });
   fs.mkdirSync(dirs.work, { recursive: true });
   const stateFile = path.join(runDir, 'state.json');
+  // why: a server or agent can echo its credential (auth errors, tool results, final text); scrub
+  // every captured stream before it is parsed, stored or written.
+  const redact = redactor(secretValues(armCfg));
   const ctx = {
-    taskDir: task.dir,
+    taskDir: task.dir, redact,
     scriptEnv: {
       BENCH_TASK: task.id, BENCH_ARM: armCfg.arm, BENCH_TRIAL: String(trial), BENCH_MODEL: model, BENCH_RUN_TAG: runTag,
       BENCH_RUN_DIR: dirs.run, BENCH_WORKDIR: dirs.work, BENCH_STATE: stateFile,
@@ -142,7 +173,8 @@ export async function runAttempt({ task, armCfg, model, maxTurns, maxBudgetUsd, 
       fs.writeFileSync(mcpFile, JSON.stringify({ mcpServers: armCfg.mcp_servers }, null, 2).replaceAll('${TASK_DIR}', task.dir));
     }
     const args = buildClaudeArgs({ prompt, armCfg, model, maxTurns, maxBudgetUsd, mcpFile });
-    const r = await spawnCapture(claudeBin, args, { cwd: dirs.work, env: agentEnv(armCfg, dirs), timeoutMs: task.timeout_sec * 1000 });
+    const raw = await spawnCapture(claudeBin, args, { cwd: dirs.work, env: agentEnv(armCfg, dirs), timeoutMs: task.timeout_sec * 1000 });
+    const r = { ...raw, stdout: redact(raw.stdout), stderr: redact(raw.stderr) };
     const m = parseStreamJson(r.stdout);
     rec.agent = {
       exit_code: r.code, signal: r.signal, timed_out: r.timed_out, spawn_error: r.spawn_error, wall_ms: r.wall_ms,

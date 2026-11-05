@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
+import zlib from 'node:zlib';
 import { ROOT, FAKE, tmpdir, makeTask, readJsonl } from './helpers.mjs';
 
 const CLI = path.join(ROOT, 'bin', 'mcp-bench.mjs');
@@ -170,4 +171,24 @@ test('validate and report commands', () => {
   const rep = cli(['report', path.join(out, 'results.json')]);
   assert.equal(rep.code, 0);
   assert.match(rep.out, /## fake-task/);
+});
+
+test('secrets echoed by the agent, a server, setup or the verifier never reach disk', () => {
+  const d = tmpdir(); const out = path.join(d, 'out');
+  const task = makeTask(d, {
+    setup: 'bash setup.sh; echo "setup saw $FAKE_SECRET" >&2',
+    verifier: 'echo "verifier saw $FAKE_SECRET"; exit 1',
+    arms: { a: { env: { FAKE_CLAUDE_MODE: 'leak' } } },
+  });
+  const r = cli(['run', task, '--n', '1', '--max-total-usd', '1', '--out', out, '--claude-bin', FAKE], { CLEANUP_LOG: path.join(d, 'c.log') });
+  assert.equal(r.code, 0, r.err);
+  assert.ok(!(r.out + r.err).includes(SECRET), 'not in console output');
+  const walk = (p) => (fs.statSync(p).isDirectory() ? fs.readdirSync(p).flatMap((f) => walk(path.join(p, f))) : [p]);
+  for (const f of walk(out)) {
+    const buf = fs.readFileSync(f);
+    const text = f.endsWith('.gz') ? zlib.gunzipSync(buf).toString('utf8') : buf.toString('utf8');
+    assert.ok(!text.includes(SECRET), `canary in ${path.relative(out, f)}`);
+  }
+  const rec = JSON.parse(fs.readFileSync(path.join(out, 'results.json'), 'utf8')).tasks[0].records[0];
+  assert.match(rec.agent.result_text, /\[REDACTED:FAKE_SECRET\]/);
 });
