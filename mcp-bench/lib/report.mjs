@@ -25,14 +25,17 @@ export function renderMarkdown(res) {
     for (const [model, m] of Object.entries(t.models)) {
       const ids = [...new Set(Object.values(m.arms).flatMap((a) => a.model_ids || []))];
       L.push(`### ${model}`, '', `Resolved model ID(s): ${ids.length ? ids.map((x) => `\`${x}\``).join(', ') : 'unknown'}${ids.length > 1 ? ' — **more than one: the model changed during the run**' : ''}.`, '');
-      L.push('| arm | exp. tokens / verified success | success (95% CI) | verified / n | tokens p50 / p95 (n) | wall time p50 / p95 | turns p50 / p95 | tool calls p50 / p95 | duplicate side effects | unexpected mutations | exp. cost / verified success | errors (agent / tool / retry / timeout / verifier) | setup errors |');
-      L.push('|---|---|---|---|---|---|---|---|---|---|---|---|---|');
+      L.push('| arm | exp. tokens / verified success | success (95% CI) | verified / n | tokens p50 / p95 (n) | wall time p50 / p95 | turns p50 / p95 | tool calls p50 / p95 | duplicate side effects | unexpected mutations | exp. cost / verified success | errors (agent / tool / retry / timeout / verifier) | setup errors | no result event |');
+      L.push('|---|---|---|---|---|---|---|---|---|---|---|---|---|---|');
       const side = (x) => (x?.n ? `${pct(x.p)} (${x.k}/${x.n})` : '–');
       for (const [arm, s] of Object.entries(m.arms)) {
         const ci = s.success.wilson.lo == null ? '' : ` (${pct(s.success.wilson.lo)}–${pct(s.success.wilson.hi)})`;
-        L.push(`| ${arm} | ${s.verified ? n0(s.expected_tokens_per_verified_success) : '∞ (0 verified)'} | ${pct(s.success.p)}${ci} | ${s.verified} / ${s.attempts} | ${n0(s.tokens.total.p50)} / ${n0(s.tokens.total.p95)} (${s.tokens.total.n}) | ${sec(s.wall_ms.p50)} / ${sec(s.wall_ms.p95)} | ${n0(s.turns.p50)} / ${n0(s.turns.p95)} | ${n0(s.tool_calls.p50)} / ${n0(s.tool_calls.p95)} | ${side(s.duplicate_side_effects)} | ${side(s.unexpected_mutations)} | ${usd(s.expected_cost_per_verified_success)} | ${s.agent_errors} / ${s.tool_errors} / ${s.api_retries} / ${s.timeouts} / ${s.verifier_errors} | ${s.setup_errors} |`);
+        const lb = s.usage_lower_bound ? '≥ ' : '';
+        L.push(`| ${arm} | ${s.verified ? lb + n0(s.expected_tokens_per_verified_success) : '∞ (0 verified)'} | ${pct(s.success.p)}${ci} | ${s.verified} / ${s.attempts} | ${n0(s.tokens.total.p50)} / ${n0(s.tokens.total.p95)} (${s.tokens.total.n}) | ${sec(s.wall_ms.p50)} / ${sec(s.wall_ms.p95)} | ${n0(s.turns.p50)} / ${n0(s.turns.p95)} | ${n0(s.tool_calls.p50)} / ${n0(s.tool_calls.p95)} | ${side(s.duplicate_side_effects)} | ${side(s.unexpected_mutations)} | ${usd(s.expected_cost_per_verified_success)} | ${s.agent_errors} / ${s.tool_errors} / ${s.api_retries} / ${s.timeouts} / ${s.verifier_errors} | ${s.setup_errors} | ${n0(s.usage_lower_bound)} |`);
       }
       L.push('');
+      const lbArms = Object.entries(m.arms).filter(([, s]) => s.usage_lower_bound);
+      if (lbArms.length) L.push(`> **Lower bound:** ${lbArms.map(([a, s]) => `${a}: ${s.usage_lower_bound}/${s.attempts} attempts`).join(', ')} had no result event (crash, timeout, kill, output cap). Their tokens are per-message sums, whose output count is ~0, so ≥ marks figures that include them; compare such arms with care.`, '');
       L.push('Token split (p50): ' + Object.entries(m.arms).map(([a, s]) => `${a}: in ${n0(s.tokens.input.p50)}, cache read ${n0(s.tokens.cache_read.p50)}, cache write ${n0(s.tokens.cache_creation.p50)}, out ${n0(s.tokens.output.p50)}; tool results ${n0(s.tool_result_bytes.p50)} B ≈ ${n0(s.estimated_tool_result_tokens.p50)} tok (est.)`).join('; ') + '.', '');
       const pairs = Object.entries(m.paired);
       if (pairs.length) {
