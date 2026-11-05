@@ -85,7 +85,9 @@ export async function runTask(task, opts) {
     spent += rec.agent?.cost_usd ?? 0;
     records.push(rec);
     fs.appendFileSync(ledger, JSON.stringify({ ...rec, agent: rec.agent && { ...rec.agent, turns: undefined, tool_calls: undefined } }) + '\n');
+    if (rec.agent_not_started) stopped = `claude binary not runnable (${opts.claudeBin}): ${rec.setup.error}`;
     log(`${task.id} ${p.model} t${p.trial} ${p.arm}: ${rec.status} tokens=${rec.agent?.usage?.total ?? '-'} turns=${rec.agent?.num_turns ?? '-'} cost=$${(rec.agent?.cost_usd ?? 0).toFixed(4)}`);
+    if (stopped) break;
   }
   const perModel = {};
   for (const model of eff.models) {

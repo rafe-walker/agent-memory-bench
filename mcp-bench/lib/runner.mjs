@@ -143,6 +143,13 @@ export async function runAttempt({ task, armCfg, model, maxTurns, maxBudgetUsd, 
     }
     const args = buildClaudeArgs({ prompt, armCfg, model, maxTurns, maxBudgetUsd, mcpFile });
     const r = await spawnCapture(claudeBin, args, { cwd: dirs.work, env: agentEnv(armCfg, dirs), timeoutMs: task.timeout_sec * 1000 });
+    if (r.spawn_error && !r.stdout) {
+      // The agent never ran (missing or non-executable binary): like a failed setup, not an agent
+      // failure, so it stays out of every denominator and the verifier is not consulted.
+      rec.status = 'setup_error'; rec.agent_not_started = true;
+      rec.setup = { ...(rec.setup || {}), error: `agent did not start: ${r.spawn_error}` };
+      return rec;
+    }
     const m = parseStreamJson(r.stdout);
     rec.agent = {
       exit_code: r.code, signal: r.signal, timed_out: r.timed_out, spawn_error: r.spawn_error, wall_ms: r.wall_ms,
