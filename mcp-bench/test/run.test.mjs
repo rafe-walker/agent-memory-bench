@@ -158,7 +158,10 @@ test('--purpose sets n and guards published numbers', () => {
   const pub = cli(['run', task, '--purpose', 'publish', '--n', '20', '--dry-run', '--claude-bin', FAKE]);
   assert.equal(pub.code, 2);
   assert.match(pub.err, /small models are for smoke runs only/);
-  assert.equal(cli(['run', task, '--purpose', 'publish', '--n', '20', '--model', 'claude-sonnet-9-9-20990101', '--dry-run', '--claude-bin', FAKE]).code, 0);
+  // #19: a frozen large model is not enough; publish also refuses --isolation dev (see sandbox.test.mjs)
+  const dev = cli(['run', task, '--purpose', 'publish', '--n', '20', '--model', 'claude-sonnet-9-9-20990101', '--dry-run', '--claude-bin', FAKE]);
+  assert.equal(dev.code, 2);
+  assert.match(dev.err, /publish refuses --isolation dev/);
 });
 
 test('validate and report commands', () => {

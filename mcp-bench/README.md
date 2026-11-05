@@ -33,6 +33,36 @@ and `--model` override the spec (use a small model for smoke tests); `--dry-run`
 prints the schedule and exact argv without starting anything. `--claude-bin` (or `MCP_BENCH_CLAUDE`)
 picks the CLI.
 
+## Isolation (`--isolation dev|linux-sandbox`)
+
+- **`dev`** (default) runs the agent as your uid with no sandbox and prints a loud warning. The agent
+  can read the harness env, other attempts and `<out>/.harness`. It is **never publishable**:
+  `--purpose publish` refuses it.
+- **`linux-sandbox`** (Linux, root) runs each attempt's agent in
+  [agent-sandbox](https://github.com/rafe-walker/agent-sandbox):
+  - **Prerequisite:** a signed preflight. Run `sudo npx agent-sandbox preflight --sign --out pf.json`,
+    then pass `--sandbox-preflight pf.json` (and `--sandbox-pubkey PEM` if the key is not in
+    agent-sandbox's root-owned key dir). It must verify (Ed25519, this host and boot, the installed
+    agent-sandbox and suite versions, unexpired, at most 6 h old, publishable). Anything else is refused.
+  - **Boundary:** the agent gets a fresh `asbx_` uid, bwrap, and a netns cage whose only route is the
+    model gateway. Only its `work` and `HOME` dirs are bound read-write (chowned to that uid). The
+    claude/node install, the task dir and `mcp.json` are bound read-only.
+  - **Model key:** the gateway holds `ANTHROPIC_API_KEY`. The agent gets a per-attempt session token,
+    and proxies and other provider variables are dropped.
+  - **Token figures:** the gateway's provider-reported usage, summed per response including cache
+    tokens, is the token figure in the results (`usage_source: "gateway"`). The agent's own stream
+    numbers are kept as `usage_agent_reported`, and a disagreement is flagged as `usage_mismatch`.
+    `--max-tokens-per-attempt` (default 20M) is a hard cap at the gateway.
+  - **Harness side:** setup, verifier and cleanup run host-side as before. `<out>/.harness` (0700) is
+    never bound into the sandbox, so a state forge or a `/proc/1/environ` read from inside fails
+    (`test/sandbox.test.mjs`).
+  - **Not wired in v0.1:** remote (`url`) MCP servers. The cage reaches only the gateway, so such arms
+    are refused. stdio servers that need the network (e.g. wire-proxy to PostHog) fail the same way.
+    The PostHog tasks are therefore `dev`-only until a host-side MCP route exists.
+  - **Budget gate:** the budget gate still charges claude's reported `total_cost_usd`, or the
+    per-attempt cap when it is unknown.
+  - **Ctrl-C:** a sandboxed agent stops at its wall clock, or immediately on a second Ctrl-C.
+
 ## Paired trials
 
 Trials run in **randomized AB/BA blocks** (`--seed`): for k arms a block is k trials whose arm orders
@@ -49,7 +79,8 @@ An attempt with no `result` event (crash, timeout, kill, output cap) only has pe
 `output_tokens` is ~0; the report counts these per arm ("no result event") and marks expected tokens
 per verified success with ≥ when they are included, since that figure is then a lower bound.
 
-**State integrity.** The agent runs as your uid with no sandbox, so it can reach any path the
+**State integrity.** Under `--isolation linux-sandbox` the agent cannot reach `<out>/.harness` at all
+(see Isolation); the sealing below stays as a secondary check. Under `--isolation dev` the agent runs as your uid with no sandbox, so it can reach any path the
 harness can, including `<out>/.harness` (by relative or absolute path); moving state out of the run
 dir is not a boundary on its own. What protects the verdict is sealing: after setup the runner keeps
 the state bytes and their HMAC-SHA256 under a random per-run key that is only in memory. It checks
@@ -60,7 +91,7 @@ write there counts as tampering). Not covered: a
 process the agent detached from its group can still race the verifier between those checks and
 change what it reads mid-run, provided it puts the file back before the verifier exits; and a
 cleanup replayed after a SIGKILL (`mcp-bench cleanup`) has no key, so it trusts the file. Run
-untrusted agents in a separate uid or container if that matters.
+untrusted agents with `--isolation linux-sandbox` if that matters.
 
 ## Task spec (YAML or JSON)
 

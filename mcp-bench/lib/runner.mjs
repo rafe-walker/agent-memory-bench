@@ -179,8 +179,9 @@ function parseState(buf) {
   }
 }
 
-// why: the agent runs as the harness's uid with no sandbox, so no path is out of its reach;
-// outDir/.harness only keeps state off the agent's own dirs. Integrity comes from sealing: the
+// why: under --isolation dev the agent runs as the harness's uid with no sandbox, so no path is out
+// of its reach and outDir/.harness only keeps state off the agent's own dirs. Under linux-sandbox
+// .harness is never bound into the sandbox, so the agent cannot reach it at all. Integrity comes from sealing: the
 // runner keeps setup's state bytes and their HMAC under a per-process key that never touches disk,
 // and checks and restores the file before the verifier and cleanup read it.
 const STATE_KEY = crypto.randomBytes(32);
@@ -272,13 +273,14 @@ export async function replayPendingCleanups(outDir, tasks, log = () => {}) {
  *   verified | unverified | setup_error | verifier_error
  * plus agent metrics. setup_error attempts never reached the agent and are excluded from rates.
  */
-export async function runAttempt({ task, armCfg, model, maxTurns, maxBudgetUsd, claudeBin, outDir, trial, order, runTag }) {
+export async function runAttempt({ task, armCfg, model, maxTurns, maxBudgetUsd, claudeBin, outDir, trial, order, runTag, isolation = 'dev', sandbox = {} }) {
   const runName = runDirName(task.id, model, armCfg.arm, trial);
   const runDir = path.join(outDir, 'runs', runName);
   fs.rmSync(runDir, { recursive: true, force: true });
   const stateFile = stateFileOf(outDir, runName);
   fs.rmSync(path.dirname(stateFile), { recursive: true, force: true });
   fs.mkdirSync(path.dirname(stateFile), { recursive: true, mode: 0o700 });
+  fs.chmodSync(path.dirname(path.dirname(stateFile)), 0o700); // <out>/.harness: harness only
   const dirs = { run: runDir, work: path.join(runDir, 'work'), home: path.join(runDir, 'home') };
   fs.mkdirSync(path.join(dirs.home, '.claude'), { recursive: true });
   fs.mkdirSync(dirs.work, { recursive: true });
@@ -318,7 +320,20 @@ export async function runAttempt({ task, armCfg, model, maxTurns, maxBudgetUsd, 
       fs.writeFileSync(mcpFile, JSON.stringify({ mcpServers: armCfg.mcp_servers }, null, 2).replaceAll('${TASK_DIR}', task.dir));
     }
     const args = buildClaudeArgs({ prompt, armCfg, model, maxTurns, maxBudgetUsd, mcpFile });
-    const raw = await spawnCapture(claudeBin, args, { cwd: dirs.work, env: agentEnv(armCfg, dirs), timeoutMs: task.timeout_sec * 1000, role: 'agent', reap: true });
+    let raw;
+    if (isolation === 'linux-sandbox') {
+      const { runSandboxedAgent } = await import('./sandbox.mjs');
+      try {
+        raw = await runSandboxedAgent({ claudeBin, args, dirs, env: agentEnv(armCfg, dirs), timeoutMs: task.timeout_sec * 1000, taskDir: task.dir, mcpFile, sb: { ...sandbox, outDir } });
+      } catch (e) {
+        // The sandbox could not start the agent: like a failed setup, never an agent failure.
+        rec.status = 'setup_error'; rec.agent_not_started = true;
+        rec.setup = { ...(rec.setup || {}), error: `sandbox: ${redact(String(e.message ?? e))}` };
+        return rec;
+      }
+    } else {
+      raw = await spawnCapture(claudeBin, args, { cwd: dirs.work, env: agentEnv(armCfg, dirs), timeoutMs: task.timeout_sec * 1000, role: 'agent', reap: true });
+    }
     const r = { ...raw, stdout: redact(raw.stdout), stderr: redact(raw.stderr) };
     if (r.spawn_error && !r.stdout) {
       // The agent never ran (missing or non-executable binary): like a failed setup, not an agent
@@ -333,6 +348,18 @@ export async function runAttempt({ task, armCfg, model, maxTurns, maxBudgetUsd, 
       stderr_tail: r.stderr.slice(-500), ...m,
     };
     rec.model_id = m.init?.model ?? null;
+    if (isolation === 'linux-sandbox') {
+      // why: the gateway is the token meter (provider-reported, outside the agent's reach); what the
+      // agent's own stream says is kept for comparison only.
+      const g = raw.gateway_usage;
+      rec.agent.usage_agent_reported = m.usage;
+      rec.agent.usage = g ? { input: g.input, cache_read: g.cache_read, cache_creation: g.cache_creation, output: g.output, total: g.total } : { input: 0, cache_read: 0, cache_creation: 0, output: 0, total: 0 };
+      rec.agent.usage_source = g ? 'gateway' : 'gateway-missing';
+      rec.agent.gateway_requests = g?.requests ?? null;
+      rec.agent.usage_mismatch = !g || g.total !== m.usage.total;
+      rec.agent.survivors = raw.survivors;
+      rec.sandbox = raw.sandbox;
+    }
     // why: the isolated HOME holds claude's config, MCP logs and any session data; the verifier must
     // not be able to read the agent's side of the run through BENCH_RUN_DIR.
     fs.rmSync(dirs.home, { recursive: true, force: true });

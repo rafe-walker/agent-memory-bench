@@ -12,6 +12,7 @@
     "validate": "node bin/mcp-bench.mjs validate tasks/*/*/task.yaml tasks/*/task.yaml"
   },
   "dependencies": {
+    "agent-sandbox": "github:rafe-walker/agent-sandbox#e7ff9857c1ea80a43e52b20f7b152c214f87f903",
     "yaml": "2.8.1"
   }
 }

@@ -87,6 +87,7 @@ export async function runTask(task, opts) {
     const rec = await runAttempt({
       task, armCfg: resolveArm(task, p.arm), model: p.model, maxTurns: eff.maxTurns, maxBudgetUsd: eff.maxBudgetUsd,
       claudeBin: opts.claudeBin, outDir: opts.outDir, trial: p.trial, order: p.order, runTag: p.run_tag,
+      isolation: opts.isolation || 'dev', sandbox: opts.sandbox || {},
     });
     // why: no result event (crash, timeout, kill) or an invalid cost means the spend is unknown,
     // not zero; charge the reservation it was admitted under (the cap, or more if an earlier

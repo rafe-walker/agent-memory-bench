@@ -9,6 +9,12 @@ export function renderMarkdown(res) {
   const L = [];
   L.push(`# mcp-bench results`, '');
   L.push(`Generated ${res.generated_at}. Claude Code ${res.claude_version || 'unknown'}. Purpose: **${res.purpose || 'unspecified'}**. Seed ${res.seed}, ${res.n} trial(s) per arm per model in randomized AB/BA (Latin-square) blocks, start state reset per trial.`, '');
+  const iso = res.isolation;
+  if (iso?.profile === 'linux-sandbox' && iso.preflight) {
+    L.push(`**Isolation: linux-sandbox.** Each attempt's agent ran in agent-sandbox ${iso.preflight.agent_sandbox_version} (own uid, bwrap, netns cage); the model gateway held the key and its provider-reported usage is the token count below. Signed preflight sha256:${iso.preflight.sha256.slice(0, 12)}, key ${iso.preflight.key_id.slice(0, 12)}, issued ${iso.preflight.issued_at}. Measured: ${Object.entries(iso.preflight.capabilities).map(([k, v]) => `${k} ${v}`).join(', ')}; attacker suite v${iso.preflight.suite_version} ${iso.preflight.suite.result} (${iso.preflight.suite.blocked}/${iso.preflight.suite.ran} blocked).`, '');
+  } else {
+    L.push(`**Isolation: dev — NOT ISOLATED.** The agent ran as the harness's uid with no sandbox; these numbers are not publishable.`, '');
+  }
   L.push('**How to read this.** Tokens are provider-reported usage (Anthropic tokenizer of the model named), exposure = **task** (one full headless session per attempt, catalog and prompt included), summed as input + cache read + cache creation + output. ' +
     '**Verified** means the task\'s independent state verifier passed; the agent\'s own claim never counts. ' +
     '**Expected tokens per verified success** = total tokens across *all* attempts (failures, timeouts and errors included) ÷ verified successes. ' +
