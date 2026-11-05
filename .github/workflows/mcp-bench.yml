@@ -1,0 +1,17 @@
+# mcp-bench unit tests: fake claude only, no model calls, $0. Also validates every shipped task spec.
+name: mcp-bench
+on: [pull_request, workflow_dispatch]
+jobs:
+  mcp-bench:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run: { working-directory: mcp-bench }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm ci --no-audit --no-fund
+      - run: npm test
+      - run: npm run validate
+      - run: python3 -m py_compile tasks/posthog/_lib/ph.py tasks/posthog/*/*.py

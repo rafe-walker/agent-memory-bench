@@ -1,0 +1,17 @@
+{
+  "name": "agent-memory-bench-mcp-bench",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Paired agentic task benchmark for MCP servers: headless claude -p stream-json runs, independent state verifiers, expected tokens per verified success.",
+  "type": "module",
+  "license": "Apache-2.0",
+  "engines": { "node": ">=20" },
+  "bin": { "mcp-bench": "bin/mcp-bench.mjs" },
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "validate": "node bin/mcp-bench.mjs validate tasks/*/*/task.yaml tasks/*/task.yaml"
+  },
+  "dependencies": {
+    "yaml": "2.8.1"
+  }
+}

@@ -1,0 +1,29 @@
+# Near-$0 live smoke test of the full path (claude -p -> stdio MCP server -> verifier) with no
+# external service. Run it with a small model before any sandbox task:
+#   node bin/mcp-bench.mjs run tasks/local-notes/task.yaml --model haiku --n 1 --max-turns 6 --max-total-usd 0.20
+id: local-notes
+description: Write one note through a local stdio MCP server; verifier reads the note file.
+model: haiku
+max_turns: 8
+max_budget_usd: 0.10
+timeout_sec: 180
+prompt: |
+  Use the notes MCP tools. Create exactly one note named {{run_tag}} whose body is exactly:
+  hello from {{run_tag}}
+  Do not create any other note. Reply "done" when finished.
+mcp_servers:
+  notes:
+    command: node
+    args: ["${TASK_DIR}/server.mjs"]
+allowed_tools: [mcp__notes__write_note, mcp__notes__list_notes]
+builtin_tools: []
+verifier: node verify.mjs
+arms:
+  terse: {}
+  verbose:
+    description: Same server with chatty tool results (echoes the request and the whole note list).
+    mcp_servers:
+      notes:
+        command: node
+        args: ["${TASK_DIR}/server.mjs"]
+        env: { NOTES_VERBOSE: "1" }

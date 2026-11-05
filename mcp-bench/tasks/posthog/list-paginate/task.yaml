@@ -1,0 +1,39 @@
+# TEMPLATE (not run in CI): read-only listing across pages. MCPBENCH_N_ITEMS (default 25).
+id: posthog-list-paginate
+description: List every tagged annotation across pages; verifier compares the agent's final IDS line with ground truth from the REST API.
+tags: [posthog, read, pagination]
+prompt: |
+  You are working in PostHog project {{state.project_id}}. Nobody will answer questions; finish the task alone.
+  Find every annotation whose content starts with "{{run_tag}}". There are more than fit on one page of
+  results. Do not create, change or delete anything. End your reply with exactly one line of the form
+  IDS: <all their numeric ids, comma-separated, ascending>
+model: haiku
+max_turns: 25
+max_budget_usd: 0.75
+timeout_sec: 900
+script_timeout_sec: 300
+requires_env: [POSTHOG_AUDIT_KEY, POSTHOG_PROJECT_ID]
+# Direct arm: PostHog's hosted MCP server. ${POSTHOG_AUDIT_KEY} is expanded by claude from the agent
+# env (env_passthrough), so the key never lands in the run dir. Use a SANDBOX project key only.
+mcp_servers:
+  posthog:
+    type: http
+    url: https://mcp.posthog.com/mcp
+    headers: { Authorization: "Bearer ${POSTHOG_AUDIT_KEY}" }
+env_passthrough: [POSTHOG_AUDIT_KEY]
+allowed_tools: [mcp__posthog]
+builtin_tools: []
+setup: python3 setup.py
+verifier: python3 verify.py
+cleanup: python3 cleanup.py
+arms:
+  direct: {}
+  # TEMPLATE: the same server behind mcp-wire-proxy with a rule pack. Adjust command/args to the
+  # proxy's CLI once it lands; MCP_WIRE_PROXY_BIN / MCP_WIRE_PROXY_RULES must be absolute paths.
+  wire-proxy:
+    description: PostHog MCP via mcp-wire-proxy with a rule pack (template; CLI shape not final).
+    mcp_servers:
+      posthog:
+        command: "${MCP_WIRE_PROXY_BIN}"
+        args: ["--rules", "${MCP_WIRE_PROXY_RULES}", "--upstream", "https://mcp.posthog.com/mcp", "--header", "Authorization: Bearer ${POSTHOG_AUDIT_KEY}"]
+    env_passthrough: [MCP_WIRE_PROXY_BIN, MCP_WIRE_PROXY_RULES]
