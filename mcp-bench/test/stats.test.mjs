@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { summarizeArm, summarizePairs } from '../lib/stats.mjs';
-import { schedule } from '../lib/trials.mjs';
+import { schedule, balanced } from '../lib/trials.mjs';
 
 const rec = (arm, trial, status, total, extra = {}) => ({ arm, trial, model: 'm', status, agent: status === 'setup_error' ? null : { usage: { total, input: total, cache_read: 0, cache_creation: 0, output: 0 }, num_turns: 2, duration_ms: 100, cost_usd: total / 1e6, tool_call_count: 1, ...extra } });
 
@@ -33,15 +33,38 @@ test('pairs compare each variant to baseline per trial and count concordance', (
   assert.equal(p.delta_tokens.max, 50);
 });
 
-test('schedule is seeded, paired, and randomizes arm order', () => {
+test('schedule: seeded AB/BA blocks, each arm first equally often, unique tags', () => {
   const task = { id: 't' };
   const a = schedule({ task, arms: ['x', 'y'], models: ['m1', 'm2'], n: 10, seed: 7 });
-  const b = schedule({ task, arms: ['x', 'y'], models: ['m1', 'm2'], n: 10, seed: 7 });
-  assert.deepEqual(a, b);
+  assert.deepEqual(a, schedule({ task, arms: ['x', 'y'], models: ['m1', 'm2'], n: 10, seed: 7 }));
   assert.equal(a.length, 40);
-  for (const m of ['m1', 'm2']) for (let t = 0; t < 10; t++) assert.deepEqual(a.filter((p) => p.model === m && p.trial === t).map((p) => p.arm).sort(), ['x', 'y']);
-  const firsts = new Set(a.filter((p) => p.order === 0).map((p) => p.arm));
-  assert.equal(firsts.size, 2, 'both arms go first sometimes');
-  assert.equal(new Set(a.map((p) => p.run_tag)).size, 40, 'unique run tags');
-  assert.notDeepEqual(schedule({ task, arms: ['x', 'y'], models: ['m1'], n: 10, seed: 8 }).map((p) => p.arm), a.slice(0, 20).map((p) => p.arm));
+  for (const m of ['m1', 'm2']) {
+    for (let t = 0; t < 10; t++) assert.deepEqual(a.filter((p) => p.model === m && p.trial === t).map((p) => p.arm).sort(), ['x', 'y']);
+    for (let b = 0; b < 5; b++) {
+      const firsts = a.filter((p) => p.model === m && p.block === b && p.order === 0).map((p) => p.arm).sort();
+      assert.deepEqual(firsts, ['x', 'y'], `block ${b} is one AB and one BA`);
+    }
+  }
+  assert.equal(new Set(a.map((p) => p.run_tag)).size, 40);
+  const blockOrders = (s) => schedule({ task, arms: ['x', 'y'], models: ['m'], n: 20, seed: s }).filter((p) => p.order === 0).map((p) => p.arm).join('');
+  assert.notEqual(blockOrders(1), blockOrders(2), 'row order within blocks is randomized');
+});
+
+test('schedule: three arms form a Latin square per block; balance flag', () => {
+  const a = schedule({ task: { id: 't' }, arms: ['x', 'y', 'z'], models: ['m'], n: 3, seed: 3 });
+  for (let pos = 0; pos < 3; pos++) assert.deepEqual(a.filter((p) => p.order === pos).map((p) => p.arm).sort(), ['x', 'y', 'z']);
+  assert.equal(balanced(3, ['x', 'y', 'z']), true);
+  assert.equal(balanced(5, ['x', 'y']), false);
+  assert.equal(schedule({ task: { id: 't' }, arms: ['x', 'y'], models: ['m'], n: 5, seed: 1 }).length, 10, 'partial last block still runs n trials');
+});
+
+test('side-effect rates and model ids are summarized', () => {
+  const s = summarizeArm([
+    { ...rec('a', 0, 'verified', 1), side_effects: { duplicates: 0, unexpected_mutations: 0 }, model_id: 'claude-x-1' },
+    { ...rec('a', 1, 'unverified', 1), side_effects: { duplicates: 2, unexpected_mutations: 1 }, model_id: 'claude-x-1' },
+    { ...rec('a', 2, 'unverified', 1), side_effects: { duplicates: null, unexpected_mutations: null } },
+  ]);
+  assert.deepEqual([s.duplicate_side_effects.k, s.duplicate_side_effects.n, s.duplicate_side_effects.total], [1, 2, 2]);
+  assert.equal(s.unexpected_mutations.k, 1);
+  assert.deepEqual(s.model_ids, ['claude-x-1']);
 });

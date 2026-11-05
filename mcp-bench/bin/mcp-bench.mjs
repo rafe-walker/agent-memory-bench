@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // mcp-bench: paired agentic task benchmark for MCP servers.
 //   mcp-bench validate <task.yaml...>
-//   mcp-bench run <task.yaml...> --max-total-usd X [--arms a,b] [--n 5] [--seed 1] [--model m | --models a,b]
+//   mcp-bench run <task.yaml...> --max-total-usd X [--purpose P] [--arms a,b] [--n N] [--seed 1] [--model m | --models a,b]
 //                 [--max-turns N] [--max-budget-usd X] [--out DIR] [--claude-bin PATH] [--dry-run]
 //   mcp-bench report <results.json> [--out REPORT.md]
 import fs from 'node:fs';
@@ -9,13 +9,13 @@ import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { parseArgs } from 'node:util';
 import { loadTask, resolveArm } from '../lib/spec.mjs';
-import { schedule, effective, missingEnv, runTask } from '../lib/trials.mjs';
+import { schedule, effective, missingEnv, runTask, balanced, PURPOSE_N } from '../lib/trials.mjs';
 import { buildClaudeArgs } from '../lib/runner.mjs';
 import { renderMarkdown } from '../lib/report.mjs';
 
 const USAGE = `usage:
   mcp-bench validate <task.yaml|json...>
-  mcp-bench run <task...> --max-total-usd X [--arms a,b] [--n 5] [--seed 1] [--model M | --models A,B]
+  mcp-bench run <task...> --max-total-usd X [--purpose smoke|before-after|publish] [--arms a,b] [--n N] [--seed 1] [--model M | --models A,B]
                 [--max-turns N] [--max-budget-usd X] [--out DIR] [--claude-bin PATH] [--dry-run]
   mcp-bench report <results.json> [--out REPORT.md]`;
 
@@ -59,6 +59,8 @@ function cmdDryRun(tasks, opts) {
     try { for (const a of arms) resolveArm(t, a); eff = effective(t, opts); } catch (e) { console.log(`FAIL ${e.message}`); blocked++; continue; }
     const plan = schedule({ task: t, arms, models: eff.models, n: opts.n, seed: opts.seed });
     attempts += plan.length; worst += plan.length * eff.maxBudgetUsd;
+    if (!balanced(opts.n, arms)) console.log(`warn ${t.id}: n=${opts.n} is not a multiple of ${arms.length} arms; the last AB/BA block is unbalanced`);
+    for (const m of eff.models) if (!/\d{4,}|-\d+-\d+/.test(m)) console.log(`warn ${t.id}: model "${m}" is an alias; the resolved ID is recorded per attempt, pass a frozen ID for published numbers`);
     const miss = missingEnv(t, arms);
     if (miss.length) { console.log(`BLOCKED ${t.id}: missing env ${miss.join(', ')}`); blocked++; }
     console.log(`\n${t.id}: ${plan.length} attempts (${eff.models.join(', ')} × ${arms.join(', ')} × n=${opts.n}), max_turns ${eff.maxTurns}, max $${eff.maxBudgetUsd}/attempt, timeout ${t.timeout_sec}s`);
@@ -77,11 +79,16 @@ function cmdDryRun(tasks, opts) {
 async function cmdRun(files, opts) {
   const { tasks, errors } = loadAll(files);
   if (errors.length) { for (const e of errors) console.error(e); return 1; }
+  if (opts.purpose === 'publish') {
+    for (const t of tasks) if (effective(t, opts).models.some((m) => /haiku/i.test(m))) {
+      console.error(`${t.id}: --purpose publish: small models are for smoke runs only, never a published figure`); return 2;
+    }
+  }
   if (opts.dryRun) return cmdDryRun(tasks, opts);
   if (opts.maxTotalUsd == null) { console.error('run: --max-total-usd is required (use --dry-run to see the worst-case spend)'); return 2; }
   const outDir = path.resolve(opts.out || path.join('results', new Date().toISOString().replace(/[:.]/g, '-')));
   fs.mkdirSync(outDir, { recursive: true });
-  const res = { generated_at: new Date().toISOString(), seed: opts.seed, n: opts.n, claude_version: null, max_total_usd: opts.maxTotalUsd, tasks: [] };
+  const res = { generated_at: new Date().toISOString(), purpose: opts.purpose, seed: opts.seed, n: opts.n, claude_version: null, max_total_usd: opts.maxTotalUsd, tasks: [] };
   let spent = 0;
   for (const t of tasks) {
     const r = await runTask(t, { ...opts, outDir, spentUsd: spent, log: (s) => console.error(s) });
@@ -107,7 +114,7 @@ async function main(argv) {
   const { values: v, positionals: pos } = parseArgs({
     args: argv, allowPositionals: true,
     options: {
-      task: { type: 'string', multiple: true }, arms: { type: 'string' }, n: { type: 'string', default: '5' },
+      task: { type: 'string', multiple: true }, arms: { type: 'string' }, n: { type: 'string' }, purpose: { type: 'string' },
       seed: { type: 'string', default: '1' }, model: { type: 'string' }, models: { type: 'string' },
       'max-turns': { type: 'string' }, 'max-budget-usd': { type: 'string' }, 'max-total-usd': { type: 'string' },
       out: { type: 'string' }, 'claude-bin': { type: 'string' }, 'dry-run': { type: 'boolean' }, help: { type: 'boolean', short: 'h' },
@@ -119,8 +126,14 @@ async function main(argv) {
   if (cmd === 'validate') return cmdValidate(files);
   if (cmd === 'report') return cmdReport(rest[0], v.out);
   if (cmd === 'run') {
+    if (v.purpose && !(v.purpose in PURPOSE_N)) throw new Error(`--purpose: one of ${Object.keys(PURPOSE_N).join(', ')}`);
+    const n = num(v.n, 'n', true) ?? PURPOSE_N[v.purpose || 'smoke'];
+    if (v.purpose === 'publish') {
+      // Council rule: a published number needs 20-30 trials on the model customers run.
+      if (n < PURPOSE_N.publish) throw new Error(`--purpose publish needs --n >= ${PURPOSE_N.publish}`);
+    }
     return cmdRun(files, {
-      arms: list(v.arms), n: num(v.n, 'n', true), seed: Number.parseInt(v.seed, 10) || 1,
+      purpose: v.purpose || null, arms: list(v.arms), n, seed: Number.parseInt(v.seed, 10) || 1,
       model: v.model, models: list(v.models), maxTurns: num(v['max-turns'], 'max-turns', true),
       maxBudgetUsd: num(v['max-budget-usd'], 'max-budget-usd'), maxTotalUsd: num(v['max-total-usd'], 'max-total-usd'),
       out: v.out, claudeBin: v['claude-bin'] || process.env.MCP_BENCH_CLAUDE || 'claude', dryRun: !!v['dry-run'],

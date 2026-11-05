@@ -15,7 +15,10 @@ export function makeTask(dir, over = {}) {
   fs.writeFileSync(path.join(dir, 'verify.sh'), [
     '#!/usr/bin/env bash',
     'f="$BENCH_WORKDIR/out.txt"',
-    'if [ -f "$f" ] && [ "$(cat "$f")" = "hello $BENCH_RUN_TAG" ]; then echo \'{"pass":true,"details":{"ok":1}}\'; else echo \'{"pass":false,"details":{"missing":"out.txt"}}\'; fi',
+    '[ -n "$VERIFY_LOG" ] && echo "$(ls "$BENCH_RUN_DIR" | tr "\\n" " ")ANSWER=${BENCH_ANSWER_FILE:-none}" >> "$VERIFY_LOG"',
+    'dup=$(( $(ls "$BENCH_WORKDIR"/out.txt* 2>/dev/null | wc -l) - 1 )); [ "$dup" -lt 0 ] && dup=0',
+    'if [ -f "$f" ] && [ "$(cat "$f")" = "hello $BENCH_RUN_TAG" ] && [ "$dup" = 0 ]; then ok=true; else ok=false; fi',
+    'echo "{\\"pass\\":$ok,\\"details\\":{\\"duplicates\\":$dup,\\"unexpected_mutations\\":0}}"',
   ].join('\n'));
   fs.writeFileSync(path.join(dir, 'setup.sh'), 'echo "{\\"greeting\\":\\"hello\\"}" > "$BENCH_STATE"\n');
   fs.writeFileSync(path.join(dir, 'cleanup.sh'), 'echo "$BENCH_ARM $BENCH_TRIAL" >> "$CLEANUP_LOG"\n');

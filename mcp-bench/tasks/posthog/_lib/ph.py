@@ -11,6 +11,9 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "..", "verifier"))
+from mcpbench_verify import Verifier  # noqa: E402,F401  (re-exported for the task verifiers)
+
 HOST = os.environ.get("POSTHOG_HOST", "https://us.posthog.com").rstrip("/")
 PROJECT = os.environ.get("POSTHOG_PROJECT_ID", "")
 THROTTLE_S = float(os.environ.get("POSTHOG_THROTTLE_S", "0.6"))
@@ -68,9 +71,15 @@ def write_state(d):
         json.dump(d, f)
 
 
-def verdict(passed, **details):
-    print(json.dumps({"pass": bool(passed), "details": details}, default=str))
-    sys.exit(0)
+def snapshot(items, fields):
+    """{id: {field: value}} over a stable field whitelist, for assert_no_unexpected_mutations."""
+    return {str(x["id"]): {f: x.get(f) for f in fields} for x in items}
+
+
+def live_tagged(kind, field="name", extra=None):
+    """Live (not soft-deleted) <kind> whose <field> contains this run's tag, read via REST."""
+    t = tag()
+    return [x for x in get_all(kind, {"search": t, "limit": 100, **(extra or {})}) if not x.get("deleted") and t in (x.get(field) or "")]
 
 
 def soft_delete_tagged(kind, name_field="name", extra=None):

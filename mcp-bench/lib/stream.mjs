@@ -92,8 +92,10 @@ function summarize(p) {
     duration_ms: r?.duration_ms ?? null,
     duration_api_ms: r?.duration_api_ms ?? null,
     cost_usd: r?.total_cost_usd ?? null,
+    // Provider-reported only: from the result event, or (no result event) the sum of per-message usage.
     usage: { ...usage, total: totalOf(usage) },
     usage_source: usage === turnSum ? 'turns' : 'result',
+    model_ids: [...new Set([...(r?.modelUsage ? Object.keys(r.modelUsage) : []), ...p.turns.map((t) => t.model).filter(Boolean)])].sort(),
     usage_turn_sum: { ...turnSum, total: totalOf(turnSum) },
     model_usage: r?.modelUsage || null,
     turns: p.turns.map((t) => ({ ...t, total: totalOf(t.usage) })),
@@ -102,6 +104,12 @@ function summarize(p) {
     tool_error_count: p.tool_calls.filter((c) => c.is_error).length,
     tool_result_bytes: p.tool_calls.reduce((n, c) => n + (c.result_bytes || 0), 0),
     by_tool: byTool,
+    // Estimates live here and only here; `usage` is provider-reported, never mixed with these.
+    estimated: {
+      method: 'utf8_bytes/4',
+      tool_input_tokens: Math.round(p.tool_calls.reduce((n, c) => n + c.input_bytes, 0) / 4),
+      tool_result_tokens: Math.round(p.tool_calls.reduce((n, c) => n + (c.result_bytes || 0), 0) / 4),
+    },
     api_retries: p.api_retries,
     permission_denials: (r?.permission_denials || []).map((d) => d.tool_name || String(d)),
     compactions: p.compactions,

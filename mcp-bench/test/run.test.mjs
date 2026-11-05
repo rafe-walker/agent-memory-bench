@@ -17,7 +17,7 @@ function cli(args, env = {}) {
 test('paired run: results.json + REPORT.md, overrides applied, env scrubbed, secrets not written, cleanup always runs', () => {
   const d = tmpdir(); const out = path.join(d, 'out');
   const task = makeTask(d);
-  const r = cli(['run', task, '--n', '3', '--seed', '5', '--model', 'tiny-model', '--max-turns', '3', '--max-total-usd', '1', '--out', out, '--claude-bin', FAKE], { CLEANUP_LOG: path.join(d, 'cleanup.log') });
+  const r = cli(['run', task, '--n', '3', '--seed', '5', '--model', 'tiny-model', '--max-turns', '3', '--max-total-usd', '1', '--out', out, '--claude-bin', FAKE], { CLEANUP_LOG: path.join(d, 'cleanup.log'), VERIFY_LOG: path.join(d, 'verify.log') });
   assert.equal(r.code, 0, r.err);
   const res = JSON.parse(fs.readFileSync(path.join(out, 'results.json'), 'utf8'));
   const t = res.tasks[0];
@@ -31,6 +31,15 @@ test('paired run: results.json + REPORT.md, overrides applied, env scrubbed, sec
   assert.equal(arms.variant.tokens.total.p50, 2 * 400 + 710);
   assert.equal(arms.baseline.expected_tokens_per_verified_success, 2710);
   assert.equal(arms.baseline.tool_errors, 0);
+  assert.deepEqual(arms.baseline.model_ids, ['tiny-model'], 'resolved model id from the init event');
+  assert.equal(arms.baseline.duplicate_side_effects.n, 3);
+  assert.equal(arms.baseline.duplicate_side_effects.k, 0);
+  assert.equal(t.records[0].agent.estimated.method, 'utf8_bytes/4');
+  assert.equal(t.balanced, false, 'n=3 with 2 arms is flagged');
+  for (const line of fs.readFileSync(path.join(d, 'verify.log'), 'utf8').trim().split('\n')) {
+    assert.doesNotMatch(line, /transcript/, 'transcript is not on disk while the verifier runs');
+    assert.match(line, /ANSWER=none$/, 'verifier gets no agent text');
+  }
   const pair = t.models['tiny-model'].paired.variant;
   assert.equal(pair.pairs, 3);
   assert.equal(pair.delta_tokens.p50, -1200);
@@ -60,7 +69,9 @@ test('paired run: results.json + REPORT.md, overrides applied, env scrubbed, sec
   assert.equal(fs.readFileSync(path.join(d, 'cleanup.log'), 'utf8').trim().split('\n').length, 6);
   const md = fs.readFileSync(path.join(out, 'REPORT.md'), 'utf8');
   assert.match(md, /Expected tokens per verified success/);
-  assert.match(md, /\| baseline \| 3 \| 3 \| 100%/);
+  assert.match(md, /\| baseline \| 2,710 \| 100% \([0-9]+%–100%\) \| 3 \/ 3 \| 2,710 \/ 2,710 \(3\) \|/);
+  assert.match(md, /Resolved model ID\(s\): `tiny-model`/);
+  assert.match(md, /Unbalanced/);
   assert.match(md, /variant vs baseline \| 3 \| -1,200/);
   assert.ok(!fs.existsSync(path.join(t.records[0].run_dir, 'home')), 'isolated HOME removed after the attempt');
   assert.ok(fs.existsSync(path.join(t.records[0].run_dir, 'transcript.jsonl.gz')));
@@ -71,20 +82,22 @@ test('failures count in the denominator: skip (unverified), error, crash, hang (
   const d = tmpdir(); const out = path.join(d, 'out');
   const task = makeTask(d, {
     timeout_sec: 2,
-    arms: { ok: {}, skip: { env: { FAKE_CLAUDE_MODE: 'skip' } }, err: { env: { FAKE_CLAUDE_MODE: 'error' } }, crash: { env: { FAKE_CLAUDE_MODE: 'crash' } }, hang: { env: { FAKE_CLAUDE_MODE: 'hang' } } },
+    arms: { ok: {}, dup: { env: { FAKE_CLAUDE_MODE: 'dup' } }, skip: { env: { FAKE_CLAUDE_MODE: 'skip' } }, err: { env: { FAKE_CLAUDE_MODE: 'error' } }, crash: { env: { FAKE_CLAUDE_MODE: 'crash' } }, hang: { env: { FAKE_CLAUDE_MODE: 'hang' } } },
   });
   const r = cli(['run', task, '--n', '1', '--max-total-usd', '1', '--out', out, '--claude-bin', FAKE], { CLEANUP_LOG: path.join(d, 'c.log') });
   assert.equal(r.code, 0, r.err);
   const t = JSON.parse(fs.readFileSync(path.join(out, 'results.json'), 'utf8')).tasks[0];
   const a = t.models.haiku.arms;
   assert.equal(a.ok.verified, 1);
+  assert.equal(a.dup.verified, 0);
+  assert.deepEqual([a.dup.duplicate_side_effects.k, a.dup.duplicate_side_effects.n], [1, 1], 'duplicate side effect counted');
   assert.equal(a.skip.verified, 0); assert.equal(a.skip.attempts, 1); assert.equal(a.skip.tool_errors, 1);
   assert.equal(a.err.agent_errors, 1);
   assert.equal(a.crash.agent_errors, 1);
   assert.equal(t.records.find((x) => x.arm === 'crash').agent.usage_source, 'turns');
   assert.equal(a.hang.timeouts, 1); assert.equal(a.hang.attempts, 1);
   assert.equal(a.hang.expected_tokens_per_verified_success, null);
-  assert.equal(fs.readFileSync(path.join(d, 'c.log'), 'utf8').trim().split('\n').length, 5, 'cleanup ran after every attempt');
+  assert.equal(fs.readFileSync(path.join(d, 'c.log'), 'utf8').trim().split('\n').length, 6, 'cleanup ran after every attempt');
   assert.match(fs.readFileSync(path.join(out, 'REPORT.md'), 'utf8'), /∞ \(0 verified\)/);
 });
 
@@ -130,6 +143,20 @@ test('run refuses without --max-total-usd; dry-run spawns nothing and flags miss
   assert.equal(ph.code, 3);
   assert.match(ph.out, /missing env POSTHOG_AUDIT_KEY, POSTHOG_PROJECT_ID$/m);
   assert.doesNotMatch(ph.out, /MCP_WIRE_PROXY/, 'only the selected arms\' env is required');
+});
+
+test('--purpose sets n and guards published numbers', () => {
+  const d = tmpdir();
+  const task = makeTask(d);
+  const ba = cli(['run', task, '--purpose', 'before-after', '--dry-run', '--claude-bin', FAKE]);
+  assert.equal(ba.code, 0, ba.out + ba.err);
+  assert.match(ba.out, /20 attempts/);
+  assert.match(ba.out, /model "haiku" is an alias/);
+  assert.notEqual(cli(['run', task, '--purpose', 'publish', '--n', '5', '--dry-run', '--claude-bin', FAKE]).code, 0);
+  const pub = cli(['run', task, '--purpose', 'publish', '--n', '20', '--dry-run', '--claude-bin', FAKE]);
+  assert.equal(pub.code, 2);
+  assert.match(pub.err, /small models are for smoke runs only/);
+  assert.equal(cli(['run', task, '--purpose', 'publish', '--n', '20', '--model', 'claude-sonnet-9-9-20990101', '--dry-run', '--claude-bin', FAKE]).code, 0);
 });
 
 test('validate and report commands', () => {

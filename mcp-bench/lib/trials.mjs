@@ -8,15 +8,35 @@ import { resolveArm } from './spec.mjs';
 import { runAttempt } from './runner.mjs';
 import { summarizeArm, summarizePairs } from './stats.mjs';
 
+/**
+ * Randomized counterbalanced blocks (AB/BA for two arms). A block is k consecutive trials for k arms;
+ * its rows are the k cyclic rotations of a random arm permutation (a Latin square: every arm runs in
+ * every position once), in random row order. n not divisible by k leaves a partial last block, which
+ * is flagged as unbalanced. Each attempt still gets its own setup/cleanup (state reset per trial).
+ */
 export function schedule({ task, arms, models, n, seed }) {
   const r = mulberry32(seed);
+  const k = arms.length;
   const out = [];
-  for (const model of models) for (let trial = 0; trial < n; trial++) {
-    const order = r.shuffle(arms);
-    order.forEach((arm, i) => out.push({ task: task.id, model, trial, arm, order: i, run_tag: `mcpbench-${task.id}-${arm}-t${trial}-${r.hex(6)}` }));
+  for (const model of models) {
+    let trial = 0;
+    for (let block = 0; trial < n; block++) {
+      const perm = r.shuffle(arms);
+      const rows = r.shuffle(perm.map((_, i) => [...perm.slice(i), ...perm.slice(0, i)]));
+      for (const order of rows) {
+        if (trial >= n) break;
+        order.forEach((arm, i) => out.push({ task: task.id, model, trial, block, arm, order: i, run_tag: `mcpbench-${task.id}-${arm}-t${trial}-${r.hex(6)}` }));
+        trial++;
+      }
+    }
   }
   return out;
 }
+
+export const balanced = (n, arms) => arms.length < 2 || n % arms.length === 0;
+
+// Council-settled trial counts: n per arm per model for each purpose.
+export const PURPOSE_N = { smoke: 5, 'before-after': 10, publish: 20 };
 
 /** Effective per-run settings after CLI overrides. CLI wins: it is how a smoke test is made cheap. */
 export function effective(task, opts) {
@@ -77,7 +97,7 @@ export async function runTask(task, opts) {
   }
   return {
     task: task.id, description: task.description || null, spec_file: task.file, arms, baseline: arms[0],
-    n: opts.n, seed: opts.seed, max_turns: eff.maxTurns, max_budget_usd_per_attempt: eff.maxBudgetUsd,
+    n: opts.n, seed: opts.seed, purpose: opts.purpose || null, balanced: balanced(opts.n, arms), max_turns: eff.maxTurns, max_budget_usd_per_attempt: eff.maxBudgetUsd,
     planned_attempts: plan.length, completed_attempts: records.length, stopped, spent_usd: spent,
     claude_version: records.find((r) => r.agent?.init?.version)?.agent.init.version ?? null,
     models: perModel, records,

@@ -17,7 +17,7 @@ mcp_servers:
     args: ["${TASK_DIR}/server.mjs"]
 allowed_tools: [mcp__notes__write_note, mcp__notes__list_notes]
 builtin_tools: []
-verifier: node verify.mjs
+verifier: python3 verify.py
 arms:
   terse: {}
   verbose:

@@ -14,4 +14,4 @@ jobs:
       - run: npm ci --no-audit --no-fund
       - run: npm test
       - run: npm run validate
-      - run: python3 -m py_compile tasks/posthog/_lib/ph.py tasks/posthog/*/*.py
+      - run: python3 -m py_compile tasks/posthog/_lib/ph.py tasks/posthog/*/*.py tasks/local-notes/*.py

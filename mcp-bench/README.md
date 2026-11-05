@@ -4,11 +4,14 @@ Paired agentic task benchmark for MCP servers (the **Agentic** tier of the audit
 Each attempt is one headless `claude -p --output-format stream-json` session against a fresh start
 state, graded by an **independent state verifier** — never by the agent's own claim.
 
-Reports per arm: verified success rate (95% Wilson), **expected tokens per verified success**
-(= total tokens across *all* attempts ÷ verified successes), p50/p95 tokens / turns / time, the
-provider token split (input / cache read / cache creation / output), tool calls with request and
-result bytes, tool errors, API retries, timeouts; plus paired deltas of each variant against the
-baseline arm. Output: `results.json`, `REPORT.md`, `attempts.jsonl`, and a gzipped transcript per attempt.
+Headline per arm: **expected tokens per verified success** (= total tokens across *all* attempts,
+failures included ÷ verified successes), always next to the verified success rate (95% Wilson),
+p50/p95 tokens per trial with n, wall time p50/p95, turns, tool calls, and the
+**duplicate-side-effect** and unexpected-mutation rates the verifier reports. Also: the provider token
+split (input / cache read / cache creation / output), tool request/result bytes, tool errors, API
+retries, timeouts, the **resolved model IDs** (from the CLI's init event, whatever alias was asked
+for), and paired deltas of each variant against the baseline arm. Token fields are provider-reported
+only; estimates (tool result bytes ÷ 4) live in separate `estimated` fields and are marked "est.". Output: `results.json`, `REPORT.md`, `attempts.jsonl`, and a gzipped transcript per attempt.
 
 ## Run it
 
@@ -17,9 +20,9 @@ cd mcp-bench && npm ci
 npm test                                           # fake claude only; never calls a model
 node bin/mcp-bench.mjs validate tasks/*/*/task.yaml tasks/*/task.yaml
 node bin/mcp-bench.mjs run tasks/posthog/insight-update/task.yaml --dry-run          # plan, argv, missing env, worst-case $
-node bin/mcp-bench.mjs run tasks/local-notes/task.yaml --model haiku --n 1 --max-total-usd 0.25   # ~$0.002 live smoke test
-node bin/mcp-bench.mjs run tasks/posthog/*/task.yaml --arms direct,wire-proxy --n 5 --models haiku,sonnet \
-     --max-turns 25 --max-total-usd 10 --out results/posthog-$(date +%F)
+node bin/mcp-bench.mjs run tasks/local-notes/task.yaml --model haiku --n 2 --max-total-usd 0.25   # ~$0.004 live smoke test
+node bin/mcp-bench.mjs run tasks/posthog/*/task.yaml --purpose before-after --arms direct,wire-proxy \
+     --model <frozen model id> --max-turns 25 --max-total-usd 15 --out results/posthog-$(date +%F)
 node bin/mcp-bench.mjs report results/…/results.json
 ```
 
@@ -31,9 +34,15 @@ picks the CLI.
 
 ## Paired trials
 
-For each model and trial index every selected arm runs once, in a seeded random order
-(`--seed`), sequentially (the sandbox is shared state). The first arm in `--arms` (or in the spec)
-is the baseline. Attempts whose **setup** failed never reached the agent and are excluded (reported
+Trials run in **randomized AB/BA blocks** (`--seed`): for k arms a block is k trials whose arm orders
+are the k rotations of a random permutation (a Latin square), in random order, so every arm runs in
+every position equally often. n not divisible by k is flagged as unbalanced. Every attempt gets its
+own setup and cleanup (start state reset per trial) and runs sequentially (the sandbox is shared).
+The first arm in `--arms` (or in the spec) is the baseline.
+
+`--purpose` sets the trial count: `smoke` 5, `before-after` 10, `publish` 20 (20–30 only for a
+published number; `publish` refuses n < 20 and small models). Pass a frozen model ID, not an alias,
+for anything published; dry-run warns on aliases and the report flags a model change mid-run. Attempts whose **setup** failed never reached the agent and are excluded (reported
 as setup errors); everything else — timeouts, agent errors, verifier errors — stays in the denominator.
 
 ## Task spec (YAML or JSON)
@@ -47,16 +56,28 @@ as setup errors); everything else — timeouts, agent errors, verifier errors �
 | `allowed_tools`, `disallowed_tools`, `builtin_tools` | `--allowedTools`, `--disallowedTools`, `--tools` (`[]` = no built-in tools) |
 | `env`, `env_passthrough` | literal agent env; names copied from the harness env (the agent env is otherwise scrubbed to PATH/proxy/auth) |
 | `requires_env` | names the harness must have (run refuses, dry-run flags them) |
-| `setup`, `verifier`, `cleanup` | shell commands run in the spec's directory with the full harness env plus `BENCH_TASK`, `BENCH_ARM`, `BENCH_TRIAL`, `BENCH_MODEL`, `BENCH_RUN_TAG`, `BENCH_RUN_DIR`, `BENCH_WORKDIR` (agent cwd), `BENCH_STATE` (JSON file setup writes); the verifier also gets `BENCH_ANSWER_FILE` (agent's final text, for read-only tasks graded against ground truth the verifier fetches itself). Cleanup always runs. |
+| `setup`, `verifier`, `cleanup` | shell commands run in the spec's directory with the full harness env plus `BENCH_TASK`, `BENCH_ARM`, `BENCH_TRIAL`, `BENCH_MODEL`, `BENCH_RUN_TAG`, `BENCH_RUN_DIR`, `BENCH_WORKDIR` (agent cwd), `BENCH_STATE` (JSON file setup writes). The agent's transcript and final text are not on disk while the verifier runs. Cleanup always runs. |
 | `arms` | `{name: overrides}`; an arm may override only how the agent reaches the server (`mcp_servers`, tools, env, `extra_args`, `append_system_prompt`, `prompt_prefix`/`prompt_suffix`) |
 
 Verifier contract: the last stdout line that parses as `{"pass": bool, "details": …}` wins;
 otherwise exit 0 = pass, 1 = fail; any other exit or a timeout is a `verifier_error` (never a pass).
+`details.duplicates` / `details.unexpected_mutations` (integers) feed the side-effect rates.
+
+## Verifier SDK
+
+`verifier/mcpbench_verify.py` (stdlib only): `Verifier()` with `assert_exists`, `assert_absent`,
+`assert_equals`, `assert_count`, `assert_no_duplicates` (counts extra copies),
+`assert_no_unexpected_mutations(before, after, allowed_ids, ignore_fields)`, and a bounded
+`assert_eventually(probe, timeout_s, interval_s)`; `finish()` prints the verdict line. Rules:
+read through an **independent surface** (the REST API, a database, the file system — never the MCP
+tool under test) and **never read the agent's narrative**; a read-only task is graded through a
+required write-back (see `posthog/list-paginate`).
 
 ## Shipped tasks
 
-- `tasks/local-notes/` — a bundled stdio MCP server (no deps), arms `terse` vs `verbose` results. Live smoke test.
+- `tasks/local-notes/` — a bundled stdio MCP server (no deps), arms `terse` vs `verbose` results; verifier reads the files on disk. Live smoke test.
 - `tasks/posthog/{dashboard-create,insight-update,list-paginate}/` — **templates**, not run in CI.
+  `list-paginate` marks every tagged annotation across pages (missing marks = pagination stopped early).
   Need `POSTHOG_AUDIT_KEY` (sandbox project key only) and `POSTHOG_PROJECT_ID`; optional `POSTHOG_HOST`,
   `MCPBENCH_N_INSIGHTS` (3), `MCPBENCH_N_ITEMS` (25). Setup/verifier/cleanup use the REST API directly
   (`_lib/ph.py`, stdlib). The `wire-proxy` arm is a placeholder until mcp-wire-proxy's CLI is final

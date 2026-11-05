@@ -88,6 +88,12 @@ export function interpretVerifier(r) {
   return { status: 'error', details: `exit ${r.code}${r.signal ? ` (${r.signal})` : ''}: ${r.stderr.trim().slice(-500)}` };
 }
 
+/** Side-effect counters a verifier reports (the verifier SDK emits them); null when not reported. */
+export function sideEffects(details) {
+  const n = (k) => (details && typeof details === 'object' && Number.isFinite(details[k]) ? details[k] : null);
+  return { duplicates: n('duplicates'), unexpected_mutations: n('unexpected_mutations') };
+}
+
 function readState(file) {
   try { const s = fs.readFileSync(file, 'utf8').trim(); return s ? JSON.parse(s) : {}; } catch (e) {
     if (e.code === 'ENOENT') return {};
@@ -137,19 +143,18 @@ export async function runAttempt({ task, armCfg, model, maxTurns, maxBudgetUsd, 
     }
     const args = buildClaudeArgs({ prompt, armCfg, model, maxTurns, maxBudgetUsd, mcpFile });
     const r = await spawnCapture(claudeBin, args, { cwd: dirs.work, env: agentEnv(armCfg, dirs), timeoutMs: task.timeout_sec * 1000 });
-    fs.writeFileSync(path.join(runDir, 'transcript.jsonl.gz'), zlib.gzipSync(r.stdout));
     const m = parseStreamJson(r.stdout);
-    // why: read-only tasks (list, search) are graded by comparing the agent's final answer with
-    // ground truth the verifier fetches itself; the answer is the thing graded, never trusted.
-    const answerFile = path.join(runDir, 'answer.txt');
-    fs.writeFileSync(answerFile, m.result_text || '');
-    ctx.scriptEnv.BENCH_ANSWER_FILE = answerFile;
     rec.agent = {
       exit_code: r.code, signal: r.signal, timed_out: r.timed_out, spawn_error: r.spawn_error, wall_ms: r.wall_ms,
       stderr_tail: r.stderr.slice(-500), ...m,
     };
+    rec.model_id = m.init?.model ?? null;
+    // why: verifiers read the sandbox through an independent surface and never the agent's narrative,
+    // so nothing the agent said (transcript, final text) is on disk until the verifier has finished.
     const v = await runScript(task.verifier, ctx, task.script_timeout_sec);
     rec.verifier = { ...interpretVerifier(v), wall_ms: v.wall_ms };
+    fs.writeFileSync(path.join(runDir, 'transcript.jsonl.gz'), zlib.gzipSync(r.stdout));
+    rec.side_effects = sideEffects(rec.verifier.details);
     rec.status = rec.verifier.status === 'pass' ? 'verified' : rec.verifier.status === 'fail' ? 'unverified' : 'verifier_error';
     return rec;
   } finally {

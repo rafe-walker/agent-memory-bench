@@ -2,7 +2,7 @@
 // Test double for `claude -p --output-format stream-json`. Never calls a model.
 // Behaviour comes from the agent env (set through a task's env:), so it also proves the runner
 // scrubs everything else:
-//   FAKE_CLAUDE_MODE   ok (default) | skip | error | hang | crash
+//   FAKE_CLAUDE_MODE   ok (default) | dup (writes the file twice) | skip | error | hang | crash
 //   FAKE_TOKENS        input tokens per turn (default 1000)
 //   FAKE_CLAUDE_LOG    append {argv, env_keys, cwd} as one JSON line
 // In ok mode a prompt line "WRITE <file> <content>" is carried out in cwd (the "real state" the
@@ -30,8 +30,9 @@ if (mode === 'hang') { setTimeout(() => {}, 60_000); } else {
   emit({ type: 'assistant', message: { id: 'msg_1', model: arg('--model'), content: [{ type: 'text', text: 'working' }], usage: u1 } });
   emit({ type: 'assistant', message: { id: 'msg_1', model: arg('--model'), content: [{ type: 'tool_use', id: 'tu_1', name: 'mcp__fake__write', input: { note: 'x'.repeat(10) } }], usage: u1 } });
   const m = /^WRITE (\S+) (.+)$/m.exec(arg('-p') || '');
-  if (mode === 'ok' && m) fs.writeFileSync(path.join(process.cwd(), m[1]), m[2]);
-  emit({ type: 'user', message: { content: [{ type: 'tool_result', tool_use_id: 'tu_1', content: [{ type: 'text', text: mode === 'ok' ? 'written' : 'refused' }], is_error: mode !== 'ok' }] } });
+  if ((mode === 'ok' || mode === 'dup') && m) fs.writeFileSync(path.join(process.cwd(), m[1]), m[2]);
+  if (mode === 'dup' && m) fs.writeFileSync(path.join(process.cwd(), `${m[1]}.copy`), m[2]);
+  emit({ type: 'user', message: { content: [{ type: 'tool_result', tool_use_id: 'tu_1', content: [{ type: 'text', text: mode === 'ok' || mode === 'dup' ? 'written' : 'refused' }], is_error: mode !== 'ok' && mode !== 'dup' }] } });
   process.stdout.write('this line is not json\n');
   if (mode === 'crash') process.exit(1);
   emit({ type: 'assistant', message: { id: 'msg_2', model: arg('--model'), content: [{ type: 'text', text: 'done' }], usage: u2 } });

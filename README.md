@@ -32,8 +32,9 @@ node track-a/run.mjs --arms kronicle-lite,native --scenarios S1,S7 --seeds 5   #
 
 [`mcp-bench/`](mcp-bench/README.md) is the agentic task benchmark for MCP servers: headless `claude -p`
 stream-json runs, task specs with setup / independent state verifier / cleanup, paired baseline-vs-variant
-trials in randomized order, p50/p95 tokens/turns/time and **expected tokens per verified success**
-(JSON + markdown). Budget-capped (`--max-total-usd`), `--dry-run`, model/turn overrides, and a fake-claude
+trials in randomized AB/BA blocks, **expected tokens per verified success** with success rate, p50/p95
+tokens/wall time, turns, tool calls and duplicate-side-effect rate (JSON + markdown), resolved model IDs, and a
+verifier SDK that reads through an independent surface, never the agent's narrative. Budget-capped (`--max-total-usd`), `--dry-run`, model/turn overrides, and a fake-claude
 test double so CI never calls a model. Ships a local smoke task and three PostHog sandbox templates.
 
 ```sh
