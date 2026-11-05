@@ -11,7 +11,7 @@ export const DEFAULTS = { max_turns: 20, max_budget_usd: 0.5, timeout_sec: 600, 
 // arms so a paired comparison changes one thing: how the agent reaches the server.
 const ARM_KEYS = {
   description: 'string', mcp_servers: 'object', allowed_tools: 'string[]', disallowed_tools: 'string[]',
-  builtin_tools: 'string[]', env: 'env', env_passthrough: 'string[]', extra_args: 'string[]',
+  builtin_tools: 'string[]', env: 'env', env_passthrough: 'string[]', secret_env: 'string[]', plain_env: 'string[]', extra_args: 'string[]',
   append_system_prompt: 'string', prompt_prefix: 'string', prompt_suffix: 'string',
 };
 const TOP_KEYS = {
@@ -60,14 +60,37 @@ const RESERVED_FLAGS = ['-p', '--print', '--output-format', '--verbose', '--mode
   '--permission-mode', '--dangerously-skip-permissions', '--allow-dangerously-skip-permissions', '--no-session-persistence',
   '--strict-mcp-config', '--mcp-config', '--resume', '-r', '--continue', '-c', '--session-id', '--settings', '--setting-sources'];
 const RESERVED_ENV = ['HOME', 'CLAUDE_CONFIG_DIR'];
+// why: belt and braces for redaction; a name like this is redacted even when plain_env lists it.
+export const CREDENTIAL_NAME = /KEY|TOKEN|SECRET|PASSW|CREDENTIAL|AUTH|COOKIE/i;
+
+function checkPlain(obj, where, warnings) {
+  for (const k of Array.isArray(obj?.plain_env) ? obj.plain_env : []) {
+    if (CREDENTIAL_NAME.test(String(k))) warnings.push(`${where}.plain_env: ${k} looks like a credential and is redacted anyway`);
+  }
+}
+
+// why: these pick the model (or a subagent's) behind --model's back, so an arm's env would change
+// the model mid-comparison.
+const MODEL_ENV = /^(ANTHROPIC_MODEL|ANTHROPIC_SMALL_FAST_MODEL|ANTHROPIC_DEFAULT_[A-Z0-9_]+_MODEL|CLAUDE_CODE_SUBAGENT_MODEL)$/;
+
+// why: `-pc` is `-p -c` to the CLI's parser, so a combined short-flag group is checked letter by letter.
+const flagsOf = (a) => {
+  const f = String(a).split('=')[0];
+  return /^-[A-Za-z]{2,}$/.test(f) ? [...f.slice(1)].map((c) => `-${c}`) : [f];
+};
 
 function checkReserved(obj, where, errors) {
   if (!obj || typeof obj !== 'object') return;
   for (const a of Array.isArray(obj.extra_args) ? obj.extra_args : []) {
-    const flag = String(a).split('=')[0];
-    if (RESERVED_FLAGS.includes(flag)) errors.push(`${where}.extra_args: ${flag} is set by the harness and may not be overridden`);
+    for (const flag of flagsOf(a)) if (RESERVED_FLAGS.includes(flag)) errors.push(`${where}.extra_args: ${flag} is set by the harness and may not be overridden`);
   }
-  if (obj.env && typeof obj.env === 'object') for (const k of Object.keys(obj.env)) if (RESERVED_ENV.includes(k)) errors.push(`${where}.env.${k}: reserved (the harness isolates HOME per attempt)`);
+  if (obj.env && typeof obj.env === 'object') for (const k of Object.keys(obj.env)) {
+    if (RESERVED_ENV.includes(k)) errors.push(`${where}.env.${k}: reserved (the harness isolates HOME per attempt)`);
+    else if (MODEL_ENV.test(k)) errors.push(`${where}.env.${k}: reserved (selects the model; use --model / model:)`);
+  }
+  for (const k of Array.isArray(obj.env_passthrough) ? obj.env_passthrough : []) {
+    if (MODEL_ENV.test(String(k))) errors.push(`${where}.env_passthrough: ${k} is reserved (selects the model; use --model / model:)`);
+  }
 }
 
 export function parseSpecText(text, file) {
@@ -84,6 +107,7 @@ export function validateSpec(raw, dir) {
   if (!raw.verifier) errors.push('spec.verifier: required (an independent state check; the agent\'s own claim never counts)');
   checkMcp(raw.mcp_servers, 'spec', errors);
   checkReserved(raw, 'spec', errors);
+  checkPlain(raw, 'spec', warnings);
   const arms = raw.arms || { default: {} };
   if (!typeOk(arms, 'object') || !Object.keys(arms).length) errors.push('spec.arms: needs at least one arm');
   else for (const [name, a] of Object.entries(arms)) {
@@ -92,6 +116,7 @@ export function validateSpec(raw, dir) {
     checkKeys(a ?? {}, ARM_KEYS, `spec.arms.${name}`, errors);
     checkMcp(a?.mcp_servers, `spec.arms.${name}`, errors);
     checkReserved(a, `spec.arms.${name}`, errors);
+    checkPlain(a, `spec.arms.${name}`, warnings);
   }
   for (const k of ['setup', 'verifier', 'cleanup']) {
     const cmd = raw[k];
@@ -134,6 +159,8 @@ export function resolveArm(task, armName) {
     builtin_tools: pick('builtin_tools', null),
     env: { ...(task.env || {}), ...(o.env || {}) },
     env_passthrough: [...new Set([...(task.env_passthrough || []), ...(o.env_passthrough || [])])],
+    secret_env: [...new Set([...(task.secret_env || []), ...(o.secret_env || [])])],
+    plain_env: [...new Set([...(task.plain_env || []), ...(o.plain_env || [])])],
     extra_args: pick('extra_args', []),
     append_system_prompt: pick('append_system_prompt', null),
   };
