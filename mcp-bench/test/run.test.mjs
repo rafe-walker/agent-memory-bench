@@ -351,3 +351,35 @@ test('#10: attempts without a result event are counted per arm and their tokens 
   assert.match(md, /Lower bound.*nores: 2\/2 attempts/);
   assert.match(md, /tokens p50 \/ p95 \(n\)[^\n]*\| no result event \|/, 'per-arm count column');
 });
+
+test('#17: an agent rewriting harness state (old path, ../../.harness, the real path) cannot turn a failure into verified', () => {
+  const d = tmpdir(); const out = path.join(d, 'out'); const clog = path.join(d, 'c.log'); const vlog = path.join(d, 'v.log');
+  // A verifier that trusts state, like one sent to an already-correct resource by a rewritten id.
+  fs.writeFileSync(path.join(d, 'verify-state.mjs'), [
+    "import fs from 'node:fs';",
+    "const s = JSON.parse(fs.readFileSync(process.env.BENCH_STATE, 'utf8'));",
+    "fs.appendFileSync(process.env.VERIFY_LOG, process.env.BENCH_STATE + '\\n');",
+    "console.log(JSON.stringify({ pass: s.pass === true || fs.existsSync(process.env.BENCH_WORKDIR + '/out.txt') }));",
+  ].join('\n'));
+  const forged = JSON.stringify({ greeting: 'hello', pass: true });
+  const task = makeTask(d, {
+    verifier: 'node verify-state.mjs', cleanup: 'cat "$BENCH_STATE" >> "$CLEANUP_LOG"',
+    arms: { tamper: { env: { FAKE_CLAUDE_MODE: 'skip', FAKE_TAMPER_STATE: forged } }, ok: { env: { FAKE_TAMPER_STATE: forged } }, honest: {} },
+  });
+  const r = cli(['run', task, '--n', '1', '--max-total-usd', '1', '--out', out, '--claude-bin', FAKE], { CLEANUP_LOG: clog, VERIFY_LOG: vlog });
+  assert.equal(r.code, 0, r.err);
+  const t = JSON.parse(fs.readFileSync(path.join(out, 'results.json'), 'utf8')).tasks[0];
+  const rec = (a) => t.records.find((x) => x.arm === a);
+  assert.equal(rec('tamper').status, 'unverified', 'forged state did not verify a failed attempt');
+  assert.equal(rec('tamper').state_tampered, true);
+  assert.equal(rec('ok').status, 'unverified', 'tampering is never verified, even when the work was done');
+  assert.equal(rec('honest').status, 'verified');
+  assert.equal(rec('honest').state_tampered, false);
+  for (const p of fs.readFileSync(vlog, 'utf8').trim().split('\n')) {
+    assert.ok(!p.startsWith(path.join(out, 'runs')), `BENCH_STATE ${p} is outside the agent's run dir`);
+    assert.ok(p.startsWith(path.join(out, '.harness')), p);
+  }
+  const seen = fs.readFileSync(clog, 'utf8').trim().split('\n').map((l) => JSON.parse(l));
+  assert.equal(seen.length, 3);
+  for (const s of seen) assert.deepEqual(s, { greeting: 'hello' }, 'cleanup gets the state setup wrote');
+});

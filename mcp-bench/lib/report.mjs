@@ -53,7 +53,7 @@ export function renderMarkdown(res) {
       L.push('<details><summary>Non-verified attempts</summary>', '');
       for (const r of fails) {
         const why = r.status === 'setup_error' ? (r.setup?.error || r.setup?.stderr_tail || 'setup failed')
-          : r.agent?.timed_out ? 'agent timed out' : r.agent?.is_error ? `agent ${r.agent.subtype || 'error'}` : JSON.stringify(r.verifier?.details ?? null);
+          : r.state_tampered ? 'harness state ($BENCH_STATE) changed after setup' : r.agent?.timed_out ? 'agent timed out' : r.agent?.is_error ? `agent ${r.agent.subtype || 'error'}` : JSON.stringify(r.verifier?.details ?? null);
         L.push(`- ${r.model} t${r.trial} ${r.arm}: **${r.status}** — ${String(why).replace(/\s+/g, ' ').slice(0, 300)}`);
       }
       L.push('', '</details>', '');

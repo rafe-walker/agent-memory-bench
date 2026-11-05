@@ -49,6 +49,19 @@ An attempt with no `result` event (crash, timeout, kill, output cap) only has pe
 `output_tokens` is ~0; the report counts these per arm ("no result event") and marks expected tokens
 per verified success with ≥ when they are included, since that figure is then a lower bound.
 
+**State integrity.** The agent runs as your uid with no sandbox, so it can reach any path the
+harness can, including `<out>/.harness` (by relative or absolute path); moving state out of the run
+dir is not a boundary on its own. What protects the verdict is sealing: after setup the runner keeps
+the state bytes and their HMAC-SHA256 under a random per-run key that is only in memory. It checks
+the file before and after the verifier and before cleanup, restores setup's bytes whenever they
+differ, and marks a changed attempt `unverified` with `state_tampered: true`. So the verifier and
+cleanup always act on what setup wrote, and tampering never yields `verified`. Verifier and cleanup must treat `$BENCH_STATE` as read-only (a
+write there counts as tampering). Not covered: a
+process the agent detached from its group can still race the verifier between those checks and
+change what it reads mid-run, provided it puts the file back before the verifier exits; and a
+cleanup replayed after a SIGKILL (`mcp-bench cleanup`) has no key, so it trusts the file. Run
+untrusted agents in a separate uid or container if that matters.
+
 ## Task spec (YAML or JSON)
 
 | key | meaning |
@@ -61,7 +74,7 @@ per verified success with ≥ when they are included, since that figure is then 
 | `env`, `env_passthrough` | literal agent env; names copied from the harness env (the agent env is otherwise scrubbed to PATH/proxy/auth) |
 | `secret_env`, `plain_env` | redaction of captured streams before anything is written. Default is redact: model credentials and every `env_passthrough` or `${VAR}`-referenced value are scrubbed unless `plain_env` lists the name (use it for paths you want readable in transcripts). `secret_env` is always redacted, and so is any name that looks like a credential (`KEY`, `TOKEN`, `SECRET`, `PASSW`, `CREDENTIAL`, `AUTH`, `COOKIE`), even if `plain_env` lists it. `env`/`env_passthrough` may not set the model (`ANTHROPIC_MODEL`, `ANTHROPIC_DEFAULT_*_MODEL`, `CLAUDE_CODE_SUBAGENT_MODEL`). |
 | `requires_env` | names the harness must have (run refuses, dry-run flags them) |
-| `setup`, `verifier`, `cleanup` | shell commands run in the spec's directory with the full harness env plus `BENCH_TASK`, `BENCH_ARM`, `BENCH_TRIAL`, `BENCH_MODEL`, `BENCH_RUN_TAG`, `BENCH_RUN_DIR`, `BENCH_WORKDIR` (agent cwd), `BENCH_STATE` (JSON file setup writes). The agent's transcript and final text are not on disk while the verifier runs. Cleanup always runs; if the runner is SIGKILLed first, the attempt's `runs/<id>/CLEANUP_PENDING.json` journal stays behind and `mcp-bench cleanup <out> --task <spec...>` (or the next `run` into the same `--out`) replays it with the original `BENCH_RUN_TAG`. The journal is in an agent-writable dir, so it holds only the task id, run tag, arm, trial and model; the command, task dir and env come from the spec, and a journal that names no loaded spec, sits in the wrong run dir or has a tag not in the generated format is skipped. Run tags end in a per-invocation nonce, so a rerun with the same `--seed` never reuses a killed run's tags. |
+| `setup`, `verifier`, `cleanup` | shell commands run in the spec's directory with the full harness env plus `BENCH_TASK`, `BENCH_ARM`, `BENCH_TRIAL`, `BENCH_MODEL`, `BENCH_RUN_TAG`, `BENCH_RUN_DIR`, `BENCH_WORKDIR` (agent cwd), `BENCH_STATE` (JSON file setup writes, under `<out>/.harness/<run>/`, outside the agent's run dir; see *State integrity*). The agent's transcript and final text are not on disk while the verifier runs. Cleanup always runs; if the runner is SIGKILLed first, the attempt's `runs/<id>/CLEANUP_PENDING.json` journal stays behind and `mcp-bench cleanup <out> --task <spec...>` (or the next `run` into the same `--out`) replays it with the original `BENCH_RUN_TAG`. The journal is in an agent-writable dir, so it holds only the task id, run tag, arm, trial and model; the command, task dir and env come from the spec, and a journal that names no loaded spec, sits in the wrong run dir or has a tag not in the generated format is skipped. Run tags end in a per-invocation nonce, so a rerun with the same `--seed` never reuses a killed run's tags. |
 | `arms` | `{name: overrides}`; an arm may override only how the agent reaches the server (`mcp_servers`, tools, env, `extra_args`, `append_system_prompt`, `prompt_prefix`/`prompt_suffix`) |
 
 Verifier contract: the last stdout line that parses as `{"pass": bool, "details": …}` wins;
