@@ -171,3 +171,11 @@ test('validate and report commands', () => {
   assert.equal(rep.code, 0);
   assert.match(rep.out, /## fake-task/);
 });
+
+test('--seed: 0 is its own seed; non-integer or out-of-range seeds are rejected, not silently 1', () => {
+  const d = tmpdir();
+  const task = makeTask(d);
+  const plan = (seed) => cli(['run', task, '--n', '4', '--seed', seed, '--dry-run', '--claude-bin', FAKE]).out.split('\n').filter((l) => /^ {2}\S+ t\d/.test(l)).join('\n');
+  assert.notEqual(plan('0'), plan('1'), 'seed 0 is not seed 1');
+  for (const bad of ['abc', '1.5', '-1', '4294967296']) assert.notEqual(cli(['run', task, '--seed', bad, '--dry-run', '--claude-bin', FAKE]).code, 0, bad);
+});
