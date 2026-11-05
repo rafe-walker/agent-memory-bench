@@ -212,3 +212,24 @@ test('spec: extra_args may not override harness-controlled flags; env may not mo
   }
   assert.equal(cli(['validate', makeTask(d, { extra_args: ['--add-dir', '/tmp'] })]).code, 0);
 });
+
+test('agent output: multi-byte UTF-8 split across pipe chunks is decoded intact', () => {
+  const d = tmpdir(); const out = path.join(d, 'out');
+  const task = makeTask(d, { cleanup: undefined, arms: { a: { env: { FAKE_CLAUDE_MODE: 'unicode' } } } });
+  const r = cli(['run', task, '--n', '1', '--max-total-usd', '1', '--out', out, '--claude-bin', FAKE]);
+  assert.equal(r.code, 0, r.err);
+  const rec = JSON.parse(fs.readFileSync(path.join(out, 'results.json'), 'utf8')).tasks[0].records[0];
+  assert.equal(rec.agent.tool_result_bytes, Buffer.byteLength('😀é'.repeat(60000)));
+  assert.ok(!rec.agent.result_text.includes('�'), 'no replacement characters');
+});
+
+test('agent output: never-ending stdout is capped and the agent killed; the run still completes', () => {
+  const d = tmpdir(); const out = path.join(d, 'out');
+  const task = makeTask(d, { arms: { a: { env: { FAKE_CLAUDE_MODE: 'flood' } } } });
+  const r = cli(['run', task, '--n', '1', '--max-total-usd', '1', '--out', out, '--claude-bin', FAKE], { MCP_BENCH_MAX_OUTPUT_BYTES: '2000000', CLEANUP_LOG: path.join(d, 'c.log') });
+  assert.equal(r.code, 0, r.err);
+  const rec = JSON.parse(fs.readFileSync(path.join(out, 'results.json'), 'utf8')).tasks[0].records[0];
+  assert.equal(rec.agent.output_truncated, true);
+  assert.ok(rec.agent.wall_ms < 15000, 'killed at the cap, not at the timeout');
+  assert.equal(fs.readFileSync(path.join(d, 'c.log'), 'utf8').trim().split('\n').length, 1, 'cleanup ran');
+});

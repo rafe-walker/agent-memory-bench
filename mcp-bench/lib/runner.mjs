@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
 import { spawn } from 'node:child_process';
+import { StringDecoder } from 'node:string_decoder';
 import { parseStreamJson } from './stream.mjs';
 import { renderTemplate } from './spec.mjs';
 
@@ -40,23 +41,37 @@ export function agentEnv(armCfg, dirs, harnessEnv = process.env) {
   return env;
 }
 
+// why: V8 strings top out near 512 MiB; an endless stdout would throw RangeError inside the data
+// handler and take the whole runner down (no cleanup, no results). Cap and kill instead.
+const MAX_OUTPUT_BYTES = Number(process.env.MCP_BENCH_MAX_OUTPUT_BYTES) > 0 ? Number(process.env.MCP_BENCH_MAX_OUTPUT_BYTES) : 256 * 1024 * 1024;
+const STDERR_KEEP = 64 * 1024;
+
 function spawnCapture(cmd, args, { cwd, env, timeoutMs, onSpawn }) {
   return new Promise((resolve) => {
     const t0 = Date.now();
-    let so = '', se = '', timedOut = false, done = false;
+    let so = '', se = '', timedOut = false, done = false, truncated = false, outBytes = 0;
+    // why: decoding each chunk separately turns a multi-byte char split across chunks into U+FFFD.
+    const dout = new StringDecoder('utf8'), derr = new StringDecoder('utf8');
     let p;
     try { p = spawn(cmd, args, { cwd, env, stdio: ['ignore', 'pipe', 'pipe'], detached: true }); } catch (e) {
       resolve({ code: null, signal: null, stdout: '', stderr: String(e.message), wall_ms: 0, timed_out: false, spawn_error: e.message }); return;
     }
     onSpawn?.();
-    p.stdout.on('data', (d) => { so += d; });
-    p.stderr.on('data', (d) => { se += d; });
     // why: kill the whole process group; MCP stdio servers are grandchildren and would outlive claude.
     const killGroup = (sig) => { try { process.kill(-p.pid, sig); } catch { /* already gone */ } };
+    p.stdout.on('data', (d) => {
+      if (truncated) return;
+      outBytes += d.length;
+      if (outBytes > MAX_OUTPUT_BYTES) { truncated = true; killGroup('SIGKILL'); return; }
+      so += dout.write(d);
+    });
+    p.stderr.on('data', (d) => { se += derr.write(d); if (se.length > 2 * STDERR_KEEP) se = se.slice(-STDERR_KEEP); });
     const to = setTimeout(() => { timedOut = true; killGroup('SIGTERM'); setTimeout(() => killGroup('SIGKILL'), 3000).unref(); }, timeoutMs);
     const finish = (code, signal, err) => {
       if (done) return; done = true; clearTimeout(to);
-      resolve({ code, signal, stdout: so, stderr: se, wall_ms: Date.now() - t0, timed_out: timedOut, spawn_error: err || null });
+      if (!truncated) so += dout.end();
+      se += derr.end();
+      resolve({ code, signal, stdout: so, stderr: se, wall_ms: Date.now() - t0, timed_out: timedOut, spawn_error: err || null, output_truncated: truncated });
     };
     p.on('error', (e) => finish(null, null, e.message));
     p.on('close', (code, signal) => finish(code, signal));
@@ -145,7 +160,7 @@ export async function runAttempt({ task, armCfg, model, maxTurns, maxBudgetUsd, 
     const r = await spawnCapture(claudeBin, args, { cwd: dirs.work, env: agentEnv(armCfg, dirs), timeoutMs: task.timeout_sec * 1000 });
     const m = parseStreamJson(r.stdout);
     rec.agent = {
-      exit_code: r.code, signal: r.signal, timed_out: r.timed_out, spawn_error: r.spawn_error, wall_ms: r.wall_ms,
+      exit_code: r.code, signal: r.signal, timed_out: r.timed_out, spawn_error: r.spawn_error, wall_ms: r.wall_ms, output_truncated: r.output_truncated,
       stderr_tail: r.stderr.slice(-500), ...m,
     };
     rec.model_id = m.init?.model ?? null;
