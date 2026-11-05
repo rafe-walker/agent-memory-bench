@@ -87,10 +87,11 @@ export async function runTask(task, opts) {
       claudeBin: opts.claudeBin, outDir: opts.outDir, trial: p.trial, order: p.order, runTag: p.run_tag,
     });
     // why: no result event (crash, timeout, kill) or an invalid cost means the spend is unknown,
-    // not zero; charge the per-attempt cap so the total cap still holds.
+    // not zero; charge the reservation it was admitted under (the cap, or more if an earlier
+    // attempt overshot it) so the total cap still holds.
     const reported = rec.agent?.cost_usd;
     const ran = rec.agent && !rec.agent.spawn_error;
-    rec.cost_charged_usd = !ran ? 0 : reported != null ? reported : eff.maxBudgetUsd;
+    rec.cost_charged_usd = !ran ? 0 : reported != null ? reported : reserve;
     if (ran && reported == null) unpriced++;
     spentReported += reported ?? 0;
     spent += rec.cost_charged_usd;

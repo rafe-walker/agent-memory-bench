@@ -101,13 +101,14 @@ async function cmdRun(files, opts) {
   fs.mkdirSync(outDir, { recursive: true });
   const res = { generated_at: new Date().toISOString(), purpose: opts.purpose, seed: opts.seed, n: opts.n, claude_version: null, max_total_usd: opts.maxTotalUsd, tasks: [] };
   let spent = 0;
-  // Children run in their own process groups; forward Ctrl-C / SIGTERM so the agent stops, cleanup
-  // runs and partial results are written. A second signal exits at once.
+  // Children run in their own process groups; forward Ctrl-C / SIGTERM / SIGHUP (terminal or SSH
+  // session closed) so the agent stops, cleanup runs and partial results are written. A second
+  // signal exits at once.
   const onSignal = (sig) => {
     if (!interrupt(sig)) process.exit(130);
     console.error(`mcp-bench: ${sig}: stopping; running cleanup and writing partial results (send again to exit now)`);
   };
-  process.on('SIGINT', onSignal); process.on('SIGTERM', onSignal);
+  for (const sig of ['SIGINT', 'SIGTERM', 'SIGHUP']) process.on(sig, onSignal);
   for (const t of tasks) {
     const r = await runTask(t, { ...opts, outDir, spentUsd: spent, log: (s) => console.error(s) });
     spent = r.spent_usd;

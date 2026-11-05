@@ -311,9 +311,26 @@ test('an agent that never started is a harness error, not an unverified attempt;
   assert.match(t.stopped, /claude binary/);
   assert.equal(t.completed_attempts, 1, 'stops instead of failing every attempt');
 
-  const out2 = path.join(d, 'out2');
+  // why: a binary that never started gives agent=null, so only a verified attempt proves it ran.
+  const d2 = tmpdir(); const out2 = path.join(d2, 'out');
   const rel = path.relative(process.cwd(), FAKE);
-  cli(['run', task, '--n', '1', '--arms', 'baseline', '--max-total-usd', '1', '--out', out2, '--claude-bin', rel], { CLEANUP_LOG: path.join(d, 'c.log'), VERIFY_LOG: path.join(d, 'v2.log') });
+  assert.ok(rel.includes('/') && !path.isAbsolute(rel), rel);
+  cli(['run', makeTask(d2), '--n', '1', '--arms', 'baseline', '--max-total-usd', '1', '--out', out2, '--claude-bin', rel], { CLEANUP_LOG: path.join(d2, 'c.log') });
   const t2 = JSON.parse(fs.readFileSync(path.join(out2, 'results.json'), 'utf8')).tasks[0];
-  assert.equal(t2.records[0].agent?.spawn_error ?? null, null, `relative ${rel} resolved against the caller's cwd`);
+  assert.equal(t2.records[0].status, 'verified', `relative ${rel} resolved against the caller's cwd`);
+});
+
+test('budget: an unpriced attempt after an overshoot is charged the largest charge seen, not the cap', () => {
+  const d = tmpdir(); const out = path.join(d, 'out');
+  // over: $0.08 > max_budget_usd 0.05; crash: no result event. AB/BA over n=2 puts a crash after an over.
+  const task = makeTask(d, { cleanup: undefined, arms: { over: { env: { FAKE_TOKENS: '80000' } }, crash: { env: { FAKE_CLAUDE_MODE: 'crash' } } } });
+  cli(['run', task, '--n', '2', '--max-total-usd', '1', '--out', out, '--claude-bin', FAKE]);
+  const t = JSON.parse(fs.readFileSync(path.join(out, 'results.json'), 'utf8')).tasks[0];
+  assert.equal(t.completed_attempts, 4);
+  let seen = 0, checked = 0;
+  for (const r of t.records) {
+    if (r.arm === 'crash') { assert.equal(r.cost_charged_usd, Math.max(0.05, seen), `t${r.trial}`); checked += seen > 0.05; }
+    seen = Math.max(seen, r.cost_charged_usd);
+  }
+  assert.ok(checked >= 1, 'a crash ran after an overshoot');
 });

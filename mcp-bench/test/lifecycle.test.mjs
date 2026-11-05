@@ -32,7 +32,7 @@ test('the verifier never sees the isolated HOME (claude config, logs) in the run
   assert.doesNotMatch(fs.readFileSync(vlog, 'utf8'), /\bhome\b/);
 });
 
-for (const sig of ['SIGINT', 'SIGTERM']) {
+for (const sig of ['SIGINT', 'SIGTERM', 'SIGHUP']) {
   test(`${sig} to the runner kills the agent group, runs cleanup, writes results and exits non-zero`, async () => {
     const d = tmpdir(); const out = path.join(d, 'out'); const pidf = path.join(d, 'agent.pid'); const clog = path.join(d, 'c.log');
     const task = makeTask(d, { timeout_sec: 120, arms: { a: { env: { FAKE_CLAUDE_MODE: 'hang', FAKE_PID_FILE: pidf } } } });
@@ -62,4 +62,20 @@ test('SIGKILL of the runner still takes the agent process group down', async () 
   const agent = Number(fs.readFileSync(pidf, 'utf8'));
   p.kill('SIGKILL');
   assert.ok(await waitFor(() => !alive(agent), 5000), `agent ${agent} orphaned after runner SIGKILL`);
+});
+
+test('an interrupt while the verifier runs is interrupted, not a verifier_error', async () => {
+  const d = tmpdir(); const out = path.join(d, 'out'); const pidf = path.join(d, 'verifier.pid'); const clog = path.join(d, 'c.log');
+  const task = makeTask(d, { verifier: `echo $$ > ${JSON.stringify(pidf)}; sleep 30; echo '{"pass":true}'`, arms: { a: {} } });
+  const p = spawn(process.execPath, [CLI, 'run', task, '--n', '2', '--max-total-usd', '1', '--out', out, '--claude-bin', FAKE], { env: { ...process.env, CLEANUP_LOG: clog }, stdio: 'ignore' });
+  const exited = new Promise((r) => p.on('exit', (code) => r(code)));
+  assert.ok(await waitFor(() => fs.existsSync(pidf) && fs.readFileSync(pidf, 'utf8')), 'verifier started');
+  p.kill('SIGINT');
+  assert.equal(await Promise.race([exited, sleep(15000).then(() => null)]), 130);
+  const t = JSON.parse(fs.readFileSync(path.join(out, 'results.json'), 'utf8')).tasks[0];
+  assert.equal(t.records.length, 1);
+  assert.equal(t.records[0].status, 'interrupted');
+  assert.equal(t.models.haiku.arms.a.attempts, 0, 'not counted as a failure');
+  assert.equal(t.models.haiku.arms.a.verifier_errors, 0);
+  assert.equal(fs.readFileSync(clog, 'utf8').trim().split('\n').length, 1, 'cleanup ran');
 });
