@@ -6,7 +6,7 @@ import zlib from 'node:zlib';
 import { spawn } from 'node:child_process';
 import { StringDecoder } from 'node:string_decoder';
 import { parseStreamJson } from './stream.mjs';
-import { renderTemplate } from './spec.mjs';
+import { renderTemplate, CREDENTIAL_NAME } from './spec.mjs';
 
 // Variables the agent process may inherit from the harness. Auth and proxy only; a task adds its
 // own via env_passthrough (e.g. a sandbox key the MCP config references as ${VAR}).
@@ -33,17 +33,16 @@ export function buildClaudeArgs({ prompt, armCfg, model, maxTurns, maxBudgetUsd,
 
 const CREDENTIAL_VARS = ['ANTHROPIC_API_KEY', 'ANTHROPIC_AUTH_TOKEN', 'CLAUDE_CODE_OAUTH_TOKEN'];
 
-// why: fail-safe for a secret the spec forgot to list in secret_env; a false positive only redacts.
-const CREDENTIAL_NAME = /KEY|TOKEN|SECRET|PASSW|CREDENTIAL|AUTH|COOKIE/i;
-
-/** Values that must never be written: the harness's own model credentials, every var the spec marks
- *  secret_env, and any env_passthrough or MCP ${VAR} name that looks like a credential. Plain values
- *  (paths, URLs) stay readable. Short values (< 8 chars) would redact noise. */
+/** Values that must never be written. Default is redact: the harness's model credentials, every
+ *  secret_env var, and every env_passthrough or MCP ${VAR} value unless plain_env lists it (name
+ *  matching misses DSNs and webhook URLs). secret_env and credential-looking names beat plain_env.
+ *  Short values (< 8 chars) would redact noise. */
 export function secretValues(armCfg, harnessEnv = process.env) {
+  const plain = new Set(armCfg.plain_env || []);
   const names = new Set([...CREDENTIAL_VARS, ...(armCfg.secret_env || [])]);
   const passed = new Set(armCfg.env_passthrough || []);
   for (const m of JSON.stringify(armCfg.mcp_servers || {}).matchAll(/\$\{([A-Za-z_][A-Za-z0-9_]*)\}/g)) if (m[1] !== 'TASK_DIR') passed.add(m[1]);
-  for (const k of passed) if (CREDENTIAL_NAME.test(k)) names.add(k);
+  for (const k of passed) if (!plain.has(k) || CREDENTIAL_NAME.test(k)) names.add(k);
   const out = [];
   for (const k of names) {
     const v = harnessEnv[k];

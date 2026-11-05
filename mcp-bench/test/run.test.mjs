@@ -224,19 +224,30 @@ test('spec: extra_args may not override harness-controlled flags; env may not mo
   assert.equal(cli(['validate', makeTask(d, { extra_args: ['-d'] })]).code, 0, 'a single unreserved short flag is fine');
 });
 
-test('redaction: only credentials, vars marked secret_env and credential-looking names; not plain paths', () => {
-  const env = { ANTHROPIC_API_KEY: 'sk-ant-harness-key-123', DATA_DIR: '/srv/data/bench', RULES_PATH: '/srv/rules.json', MY_TOKEN: 'tok-0123456789', PLAIN: 'marked-secret-value' };
-  const armCfg = { env_passthrough: ['DATA_DIR', 'MY_TOKEN', 'PLAIN'], secret_env: ['PLAIN'], mcp_servers: { x: { command: 'node', args: ['${RULES_PATH}'] } } };
+test('redaction: every passed-through / ${VAR} value is redacted unless plain_env lists it; secret_env and credential names win', () => {
+  const env = {
+    ANTHROPIC_API_KEY: 'sk-ant-harness-key-123', DATA_DIR: '/srv/data/bench', RULES_PATH: '/srv/rules.json',
+    DATABASE_URL: 'postgres://bench:hunter2pw@db.internal:5432/bench', HOOK: 'https://hooks.example.com/services/T0/B0/abcdef123456',
+    DB_DSN: 'mysql://u:p4ssw0rd@h/db', MY_TOKEN: 'tok-0123456789', PLAIN: 'marked-secret-value',
+  };
+  const armCfg = {
+    env_passthrough: ['DATA_DIR', 'DATABASE_URL', 'HOOK', 'MY_TOKEN', 'PLAIN'],
+    plain_env: ['DATA_DIR', 'RULES_PATH', 'MY_TOKEN', 'PLAIN'], secret_env: ['PLAIN'],
+    mcp_servers: { x: { command: 'node', args: ['${RULES_PATH}', '${DB_DSN}'] } },
+  };
   const names = [...new Set(secretValues(armCfg, env).map(([k]) => k))].sort();
-  assert.deepEqual(names, ['ANTHROPIC_API_KEY', 'MY_TOKEN', 'PLAIN']);
+  assert.deepEqual(names, ['ANTHROPIC_API_KEY', 'DATABASE_URL', 'DB_DSN', 'HOOK', 'MY_TOKEN', 'PLAIN'], 'DSN / webhook redacted by default; credential name and secret_env beat plain_env');
   const red = redactor(secretValues(armCfg, env));
-  assert.equal(red('dir /srv/data/bench key tok-0123456789'), 'dir /srv/data/bench key [REDACTED:MY_TOKEN]');
+  assert.equal(red(`dir /srv/data/bench rules /srv/rules.json db ${env.DATABASE_URL}`), 'dir /srv/data/bench rules /srv/rules.json db [REDACTED:DATABASE_URL]', 'only plain_env paths stay readable');
 });
 
-test('spec: secret_env is a known key and merges across top level and arm', () => {
+test('spec: secret_env and plain_env are known keys and merge across top level and arm', () => {
   const d = tmpdir();
-  const r = cli(['validate', makeTask(d, { secret_env: ['FAKE_SECRET'], arms: { a: { secret_env: ['OTHER_VALUE'] } } })]);
+  const r = cli(['validate', makeTask(d, { secret_env: ['FAKE_SECRET'], plain_env: ['DATA_DIR'], arms: { a: { secret_env: ['OTHER_VALUE'], plain_env: ['RULES'] } } })]);
   assert.equal(r.code, 0, r.out);
+  const w = cli(['validate', makeTask(d, { plain_env: ['FAKE_SECRET'] })]);
+  assert.equal(w.code, 0, w.out);
+  assert.match(w.out, /warn: spec\.plain_env: FAKE_SECRET looks like a credential and is redacted anyway/);
 });
 
 test('agent output: multi-byte UTF-8 split across pipe chunks is decoded intact', () => {
