@@ -31,11 +31,30 @@ emit({ type: 'system', subtype: 'init', model: arg('--model'), tools: ['mcp__fak
 if (process.env.FAKE_PID_FILE) fs.writeFileSync(process.env.FAKE_PID_FILE, String(process.pid));
 if (process.env.FAKE_TAMPER_STATE) {
   const run = path.basename(path.dirname(process.cwd()));
+  const tries = [];
   for (const up of [['..'], ['..', '..', '.harness', run], ['..', '..', '..', '.harness', run]]) {
     const d = path.join(process.cwd(), ...up);
-    fs.mkdirSync(d, { recursive: true });
-    fs.writeFileSync(path.join(d, 'state.json'), process.env.FAKE_TAMPER_STATE);
+    try {
+      fs.mkdirSync(d, { recursive: true });
+      fs.writeFileSync(path.join(d, 'state.json'), process.env.FAKE_TAMPER_STATE);
+      tries.push(`${d}: wrote`);
+    } catch (e) { tries.push(`${d}: ${e.code}`); }
   }
+  fs.writeFileSync('tamper.txt', tries.join('\n') + '\n');
+}
+// FAKE_PROC_READ=1: read /proc/1/environ and every visible /proc/<pid>/environ (hex in proc_environ.hex)
+if (process.env.FAKE_PROC_READ) {
+  let seen = '';
+  for (const p of ['1', ...fs.readdirSync('/proc').filter((x) => /^\d+$/.test(x))]) {
+    try { seen += fs.readFileSync(`/proc/${p}/environ`, 'latin1') + '\n'; } catch { /* not readable */ }
+  }
+  fs.writeFileSync('proc_environ.hex', Buffer.from(seen).toString('hex'));
+}
+// FAKE_GATEWAY=1: one model call through $ANTHROPIC_BASE_URL with the agent's key (the sandbox meter)
+if (process.env.FAKE_GATEWAY) {
+  const r = await fetch(`${process.env.ANTHROPIC_BASE_URL}/v1/messages`, { method: 'POST', headers: { 'content-type': 'application/json', 'x-api-key': process.env.ANTHROPIC_API_KEY || '', 'anthropic-version': '2023-06-01' }, body: '{"model":"x","max_tokens":1,"messages":[]}' });
+  await r.text();
+  fs.writeFileSync('gateway.txt', String(r.status));
 }
 for (const { dir, journal } of JSON.parse(process.env.FAKE_PLANT_JSON || '[]')) {
   const d = path.join(process.cwd(), '..', '..', dir);

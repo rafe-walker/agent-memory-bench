@@ -3,6 +3,7 @@
 //   mcp-bench validate <task.yaml...>
 //   mcp-bench run <task.yaml...> --max-total-usd X [--purpose P] [--arms a,b] [--n N] [--seed 1] [--model m | --models a,b]
 //                 [--max-turns N] [--max-budget-usd X] [--out DIR] [--claude-bin PATH] [--dry-run]
+//                 [--isolation dev|linux-sandbox --sandbox-preflight F [--sandbox-pubkey PEM] [--max-tokens-per-attempt N]]
 //   mcp-bench report <results.json> [--out REPORT.md]
 //   mcp-bench cleanup <out-dir> --task <task.yaml...>
 import crypto from 'node:crypto';
@@ -14,11 +15,17 @@ import { loadTask, resolveArm } from '../lib/spec.mjs';
 import { schedule, effective, missingEnv, runTask, balanced, PURPOSE_N } from '../lib/trials.mjs';
 import { buildClaudeArgs, interrupt, isInterrupted, replayPendingCleanups } from '../lib/runner.mjs';
 import { renderMarkdown } from '../lib/report.mjs';
+import { ISOLATIONS, DEV_WARNING } from '../lib/sandbox.mjs';
 
 const USAGE = `usage:
   mcp-bench validate <task.yaml|json...>
   mcp-bench run <task...> --max-total-usd X [--purpose smoke|before-after|publish] [--arms a,b] [--n N] [--seed 1] [--model M | --models A,B]
                 [--max-turns N] [--max-budget-usd X] [--out DIR] [--claude-bin PATH] [--dry-run]
+                [--isolation dev|linux-sandbox] [--sandbox-preflight SIGNED.json] [--sandbox-pubkey PEM]
+                [--max-tokens-per-attempt N]
+      dev (default): the agent runs as your uid, unsandboxed; never publishable.
+      linux-sandbox (root): each attempt's agent runs in agent-sandbox; the model gateway holds
+      ANTHROPIC_API_KEY and meters tokens; needs a signed preflight (sudo agent-sandbox preflight --sign --out F).
   mcp-bench report <results.json> [--out REPORT.md]
   mcp-bench cleanup <out-dir> --task <task...>   re-run, from the specs, cleanups a killed run never ran
                                                  (run also does this for its --out)`;
@@ -28,6 +35,12 @@ const num = (s, name, int = false) => {
   if (s === undefined) return undefined;
   const v = Number(s);
   if (!Number.isFinite(v) || v <= 0 || (int && !Number.isInteger(v))) throw new Error(`--${name}: expected a positive ${int ? 'integer' : 'number'}`);
+  return v;
+};
+
+const safeInt = (s, name) => {
+  const v = num(s, name, true);
+  if (v !== undefined && !Number.isSafeInteger(v)) throw new Error(`--${name}: expected a positive integer below 2^53`);
   return v;
 };
 
@@ -99,12 +112,34 @@ async function cmdRun(files, opts) {
       console.error(`${t.id}: --purpose publish: small models are for smoke runs only, never a published figure`); return 2;
     }
   }
+  if (opts.purpose === 'publish' && opts.isolation !== 'linux-sandbox') {
+    console.error('--purpose publish refuses --isolation dev: a published figure needs --isolation linux-sandbox with a verified preflight'); return 2;
+  }
+  let preflight = null;
+  if (opts.isolation === 'linux-sandbox') {
+    const { verifySandboxPreflight } = await import('../lib/sandbox.mjs');
+    if (process.platform !== 'linux' || process.geteuid?.() !== 0) { console.error('--isolation linux-sandbox needs Linux and root (agent-sandbox allocates uids and programs nftables)'); return 2; }
+    try { preflight = await verifySandboxPreflight({ preflight: opts.sandboxPreflight, pubkey: opts.sandboxPubkey }); } catch (e) { console.error(e.message); return 2; }
+    console.error(`mcp-bench: isolation linux-sandbox, preflight verified (key ${preflight.key_id.slice(0, 12)}, expires ${preflight.expires_at})`);
+    // why: the cage reaches only the model gateway; a remote MCP server would fail every attempt as "unverified".
+    for (const t of tasks) for (const a of opts.arms?.length ? opts.arms : Object.keys(t.arms)) {
+      const remote = Object.entries(resolveArm(t, a).mcp_servers).filter(([, c]) => c && typeof c === 'object' && 'url' in c).map(([k]) => k);
+      if (remote.length) { console.error(`${t.id}/${a}: --isolation linux-sandbox cannot reach remote MCP servers (${remote.join(', ')}); the sandbox's only route is the model gateway. Use stdio servers, or --isolation dev (not publishable).`); return 2; }
+    }
+  } else {
+    if (opts.sandboxPreflight || opts.sandboxPubkey) { console.error('--sandbox-preflight / --sandbox-pubkey only apply to --isolation linux-sandbox'); return 2; }
+    console.error(DEV_WARNING);
+  }
   if (opts.dryRun) return cmdDryRun(tasks, opts);
   if (opts.maxTotalUsd == null) { console.error('run: --max-total-usd is required (use --dry-run to see the worst-case spend)'); return 2; }
   const outDir = path.resolve(opts.out || path.join('results', new Date().toISOString().replace(/[:.]/g, '-')));
   fs.mkdirSync(outDir, { recursive: true });
+  if (opts.isolation === 'linux-sandbox') {
+    const { assertTraversable } = await import('../lib/sandbox.mjs');
+    try { assertTraversable(outDir); } catch (e) { console.error(e.message); return 2; }
+  }
   const runNonce = crypto.randomBytes(4).toString('hex');
-  const res = { generated_at: new Date().toISOString(), purpose: opts.purpose, seed: opts.seed, n: opts.n, run_nonce: runNonce, claude_version: null, max_total_usd: opts.maxTotalUsd, tasks: [] };
+  const res = { generated_at: new Date().toISOString(), purpose: opts.purpose, seed: opts.seed, n: opts.n, run_nonce: runNonce, claude_version: null, max_total_usd: opts.maxTotalUsd, isolation: { profile: opts.isolation, preflight }, tasks: [] };
   let spent = 0;
   // Children run in their own process groups; forward Ctrl-C / SIGTERM / SIGHUP (terminal or SSH
   // session closed) so the agent stops, cleanup runs and partial results are written. A second
@@ -121,7 +156,7 @@ async function cmdRun(files, opts) {
   res.cleanups_replay_failed = replayed.filter((x) => !x.ok && !x.skipped).length;
   res.cleanups_skipped = replayed.filter((x) => x.skipped).length;
   for (const t of tasks) {
-    const r = await runTask(t, { ...opts, outDir, runNonce, spentUsd: spent, log: (s) => console.error(s) });
+    const r = await runTask(t, { ...opts, outDir, runNonce, spentUsd: spent, log: (s) => console.error(s), sandbox: { ...(opts.maxTokensPerAttempt ? { maxTokens: opts.maxTokensPerAttempt } : {}) } });
     spent = r.spent_usd;
     res.tasks.push(r);
     res.claude_version ||= r.claude_version;
@@ -161,6 +196,7 @@ async function main(argv) {
       seed: { type: 'string', default: '1' }, model: { type: 'string' }, models: { type: 'string' },
       'max-turns': { type: 'string' }, 'max-budget-usd': { type: 'string' }, 'max-total-usd': { type: 'string' },
       out: { type: 'string' }, 'claude-bin': { type: 'string' }, 'dry-run': { type: 'boolean' }, help: { type: 'boolean', short: 'h' },
+      isolation: { type: 'string', default: 'dev' }, 'sandbox-preflight': { type: 'string' }, 'sandbox-pubkey': { type: 'string' }, 'max-tokens-per-attempt': { type: 'string' },
     },
   });
   const [cmd, ...rest] = pos;
@@ -171,6 +207,7 @@ async function main(argv) {
   if (cmd === 'cleanup') return cmdCleanup(rest[0], [...rest.slice(1), ...(v.task || [])]);
   if (cmd === 'run') {
     if (v.purpose && !(v.purpose in PURPOSE_N)) throw new Error(`--purpose: one of ${Object.keys(PURPOSE_N).join(', ')}`);
+    if (!ISOLATIONS.includes(v.isolation)) throw new Error(`--isolation: one of ${ISOLATIONS.join(', ')}`);
     const n = num(v.n, 'n', true) ?? PURPOSE_N[v.purpose || 'smoke'];
     if (v.purpose === 'publish') {
       // Council rule: a published number needs 20-30 trials on the model customers run.
@@ -181,6 +218,8 @@ async function main(argv) {
       model: v.model, models: list(v.models), maxTurns: num(v['max-turns'], 'max-turns', true),
       maxBudgetUsd: num(v['max-budget-usd'], 'max-budget-usd'), maxTotalUsd: num(v['max-total-usd'], 'max-total-usd'),
       out: v.out, claudeBin: binPath(v['claude-bin'] || process.env.MCP_BENCH_CLAUDE || 'claude'), dryRun: !!v['dry-run'],
+      isolation: v.isolation, sandboxPreflight: v['sandbox-preflight'], sandboxPubkey: v['sandbox-pubkey'],
+      maxTokensPerAttempt: safeInt(v['max-tokens-per-attempt'], 'max-tokens-per-attempt'),
     });
   }
   console.error(USAGE);

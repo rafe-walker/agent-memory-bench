@@ -15,3 +15,19 @@ jobs:
       - run: npm test
       - run: npm run validate
       - run: python3 -m py_compile tasks/posthog/_lib/ph.py tasks/posthog/*/*.py tasks/local-notes/*.py
+  # #19: linux-sandbox e2e as root. MCP_BENCH_REQUIRE_SANDBOX=1 fails (never skips) a runner that cannot sandbox.
+  sandbox:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run: { working-directory: mcp-bench }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: |
+          sudo apt-get update
+          sudo apt-get install -y bubblewrap iproute2 nftables
+          if [ -e /proc/sys/kernel/apparmor_restrict_unprivileged_userns ]; then sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0; fi
+      - run: npm ci --no-audit --no-fund
+      - run: sudo --preserve-env=PATH env MCP_BENCH_REQUIRE_SANDBOX=1 "PATH=$PATH" node --test --test-concurrency=1 test/sandbox.test.mjs

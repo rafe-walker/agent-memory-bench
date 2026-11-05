@@ -36,6 +36,9 @@ trials in randomized AB/BA blocks, **expected tokens per verified success** with
 tokens/wall time, turns, tool calls and duplicate-side-effect rate (JSON + markdown), resolved model IDs, and a
 verifier SDK that reads through an independent surface, never the agent's narrative. Budget-capped (`--max-total-usd`), `--dry-run`, model/turn overrides, and a fake-claude
 test double so CI never calls a model. Ships a local smoke task and three PostHog sandbox templates.
+`--isolation linux-sandbox` runs each attempt's agent in [agent-sandbox](https://github.com/rafe-walker/agent-sandbox)
+(own uid, bwrap, netns cage, model gateway as the token meter) behind a verified signed preflight; `--purpose publish`
+refuses `--isolation dev` (#19).
 
 ```sh
 cd mcp-bench && npm ci && npm test
