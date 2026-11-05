@@ -6,7 +6,7 @@ import zlib from 'node:zlib';
 import { spawn } from 'node:child_process';
 import { StringDecoder } from 'node:string_decoder';
 import { parseStreamJson } from './stream.mjs';
-import { renderTemplate, CREDENTIAL_NAME } from './spec.mjs';
+import { renderTemplate, resolveArm, CREDENTIAL_NAME } from './spec.mjs';
 
 // Variables the agent process may inherit from the harness. Auth and proxy only; a task adds its
 // own via env_passthrough (e.g. a sandbox key the MCP config references as ${VAR}).
@@ -180,29 +180,63 @@ function readState(file) {
 }
 
 // why: a SIGKILLed runner runs no cleanup, leaving sandbox resources tagged with that attempt's
-// run tag. The journal (script env only, no secret values) is written before setup and removed
-// once cleanup succeeds; replayPendingCleanups runs whatever is left.
+// run tag. The journal is written before setup and removed once cleanup succeeds. The run dir is
+// agent-writable (cwd is run/work), so a journal is untrusted data: it names an attempt (task id,
+// run tag, arm, trial, model) and nothing else. The command, task dir, timeout and redaction come
+// from the loaded spec, and the BENCH_* paths are recomputed from where the journal sits.
 const PENDING = 'CLEANUP_PENDING.json';
+const MODEL_RE = /^[A-Za-z0-9._:@\[\]-]+$/;
+const reEsc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
-/** Re-run the cleanup of every attempt under outDir whose journal is still present (runner killed,
- *  or cleanup failed). Removes each journal whose cleanup succeeds. */
-export async function replayPendingCleanups(outDir, log = () => {}) {
+export const runDirName = (taskId, model, arm, trial) => `${taskId}__${model}__${arm}__t${trial}`;
+/** Exact format schedule() generates: seeded hex, then the per-invocation nonce. */
+export const runTagPattern = (taskId, arm, trial) => new RegExp(`^mcpbench-${reEsc(taskId)}-${reEsc(arm)}-t${trial}-[0-9a-f]{6}-[0-9a-f]{8}$`);
+
+function scriptEnvOf({ taskId, arm, trial, model, runTag, runDir }) {
+  return {
+    BENCH_TASK: taskId, BENCH_ARM: arm, BENCH_TRIAL: String(trial), BENCH_MODEL: model, BENCH_RUN_TAG: runTag,
+    BENCH_RUN_DIR: runDir, BENCH_WORKDIR: path.join(runDir, 'work'), BENCH_STATE: path.join(runDir, 'state.json'),
+  };
+}
+
+function journalProblem(j, dirName, byId) {
+  if (!j || typeof j !== 'object' || Array.isArray(j)) return 'not an object';
+  const task = typeof j.task_id === 'string' ? byId.get(j.task_id) : undefined;
+  if (!task) return `task ${JSON.stringify(j.task_id)} is not among the loaded specs`;
+  if (!task.cleanup) return `task ${task.id} has no cleanup`;
+  if (typeof j.arm !== 'string' || !Object.hasOwn(task.arms, j.arm)) return `no arm ${JSON.stringify(j.arm)} in ${task.id}`;
+  if (!Number.isSafeInteger(j.trial) || j.trial < 0) return 'bad trial';
+  if (typeof j.model !== 'string' || !MODEL_RE.test(j.model)) return 'bad model';
+  if (dirName !== runDirName(task.id, j.model, j.arm, j.trial)) return 'run dir does not match the journal';
+  if (typeof j.run_tag !== 'string' || !runTagPattern(task.id, j.arm, j.trial).test(j.run_tag)) return 'run_tag not in the generated format';
+  return null;
+}
+
+/** Re-run, from the loaded task specs, the cleanup of every attempt under outDir whose journal is
+ *  still present (runner killed, or cleanup failed). Journals that do not validate are skipped and
+ *  kept; each journal whose cleanup succeeds is removed. */
+export async function replayPendingCleanups(outDir, tasks, log = () => {}) {
+  const byId = new Map(tasks.map((t) => [t.id, t]));
+  const runsDir = path.join(outDir, 'runs');
   let dirs;
-  try { dirs = fs.readdirSync(path.join(outDir, 'runs')).sort(); } catch { return []; }
+  try { dirs = fs.readdirSync(runsDir).sort(); } catch { return []; }
   const out = [];
   for (const d of dirs) {
-    const f = path.join(outDir, 'runs', d, PENDING);
-    let j;
-    try { j = JSON.parse(fs.readFileSync(f, 'utf8')); } catch (e) {
-      if (e.code !== 'ENOENT') { log(`mcp-bench: unreadable cleanup journal ${f}: ${e.message}`); out.push({ journal: f, ok: false, error: e.message }); }
-      continue;
+    const f = path.join(runsDir, d, PENDING);
+    let j, why;
+    try { j = JSON.parse(fs.readFileSync(f, 'utf8')); why = journalProblem(j, d, byId); } catch (e) {
+      if (e.code === 'ENOENT') continue;
+      why = `unreadable: ${e.message}`;
     }
-    const redact = redactor(secretValues({ secret_env: j.secret_names || [], env_passthrough: [], mcp_servers: {} }));
-    const c = await runScript(j.cleanup, { taskDir: j.task_dir, scriptEnv: j.env, redact }, j.script_timeout_sec, 'cleanup');
+    if (why) { log(`mcp-bench: skipped cleanup journal ${f}: ${why}`); out.push({ journal: f, ok: false, skipped: why }); continue; }
+    const task = byId.get(j.task_id);
+    const scriptEnv = scriptEnvOf({ taskId: task.id, arm: j.arm, trial: j.trial, model: j.model, runTag: j.run_tag, runDir: path.join(runsDir, d) });
+    const redact = redactor(secretValues(resolveArm(task, j.arm)));
+    const c = await runScript(task.cleanup, { taskDir: task.dir, scriptEnv, redact }, task.script_timeout_sec, 'cleanup');
     const ok = c.code === 0 && !c.timed_out;
     if (ok) fs.rmSync(f, { force: true });
-    log(`mcp-bench: replayed cleanup for ${j.env?.BENCH_RUN_TAG}: ${ok ? 'ok' : `failed (exit ${c.code}${c.timed_out ? ', timed out' : ''}) ${c.stderr.trim().slice(-300)}`}`);
-    out.push({ journal: f, run_tag: j.env?.BENCH_RUN_TAG ?? null, ok, code: c.code, timed_out: c.timed_out });
+    log(`mcp-bench: replayed cleanup for ${j.run_tag}: ${ok ? 'ok' : `failed (exit ${c.code}${c.timed_out ? ', timed out' : ''}) ${c.stderr.trim().slice(-300)}`}`);
+    out.push({ journal: f, run_tag: j.run_tag, ok, code: c.code, timed_out: c.timed_out });
   }
   return out;
 }
@@ -213,7 +247,7 @@ export async function replayPendingCleanups(outDir, log = () => {}) {
  * plus agent metrics. setup_error attempts never reached the agent and are excluded from rates.
  */
 export async function runAttempt({ task, armCfg, model, maxTurns, maxBudgetUsd, claudeBin, outDir, trial, order, runTag }) {
-  const runDir = path.join(outDir, 'runs', `${task.id}__${model}__${armCfg.arm}__t${trial}`);
+  const runDir = path.join(outDir, 'runs', runDirName(task.id, model, armCfg.arm, trial));
   fs.rmSync(runDir, { recursive: true, force: true });
   const dirs = { run: runDir, work: path.join(runDir, 'work'), home: path.join(runDir, 'home') };
   fs.mkdirSync(path.join(dirs.home, '.claude'), { recursive: true });
@@ -221,22 +255,15 @@ export async function runAttempt({ task, armCfg, model, maxTurns, maxBudgetUsd, 
   const stateFile = path.join(runDir, 'state.json');
   // why: a server or agent can echo its credential (auth errors, tool results, final text); scrub
   // every captured stream before it is parsed, stored or written.
-  const secrets = secretValues(armCfg);
-  const redact = redactor(secrets);
+  const redact = redactor(secretValues(armCfg));
   const ctx = {
     taskDir: task.dir, redact,
-    scriptEnv: {
-      BENCH_TASK: task.id, BENCH_ARM: armCfg.arm, BENCH_TRIAL: String(trial), BENCH_MODEL: model, BENCH_RUN_TAG: runTag,
-      BENCH_RUN_DIR: dirs.run, BENCH_WORKDIR: dirs.work, BENCH_STATE: stateFile,
-    },
+    scriptEnv: scriptEnvOf({ taskId: task.id, arm: armCfg.arm, trial, model, runTag, runDir }),
   };
   const rec = { task: task.id, arm: armCfg.arm, model, trial, order, run_tag: runTag, run_dir: runDir, status: null, setup: null, verifier: null, cleanup: null, agent: null };
   const journal = path.join(runDir, PENDING);
   if (task.cleanup) {
-    fs.writeFileSync(journal, JSON.stringify({
-      task: task.id, task_dir: task.dir, cleanup: task.cleanup, script_timeout_sec: task.script_timeout_sec,
-      env: ctx.scriptEnv, secret_names: [...new Set(secrets.map(([k]) => k))],
-    }, null, 2));
+    fs.writeFileSync(journal, JSON.stringify({ task_id: task.id, run_tag: runTag, arm: armCfg.arm, trial, model }, null, 2));
   }
 
   try {

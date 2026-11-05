@@ -4,7 +4,7 @@
 //   mcp-bench run <task.yaml...> --max-total-usd X [--purpose P] [--arms a,b] [--n N] [--seed 1] [--model m | --models a,b]
 //                 [--max-turns N] [--max-budget-usd X] [--out DIR] [--claude-bin PATH] [--dry-run]
 //   mcp-bench report <results.json> [--out REPORT.md]
-//   mcp-bench cleanup <out-dir>
+//   mcp-bench cleanup <out-dir> --task <task.yaml...>
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -20,7 +20,8 @@ const USAGE = `usage:
   mcp-bench run <task...> --max-total-usd X [--purpose smoke|before-after|publish] [--arms a,b] [--n N] [--seed 1] [--model M | --models A,B]
                 [--max-turns N] [--max-budget-usd X] [--out DIR] [--claude-bin PATH] [--dry-run]
   mcp-bench report <results.json> [--out REPORT.md]
-  mcp-bench cleanup <out-dir>    re-run cleanups a killed run never ran (run also does this for its --out)`;
+  mcp-bench cleanup <out-dir> --task <task...>   re-run, from the specs, cleanups a killed run never ran
+                                                 (run also does this for its --out)`;
 
 const list = (s) => (s ? s.split(',').map((x) => x.trim()).filter(Boolean) : undefined);
 const num = (s, name, int = false) => {
@@ -115,9 +116,10 @@ async function cmdRun(files, opts) {
   for (const sig of ['SIGINT', 'SIGTERM', 'SIGHUP']) process.on(sig, onSignal);
   // A reused --out may hold attempts a SIGKILLed run never cleaned up; their run dirs are about to
   // be replaced, so replay their cleanup first.
-  const replayed = await replayPendingCleanups(outDir, (s) => console.error(s));
-  res.cleanups_replayed = replayed.length;
-  res.cleanups_replay_failed = replayed.filter((x) => !x.ok).length;
+  const replayed = await replayPendingCleanups(outDir, tasks, (s) => console.error(s));
+  res.cleanups_replayed = replayed.filter((x) => !x.skipped).length;
+  res.cleanups_replay_failed = replayed.filter((x) => !x.ok && !x.skipped).length;
+  res.cleanups_skipped = replayed.filter((x) => x.skipped).length;
   for (const t of tasks) {
     const r = await runTask(t, { ...opts, outDir, runNonce, spentUsd: spent, log: (s) => console.error(s) });
     spent = r.spent_usd;
@@ -131,10 +133,16 @@ async function cmdRun(files, opts) {
   return isInterrupted() ? 130 : 0;
 }
 
-async function cmdCleanup(dir) {
+// why: the command, task dir and timeout must come from a spec the operator names; the journal is
+// in an agent-writable dir and only says which attempt to clean up.
+async function cmdCleanup(dir, files) {
   if (!dir || !fs.existsSync(dir)) { console.error(`cleanup: no such run directory: ${dir}`); return 2; }
-  const r = await replayPendingCleanups(path.resolve(dir), (s) => console.error(s));
-  console.log(`${r.length} pending cleanup(s) replayed, ${r.filter((x) => !x.ok).length} failed`);
+  if (!files.length) { console.error('cleanup: pass the task spec(s) of the run: --task <task.yaml...>'); return 2; }
+  const { tasks, errors } = loadAll(files);
+  if (errors.length) { for (const e of errors) console.error(e); return 1; }
+  const r = await replayPendingCleanups(path.resolve(dir), tasks, (s) => console.error(s));
+  const skipped = r.filter((x) => x.skipped).length, ran = r.length - skipped;
+  console.log(`${ran} pending cleanup(s) replayed, ${r.filter((x) => !x.ok && !x.skipped).length} failed, ${skipped} skipped`);
   return r.every((x) => x.ok) ? 0 : 1;
 }
 
@@ -160,7 +168,7 @@ async function main(argv) {
   const files = [...rest, ...(v.task || [])];
   if (cmd === 'validate') return cmdValidate(files);
   if (cmd === 'report') return cmdReport(rest[0], v.out);
-  if (cmd === 'cleanup') return cmdCleanup(rest[0]);
+  if (cmd === 'cleanup') return cmdCleanup(rest[0], [...rest.slice(1), ...(v.task || [])]);
   if (cmd === 'run') {
     if (v.purpose && !(v.purpose in PURPOSE_N)) throw new Error(`--purpose: one of ${Object.keys(PURPOSE_N).join(', ')}`);
     const n = num(v.n, 'n', true) ?? PURPOSE_N[v.purpose || 'smoke'];
