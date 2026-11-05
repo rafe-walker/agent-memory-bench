@@ -1,9 +1,10 @@
 // #19: --isolation linux-sandbox. The e2e tests need Linux + root + bwrap + nft; they skip elsewhere
 // unless MCP_BENCH_REQUIRE_SANDBOX=1 (then they fail). The publish gate test runs everywhere.
-import { test } from 'node:test';
+import { test, after } from 'node:test';
 import assert from 'node:assert/strict';
 import crypto from 'node:crypto';
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { ROOT, FAKE, tmpdir as mk, makeTask } from './helpers.mjs';
@@ -15,6 +16,15 @@ const canSandbox = process.platform === 'linux' && process.getuid?.() === 0
 if (!canSandbox && process.env.MCP_BENCH_REQUIRE_SANDBOX === '1') throw new Error('MCP_BENCH_REQUIRE_SANDBOX=1 but this host cannot run agent-sandbox (need Linux, root, bwrap, nft)');
 // why: the sandbox uid must traverse the task and out dirs (mkdtemp makes them 0700).
 const tmpdir = () => { const d = mk(); fs.chmodSync(d, 0o755); return d; };
+// why: the sandbox binds claude's install root (<root>/bin/claude) read-only and the worker uid must
+// traverse to it; a checkout under a 0750 home (GitHub runners) is not reachable, so stage the fake.
+const FAKE_ROOT = fs.mkdtempSync(path.join(os.tmpdir(), 'mcpbench-claude-'));
+fs.chmodSync(FAKE_ROOT, 0o755);
+fs.mkdirSync(path.join(FAKE_ROOT, 'bin'), { mode: 0o755 });
+const SFAKE = path.join(FAKE_ROOT, 'bin', 'claude');
+fs.copyFileSync(FAKE, SFAKE);
+fs.chmodSync(SFAKE, 0o755);
+after(() => fs.rmSync(FAKE_ROOT, { recursive: true, force: true }));
 const skip = canSandbox ? false : 'needs Linux + root + bwrap + nft';
 
 const MODEL_KEY = `sk-ant-benchMODELKEY-${crypto.randomBytes(12).toString('hex')}`;
@@ -96,7 +106,7 @@ test('#19 e2e: in the sandbox, the state.json forge and the /proc/1/environ read
     arms: { tamper: { env: { FAKE_CLAUDE_MODE: 'skip', FAKE_TAMPER_STATE: forged, FAKE_PROC_READ: '1' } }, ok: { env: { FAKE_TAMPER_STATE: forged, FAKE_PROC_READ: '1' } } },
   });
   const { file, pub } = await signedPreflight(d);
-  const r = cli(['run', task, '--n', '1', '--max-total-usd', '1', '--out', out, '--claude-bin', FAKE, '--isolation', 'linux-sandbox', '--sandbox-preflight', file, '--sandbox-pubkey', pub],
+  const r = cli(['run', task, '--n', '1', '--max-total-usd', '1', '--out', out, '--claude-bin', SFAKE, '--isolation', 'linux-sandbox', '--sandbox-preflight', file, '--sandbox-pubkey', pub],
     { CLEANUP_LOG: clog, FAKE_SECRET: 'passthrough-secret-value', ANTHROPIC_API_KEY: MODEL_KEY, MCP_BENCH_HARNESS_CANARY: HARNESS_CANARY });
   assert.equal(r.code, 0, r.err);
   const res = JSON.parse(fs.readFileSync(path.join(out, 'results.json'), 'utf8'));
@@ -151,7 +161,7 @@ test('#19: the model gateway is the token meter (provider-reported), and holds t
     return { status: 200, headers: { 'content-type': 'application/json' }, body: Buffer.from(JSON.stringify({ usage: { input_tokens: 120, output_tokens: 30, cache_read_input_tokens: 50 } })) };
   };
   process.env.FAKE_SECRET = 'passthrough-secret-value';
-  const rec = await runAttempt({ task, armCfg: resolveArm(task, 'a'), model: 'haiku', maxTurns: 3, maxBudgetUsd: 0.01, claudeBin: FAKE, outDir: out, trial: 0, order: 'AB', runTag: 'mcpbench-fake-task-a-t0-000000-00000000', isolation: 'linux-sandbox', sandbox: { dispatch, realKey: MODEL_KEY, gatewayPort: 18953 } });
+  const rec = await runAttempt({ task, armCfg: resolveArm(task, 'a'), model: 'haiku', maxTurns: 3, maxBudgetUsd: 0.01, claudeBin: SFAKE, outDir: out, trial: 0, order: 'AB', runTag: 'mcpbench-fake-task-a-t0-000000-00000000', isolation: 'linux-sandbox', sandbox: { dispatch, realKey: MODEL_KEY, gatewayPort: 18953 } });
   assert.equal(rec.status, 'verified', JSON.stringify({ s: rec.status, setup: rec.setup, agent: rec.agent && { e: rec.agent.exit_code, st: rec.agent.stderr_tail } }));
   assert.equal(fs.readFileSync(path.join(rec.run_dir, 'work', 'gateway.txt'), 'utf8'), '200');
   assert.deepEqual(seenKeys, [MODEL_KEY], 'upstream got the real key; the agent only had a session token');

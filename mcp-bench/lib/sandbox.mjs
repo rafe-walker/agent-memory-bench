@@ -56,7 +56,7 @@ export async function verifySandboxPreflight({ preflight, pubkey, now = Date.now
 export function assertTraversable(p) {
   for (let d = path.resolve(p); ; d = path.dirname(d)) {
     const st = fs.statSync(d);
-    if (!(st.mode & 0o001)) throw new Error(`--isolation linux-sandbox: ${d} is not traversable by other users (o+x); put --out somewhere the sandbox uid can reach`);
+    if (!(st.mode & 0o001)) throw new Error(`--isolation linux-sandbox: ${d} is not traversable by other users (o+x), so the sandbox uid cannot reach ${p}`);
     if (d === path.dirname(d)) return;
   }
 }
@@ -91,6 +91,7 @@ export async function runSandboxedAgent({ claudeBin, args, dirs, env, timeoutMs,
     const out = sb.outDir && path.resolve(sb.outDir);
     if (b === '/' || (out && (out === b || out.startsWith(b + path.sep)))) throw new Error(`linux-sandbox: refusing to bind ${b} (it contains the out dir ${out}); install claude outside it`);
   }
+  for (const b of [...binds, ...(taskDir ? [taskDir] : [])]) assertTraversable(b);
   const port = sb.gatewayPort ?? 8953;
   const t0 = Date.now();
   let net, gw, worker;
