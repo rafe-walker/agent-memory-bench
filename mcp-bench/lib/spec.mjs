@@ -24,8 +24,8 @@ const TOP_KEYS = {
 function typeOk(v, t) {
   switch (t) {
     case 'string': return typeof v === 'string';
-    case 'int': return Number.isInteger(v) && v > 0;
-    case 'number': return typeof v === 'number' && v > 0;
+    case 'int': return Number.isSafeInteger(v) && v > 0;
+    case 'number': return typeof v === 'number' && Number.isFinite(v) && v > 0;
     case 'object': return v !== null && typeof v === 'object' && !Array.isArray(v);
     case 'string[]': return Array.isArray(v) && v.every((x) => typeof x === 'string');
     case 'env': return v !== null && typeof v === 'object' && !Array.isArray(v) && Object.values(v).every((x) => typeof x === 'string');
@@ -35,7 +35,8 @@ function typeOk(v, t) {
 
 function checkKeys(obj, allowed, where, errors) {
   for (const [k, v] of Object.entries(obj)) {
-    if (!(k in allowed)) { errors.push(`${where}.${k}: unknown key`); continue; }
+    // why: `in` also matches inherited names (toString, constructor, __proto__).
+    if (!Object.hasOwn(allowed, k)) { errors.push(`${where}.${k}: unknown key`); continue; }
     if (v === null || v === undefined) continue;
     if (!typeOk(v, allowed[k])) errors.push(`${where}.${k}: expected ${allowed[k]}`);
   }
@@ -49,7 +50,7 @@ function checkMcp(servers, where, errors) {
     if (!s.command && !s.url) errors.push(`${where}.mcp_servers.${name}: needs command (stdio) or url (http/sse)`);
     // why: a literal key in a committed spec is a leak; specs must use ${VAR} placeholders.
     const flat = JSON.stringify(s);
-    if (/(phx_|phc_|sk-ant-|ghp_|github_pat_)[A-Za-z0-9_]{8,}/.test(flat)) errors.push(`${where}.mcp_servers.${name}: looks like a literal secret; use a \${VAR} placeholder`);
+    if (/(phx_|phc_|sk-ant-|ghp_|github_pat_)[A-Za-z0-9_]{8,}|\bsk-[A-Za-z0-9_-]{16,}|Bearer (?!\$\{)[A-Za-z0-9._~+/-]{16,}/.test(flat)) errors.push(`${where}.mcp_servers.${name}: looks like a literal secret; use a \${VAR} placeholder`);
   }
 }
 
@@ -99,6 +100,9 @@ export function validateSpec(raw, dir) {
     const first = cmd.trim().split(/\s+/).find((t) => /\.(py|sh|mjs|js|ts)$/.test(t));
     if (first && !path.isAbsolute(first) && !fs.existsSync(path.join(dir, first))) errors.push(`spec.${k}: script not found: ${first}`);
   }
+  // why: Node's setTimeout fires after 1 ms for delays above 2^31-1 ms (~24.8 days), so a huge
+  // "no timeout" value would kill every attempt at once.
+  for (const k of ['timeout_sec', 'script_timeout_sec']) if (Number.isFinite(raw[k]) && raw[k] > 86400) errors.push(`spec.${k}: at most 86400 (24h)`);
   if (!raw.cleanup && raw.setup) warnings.push('spec.cleanup: none; setup state will accumulate in the sandbox');
   if (raw.max_turns && raw.max_turns > 60) warnings.push(`spec.max_turns: ${raw.max_turns} is high for a benchmark task`);
   return { errors, warnings };
@@ -138,7 +142,7 @@ export function resolveArm(task, armName) {
 /** {{name}} substitution from run vars (run_tag, arm, trial, and keys setup wrote to state). */
 export function renderTemplate(s, vars) {
   return s.replace(/\{\{\s*([A-Za-z0-9_.]+)\s*\}\}/g, (m, k) => {
-    const v = k.split('.').reduce((o, p) => (o == null ? undefined : o[p]), vars);
+    const v = k.split('.').reduce((o, p) => (o != null && typeof o === 'object' && Object.hasOwn(o, p) ? o[p] : undefined), vars);
     if (v === undefined) throw new Error(`template variable {{${k}}} is not set (setup must write it to $BENCH_STATE)`);
     return typeof v === 'string' ? v : JSON.stringify(v);
   });

@@ -27,6 +27,13 @@ const num = (s, name, int = false) => {
   return v;
 };
 
+// why: parseInt(x) || 1 made --seed 0, "abc" and "1.5" all seed 1; mulberry32 takes seed >>> 0,
+// so 2^32 + 1 would also collide with 1.
+const seedOf = (s) => {
+  if (!/^\d+$/.test(String(s)) || Number(s) > 0xffffffff) throw new Error('--seed: expected an integer 0..4294967295');
+  return Number(s);
+};
+
 function loadAll(files) {
   if (!files.length) throw new Error('no task files given');
   const tasks = [], errors = [];
@@ -140,7 +147,7 @@ async function main(argv) {
       if (n < PURPOSE_N.publish) throw new Error(`--purpose publish needs --n >= ${PURPOSE_N.publish}`);
     }
     return cmdRun(files, {
-      purpose: v.purpose || null, arms: list(v.arms), n, seed: Number.parseInt(v.seed, 10) || 1,
+      purpose: v.purpose || null, arms: list(v.arms), n, seed: seedOf(v.seed),
       model: v.model, models: list(v.models), maxTurns: num(v['max-turns'], 'max-turns', true),
       maxBudgetUsd: num(v['max-budget-usd'], 'max-budget-usd'), maxTotalUsd: num(v['max-total-usd'], 'max-total-usd'),
       out: v.out, claudeBin: v['claude-bin'] || process.env.MCP_BENCH_CLAUDE || 'claude', dryRun: !!v['dry-run'],
