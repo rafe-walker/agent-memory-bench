@@ -5,7 +5,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { mulberry32 } from '../../track-a/lib/rng.mjs';
 import { resolveArm } from './spec.mjs';
-import { runAttempt } from './runner.mjs';
+import { runAttempt, isInterrupted } from './runner.mjs';
 import { summarizeArm, summarizePairs } from './stats.mjs';
 
 /**
@@ -72,6 +72,7 @@ export async function runTask(task, opts) {
   const log = opts.log || (() => {});
   const ledger = path.join(opts.outDir, 'attempts.jsonl');
   for (const p of plan) {
+    if (isInterrupted()) { stopped = `interrupted (${isInterrupted()})`; break; }
     // Budget gate before each attempt: an attempt can cost up to maxBudgetUsd, so stop when the
     // remaining budget can no longer cover one.
     if (opts.maxTotalUsd != null && spent + eff.maxBudgetUsd > opts.maxTotalUsd + 1e-9) {
@@ -85,6 +86,7 @@ export async function runTask(task, opts) {
     spent += rec.agent?.cost_usd ?? 0;
     records.push(rec);
     fs.appendFileSync(ledger, JSON.stringify({ ...rec, agent: rec.agent && { ...rec.agent, turns: undefined, tool_calls: undefined } }) + '\n');
+    if (isInterrupted()) stopped = `interrupted (${isInterrupted()})`;
     log(`${task.id} ${p.model} t${p.trial} ${p.arm}: ${rec.status} tokens=${rec.agent?.usage?.total ?? '-'} turns=${rec.agent?.num_turns ?? '-'} cost=$${(rec.agent?.cost_usd ?? 0).toFixed(4)}`);
   }
   const perModel = {};

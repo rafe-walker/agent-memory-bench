@@ -10,7 +10,7 @@ import { execFileSync } from 'node:child_process';
 import { parseArgs } from 'node:util';
 import { loadTask, resolveArm } from '../lib/spec.mjs';
 import { schedule, effective, missingEnv, runTask, balanced, PURPOSE_N } from '../lib/trials.mjs';
-import { buildClaudeArgs } from '../lib/runner.mjs';
+import { buildClaudeArgs, interrupt, isInterrupted } from '../lib/runner.mjs';
 import { renderMarkdown } from '../lib/report.mjs';
 
 const USAGE = `usage:
@@ -90,17 +90,24 @@ async function cmdRun(files, opts) {
   fs.mkdirSync(outDir, { recursive: true });
   const res = { generated_at: new Date().toISOString(), purpose: opts.purpose, seed: opts.seed, n: opts.n, claude_version: null, max_total_usd: opts.maxTotalUsd, tasks: [] };
   let spent = 0;
+  // Children run in their own process groups; forward Ctrl-C / SIGTERM so the agent stops, cleanup
+  // runs and partial results are written. A second signal exits at once.
+  const onSignal = (sig) => {
+    if (!interrupt(sig)) process.exit(130);
+    console.error(`mcp-bench: ${sig}: stopping; running cleanup and writing partial results (send again to exit now)`);
+  };
+  process.on('SIGINT', onSignal); process.on('SIGTERM', onSignal);
   for (const t of tasks) {
     const r = await runTask(t, { ...opts, outDir, spentUsd: spent, log: (s) => console.error(s) });
     spent = r.spent_usd;
     res.tasks.push(r);
     res.claude_version ||= r.claude_version;
-    if (r.stopped) break;
+    if (r.stopped || isInterrupted()) break;
   }
   fs.writeFileSync(path.join(outDir, 'results.json'), JSON.stringify(res, null, 2));
   fs.writeFileSync(path.join(outDir, 'REPORT.md'), renderMarkdown(res));
   console.log(path.join(outDir, 'REPORT.md'));
-  return 0;
+  return isInterrupted() ? 130 : 0;
 }
 
 function cmdReport(file, out) {

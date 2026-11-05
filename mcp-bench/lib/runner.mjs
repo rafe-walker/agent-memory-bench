@@ -40,13 +40,38 @@ export function agentEnv(armCfg, dirs, harnessEnv = process.env) {
   return env;
 }
 
-function spawnCapture(cmd, args, { cwd, env, timeoutMs, onSpawn }) {
+// Live child process groups. Children are detached (own group, so a group kill reaches MCP servers),
+// which also means a terminal Ctrl-C never reaches them: the runner must forward it.
+const live = new Map(); // pid -> role
+let interrupted = null;
+export const isInterrupted = () => interrupted;
+/** Stop the run: SIGKILL every live agent/setup/verifier group; cleanup scripts keep running. */
+export function interrupt(sig) {
+  if (interrupted) return false;
+  interrupted = sig;
+  for (const [pid, role] of live) if (role !== 'cleanup') { try { process.kill(-pid, 'SIGKILL'); } catch { /* gone */ } }
+  return true;
+}
+
+// why: a SIGKILLed runner runs no handler. The reaper holds a pipe from the runner; when the runner
+// dies the pipe hits EOF and the reaper kills the agent's process group.
+const REAPER = "const g=+process.argv[1];process.stdin.resume();process.stdin.on('end',()=>{try{process.kill(-g,'SIGKILL')}catch{}process.exit(0)});";
+
+function spawnCapture(cmd, args, { cwd, env, timeoutMs, onSpawn, role = 'script', reap = false }) {
   return new Promise((resolve) => {
     const t0 = Date.now();
     let so = '', se = '', timedOut = false, done = false;
     let p;
     try { p = spawn(cmd, args, { cwd, env, stdio: ['ignore', 'pipe', 'pipe'], detached: true }); } catch (e) {
       resolve({ code: null, signal: null, stdout: '', stderr: String(e.message), wall_ms: 0, timed_out: false, spawn_error: e.message }); return;
+    }
+    live.set(p.pid, role);
+    if (interrupted && role !== 'cleanup') { try { process.kill(-p.pid, 'SIGKILL'); } catch { /* gone */ } }
+    let reaper = null;
+    if (reap && p.pid) {
+      reaper = spawn(process.execPath, ['-e', REAPER, String(p.pid)], { stdio: ['pipe', 'ignore', 'ignore'], detached: true });
+      reaper.on('error', () => {});
+      reaper.unref();
     }
     onSpawn?.();
     p.stdout.on('data', (d) => { so += d; });
@@ -56,17 +81,22 @@ function spawnCapture(cmd, args, { cwd, env, timeoutMs, onSpawn }) {
     const to = setTimeout(() => { timedOut = true; killGroup('SIGTERM'); setTimeout(() => killGroup('SIGKILL'), 3000).unref(); }, timeoutMs);
     const finish = (code, signal, err) => {
       if (done) return; done = true; clearTimeout(to);
+      live.delete(p.pid);
+      if (reaper) { try { reaper.stdin.end(); } catch { /* gone */ } }
       resolve({ code, signal, stdout: so, stderr: se, wall_ms: Date.now() - t0, timed_out: timedOut, spawn_error: err || null });
     };
     p.on('error', (e) => finish(null, null, e.message));
+    // why: anything still in the agent's group once claude itself exited (background shells, MCP
+    // servers that ignore stdin EOF) is an orphan that could keep mutating the sandbox.
+    if (reap) p.on('exit', () => killGroup('SIGKILL'));
     p.on('close', (code, signal) => finish(code, signal));
   });
 }
 
 /** Run a task script (setup / verifier / cleanup) through bash in the task dir. */
-export async function runScript(cmd, ctx, timeoutSec) {
+export async function runScript(cmd, ctx, timeoutSec, role = 'script') {
   const env = { ...process.env, ...ctx.scriptEnv };
-  return spawnCapture('bash', ['-c', cmd], { cwd: ctx.taskDir, env, timeoutMs: timeoutSec * 1000 });
+  return spawnCapture('bash', ['-c', cmd], { cwd: ctx.taskDir, env, timeoutMs: timeoutSec * 1000, role });
 }
 
 /** Verifier contract: last stdout line that parses as JSON {pass, details} wins; else exit 0 = pass,
@@ -126,6 +156,7 @@ export async function runAttempt({ task, armCfg, model, maxTurns, maxBudgetUsd, 
     if (task.setup) {
       const s = await runScript(task.setup, ctx, task.script_timeout_sec);
       rec.setup = { code: s.code, wall_ms: s.wall_ms, timed_out: s.timed_out, stderr_tail: s.stderr.slice(-500) };
+      if (interrupted) { rec.status = 'interrupted'; return rec; }
       if (s.code !== 0 || s.timed_out) { rec.status = 'setup_error'; return rec; }
     }
     let prompt;
@@ -142,13 +173,20 @@ export async function runAttempt({ task, armCfg, model, maxTurns, maxBudgetUsd, 
       fs.writeFileSync(mcpFile, JSON.stringify({ mcpServers: armCfg.mcp_servers }, null, 2).replaceAll('${TASK_DIR}', task.dir));
     }
     const args = buildClaudeArgs({ prompt, armCfg, model, maxTurns, maxBudgetUsd, mcpFile });
-    const r = await spawnCapture(claudeBin, args, { cwd: dirs.work, env: agentEnv(armCfg, dirs), timeoutMs: task.timeout_sec * 1000 });
+    const r = await spawnCapture(claudeBin, args, { cwd: dirs.work, env: agentEnv(armCfg, dirs), timeoutMs: task.timeout_sec * 1000, role: 'agent', reap: true });
     const m = parseStreamJson(r.stdout);
     rec.agent = {
       exit_code: r.code, signal: r.signal, timed_out: r.timed_out, spawn_error: r.spawn_error, wall_ms: r.wall_ms,
       stderr_tail: r.stderr.slice(-500), ...m,
     };
     rec.model_id = m.init?.model ?? null;
+    // why: the isolated HOME holds claude's config, MCP logs and any session data; the verifier must
+    // not be able to read the agent's side of the run through BENCH_RUN_DIR.
+    fs.rmSync(dirs.home, { recursive: true, force: true });
+    if (interrupted) {
+      fs.writeFileSync(path.join(runDir, 'transcript.jsonl.gz'), zlib.gzipSync(r.stdout));
+      rec.status = 'interrupted'; return rec;
+    }
     // why: verifiers read the sandbox through an independent surface and never the agent's narrative,
     // so nothing the agent said (transcript, final text) is on disk until the verifier has finished.
     const v = await runScript(task.verifier, ctx, task.script_timeout_sec);
@@ -159,7 +197,7 @@ export async function runAttempt({ task, armCfg, model, maxTurns, maxBudgetUsd, 
     return rec;
   } finally {
     if (task.cleanup) {
-      const c = await runScript(task.cleanup, ctx, task.script_timeout_sec);
+      const c = await runScript(task.cleanup, ctx, task.script_timeout_sec, 'cleanup');
       rec.cleanup = { code: c.code, wall_ms: c.wall_ms, timed_out: c.timed_out, stderr_tail: c.code === 0 ? '' : c.stderr.slice(-500) };
     }
     fs.rmSync(dirs.home, { recursive: true, force: true });
