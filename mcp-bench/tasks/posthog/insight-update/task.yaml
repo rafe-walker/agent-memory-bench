@@ -38,3 +38,4 @@ arms:
         command: "${MCP_WIRE_PROXY_BIN}"
         args: ["--rules", "${MCP_WIRE_PROXY_RULES}", "--upstream", "https://mcp.posthog.com/mcp", "--header", "Authorization: Bearer ${POSTHOG_AUDIT_KEY}"]
     env_passthrough: [MCP_WIRE_PROXY_BIN, MCP_WIRE_PROXY_RULES]
+    plain_env: [MCP_WIRE_PROXY_BIN, MCP_WIRE_PROXY_RULES]
