@@ -44,6 +44,9 @@ The first arm in `--arms` (or in the spec) is the baseline.
 published number; `publish` refuses n < 20 and small models). Pass a frozen model ID, not an alias,
 for anything published; dry-run warns on aliases and the report flags a model change mid-run. Attempts whose **setup** failed never reached the agent and are excluded (reported
 as setup errors); everything else — timeouts, agent errors, verifier errors — stays in the denominator.
+An attempt with no `result` event (crash, timeout, kill, output cap) only has per-message usage, whose
+`output_tokens` is ~0; the report counts these per arm ("no result event") and marks expected tokens
+per verified success with ≥ when they are included, since that figure is then a lower bound.
 
 ## Task spec (YAML or JSON)
 

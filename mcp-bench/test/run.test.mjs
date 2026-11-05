@@ -334,3 +334,20 @@ test('budget: an unpriced attempt after an overshoot is charged the largest char
   }
   assert.ok(checked >= 1, 'a crash ran after an overshoot');
 });
+
+test('#10: attempts without a result event are counted per arm and their tokens reported as lower bounds', () => {
+  const d = tmpdir(); const out = path.join(d, 'out');
+  const task = makeTask(d, { cleanup: undefined, arms: { ok: {}, nores: { env: { FAKE_CLAUDE_MODE: 'noresult' } } } });
+  const r = cli(['run', task, '--n', '2', '--max-total-usd', '1', '--out', out, '--claude-bin', FAKE]);
+  assert.equal(r.code, 0, r.err);
+  const t = JSON.parse(fs.readFileSync(path.join(out, 'results.json'), 'utf8')).tasks[0];
+  const a = t.models.haiku.arms;
+  assert.equal(a.nores.verified, 2, 'the work was done; only the result event is missing');
+  assert.equal(a.nores.usage_lower_bound, 2);
+  assert.equal(a.ok.usage_lower_bound, 0);
+  const md = fs.readFileSync(path.join(out, 'REPORT.md'), 'utf8');
+  assert.match(md, /\| nores \| ≥ 2,710 \|/, 'expected tokens per success marked as a lower bound');
+  assert.match(md, /\| ok \| 2,710 \|/, 'provider totals unmarked');
+  assert.match(md, /Lower bound.*nores: 2\/2 attempts/);
+  assert.match(md, /tokens p50 \/ p95 \(n\)[^\n]*\| no result event \|/, 'per-arm count column');
+});

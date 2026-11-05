@@ -3,6 +3,7 @@
 // Behaviour comes from the agent env (set through a task's env:), so it also proves the runner
 // scrubs everything else:
 //   FAKE_CLAUDE_MODE   ok (default) | dup (writes the file twice) | skip | error | hang | crash | flood | unicode | orphan | leak
+//                      | noresult (does the work, then exits before the result event)
 //   FAKE_PID_FILE      write the fake's pid here (signal tests)
 //   FAKE_TOKENS        input tokens per turn (default 1000)
 //   FAKE_CLAUDE_LOG    append {argv, env_keys, cwd} as one JSON line
@@ -57,12 +58,13 @@ if (mode === 'flood') {
   emit({ type: 'assistant', message: { id: 'msg_1', model: arg('--model'), content: [{ type: 'text', text: 'working' }], usage: u1 } });
   emit({ type: 'assistant', message: { id: 'msg_1', model: arg('--model'), content: [{ type: 'tool_use', id: 'tu_1', name: 'mcp__fake__write', input: { note: 'x'.repeat(10) } }], usage: u1 } });
   const m = /^WRITE (\S+) (.+)$/m.exec(arg('-p') || '');
-  if ((mode === 'ok' || mode === 'dup' || mode === 'orphan') && m) fs.writeFileSync(path.join(process.cwd(), m[1]), m[2]);
+  if ((mode === 'ok' || mode === 'dup' || mode === 'orphan' || mode === 'noresult') && m) fs.writeFileSync(path.join(process.cwd(), m[1]), m[2]);
   if (mode === 'dup' && m) fs.writeFileSync(path.join(process.cwd(), `${m[1]}.copy`), m[2]);
-  emit({ type: 'user', message: { content: [{ type: 'tool_result', tool_use_id: 'tu_1', content: [{ type: 'text', text: ['ok', 'dup', 'orphan'].includes(mode) ? 'written' : 'refused' }], is_error: !['ok', 'dup', 'orphan'].includes(mode) }] } });
+  emit({ type: 'user', message: { content: [{ type: 'tool_result', tool_use_id: 'tu_1', content: [{ type: 'text', text: ['ok', 'dup', 'orphan', 'noresult'].includes(mode) ? 'written' : 'refused' }], is_error: !['ok', 'dup', 'orphan', 'noresult'].includes(mode) }] } });
   process.stdout.write('this line is not json\n');
   if (mode === 'crash') process.exit(1);
   emit({ type: 'assistant', message: { id: 'msg_2', model: arg('--model'), content: [{ type: 'text', text: 'done' }], usage: u2 } });
+  if (mode === 'noresult') process.exit(0);
   const sum = Object.fromEntries(Object.keys(u1).map((k) => [k, u1[k] + u2[k]]));
   emit({
     type: 'result', subtype: mode === 'error' ? 'error_max_turns' : 'success', is_error: mode === 'error', num_turns: 2,

@@ -52,6 +52,9 @@ export function summarizeArm(records) {
     // Frozen IDs as resolved by the CLI (init event), whatever alias was requested.
     model_ids: [...new Set(counted.map((r) => r.model_id).filter(Boolean))].sort(),
     estimated_tool_result_tokens: { method: 'utf8_bytes/4', ...dist(counted.map((r) => r.agent?.estimated?.tool_result_tokens ?? 0)) },
+    // why: without a result event usage is the per-message sum, whose output_tokens is the
+    // message_start value (~0); those totals, and every aggregate that includes them, are lower bounds.
+    usage_lower_bound: counted.filter((r) => r.agent?.usage_source === 'turns').length,
     total_tokens: totalTokens,
     expected_tokens_per_verified_success: verified ? totalTokens / verified : null,
     expected_cost_per_verified_success: verified ? totalCost / verified : null,
