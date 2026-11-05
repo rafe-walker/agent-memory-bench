@@ -171,3 +171,44 @@ test('validate and report commands', () => {
   assert.equal(rep.code, 0);
   assert.match(rep.out, /## fake-task/);
 });
+
+test('budget: an attempt with no reported cost (crash, timeout) is charged at the per-attempt cap', () => {
+  const d = tmpdir(); const out = path.join(d, 'out');
+  // crash mode never emits a result event, so total_cost_usd is unknown; cap 0.12 at $0.05/attempt
+  // must allow at most 2 attempts, not all 6.
+  const task = makeTask(d, { cleanup: undefined, env: { FAKE_CLAUDE_MODE: 'crash', FAKE_CLAUDE_LOG: path.join(d, 'fake.log') } });
+  cli(['run', task, '--n', '3', '--max-total-usd', '0.12', '--out', out, '--claude-bin', FAKE]);
+  const t = JSON.parse(fs.readFileSync(path.join(out, 'results.json'), 'utf8')).tasks[0];
+  assert.equal(readJsonl(path.join(d, 'fake.log')).length, 2, 'agent started at most cap / per-attempt times');
+  assert.equal(t.completed_attempts, 2);
+  assert.match(t.stopped, /^budget:/);
+  assert.ok(t.spent_usd <= 0.12 + 1e-9 && t.spent_usd >= 0.1 - 1e-9, String(t.spent_usd));
+  assert.equal(t.unpriced_attempts, 2);
+  assert.match(fs.readFileSync(path.join(out, 'REPORT.md'), 'utf8'), /2 attempt\(s\) reported no cost/);
+});
+
+test('budget: an attempt that overshot the per-attempt cap raises the reservation for the next one', () => {
+  const d = tmpdir(); const out = path.join(d, 'out');
+  // fake cost = FAKE_TOKENS / 1e6 = $0.08 > max_budget_usd 0.05; after one such attempt, 0.08 + 0.08 > 0.15.
+  const task = makeTask(d, { cleanup: undefined, env: { FAKE_TOKENS: '80000', FAKE_CLAUDE_LOG: path.join(d, 'fake.log') }, arms: { a: {}, b: {} } });
+  cli(['run', task, '--n', '3', '--max-total-usd', '0.15', '--out', out, '--claude-bin', FAKE]);
+  const t = JSON.parse(fs.readFileSync(path.join(out, 'results.json'), 'utf8')).tasks[0];
+  assert.equal(t.completed_attempts, 1);
+  assert.ok(t.spent_usd <= 0.15, String(t.spent_usd));
+});
+
+test('spec: extra_args may not override harness-controlled flags; env may not move HOME', () => {
+  const d = tmpdir();
+  for (const [over, re] of [
+    [{ extra_args: ['--max-budget-usd', '50'] }, /extra_args.*--max-budget-usd/],
+    [{ arms: { a: { extra_args: ['--model=opus'] } } }, /extra_args.*--model/],
+    [{ arms: { a: { extra_args: ['--dangerously-skip-permissions'] } } }, /extra_args.*--dangerously-skip-permissions/],
+    [{ arms: { a: { env: { HOME: '/root' } } } }, /env\.HOME: reserved/],
+    [{ env: { CLAUDE_CONFIG_DIR: '/root/.claude' } }, /env\.CLAUDE_CONFIG_DIR: reserved/],
+  ]) {
+    const r = cli(['validate', makeTask(d, over)]);
+    assert.equal(r.code, 1, JSON.stringify(over) + r.out);
+    assert.match(r.out, re);
+  }
+  assert.equal(cli(['validate', makeTask(d, { extra_args: ['--add-dir', '/tmp'] })]).code, 0);
+});

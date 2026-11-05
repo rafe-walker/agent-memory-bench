@@ -68,21 +68,32 @@ export async function runTask(task, opts) {
   const plan = schedule({ task, arms, models: eff.models, n: opts.n, seed: opts.seed });
   const records = [];
   let spent = opts.spentUsd || 0;
+  let spentReported = 0, unpriced = 0, maxCharged = 0;
   let stopped = null;
   const log = opts.log || (() => {});
   const ledger = path.join(opts.outDir, 'attempts.jsonl');
   for (const p of plan) {
-    // Budget gate before each attempt: an attempt can cost up to maxBudgetUsd, so stop when the
+    // Budget gate before each attempt: an attempt can cost up to maxBudgetUsd (more if the CLI
+    // overshoots its own cap, so reserve the largest charge seen so far), so stop when the
     // remaining budget can no longer cover one.
-    if (opts.maxTotalUsd != null && spent + eff.maxBudgetUsd > opts.maxTotalUsd + 1e-9) {
-      stopped = `budget: spent $${spent.toFixed(4)}, next attempt may cost up to $${eff.maxBudgetUsd} (cap $${opts.maxTotalUsd})`;
+    const reserve = Math.max(eff.maxBudgetUsd, maxCharged);
+    if (opts.maxTotalUsd != null && spent + reserve > opts.maxTotalUsd + 1e-9) {
+      stopped = `budget: spent $${spent.toFixed(4)}, next attempt may cost up to $${reserve} (cap $${opts.maxTotalUsd})`;
       break;
     }
     const rec = await runAttempt({
       task, armCfg: resolveArm(task, p.arm), model: p.model, maxTurns: eff.maxTurns, maxBudgetUsd: eff.maxBudgetUsd,
       claudeBin: opts.claudeBin, outDir: opts.outDir, trial: p.trial, order: p.order, runTag: p.run_tag,
     });
-    spent += rec.agent?.cost_usd ?? 0;
+    // why: no result event (crash, timeout, kill) or an invalid cost means the spend is unknown,
+    // not zero; charge the per-attempt cap so the total cap still holds.
+    const reported = rec.agent?.cost_usd;
+    const ran = rec.agent && !rec.agent.spawn_error;
+    rec.cost_charged_usd = !ran ? 0 : reported != null ? reported : eff.maxBudgetUsd;
+    if (ran && reported == null) unpriced++;
+    spentReported += reported ?? 0;
+    spent += rec.cost_charged_usd;
+    maxCharged = Math.max(maxCharged, rec.cost_charged_usd);
     records.push(rec);
     fs.appendFileSync(ledger, JSON.stringify({ ...rec, agent: rec.agent && { ...rec.agent, turns: undefined, tool_calls: undefined } }) + '\n');
     log(`${task.id} ${p.model} t${p.trial} ${p.arm}: ${rec.status} tokens=${rec.agent?.usage?.total ?? '-'} turns=${rec.agent?.num_turns ?? '-'} cost=$${(rec.agent?.cost_usd ?? 0).toFixed(4)}`);
@@ -99,6 +110,7 @@ export async function runTask(task, opts) {
     task: task.id, description: task.description || null, spec_file: task.file, arms, baseline: arms[0],
     n: opts.n, seed: opts.seed, purpose: opts.purpose || null, balanced: balanced(opts.n, arms), max_turns: eff.maxTurns, max_budget_usd_per_attempt: eff.maxBudgetUsd,
     planned_attempts: plan.length, completed_attempts: records.length, stopped, spent_usd: spent,
+    spent_usd_reported: spentReported, unpriced_attempts: unpriced,
     claude_version: records.find((r) => r.agent?.init?.version)?.agent.init.version ?? null,
     models: perModel, records,
   };
