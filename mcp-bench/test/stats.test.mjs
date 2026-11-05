@@ -68,3 +68,14 @@ test('side-effect rates and model ids are summarized', () => {
   assert.equal(s.unexpected_mutations.k, 1);
   assert.deepEqual(s.model_ids, ['claude-x-1']);
 });
+
+test('schedule: a run nonce makes tags unique per invocation without changing the plan (#9)', () => {
+  const task = { id: 't' };
+  const plan = (nonce) => schedule({ task, arms: ['x', 'y'], models: ['m'], n: 4, seed: 1, nonce });
+  const a = plan('aaaa1111'), b = plan('bbbb2222');
+  assert.deepEqual(a.map(({ run_tag, ...p }) => p), b.map(({ run_tag, ...p }) => p), 'same seed, same plan');
+  for (let i = 0; i < a.length; i++) {
+    assert.notEqual(a[i].run_tag, b[i].run_tag);
+    assert.match(a[i].run_tag, /^mcpbench-t-[xy]-t\d-[0-9a-f]{6}-aaaa1111$/);
+  }
+});

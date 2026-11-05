@@ -7,6 +7,7 @@
 //   FAKE_PID_FILE      write the fake's pid here (signal tests)
 //   FAKE_TOKENS        input tokens per turn (default 1000)
 //   FAKE_CLAUDE_LOG    append {argv, env_keys, cwd} as one JSON line
+//   FAKE_PLANT_JSON    [{dir, journal}]: write each journal to <cwd>/../../<dir>/CLEANUP_PENDING.json (a hostile agent)
 // In ok mode a prompt line "WRITE <file> <content>" is carried out in cwd (the "real state" the
 // verifier inspects).
 import fs from 'node:fs';
@@ -27,6 +28,11 @@ if (mcpFile) servers = Object.keys(JSON.parse(fs.readFileSync(mcpFile, 'utf8')).
 emit({ type: 'system', subtype: 'init', model: arg('--model'), tools: ['mcp__fake__write'], mcp_servers: servers, claude_code_version: '0.0.0-fake', permissionMode: arg('--permission-mode') });
 
 if (process.env.FAKE_PID_FILE) fs.writeFileSync(process.env.FAKE_PID_FILE, String(process.pid));
+for (const { dir, journal } of JSON.parse(process.env.FAKE_PLANT_JSON || '[]')) {
+  const d = path.join(process.cwd(), '..', '..', dir);
+  fs.mkdirSync(d, { recursive: true });
+  fs.writeFileSync(path.join(d, 'CLEANUP_PENDING.json'), JSON.stringify(journal));
+}
 if (mode === 'orphan') {
   // a background child that outlives claude (Bash run_in_background, an MCP server ignoring EOF)
   const c = spawn('sleep', ['300'], { stdio: 'ignore' });

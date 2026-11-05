@@ -24,6 +24,7 @@ node bin/mcp-bench.mjs run tasks/local-notes/task.yaml --model haiku --n 2 --max
 node bin/mcp-bench.mjs run tasks/posthog/*/task.yaml --purpose before-after --arms direct,wire-proxy \
      --model <frozen model id> --max-turns 25 --max-total-usd 15 --out results/posthog-$(date +%F)
 node bin/mcp-bench.mjs report results/…/results.json
+node bin/mcp-bench.mjs cleanup results/… --task tasks/posthog/*/task.yaml   # replay cleanups a SIGKILLed run never ran
 ```
 
 Cost controls: `--max-total-usd` is **required** for a real run and is checked before every attempt
@@ -60,7 +61,7 @@ per verified success with ≥ when they are included, since that figure is then 
 | `env`, `env_passthrough` | literal agent env; names copied from the harness env (the agent env is otherwise scrubbed to PATH/proxy/auth) |
 | `secret_env`, `plain_env` | redaction of captured streams before anything is written. Default is redact: model credentials and every `env_passthrough` or `${VAR}`-referenced value are scrubbed unless `plain_env` lists the name (use it for paths you want readable in transcripts). `secret_env` is always redacted, and so is any name that looks like a credential (`KEY`, `TOKEN`, `SECRET`, `PASSW`, `CREDENTIAL`, `AUTH`, `COOKIE`), even if `plain_env` lists it. `env`/`env_passthrough` may not set the model (`ANTHROPIC_MODEL`, `ANTHROPIC_DEFAULT_*_MODEL`, `CLAUDE_CODE_SUBAGENT_MODEL`). |
 | `requires_env` | names the harness must have (run refuses, dry-run flags them) |
-| `setup`, `verifier`, `cleanup` | shell commands run in the spec's directory with the full harness env plus `BENCH_TASK`, `BENCH_ARM`, `BENCH_TRIAL`, `BENCH_MODEL`, `BENCH_RUN_TAG`, `BENCH_RUN_DIR`, `BENCH_WORKDIR` (agent cwd), `BENCH_STATE` (JSON file setup writes). The agent's transcript and final text are not on disk while the verifier runs. Cleanup always runs. |
+| `setup`, `verifier`, `cleanup` | shell commands run in the spec's directory with the full harness env plus `BENCH_TASK`, `BENCH_ARM`, `BENCH_TRIAL`, `BENCH_MODEL`, `BENCH_RUN_TAG`, `BENCH_RUN_DIR`, `BENCH_WORKDIR` (agent cwd), `BENCH_STATE` (JSON file setup writes). The agent's transcript and final text are not on disk while the verifier runs. Cleanup always runs; if the runner is SIGKILLed first, the attempt's `runs/<id>/CLEANUP_PENDING.json` journal stays behind and `mcp-bench cleanup <out> --task <spec...>` (or the next `run` into the same `--out`) replays it with the original `BENCH_RUN_TAG`. The journal is in an agent-writable dir, so it holds only the task id, run tag, arm, trial and model; the command, task dir and env come from the spec, and a journal that names no loaded spec, sits in the wrong run dir or has a tag not in the generated format is skipped. Run tags end in a per-invocation nonce, so a rerun with the same `--seed` never reuses a killed run's tags. |
 | `arms` | `{name: overrides}`; an arm may override only how the agent reaches the server (`mcp_servers`, tools, env, `extra_args`, `append_system_prompt`, `prompt_prefix`/`prompt_suffix`) |
 
 Verifier contract: the last stdout line that parses as `{"pass": bool, "details": …}` wins;
